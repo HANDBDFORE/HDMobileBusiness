@@ -6,18 +6,18 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "HDLoadingController.h"
+#import "HDLoadingViewController.h"
 #import "HDClassLoader.h"
 #import "HDResourceLoader.h"
 
 NSString * LoginPathName =@"HD_LOGIN_VC_PATH";
 NSString * MainPathName =@"HD_MAIN_VC_PATH";
 
-@interface HDLoadingController ()
+@interface HDLoadingViewController ()
 
 @end
 
-@implementation HDLoadingController
+@implementation HDLoadingViewController
 
 
 

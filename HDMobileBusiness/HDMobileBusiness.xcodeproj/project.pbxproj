@@ -18,6 +18,11 @@
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
 		B31E2ECC15C65BAA00880514 /* HDGodXMLFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ECB15C65BAA00880514 /* HDGodXMLFactory.m */; };
 		B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */; };
+		B31E2EDD15C65FD400880514 /* HDClassConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED415C65FD400880514 /* HDClassConfigParser.m */; };
+		B31E2EDE15C65FD400880514 /* HDClassLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED615C65FD400880514 /* HDClassLoader.m */; };
+		B31E2EDF15C65FD400880514 /* HDLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED815C65FD400880514 /* HDLoadingViewController.m */; };
+		B31E2EE015C65FD400880514 /* HDResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2EDA15C65FD400880514 /* HDResourceLoader.m */; };
+		B31E2EE115C65FD400880514 /* HDResourceMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2EDC15C65FD400880514 /* HDResourceMap.m */; };
 		B36BDA9215C64777003A4A5D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9115C64777003A4A5D /* UIKit.framework */; };
 		B36BDA9415C64777003A4A5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9315C64777003A4A5D /* Foundation.framework */; };
 		B36BDA9615C64777003A4A5D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9515C64777003A4A5D /* CoreGraphics.framework */; };
@@ -369,6 +374,17 @@
 		B31E2ECB15C65BAA00880514 /* HDGodXMLFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGodXMLFactory.m; sourceTree = "<group>"; };
 		B31E2ECF15C65DC900880514 /* HDUserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUserGuideViewController.h; sourceTree = "<group>"; };
 		B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDUserGuideViewController.m; sourceTree = "<group>"; };
+		B31E2ED315C65FD400880514 /* HDClassConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDClassConfigParser.h; sourceTree = "<group>"; };
+		B31E2ED415C65FD400880514 /* HDClassConfigParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDClassConfigParser.m; sourceTree = "<group>"; };
+		B31E2ED515C65FD400880514 /* HDClassLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDClassLoader.h; sourceTree = "<group>"; };
+		B31E2ED615C65FD400880514 /* HDClassLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDClassLoader.m; sourceTree = "<group>"; };
+		B31E2ED715C65FD400880514 /* HDLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLoadingViewController.h; sourceTree = "<group>"; };
+		B31E2ED815C65FD400880514 /* HDLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoadingViewController.m; sourceTree = "<group>"; };
+		B31E2ED915C65FD400880514 /* HDResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDResourceLoader.h; sourceTree = "<group>"; };
+		B31E2EDA15C65FD400880514 /* HDResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDResourceLoader.m; sourceTree = "<group>"; };
+		B31E2EDB15C65FD400880514 /* HDResourceMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDResourceMap.h; sourceTree = "<group>"; };
+		B31E2EDC15C65FD400880514 /* HDResourceMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDResourceMap.m; sourceTree = "<group>"; };
+		B31E2EE215C660B600880514 /* HDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUtilities.h; sourceTree = "<group>"; };
 		B36BDA8D15C64777003A4A5D /* HDMobileBusiness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HDMobileBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36BDA9115C64777003A4A5D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B36BDA9315C64777003A4A5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -671,6 +687,24 @@
 			);
 			name = UserGuide;
 			path = Classes/UserGuide;
+			sourceTree = "<group>";
+		};
+		B31E2ED215C65FD300880514 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				B31E2ED315C65FD400880514 /* HDClassConfigParser.h */,
+				B31E2ED415C65FD400880514 /* HDClassConfigParser.m */,
+				B31E2ED515C65FD400880514 /* HDClassLoader.h */,
+				B31E2ED615C65FD400880514 /* HDClassLoader.m */,
+				B31E2ED715C65FD400880514 /* HDLoadingViewController.h */,
+				B31E2ED815C65FD400880514 /* HDLoadingViewController.m */,
+				B31E2ED915C65FD400880514 /* HDResourceLoader.h */,
+				B31E2EDA15C65FD400880514 /* HDResourceLoader.m */,
+				B31E2EDB15C65FD400880514 /* HDResourceMap.h */,
+				B31E2EDC15C65FD400880514 /* HDResourceMap.m */,
+			);
+			name = Loading;
+			path = Classes/Loading;
 			sourceTree = "<group>";
 		};
 		B36BDA8215C64777003A4A5D = {
@@ -977,7 +1011,7 @@
 		B38E685815C6526A00824CB1 /* Documents */ = {
 			isa = PBXGroup;
 			children = (
-				B38E686215C6531300824CB1 /* workPlan */,
+				B38E686215C6531300824CB1 /* WorkPlan */,
 				B38E685915C6526A00824CB1 /* ConfigFiles */,
 			);
 			path = Documents;
@@ -994,19 +1028,21 @@
 			path = ConfigFiles;
 			sourceTree = "<group>";
 		};
-		B38E686215C6531300824CB1 /* workPlan */ = {
+		B38E686215C6531300824CB1 /* WorkPlan */ = {
 			isa = PBXGroup;
 			children = (
 				B38E686315C6531300824CB1 /* bugList.rtf */,
 				B38E686415C6531300824CB1 /* developList.rtf */,
 				B38E686515C6531300824CB1 /* functionList.rtf */,
 			);
+			name = WorkPlan;
 			path = workPlan;
 			sourceTree = "<group>";
 		};
 		B38E686915C654C700824CB1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B31E2ED215C65FD300880514 /* Loading */,
 				B31E2ECE15C65DC900880514 /* UserGuide */,
 				B38E686A15C654DA00824CB1 /* Utilities */,
 			);
@@ -1021,6 +1057,7 @@
 				B31E2ECA15C65BAA00880514 /* HDGodXMLFactory.h */,
 				B31E2ECB15C65BAA00880514 /* HDGodXMLFactory.m */,
 				B38E686B15C654DA00824CB1 /* HDHTTPRequest */,
+				B31E2EE215C660B600880514 /* HDUtilities.h */,
 			);
 			name = Utilities;
 			path = ../Utilities;
@@ -1491,6 +1528,11 @@
 				B38E689615C656B000824CB1 /* HDGlobalMetrics.m in Sources */,
 				B31E2ECC15C65BAA00880514 /* HDGodXMLFactory.m in Sources */,
 				B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */,
+				B31E2EDD15C65FD400880514 /* HDClassConfigParser.m in Sources */,
+				B31E2EDE15C65FD400880514 /* HDClassLoader.m in Sources */,
+				B31E2EDF15C65FD400880514 /* HDLoadingViewController.m in Sources */,
+				B31E2EE015C65FD400880514 /* HDResourceLoader.m in Sources */,
+				B31E2EE115C65FD400880514 /* HDResourceMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

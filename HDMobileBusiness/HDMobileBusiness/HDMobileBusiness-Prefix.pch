@@ -13,5 +13,5 @@
     #import <Foundation/Foundation.h>
     #import "Three20/Three20.h"
     #import "Three20UI/Three20UI+Additions.h"
-
+    #import "HDUtilities.h"
 #endif

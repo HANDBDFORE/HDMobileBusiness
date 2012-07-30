@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HDLoadingController : UIViewController{
+@interface HDLoadingViewController : UIViewController{
     UILabel *_errorSummury;
     UILabel *_errorDetail;
     UIButton *_retryButton;
