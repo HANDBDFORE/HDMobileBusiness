@@ -44,6 +44,13 @@
 		B31E2F3415C66EB400880514 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F2E15C66EB400880514 /* FMDatabasePool.m */; };
 		B31E2F3515C66EB400880514 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F2F15C66EB400880514 /* FMDatabaseQueue.m */; };
 		B31E2F3715C66EB400880514 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F3115C66EB400880514 /* FMResultSet.m */; };
+		B31E2F3B15C6714800880514 /* HDDefaultStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F3A15C6714800880514 /* HDDefaultStyleSheet.m */; };
+		B31E2F3D15C6732100880514 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B31E2F3C15C6732100880514 /* Settings.bundle */; };
+		B34660BB15C678DD00EFDF24 /* HDLoginBean.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B515C678DD00EFDF24 /* HDLoginBean.m */; };
+		B34660BC15C678DD00EFDF24 /* HDLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B715C678DD00EFDF24 /* HDLoginModel.m */; };
+		B34660BD15C678DD00EFDF24 /* HDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B915C678DD00EFDF24 /* HDLoginViewController.m */; };
+		B34660BE15C678DD00EFDF24 /* HDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */; };
+		B34660C115C6799500EFDF24 /* ApproveDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660C015C6799500EFDF24 /* ApproveDatabaseHelper.m */; };
 		B36BDA9215C64777003A4A5D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9115C64777003A4A5D /* UIKit.framework */; };
 		B36BDA9415C64777003A4A5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9315C64777003A4A5D /* Foundation.framework */; };
 		B36BDA9615C64777003A4A5D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9515C64777003A4A5D /* CoreGraphics.framework */; };
@@ -446,6 +453,18 @@
 		B31E2F2E15C66EB400880514 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = ../Frameworks/FMDB/src/FMDatabasePool.m; sourceTree = "<group>"; };
 		B31E2F2F15C66EB400880514 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = ../Frameworks/FMDB/src/FMDatabaseQueue.m; sourceTree = "<group>"; };
 		B31E2F3115C66EB400880514 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = ../Frameworks/FMDB/src/FMResultSet.m; sourceTree = "<group>"; };
+		B31E2F3915C6714800880514 /* HDDefaultStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDefaultStyleSheet.h; sourceTree = "<group>"; };
+		B31E2F3A15C6714800880514 /* HDDefaultStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDefaultStyleSheet.m; sourceTree = "<group>"; };
+		B31E2F3C15C6732100880514 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		B34660B415C678DD00EFDF24 /* HDLoginBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLoginBean.h; sourceTree = "<group>"; };
+		B34660B515C678DD00EFDF24 /* HDLoginBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoginBean.m; sourceTree = "<group>"; };
+		B34660B615C678DD00EFDF24 /* HDLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLoginModel.h; sourceTree = "<group>"; };
+		B34660B715C678DD00EFDF24 /* HDLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoginModel.m; sourceTree = "<group>"; };
+		B34660B815C678DD00EFDF24 /* HDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLoginViewController.h; sourceTree = "<group>"; };
+		B34660B915C678DD00EFDF24 /* HDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoginViewController.m; sourceTree = "<group>"; };
+		B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDLoginViewController.xib; sourceTree = "<group>"; };
+		B34660BF15C6799500EFDF24 /* ApproveDatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApproveDatabaseHelper.h; sourceTree = "<group>"; };
+		B34660C015C6799500EFDF24 /* ApproveDatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApproveDatabaseHelper.m; sourceTree = "<group>"; };
 		B36BDA8D15C64777003A4A5D /* HDMobileBusiness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HDMobileBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36BDA9115C64777003A4A5D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B36BDA9315C64777003A4A5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -454,8 +473,8 @@
 		B36BDA9B15C64777003A4A5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B36BDA9D15C64777003A4A5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B36BDA9F15C64777003A4A5D /* HDMobileBusiness-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HDMobileBusiness-Prefix.pch"; sourceTree = "<group>"; };
-		B36BDAA015C64777003A4A5D /* HDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDAppDelegate.h; sourceTree = "<group>"; };
-		B36BDAA115C64777003A4A5D /* HDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDAppDelegate.m; sourceTree = "<group>"; };
+		B36BDAA015C64777003A4A5D /* HDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HDAppDelegate.h; path = HDMobileBusiness/HDAppDelegate.h; sourceTree = "<group>"; };
+		B36BDAA115C64777003A4A5D /* HDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HDAppDelegate.m; path = HDMobileBusiness/HDAppDelegate.m; sourceTree = "<group>"; };
 		B36BDAA815C64777003A4A5D /* HDMobileBusinessTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HDMobileBusinessTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36BDAA915C64777003A4A5D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		B36BDAB115C64777003A4A5D /* HDMobileBusinessTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HDMobileBusinessTests-Info.plist"; sourceTree = "<group>"; };
@@ -840,6 +859,31 @@
 			path = ../Frameworks/TouchXML/Source/Tidy;
 			sourceTree = "<group>";
 		};
+		B31E2F3815C6714800880514 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				B31E2F3915C6714800880514 /* HDDefaultStyleSheet.h */,
+				B31E2F3A15C6714800880514 /* HDDefaultStyleSheet.m */,
+			);
+			name = Styles;
+			path = Classes/Styles;
+			sourceTree = "<group>";
+		};
+		B34660B315C678DD00EFDF24 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B34660B415C678DD00EFDF24 /* HDLoginBean.h */,
+				B34660B515C678DD00EFDF24 /* HDLoginBean.m */,
+				B34660B615C678DD00EFDF24 /* HDLoginModel.h */,
+				B34660B715C678DD00EFDF24 /* HDLoginModel.m */,
+				B34660B815C678DD00EFDF24 /* HDLoginViewController.h */,
+				B34660B915C678DD00EFDF24 /* HDLoginViewController.m */,
+				B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */,
+			);
+			name = Login;
+			path = Classes/Login;
+			sourceTree = "<group>";
+		};
 		B36BDA8215C64777003A4A5D = {
 			isa = PBXGroup;
 			children = (
@@ -881,23 +925,14 @@
 		B36BDA9715C64777003A4A5D /* HDMobileBusiness */ = {
 			isa = PBXGroup;
 			children = (
-				B36BDAA015C64777003A4A5D /* HDAppDelegate.h */,
-				B36BDAA115C64777003A4A5D /* HDAppDelegate.m */,
-				B36BDA9815C64777003A4A5D /* Supporting Files */,
-			);
-			path = HDMobileBusiness;
-			sourceTree = "<group>";
-		};
-		B36BDA9815C64777003A4A5D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				B36BDA9915C64777003A4A5D /* HDMobileBusiness-Info.plist */,
 				B36BDA9A15C64777003A4A5D /* InfoPlist.strings */,
 				B36BDA9D15C64777003A4A5D /* main.m */,
 				B36BDA9F15C64777003A4A5D /* HDMobileBusiness-Prefix.pch */,
+				B31E2F3C15C6732100880514 /* Settings.bundle */,
 			);
-			name = "Supporting Files";
+			path = HDMobileBusiness;
 			sourceTree = "<group>";
 		};
 		B36BDAAF15C64777003A4A5D /* HDMobileBusinessTests */ = {
@@ -1180,6 +1215,10 @@
 		B38E686915C654C700824CB1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B34660B315C678DD00EFDF24 /* Login */,
+				B31E2F3815C6714800880514 /* Styles */,
+				B36BDAA015C64777003A4A5D /* HDAppDelegate.h */,
+				B36BDAA115C64777003A4A5D /* HDAppDelegate.m */,
 				B31E2ED215C65FD300880514 /* Loading */,
 				B31E2ECE15C65DC900880514 /* UserGuide */,
 				B38E686A15C654DA00824CB1 /* Utilities */,
@@ -1190,6 +1229,8 @@
 		B38E686A15C654DA00824CB1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B34660BF15C6799500EFDF24 /* ApproveDatabaseHelper.h */,
+				B34660C015C6799500EFDF24 /* ApproveDatabaseHelper.m */,
 				B38E687915C655C600824CB1 /* HDDataConvertor */,
 				B38E689315C656B000824CB1 /* HDGlobalMetrics */,
 				B31E2ECA15C65BAA00880514 /* HDGodXMLFactory.h */,
@@ -1615,6 +1656,8 @@
 				B38E686615C6531300824CB1 /* bugList.rtf in Resources */,
 				B38E686715C6531300824CB1 /* developList.rtf in Resources */,
 				B38E686815C6531300824CB1 /* functionList.rtf in Resources */,
+				B31E2F3D15C6732100880514 /* Settings.bundle in Resources */,
+				B34660BE15C678DD00EFDF24 /* HDLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1689,6 +1732,11 @@
 				B31E2F3415C66EB400880514 /* FMDatabasePool.m in Sources */,
 				B31E2F3515C66EB400880514 /* FMDatabaseQueue.m in Sources */,
 				B31E2F3715C66EB400880514 /* FMResultSet.m in Sources */,
+				B31E2F3B15C6714800880514 /* HDDefaultStyleSheet.m in Sources */,
+				B34660BB15C678DD00EFDF24 /* HDLoginBean.m in Sources */,
+				B34660BC15C678DD00EFDF24 /* HDLoginModel.m in Sources */,
+				B34660BD15C678DD00EFDF24 /* HDLoginViewController.m in Sources */,
+				B34660C115C6799500EFDF24 /* ApproveDatabaseHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

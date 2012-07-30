@@ -14,6 +14,7 @@
 #import "HDRequestMap.h"
 #import "HDRequestGetMap.h"
 #import "HDURLCenter.h"
+#import "HDURLRequestModel.h"
 
 @interface HDHTTPRequestCenter : NSObject
 

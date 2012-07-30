@@ -8,21 +8,75 @@
 
 #import "HDAppDelegate.h"
 
+//styleSheet
+#import "HDDefaultStyleSheet.h"
+#import "HDLoadingViewController.h"
+#import "HDUserGuideViewController.h"
+
 @implementation HDAppDelegate
 
 - (void)dealloc
 {
-    [_window release];
+//    [_window release];
     [super dealloc];
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+-(void) applicationDidFinishLaunching:(UIApplication *)application
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    return YES;
+    
+    //register notification
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
+    
+    //Views Managment by Three20
+    [TTStyleSheet setGlobalStyleSheet:[[[HDDefaultStyleSheet alloc]init]autorelease]];
+    
+    TTNavigator * navigator = [TTNavigator navigator];
+    
+    [navigator.URLMap from:@"init://LoadingViewController" toModalViewController:[HDLoadingViewController class]];
+    
+    [navigator.URLMap from:@"init://HDUserGuideViewController" toSharedViewController:[HDUserGuideViewController class]];
+    
+    if(![navigator restoreViewControllers])
+    {
+        if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:VERSION]) {
+            [self showLoadingView];
+        }else {
+            [[NSUserDefaults standardUserDefaults]setValue:VERSION forKey:@"appVersion"];
+            [self showHelpView];
+        }
+        
+    }
+}
+
+-(void)showHelpView
+{
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"init://UserGuideViewController"]];
+}
+
+-(void)showLoadingView
+{
+    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
+}
+
+//获取token成功,格式化token,放入用户设置中
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    //get the deivcetoken
+    TTDPRINT(@"My token is: %@", deviceToken);
+//    TTDPRINT(@"%@",[[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]]);
+    
+    //format token
+    NSString *tokenWithBlank = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    NSString *tokenWithoutBlank = [tokenWithBlank stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    //save deviceToken to userDefaults
+    [[NSUserDefaults standardUserDefaults] setValue:tokenWithoutBlank forKey:@"deviceToken"];
+}
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    TTDPRINT(@"Error in registration.Error: %@" ,error);
+    [[NSUserDefaults standardUserDefaults] setValue:@"null" forKey:@"deviceToken"];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -52,4 +106,22 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma -mark load from nib
+/**
+ * Loads the given viewcontroller from the nib
+ */
+- (UIViewController*)loadFromNib:(NSString *)nibName withClass:className {
+    UIViewController* newController = [[NSClassFromString(className) alloc]
+                                       initWithNibName:nibName bundle:nil];
+    [newController autorelease];
+    
+    return newController;
+}
+/**
+ * Loads the given viewcontroller from the the nib with the same name as the
+ * class
+ */
+- (UIViewController*)loadFromNib:(NSString*)className {
+    return [self loadFromNib:className withClass:className];
+}
 @end
