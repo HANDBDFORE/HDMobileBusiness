@@ -16,6 +16,8 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		B31E2ECC15C65BAA00880514 /* HDGodXMLFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ECB15C65BAA00880514 /* HDGodXMLFactory.m */; };
+		B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */; };
 		B36BDA9215C64777003A4A5D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9115C64777003A4A5D /* UIKit.framework */; };
 		B36BDA9415C64777003A4A5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9315C64777003A4A5D /* Foundation.framework */; };
 		B36BDA9615C64777003A4A5D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9515C64777003A4A5D /* CoreGraphics.framework */; };
@@ -181,6 +183,19 @@
 		B38E686615C6531300824CB1 /* bugList.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B38E686315C6531300824CB1 /* bugList.rtf */; };
 		B38E686715C6531300824CB1 /* developList.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B38E686415C6531300824CB1 /* developList.rtf */; };
 		B38E686815C6531300824CB1 /* functionList.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B38E686515C6531300824CB1 /* functionList.rtf */; };
+		B38E687415C654DA00824CB1 /* HDRequestGetMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E686D15C654DA00824CB1 /* HDRequestGetMap.m */; };
+		B38E687515C654DA00824CB1 /* HDRequestMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E686F15C654DA00824CB1 /* HDRequestMap.m */; };
+		B38E687615C654DA00824CB1 /* HDURLRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E687115C654DA00824CB1 /* HDURLRequestModel.m */; };
+		B38E687715C654DA00824CB1 /* HDHTTPRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E687315C654DA00824CB1 /* HDHTTPRequestCenter.m */; };
+		B38E688915C655C600824CB1 /* HDDataAuroraRequestConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E687B15C655C600824CB1 /* HDDataAuroraRequestConvertor.m */; };
+		B38E688A15C655C600824CB1 /* HDDataAuroraResponseConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E687D15C655C600824CB1 /* HDDataAuroraResponseConvertor.m */; };
+		B38E688B15C655C600824CB1 /* HDDataBaseConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E687F15C655C600824CB1 /* HDDataBaseConvertor.m */; };
+		B38E688C15C655C600824CB1 /* HDDataConvertorCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E688215C655C600824CB1 /* HDDataConvertorCenter.m */; };
+		B38E688D15C655C600824CB1 /* HDDataFieldRequestConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E688415C655C600824CB1 /* HDDataFieldRequestConvertor.m */; };
+		B38E688E15C655C600824CB1 /* HDDataToJSONConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E688615C655C600824CB1 /* HDDataToJSONConvertor.m */; };
+		B38E688F15C655C600824CB1 /* HDJSONToDataConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E688815C655C600824CB1 /* HDJSONToDataConvertor.m */; };
+		B38E689215C6562700824CB1 /* HDURLCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E689115C6562600824CB1 /* HDURLCenter.m */; };
+		B38E689615C656B000824CB1 /* HDGlobalMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E689515C656B000824CB1 /* HDGlobalMetrics.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -350,6 +365,10 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../Frameworks/Three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../Frameworks/Three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../Frameworks/Three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		B31E2ECA15C65BAA00880514 /* HDGodXMLFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGodXMLFactory.h; sourceTree = "<group>"; };
+		B31E2ECB15C65BAA00880514 /* HDGodXMLFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGodXMLFactory.m; sourceTree = "<group>"; };
+		B31E2ECF15C65DC900880514 /* HDUserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUserGuideViewController.h; sourceTree = "<group>"; };
+		B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDUserGuideViewController.m; sourceTree = "<group>"; };
 		B36BDA8D15C64777003A4A5D /* HDMobileBusiness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HDMobileBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36BDA9115C64777003A4A5D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B36BDA9315C64777003A4A5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -520,6 +539,33 @@
 		B38E686315C6531300824CB1 /* bugList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = bugList.rtf; sourceTree = "<group>"; };
 		B38E686415C6531300824CB1 /* developList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = developList.rtf; sourceTree = "<group>"; };
 		B38E686515C6531300824CB1 /* functionList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = functionList.rtf; sourceTree = "<group>"; };
+		B38E686C15C654DA00824CB1 /* HDRequestGetMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDRequestGetMap.h; sourceTree = "<group>"; };
+		B38E686D15C654DA00824CB1 /* HDRequestGetMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDRequestGetMap.m; sourceTree = "<group>"; };
+		B38E686E15C654DA00824CB1 /* HDRequestMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDRequestMap.h; sourceTree = "<group>"; };
+		B38E686F15C654DA00824CB1 /* HDRequestMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDRequestMap.m; sourceTree = "<group>"; };
+		B38E687015C654DA00824CB1 /* HDURLRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDURLRequestModel.h; sourceTree = "<group>"; };
+		B38E687115C654DA00824CB1 /* HDURLRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDURLRequestModel.m; sourceTree = "<group>"; };
+		B38E687315C654DA00824CB1 /* HDHTTPRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDHTTPRequestCenter.m; sourceTree = "<group>"; };
+		B38E687815C6552C00824CB1 /* HDHTTPRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDHTTPRequestCenter.h; sourceTree = "<group>"; };
+		B38E687A15C655C600824CB1 /* HDDataAuroraRequestConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDataAuroraRequestConvertor.h; sourceTree = "<group>"; };
+		B38E687B15C655C600824CB1 /* HDDataAuroraRequestConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDataAuroraRequestConvertor.m; sourceTree = "<group>"; };
+		B38E687C15C655C600824CB1 /* HDDataAuroraResponseConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDataAuroraResponseConvertor.h; sourceTree = "<group>"; };
+		B38E687D15C655C600824CB1 /* HDDataAuroraResponseConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDataAuroraResponseConvertor.m; sourceTree = "<group>"; };
+		B38E687E15C655C600824CB1 /* HDDataBaseConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDataBaseConvertor.h; sourceTree = "<group>"; };
+		B38E687F15C655C600824CB1 /* HDDataBaseConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDataBaseConvertor.m; sourceTree = "<group>"; };
+		B38E688015C655C600824CB1 /* HDDataConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDataConvertor.h; sourceTree = "<group>"; };
+		B38E688115C655C600824CB1 /* HDDataConvertorCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDataConvertorCenter.h; sourceTree = "<group>"; };
+		B38E688215C655C600824CB1 /* HDDataConvertorCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDataConvertorCenter.m; sourceTree = "<group>"; };
+		B38E688315C655C600824CB1 /* HDDataFieldRequestConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDataFieldRequestConvertor.h; sourceTree = "<group>"; };
+		B38E688415C655C600824CB1 /* HDDataFieldRequestConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDataFieldRequestConvertor.m; sourceTree = "<group>"; };
+		B38E688515C655C600824CB1 /* HDDataToJSONConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDataToJSONConvertor.h; sourceTree = "<group>"; };
+		B38E688615C655C600824CB1 /* HDDataToJSONConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDataToJSONConvertor.m; sourceTree = "<group>"; };
+		B38E688715C655C600824CB1 /* HDJSONToDataConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDJSONToDataConvertor.h; sourceTree = "<group>"; };
+		B38E688815C655C600824CB1 /* HDJSONToDataConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDJSONToDataConvertor.m; sourceTree = "<group>"; };
+		B38E689015C6562600824CB1 /* HDURLCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDURLCenter.h; sourceTree = "<group>"; };
+		B38E689115C6562600824CB1 /* HDURLCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDURLCenter.m; sourceTree = "<group>"; };
+		B38E689415C656B000824CB1 /* HDGlobalMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGlobalMetrics.h; sourceTree = "<group>"; };
+		B38E689515C656B000824CB1 /* HDGlobalMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGlobalMetrics.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -617,9 +663,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B31E2ECE15C65DC900880514 /* UserGuide */ = {
+			isa = PBXGroup;
+			children = (
+				B31E2ECF15C65DC900880514 /* HDUserGuideViewController.h */,
+				B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */,
+			);
+			name = UserGuide;
+			path = Classes/UserGuide;
+			sourceTree = "<group>";
+		};
 		B36BDA8215C64777003A4A5D = {
 			isa = PBXGroup;
 			children = (
+				B38E686915C654C700824CB1 /* Classes */,
 				B38E685815C6526A00824CB1 /* Documents */,
 				B36BDB0715C64C49003A4A5D /* Dependencies */,
 				B36BDA9015C64777003A4A5D /* Frameworks */,
@@ -945,6 +1002,76 @@
 				B38E686515C6531300824CB1 /* functionList.rtf */,
 			);
 			path = workPlan;
+			sourceTree = "<group>";
+		};
+		B38E686915C654C700824CB1 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B31E2ECE15C65DC900880514 /* UserGuide */,
+				B38E686A15C654DA00824CB1 /* Utilities */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		B38E686A15C654DA00824CB1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B38E687915C655C600824CB1 /* HDDataConvertor */,
+				B38E689315C656B000824CB1 /* HDGlobalMetrics */,
+				B31E2ECA15C65BAA00880514 /* HDGodXMLFactory.h */,
+				B31E2ECB15C65BAA00880514 /* HDGodXMLFactory.m */,
+				B38E686B15C654DA00824CB1 /* HDHTTPRequest */,
+			);
+			name = Utilities;
+			path = ../Utilities;
+			sourceTree = "<group>";
+		};
+		B38E686B15C654DA00824CB1 /* HDHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				B38E689015C6562600824CB1 /* HDURLCenter.h */,
+				B38E689115C6562600824CB1 /* HDURLCenter.m */,
+				B38E687815C6552C00824CB1 /* HDHTTPRequestCenter.h */,
+				B38E687315C654DA00824CB1 /* HDHTTPRequestCenter.m */,
+				B38E686C15C654DA00824CB1 /* HDRequestGetMap.h */,
+				B38E686D15C654DA00824CB1 /* HDRequestGetMap.m */,
+				B38E686E15C654DA00824CB1 /* HDRequestMap.h */,
+				B38E686F15C654DA00824CB1 /* HDRequestMap.m */,
+				B38E687015C654DA00824CB1 /* HDURLRequestModel.h */,
+				B38E687115C654DA00824CB1 /* HDURLRequestModel.m */,
+			);
+			path = HDHTTPRequest;
+			sourceTree = "<group>";
+		};
+		B38E687915C655C600824CB1 /* HDDataConvertor */ = {
+			isa = PBXGroup;
+			children = (
+				B38E687A15C655C600824CB1 /* HDDataAuroraRequestConvertor.h */,
+				B38E687B15C655C600824CB1 /* HDDataAuroraRequestConvertor.m */,
+				B38E687C15C655C600824CB1 /* HDDataAuroraResponseConvertor.h */,
+				B38E687D15C655C600824CB1 /* HDDataAuroraResponseConvertor.m */,
+				B38E687E15C655C600824CB1 /* HDDataBaseConvertor.h */,
+				B38E687F15C655C600824CB1 /* HDDataBaseConvertor.m */,
+				B38E688015C655C600824CB1 /* HDDataConvertor.h */,
+				B38E688115C655C600824CB1 /* HDDataConvertorCenter.h */,
+				B38E688215C655C600824CB1 /* HDDataConvertorCenter.m */,
+				B38E688315C655C600824CB1 /* HDDataFieldRequestConvertor.h */,
+				B38E688415C655C600824CB1 /* HDDataFieldRequestConvertor.m */,
+				B38E688515C655C600824CB1 /* HDDataToJSONConvertor.h */,
+				B38E688615C655C600824CB1 /* HDDataToJSONConvertor.m */,
+				B38E688715C655C600824CB1 /* HDJSONToDataConvertor.h */,
+				B38E688815C655C600824CB1 /* HDJSONToDataConvertor.m */,
+			);
+			path = HDDataConvertor;
+			sourceTree = "<group>";
+		};
+		B38E689315C656B000824CB1 /* HDGlobalMetrics */ = {
+			isa = PBXGroup;
+			children = (
+				B38E689415C656B000824CB1 /* HDGlobalMetrics.h */,
+				B38E689515C656B000824CB1 /* HDGlobalMetrics.m */,
+			);
+			path = HDGlobalMetrics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1349,6 +1476,21 @@
 			files = (
 				B36BDA9E15C64777003A4A5D /* main.m in Sources */,
 				B36BDAA215C64777003A4A5D /* HDAppDelegate.m in Sources */,
+				B38E687415C654DA00824CB1 /* HDRequestGetMap.m in Sources */,
+				B38E687515C654DA00824CB1 /* HDRequestMap.m in Sources */,
+				B38E687615C654DA00824CB1 /* HDURLRequestModel.m in Sources */,
+				B38E687715C654DA00824CB1 /* HDHTTPRequestCenter.m in Sources */,
+				B38E688915C655C600824CB1 /* HDDataAuroraRequestConvertor.m in Sources */,
+				B38E688A15C655C600824CB1 /* HDDataAuroraResponseConvertor.m in Sources */,
+				B38E688B15C655C600824CB1 /* HDDataBaseConvertor.m in Sources */,
+				B38E688C15C655C600824CB1 /* HDDataConvertorCenter.m in Sources */,
+				B38E688D15C655C600824CB1 /* HDDataFieldRequestConvertor.m in Sources */,
+				B38E688E15C655C600824CB1 /* HDDataToJSONConvertor.m in Sources */,
+				B38E688F15C655C600824CB1 /* HDJSONToDataConvertor.m in Sources */,
+				B38E689215C6562700824CB1 /* HDURLCenter.m in Sources */,
+				B38E689615C656B000824CB1 /* HDGlobalMetrics.m in Sources */,
+				B31E2ECC15C65BAA00880514 /* HDGodXMLFactory.m in Sources */,
+				B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,194 @@
+//
+//  HDBeanFactoryFromXML.m
+//  hrms
+//
+//  Created by mas apple on 5/15/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "HDGodXMLFactory.h"
+
+static HDGodXMLFactory * _xmlFactory = nil;
+
+@implementation HDGodXMLFactory
+
+@synthesize document=_document;
+
++(id)shareBeanFactory{
+    @synchronized(self){
+        if (_xmlFactory == nil) {
+            _xmlFactory = [[self alloc] init];
+        }
+    }
+    return  _xmlFactory;
+}
+
++(id) allocWithZone:(NSZone *)zone{
+    @synchronized(self){
+        if (_xmlFactory == nil) {
+            _xmlFactory = [super allocWithZone:zone];
+            return  _xmlFactory;
+        }
+    }
+    return nil;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    
+    return self;
+}
+
+- (id)retain
+{
+    return self;
+}
+
+-(unsigned)retainCount
+{
+    return UINT_MAX;  //denotes an object that cannot be released
+}
+
+- (id)autorelease
+{
+    return self;
+}
+
+-(void)dealloc
+{
+    TT_RELEASE_SAFELY(_document);
+    [super dealloc];
+}
+
+-(id)init{
+    self = [super init];
+    NSError *error = nil;
+    if (self) {
+        
+//        NSString *url = [NSString stringWithFormat:@"%@ios-backend-config.xml",[[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"]stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+        
+//      NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(@"ios-backend-config.xml")];
+        
+        NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/HIS/Projects/hrms/hrms/services_hec_milk.xml"];
+//        _document = [[CXMLDocument alloc]initWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding options:0 error:&error];
+        _document = [[CXMLDocument alloc]initWithData:data encoding:NSUTF8StringEncoding options:0 error:&error];
+
+        if (!_document) {
+            return nil;
+        }else {
+            CXMLElement *rootElement = [_document rootElement];
+            if ([[rootElement name] isEqualToString:@"backend-config"]) {
+                return self;
+            }else {
+                return nil;
+            }
+        }
+    }else {
+        return nil;
+    }   
+}
+
+-(NSArray *)nodesForXPath:(NSString *)path
+{
+    NSError * error = nil;
+    if (nil != _document) {
+        id nodes = [_document nodesForXPath:path error:&error];
+        if (nil != nodes) {
+            return nodes;
+        }
+        TTDASSERT([error description]);
+    }
+    return nil;
+}
+
+
+-(id)getBeanWithDic:(NSDictionary *)data path:(NSString*)xpath{
+    NSError *error = nil;
+    CXMLNode *xPathNode;
+    CXMLElement *xPathElement;
+    xPathNode = [_document nodeForXPath:xpath error:&error];
+    
+    if ([xPathNode isKindOfClass:[CXMLElement class]]) {
+        xPathElement = (CXMLElement *)xPathNode;
+        Class objectClass = NSClassFromString([[xPathElement attributeForName:@"class_name"]stringValue]);
+        
+        id object = [[objectClass alloc]init];
+        
+        NSArray *fieldsNodes = [_document nodesForXPath:[NSString stringWithFormat:@"%@/mapping",xpath] error:&error];
+        for (CXMLElement *field in fieldsNodes) {
+            [object setValue:[data valueForKey:[[field attributeForName:@"server"]stringValue]] forKeyPath:[[field attributeForName:@"client"]stringValue]];
+        }
+        
+        return [object autorelease];
+    }else {
+        return nil;
+    }
+}
+
+-(NSArray *)beansWithArray:(NSArray *) dataArray path:(NSString*)xpath
+{
+    NSMutableArray * beanArray = [NSMutableArray array];
+    for (NSDictionary * dic in dataArray) {
+        id bean = [self getBeanWithDic:dic path:xpath];
+        if (nil != bean) {
+            [beanArray addObject:bean];
+        }
+    }
+    return beanArray;
+}
+
+-(NSString *)actionURLPathWithKey:(NSString*) keyValue
+{
+    NSError *error = nil;
+    NSString * xPathNodeURL = [NSString stringWithFormat:@"%@[@name='%@']",kActionURLPathRootNodePath,keyValue];
+    id xPathNode = [_document nodeForXPath:xPathNodeURL error:&error];
+    if ([xPathNode isKindOfClass:[CXMLElement class]]) {
+        CXMLElement * xPathElement = xPathNode;
+        return [[xPathElement attributeForName:@"url"]stringValue];
+    }
+    TTDPRINT(@"%@",keyValue);
+    TTDPRINT(@"节点路径错误");
+    return nil;
+}
+
+-(NSString *)stringFroXPath:(NSString *)xpath attributeName:(NSString *) attName{
+    NSError *error = nil;
+    id xPathNode = [_document nodeForXPath:xpath error:&error];
+    if ([xPathNode isKindOfClass:[CXMLElement class]]) {
+        CXMLElement * xPathElement = xPathNode;
+        return [[xPathElement attributeForName:attName]stringValue];
+    }
+    return nil;
+}
+
+
+-(NSArray *)tabsForXPath{
+    NSMutableArray *tabs = [NSMutableArray array];
+    NSError *error = nil;
+    NSArray *nodes = [_document nodesForXPath:@"//tab" error:&error];
+    
+    for (CXMLNode *node in nodes) {
+        if ([node isKindOfClass:[CXMLElement class]]) {
+            CXMLNode *e = [(CXMLElement *)node attributeForName:@"url"];
+            
+            [tabs addObject:[e stringValue]];
+        }
+    }
+    return tabs;
+}
+
+-(BOOL)isConfigFileLegally{
+    
+    if (!_document) {
+        return false;
+    }else {
+        CXMLElement *rootElement = [_document rootElement];
+        if ([[rootElement name] isEqualToString:@"backend-config"]) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+}
+
+@end
