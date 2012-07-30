@@ -8,7 +8,6 @@
 
 #import "HDHTTPRequestCenter.h"
 #import "HDDataConvertor.h"
-#import "HDURLCenter.h"
 
 @implementation HDHTTPRequestCenter
 

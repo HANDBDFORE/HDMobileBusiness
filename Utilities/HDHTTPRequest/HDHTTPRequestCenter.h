@@ -13,6 +13,7 @@
 
 #import "HDRequestMap.h"
 #import "HDRequestGetMap.h"
+#import "HDURLCenter.h"
 
 @interface HDHTTPRequestCenter : NSObject
 

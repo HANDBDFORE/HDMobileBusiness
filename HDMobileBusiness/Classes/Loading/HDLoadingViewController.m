@@ -225,7 +225,7 @@ NSString * MainPathName =@"HD_MAIN_VC_PATH";
 
 -(void)showLoginView
 {
-    HDNavigator* navigator = [HDNavigator navigator];
+    TTNavigator* navigator = [TTNavigator navigator];
     [navigator removeAllViewControllers];
     NSString * kMainViewControllerPathPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:MainPathName];
     
