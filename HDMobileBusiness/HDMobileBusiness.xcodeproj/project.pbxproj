@@ -174,6 +174,13 @@
 		B38E681315C64E6700824CB1 /* trend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678015C64E6700824CB1 /* trend@2x.png */; };
 		B38E681415C64E6700824CB1 /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678115C64E6700824CB1 /* world.png */; };
 		B38E681515C64E6700824CB1 /* world@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678215C64E6700824CB1 /* world@2x.png */; };
+		B38E685E15C6526A00824CB1 /* backend-config-hec-milk.xml in Resources */ = {isa = PBXBuildFile; fileRef = B38E685A15C6526A00824CB1 /* backend-config-hec-milk.xml */; };
+		B38E685F15C6526A00824CB1 /* backend-config-hec.xml in Resources */ = {isa = PBXBuildFile; fileRef = B38E685B15C6526A00824CB1 /* backend-config-hec.xml */; };
+		B38E686015C6526A00824CB1 /* backend-config-hr-milk.xml in Resources */ = {isa = PBXBuildFile; fileRef = B38E685C15C6526A00824CB1 /* backend-config-hr-milk.xml */; };
+		B38E686115C6526A00824CB1 /* backend-config-hr.xml in Resources */ = {isa = PBXBuildFile; fileRef = B38E685D15C6526A00824CB1 /* backend-config-hr.xml */; };
+		B38E686615C6531300824CB1 /* bugList.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B38E686315C6531300824CB1 /* bugList.rtf */; };
+		B38E686715C6531300824CB1 /* developList.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B38E686415C6531300824CB1 /* developList.rtf */; };
+		B38E686815C6531300824CB1 /* functionList.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B38E686515C6531300824CB1 /* functionList.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -506,6 +513,13 @@
 		B38E678015C64E6700824CB1 /* trend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trend@2x.png"; sourceTree = "<group>"; };
 		B38E678115C64E6700824CB1 /* world.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world.png; sourceTree = "<group>"; };
 		B38E678215C64E6700824CB1 /* world@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world@2x.png"; sourceTree = "<group>"; };
+		B38E685A15C6526A00824CB1 /* backend-config-hec-milk.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hec-milk.xml"; sourceTree = "<group>"; };
+		B38E685B15C6526A00824CB1 /* backend-config-hec.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hec.xml"; sourceTree = "<group>"; };
+		B38E685C15C6526A00824CB1 /* backend-config-hr-milk.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hr-milk.xml"; sourceTree = "<group>"; };
+		B38E685D15C6526A00824CB1 /* backend-config-hr.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hr.xml"; sourceTree = "<group>"; };
+		B38E686315C6531300824CB1 /* bugList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = bugList.rtf; sourceTree = "<group>"; };
+		B38E686415C6531300824CB1 /* developList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = developList.rtf; sourceTree = "<group>"; };
+		B38E686515C6531300824CB1 /* functionList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = functionList.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -606,6 +620,7 @@
 		B36BDA8215C64777003A4A5D = {
 			isa = PBXGroup;
 			children = (
+				B38E685815C6526A00824CB1 /* Documents */,
 				B36BDB0715C64C49003A4A5D /* Dependencies */,
 				B36BDA9015C64777003A4A5D /* Frameworks */,
 				B36BDA9715C64777003A4A5D /* HDMobileBusiness */,
@@ -900,6 +915,36 @@
 				B38E678215C64E6700824CB1 /* world@2x.png */,
 			);
 			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		B38E685815C6526A00824CB1 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				B38E686215C6531300824CB1 /* workPlan */,
+				B38E685915C6526A00824CB1 /* ConfigFiles */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
+		B38E685915C6526A00824CB1 /* ConfigFiles */ = {
+			isa = PBXGroup;
+			children = (
+				B38E685A15C6526A00824CB1 /* backend-config-hec-milk.xml */,
+				B38E685B15C6526A00824CB1 /* backend-config-hec.xml */,
+				B38E685C15C6526A00824CB1 /* backend-config-hr-milk.xml */,
+				B38E685D15C6526A00824CB1 /* backend-config-hr.xml */,
+			);
+			path = ConfigFiles;
+			sourceTree = "<group>";
+		};
+		B38E686215C6531300824CB1 /* workPlan */ = {
+			isa = PBXGroup;
+			children = (
+				B38E686315C6531300824CB1 /* bugList.rtf */,
+				B38E686415C6531300824CB1 /* developList.rtf */,
+				B38E686515C6531300824CB1 /* functionList.rtf */,
+			);
+			path = workPlan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1261,6 +1306,13 @@
 				B38E681315C64E6700824CB1 /* trend@2x.png in Resources */,
 				B38E681415C64E6700824CB1 /* world.png in Resources */,
 				B38E681515C64E6700824CB1 /* world@2x.png in Resources */,
+				B38E685E15C6526A00824CB1 /* backend-config-hec-milk.xml in Resources */,
+				B38E685F15C6526A00824CB1 /* backend-config-hec.xml in Resources */,
+				B38E686015C6526A00824CB1 /* backend-config-hr-milk.xml in Resources */,
+				B38E686115C6526A00824CB1 /* backend-config-hr.xml in Resources */,
+				B38E686615C6531300824CB1 /* bugList.rtf in Resources */,
+				B38E686715C6531300824CB1 /* developList.rtf in Resources */,
+				B38E686815C6531300824CB1 /* functionList.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

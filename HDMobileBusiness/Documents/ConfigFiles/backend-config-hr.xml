@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<backend-config>
+    <field-mappings>
+        <field-mapping url_name="APPROVE_TABLE_QUERY_URL" class_name="Approve">
+            <mapping server="workflow_id" client="workflowID"/>
+            <mapping server="record_id" client="recordID"/>
+            <mapping server="node_id" client="nodeId"/>
+            <mapping server="instance_id" client="instanceId"/>
+            <mapping server="is_late" client="isLate"/>
+            <mapping server="screen_name" client="docPageUrl"/>
+            <mapping server="workflow_name" client="orderType"/>
+            <mapping server="workflow_desc" client="instanceDesc"/>
+            <mapping server="instance_param" client="instanceParam"/>
+            <mapping server="node_name" client="nodeName"/>
+            <mapping server="employee_name" client="employeeName"/>
+            <mapping server="creation_date" client="creationDate"/>
+            <mapping server="date_limit" client="dateLimit"/> 
+            <mapping server="status_name" client="statusName"/> 
+            <mapping server="workflow_name" client="workflowName"/>
+			<mapping server="user_id" client="employeeId"/>
+        </field-mapping>
+        <field-mapping url_name="APPROVED_LIST_QUERY_URL" class_name="Approve">
+            <mapping server="workflow_id" client="workflowID"/>
+            <mapping server="record_id" client="recordID"/>
+            <mapping server="node_id" client="nodeId"/>
+            <mapping server="instance_id" client="instanceId"/>
+            <mapping server="is_late" client="isLate"/>
+            <mapping server="doc_page_url" client="docPageUrl"/>
+            <mapping server="workflow_name" client="orderType"/>
+            <mapping server="employee_name" client="instanceDesc"/>
+            <mapping server="instance_param" client="instanceParam"/>
+            <mapping server="node_name" client="nodeName"/>
+            <mapping server="employee_name" client="employeeName"/>
+            <mapping server="creation_date" client="creationDate"/>
+            <mapping server="date_limit" client="dateLimit"/> 
+            <mapping server="status_name" client="statusName"/> 
+            <mapping server="instance_desc" client="workflowName"/> 
+        </field-mapping>
+    </field-mappings>
+    
+    <urls>
+        <url name="LOGIN_PATH" value="modules/ios/public/login_iphone.svc"/>
+        <url name="ROLE_LIST_QYERY_PATH" value="autocrud/ios.ios_login.sys_user_role_group_for_ios/query"/>
+        <url name="ROLE_SELECT_PATH" value="role_select_for_ios.svc"/>
+        <url name="TOOLBAR_ACTION_QUERY_PATH" value="autocrud/ios.ios_approve.ios_workflow_approve_action_query/query"/>
+        
+        <url name="APPROVE_DETIAL_WEB_PAGE_PATH" value="[doc_page_url]"/>
+        
+        <url name="EXEC_ACTION_UPDATE_PATH" value="modules/ios/ios_approve/ios_workflow_approve.svc"/>
+        <url name="APPROVED_DETIAL_WEB_PAGE_PATH" value="[doc_page_url]"/>
+        <url name="APPROVE_SCREEN_BASE_PATH" value="modules/ios/ios_approve/"/>
+        <url name="APPROVE_TABLE_QUERY_URL" value="autocrud/ios.ios_approve.ios_workflow_approve_query/query?_fetchall=true&amp;_autocount=false"/>
+        <url name="APPROVE_TABLE_BATCH_COMMIT" value="autocrud/ios.ios_approve.ios_workflow_approve_batch_commit/execute"/>
+        <url name="APPROVED_LIST_QUERY_PATH" value="autocrud/ios.ios_approve.ios_workflow_has_approved_query/query?pagesize=10&amp;pagenum=[pageNum]&amp;_fetchall=false&amp;_autocount=false"/>
+        <url name="SYS_TIME_OUT_CHECK_PATH" value="autocrud/sys.sys_is_time_out/query"/>
+        <url name="LOGOUT_SYSTEM_PATH" value="logout_iphone.svc"/>
+		<url name="TABLE_IMAGE_SECTION_LIST_QUERY_PATH" value="modules/ios/ios_function_center/ios_function_query.svc"/>
+		<url name="EMPLOYEE_INFO_WEB_URL" value="modules/mobile/hr_lbr_employee.screen?employee_id=[id]"/>
+    </urls>
+    <classes>
+        <class name="MainTabController" navigation_mode="share" url="init://mainTab"/>
+        <class name="ApproveListController" navigation_mode="share" url="tt://approve"/>
+        <class name="HDApproveDetailViewController" parent="tt://approve" navigation_mode="create" url="tt://approve_detail/(initWithName:)"/>
+        <class name="HDApprovedListViewController" navigation_mode="share" url="tt://approvedList"/>
+        <class name="HDRoleSelectViewController" parent="init://modalNib/HDLoginViewController/HDLoginViewController" navigation_mode="share" url="init://roleSelectViewController/(initWithTitleName:)"/>
+		<class name="HDTableImageViewController" navigation_mode="share" url="init://functionCenter"/>
+        <class name="HDDetailViewController" parent="tt://approve" navigation_mode="create" url="tt://new_detail/(initWithName:)"/>
+        <class name="TTPostController" navigation_mode="create" url="init://postController"/>
+    </classes>
+    <nibs>
+        <nib navigation_mode="share" url="init://shareNib/(loadFromNib:)"/>
+        <nib navigation_mode="share" url="init://shareNib/(loadFromNib:)/(withClass:)"/>
+        <nib navigation_mode="modal" url="init://modalNib/(loadFromNib:)"/>
+        <nib navigation_mode="modal" url="init://modalNib/(loadFromNib:)/(withClass:)"/>
+    </nibs>
+    <runtime>
+        <action-path-mapping>
+            <map name="HD_LOGIN_VC_PATH" url="init://modalNib/HDLoginViewController/HDLoginViewController"/>
+            <map name="HD_MAIN_VC_PATH" url="init://mainTab"/>
+            <map name="HD_ACCOUNT_SETTING_VC_PATH" url="init://shareNib/HDAccountSettingsController/HDAccountSettingsController"/>
+        </action-path-mapping>    
+    </runtime>
+	<tabs>
+		<tab url="tt://approve"/>
+		<tab url="tt://approvedList"/>
+		<tab url="init://functionCenter"/>
+		<tab url="init://shareNib/HDAccountSettingsController/HDAccountSettingsController"/>
+	</tabs>
+</backend-config>
