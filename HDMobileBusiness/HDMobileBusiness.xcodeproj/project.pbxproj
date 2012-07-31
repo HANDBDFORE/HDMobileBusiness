@@ -69,6 +69,10 @@
 		B374676615C76E36003068CB /* HDDoneListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B374676315C76E36003068CB /* HDDoneListModel.m */; };
 		B374677015C77477003068CB /* HDAccountSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374676E15C77477003068CB /* HDAccountSettingsController.m */; };
 		B374677115C77477003068CB /* HDAccountSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B374676F15C77477003068CB /* HDAccountSettingsController.xib */; };
+		B37467E515C77ED2003068CB /* mobileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467E415C77ED2003068CB /* mobileIcon.png */; };
+		B37467E715C77ED7003068CB /* mobileIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467E615C77ED7003068CB /* mobileIcon@2x.png */; };
+		B37467E915C78112003068CB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467E815C78112003068CB /* Default.png */; };
+		B37467EB15C78118003068CB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467EA15C78118003068CB /* Default@2x.png */; };
 		B38DC6F915C6835D00FD0C58 /* HDTodoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6E615C6835D00FD0C58 /* HDTodoListDataSource.m */; };
 		B38DC6FA15C6835D00FD0C58 /* HDTodoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6E815C6835D00FD0C58 /* HDTodoListViewController.m */; };
 		B38DC6FB15C6835D00FD0C58 /* HDTableStatusMessageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6EA15C6835D00FD0C58 /* HDTableStatusMessageItem.m */; };
@@ -518,6 +522,10 @@
 		B374676D15C77477003068CB /* HDAccountSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDAccountSettingsController.h; sourceTree = "<group>"; };
 		B374676E15C77477003068CB /* HDAccountSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDAccountSettingsController.m; sourceTree = "<group>"; };
 		B374676F15C77477003068CB /* HDAccountSettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDAccountSettingsController.xib; sourceTree = "<group>"; };
+		B37467E415C77ED2003068CB /* mobileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mobileIcon.png; path = ../mobileIcon.png; sourceTree = "<group>"; };
+		B37467E615C77ED7003068CB /* mobileIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mobileIcon@2x.png"; path = "../mobileIcon@2x.png"; sourceTree = "<group>"; };
+		B37467E815C78112003068CB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		B37467EA15C78118003068CB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		B38DC6E515C6835D00FD0C58 /* HDTodoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListDataSource.h; sourceTree = "<group>"; };
 		B38DC6E615C6835D00FD0C58 /* HDTodoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListDataSource.m; sourceTree = "<group>"; };
 		B38DC6E715C6835D00FD0C58 /* HDTodoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListViewController.h; sourceTree = "<group>"; };
@@ -996,6 +1004,10 @@
 		B36BDA9715C64777003A4A5D /* HDMobileBusiness */ = {
 			isa = PBXGroup;
 			children = (
+				B37467EA15C78118003068CB /* Default@2x.png */,
+				B37467E815C78112003068CB /* Default.png */,
+				B37467E615C77ED7003068CB /* mobileIcon@2x.png */,
+				B37467E415C77ED2003068CB /* mobileIcon.png */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				B36BDA9915C64777003A4A5D /* HDMobileBusiness-Info.plist */,
 				B36BDA9A15C64777003A4A5D /* InfoPlist.strings */,
@@ -1496,6 +1508,7 @@
 				B36BDA8915C64777003A4A5D /* Sources */,
 				B36BDA8A15C64777003A4A5D /* Frameworks */,
 				B36BDA8B15C64777003A4A5D /* Resources */,
+				B374682515C78D25003068CB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1855,6 +1868,10 @@
 				B31E2F3D15C6732100880514 /* Settings.bundle in Resources */,
 				B34660BE15C678DD00EFDF24 /* HDLoginViewController.xib in Resources */,
 				B374677115C77477003068CB /* HDAccountSettingsController.xib in Resources */,
+				B37467E515C77ED2003068CB /* mobileIcon.png in Resources */,
+				B37467E715C77ED7003068CB /* mobileIcon@2x.png in Resources */,
+				B37467E915C78112003068CB /* Default.png in Resources */,
+				B37467EB15C78118003068CB /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1881,6 +1898,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		B374682515C78D25003068CB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
