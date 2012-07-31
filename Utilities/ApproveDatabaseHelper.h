@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
 
-static NSString *DB_NAME = @"Approve.db";
-
 static NSString *TABLE_NAME_APPROVE_LIST = @"approve_list"; 
 static NSString *TABLE_NAME_APPROVE_ACTION_LIST = @"action_list";
 

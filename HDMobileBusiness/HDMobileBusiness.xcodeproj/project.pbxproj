@@ -62,6 +62,30 @@
 		B36BDAAC15C64777003A4A5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9315C64777003A4A5D /* Foundation.framework */; };
 		B36BDAB415C64777003A4A5D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B36BDAB215C64777003A4A5D /* InfoPlist.strings */; };
 		B36BDAB715C64777003A4A5D /* HDMobileBusinessTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B36BDAB615C64777003A4A5D /* HDMobileBusinessTests.m */; };
+		B374675B15C76CAE003068CB /* HDFunctionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374675815C76CAE003068CB /* HDFunctionListViewController.m */; };
+		B374675C15C76CAE003068CB /* HDFunctionListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B374675A15C76CAE003068CB /* HDFunctionListDataSource.m */; };
+		B374676415C76E36003068CB /* HDDoneListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B374675F15C76E36003068CB /* HDDoneListDataSource.m */; };
+		B374676515C76E36003068CB /* HDDoneListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374676115C76E36003068CB /* HDDoneListViewController.m */; };
+		B374676615C76E36003068CB /* HDDoneListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B374676315C76E36003068CB /* HDDoneListModel.m */; };
+		B374677015C77477003068CB /* HDAccountSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374676E15C77477003068CB /* HDAccountSettingsController.m */; };
+		B374677115C77477003068CB /* HDAccountSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B374676F15C77477003068CB /* HDAccountSettingsController.xib */; };
+		B38DC6F915C6835D00FD0C58 /* HDTodoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6E615C6835D00FD0C58 /* HDTodoListDataSource.m */; };
+		B38DC6FA15C6835D00FD0C58 /* HDTodoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6E815C6835D00FD0C58 /* HDTodoListViewController.m */; };
+		B38DC6FB15C6835D00FD0C58 /* HDTableStatusMessageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6EA15C6835D00FD0C58 /* HDTableStatusMessageItem.m */; };
+		B38DC6FC15C6835D00FD0C58 /* HDTableStatusMessageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6EC15C6835D00FD0C58 /* HDTableStatusMessageItemCell.m */; };
+		B38DC6FD15C6835D00FD0C58 /* HDBaseTodoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6EE15C6835D00FD0C58 /* HDBaseTodoListViewController.m */; };
+		B38DC6FE15C6835D00FD0C58 /* HDBaseTodoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6F015C6835D00FD0C58 /* HDBaseTodoListDataSource.m */; };
+		B38DC6FF15C6835D00FD0C58 /* HDTodoListDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6F215C6835D00FD0C58 /* HDTodoListDelegate.m */; };
+		B38DC70015C6835D00FD0C58 /* HDTodoListSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6F415C6835D00FD0C58 /* HDTodoListSearchViewController.m */; };
+		B38DC70115C6835D00FD0C58 /* HDTodoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6F615C6835D00FD0C58 /* HDTodoListModel.m */; };
+		B38DC70415C687FF00FD0C58 /* HDTodoListSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC70315C687FE00FD0C58 /* HDTodoListSearchDataSource.m */; };
+		B38DC70915C6893200FD0C58 /* Approve.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC70815C6893200FD0C58 /* Approve.m */; };
+		B38DC71A15C68C3800FD0C58 /* HDDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */; };
+		B38DC71B15C68C3800FD0C58 /* HDDetailSubmitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71115C68C3800FD0C58 /* HDDetailSubmitModel.m */; };
+		B38DC71C15C68C3800FD0C58 /* HDDetailToolbarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */; };
+		B38DC71D15C68C3800FD0C58 /* HDDetailToolbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71515C68C3800FD0C58 /* HDDetailToolbarViewController.m */; };
+		B38DC71E15C68C3800FD0C58 /* HDUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71715C68C3800FD0C58 /* HDUserInfoView.m */; };
+		B38DC71F15C68C3800FD0C58 /* HDToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71915C68C3800FD0C58 /* HDToolbarItem.m */; };
 		B38E678315C64E6700824CB1 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66EC15C64E6700824CB1 /* launch.png */; };
 		B38E678415C64E6700824CB1 /* launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66ED15C64E6700824CB1 /* launch@2x.png */; };
 		B38E678515C64E6700824CB1 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66EE15C64E6700824CB1 /* login.png */; };
@@ -481,6 +505,53 @@
 		B36BDAB315C64777003A4A5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B36BDAB515C64777003A4A5D /* HDMobileBusinessTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDMobileBusinessTests.h; sourceTree = "<group>"; };
 		B36BDAB615C64777003A4A5D /* HDMobileBusinessTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDMobileBusinessTests.m; sourceTree = "<group>"; };
+		B374675715C76CAE003068CB /* HDFunctionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDFunctionListViewController.h; sourceTree = "<group>"; };
+		B374675815C76CAE003068CB /* HDFunctionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDFunctionListViewController.m; sourceTree = "<group>"; };
+		B374675915C76CAE003068CB /* HDFunctionListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDFunctionListDataSource.h; sourceTree = "<group>"; };
+		B374675A15C76CAE003068CB /* HDFunctionListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDFunctionListDataSource.m; sourceTree = "<group>"; };
+		B374675E15C76E36003068CB /* HDDoneListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDoneListDataSource.h; sourceTree = "<group>"; };
+		B374675F15C76E36003068CB /* HDDoneListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDoneListDataSource.m; sourceTree = "<group>"; };
+		B374676015C76E36003068CB /* HDDoneListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDoneListViewController.h; sourceTree = "<group>"; };
+		B374676115C76E36003068CB /* HDDoneListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDoneListViewController.m; sourceTree = "<group>"; };
+		B374676215C76E36003068CB /* HDDoneListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDoneListModel.h; sourceTree = "<group>"; };
+		B374676315C76E36003068CB /* HDDoneListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDoneListModel.m; sourceTree = "<group>"; };
+		B374676D15C77477003068CB /* HDAccountSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDAccountSettingsController.h; sourceTree = "<group>"; };
+		B374676E15C77477003068CB /* HDAccountSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDAccountSettingsController.m; sourceTree = "<group>"; };
+		B374676F15C77477003068CB /* HDAccountSettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDAccountSettingsController.xib; sourceTree = "<group>"; };
+		B38DC6E515C6835D00FD0C58 /* HDTodoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListDataSource.h; sourceTree = "<group>"; };
+		B38DC6E615C6835D00FD0C58 /* HDTodoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListDataSource.m; sourceTree = "<group>"; };
+		B38DC6E715C6835D00FD0C58 /* HDTodoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListViewController.h; sourceTree = "<group>"; };
+		B38DC6E815C6835D00FD0C58 /* HDTodoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListViewController.m; sourceTree = "<group>"; };
+		B38DC6E915C6835D00FD0C58 /* HDTableStatusMessageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTableStatusMessageItem.h; sourceTree = "<group>"; };
+		B38DC6EA15C6835D00FD0C58 /* HDTableStatusMessageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTableStatusMessageItem.m; sourceTree = "<group>"; };
+		B38DC6EB15C6835D00FD0C58 /* HDTableStatusMessageItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTableStatusMessageItemCell.h; sourceTree = "<group>"; };
+		B38DC6EC15C6835D00FD0C58 /* HDTableStatusMessageItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTableStatusMessageItemCell.m; sourceTree = "<group>"; };
+		B38DC6ED15C6835D00FD0C58 /* HDBaseTodoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseTodoListViewController.h; sourceTree = "<group>"; };
+		B38DC6EE15C6835D00FD0C58 /* HDBaseTodoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDBaseTodoListViewController.m; sourceTree = "<group>"; };
+		B38DC6EF15C6835D00FD0C58 /* HDBaseTodoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseTodoListDataSource.h; sourceTree = "<group>"; };
+		B38DC6F015C6835D00FD0C58 /* HDBaseTodoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDBaseTodoListDataSource.m; sourceTree = "<group>"; };
+		B38DC6F115C6835D00FD0C58 /* HDTodoListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListDelegate.h; sourceTree = "<group>"; };
+		B38DC6F215C6835D00FD0C58 /* HDTodoListDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListDelegate.m; sourceTree = "<group>"; };
+		B38DC6F315C6835D00FD0C58 /* HDTodoListSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListSearchViewController.h; sourceTree = "<group>"; };
+		B38DC6F415C6835D00FD0C58 /* HDTodoListSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListSearchViewController.m; sourceTree = "<group>"; };
+		B38DC6F515C6835D00FD0C58 /* HDTodoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListModel.h; sourceTree = "<group>"; };
+		B38DC6F615C6835D00FD0C58 /* HDTodoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListModel.m; sourceTree = "<group>"; };
+		B38DC6F715C6835D00FD0C58 /* HDTodoListSearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListSearchDataSource.h; sourceTree = "<group>"; };
+		B38DC70315C687FE00FD0C58 /* HDTodoListSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListSearchDataSource.m; sourceTree = "<group>"; };
+		B38DC70715C6893200FD0C58 /* Approve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Approve.h; sourceTree = "<group>"; };
+		B38DC70815C6893200FD0C58 /* Approve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Approve.m; sourceTree = "<group>"; };
+		B38DC70E15C68C3800FD0C58 /* HDDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailInfoViewController.h; sourceTree = "<group>"; };
+		B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailInfoViewController.m; sourceTree = "<group>"; };
+		B38DC71015C68C3800FD0C58 /* HDDetailSubmitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailSubmitModel.h; sourceTree = "<group>"; };
+		B38DC71115C68C3800FD0C58 /* HDDetailSubmitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailSubmitModel.m; sourceTree = "<group>"; };
+		B38DC71215C68C3800FD0C58 /* HDDetailToolbarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailToolbarModel.h; sourceTree = "<group>"; };
+		B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailToolbarModel.m; sourceTree = "<group>"; };
+		B38DC71415C68C3800FD0C58 /* HDDetailToolbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailToolbarViewController.h; sourceTree = "<group>"; };
+		B38DC71515C68C3800FD0C58 /* HDDetailToolbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailToolbarViewController.m; sourceTree = "<group>"; };
+		B38DC71615C68C3800FD0C58 /* HDUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUserInfoView.h; sourceTree = "<group>"; };
+		B38DC71715C68C3800FD0C58 /* HDUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDUserInfoView.m; sourceTree = "<group>"; };
+		B38DC71815C68C3800FD0C58 /* HDToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDToolbarItem.h; sourceTree = "<group>"; };
+		B38DC71915C68C3800FD0C58 /* HDToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDToolbarItem.m; sourceTree = "<group>"; };
 		B38E66EC15C64E6700824CB1 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
 		B38E66ED15C64E6700824CB1 /* launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch@2x.png"; sourceTree = "<group>"; };
 		B38E66EE15C64E6700824CB1 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
@@ -986,6 +1057,125 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		B374675615C76CAE003068CB /* FunctionList */ = {
+			isa = PBXGroup;
+			children = (
+				B374675715C76CAE003068CB /* HDFunctionListViewController.h */,
+				B374675815C76CAE003068CB /* HDFunctionListViewController.m */,
+				B374675915C76CAE003068CB /* HDFunctionListDataSource.h */,
+				B374675A15C76CAE003068CB /* HDFunctionListDataSource.m */,
+			);
+			name = FunctionList;
+			path = Classes/FunctionList;
+			sourceTree = "<group>";
+		};
+		B374675D15C76E36003068CB /* DoneList */ = {
+			isa = PBXGroup;
+			children = (
+				B374675E15C76E36003068CB /* HDDoneListDataSource.h */,
+				B374675F15C76E36003068CB /* HDDoneListDataSource.m */,
+				B374676015C76E36003068CB /* HDDoneListViewController.h */,
+				B374676115C76E36003068CB /* HDDoneListViewController.m */,
+				B374676215C76E36003068CB /* HDDoneListModel.h */,
+				B374676315C76E36003068CB /* HDDoneListModel.m */,
+			);
+			name = DoneList;
+			path = Classes/DoneList;
+			sourceTree = "<group>";
+		};
+		B374676C15C77477003068CB /* AccountSettings */ = {
+			isa = PBXGroup;
+			children = (
+				B374676D15C77477003068CB /* HDAccountSettingsController.h */,
+				B374676E15C77477003068CB /* HDAccountSettingsController.m */,
+				B374676F15C77477003068CB /* HDAccountSettingsController.xib */,
+			);
+			name = AccountSettings;
+			path = Classes/AccountSettings;
+			sourceTree = "<group>";
+		};
+		B38DC6E415C6835D00FD0C58 /* TodoList */ = {
+			isa = PBXGroup;
+			children = (
+				B38DC70C15C68B4A00FD0C58 /* Search */,
+				B38DC70B15C68B3800FD0C58 /* Base */,
+				B38DC70A15C68B2900FD0C58 /* Cell */,
+				B38DC6E515C6835D00FD0C58 /* HDTodoListDataSource.h */,
+				B38DC6E615C6835D00FD0C58 /* HDTodoListDataSource.m */,
+				B38DC6F115C6835D00FD0C58 /* HDTodoListDelegate.h */,
+				B38DC6F215C6835D00FD0C58 /* HDTodoListDelegate.m */,
+				B38DC6F515C6835D00FD0C58 /* HDTodoListModel.h */,
+				B38DC6F615C6835D00FD0C58 /* HDTodoListModel.m */,
+				B38DC6E715C6835D00FD0C58 /* HDTodoListViewController.h */,
+				B38DC6E815C6835D00FD0C58 /* HDTodoListViewController.m */,
+			);
+			name = TodoList;
+			path = Classes/TodoList;
+			sourceTree = "<group>";
+		};
+		B38DC70615C6893200FD0C58 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				B38DC70715C6893200FD0C58 /* Approve.h */,
+				B38DC70815C6893200FD0C58 /* Approve.m */,
+			);
+			name = Entity;
+			path = Classes/Entity;
+			sourceTree = "<group>";
+		};
+		B38DC70A15C68B2900FD0C58 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B38DC6E915C6835D00FD0C58 /* HDTableStatusMessageItem.h */,
+				B38DC6EA15C6835D00FD0C58 /* HDTableStatusMessageItem.m */,
+				B38DC6EB15C6835D00FD0C58 /* HDTableStatusMessageItemCell.h */,
+				B38DC6EC15C6835D00FD0C58 /* HDTableStatusMessageItemCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		B38DC70B15C68B3800FD0C58 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B38DC6EF15C6835D00FD0C58 /* HDBaseTodoListDataSource.h */,
+				B38DC6F015C6835D00FD0C58 /* HDBaseTodoListDataSource.m */,
+				B38DC6ED15C6835D00FD0C58 /* HDBaseTodoListViewController.h */,
+				B38DC6EE15C6835D00FD0C58 /* HDBaseTodoListViewController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		B38DC70C15C68B4A00FD0C58 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B38DC6F715C6835D00FD0C58 /* HDTodoListSearchDataSource.h */,
+				B38DC70315C687FE00FD0C58 /* HDTodoListSearchDataSource.m */,
+				B38DC6F315C6835D00FD0C58 /* HDTodoListSearchViewController.h */,
+				B38DC6F415C6835D00FD0C58 /* HDTodoListSearchViewController.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		B38DC70D15C68C3800FD0C58 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B38DC70E15C68C3800FD0C58 /* HDDetailInfoViewController.h */,
+				B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */,
+				B38DC71015C68C3800FD0C58 /* HDDetailSubmitModel.h */,
+				B38DC71115C68C3800FD0C58 /* HDDetailSubmitModel.m */,
+				B38DC71215C68C3800FD0C58 /* HDDetailToolbarModel.h */,
+				B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */,
+				B38DC71415C68C3800FD0C58 /* HDDetailToolbarViewController.h */,
+				B38DC71515C68C3800FD0C58 /* HDDetailToolbarViewController.m */,
+				B38DC71615C68C3800FD0C58 /* HDUserInfoView.h */,
+				B38DC71715C68C3800FD0C58 /* HDUserInfoView.m */,
+				B38DC71815C68C3800FD0C58 /* HDToolbarItem.h */,
+				B38DC71915C68C3800FD0C58 /* HDToolbarItem.m */,
+			);
+			name = Detail;
+			path = Classes/Detail;
+			sourceTree = "<group>";
+		};
 		B38E66EA15C64E6700824CB1 /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -1215,6 +1405,12 @@
 		B38E686915C654C700824CB1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B374676C15C77477003068CB /* AccountSettings */,
+				B374675D15C76E36003068CB /* DoneList */,
+				B374675615C76CAE003068CB /* FunctionList */,
+				B38DC70D15C68C3800FD0C58 /* Detail */,
+				B38DC70615C6893200FD0C58 /* Entity */,
+				B38DC6E415C6835D00FD0C58 /* TodoList */,
 				B34660B315C678DD00EFDF24 /* Login */,
 				B31E2F3815C6714800880514 /* Styles */,
 				B36BDAA015C64777003A4A5D /* HDAppDelegate.h */,
@@ -1658,6 +1854,7 @@
 				B38E686815C6531300824CB1 /* functionList.rtf in Resources */,
 				B31E2F3D15C6732100880514 /* Settings.bundle in Resources */,
 				B34660BE15C678DD00EFDF24 /* HDLoginViewController.xib in Resources */,
+				B374677115C77477003068CB /* HDAccountSettingsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1737,6 +1934,29 @@
 				B34660BC15C678DD00EFDF24 /* HDLoginModel.m in Sources */,
 				B34660BD15C678DD00EFDF24 /* HDLoginViewController.m in Sources */,
 				B34660C115C6799500EFDF24 /* ApproveDatabaseHelper.m in Sources */,
+				B38DC6F915C6835D00FD0C58 /* HDTodoListDataSource.m in Sources */,
+				B38DC6FA15C6835D00FD0C58 /* HDTodoListViewController.m in Sources */,
+				B38DC6FB15C6835D00FD0C58 /* HDTableStatusMessageItem.m in Sources */,
+				B38DC6FC15C6835D00FD0C58 /* HDTableStatusMessageItemCell.m in Sources */,
+				B38DC6FD15C6835D00FD0C58 /* HDBaseTodoListViewController.m in Sources */,
+				B38DC6FE15C6835D00FD0C58 /* HDBaseTodoListDataSource.m in Sources */,
+				B38DC6FF15C6835D00FD0C58 /* HDTodoListDelegate.m in Sources */,
+				B38DC70015C6835D00FD0C58 /* HDTodoListSearchViewController.m in Sources */,
+				B38DC70115C6835D00FD0C58 /* HDTodoListModel.m in Sources */,
+				B38DC70415C687FF00FD0C58 /* HDTodoListSearchDataSource.m in Sources */,
+				B38DC70915C6893200FD0C58 /* Approve.m in Sources */,
+				B38DC71A15C68C3800FD0C58 /* HDDetailInfoViewController.m in Sources */,
+				B38DC71B15C68C3800FD0C58 /* HDDetailSubmitModel.m in Sources */,
+				B38DC71C15C68C3800FD0C58 /* HDDetailToolbarModel.m in Sources */,
+				B38DC71D15C68C3800FD0C58 /* HDDetailToolbarViewController.m in Sources */,
+				B38DC71E15C68C3800FD0C58 /* HDUserInfoView.m in Sources */,
+				B38DC71F15C68C3800FD0C58 /* HDToolbarItem.m in Sources */,
+				B374675B15C76CAE003068CB /* HDFunctionListViewController.m in Sources */,
+				B374675C15C76CAE003068CB /* HDFunctionListDataSource.m in Sources */,
+				B374676415C76E36003068CB /* HDDoneListDataSource.m in Sources */,
+				B374676515C76E36003068CB /* HDDoneListViewController.m in Sources */,
+				B374676615C76E36003068CB /* HDDoneListModel.m in Sources */,
+				B374677015C77477003068CB /* HDAccountSettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

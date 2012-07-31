@@ -38,7 +38,7 @@
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);  
         NSString *documentDirectory = [paths objectAtIndex:0];  
         //dbPath： 数据库路径，在Document中。  
-        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:DB_NAME]; 
+        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"Approve.db"];
         NSLog(@"%@",dbPath);
 //        //创建数据库实例 db  
         db= [[FMDatabase databaseWithPath:dbPath]retain]; 

@@ -78,14 +78,14 @@
         <url name="EMPLOYEE_INFO_WEB_URL" value="modules/mobile/emp_employee.screen?user_id=[employeeID]"/>
     </urls>
     <classes>
-		<class name="HDMainTableController" navigation_mode="share" url="init://mainTable"/>
-        <class name="ApproveListController" navigation_mode="share" parent="init://mainTable" url="init://approve"/>
-        <class name="HDApproveListViewController" navigation_mode="share" parent="init://mainTable" url="init://approveList"/>
+		<class name="HDFunctionListViewController" navigation_mode="share" url="init://functionListViewController"/>
+        <class name="HDTodoListViewController" navigation_mode="share" parent="init://functionListViewController" url="init://todoListViewController"/>
+        
         
         <class name="HDDetailToolbarViewController" parent="init://approve" navigation_mode="create" url="tt://approve_detail/(initWithSignature:)"/>
         <class name="HDDetailToolbarViewController" parent="init://approve" navigation_mode="create" url="init://willApproveDetail"/>
         
-        <class name="HDApprovedListViewController" navigation_mode="share" url="init://approvedList"/>
+        <class name="HDDoneListViewController" navigation_mode="share" url="init://doneListViewController"/>
         
         <class name="HDDetailInfoViewController" navigation_mode="create" url="init://didApprovedDetail"/>
         <class name="TTPostController" navigation_mode="share" url="init://postController"/>
@@ -99,7 +99,7 @@
     <runtime>
         <action-path-mapping>
             <map name="HD_LOGIN_VC_PATH" url="init://modalNib/HDLoginViewController/HDLoginViewController"/>
-            <map name="HD_MAIN_VC_PATH" url="init://approveList"/>
+            <map name="HD_MAIN_VC_PATH" url="init://todoListViewController"/>
             <map name="HD_ACCOUNT_SETTING_VC_PATH" url="init://shareNib/HDAccountSettingsController/HDAccountSettingsController"/>
         </action-path-mapping>    
     </runtime>
