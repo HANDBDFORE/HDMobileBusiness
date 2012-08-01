@@ -42,11 +42,13 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
 //    object
     HDTableStatusMessageItem* item = object;
     
-    CGFloat height = 90;
+    CGFloat height = 50;
     if (item.message) {
         height += TTSTYLEVAR(font).lineHeight *2;
     }
-    
+    if (item.text) {
+        height += TTSTYLEVAR(font).lineHeight * kMessageTextLineCount;
+    }
     return height;
 }
 
@@ -82,7 +84,7 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
     CGFloat top = kTableCellSmallMargin;
     
     if (_stateLabel.text.length) {
-        _stateLabel.frame = CGRectMake(left, top, width-18,_stateLabel.font.lineHeight*2);
+        _stateLabel.frame = CGRectMake(left, top, width-18,32);
         top += _stateLabel.height;
     }else {
         _stateLabel.frame = CGRectZero;
@@ -179,8 +181,7 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
 - (TTLabel *)stateLabel {
     if (!_stateLabel) {
         _stateLabel = [[TTLabel alloc] init];
-        _stateLabel.style = TTSTYLE(@"tableStatusLabel");
-        _stateLabel.contentMode = UIViewContentModeLeft;
+        _stateLabel.contentMode = UIViewContentModeTopLeft;
         [self.contentView addSubview:_stateLabel];
     }
     return _stateLabel;

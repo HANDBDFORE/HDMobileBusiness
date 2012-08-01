@@ -93,6 +93,12 @@
     return (interfaceOrientation!=UIInterfaceOrientationPortraitUpsideDown);
 }
 
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    [self.tableView reloadData];
+}
+
 #pragma refresh
 -(void)refreshButtonPressed:(id)sender
 {

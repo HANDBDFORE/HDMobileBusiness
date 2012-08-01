@@ -10,7 +10,7 @@
 
 @interface HDDefaultStyleSheet : TTDefaultStyleSheet
 
--(TTStyle *)tableStatusLabelNormal;
+//-(TTStyle *)tableStatusLabelNormal;
 
 -(TTStyle *)tableStatusLabelError;
 

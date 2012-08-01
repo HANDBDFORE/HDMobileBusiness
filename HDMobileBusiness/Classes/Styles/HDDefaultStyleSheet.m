@@ -30,34 +30,23 @@
 }
 
 -(TTStyle *)tableStatusLabelError
-{
-//    return [TTShapeStyle styleWithShape:[TTSpeechBubbleShape shapeWithRadius:5 
-//                                                               pointLocation:314
-//                                                                  pointAngle:270
-//                                                                   pointSize:CGSizeMake(20,5)] next:
-//            [TTSolidFillStyle styleWithColor:[UIColor whiteColor] next:
-//             [TTSolidBorderStyle styleWithColor:RGBCOLOR(184, 0, 0) width:1 next: [TTReflectiveFillStyle styleWithColor:RGBCOLOR(200, 0, 0) next:[TTTextStyle styleWithFont:nil color:RGBCOLOR(255, 255, 255) next:nil                                                                                                                                                                                                            ]]]]];
-    return [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:TT_ROUNDED] next:
-            [TTInsetStyle styleWithInset:UIEdgeInsetsMake(1.5, 1.5, 1.5, 1.5) next:
-             [TTShadowStyle styleWithColor:RGBACOLOR(0,0,0,0.8) blur:3 offset:CGSizeMake(0, 5) next:
-              [TTReflectiveFillStyle styleWithColor:RGBCOLOR(144, 0, 0) next:
-               [TTInsetStyle styleWithInset:UIEdgeInsetsMake(-1.5,-1.5, -1.5, -1.5) next:
-                [TTSolidBorderStyle styleWithColor:[UIColor whiteColor] width:3 next:[TTTextStyle styleWithFont:nil color:RGBCOLOR(255, 255, 255) next:nil                                                                                                                                                                                                            ]]]]]]];
-}
-
-
--(TTStyle *)tableStatusLabelNormal{
-    return [self tableStatusLabelError];
+{    
+    return [TTShapeStyle styleWithShape:
+            [TTSpeechBubbleShape shapeWithRadius:5 pointLocation:314 pointAngle:270 pointSize:CGSizeMake(12,6)] next:
+            [TTLinearGradientFillStyle styleWithColor1:RGBCOLOR(204, 90, 80)
+                                                color2:RGBCOLOR(132, 60, 60) next:
+             [TTFourBorderStyle styleWithTop:RGBCOLOR(102, 40, 36) right:RGBCOLOR(132, 0, 0) bottom:RGBCOLOR(102, 0, 0) left:RGBCOLOR(132, 40, 36) width:1 next:
+              [TTTextStyle styleWithFont:nil color:RGBCOLOR(255, 255, 255) textAlignment:UITextAlignmentCenter next:nil                                                                                                                                                                          ]]]];
 }
 
 -(TTStyle *)tableStatusLabelDifferent
 {
-    return [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:TT_ROUNDED] next:
-            [TTInsetStyle styleWithInset:UIEdgeInsetsMake(1.5, 1.5, 1.5, 1.5) next:
-             [TTShadowStyle styleWithColor:RGBACOLOR(0,0,0,0.8) blur:3 offset:CGSizeMake(0, 5) next:
-              [TTReflectiveFillStyle styleWithColor:RGBCOLOR(0, 144, 0) next:
-               [TTInsetStyle styleWithInset:UIEdgeInsetsMake(-1.5,-1.5, -1.5, -1.5) next:
-                [TTSolidBorderStyle styleWithColor:[UIColor whiteColor] width:3 next:[TTTextStyle styleWithFont:nil color:RGBCOLOR(255, 255, 255) next:nil                                                                                                                                                                                                            ]]]]]]];
+    return [TTShapeStyle styleWithShape:
+            [TTSpeechBubbleShape shapeWithRadius:5 pointLocation:314 pointAngle:270 pointSize:CGSizeMake(12,6)] next:
+            [TTLinearGradientFillStyle styleWithColor1:RGBCOLOR(90, 204, 80)
+                                                color2:RGBCOLOR(60, 132, 60) next:
+             [TTFourBorderStyle styleWithTop:RGBCOLOR(40, 102, 36) right:RGBCOLOR(0, 132, 0) bottom:RGBCOLOR(0, 102, 0) left:RGBCOLOR(40, 132, 36) width:1 next:
+              [TTTextStyle styleWithFont:nil color:RGBCOLOR(255, 255, 255) textAlignment:UITextAlignmentLeft next:nil                                                                                                                                                                          ]]]];
 }
 
 - (TTStyle*)blueToolbarButton:(UIControlState)state {
