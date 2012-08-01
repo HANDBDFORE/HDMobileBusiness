@@ -10,6 +10,7 @@
 #import "HDTodoListDataSource.h"
 #import "HDTodoListSearchViewController.h"
 #import "HDTodoListSearchDataSource.h"
+#import "HDDetailSubmitModel.h"
 
 @implementation HDTodoListViewController
 
@@ -74,6 +75,7 @@
     self.dataSource = [[[HDTodoListDataSource alloc]initWithModel:model]autorelease];
     
     self.searchViewController.dataSource = [[[HDTodoListSearchDataSource alloc] initWithModel:model]autorelease];
+    TT_RELEASE_CF_SAFELY(model);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -127,9 +129,9 @@
     //    //get webpage url
     NSDictionary * urlQuery = [_approve dictionaryWithValuesForKeys:[NSArray arrayWithObjects:@"docPageUrl",@"instanceId", nil]];
     
-    NSString * webPageUrl = [HDURLCenter requestURLWithKey:kDidApprovedDetailWebPagePath query:urlQuery];
+    NSString * webPageUrl = [HDURLCenter requestURLWithKey:kTodoListDetailWebPagePath query:urlQuery];
     
-    NSString * employeeURLPath = [HDURLCenter requestURLWithKey:kDidApprovedEmployeeInfoWebPagePath query:[NSDictionary dictionaryWithObject:_approve.employeeId forKey:@"employeeID"]];
+    NSString * employeeURLPath = [HDURLCenter requestURLWithKey:kUserInfoWebPagePath query:[NSDictionary dictionaryWithObject:_approve.employeeId forKey:@"employeeID"]];
     
     [viewController setValue:_approve.rowID forKeyPath:@"rowID"];
     [viewController setValue:_approve.recordID forKeyPath:@"recordID"];

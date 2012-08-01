@@ -69,8 +69,6 @@
 		B374676615C76E36003068CB /* HDDoneListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B374676315C76E36003068CB /* HDDoneListModel.m */; };
 		B374677015C77477003068CB /* HDAccountSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B374676E15C77477003068CB /* HDAccountSettingsController.m */; };
 		B374677115C77477003068CB /* HDAccountSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B374676F15C77477003068CB /* HDAccountSettingsController.xib */; };
-		B37467E515C77ED2003068CB /* mobileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467E415C77ED2003068CB /* mobileIcon.png */; };
-		B37467E715C77ED7003068CB /* mobileIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467E615C77ED7003068CB /* mobileIcon@2x.png */; };
 		B37467E915C78112003068CB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467E815C78112003068CB /* Default.png */; };
 		B37467EB15C78118003068CB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467EA15C78118003068CB /* Default@2x.png */; };
 		B38DC6F915C6835D00FD0C58 /* HDTodoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6E615C6835D00FD0C58 /* HDTodoListDataSource.m */; };
@@ -237,9 +235,9 @@
 		B38E681315C64E6700824CB1 /* trend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678015C64E6700824CB1 /* trend@2x.png */; };
 		B38E681415C64E6700824CB1 /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678115C64E6700824CB1 /* world.png */; };
 		B38E681515C64E6700824CB1 /* world@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678215C64E6700824CB1 /* world@2x.png */; };
-		B38E685E15C6526A00824CB1 /* backend-config-hec-milk.xml in Resources */ = {isa = PBXBuildFile; fileRef = B38E685A15C6526A00824CB1 /* backend-config-hec-milk.xml */; };
+		B38E685E15C6526A00824CB1 /* backend-config-hec-sprite.xml in Resources */ = {isa = PBXBuildFile; fileRef = B38E685A15C6526A00824CB1 /* backend-config-hec-sprite.xml */; };
 		B38E685F15C6526A00824CB1 /* backend-config-hec.xml in Resources */ = {isa = PBXBuildFile; fileRef = B38E685B15C6526A00824CB1 /* backend-config-hec.xml */; };
-		B38E686015C6526A00824CB1 /* backend-config-hr-milk.xml in Resources */ = {isa = PBXBuildFile; fileRef = B38E685C15C6526A00824CB1 /* backend-config-hr-milk.xml */; };
+		B38E686015C6526A00824CB1 /* backend-config-hr-sprite.xml in Resources */ = {isa = PBXBuildFile; fileRef = B38E685C15C6526A00824CB1 /* backend-config-hr-sprite.xml */; };
 		B38E686115C6526A00824CB1 /* backend-config-hr.xml in Resources */ = {isa = PBXBuildFile; fileRef = B38E685D15C6526A00824CB1 /* backend-config-hr.xml */; };
 		B38E686615C6531300824CB1 /* bugList.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B38E686315C6531300824CB1 /* bugList.rtf */; };
 		B38E686715C6531300824CB1 /* developList.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B38E686415C6531300824CB1 /* developList.rtf */; };
@@ -522,8 +520,6 @@
 		B374676D15C77477003068CB /* HDAccountSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDAccountSettingsController.h; sourceTree = "<group>"; };
 		B374676E15C77477003068CB /* HDAccountSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDAccountSettingsController.m; sourceTree = "<group>"; };
 		B374676F15C77477003068CB /* HDAccountSettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDAccountSettingsController.xib; sourceTree = "<group>"; };
-		B37467E415C77ED2003068CB /* mobileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mobileIcon.png; path = ../mobileIcon.png; sourceTree = "<group>"; };
-		B37467E615C77ED7003068CB /* mobileIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mobileIcon@2x.png"; path = "../mobileIcon@2x.png"; sourceTree = "<group>"; };
 		B37467E815C78112003068CB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		B37467EA15C78118003068CB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		B38DC6E515C6835D00FD0C58 /* HDTodoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListDataSource.h; sourceTree = "<group>"; };
@@ -707,9 +703,9 @@
 		B38E678015C64E6700824CB1 /* trend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trend@2x.png"; sourceTree = "<group>"; };
 		B38E678115C64E6700824CB1 /* world.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world.png; sourceTree = "<group>"; };
 		B38E678215C64E6700824CB1 /* world@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world@2x.png"; sourceTree = "<group>"; };
-		B38E685A15C6526A00824CB1 /* backend-config-hec-milk.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hec-milk.xml"; sourceTree = "<group>"; };
+		B38E685A15C6526A00824CB1 /* backend-config-hec-sprite.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hec-sprite.xml"; sourceTree = "<group>"; };
 		B38E685B15C6526A00824CB1 /* backend-config-hec.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hec.xml"; sourceTree = "<group>"; };
-		B38E685C15C6526A00824CB1 /* backend-config-hr-milk.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hr-milk.xml"; sourceTree = "<group>"; };
+		B38E685C15C6526A00824CB1 /* backend-config-hr-sprite.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hr-sprite.xml"; sourceTree = "<group>"; };
 		B38E685D15C6526A00824CB1 /* backend-config-hr.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hr.xml"; sourceTree = "<group>"; };
 		B38E686315C6531300824CB1 /* bugList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = bugList.rtf; sourceTree = "<group>"; };
 		B38E686415C6531300824CB1 /* developList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = developList.rtf; sourceTree = "<group>"; };
@@ -1006,8 +1002,6 @@
 			children = (
 				B37467EA15C78118003068CB /* Default@2x.png */,
 				B37467E815C78112003068CB /* Default.png */,
-				B37467E615C77ED7003068CB /* mobileIcon@2x.png */,
-				B37467E415C77ED2003068CB /* mobileIcon.png */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				B36BDA9915C64777003A4A5D /* HDMobileBusiness-Info.plist */,
 				B36BDA9A15C64777003A4A5D /* InfoPlist.strings */,
@@ -1395,9 +1389,9 @@
 		B38E685915C6526A00824CB1 /* ConfigFiles */ = {
 			isa = PBXGroup;
 			children = (
-				B38E685A15C6526A00824CB1 /* backend-config-hec-milk.xml */,
+				B38E685A15C6526A00824CB1 /* backend-config-hec-sprite.xml */,
 				B38E685B15C6526A00824CB1 /* backend-config-hec.xml */,
-				B38E685C15C6526A00824CB1 /* backend-config-hr-milk.xml */,
+				B38E685C15C6526A00824CB1 /* backend-config-hr-sprite.xml */,
 				B38E685D15C6526A00824CB1 /* backend-config-hr.xml */,
 			);
 			path = ConfigFiles;
@@ -1858,9 +1852,9 @@
 				B38E681315C64E6700824CB1 /* trend@2x.png in Resources */,
 				B38E681415C64E6700824CB1 /* world.png in Resources */,
 				B38E681515C64E6700824CB1 /* world@2x.png in Resources */,
-				B38E685E15C6526A00824CB1 /* backend-config-hec-milk.xml in Resources */,
+				B38E685E15C6526A00824CB1 /* backend-config-hec-sprite.xml in Resources */,
 				B38E685F15C6526A00824CB1 /* backend-config-hec.xml in Resources */,
-				B38E686015C6526A00824CB1 /* backend-config-hr-milk.xml in Resources */,
+				B38E686015C6526A00824CB1 /* backend-config-hr-sprite.xml in Resources */,
 				B38E686115C6526A00824CB1 /* backend-config-hr.xml in Resources */,
 				B38E686615C6531300824CB1 /* bugList.rtf in Resources */,
 				B38E686715C6531300824CB1 /* developList.rtf in Resources */,
@@ -1868,8 +1862,6 @@
 				B31E2F3D15C6732100880514 /* Settings.bundle in Resources */,
 				B34660BE15C678DD00EFDF24 /* HDLoginViewController.xib in Resources */,
 				B374677115C77477003068CB /* HDAccountSettingsController.xib in Resources */,
-				B37467E515C77ED2003068CB /* mobileIcon.png in Resources */,
-				B37467E715C77ED7003068CB /* mobileIcon@2x.png in Resources */,
 				B37467E915C78112003068CB /* Default.png in Resources */,
 				B37467EB15C78118003068CB /* Default@2x.png in Resources */,
 			);

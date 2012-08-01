@@ -64,7 +64,7 @@
     NSMutableArray * actions = [NSMutableArray array];
     
     while ([resultSet next]) {
-        [actions addObject:[resultSet resultDict]];
+        [actions addObject:[resultSet resultDictionary]];
     }
     [resultSet close];
     [dbHelper.db close];

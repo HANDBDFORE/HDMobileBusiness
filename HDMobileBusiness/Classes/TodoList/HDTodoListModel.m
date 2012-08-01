@@ -50,7 +50,7 @@
 
 #pragma mark TTModel protocol
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
-{   
+{
     //读取本地数据库数据,把待提交的数据单条循环提交.等待前一条返回才发送下一条
     //第一次加载从本地加载
     if (_flags.isFirstLoad) {
@@ -73,7 +73,7 @@
     }
 }
 
-#pragma mark TTURLRequestDelegate 
+#pragma mark TTURLRequestDelegate
 //因为服务端返回错误状态状态时,需要额外的流程,不能使用 requestResultMap
 -(void)requestDidFinishLoad:(TTURLRequest *)request
 {
@@ -88,14 +88,14 @@
     if (_flags.isQueryingData) {
         //TODO:这里考虑不转化为对象
         _flags.isQueryingData = NO;
-        [self updateResultList:resultMap.result]; 
+        [self updateResultList:resultMap.result];
         if (!self.isLoadingMore) {
             self.loadedTime = request.timestamp;
             self.cacheKey = request.cacheKey;
         }
         TT_RELEASE_SAFELY(_loadingRequest);
         [self didFinishLoad];
-    }  
+    }
     [self didFinishLoad];
 }
 
@@ -111,7 +111,7 @@
     TT_RELEASE_SAFELY(_loadingRequest);
     Approve * submitObject = (Approve *) [resultMap.userInfo objectForKey:@"postObject"];
     NSUInteger index;
-    if (_flags.isSearching) {
+    if ([self isSearching]) {
         index = [self.searchResultList indexOfObject:submitObject];
     }else {
         index = [self.resultList indexOfObject:submitObject];
@@ -123,7 +123,7 @@
     if (!resultMap.result) {
         submitObject.localStatus = @"ERROR";
         submitObject.serverMessage = resultMap.error.localizedDescription;
-        [self didUpdateObject:submitObject 
+        [self didUpdateObject:submitObject
                   atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
         [self updateSubmitRecord:submitObject];
     }else {
@@ -131,14 +131,14 @@
         [_resultList removeObject:submitObject];
         [_searchResultList removeObject:submitObject];
         [self setIconBageNumber];
-        [self didDeleteObject:submitObject 
+        [self didDeleteObject:submitObject
                   atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
     }
 }
 
 #pragma -mark Submit offline data
 -(void)submit
-{  
+{
     Approve * _approve = [_submitList objectAtIndex:0];
     id _postData =[NSDictionary dictionaryWithObjectsAndKeys:[_approve.recordID stringValue],@"record_id", _approve.action,@"action_id",_approve.comment,@"comment",nil];
     
@@ -158,8 +158,8 @@
         
         Approve * submitObject = nil;
         
-        if (_flags.isSearching) {
-            submitObject = [self.searchResultList objectAtIndex:indexPath.row]; 
+        if ([self isSearching]) {
+            submitObject = [self.searchResultList objectAtIndex:indexPath.row];
         }else {
             submitObject = [self.resultList objectAtIndex:indexPath.row];
         }
@@ -168,7 +168,7 @@
         submitObject.action = self.batchAction;
         submitObject.submitUrl = [HDURLCenter requestURLWithKey:kApproveListBatchSubmitPath];
         [self setObjectForSubmit:submitObject];
-    } 
+    }
     //设置超时状态,进入shouldload状态
     self.cacheKey = nil;
     [self didFinishLoad];
@@ -208,24 +208,27 @@
     NSString *sql = [NSString stringWithFormat:@"select rowid, %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@ from %@ order by %@ desc",APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_ORDER_TYPE,APPROVE_PROPERTY_INSTANCE_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_COMMENT,APPROVE_PROPERTY_APPROVE_ACTION,APPROVE_PROPERTY_SCREEN_NAME,APPROVE_PROPERTY_SERVER_MESSAGE, APPROVE_PROPERTY_SUBMIT_URL,APPROVE_PROPERTY_NODE_ID,APPROVE_PROPERTY_INSTANCE_ID,APPROVE_PROPERTY_INSTANCE_PARAM,APPROVE_PROPERTY_EMPLOYEE_ID,TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_CREATION_DATE];
     FMResultSet *resultSet = [self.dbHelper.db executeQuery:sql];
     
+    NSMutableArray * _localList = [NSMutableArray array];
+    
     while ([resultSet next]) {
-        Approve *_record = [[Approve alloc]initWithDictionary:resultSet.resultDict];
-        [_resultList addObject:_record];      
+        Approve *_record = [[Approve alloc]initWithDictionary:resultSet.resultDictionary];
+        [_localList addObject:_record];
         //如果是等待状态,插入提交列表
         if ([_record.localStatus isEqualToString:@"WAITING"]) {
             [_submitList addObject:_record];
         }
         TT_RELEASE_SAFELY(_record);
-    } 
+    }
     [resultSet close];
     [self.dbHelper.db close];
+    [_resultList addObjectsFromArray:[self orderList:_localList]];
     [self setIconBageNumber];
     //    TT_RELEASE_SAFELY(_dbHelper);
 }
 
 //提交成功,删除本地记录
 -(void)removeSubmitedRecord:(Approve *) submitRecord
-{    
+{
     //删除提交成功的数据
     //    ApproveDatabaseHelper * _dbHelper = [[ApproveDatabaseHelper alloc]init];
     //TODO:做成单例...
@@ -240,7 +243,6 @@
 
 -(void)updateSubmitRecord:(Approve *) submitRecord
 {
-    TTDPRINT(@"submit record");
     //修改数据
     //    ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
     NSString *sql = [NSString stringWithFormat:@"update %@ set %@='%@',%@ ='%@',%@='%@',%@='%@',%@='%@'where %@ ='%@';",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,submitRecord.localStatus,APPROVE_PROPERTY_COMMENT,submitRecord.comment,APPROVE_PROPERTY_SUBMIT_URL,submitRecord.submitUrl,APPROVE_PROPERTY_APPROVE_ACTION,submitRecord.action,APPROVE_PROPERTY_SERVER_MESSAGE,submitRecord.serverMessage,@"rowid",submitRecord.rowID];
@@ -262,9 +264,12 @@
         
         [_resultList removeAllObjects];
         [_resultList addObjectsFromArray:_newResult];
-        [self search:self.searchText];
+        if ([self isSearching]) {
+            [self search:self.searchText];
+        }
+        
+        [self setIconBageNumber];
     }
-    [self setIconBageNumber];
 }
 
 -(NSArray *)combineRecordsWithlocalRecords:(NSArray *) localRecords remoteRecords:(NSArray *) remoteRecords
@@ -293,8 +298,8 @@
     [self insertNewRecords:(NSArray *) _newArray];
     
     //合并数据
-    NSArray * resultArray = [[_localSameArray 
-                              arrayByAddingObjectsFromArray:_diffArray] 
+    NSArray * resultArray = [[_localSameArray
+                              arrayByAddingObjectsFromArray:_diffArray]
                              arrayByAddingObjectsFromArray:_newArray];
     
     return [self orderList:resultArray];
@@ -302,9 +307,9 @@
 
 -(NSArray *)orderList:(NSArray *) list
 {
-   return [list sortedArrayWithOptions:NSSortStable usingComparator:^NSComparisonResult (Approve* obj1,Approve * obj2){
+    return [list sortedArrayWithOptions:NSSortStable usingComparator:^NSComparisonResult (Approve* obj1,Approve * obj2){
         return [obj1.creationDate compare:obj2.creationDate];
-   }];
+    }];
 }
 
 -(void)updateDifferentRecords:(NSArray *) records
@@ -353,8 +358,8 @@
 #pragma -mark Flags
 /*
  *可以提交的状态:
- *1 没有在查询 
- *2 不是第一次load 
+ *1 没有在查询
+ *2 不是第一次load
  *3 提交列表不为空
  */
 -(BOOL) shouldSubmit
@@ -376,38 +381,31 @@
 - (void)search:(NSString*)text
 {
     //    TTDPRINT(@"search");
-    //    TT_RELEASE_SAFELY(_searchResultList);
     self.searchText = text;
     [_searchResultList removeAllObjects];
     if (self.searchText.length) {
-        [self fakeSearch];
+        //        [self fakeSearch];
+        [_searchResultList addObjectsFromArray:[self createSearchResult]];
         [self didFinishLoad];
     } else {
         [self didChange];
     }
 }
 
--(void)fakeSearch
+-(NSArray *)createSearchResult
 {
     NSMutableArray * searchResultList = [NSMutableArray array];
     for (id record in self.resultList) {
         BOOL matchFlg = NO;
         //TODO:有字段是nil啊..结果集没显示出来为什么呢
-        //        TTDPRINT(@"orderType");
         matchFlg = matchFlg || [[record valueForKey:@"orderType"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-        //        TTDPRINT(@"instanceDesc");
-        //       matchFlg = matchFlg || [[record valueForKey:@"instanceDesc"] rangeOfString:text options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-        //        TTDPRINT(@"nodeName");
         matchFlg = matchFlg || [[record valueForKey:@"nodeName"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-        //        TTDPRINT(@"employeeName");
         matchFlg = matchFlg || [[record valueForKey:@"employeeName"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-        //TODO:临时数据过滤
-        matchFlg = matchFlg || ([[record valueForKey:@"recordID"]intValue]%9==0);
         if (matchFlg) {
-            [searchResultList addObject:record];    
+            [searchResultList addObject:record];
         }
     }
-    [_searchResultList addObjectsFromArray:[self orderList:searchResultList]];
+    return [self orderList:searchResultList];
 }
 
 #pragma mark Others
@@ -416,13 +414,14 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber = self.resultList.count;
 }
 
--(void)setIsSearching:(BOOL)isSearching
-{
-    _flags.isSearching = isSearching;
-}
+//-(void)setIsSearching:(BOOL)isSearching
+//{
+//    _flags.isSearching = isSearching;
+//}
 
 -(BOOL)isSearching
 {
-    return _flags.isSearching;
+//    return _flags.isSearching;
+    return !!self.searchText;
 }
 @end

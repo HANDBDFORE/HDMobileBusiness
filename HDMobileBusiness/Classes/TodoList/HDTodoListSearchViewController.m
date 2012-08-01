@@ -7,10 +7,8 @@
 //
 
 #import "HDTodoListSearchViewController.h"
-
-//#import "Three20UICommon/Three20UICommon+Additions.h"
-
 #import "HDTodoListSearchDataSource.h"
+#import "HDDetailSubmitModel.h"
 
 @implementation HDTodoListSearchViewController
 
@@ -53,14 +51,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [(HDTodoListModel *)self.model setIsSearching:YES];
     [self setEditingToolbarItemButtons:NO animated:animated];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [(HDTodoListModel *)self.model setIsSearching:NO];
     [self revertToolbar];
 }
 
@@ -101,9 +97,9 @@
     //    //get webpage url
     NSDictionary * urlQuery = [_approve dictionaryWithValuesForKeys:[NSArray arrayWithObjects:@"docPageUrl",@"instanceId", nil]];
     
-    NSString * webPageUrl = [HDURLCenter requestURLWithKey:kDidApprovedDetailWebPagePath query:urlQuery];
+    NSString * webPageUrl = [HDURLCenter requestURLWithKey:kTodoListDetailWebPagePath query:urlQuery];
     
-    NSString * employeeURLPath = [HDURLCenter requestURLWithKey:kDidApprovedEmployeeInfoWebPagePath query:[NSDictionary dictionaryWithObject:_approve.employeeId forKey:@"employeeID"]];
+    NSString * employeeURLPath = [HDURLCenter requestURLWithKey:kUserInfoWebPagePath query:[NSDictionary dictionaryWithObject:_approve.employeeId forKey:@"employeeID"]];
     
     [viewController setValue:_approve.rowID forKeyPath:@"rowID"];
     [viewController setValue:_approve.recordID forKeyPath:@"recordID"];

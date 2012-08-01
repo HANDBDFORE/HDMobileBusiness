@@ -7,11 +7,7 @@
 //
 
 #import "HDBaseTodoListViewController.h"
-
-#import "HDTodoListDataSource.h"
-
 #import "HDTodoListDelegate.h"
-//#import "Three20UICommon/Three20UICommon+Additions.h"
 
 @implementation HDBaseTodoListViewController
 
@@ -106,14 +102,21 @@
 #pragma mark post view controller
 //toolBar button pressed
 -(void)toolBarButtonPressed: (id)sender
-{
-    if ([sender tag] == 1) {
-        //TODO:应该使用接口处理?
-        [(HDTodoListModel *)self.model setBatchAction:@"Y"];
-    }else {
-        [(HDTodoListModel *)self.model setBatchAction:@"N" ];
+{    
+    if ([self.model respondsToSelector:@selector(setBatchAction:)]) {
+        [self.model performSelector:@selector(setBatchAction:)
+                         withObject:[self createBatchAction:[sender tag]]];
     }
     [self showPostView];
+}
+
+-(NSString *)createBatchAction:(NSUInteger) tag
+{
+    if (tag== 1) {
+        return @"Y";
+    }else {
+        return @"N";
+    }
 }
 
 -(void)showPostView
@@ -130,8 +133,9 @@
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
     NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
-//    TTDPRINT(@"%@",indexPaths);
-    [(HDTodoListModel*)self.model addObjectAtIndexPathsForSubmit:indexPaths comment:text];
+    if ([self.model respondsToSelector:@selector(addObjectAtIndexPathsForSubmit:comment:)]) {
+        [self.model performSelector:@selector(addObjectAtIndexPathsForSubmit:comment:)  withObject:indexPaths withObject:text];
+    }
     [self setEditing:NO animated:YES];
 }
 

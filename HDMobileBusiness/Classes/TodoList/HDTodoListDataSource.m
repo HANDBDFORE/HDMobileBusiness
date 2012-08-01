@@ -17,6 +17,7 @@
 {
     //tableload完成生成cell item 对象列表
     self.items = [NSMutableArray array];
+//    [self.model];
     for (id approvedRecord in self.approveListModel.resultList) {
         [self.items addObject:[self createItemWithObject:approvedRecord]
          ];
@@ -27,6 +28,7 @@
 
 #pragma mark UITable datasource
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+
     
     NSString * localStatus =  [[self.approveListModel.resultList objectAtIndex:indexPath.row] valueForKeyPath:@"localStatus"];
     

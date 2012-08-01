@@ -20,7 +20,7 @@ static NSString * kApproveListQueryPath = @"APPROVE_LIST_QUERY_PATH";
         unsigned int isFirstLoad:1;
         unsigned int isSubmitingData:1;
         unsigned int isQueryingData:1;
-        unsigned int isSearching:1;
+//        unsigned int isSearching:1;
     } _flags;
     
     NSMutableArray * _resultList;
@@ -43,7 +43,7 @@ static NSString * kApproveListQueryPath = @"APPROVE_LIST_QUERY_PATH";
 
 -(void)addObjectAtIndexPathsForSubmit:(NSArray *) indexPaths comment:(NSString *) comment;
 
--(void) setIsSearching:(BOOL) isSearching;
+//-(void) setIsSearching:(BOOL) isSearching;
 
 - (void)search:(NSString*)text;
 

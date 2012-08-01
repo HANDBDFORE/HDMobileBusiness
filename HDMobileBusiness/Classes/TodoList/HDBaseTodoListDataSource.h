@@ -9,9 +9,9 @@
 #import "HDTodoListModel.h"
 #import "HDTableStatusMessageItemCell.h"
 
-static NSString * kDidApprovedDetailWebPagePath = @"APPROVE_DETIAL_WEB_PAGE_PATH";
+static NSString * kTodoListDetailWebPagePath = @"APPROVE_DETIAL_WEB_PAGE_PATH";
 
-static NSString * kDidApprovedEmployeeInfoWebPagePath = @"EMPLOYEE_INFO_WEB_URL";
+static NSString * kUserInfoWebPagePath = @"EMPLOYEE_INFO_WEB_URL";
 
 @interface HDBaseTodoListDataSource : TTListDataSource
 
