@@ -17,6 +17,7 @@
     UIBarButtonItem *  _composeButton;
     UIBarButtonItem *  _states;
     UIBarButtonItem *  _space;
+    UILabel                 *_refreshTimeLable;
 }
-
+@property(nonatomic,retain) UILabel *refreshTimeLable;
 @end
