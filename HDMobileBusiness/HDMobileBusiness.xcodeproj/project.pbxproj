@@ -52,6 +52,8 @@
 		B34660BE15C678DD00EFDF24 /* HDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */; };
 		B34660C115C6799500EFDF24 /* ApproveDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660C015C6799500EFDF24 /* ApproveDatabaseHelper.m */; };
 		B356A26B15D0A5C900E88192 /* HDCoreStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B356A26A15D0A5C900E88192 /* HDCoreStorage.m */; };
+		B356A26E15D0AA5500E88192 /* HDBaseRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B356A26D15D0AA5500E88192 /* HDBaseRecord.m */; };
+		B356A27115D0B99600E88192 /* HDApprovalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B356A27015D0B99600E88192 /* HDApprovalRecord.m */; };
 		B36BDA9215C64777003A4A5D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9115C64777003A4A5D /* UIKit.framework */; };
 		B36BDA9415C64777003A4A5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9315C64777003A4A5D /* Foundation.framework */; };
 		B36BDA9615C64777003A4A5D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9515C64777003A4A5D /* CoreGraphics.framework */; };
@@ -494,6 +496,10 @@
 		B34660C015C6799500EFDF24 /* ApproveDatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApproveDatabaseHelper.m; sourceTree = "<group>"; };
 		B356A26915D0A5C900E88192 /* HDCoreStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDCoreStorage.h; sourceTree = "<group>"; };
 		B356A26A15D0A5C900E88192 /* HDCoreStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDCoreStorage.m; sourceTree = "<group>"; };
+		B356A26C15D0AA5500E88192 /* HDBaseRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseRecord.h; sourceTree = "<group>"; };
+		B356A26D15D0AA5500E88192 /* HDBaseRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDBaseRecord.m; sourceTree = "<group>"; };
+		B356A26F15D0B99600E88192 /* HDApprovalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDApprovalRecord.h; sourceTree = "<group>"; };
+		B356A27015D0B99600E88192 /* HDApprovalRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDApprovalRecord.m; sourceTree = "<group>"; };
 		B36BDA8D15C64777003A4A5D /* HDMobileBusiness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HDMobileBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36BDA9115C64777003A4A5D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B36BDA9315C64777003A4A5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1136,6 +1142,10 @@
 			children = (
 				B38DC70715C6893200FD0C58 /* Approve.h */,
 				B38DC70815C6893200FD0C58 /* Approve.m */,
+				B356A26C15D0AA5500E88192 /* HDBaseRecord.h */,
+				B356A26D15D0AA5500E88192 /* HDBaseRecord.m */,
+				B356A26F15D0B99600E88192 /* HDApprovalRecord.h */,
+				B356A27015D0B99600E88192 /* HDApprovalRecord.m */,
 			);
 			name = Entity;
 			path = Classes/Entity;
@@ -1993,6 +2003,8 @@
 				B374676615C76E36003068CB /* HDDoneListModel.m in Sources */,
 				B374677015C77477003068CB /* HDAccountSettingsController.m in Sources */,
 				B356A26B15D0A5C900E88192 /* HDCoreStorage.m in Sources */,
+				B356A26E15D0AA5500E88192 /* HDBaseRecord.m in Sources */,
+				B356A27115D0B99600E88192 /* HDApprovalRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
