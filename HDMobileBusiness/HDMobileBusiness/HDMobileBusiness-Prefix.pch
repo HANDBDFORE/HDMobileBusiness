@@ -12,7 +12,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "Three20/Three20.h"
-    #import "Three20UI/Three20UI+Additions.h"
-    #import "Three20UICommon/Three20UICommon+Additions.h"
+    #import "Three20/Three20+Additions.h"
     #import "HDUtilities.h"
+
+    #import "HDApprovalRecord.h"
 #endif

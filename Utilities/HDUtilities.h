@@ -10,4 +10,6 @@
 #import "HDGodXMLFactory.h"
 #import "HDGlobalMetrics.h"
 #import "HDHTTPRequestCenter.h"
+#import "HDCoreStorage/HDCoreStorage.h"
+
 #import "ApproveDatabaseHelper.h"
