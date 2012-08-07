@@ -10,7 +10,7 @@
 #import "HDTodoListDelegate.h"
 
 @implementation HDBaseTodoListViewController
-
+@synthesize refreshTimeLable=_refreshTimeLable;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -40,7 +40,7 @@
     _refreshButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
     _composeButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
     _states = [[UIBarButtonItem alloc]initWithTitle:@"loading" style:UIBarButtonItemStylePlain target:nil action:nil];
-    
+
     [self resetButtonTitle];
 }
 
@@ -83,6 +83,13 @@
 {
     [super setEditing:editing animated:animated];
     [self resetButtonTitle];
+    if(editing){
+        self.editButtonItem.title = @"取消";
+         _refreshTimeLable.hidden = YES;
+    }else {
+        self.editButtonItem.title = @"批量";
+         _refreshTimeLable.hidden = NO;
+    }
 }
 
 

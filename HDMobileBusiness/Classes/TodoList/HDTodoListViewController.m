@@ -35,14 +35,25 @@
     //tab图标
     self.tabBarItem.image = [UIImage imageNamed:@"mailclosed.png"];
     //初始化导航条右侧按钮
+    self.editButtonItem.title = @"批量";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //tool bar
     [self.navigationController setToolbarHidden:NO animated:NO]; 
+    _refreshTimeLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0,self.view.width,TTToolbarHeight())];
+    _refreshTimeLable.text=@"我是lable";
+    _refreshTimeLable.textAlignment = UITextAlignmentCenter;
+    _refreshTimeLable.textColor = [ UIColor whiteColor];
+    _refreshTimeLable.shadowColor = RGBCOLOR(68, 68, 68);
+    _refreshTimeLable.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    _refreshTimeLable.backgroundColor=[UIColor clearColor];
+    _refreshTimeLable.font=[UIFont fontWithName:@"Helvetica-Bold" size:12];
+    [self.navigationController.toolbar insertSubview:_refreshTimeLable  atIndex:1 ];
     [self setEditingToolbarItemButtons:NO animated:YES];
     [self.navigationController.toolbar setTintColor:TTSTYLEVAR(toolbarTintColor)];
     //search bar
     HDTodoListSearchViewController* searchController = [[[HDTodoListSearchViewController alloc] init] autorelease];
+    searchController.refreshTimeLable  = _refreshTimeLable;
     self.searchViewController = searchController;
     _searchController.searchBar.tintColor = TTSTYLEVAR(searchBarTintColor);
     self.tableView.tableHeaderView = _searchController.searchBar;
@@ -86,6 +97,7 @@
     [self setEditingToolbarItemButtons:editing animated:animated];
     [self setEnableSearchBar:!editing animated:animated];
     [self.navigationItem setHidesBackButton:editing animated:animated];
+    
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
