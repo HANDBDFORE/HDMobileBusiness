@@ -44,7 +44,14 @@
     self = [super init];
     if (self) {
         self.recordStatus = HDRecordStatusNormal;
+        self.storageStatus = HDStorageStatusInsert;
     }
     return self;
+}
+
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"serverId : %@\n recordId : %@\n comments : %@\n userId : %@\n userName : %@\n timeStamp : %@\n recordTitle : %@\n recordCaption : %@\n recordText : %@\n recordImagePath : %@\n exceptionMessage : %@\n recordStatus : %u\n storageStatus : %u\n docPageUrl : %@\n isLate : %i\n",
+            _serverId,self.recordId,_comments,_userId,_userName,_timeStamp,_recordTitle,_recordCaption,_recordText,_recordImagePath,_exceptionMessage,_recordStatus,self.storageStatus,_docPageUrl,_isLate];
 }
 @end
