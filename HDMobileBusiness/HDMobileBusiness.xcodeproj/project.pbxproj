@@ -1433,17 +1433,17 @@
 		B38E686915C654C700824CB1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B374676C15C77477003068CB /* AccountSettings */,
-				B374675D15C76E36003068CB /* DoneList */,
-				B374675615C76CAE003068CB /* FunctionList */,
-				B38DC70D15C68C3800FD0C58 /* Detail */,
-				B38DC70615C6893200FD0C58 /* Entity */,
-				B38DC6E415C6835D00FD0C58 /* TodoList */,
-				B34660B315C678DD00EFDF24 /* Login */,
-				B31E2F3815C6714800880514 /* Styles */,
 				B36BDAA015C64777003A4A5D /* HDAppDelegate.h */,
 				B36BDAA115C64777003A4A5D /* HDAppDelegate.m */,
+				B374676C15C77477003068CB /* AccountSettings */,
+				B38DC70D15C68C3800FD0C58 /* Detail */,
+				B374675D15C76E36003068CB /* DoneList */,
+				B38DC70615C6893200FD0C58 /* Entity */,
+				B374675615C76CAE003068CB /* FunctionList */,
 				B31E2ED215C65FD300880514 /* Loading */,
+				B34660B315C678DD00EFDF24 /* Login */,
+				B31E2F3815C6714800880514 /* Styles */,
+				B38DC6E415C6835D00FD0C58 /* TodoList */,
 				B31E2ECE15C65DC900880514 /* UserGuide */,
 				B38E686A15C654DA00824CB1 /* Utilities */,
 			);
@@ -2106,6 +2106,7 @@
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../Frameworks/Three20/Build/Products/three20,
+					"${SDK_DIR}/usr/include/libxml2",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-ObjC";
@@ -2131,6 +2132,7 @@
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../Frameworks/Three20/Build/Products/three20,
+					"${SDK_DIR}/usr/include/libxml2",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
