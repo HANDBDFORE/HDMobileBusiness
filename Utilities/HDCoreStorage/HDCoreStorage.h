@@ -7,19 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HDSQLCenter.h"
 
 @interface HDCoreStorage : NSObject
 
 +(id)shareStorage;
 
--(id)query:(id) conditions;
+-(id)query:(NSString *) handler conditions:(id) conditions;
 
--(BOOL)insert:(id) data;
-
--(BOOL)update:(id) data;
-
--(BOOL)remove:(id) data;
-
--(void)sync:(id)data;
+-(BOOL)excute:(NSString *) handler recordSet:(id) recordSet;
 
 @end
