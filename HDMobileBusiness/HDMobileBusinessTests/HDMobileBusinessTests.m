@@ -27,72 +27,78 @@
 -(void)testCoreStorage
 {
     //insert
-    HDApprovalRecord * record1 = [[[HDApprovalRecord alloc]init] autorelease];
-    record1.recordId = @"test1";
-    record1.serverId = @"测试001";
-    record1.timeStamp = [NSDate dateWithTimeIntervalSince1970:0];
-    record1.recordTitle = @"i测试Title";
-    record1.recordStatus = HDRecordStatusNormal;
-    STAssertTrue([[HDCoreStorage shareStorage] insert:[NSArray arrayWithObject:record1]],@"insert failed");
-    HDApprovalRecord * record2 = [[[HDApprovalRecord alloc]init] autorelease];
-    record2.recordId = @"test2";
-    record2.serverId = @"测试002";
-    record2.timeStamp = [NSDate dateWithTimeIntervalSince1970:0];
-    record2.recordTitle = @"i测试Title";
-    record2.recordStatus = HDRecordStatusNormal;
-    [[HDCoreStorage shareStorage] sync:[NSArray arrayWithObject:record2]];
+    NSMutableDictionary * record1 = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                              @"test1",@"recordId",
+                              @"测试001",@"serverId",
+                              [NSDate dateWithTimeIntervalSince1970:0],@"timeStamp",
+                              @"i测试Title",@"recordTitle",
+                              kHDRecordStatusNormal,@"recordStatus",
+                              kHDStorageStatusInsert,@"storageStatus",
+                              nil];
+    STAssertTrue([[HDCoreStorage shareStorage] excute:kHDInsertTodoList recordSet:[NSArray arrayWithObject:record1]],@"insert failed");
+    
+    NSMutableDictionary * record2 = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     @"test2",@"recordId",
+                                     @"测试002",@"serverId",
+                                     [NSDate dateWithTimeIntervalSince1970:0],@"timeStamp",
+                                     @"i测试Title",@"recordTitle",
+                                     kHDRecordStatusNormal,@"recordStatus",
+                                     kHDStorageStatusInsert,@"storageStatus",
+                                     nil];
+    
+    STAssertTrue([[HDCoreStorage shareStorage] excute:kHDSyncTodoList recordSet:[NSArray arrayWithObject:record2]],@"sync insert failed");
     //query
-    NSArray * resultList = [[HDCoreStorage shareStorage] query:nil];
+
+    NSArray * resultList = [[HDCoreStorage shareStorage] query:kHDQueryTodoList conditions:nil];
     //列表长度为2
     STAssertTrue(resultList.count == 2,@"list count is:%i",resultList.count);
     //记录对象是HDApprovalRecord
-    TTDASSERT([[resultList objectAtIndex:0] isKindOfClass:[HDApprovalRecord class]]);
+    TTDASSERT([[resultList objectAtIndex:0] isKindOfClass:[NSDictionary class]]);
     //数据校验
     record1 = [resultList objectAtIndex:0];
     record2 = [resultList objectAtIndex:1];
-    
-    STAssertEqualObjects(record1.recordId, @"test1", @"获取recordId失败");
-    STAssertEqualObjects(record1.serverId, @"测试001", @"获取serverId失败");
-    STAssertEqualObjects(record1.timeStamp, [NSDate dateWithTimeIntervalSince1970:0], @"i获取timeStamp失败");
-    STAssertEqualObjects(record1.recordTitle, @"i测试Title", @"获取recordTitle失败",record1.recordTitle);
-    STAssertTrue(record1.recordStatus == HDRecordStatusNormal,@"没有正确设置recordStatus",record1.recordStatus);
-    STAssertTrue(record1.storageStatus == HDStorageStatusNormal, @"没有正确设置storageStatus",record1.storageStatus);
+
+    STAssertEqualObjects([record1 valueForKey:@"recordId"], @"test1", @"获取recordId失败");
+    STAssertEqualObjects([record1 valueForKey:@"serverId"], @"测试001", @"获取serverId失败");
+    STAssertEqualObjects([record1 valueForKey:@"timeStamp"], [NSDate dateWithTimeIntervalSince1970:0], @"i获取timeStamp失败");
+    STAssertEqualObjects([record1 valueForKey:@"recordTitle"], @"i测试Title", @"获取recordTitle失败",[record1 valueForKey:@"recordTitle"]);
+    STAssertEqualObjects([record1 valueForKey:@"recordStatus"], kHDRecordStatusNormal,@"没有正确设置recordStatus",[record1 valueForKey:@"recordStatus"]);
+    STAssertEqualObjects([record1 valueForKey:@"storageStatus"] ,kHDStorageStatusNormal, @"没有正确设置storageStatus",[record1 valueForKey:@"storageStatus"]);
     ///////////////
-    STAssertEqualObjects(record2.recordId, @"test2", @"获取recordId失败");
-    STAssertEqualObjects(record2.serverId, @"测试002", @"获取serverId失败");
+    STAssertEqualObjects([record2 valueForKey:@"recordId"], @"test2", @"获取recordId失败");
+    STAssertEqualObjects([record2 valueForKey:@"serverId"], @"测试002", @"获取serverId失败");
     
     //update
-    record1.timeStamp = [NSDate dateWithTimeIntervalSince1970:10];
-    record1.recordTitle = @"u测试Title1";
-    record1.recordStatus = HDRecordStatusDifferent;
-    record1.storageStatus = HDStorageStatusUpdate;
-    STAssertTrue([[HDCoreStorage shareStorage] update:[NSArray arrayWithObject:record1]], @"update failed");
+    [record1 setValue:[NSDate dateWithTimeIntervalSince1970:10] forKey:@"timeStamp"];
+    [record1 setValue:@"u测试Title1" forKey:@"recordTitle"];
+    [record1 setValue:kHDRecordStatusDifferent forKey:@"recordStatus"];
+    [record1 setValue:kHDStorageStatusUpdate forKey:@"storageStatus"];
+    STAssertTrue([[HDCoreStorage shareStorage] excute:kHDUpdateTodoList recordSet:[NSArray arrayWithObject:record1]], @"update failed");
     //sync update
-    record2.timeStamp = [NSDate dateWithTimeIntervalSince1970:10];
-    record2.recordTitle = @"u测试Title2";
-    record2.recordStatus = HDRecordStatusDifferent;
-    record2.storageStatus = HDStorageStatusUpdate;
-    [[HDCoreStorage shareStorage] sync:[NSArray arrayWithObject:record2]];
-    resultList = [[HDCoreStorage shareStorage] query:nil];
+    [record2 setValue:[NSDate dateWithTimeIntervalSince1970:10] forKey:@"timeStamp"];
+    [record2 setValue:@"u测试Title1" forKey:@"recordTitle"];
+    [record2 setValue:kHDRecordStatusDifferent forKey:@"recordStatus"];
+    [record2 setValue:kHDStorageStatusUpdate forKey:@"storageStatus"];
+    [[HDCoreStorage shareStorage] excute:@"sync" recordSet:[NSArray arrayWithObject:record2]];
+    resultList = [[HDCoreStorage shareStorage] query:kHDQueryTodoList conditions:nil];
     record1 = [resultList objectAtIndex:0];
     record2 = [resultList objectAtIndex:1];
-    
-    STAssertEqualObjects(record1.timeStamp, [NSDate dateWithTimeIntervalSince1970:10], @"获取timeStamp失败");
-    STAssertEqualObjects(record1.recordTitle, @"u测试Title1", @"获取recordTitle失败",record1.recordTitle);
-    STAssertTrue(record1.recordStatus == HDRecordStatusDifferent,@"没有正确设置recordStatus",record1.recordStatus);
-    STAssertTrue(record1.storageStatus == HDStorageStatusNormal, @"没有正确设置storageStatus",record1.storageStatus);
+    STAssertEqualObjects([record1 valueForKey:@"timeStamp"], [NSDate dateWithTimeIntervalSince1970:10], @"获取timeStamp失败");
+    STAssertEqualObjects([record1 valueForKey:@"recordTitle"], @"u测试Title1", @"获取recordTitle失败",[record1 valueForKey:@"recordTitle"]);
+    STAssertEqualObjects([record1 valueForKey:@"recordStatus"], kHDRecordStatusDifferent,@"没有正确设置recordStatus",[record1 valueForKey:@"recordStatus"]);
+    STAssertEqualObjects([record1 valueForKey:@"storageStatus"] ,kHDStorageStatusNormal, @"没有正确设置storageStatus",[record1 valueForKey:@"storageStatus"]);
     ////////////////
-    STAssertEqualObjects(record2.timeStamp, [NSDate dateWithTimeIntervalSince1970:10], @"获取timeStamp失败");
-    STAssertEqualObjects(record2.recordTitle, @"u测试Title2", @"获取recordTitle失败",record1.recordTitle);
-    STAssertTrue(record2.recordStatus == HDRecordStatusDifferent,@"没有正确设置recordStatus",record1.recordStatus);
-    STAssertTrue(record2.storageStatus == HDStorageStatusNormal, @"没有正确设置storageStatus",record1.storageStatus);
-    
+    STAssertEqualObjects([record2 valueForKey:@"timeStamp"], [NSDate dateWithTimeIntervalSince1970:10], @"获取timeStamp失败");
+    STAssertEqualObjects([record2 valueForKey:@"recordTitle"], @"u测试Title1", @"获取recordTitle失败",[record1 valueForKey:@"recordTitle"]);
+    STAssertEqualObjects([record2 valueForKey:@"recordStatus"], kHDRecordStatusDifferent,@"没有正确设置recordStatus",[record2 valueForKey:@"recordStatus"]);
+    STAssertEqualObjects([record2 valueForKey:@"storageStatus"] ,kHDStorageStatusNormal, @"没有正确设置storageStatus",[record2 valueForKey:@"storageStatus"]);
+
     //remove
-    STAssertTrue([[HDCoreStorage shareStorage] remove:[NSArray arrayWithObject:record1]], @"remove failed");
-    record2.storageStatus = HDStorageStatusRemove;
-    [[HDCoreStorage shareStorage] sync:[NSArray arrayWithObject:record2]];
+    STAssertTrue([[HDCoreStorage shareStorage] excute:kHDRemoveTodoList recordSet:[NSArray arrayWithObject:record1]], @"remove failed");
+    [record2 setValue:kHDStorageStatusRemove forKey:@"storageStatus"];
+    [[HDCoreStorage shareStorage] excute:kHDSyncTodoList recordSet:[NSArray arrayWithObject:record2]];
     
-    STAssertTrue(![[HDCoreStorage shareStorage] query:nil], @"删除记录失败") ;
+    STAssertTrue(![[HDCoreStorage shareStorage] query:kHDQueryTodoList conditions:nil], @"删除记录失败") ;
 }
 
 
