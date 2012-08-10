@@ -41,7 +41,6 @@
     //tool bar
     [self.navigationController setToolbarHidden:NO animated:NO]; 
     _refreshTimeLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0,self.view.width,TTToolbarHeight())];
-    _refreshTimeLable.text=@"我是lable";
     _refreshTimeLable.textAlignment = UITextAlignmentCenter;
     _refreshTimeLable.textColor = [ UIColor whiteColor];
     _refreshTimeLable.shadowColor = RGBCOLOR(68, 68, 68);

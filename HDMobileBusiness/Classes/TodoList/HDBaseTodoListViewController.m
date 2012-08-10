@@ -56,12 +56,14 @@
 
 - (void)viewDidUnload
 {
+    [_refreshTimeLable removeFromSuperview];
     TT_RELEASE_SAFELY(_refuseButton);
     TT_RELEASE_SAFELY(_acceptButton);
     TT_RELEASE_SAFELY(_refreshButton);
     TT_RELEASE_SAFELY(_composeButton);
     TT_RELEASE_SAFELY(_states);
     TT_RELEASE_SAFELY(_space);
+    TT_RELEASE_SAFELY(_refreshTimeLable);
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
