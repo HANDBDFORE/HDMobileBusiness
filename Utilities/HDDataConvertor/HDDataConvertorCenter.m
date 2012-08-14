@@ -1,5 +1,5 @@
 //
-//  HDFilterCenter.m
+//  HDDataConvertorCenter.m
 //  Three20Lab-2
 //
 //  Created by Rocky Lee on 5/24/12.
@@ -113,7 +113,7 @@ static HDDataConvertorCenter * _convertorCenter = nil;
 {
     if ([filterName isEqualToString:kDefaultRequest]) 
     {
-        return [NSArray arrayWithObjects:kJSONToDataConvertor,kDataAuroraRequestConvertor,nil];
+        return [NSArray arrayWithObjects:@"HDDataToStringConvertor",kJSONToDataConvertor,kDataAuroraRequestConvertor,nil];
     }
     if ([filterName isEqualToString: kDefaultResponse]) {
         return [NSArray arrayWithObjects:kDataAuroraResponseConvertor,kDataToJSONConvertor, nil];
@@ -124,12 +124,12 @@ static HDDataConvertorCenter * _convertorCenter = nil;
 -(id<HDDataConvertor>)filterChainWithConfig:(NSArray *) config 
                             fieldDictionary:(NSDictionary *) dictionary
 {
-    HDDataBaseConvertor * convertor = nil;
+    HDBaseConvertor * convertor = nil;
     for (NSString * filterClassName in config) {
-        HDDataBaseConvertor * nextConvertor = [[[NSClassFromString(filterClassName) alloc]initWithNextConvertor:convertor]autorelease];
+        HDBaseConvertor * nextConvertor = [[[NSClassFromString(filterClassName) alloc]initWithNextConvertor:convertor]autorelease];
         if ([filterClassName isEqualToString:kDataFieldRequestConvertor]) {
             //set fieldDictionary
-            [(HDDataFieldRequestConvertor *)nextConvertor setFiledDictionary:dictionary];
+            [(HDFieldMapConvertor *)nextConvertor setFiledDictionary:dictionary];
         }
         convertor = nextConvertor;
     }

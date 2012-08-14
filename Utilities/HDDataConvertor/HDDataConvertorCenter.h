@@ -1,6 +1,6 @@
 //
-//  HDFilterCenter.h
-//  Three20Lab-2
+//  HDDataConvertorCenter.h
+//  HDMobileBusiness
 //
 //  Created by Rocky Lee on 5/24/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HDDataConvertor.h"
-#import "HDDataBaseConvertor.h"
+#import "HDBaseConvertor.h"
 
 typedef enum
 {
