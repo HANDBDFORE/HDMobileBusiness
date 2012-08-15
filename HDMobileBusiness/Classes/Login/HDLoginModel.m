@@ -8,6 +8,7 @@
 
 #import "HDLoginModel.h"
 #import "ApproveDatabaseHelper.h"
+#import "HDCoreStorage.h"
 
 static NSString * kLoginSubmitURLPath = @"LOGIN_PATH";
 
@@ -29,10 +30,8 @@ static NSString * kLoginSubmitURLPath = @"LOGIN_PATH";
     //不同用户登录,清除数据库
     if (_loginBean.username != [[NSUserDefaults standardUserDefaults] valueForKey:@"username"]) {
         //
-        ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
-        [dbHelper.db open];
-        [dbHelper dropAllTables];
-        [dbHelper.db close];
+        HDCoreStorage * CoreStorage = [HDCoreStorage shareStorage];
+        [CoreStorage excute:@selector(SQLCleanTable:) recordSet:nil];
     }   
     [[NSUserDefaults standardUserDefaults] setValue:_loginBean.username forKey:@"username"];
     [[NSUserDefaults standardUserDefaults] setValue:_loginBean.password forKey:@"password"];

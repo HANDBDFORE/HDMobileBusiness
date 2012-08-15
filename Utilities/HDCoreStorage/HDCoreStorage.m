@@ -7,17 +7,19 @@
 //
 
 #import "HDCoreStorage.h"
+#import "FMDatabase.h"
+#import "FMDatabasePool.h"
+#import "FMResultSet.h"
+#import "HDSQLCenter.h"
 
 static HDCoreStorage * globalStorage = nil;
 
-@interface HDCoreStorage()
-@property(nonatomic,readonly) NSMutableArray * tempList;
-
-@end
-
-@implementation HDCoreStorage
-@synthesize tempList = _tempList;
-
+@implementation HDCoreStorage{
+    FMDatabasePool *DatabasePool;
+    HDSQLCenter *sqlCenter;
+}
+#pragma mark - 
+#pragma mark 单例
 +(id)shareStorage
 {
     if (nil == globalStorage) {
@@ -26,84 +28,92 @@ static HDCoreStorage * globalStorage = nil;
     return globalStorage;
 }
 
-- (void)dealloc
-{
-    TT_RELEASE_CF_SAFELY(_tempList);
-    [super dealloc];
-}
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        _tempList = [[NSMutableArray alloc]init];
-    }
-    return self;
-}
-
--(id)query:(NSString *)handler conditions:(id)conditions
-{
-    TTDPRINT(@"list count :%i\n", self.tempList.count);
-    if (self.tempList.count >0) {
-        for (id record in self.tempList) {
-            [record setValue:kHDStorageStatusNormal forKey:@"storageStatus"];
++(id) allocWithZone:(NSZone *)zone{
+    @synchronized(self){
+        if (globalStorage == nil) {
+            globalStorage = [super allocWithZone:zone];
+            return  globalStorage;
         }
-        return self.tempList;
     }
     return nil;
 }
 
--(BOOL)excute:(NSString *)handler recordSet:(id)recordSet
+- (id)copyWithZone:(NSZone *)zone
 {
-    if ([handler isEqualToString:kHDInsertTodoList]) {
-        return [self insert:recordSet];
+    return self;
+}
+
+- (id)retain
+{
+    return self;
+}
+
+-(id)init
+{
+    self = [super init];
+    if (self) {
+        DatabasePool = [FMDatabasePool databasePoolWithPath:[self dbPath]];
+        DatabasePool.maximumNumberOfDatabasesToCreate = 3;
+        sqlCenter = [[HDSQLCenter alloc]init];
     }
-    if ([handler isEqualToString:kHDUpdateTodoList]) {
-        return [self update:recordSet];
+    return self;
+}
+
+-(unsigned)retainCount
+{
+    return UINT_MAX;  //denotes an object that cannot be released
+}
+
+- (id)autorelease
+{
+    return self;
+}
+
+-(void)dealloc
+{
+    [DatabasePool releaseAllDatabases];
+    [DatabasePool release];
+    [sqlCenter release];
+    [super dealloc];
+}
+#pragma mark-
+#pragma mark 方法
+- (NSString *) dbPath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:@"mydb.db"];
+}
+
+-(id)query:(SEL) handler conditions:(id) conditions{
+    if ([sqlCenter respondsToSelector:handler]) {
+        __block  NSMutableArray  *_DATA = [[[NSMutableArray alloc]init]autorelease];
+        void (^doDabase)(FMDatabase *db)=^(FMDatabase *db){
+            FMResultSet *rs=[sqlCenter performSelector:handler withObject:db withObject:conditions]; 
+            while ([rs next]){  
+                [_DATA addObject:[rs resultDictionary]];
+            } 
+        };
+        [DatabasePool inDatabase:doDabase];
+        return _DATA;
     }
-    if ([handler isEqualToString:kHDRemoveTodoList]) {
-        return [self remove:recordSet];
+    NSLog(@"无效的selector");
+    return nil;
+}
+
+-(BOOL)excute:(SEL) handler recordSet:(id) recordSet{
+    if ([sqlCenter respondsToSelector:handler]) {
+        __block  BOOL state = FALSE;
+        void (^doDabase)(FMDatabase *db)=^(FMDatabase *db){
+            state=(BOOL)[sqlCenter performSelector:handler withObject:db withObject:recordSet];
+        };
+        [DatabasePool inDatabase:doDabase];
+        return state;
     }
-    if ([handler isEqualToString:kHDSyncTodoList]) {
-        return [self sync:recordSet];
-    }
+    NSLog(@"无效的selector");
     return NO;
 }
-
--(BOOL)insert:(id) data
-{
-    [self.tempList insertObjects:data
-                       atIndexes:[[NSIndexSet alloc] initWithIndex:self.tempList.count]];
-    return YES;
-}
-
--(BOOL)update:(id) data
-{
-    return YES;
-}
-
--(BOOL)remove:(id) data
-{
-    [self.tempList removeObjectsInArray:data];
-    TTDPRINT(@"call remove");
-    return YES;
-}
-
--(BOOL)sync:(id)data
-{
-    HDApprovalRecord * record = [data objectAtIndex:0];
-    NSString * storageStatus = [record valueForKey:@"storageStatus"];
-    TTDPRINT(@"%@",storageStatus);
-    if ([storageStatus isEqualToString:kHDStorageStatusInsert]) {
-        return [self insert:data];
-    }
-    if ([storageStatus isEqualToString:kHDStorageStatusUpdate]) {
-        return [self update:data];
-    }
-    if ([storageStatus isEqualToString:kHDStorageStatusRemove]) {
-        return [self remove:data];
-    }
-    return NO;
-}
+//同步方法
+//-(void)sync:(id)data
+//{}
 
 @end

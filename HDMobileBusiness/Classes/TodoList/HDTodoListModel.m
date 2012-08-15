@@ -8,6 +8,7 @@
 
 #import "HDTodoListModel.h"
 #import "ApproveDatabaseHelper.h"
+#import "HDCoreStorage.h"
 
 @interface HDTodoListModel()
 
@@ -202,16 +203,11 @@
 -(void)loadLocalRecords
 {
     //从数据库读取数据(应该放到一个业务逻辑类中)
-    //    ApproveDatabaseHelper * _dbHelper = [[ApproveDatabaseHelper alloc]init];
-    [self.dbHelper.db open];
-    
-    NSString *sql = [NSString stringWithFormat:@"select rowid, %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@ from %@ order by %@ desc",APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_ORDER_TYPE,APPROVE_PROPERTY_INSTANCE_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_COMMENT,APPROVE_PROPERTY_APPROVE_ACTION,APPROVE_PROPERTY_SCREEN_NAME,APPROVE_PROPERTY_SERVER_MESSAGE, APPROVE_PROPERTY_SUBMIT_URL,APPROVE_PROPERTY_NODE_ID,APPROVE_PROPERTY_INSTANCE_ID,APPROVE_PROPERTY_INSTANCE_PARAM,APPROVE_PROPERTY_EMPLOYEE_ID,TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_CREATION_DATE];
-    FMResultSet *resultSet = [self.dbHelper.db executeQuery:sql];
-    
+HDCoreStorage * CoreStorage = [HDCoreStorage shareStorage];
+    NSArray *_localAry = [CoreStorage  query:@selector(SQLqueryToDoList:) conditions:nil];
     NSMutableArray * _localList = [NSMutableArray array];
-    
-    while ([resultSet next]) {
-        Approve *_record = [[Approve alloc]initWithDictionary:resultSet.resultDictionary];
+    for (NSDictionary *record in _localAry) {
+        Approve *_record = [[Approve alloc]initWithDictionary:record];
         [_localList addObject:_record];
         //如果是等待状态,插入提交列表
         if ([_record.localStatus isEqualToString:@"WAITING"]) {
@@ -219,8 +215,6 @@
         }
         TT_RELEASE_SAFELY(_record);
     }
-    [resultSet close];
-    [self.dbHelper.db close];
     [_resultList addObjectsFromArray:[self orderList:_localList]];
     [self setIconBageNumber];
     //    TT_RELEASE_SAFELY(_dbHelper);
@@ -232,7 +226,7 @@
     //删除提交成功的数据
     //    ApproveDatabaseHelper * _dbHelper = [[ApproveDatabaseHelper alloc]init];
     //TODO:做成单例...
-    NSString *sql = [NSString stringWithFormat:@"delete from %@ where %@='%@';",TABLE_NAME_APPROVE_LIST,@"rowid",submitRecord.rowID];
+    NSString *sql = [NSString stringWithFormat:@"delete from %@ where %@='%@';",TABLE_NAME_APPROVE_LIST,@"rowid",submitRecord.recordID];
     
     if ([_dbHelper.db open]) {
         [_dbHelper.db executeUpdate:sql];
