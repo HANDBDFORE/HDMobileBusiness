@@ -9,7 +9,11 @@
 
 #import "HDGodXMLFactory.h"
 #import "HDGlobalMetrics.h"
-#import "HDHTTPRequestCenter.h"
+#import "HDEluneGuider/HDGuider.h"
+
+#import "HDHTTPRequest/HDHTTPRequestCenter.h"
+#import "HDHTTPRequest/HDURLRequestModel.h"
+
 #import "HDCoreStorage/HDCoreStorage.h"
 #import "HDDataConvertor/HDDataConvertor.h"
 
