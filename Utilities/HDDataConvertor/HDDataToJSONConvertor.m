@@ -10,18 +10,16 @@
 
 @implementation HDDataToJSONConvertor
 
--(id)doConvertor:(id)data error:(NSError **)error
+-(id)convert:(id)data error:(NSError **) error
 {
-    if ([data isKindOfClass:[NSData class]]) {
-        id object = [NSJSONSerialization JSONObjectWithData:data 
-                                                    options:NSJSONReadingMutableLeaves 
-                                                      error:error];
-        if (nil != object) {
-            [*error autorelease];
-            return [self doNextConvertor:object error:error];
-        }   
-    }
-    return [self errorWithData:data error:error];
+    return  [NSJSONSerialization JSONObjectWithData:data
+                                    options:NSJSONReadingMutableLeaves
+                                      error:error];
+}
+
+-(BOOL)validateData:(id)data
+{
+    return [data isKindOfClass:[NSData class]];
 }
 
 @end

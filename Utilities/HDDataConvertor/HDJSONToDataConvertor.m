@@ -10,17 +10,17 @@
 
 @implementation HDJSONToDataConvertor
 
--(id)doConvertor:(id)data error:(NSError **)error
+-(BOOL)validateData:(id)data
 {
-    if ([data isKindOfClass:[NSDictionary class]]||
-        [data isKindOfClass:[NSArray class]]){
-        id jsonData = [NSJSONSerialization dataWithJSONObject:data 
-                                                      options:0
-                                                        error:error];
-        if (nil != jsonData) {
-            return [self doNextConvertor:jsonData error:error];
-        }
-    }
-    return [self errorWithData:data error:error];
+    return [data isKindOfClass:[NSDictionary class]]||
+           [data isKindOfClass:[NSArray class]];
 }
+
+-(id)convert:(id)data error:(NSError **)error
+{
+    return [NSJSONSerialization dataWithJSONObject:data
+                                           options:0
+                                             error:error];
+}
+
 @end

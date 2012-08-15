@@ -11,5 +11,6 @@
 #import "HDGlobalMetrics.h"
 #import "HDHTTPRequestCenter.h"
 #import "HDCoreStorage/HDCoreStorage.h"
+#import "HDDataConvertor/HDDataConvertor.h"
 
 #import "ApproveDatabaseHelper.h"
