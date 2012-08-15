@@ -7,16 +7,20 @@
 //
 
 #import "HDHTTPRequestCenter.h"
-#import "HDDataConvertor.h"
 
-@implementation HDHTTPRequestCenter
+#import "HDDataConvertor.h"
+#import "HDURLCenter.h"
 
 static HDHTTPRequestCenter * _requestCenter = nil;
 
-@synthesize lastRequestTime = _lastRequestTime;
-@synthesize LoginTimes = _LoginTimes;
+@implementation HDHTTPRequestCenter
+@synthesize urlCenter = _urlCenter;
 
-@synthesize isTimeOut = _isTimeOut;
+- (void)dealloc
+{
+    TT_RELEASE_CF_SAFELY(_urlCenter);
+    [super dealloc];
+}
 
 +(id)shareHTTPRequestCenter
 {
@@ -52,9 +56,7 @@ static HDHTTPRequestCenter * _requestCenter = nil;
 {
     self = [super init];
     if (self) {
-        _lastRequestTime =[[NSDate dateWithTimeIntervalSinceNow:0] retain];
-        _LoginTimes = 0;
-        _isTimeOut = NO;
+        _urlCenter = [[HDURLCenter alloc]init];
         [[TTURLRequestQueue mainQueue]setMaxContentLength:0];
     }
     return self;
@@ -70,43 +72,36 @@ static HDHTTPRequestCenter * _requestCenter = nil;
     return self;
 }
 
--(void)dealloc
++(id) sharedURLCenter
 {
-    TT_RELEASE_SAFELY(_lastRequestTime);
-    [super dealloc];
+    return [[HDHTTPRequestCenter shareHTTPRequestCenter] urlCenter];
 }
 
 #pragma -mark create request use ttRequest
-
--(NSError *)requestWithRequestMap:(HDRequestMap *)map
+-(TTURLRequest *)requestWithRequestMap:(HDRequestMap *) map
+                                 error:(NSError **) error
 {
     //setting url
     NSString * urlPath = nil;
     if (!map.urlName) {
         urlPath =  map.requestPath;
     }else {
-        urlPath = [HDURLCenter requestURLWithKey:map.urlName 
+        urlPath = [_urlCenter requestURLWithKey:map.urlName
                                            query:map.urlParameters];
     }
     //setting post data
-    NSError * error = nil;
-    //    id<HDDataConvertor> convertor = 
-    //    [HDDataConvertorCenter convertorChainWithURLName:map.urlName 
-    //                                         type:HDDataRequestConvertor];
-    //    HDDataAuroraRequestConvertor 
+    id<HDDataConvertor> convertor =
+    [[[HDAuroraRequestConvertor alloc]initWithNextConvertor:
+      [[[HDJSONToDataConvertor alloc]initWithNextConvertor:
+        [[[HDDataToStringConvertor alloc]init]autorelease]
+        ]autorelease]
+      ]autorelease];
     
-    HDJSONToDataConvertor * convert = [[[HDJSONToDataConvertor alloc]init] autorelease];
-    id<HDDataConvertor> convertor = [[[HDDataAuroraRequestConvertor alloc]initWithNextConvertor:convert] autorelease];
+    id postParameter = [convertor doConvertor:map.postData error:error];
     
-    id postParameter = [convertor doConvertor:map.postData error:&error];
-    
-    
-    if (nil != error) {
-        return error;
-    }else {
-        //ask god
+    if (nil == *(error)) {
+        //create request
         TTURLRequest * request = [TTURLRequest request];
-        //
         request.urlPath = urlPath;
         [request.parameters setObject:postParameter forKey:@"_request_data"];
         request.cachePolicy = map.cachePolicy;
@@ -117,33 +112,32 @@ static HDHTTPRequestCenter * _requestCenter = nil;
         for (id delegate in map.delegates) {
             [request.delegates addObject:delegate];
         }
-        [request send];
-    }  
+        return request;
+    }
     return nil;
 }
 
-+(HDRequestResultMap *)resultMapWithRequest:(id)request
+-(HDResponseMap *)responseMapWithRequest:(TTURLRequest *)request
+                                        error:(NSError **) error
 {
-    //根据传入的request解析数据,返回结果
-    if ([request isKindOfClass:[TTURLRequest class]]) {
-        TTURLRequest * theRequest = request;
-        TTURLDataResponse * response = theRequest.response;
-        
-        // get filter 
-        id<HDDataConvertor> convertor = 
-        [HDDataConvertorCenter convertorChainWithURLName:[theRequest.userInfo valueForKeyPath:@"urlName"] 
-                                                    type:HDDataResponseConvertor];
-        NSError * convertorError = nil;
-        id result = [convertor doConvertor:response.data error:&convertorError];
-        
+    TTURLDataResponse * response = request.response;
+    
+    // get convertor
+    id<HDDataConvertor> convertor =
+    [[[HDDataToJSONConvertor alloc]initWithNextConvertor:
+      [[[HDAuroraResponseConvertor alloc]init]autorelease]
+      ]autorelease];
+    
+    id result = [convertor doConvertor:response.data error:error];
+    
+    if(nil == *(error)){
         //setting result map
-        HDRequestResultMap * resultMap = [HDRequestResultMap map];
-        resultMap.userInfo = theRequest.userInfo;
-        resultMap.urlPath = theRequest.urlPath;
-        resultMap.error = convertorError;
-        resultMap.result = result;
-        
-        return resultMap;
+        HDResponseMap * responseMap = [HDResponseMap map];
+        responseMap.userInfo = request.userInfo;
+        responseMap.urlPath = request.urlPath;
+        responseMap.error = *(error);
+        responseMap.result = result;
+        return responseMap;
     }
     return nil;
 }

@@ -7,13 +7,14 @@
 //
 
 #import "HDRequestMap.h"
+#import "HDResponseMap.h"
 
 @interface HDURLRequestModel : TTURLRequestModel
 
-//传入请求map开始发送请求
+//传入请求map开始发送请求,如果url,数据转换,发生错误 showError
 -(void)requestWithMap:(HDRequestMap *) map;
 
 //子类实现该方法获取转换后的数据
--(void)requestResultMap:(HDRequestResultMap *)map;
+-(void)requestResultMap:(HDResponseMap *)map;
 
 @end

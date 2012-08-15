@@ -7,16 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TouchXML.h"
 
 @interface HDURLCenter : NSObject
 
-+(id) sharedURLCenter;
-
 -(NSString *) baseURLPath;
 
-+(NSString *) requestURLWithKey:(id)key query:(NSDictionary *)query;
+-(NSString *) requestURLWithKey:(id)key query:(NSDictionary *)query;
 
-+(NSString *) requestURLWithKey:(id) key; 
+-(NSString *) requestURLWithKey:(id)key;
 
 @end
