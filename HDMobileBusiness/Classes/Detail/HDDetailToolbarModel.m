@@ -47,7 +47,7 @@
     }
 }
 
--(void)requestResultMap:(HDRequestResultMap *)map
+-(void)requestResultMap:(HDResponseMap *)map
 {
     self.resultList = map.result;
     [self saveTheActions];

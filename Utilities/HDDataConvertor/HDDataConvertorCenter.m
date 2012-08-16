@@ -15,11 +15,11 @@ static NSString *kJSONToDataConvertor = @"HDJSONToDataConvertor";
 static NSString *kDataToJSONConvertor = @"HDDataToJSONConvertor";
 
 //aurora
-static NSString *kDataAuroraRequestConvertor = @"HDDataAuroraRequestConvertor";
-static NSString *kDataAuroraResponseConvertor = @"HDDataAuroraResponseConvertor";
+static NSString *kDataAuroraRequestConvertor = @"HDAuroraRequestConvertor";
+static NSString *kDataAuroraResponseConvertor = @"HDAuroraResponseConvertor";
 
 //field mapping
-static NSString *kDataFieldRequestConvertor = @"HDDataFieldRequestConvertor";
+static NSString *kDataFieldRequestConvertor = @"HDFieldMapConvertor";
 
 static HDDataConvertorCenter * _convertorCenter = nil;
 
@@ -129,7 +129,7 @@ static HDDataConvertorCenter * _convertorCenter = nil;
         HDBaseConvertor * nextConvertor = [[[NSClassFromString(filterClassName) alloc]initWithNextConvertor:convertor]autorelease];
         if ([filterClassName isEqualToString:kDataFieldRequestConvertor]) {
             //set fieldDictionary
-            [(HDFieldMapConvertor *)nextConvertor setFiledDictionary:dictionary];
+            [(HDFieldMapConvertor *)nextConvertor setFieldMap:dictionary];
         }
         convertor = nextConvertor;
     }

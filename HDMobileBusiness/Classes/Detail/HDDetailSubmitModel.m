@@ -32,7 +32,7 @@
 
 -(void)submit
 {
-    [self.submitData setValue:[HDURLCenter requestURLWithKey:kSubmitPath] forKey:@"submitUrl"];
+    [self.submitData setValue:[[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kSubmitPath query:nil] forKey:@"submitUrl"];
     [self.submitData setValue:[self.actionID stringValue] forKey:@"action"];
     [self.submitData setValue:self.comment forKey:@"comment"];
     

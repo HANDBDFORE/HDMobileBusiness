@@ -13,8 +13,6 @@
 
 static HDGuider * _globalGuider = nil;
 
-static NSString * kViewControllerSign = @"open://vc/";
-
 typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
 
 @implementation HDGuider
@@ -22,10 +20,10 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
 /*
  *跳转到指定路径的视图控制器,路径以 open://vc/ 开头后接控制器配置节点的key
  */
--(void) openKeyPath:(NSString *) path query:(NSDictionary *)query;
+-(void) guideToKeyPath:(NSString *) path query:(NSDictionary *)query;
 { 
     [self guideControllerWithKeyPath:path 
-                               WithBlock:^UIViewController *(HDGuiderMap *map){
+                               withBlock:^UIViewController *(HDGuiderMap *map){
                                    return [[TTNavigator navigator]openURLAction:[[TTURLAction actionWithURLPath:map.urlPath]applyQuery:query]];                               }];       
 }
 
@@ -35,9 +33,10 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
 -(UIViewController *)controllerWithKeyPath:(NSString *) keyPath
                                      query:(NSDictionary *)query
 {
+    
     return [self guideControllerWithKeyPath:keyPath 
-                               WithBlock:^UIViewController *(HDGuiderMap *map){
-                                   return [[TTNavigator navigator]viewControllerForURL:map.urlPath];
+                               withBlock:^UIViewController *(HDGuiderMap *map){
+                                   return [[TTNavigator navigator]viewControllerForURL:map.urlPath query:query];
                                }];
 }
 
@@ -45,7 +44,7 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
  *根据block,打开或创建一个controller,根据配置设置这个controller
  */
 -(UIViewController *)guideControllerWithKeyPath:(NSString *) path
-                                   WithBlock:(openControllerPathBlock) block
+                                      withBlock:(openControllerPathBlock) block
 {
     HDGuiderMap * guiderMap = nil;
     if ((guiderMap = [self guiderMapWithPath:path])) {
@@ -68,33 +67,10 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     if (!path) {
         return nil;
     }
-    //get pathKey
-    NSString * pathKey =[self pathKeyWithPath:path];    
-    //read config
-    return [[HDGodXMLFactory shareBeanFactory]guiderMapWithPathKey:pathKey];
-}
-
-/*
- *根据path获取对应的key,可以用于匹配配置文件对应的节点
- */
--(NSString *) pathKeyWithPath:(NSString *) path
-{
-    if ([path hasPrefix:kViewControllerSign]) {
-        NSRange range = [path rangeOfString:kViewControllerSign];
-        return [path substringFromIndex:range.length];
-    }
-    
-    return @"empty";
-}
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        TTURLMap * map = [TTNavigator navigator].URLMap;
-        [map from:@"open://vc/(gotoPath:)" toSharedViewController:self selector:@selector(gotoPath:query:)];
-    }
-    return self;
+    //TODO:这里考虑从god生成map,想配什么就在map里加吧...
+    HDGuiderMap * map = [[[HDGuiderMap alloc]init] autorelease];
+    map.urlPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:path];
+    return map;
 }
 
 +(id)guider
@@ -136,7 +112,5 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
 {
     return self;
 }
-
-
 
 @end
