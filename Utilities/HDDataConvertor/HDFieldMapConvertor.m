@@ -9,7 +9,7 @@
 #import "HDFieldMapConvertor.h"
 
 @implementation HDFieldMapConvertor
-@synthesize fieldMap = _fieldMap;
+@synthesize fieldMapData = _fieldMapData;
 
 -(id)convert:(id)data error:(NSError **)error
 {
@@ -28,23 +28,35 @@
 
 -(NSDictionary *)mapping:(NSDictionary *)mappingData
 {
-    //solution 1:要求强制输入所有mapping字段,没有mapping的字段将被遗弃
-//    NSArray * keys =  [_fieldMap allKeys];
-//    NSArray * objects = [mappingData objectsForKeys:keys notFoundMarker:@""];
-//    NSDictionary * result = [NSDictionary dictionaryWithObjects:objects forKeys:[_fieldMap allValues]];
-//    return result;
-    
-    //solution 2:允许只配置部分字段,没有mapping的字段将不进行map,仍然保留原有的key
     NSMutableDictionary * mapDictionary = [NSMutableDictionary dictionary];
+    
     NSArray * keys = [mappingData allKeys];
     for (NSString * key in keys) {
-        if ([_fieldMap valueForKey:key]) {
-            [mapDictionary setValue:[mappingData valueForKey:key] forKey:[_fieldMap valueForKey:key]];
+        if (nil != [self findKeyForMapTo:key]) {
+            [mapDictionary setValue:[mappingData valueForKey:key]
+                             forKey:[self findKeyForMapTo:key]];
         }else{
-            [mapDictionary setValue:[mappingData valueForKey:key] forKey:key];
+            [mapDictionary setValue:[mappingData valueForKey:key]
+                             forKey:key];
         }
     }
+//        if ([_fieldMapData valueForKey:key]) {
+//            [mapDictionary setValue:[mappingData valueForKey:key] forKey:[_fieldMapData valueForKey:key]];
+//        }else{
+//            [mapDictionary setValue:[mappingData valueForKey:key] forKey:key];
+//        }
+//    }
     return mapDictionary;
+}
+
+-(NSString *) findKeyForMapTo:(NSString *) mapFromKey
+{
+    for (NSDictionary * mapRecord in _fieldMapData) {
+        if ([[mapRecord valueForKey:kMapFrom] isEqualToString:mapFromKey]) {
+            return [mapRecord valueForKey:kMapTo];
+        }
+    }
+    return nil;
 }
 
 @end
