@@ -203,8 +203,7 @@
 -(void)loadLocalRecords
 {
     //从数据库读取数据(应该放到一个业务逻辑类中)
-HDCoreStorage * CoreStorage = [HDCoreStorage shareStorage];
-    NSArray *_localAry = [CoreStorage  query:@selector(SQLqueryToDoList:) conditions:nil];
+    NSArray *_localAry = [[HDCoreStorage shareStorage]  query:@selector(SQLqueryToDoList:) conditions:nil];
     NSMutableArray * _localList = [NSMutableArray array];
     for (NSDictionary *record in _localAry) {
         Approve *_record = [[Approve alloc]initWithDictionary:record];
@@ -226,13 +225,8 @@ HDCoreStorage * CoreStorage = [HDCoreStorage shareStorage];
     //删除提交成功的数据
     //    ApproveDatabaseHelper * _dbHelper = [[ApproveDatabaseHelper alloc]init];
     //TODO:做成单例...
-    NSString *sql = [NSString stringWithFormat:@"delete from %@ where %@='%@';",TABLE_NAME_APPROVE_LIST,@"rowid",submitRecord.recordID];
-    
-    if ([_dbHelper.db open]) {
-        [_dbHelper.db executeUpdate:sql];
-        [_dbHelper.db close];
-    }
-    //    TT_RELEASE_SAFELY(_dbHelper);
+    NSArray *ary = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:submitRecord.recordID forKey:@"recordid"]];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveSubmitedRecord:recordSet:) recordSet:ary];
 }
 
 -(void)updateSubmitRecord:(Approve *) submitRecord
