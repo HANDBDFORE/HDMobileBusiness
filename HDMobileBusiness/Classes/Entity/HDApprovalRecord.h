@@ -66,7 +66,6 @@ typedef enum{
  */
 @property(nonatomic,copy) NSString * docPageUrl;
 
-//TODO:催办的处理,状态和recordStatus什么关系
 @property(nonatomic) BOOL isLate;
 
 @end

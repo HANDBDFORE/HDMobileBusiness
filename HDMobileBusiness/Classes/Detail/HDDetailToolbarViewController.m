@@ -51,7 +51,7 @@
 //        self.employeeURLPath = [HDURLCenter requestURLWithKey:kEmployeeInfoWebPagePath query:[NSDictionary dictionaryWithObject:self.employeeID forKey:@"employeeID"]];
         
 //=======
-        self.employeeURLPath = [HDURLCenter requestURLWithKey:kEmployeeInfoWebPagePath query:[NSDictionary dictionaryWithObjectsAndKeys:self.employeeID,@"employeeId",self.instanceID,@"instanceId",nil]];
+        self.employeeURLPath = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kEmployeeInfoWebPagePath query:[NSDictionary dictionaryWithObjectsAndKeys:self.employeeID,@"employeeId",self.instanceID,@"instanceId",nil]];
         //dictionaryWithObject:self.employeeID forKey:@"employeeID"]];
 //        if (![_approve.localStatus isEqualToString:@"WAITING"]&&
 //                 ![_approve.localStatus isEqualToString:@"DIFFERENT"]) {
@@ -60,7 +60,7 @@
 //>>>>>>> 317aa32e37232cc05bd1b6543950d54b78df234c
         NSDictionary * urlQuery = [_approve dictionaryWithValuesForKeys:[NSArray arrayWithObjects:@"docPageUrl",@"instanceId", nil]];
         
-        self.webPageURLPath = [HDURLCenter requestURLWithKey:kApproveDetailWebPagePath query:urlQuery];
+        self.webPageURLPath = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kApproveDetailWebPagePath query:urlQuery];
         TT_RELEASE_SAFELY(_approve);
     }
     return self;

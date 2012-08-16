@@ -118,8 +118,8 @@
 //toolBar button pressed
 -(void)toolBarButtonPressed: (id)sender
 {    
-    if ([self.model respondsToSelector:@selector(setBatchAction:)]) {
-        [self.model performSelector:@selector(setBatchAction:)
+    if ([self.model respondsToSelector:@selector(setSubmitAction:)]) {
+        [self.model performSelector:@selector(setSubmitAction:)
                          withObject:[self createBatchAction:[sender tag]]];
     }
     [self showPostView];

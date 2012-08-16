@@ -39,7 +39,7 @@
     [self requestWithMap:map];
 }
 
--(void)requestResultMap:(HDRequestResultMap *)map
+-(void)requestResultMap:(HDResponseMap *)map
 {
     if (0 < [[[map.result lastObject] allKeys]count]) { 
         //TODO:这里考虑不转化为对象

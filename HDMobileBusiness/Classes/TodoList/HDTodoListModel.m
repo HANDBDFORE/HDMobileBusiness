@@ -17,19 +17,20 @@
 @end
 
 @implementation HDTodoListModel
-@synthesize resultList = _resultList,submitList = _submitList,searchResultList = _searchResultList;
+@synthesize resultList = _resultList,submitList = _submitList;
+//,searchResultList = _searchResultList;
 
 @synthesize searchText = _searchText;
-@synthesize batchAction = _batchAction;
+@synthesize submitAction = _submitAction;
 @synthesize dbHelper = _dbHelper;
 
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_resultList);
     TT_RELEASE_SAFELY(_submitList);
-    TT_RELEASE_SAFELY(_batchAction);
+    TT_RELEASE_SAFELY(_submitAction);
     TT_RELEASE_SAFELY(_dbHelper);
-    TT_RELEASE_SAFELY(_searchResultList);
+//    TT_RELEASE_SAFELY(_searchResultList);
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"submitNotification" object:nil];
     [super dealloc];
 }
@@ -40,7 +41,7 @@
     if (self) {
         _submitList = [[NSMutableArray alloc] init];
         _resultList = [[NSMutableArray alloc] init];
-        _searchResultList = [[NSMutableArray alloc]init];
+//        _searchResultList = [[NSMutableArray alloc]init];
         _flags.isFirstLoad = YES;
         _dbHelper = [[ApproveDatabaseHelper alloc]init];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveNotification:) name:@"submitNotification" object:nil];
@@ -77,7 +78,8 @@
 //因为服务端返回错误状态状态时,需要额外的流程,不能使用 requestResultMap
 -(void)requestDidFinishLoad:(TTURLRequest *)request
 {
-    HDRequestResultMap * resultMap = [HDHTTPRequestCenter resultMapWithRequest:request];
+    NSError * error = nil;
+    HDResponseMap * resultMap = [[HDHTTPRequestCenter shareHTTPRequestCenter] responseMapWithRequest:request error:&error];
     //提交状态
     if (_flags.isSubmitingData) {
         [self performSelector:@selector(didSubmitRecord:) withObject:resultMap afterDelay:0.6];
@@ -106,16 +108,16 @@
     _flags.isSubmitingData = NO;
 }
 
--(void)didSubmitRecord:(HDRequestResultMap*) resultMap
+-(void)didSubmitRecord:(HDResponseMap*) resultMap
 {
     TT_RELEASE_SAFELY(_loadingRequest);
     Approve * submitObject = (Approve *) [resultMap.userInfo objectForKey:@"postObject"];
     NSUInteger index;
-    if ([self isSearching]) {
-        index = [self.searchResultList indexOfObject:submitObject];
-    }else {
+//    if ([self isSearching]) {
+//        index = [self.searchResultList indexOfObject:submitObject];
+//    }else {
         index = [self.resultList indexOfObject:submitObject];
-    }
+//    }
     [_submitList removeObject:submitObject];
     _flags.isSubmitingData = (_submitList.count > 0);
     //////////////////////////////////////////
@@ -129,7 +131,7 @@
     }else {
         [self removeSubmitedRecord:submitObject];
         [_resultList removeObject:submitObject];
-        [_searchResultList removeObject:submitObject];
+//        [_searchResultList removeObject:submitObject];
         [self setIconBageNumber];
         [self didDeleteObject:submitObject
                   atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
@@ -158,15 +160,15 @@
         
         Approve * submitObject = nil;
         
-        if ([self isSearching]) {
-            submitObject = [self.searchResultList objectAtIndex:indexPath.row];
-        }else {
+//        if ([self isSearching]) {
+//            submitObject = [self.searchResultList objectAtIndex:indexPath.row];
+//        }else {
             submitObject = [self.resultList objectAtIndex:indexPath.row];
-        }
+//        }
         
         submitObject.comment = comment;
-        submitObject.action = self.batchAction;
-        submitObject.submitUrl = [HDURLCenter requestURLWithKey:kApproveListBatchSubmitPath];
+        submitObject.action = self.submitAction;
+        submitObject.submitUrl = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kApproveListBatchSubmitPath query:nil];
         [self setObjectForSubmit:submitObject];
     }
     //设置超时状态,进入shouldload状态
@@ -382,10 +384,12 @@
 {
     //    TTDPRINT(@"search");
     self.searchText = text;
-    [_searchResultList removeAllObjects];
+//    [_searchResultList removeAllObjects];
+    [_resultList removeAllObjects];
+    [self loadLocalRecords];
     if (self.searchText.length) {
         //        [self fakeSearch];
-        [_searchResultList addObjectsFromArray:[self createSearchResult]];
+        [_resultList addObjectsFromArray:[self createSearchResult]];
         [self didFinishLoad];
     } else {
         [self didChange];

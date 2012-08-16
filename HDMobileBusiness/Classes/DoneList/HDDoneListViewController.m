@@ -45,9 +45,9 @@
     //    //get webpage url
     NSDictionary * urlQuery = [_approve dictionaryWithValuesForKeys:[NSArray arrayWithObjects:@"docPageUrl",@"instanceId", nil]];
     
-    NSString * webPageUrl = [HDURLCenter requestURLWithKey:kTodoListDetailWebPagePath query:urlQuery];
+    NSString * webPageUrl = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kTodoListDetailWebPagePath query:urlQuery];
     
-    NSString * employeeURLPath = [HDURLCenter requestURLWithKey:kUserInfoWebPagePath query:[NSDictionary dictionaryWithObject:_approve.employeeId forKey:@"employeeID"]];
+    NSString * employeeURLPath = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kUserInfoWebPagePath query:[NSDictionary dictionaryWithObject:_approve.employeeId forKey:@"employeeID"]];
     
     [viewController setValue:webPageUrl forKeyPath:@"webPageURLPath"];
     

@@ -63,7 +63,7 @@ static NSString *APPROVE_PROPERTY_EMPLOYEE_ID = @"employee_id";
 @interface Approve : NSObject
 
 @property(retain ,nonatomic) NSNumber *rowID;//本地数据主键
-@property(retain ,nonatomic) NSNumber *workflowID;//TODO:useless
+@property(retain ,nonatomic) NSNumber *workflowID;//useless
 @property(retain ,nonatomic) NSNumber *recordID;
 @property(retain ,nonatomic) NSNumber *nodeId;//useless
 @property(retain ,nonatomic) NSNumber *instanceId;

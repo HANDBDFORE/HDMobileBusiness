@@ -17,7 +17,7 @@ static NSString * kFunctinoListQueryPath = @"MORE_FUNCTIONS_QUERY";
 
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
-    if (!![HDURLCenter requestURLWithKey:kFunctinoListQueryPath]) {
+    if (!![[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kFunctinoListQueryPath query:nil]) {
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
         map.urlName = kFunctinoListQueryPath;
         
@@ -30,7 +30,7 @@ static NSString * kFunctinoListQueryPath = @"MORE_FUNCTIONS_QUERY";
     }        
 }
 
--(void)requestResultMap:(HDRequestResultMap *)map
+-(void)requestResultMap:(HDResponseMap *)map
 {
     self.resultList = map.result;
 }

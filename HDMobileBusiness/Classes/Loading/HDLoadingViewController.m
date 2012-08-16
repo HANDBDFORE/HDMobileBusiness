@@ -10,8 +10,8 @@
 #import "HDClassLoader.h"
 #import "HDResourceLoader.h"
 
-NSString * LoginPathName =@"HD_LOGIN_VC_PATH";
-NSString * MainPathName =@"HD_MAIN_VC_PATH";
+static NSString * kLoginPathName = @"HD_LOGIN_VC_PATH";
+static NSString * kMainPathName = @"HD_MAIN_VC_PATH";
 
 @interface HDLoadingViewController ()
 
@@ -34,7 +34,7 @@ NSString * MainPathName =@"HD_MAIN_VC_PATH";
         [_retryButton setUserInteractionEnabled:YES];
     }else {
         //开始发请求  
-        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-milk.xml",[[HDURLCenter sharedURLCenter]baseURLPath]];
+        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-sprite.xml",[[HDHTTPRequestCenter sharedURLCenter] baseURLPath]];
         NSURL *url = [NSURL URLWithString:fileUrl];
         NSMutableURLRequest *postRequest = [[[NSMutableURLRequest alloc]initWithURL:url]autorelease];
         [postRequest setHTTPMethod:@"GET"];
@@ -121,7 +121,7 @@ NSString * MainPathName =@"HD_MAIN_VC_PATH";
                             //最终状态
                             dispatch_async(dispatch_get_main_queue(), ^{     
                             [self loadClass];
-                            [self loadResource];
+//                            [self loadResource];
                             [self dismissModalViewControllerAnimated:NO];
                             [self showLoginView];
                             });
@@ -188,8 +188,7 @@ NSString * MainPathName =@"HD_MAIN_VC_PATH";
     HDResourceLoader * loader = [HDResourceLoader shareLoader];
     HDResourceMap * map = [[[HDResourceMap alloc]init]autorelease];
     map.resourceName = @"login_background.png";
-    map.resourceURL = [HDURLCenter requestURLWithKey:@"LOGIN_BACKGROUND_IMAGE_PATH"];
-    
+    map.resourceURL = @"LOGIN_BACKGROUND_IMAGE_PATH";    
     loader.resourceList = [NSArray arrayWithObject:map];
     [loader startLoad];
 }
@@ -227,13 +226,17 @@ NSString * MainPathName =@"HD_MAIN_VC_PATH";
 {
     TTNavigator* navigator = [TTNavigator navigator];
     [navigator removeAllViewControllers];
-    NSString * kMainViewControllerPathPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:MainPathName];
+
+    [[HDGuider guider]guideToKeyPath:kMainPathName query:nil];
+    [[HDGuider guider]guideToKeyPath:kLoginPathName query:nil];
     
-    NSString * kLoginViewControllerPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:LoginPathName];
-    
-        [navigator openURLAction:[TTURLAction actionWithURLPath:kMainViewControllerPathPath]];
-        
-        [navigator openURLAction:[TTURLAction actionWithURLPath:kLoginViewControllerPath]];
+//    NSString * kMainViewControllerPathPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:MainPathName];
+//    
+//    NSString * kLoginViewControllerPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:LoginPathName];
+//    
+//        [navigator openURLAction:[TTURLAction actionWithURLPath:kMainViewControllerPathPath]];
+//        
+//        [navigator openURLAction:[TTURLAction actionWithURLPath:kLoginViewControllerPath]];
 }
 
 #pragma mark - life cycle
