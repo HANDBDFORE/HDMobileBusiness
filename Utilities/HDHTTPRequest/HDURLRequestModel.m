@@ -13,26 +13,35 @@
 
 -(void)requestWithMap:(HDRequestMap *) map
 {
-    NSError * error = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithRequestMap:map];
-
-    if (nil != error) {
+    NSError * error = nil;
+    TTURLRequest * request =
+    [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithRequestMap:map
+                                                                  error:&error];
+    if (!error && nil != request) {
+        [request send];
+    }else{
         [self didFailLoadWithError:error];
     }
 }
 
 -(void)requestDidFinishLoad:(TTURLRequest *)request
 {
-    HDRequestResultMap * resultMap = [HDHTTPRequestCenter resultMapWithRequest:request];
-    if (!resultMap.result) {
-        [super request:request didFailLoadWithError:resultMap.error];
-    }else {
-        [self requestResultMap:resultMap];
-        [super requestDidFinishLoad:request];          
+    NSError * error = nil;
+    HDResponseMap * responseMap =
+    [[HDHTTPRequestCenter shareHTTPRequestCenter] responseMapWithRequest:request
+                                                                   error:&error];
+    if (nil!=error) {
+        //根据错误状态判断是否走错误流程
+//        if ([error.localizedFailureReason isEqualToString:@""]) {
+//            
+//        }
+        [super request:request didFailLoadWithError:error];
+    }else{
+        [self requestResultMap:responseMap];
+        [super requestDidFinishLoad:request];
     }
 }
 
--(void)requestResultMap:(HDRequestResultMap *)map
-{
-}
+-(void)requestResultMap:(HDResponseMap *)map{}
 
 @end

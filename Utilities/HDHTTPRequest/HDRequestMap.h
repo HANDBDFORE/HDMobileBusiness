@@ -21,10 +21,10 @@
 @property (nonatomic,retain) id postData;
 
 //post bean,if use bean to be the post parameter
-@property (nonatomic,retain) id postBean;
+//@property (nonatomic,retain) id postBean;
 
 //sign the request,three20 dose not has it.it appears in ASIHTTPRequest
-@property (nonatomic,assign) NSUInteger tag;
+//@property (nonatomic,assign) NSUInteger tag;
 
 //the delegate list
 @property (nonatomic,readonly) NSMutableArray *delegates;
@@ -50,22 +50,6 @@
 
 +(id)mapWithDelegate:(id) delegate;
 
--(id)initWithDelegate:(id) delegate;
-
-@end
-
-@interface HDRequestResultMap: NSObject
-
-@property(nonatomic,retain) id result;
-
-@property(nonatomic,retain) NSError * error;
-
-@property (nonatomic, retain) NSDictionary * userInfo;
-//sign the request
-@property (nonatomic,assign) NSUInteger tag;
-
-@property (nonatomic,copy) NSString * urlPath;
-
-+(id)map;
+//-(id)initWithDelegate:(id) delegate;
 
 @end

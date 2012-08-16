@@ -101,7 +101,23 @@
     //////////////////////////////////////////////////////////////////////////////////////
     //FieldMapConvertor
     HDFieldMapConvertor * mapConvert = [[[HDFieldMapConvertor alloc]init]autorelease];
-    [mapConvert setFieldMap:@{ @"number_field" : @"number_col",@"string_field" : @"string_col",@"date_field" : @"date_col"}];
+    
+   NSArray * mapList =  [NSArray arrayWithObjects:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      @"number_field",kMapFrom,
+      @"number_col",kMapTo,
+      nil],
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      @"string_field",kMapFrom,
+      @"string_col",kMapTo,
+      nil],
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      @"date_field",kMapFrom,
+      @"date_col",kMapTo,
+      nil],
+     nil];
+    
+    [mapConvert setFieldMapData:mapList];
     id numberValue = [singleRes valueForKey:@"number_field"];    
     singleRes = [mapConvert doConvertor:singleRes error:&error];
     STAssertEqualObjects([singleRes valueForKey:@"number_col"], numberValue, @"key change faild");

@@ -14,8 +14,8 @@
 @synthesize requestPath = _requestPath;
 @synthesize urlParameters = _urlParameters;
 @synthesize postData = _postData;
-@synthesize postBean = _postBean;
-@synthesize tag = _tag;
+//@synthesize postBean = _postBean;
+//@synthesize tag = _tag;
 @synthesize delegates = _delegates;
 
 @synthesize httpMethod = _httpMethod;
@@ -30,7 +30,7 @@
     TT_RELEASE_SAFELY(_urlName);
     TT_RELEASE_SAFELY(_urlParameters);
     TT_RELEASE_SAFELY(_postData);
-    TT_RELEASE_SAFELY(_postBean);
+//    TT_RELEASE_SAFELY(_postBean);
     TT_RELEASE_SAFELY(_delegates);
     TT_RELEASE_SAFELY(_httpMethod);
     TT_RELEASE_SAFELY(_response);
@@ -80,26 +80,26 @@
 }
 @end
 
-@implementation HDRequestResultMap
+//@implementation HDRequestResultMap
+//
+//@synthesize result = _result;
+//@synthesize urlPath = _urlPath;
+////@synthesize tag = _tag;
+//@synthesize userInfo = _userInfo;
+//@synthesize error = _error;
+//
+//-(void)dealloc
+//{
+//    TT_RELEASE_SAFELY(_result);
+//    TT_RELEASE_SAFELY(_urlPath);
+//    TT_RELEASE_SAFELY(_userInfo);
+//    TT_RELEASE_SAFELY(_error);
+//    [super dealloc];
+//}
+//
+//+(id)map
+//{
+//      return [[[HDRequestResultMap alloc]init]autorelease];
+//}
 
-@synthesize result = _result;
-@synthesize urlPath = _urlPath;
-@synthesize tag = _tag;
-@synthesize userInfo = _userInfo;
-@synthesize error = _error;
-
--(void)dealloc
-{
-    TT_RELEASE_SAFELY(_result);
-    TT_RELEASE_SAFELY(_urlPath);
-    TT_RELEASE_SAFELY(_userInfo);
-    TT_RELEASE_SAFELY(_error);
-    [super dealloc];
-}
-
-+(id)map
-{
-      return [[[HDRequestResultMap alloc]init]autorelease];
-}
-
-@end
+//@end

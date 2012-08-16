@@ -7,7 +7,7 @@
 //
 
 #import "HDURLCenter.h"
-static HDURLCenter * _URLCenter = nil;
+#import "TouchXML.h"
 
 @interface HDURLCenter()
 
@@ -25,28 +25,13 @@ static HDURLCenter * _URLCenter = nil;
     [super dealloc];
 }
 
-+(id) sharedURLCenter
+-(NSString *) requestURLWithKey:(id)key
 {
-    @synchronized(self){
-        if (_URLCenter == nil) {
-            _URLCenter = [[self alloc] init];
-        }
-    }
-    return  _URLCenter;
+   return [self requestURLWithKey:key query:nil];
 }
 
-+(id) allocWithZone:(NSZone *)zone{
-    @synchronized(self){
-        if (_URLCenter == nil) {
-            _URLCenter = [super allocWithZone:zone];
-            return  _URLCenter;
-        }
-    }
-    return nil;
-}
-
--(NSString *) urlWithKey:(id)key query:(NSDictionary *)query
-{ 
+-(NSString *) requestURLWithKey:(id)key query:(NSDictionary *)query
+{
     NSError *error = nil;
     NSString *url = nil;
     NSString *xpath = [NSString stringWithFormat:@"/backend-config/urls/url[@name='%@']",key];
@@ -102,13 +87,4 @@ static HDURLCenter * _URLCenter = nil;
     return self.basePath;
 }
 
-+(NSString *) requestURLWithKey:(id)key
-{
-    return [[HDURLCenter sharedURLCenter] urlWithKey:key query:nil];
-}
-
-+(NSString *) requestURLWithKey:(id)key query:(NSDictionary *)query
-{
-    return [[HDURLCenter sharedURLCenter] urlWithKey:key query:query];
-}
 @end

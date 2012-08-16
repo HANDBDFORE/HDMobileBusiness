@@ -12,21 +12,24 @@
  */
 
 #import "HDRequestMap.h"
-#import "HDRequestGetMap.h"
+#import "HDResponseMap.h"
+
 #import "HDURLCenter.h"
-#import "HDURLRequestModel.h"
 
 @interface HDHTTPRequestCenter : NSObject
 
-//最后一次请求时间
-@property (nonatomic,readonly) NSDate * lastRequestTime;
-@property (nonatomic,readonly) NSUInteger LoginTimes;
-@property (nonatomic,readonly) BOOL isTimeOut;
+@property(nonatomic,readonly) HDURLCenter * urlCenter;
 
 +(id)shareHTTPRequestCenter;
 
--(NSError *)requestWithRequestMap:(HDRequestMap *)map;
++(id)sharedURLCenter;
 
-+(HDRequestResultMap *)resultMapWithRequest:(id) request;
+//根据map创建request对象
+-(TTURLRequest *)requestWithRequestMap:(HDRequestMap *) map
+                     error:(NSError **) error;
+
+//根据reuqest对象,创建相应map
+-(HDResponseMap *)responseMapWithRequest:(TTURLRequest *)request
+                     error:(NSError **) error;
 
 @end
