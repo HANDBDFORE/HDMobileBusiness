@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+/*
+ *通过前缀+keyName可以通过Guider在视图控制器跳转时,加载配置项.
+ */
+//static NSString * kOpenViewController = @"open://vc/";
+
 @interface HDGuider : NSObject
 
 +(id)guider;
@@ -17,7 +22,7 @@
  *使用 [TTNavigator navigator]openURLAction: 打开
  */
 
--(void)openKeyPath:(NSString *) path query:(NSDictionary *)query;
+-(void)guideToKeyPath:(NSString *) path query:(NSDictionary *)query;
 
 /*
  *创建到指定路径的视图控制器,路径以 open://vc/ 开头后接控制器配置节点的key.
