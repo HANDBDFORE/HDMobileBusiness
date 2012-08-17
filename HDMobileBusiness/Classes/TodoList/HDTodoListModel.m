@@ -7,11 +7,11 @@
 //
 
 #import "HDTodoListModel.h"
-#import "ApproveDatabaseHelper.h"
+//#import "ApproveDatabaseHelper.h"
 
 @interface HDTodoListModel()
 
-@property(nonatomic,retain)ApproveDatabaseHelper * dbHelper;
+//@property(nonatomic,retain)ApproveDatabaseHelper * dbHelper;
 @property(nonatomic,retain)NSString * searchText;
 
 @end
@@ -21,15 +21,25 @@
 //,searchResultList = _searchResultList;
 
 @synthesize searchText = _searchText;
-@synthesize submitAction = _submitAction;
-@synthesize dbHelper = _dbHelper;
+//@synthesize submitAction = _submitAction;
+//@synthesize dbHelper = _dbHelper;
+@synthesize serachFields = _serachFields;
+@synthesize orderField = _orderField;
+@synthesize primaryFiled = _primaryFiled;
+@synthesize queryUrl = _queryUrl;
+@synthesize submitUrl = _submitUrl;
 
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_resultList);
     TT_RELEASE_SAFELY(_submitList);
-    TT_RELEASE_SAFELY(_submitAction);
-    TT_RELEASE_SAFELY(_dbHelper);
+    TT_RELEASE_SAFELY(_serachFields);
+    TT_RELEASE_SAFELY(_orderField);
+    TT_RELEASE_SAFELY(_primaryFiled);
+    TT_RELEASE_SAFELY(_queryUrl);
+    TT_RELEASE_SAFELY(_submitUrl);
+//    TT_RELEASE_SAFELY(_submitAction);
+//    TT_RELEASE_SAFELY(_dbHelper);
 //    TT_RELEASE_SAFELY(_searchResultList);
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"submitNotification" object:nil];
     [super dealloc];
@@ -41,9 +51,15 @@
     if (self) {
         _submitList = [[NSMutableArray alloc] init];
         _resultList = [[NSMutableArray alloc] init];
+        //TODO:test data
+        self.orderField = @"creationDate";
+        self.primaryFiled = @"recordID";
+        self.serachFields = @[@"orderType",@"nodeName",@"employeeName"];
+        self.queryUrl = @"autocrud/ios.ios_approve.ios_workflow_approve_query/query?_fetchall=true&amp;_autocount=false";
+        self.submitUrl = @"modules/ios/ios_approve/ios_workflow_approve.svc";
 //        _searchResultList = [[NSMutableArray alloc]init];
         _flags.isFirstLoad = YES;
-        _dbHelper = [[ApproveDatabaseHelper alloc]init];
+//        _dbHelper = [[ApproveDatabaseHelper alloc]init];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveNotification:) name:@"submitNotification" object:nil];
     }
     return self;
@@ -111,20 +127,22 @@
 -(void)didSubmitRecord:(HDResponseMap*) resultMap
 {
     TT_RELEASE_SAFELY(_loadingRequest);
-    Approve * submitObject = (Approve *) [resultMap.userInfo objectForKey:@"postObject"];
-    NSUInteger index;
+//    Approve * submitObject = (Approve *) [resultMap.userInfo objectForKey:@"postObject"];
+    id submitObject = [resultMap.userInfo objectForKey:@"postObject"];
 //    if ([self isSearching]) {
 //        index = [self.searchResultList indexOfObject:submitObject];
 //    }else {
-        index = [self.resultList indexOfObject:submitObject];
+        NSUInteger index = [self.resultList indexOfObject:[resultMap.userInfo objectForKey:@"postObject"]];
 //    }
     [_submitList removeObject:submitObject];
     _flags.isSubmitingData = (_submitList.count > 0);
     //////////////////////////////////////////
     ///////////////
     if (!resultMap.result) {
-        submitObject.localStatus = @"ERROR";
-        submitObject.serverMessage = resultMap.error.localizedDescription;
+        [submitObject setValue:kRecordError forKey:kRecordStatusField];
+//        submitObject.localStatus = @"ERROR";
+        [submitObject setValue:resultMap.error.localizedDescription forKey:@"SERVER_MESSAGE"];
+//        submitObject.serverMessage = resultMap.error.localizedDescription;
         [self didUpdateObject:submitObject
                   atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
         [self updateSubmitRecord:submitObject];
@@ -141,34 +159,38 @@
 #pragma -mark Submit offline data
 -(void)submit
 {
-    Approve * _approve = [_submitList objectAtIndex:0];
-    id _postData =[NSDictionary dictionaryWithObjectsAndKeys:[_approve.recordID stringValue],@"record_id", _approve.action,@"action_id",_approve.comment,@"comment",nil];
+//    Approve * _approve = [_submitList objectAtIndex:0];
+//    id _postData =[NSDictionary dictionaryWithObjectsAndKeys:[_approve.recordID stringValue],@"record_id", _approve.action,@"action_id",_approve.comment,@"comment",nil];
     
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    map.postData = _postData;
-    [map.userInfo setObject:_approve forKey:@"postObject"];
-    map.requestPath = _approve.submitUrl;
+    map.postData = [_submitList objectAtIndex:0];
+    [map.userInfo setObject:[_submitList objectAtIndex:0] forKey:@"postObject"];
+    map.requestPath = self.submitUrl;
+//    map.urlName = kApproveListBatchSubmitPath;
+//    map.requestPath = _approve.submitUrl;
     //    map.urlName = kApproveListBatchSubmitPath;
     map.cachePolicy = TTURLRequestCachePolicyNoCache;
     [self requestWithMap:map];
 }
 
--(void)addObjectAtIndexPathsForSubmit:(NSArray *) indexPaths comment:(NSString *) comment
+-(void)addObjectAtIndexPathsForSubmit:(NSArray *) indexPaths comment:(NSString *) comment action:(NSString *) action
 {
     for (NSIndexPath * indexPath in indexPaths) {
         //TODO:这里需要判断是search的table还是待办列表的table,一个从result中取对象,一个从search中取
         
-        Approve * submitObject = nil;
+//        Approve * submitObject = nil;
         
 //        if ([self isSearching]) {
 //            submitObject = [self.searchResultList objectAtIndex:indexPath.row];
 //        }else {
-            submitObject = [self.resultList objectAtIndex:indexPath.row];
+        id  submitObject = [self.resultList objectAtIndex:indexPath.row];
 //        }
-        
-        submitObject.comment = comment;
-        submitObject.action = self.submitAction;
-        submitObject.submitUrl = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kApproveListBatchSubmitPath query:nil];
+        [submitObject setValue:comment forKey:@"COMMENTS"];
+        [submitObject setValue:action forKey:@"SUBMIT_ACTION"];
+        [submitObject setValue:self.submitUrl forKey:@"SUBMIT_URL"];
+//        submitObject.comment = comment;
+//        submitObject.action = self.submitAction;
+//        submitObject.submitUrl = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kApproveListBatchSubmitPath query:nil];
         [self setObjectForSubmit:submitObject];
     }
     //设置超时状态,进入shouldload状态
@@ -186,7 +208,7 @@
 //这个调用只刷新界面而不应该出发model的load,需要表示model不需要load
 -(void)setObjectForSubmit:(id)submitObject
 {
-    [submitObject setValue:@"WAITING" forKeyPath:@"localStatus"];
+    [submitObject setValue:kRecordWaiting forKeyPath:kRecordStatusField];
     [self.submitList addObject:submitObject];
     [self updateSubmitRecord:submitObject];
 }
@@ -196,7 +218,8 @@
 {
     _flags.isQueryingData = YES;
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    map.urlName = kApproveListQueryPath;
+//    map.urlName = kApproveListQueryPath;
+    map.requestPath =  self.queryUrl;
     [self requestWithMap:map];
 }
 
@@ -260,9 +283,9 @@
     //对比数据生成新的结果列表
     //TODO:不要转化数据
     if(0 < [[[result lastObject] allKeys]count]){
-        NSArray * _responseList = [[HDGodXMLFactory shareBeanFactory] beansWithArray:result path:@"/backend-config/field-mappings/field-mapping[@url_name='APPROVE_LIST_QUERY_URL']"] ;
+//        NSArray * _responseList = [[HDGodXMLFactory shareBeanFactory] beansWithArray:result path:@"/backend-config/field-mappings/field-mapping[@url_name='APPROVE_LIST_QUERY_URL']"] ;
         
-        NSArray * _newResult = [self combineRecordsWithlocalRecords:_resultList remoteRecords:_responseList];
+        NSArray * _newResult = [self combineRecordsWithlocalRecords:_resultList remoteRecords:result];
         
         [_resultList removeAllObjects];
         [_resultList addObjectsFromArray:_newResult];
@@ -284,9 +307,9 @@
     
     //比较数据
     //find same records
-    for (Approve * localApprove in (NSArray *)localRecords) {
-        for (Approve * remoteRecord in remoteRecords) {
-            if ([localApprove.recordID isEqualToValue:remoteRecord.recordID]) {
+    for (id localApprove in (NSArray *)localRecords) {
+        for (id remoteRecord in remoteRecords) {
+            if ([[localApprove valueForKey:_primaryFiled] isEqualToValue:[remoteRecord valueForKey:_primaryFiled]]) {
                 [_localSameArray addObject:localApprove];
                 [_remoteSameArray addObject:remoteRecord];
             }
@@ -309,8 +332,9 @@
 
 -(NSArray *)orderList:(NSArray *) list
 {
-    return [list sortedArrayWithOptions:NSSortStable usingComparator:^NSComparisonResult (Approve* obj1,Approve * obj2){
-        return [obj1.creationDate compare:obj2.creationDate];
+    return [list sortedArrayWithOptions:NSSortStable usingComparator:^NSComparisonResult (id obj1,id obj2){
+        return [[obj1 valueForKey:_orderField]
+                compare:[obj2 valueForKey:_orderField]];
     }];
 }
 
@@ -387,9 +411,12 @@
 //    [_searchResultList removeAllObjects];
     [_resultList removeAllObjects];
     [self loadLocalRecords];
+    
+    [self loadLocalRecords];
     if (self.searchText.length) {
-        //        [self fakeSearch];
-        [_resultList addObjectsFromArray:[self createSearchResult]];
+        NSArray * searchResultList = [self createSearchResult];
+        [_resultList removeAllObjects];
+        [_resultList addObjectsFromArray:[self orderList:searchResultList]];
         [self didFinishLoad];
     } else {
         [self didChange];
@@ -401,15 +428,17 @@
     NSMutableArray * searchResultList = [NSMutableArray array];
     for (id record in self.resultList) {
         BOOL matchFlg = NO;
-        //TODO:有字段是nil啊..结果集没显示出来为什么呢
-        matchFlg = matchFlg || [[record valueForKey:@"orderType"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-        matchFlg = matchFlg || [[record valueForKey:@"nodeName"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-        matchFlg = matchFlg || [[record valueForKey:@"employeeName"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
+        for (NSString * key in self.serachFields) {
+            matchFlg = matchFlg || [[record valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
+        }
+//        matchFlg = matchFlg || [[record valueForKey:@"orderType"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
+//        matchFlg = matchFlg || [[record valueForKey:@"nodeName"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
+//        matchFlg = matchFlg || [[record valueForKey:@"employeeName"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
         if (matchFlg) {
             [searchResultList addObject:record];
         }
     }
-    return [self orderList:searchResultList];
+    return searchResultList;
 }
 
 #pragma mark Others

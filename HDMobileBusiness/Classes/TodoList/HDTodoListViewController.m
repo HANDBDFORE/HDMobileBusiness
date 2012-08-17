@@ -9,7 +9,7 @@
 #import "HDTodoListViewController.h"
 #import "HDTodoListDataSource.h"
 #import "HDTodoListSearchViewController.h"
-#import "HDTodoListSearchDataSource.h"
+//#import "HDTodoListSearchDataSource.h"
 #import "HDDetailSubmitModel.h"
 
 @implementation HDTodoListViewController
@@ -81,11 +81,11 @@
 #pragma mark TTModelViewControler functions
 -(void)createModel
 {
-    id <TTModel> model = [[HDTodoListModel alloc]init];
-    self.dataSource = [[[HDTodoListDataSource alloc]initWithModel:model]autorelease];
-    
-    self.searchViewController.dataSource = [[[HDTodoListSearchDataSource alloc] initWithModel:model]autorelease];
-    TT_RELEASE_CF_SAFELY(model);
+//    id <TTModel> model = [[HDTodoListModel alloc]init];
+    self.dataSource = [[[HDBaseTodoListDataSource alloc]init]autorelease];
+    self.searchViewController.dataSource = self.dataSource;
+//    self.searchViewController.dataSource = [[[HDTodoListSearchDataSource alloc] initWithModel:model]autorelease];
+//    TT_RELEASE_CF_SAFELY(model);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,34 +126,35 @@
 
 -(UIViewController *)openDetailViewForKey:(NSString *) key
 {
-    HDTodoListModel * _approveListModel = (HDTodoListModel *) self.model;
-    Approve * _approve = [_approveListModel.resultList objectAtIndex:[key intValue]];
-    
-    UIViewController * viewController = [[TTNavigator navigator]viewControllerForURL:@"init://willApproveDetail"];
-    
-    viewController.hidesBottomBarWhenPushed = YES;
-    HDDetailSubmitModel * submitModel = [[[HDDetailSubmitModel alloc]init] autorelease];
-    submitModel.submitData = _approve;
-    
-    
-    [viewController setValue:submitModel forKey:@"submitModel"];
-    //    //get webpage url
-    NSDictionary * urlQuery = [_approve dictionaryWithValuesForKeys:[NSArray arrayWithObjects:@"docPageUrl",@"instanceId", nil]];
-    
-    NSString * webPageUrl = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kTodoListDetailWebPagePath query:urlQuery];
-    
-    NSString * employeeURLPath = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kUserInfoWebPagePath query:[NSDictionary dictionaryWithObject:_approve.employeeId forKey:@"employeeID"]];
-    
-    [viewController setValue:_approve.rowID forKeyPath:@"rowID"];
-    [viewController setValue:_approve.recordID forKeyPath:@"recordID"];
-    [viewController setValue:_approve.instanceId forKeyPath:@"instanceID"];
-    
-    [viewController setValue:_approve.localStatus forKeyPath:@"localStatus"];
-    [viewController setValue:webPageUrl forKeyPath:@"webPageURLPath"];
-    
-    [viewController setValue:_approve.employeeName forKeyPath:@"employeeName"];
-    [viewController setValue:employeeURLPath forKeyPath:@"employeeURLPath"];
-    return viewController;
+    TTDPRINT(@"open detail");
+//    HDTodoListModel * _approveListModel = (HDTodoListModel *) self.model;
+//    Approve * _approve = [_approveListModel.resultList objectAtIndex:[key intValue]];
+//    
+//    UIViewController * viewController = [[TTNavigator navigator]viewControllerForURL:@"init://willApproveDetail"];
+//    
+//    viewController.hidesBottomBarWhenPushed = YES;
+//    HDDetailSubmitModel * submitModel = [[[HDDetailSubmitModel alloc]init] autorelease];
+//    submitModel.submitData = _approve;
+//    
+//    
+//    [viewController setValue:submitModel forKey:@"submitModel"];
+//    //    //get webpage url
+//    NSDictionary * urlQuery = [_approve dictionaryWithValuesForKeys:[NSArray arrayWithObjects:@"docPageUrl",@"instanceId", nil]];
+//    
+//    NSString * webPageUrl = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kTodoListDetailWebPagePath query:urlQuery];
+//    
+//    NSString * employeeURLPath = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kUserInfoWebPagePath query:[NSDictionary dictionaryWithObject:_approve.employeeId forKey:@"employeeID"]];
+//    
+//    [viewController setValue:_approve.rowID forKeyPath:@"rowID"];
+//    [viewController setValue:_approve.recordID forKeyPath:@"recordID"];
+//    [viewController setValue:_approve.instanceId forKeyPath:@"instanceID"];
+//    
+//    [viewController setValue:_approve.localStatus forKeyPath:@"localStatus"];
+//    [viewController setValue:webPageUrl forKeyPath:@"webPageURLPath"];
+//    
+//    [viewController setValue:_approve.employeeName forKeyPath:@"employeeName"];
+//    [viewController setValue:employeeURLPath forKeyPath:@"employeeURLPath"];
+//    return viewController;
 }
 //-(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 //{
