@@ -34,49 +34,62 @@
 }
 //DataPool表插入
 -(BOOL)SQLDataPoolInsert:(FMDatabase *)db recordSet:(id) recordSet{
-    NSString *currentSql =@"select column0,column1 from ColumnMap";
     NSString *str1 =@""; 
     NSString *str2 =@""; 
-    FMResultSet *rs=[db executeQuery:currentSql];
+    FMResultSet *rs=[self map:db];
     while ([rs next]){
         str1 = [NSString stringWithFormat:@"%@,%@",[[rs resultDictionary] objectForKey:@"column0"],str1];
         str2 = [NSString stringWithFormat:@":%@,%@",[[rs resultDictionary] objectForKey:@"column1"],str2];
     } 
     str1 = [str1 substringToIndex:[str1 length]-1];
     str2 = [str2 substringToIndex:[str2 length]-1];
-    currentSql = [NSString stringWithFormat:@"insert into DataPool (%@) values (%@)",str1,str2];
+    NSString *currentSql = [NSString stringWithFormat:@"insert into DataPool (%@) values (%@)",str1,str2];
     BOOL state = YES;
     state = [self execLineInTransaction:db recordSet:recordSet currentSql:currentSql];
     return state;
 }
-//查询ToDoList操作
--(FMResultSet *)SQLqueryToDoList:(FMDatabase *)db{
-    NSString *currentSql = [NSString stringWithFormat:@"select column0,column1 from ColumnMap"];
+//查询数据表操作
+-(FMResultSet *)SQLqueryColumnMap:(FMDatabase *)db{
     NSString *str1 =@""; 
-    FMResultSet *rs=[db executeQuery:currentSql];
+    FMResultSet *rs=[self map:db];
     while ([rs next]){
         str1 = [NSString stringWithFormat:@"%@ %@,%@",[[rs resultDictionary] objectForKey:@"column0"],[[rs resultDictionary] objectForKey:@"column1"],str1];
     } 
     str1 = [str1 substringToIndex:[str1 length]-1];
-    currentSql = [NSString stringWithFormat:@"select %@ from datapool",str1];
+    NSString *currentSql = [NSString stringWithFormat:@"select %@ from datapool",str1];
     rs=[db executeQuery:currentSql];
     return rs;
 }
-//提交成功,删除本地记录
--(BOOL)SQLremoveSubmitedRecord:(FMDatabase *)db recordSet:(id) recordSet{
-    NSString *currentSql = [NSString stringWithFormat:@"insert into persons (name) values(:name)"];
+//查询ToDoList操作
+-(FMResultSet *)SQLqueryToDoList:(FMDatabase *)db{
+    NSString *str1 =@""; 
+    FMResultSet *rs=[self map:db];
+    while ([rs next]){
+        str1 = [NSString stringWithFormat:@"%@ %@,%@",[[rs resultDictionary] objectForKey:@"column0"],[[rs resultDictionary] objectForKey:@"column1"],str1];
+    } 
+    str1 = [str1 substringToIndex:[str1 length]-1];
+    NSString *currentSql = [NSString stringWithFormat:@"select %@ from datapool",str1];
+    rs=[db executeQuery:currentSql];
+    return rs;
+}
+
+//删除记录
+-(BOOL)SQLremoveRecord:(FMDatabase *)db recordSet:(id) recordSet{
+    NSString *currentSql = [NSString stringWithFormat:@"delete from datapool where column0 =':recordid'"];
     BOOL state = YES;
     state = [self execLineInTransaction:db recordSet:recordSet currentSql:currentSql];
     return state;
 }
 //插入操作
--(BOOL)SQLinsert:(FMDatabase *)db recordSet:(id) recordSet{
+-(BOOL)SQLinsertNewRecords:(FMDatabase *)db recordSet:(id) recordSet{
     NSString *currentSql = [NSString stringWithFormat:@"insert into persons (name) values(:name)"];
     BOOL state = YES;
     state = [self execLineInTransaction:db recordSet:recordSet currentSql:currentSql];
     return state;
 }
-
+-(BOOL)SQLupdateRecords:(FMDatabase *)db recordSet:(id) recordSet{
+    return NO;
+}
 #pragma mark-
 #pragma mark 私有方法
 //当行SQL执行，传入 数据库，记录集参数，SQL语句
@@ -121,5 +134,11 @@
         state=NO;
     }
     return state;
+}
+//映射表rs
+-(FMResultSet *)map:(FMDatabase *)db{
+    NSString *currentSql = [NSString stringWithFormat:@"select column0,column1 from ColumnMap"];
+    FMResultSet *rs=[db executeQuery:currentSql];
+    return rs;
 }
 @end

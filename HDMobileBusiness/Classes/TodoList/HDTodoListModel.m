@@ -222,25 +222,18 @@
 }
 
 //提交成功,删除本地记录
--(void)removeSubmitedRecord:(Approve *) submitRecord
+-(void)removeSubmitedRecord:(NSArray *) recordset
 {
     //删除提交成功的数据
     //    ApproveDatabaseHelper * _dbHelper = [[ApproveDatabaseHelper alloc]init];
     //TODO:做成单例...
-    NSArray *ary = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:submitRecord.recordID forKey:@"recordid"]];
-    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveSubmitedRecord:recordSet:) recordSet:ary];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecord:recordSet:) recordSet:recordset];
 }
 
--(void)updateSubmitRecord:(Approve *) submitRecord
+-(void)updateSubmitRecord:(NSArray *) recordset
 {
     //修改数据
-    //    ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
-    NSString *sql = [NSString stringWithFormat:@"update %@ set %@='%@',%@ ='%@',%@='%@',%@='%@',%@='%@'where %@ ='%@';",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,submitRecord.localStatus,APPROVE_PROPERTY_COMMENT,submitRecord.comment,APPROVE_PROPERTY_SUBMIT_URL,submitRecord.submitUrl,APPROVE_PROPERTY_APPROVE_ACTION,submitRecord.action,APPROVE_PROPERTY_SERVER_MESSAGE,submitRecord.serverMessage,@"rowid",submitRecord.rowID];
-    
-    [_dbHelper.db open];
-    [_dbHelper.db executeUpdate:sql];
-    [_dbHelper.db close];
-    //    TT_RELEASE_SAFELY(dbHelper);
+    [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordSet:) recordSet:recordset];
 }
 
 -(void) updateResultList:(NSArray *) result
@@ -302,47 +295,17 @@
     }];
 }
 
--(void)updateDifferentRecords:(NSArray *) records
+-(void)updateDifferentRecords:(NSArray *) recordset
 {
     //更新数据
     //    ApproveDatabaseHelper * _dbHelper = [[ApproveDatabaseHelper alloc]init];
-    
-    //设置diff状态
-    [_dbHelper.db open];
-    [_dbHelper.db beginTransaction];
-    
-    BOOL successFlg = YES;
-    for (Approve * diffApprve in records) {
-        diffApprve.localStatus = @"DIFFERENT";
-        diffApprve.serverMessage = @"已在其他地方处理";
-        
-        NSString * sql = [NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%@' where %@ = '%@';",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,diffApprve.localStatus,APPROVE_PROPERTY_SERVER_MESSAGE,diffApprve.serverMessage,@"rowid",diffApprve.rowID];
-        successFlg = successFlg && [_dbHelper.db executeUpdate:sql];
-    }
-    if (successFlg) {
-        [_dbHelper.db commit];
-    }
-    [_dbHelper.db close];
-    //    TT_RELEASE_SAFELY(_dbHelper);
+    [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordSet:) recordSet:recordset];
 }
 
--(void)insertNewRecords:(NSArray *)records
+-(void)insertNewRecords:(NSArray *) recordset
 {
     //    ApproveDatabaseHelper * _dbHelper = [[ApproveDatabaseHelper alloc]init];
-    [_dbHelper.db open];
-    
-    //设置normal状态
-    for (Approve * newApprove in records) {
-        newApprove.localStatus = @"NORMAL";
-        
-        NSString * insertSQL = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%@','%@','%@',%@,'%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@');",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_ORDER_TYPE,APPROVE_PROPERTY_INSTANCE_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_SCREEN_NAME,APPROVE_PROPERTY_NODE_ID,APPROVE_PROPERTY_INSTANCE_ID,APPROVE_PROPERTY_INSTANCE_PARAM,APPROVE_PROPERTY_EMPLOYEE_ID,newApprove.workflowID,newApprove.recordID,newApprove.orderType,(newApprove.instanceDesc == nil ? NULL : [NSString stringWithFormat:@"'%@'",newApprove.instanceDesc]),newApprove.nodeName,newApprove.employeeName,newApprove.creationDate,newApprove.dateLimit,newApprove.isLate,newApprove.localStatus,newApprove.docPageUrl,newApprove.nodeId,newApprove.instanceId,newApprove.instanceParam,newApprove.employeeId];
-        
-        [_dbHelper.db executeUpdate:insertSQL];
-        
-        newApprove.rowID = [NSNumber numberWithInt:sqlite3_last_insert_rowid([_dbHelper.db sqliteHandle])] ;
-    }
-    [_dbHelper.db close];
-    //    TT_RELEASE_SAFELY(_dbHelper);
+    [[HDCoreStorage shareStorage] excute:@selector(SQLinsertNewRecords:recordSet:) recordSet:recordset];
 }
 
 #pragma -mark Flags
