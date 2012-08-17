@@ -67,7 +67,9 @@
     while ([rs next]){
         str1 = [NSString stringWithFormat:@"%@ %@,%@",[[rs resultDictionary] objectForKey:@"column0"],[[rs resultDictionary] objectForKey:@"column1"],str1];
     } 
-    str1 = [str1 substringToIndex:[str1 length]-1];
+    if([str1 length]){
+        return nil;
+        }
     NSString *currentSql = [NSString stringWithFormat:@"select %@ from datapool",str1];
     rs=[db executeQuery:currentSql];
     return rs;
