@@ -18,6 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
         self.title = @"待办事项";
         [[TTNavigator navigator].URLMap 
          from:[NSString stringWithFormat:@"%@/(%@:)",kOpenWillApproveDetailViewPath ,@"openDetailViewForKey",nil]
