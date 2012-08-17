@@ -48,16 +48,9 @@
     state = [self execLineInTransaction:db recordSet:recordSet currentSql:currentSql];
     return state;
 }
-//查询数据表操作
+//ColumnMap查询
 -(FMResultSet *)SQLqueryColumnMap:(FMDatabase *)db{
-    NSString *str1 =@""; 
     FMResultSet *rs=[self map:db];
-    while ([rs next]){
-        str1 = [NSString stringWithFormat:@"%@ %@,%@",[[rs resultDictionary] objectForKey:@"column0"],[[rs resultDictionary] objectForKey:@"column1"],str1];
-    } 
-    str1 = [str1 substringToIndex:[str1 length]-1];
-    NSString *currentSql = [NSString stringWithFormat:@"select %@ from datapool",str1];
-    rs=[db executeQuery:currentSql];
     return rs;
 }
 //查询ToDoList操作
