@@ -52,7 +52,7 @@ static HDCoreStorage * globalStorage = nil;
 {
     self = [super init];
     if (self) {
-        DatabasePool = [FMDatabasePool databasePoolWithPath:[self dbPath]];
+        DatabasePool = [[FMDatabasePool databasePoolWithPath:[self dbPath]] retain];
         DatabasePool.maximumNumberOfDatabasesToCreate = 3;
         sqlCenter = [[HDSQLCenter alloc]init];
     }

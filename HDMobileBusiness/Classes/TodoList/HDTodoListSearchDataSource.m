@@ -15,7 +15,7 @@
 {
     //tableload完成生成cell item 对象列表
     self.items = [NSMutableArray array];
-    for (id approvedRecord in self.approveListModel.resultList) {
+    for (id approvedRecord in self.todoListModel.resultList) {
         [self.items addObject:[self createItemWithObject:approvedRecord]
          ];
     }
@@ -24,7 +24,7 @@
 #pragma mark UITable datasource
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSString * localStatus =  [[self.approveListModel.resultList objectAtIndex:indexPath.row] valueForKeyPath:@"localStatus"];
+    NSString * localStatus =  [[self.todoListModel.resultList objectAtIndex:indexPath.row] valueForKeyPath:@"localStatus"];
     
     return ([localStatus isEqualToString:@"NORMAL"] || [localStatus isEqualToString:@"ERROR"]);
 }
@@ -50,7 +50,7 @@
 #pragma mark Search
 
 - (void)search:(NSString*)text {
-    [self.approveListModel search:text];
+    [self.todoListModel search:text];
 }
 
 - (NSString*)titleForLoading:(BOOL)reloading {

@@ -68,6 +68,7 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
         return nil;
     }
     //TODO:这里考虑从god生成map,想配什么就在map里加吧...
+//    HDGuiderMap * mapX= [[HDGodXMLFactory shareBeanFactory] guiderMapWithPath:path];
     HDGuiderMap * map = [[[HDGuiderMap alloc]init] autorelease];
     map.urlPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:path];
     return map;

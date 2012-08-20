@@ -59,11 +59,13 @@
     FMResultSet *rs=[self map:db];
     while ([rs next]){
         str1 = [NSString stringWithFormat:@"%@ %@,%@",[[rs resultDictionary] objectForKey:@"column0"],[[rs resultDictionary] objectForKey:@"column1"],str1];
-    } 
-    if([str1 length]){
+    }
+    str1 = [str1 substringToIndex:str1.length -1];
+    //debug:return nil unless length == 0;
+    if(![str1 length]){
         return nil;
-        }
-    NSString *currentSql = [NSString stringWithFormat:@"select %@ from datapool",str1];
+    }
+    NSString *currentSql = [NSString stringWithFormat:@"select %@ from DataPool",str1];
     rs=[db executeQuery:currentSql];
     return rs;
 }

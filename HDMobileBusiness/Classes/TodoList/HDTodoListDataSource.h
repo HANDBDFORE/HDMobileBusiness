@@ -8,7 +8,16 @@
 
 #import "HDBaseTodoListDataSource.h"
 
-static NSString * kOpenWillApproveDetailViewPath = @"open://willApproveDetailViewController";
+/////////////////
+
+//删除//删除//删除//删除//删除//删除//删除//删除//删除
+//删除//删除//删除//删除//删除//删除//删除//删除//删除
+//删除//删除//删除//删除//删除//删除//删除//删除//删除
+
+////////////
+
+
+//static NSString * kOpenWillApproveDetailViewPath = @"open://willApproveDetailViewController";
 
 @interface HDTodoListDataSource : HDBaseTodoListDataSource
 

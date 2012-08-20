@@ -30,7 +30,7 @@ static NSString * kHDSyncTodoList = @"sync";
 @interface HDSQLCenter : NSObject
 //查询ToDoList操作
 -(FMResultSet *)SQLqueryToDoList:(FMDatabase *)db;
--(FMResultSet *)SQLqueryColumnMap:(FMDatabase *)db；
+-(FMResultSet *)SQLqueryColumnMap:(FMDatabase *)db;
 //建表
 -(BOOL)SQLCreatTable:(FMDatabase *)db;
 //切换用户清理表数据

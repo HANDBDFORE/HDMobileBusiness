@@ -18,7 +18,7 @@
     //tableload完成生成cell item 对象列表
     self.items = [NSMutableArray array];
 //    [self.model];
-    for (id approvedRecord in self.approveListModel.resultList) {
+    for (id approvedRecord in self.todoListModel.resultList) {
         [self.items addObject:[self createItemWithObject:approvedRecord]
          ];
     }
@@ -30,7 +30,7 @@
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
 
     
-    NSString * localStatus =  [[self.approveListModel.resultList objectAtIndex:indexPath.row] valueForKeyPath:@"localStatus"];
+    NSString * localStatus =  [[self.todoListModel.resultList objectAtIndex:indexPath.row] valueForKeyPath:@"localStatus"];
     
     return ([localStatus isEqualToString:@"NORMAL"] || [localStatus isEqualToString:@"ERROR"]);
 }
@@ -42,6 +42,18 @@
      NSString * url = [NSString stringWithFormat:@"%@/%i",kOpenWillApproveDetailViewPath,index];
     TTOpenURL(url);
 //    return viewController;
+}
+
+- (void)search:(NSString*)text {
+    [self.todoListModel search:text];
+}
+
+- (NSString*)titleForLoading:(BOOL)reloading {
+    return @"Searching...";
+}
+
+- (NSString*)titleForNoData {
+    return @"No names found";
 }
 
 @end

@@ -13,12 +13,14 @@ static NSString * kTodoListDetailWebPagePath = @"APPROVE_DETIAL_WEB_PAGE_PATH";
 
 static NSString * kUserInfoWebPagePath = @"EMPLOYEE_INFO_WEB_URL";
 
+static NSString * kOpenWillApproveDetailViewPath = @"open://willApproveDetailViewController";
+
 @interface HDBaseTodoListDataSource : TTListDataSource
 
-@property(nonatomic,retain) HDTodoListModel * approveListModel;
+@property(nonatomic,retain) HDTodoListModel * todoListModel;
 
 -(TTTableItem *) createItemWithObject:(id) object;
 
--(id)initWithModel:(id<TTModel>) model;
+//-(id)initWithModel:(id<TTModel>) model;
 
 @end

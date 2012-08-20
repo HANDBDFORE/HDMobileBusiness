@@ -10,28 +10,25 @@
 
 @implementation HDBaseTodoListDataSource
 
-@synthesize approveListModel = _approveListModel;
+@synthesize todoListModel = _todoListModel;
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_approveListModel);
+    TT_RELEASE_SAFELY(_todoListModel);
     [super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
--(id)initWithModel:(id<TTModel>) model;
+- (id)init
 {
     self = [super init];
     if (self) {
-        //TODO:test
-        _approveListModel = (HDTodoListModel *)[model retain];
-        //        [[HDWillAproveListModel alloc]init];
-        self.model = _approveListModel;
+        _todoListModel = [[HDTodoListModel alloc]init];
+        self.model = _todoListModel;
     }
     return self;
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -40,26 +37,26 @@
 -(TTTableItem *) createItemWithObject:(id) object
 {
     //TODO:考虑在这里通过配置文件设置映射关系,而不是在model中
-    Approve * approveRecord = (Approve *)object;
+//    Approve * approveRecord = (Approve *)object;
     NSString * title = [NSString stringWithFormat:@"%@: %@",
-                        approveRecord.orderType,
-                        approveRecord.employeeName];
+                        [object valueForKey: @"orderType"],
+                        [object valueForKey: @"employeeName"]];
     
-    NSString * caption = [NSString stringWithFormat:@"当前节点: %@",approveRecord.nodeName];
+    NSString * caption = [NSString stringWithFormat:@"当前节点: %@",[object valueForKey: @"nodeName"]];
     
-    NSString * text = [NSString stringWithFormat:@"%@",approveRecord.instanceDesc]; 
+    NSString * text = [NSString stringWithFormat:@"%@",[object valueForKey: @"instanceDesc"]];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"]; 
-    NSDate * timestamp = [dateFormatter dateFromString:approveRecord.creationDate];
+    NSDate * timestamp = [dateFormatter dateFromString:[object valueForKey:@"creationDate"]];
     TT_RELEASE_SAFELY(dateFormatter);
     
     //    NSString * url = [NSString stringWithFormat:@"%@/%i",kOpenWillApproveDetailViewPath,[_approveListModel.resultList indexOfObject:approveRecord]];
     
     NSString * stautMessage = nil;
     //TODO:这里数据库数据读取有问题,status如果没有不是nil
-    if (![approveRecord.localStatus isEqualToString:kTableStatusMessageNormoal] &&![approveRecord.localStatus isEqualToString:kTableStatusMessageWaiting]) {
-        stautMessage = [NSString stringWithFormat:@"%@",approveRecord.serverMessage];
+    if (![[object valueForKey:@"localStatus"] isEqualToString:kRecordNormal] &&![[object valueForKey:@"localStatus"] isEqualToString:kRecordWaiting]) {
+        stautMessage = [NSString stringWithFormat:@"%@",[object valueForKey:@"serverMessage"]];
     }
     return [HDTableStatusMessageItem itemWithTitle:title 
                                            caption:caption 
@@ -68,13 +65,13 @@
                                           selector:@selector(openDetailViewForKey:)
                                           delegate:self
                                            message:stautMessage 
-                                             state:approveRecord.localStatus];
+                                             state:[object valueForKey:@"localStatus"]];
     
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-//#pragma -mark TTTableViewDataSource delegate
+#pragma -mark TTTableViewDataSource delegate
 -(NSIndexPath *)tableView:(UITableView *)tableView willUpdateObject:(id)object atIndexPath:(NSIndexPath *)indexPath
 { 
     [self.items removeObjectAtIndex:indexPath.row];
@@ -97,6 +94,51 @@
     } else {  
         return [super tableView:tableView cellClassForObject:object];  
     }  
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)tableViewDidLoadModel:(UITableView *)tableView
+{
+    //tableload完成生成cell item 对象列表
+    self.items = [NSMutableArray array];
+    //    [self.model];
+    for (id approvedRecord in self.todoListModel.resultList) {
+        [self.items addObject:[self createItemWithObject:approvedRecord]
+         ];
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma mark UITable datasource
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    NSString * localStatus =  [[self.todoListModel.resultList objectAtIndex:indexPath.row] valueForKeyPath:@"localStatus"];
+    
+    return ([localStatus isEqualToString:@"NORMAL"] || [localStatus isEqualToString:@"ERROR"]);
+}
+
+-(void)openDetailViewForKey:(HDTableStatusMessageItem *)item
+{
+    //    HDWillAproveListModel * _approveListModel = (HDWillAproveListModel *) self.model;
+    NSUInteger index = [self.items indexOfObject:item];
+    NSString * url = [NSString stringWithFormat:@"%@/%i",kOpenWillApproveDetailViewPath,index];
+    TTOpenURL(url);
+    //    return viewController;
+}
+
+- (void)search:(NSString*)text {
+    [self.todoListModel search:text];
+}
+
+- (NSString*)titleForLoading:(BOOL)reloading {
+    return @"Searching...";
+}
+
+- (NSString*)titleForNoData {
+    return @"No names found";
 }
 
 @end

@@ -9,6 +9,9 @@
 #import "HDTodoListModel.h"
 #import "HDCoreStorage.h"
 
+static NSString * kColumnMapKey = @"Column1";
+static NSString * kColumnMapColumn = @"Column0";
+
 @interface HDTodoListModel()
 
 //@property(nonatomic,retain)ApproveDatabaseHelper * dbHelper;
@@ -53,10 +56,10 @@
         _resultList = [[NSMutableArray alloc] init];
         //TODO:test data
         self.orderField = @"creationDate";
-        self.primaryFiled = @"recordID";
+        self.primaryFiled = @"record_id";
         self.serachFields = @[@"orderType",@"nodeName",@"employeeName"];
-        self.queryUrl = @"autocrud/ios.ios_approve.ios_workflow_approve_query/query?_fetchall=true&amp;_autocount=false";
-        self.submitUrl = @"modules/ios/ios_approve/ios_workflow_approve.svc";
+        self.queryUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"autocrud/ios.ios_approve.ios_workflow_approve_query/query?_fetchall=true&amp;_autocount=false"];
+        self.submitUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_approve/ios_workflow_approve.svc"];
         
         [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordSet:nil];
 //        _searchResultList = [[NSMutableArray alloc]init];
@@ -260,9 +263,12 @@
 -(void) updateResultList:(NSArray *) result
 {
     //对比数据生成新的结果列表
-    //TODO:不要转化数据
+
     if(0 < [[[result lastObject] allKeys]count]){
-//        NSArray * _responseList = [[HDGodXMLFactory shareBeanFactory] beansWithArray:result path:@"/backend-config/field-mappings/field-mapping[@url_name='APPROVE_LIST_QUERY_URL']"] ;
+        //刷新columnMap表
+        if (![self refreshColumnMap:[result lastObject]]) {
+            return;
+        }
         
         NSArray * _newResult = [self combineRecordsWithlocalRecords:_resultList remoteRecords:result];
         
@@ -274,6 +280,36 @@
         
         [self setIconBageNumber];
     }
+}
+
+-(BOOL)refreshColumnMap:(NSDictionary *) record
+{
+    NSArray * oldColumnKeyList = [[HDCoreStorage shareStorage]query:@selector(SQLqueryColumnMap:) conditions:nil];
+    
+    BOOL matchFlg = YES;
+    for (NSDictionary * line  in oldColumnKeyList) {
+        matchFlg = matchFlg && !![record valueForKey:[line valueForKey:kColumnMapKey]];
+    }
+    if (!matchFlg) {
+        [[HDCoreStorage shareStorage]excute:@selector(SQLCleanTable:) recordSet:nil];
+    }
+
+    NSMutableArray * columnKeyList = [NSMutableArray array];
+   //set pk
+    [columnKeyList addObject:@{kColumnMapKey:_primaryFiled,kColumnMapColumn:@"Column0"}];
+    
+    NSMutableDictionary * mapRecord = [record mutableCopy];
+    [mapRecord removeObjectForKey:_primaryFiled];
+    
+    NSArray * keys = [mapRecord allKeys];
+    int i =1;
+    for (NSString * key in keys) {
+        [columnKeyList addObject:@{kColumnMapKey : key,kColumnMapColumn:[NSString stringWithFormat:@"Column%i",i]}];
+        i++;
+    }
+    
+    [[HDCoreStorage shareStorage] excute:@selector(SQLColumnMapInsert:recordSet:) recordSet:columnKeyList];
+    return YES;
 }
 
 -(NSArray *)combineRecordsWithlocalRecords:(NSArray *) localRecords remoteRecords:(NSArray *) remoteRecords
@@ -327,7 +363,7 @@
 -(void)insertNewRecords:(NSArray *) recordset
 {
     //    ApproveDatabaseHelper * _dbHelper = [[ApproveDatabaseHelper alloc]init];
-    [[HDCoreStorage shareStorage] excute:@selector(SQLinsertNewRecords:recordSet:) recordSet:recordset];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLDataPoolInsert:recordSet:) recordSet:recordset];
 }
 
 #pragma -mark Flags
