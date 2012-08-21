@@ -90,7 +90,7 @@ static HDCoreStorage * globalStorage = nil;
         void (^doDabase)(FMDatabase *db)=^(FMDatabase *db){
             FMResultSet *rs=[sqlCenter performSelector:handler withObject:db withObject:conditions]; 
             while ([rs next]){  
-                [_DATA addObject:[rs resultDictionary]];
+                [_DATA addObject:[[rs resultDictionary]  mutableCopy]];
             } 
         };
         [DatabasePool inDatabase:doDabase];
