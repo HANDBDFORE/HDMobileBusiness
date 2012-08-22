@@ -72,7 +72,8 @@
 
 //删除记录
 -(BOOL)SQLremoveRecord:(FMDatabase *)db recordSet:(id) recordSet{
-    NSString *currentSql = [NSString stringWithFormat:@"delete from datapool where column0 =:recordid"];
+    NSDictionary *mapDic = [self mapDicL2R:db];
+    NSString *currentSql = [NSString stringWithFormat:@"delete from datapool where column0 =:%@",[mapDic objectForKey:@"column0"]];
     BOOL state = YES;
     state = [self execLineInTransaction:db recordSet:recordSet currentSql:currentSql];
     return state;
@@ -86,7 +87,7 @@
 }
 //更新操作
 -(BOOL)SQLupdateRecords:(FMDatabase *)db recordSet:(id) recordSet{
-    NSDictionary *mapDic = [self mapDic:db];
+    NSDictionary *mapDic = [self mapDicR2L:db];
     NSString *TEMPSet = @"";
     NSString *TEMPWhere = @"";
     for (id key in [mapDic allKeys]) {
@@ -154,7 +155,17 @@
     return rs;
 }
 //映射表MAP
--(NSDictionary *)mapDic:(FMDatabase *)db{
+-(NSDictionary *)mapDicL2R:(FMDatabase *)db{
+    FMResultSet *rs=[self mapRs:db];
+    NSMutableDictionary * DIC = [[[NSMutableDictionary alloc]init]autorelease];
+    while ([rs next]){
+        NSDictionary *TempDic = [rs resultDictionary];
+        [DIC setValue:[TempDic  valueForKey:@"column1"] forKey:[TempDic  valueForKey:@"column0"]];
+    }
+    return DIC;
+}
+//映射表MAP
+-(NSDictionary *)mapDicR2L:(FMDatabase *)db{
     FMResultSet *rs=[self mapRs:db];
     NSMutableDictionary * DIC = [[[NSMutableDictionary alloc]init]autorelease];
     while ([rs next]){
