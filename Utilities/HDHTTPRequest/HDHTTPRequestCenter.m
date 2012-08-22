@@ -130,16 +130,17 @@ static HDHTTPRequestCenter * _requestCenter = nil;
     
     id result = [convertor doConvertor:response.data error:error];
     
-    if(nil == *(error)){
+//    if(nil == *(error)){
         //setting result map
         HDResponseMap * responseMap = [HDResponseMap map];
         responseMap.userInfo = request.userInfo;
         responseMap.urlPath = request.urlPath;
         responseMap.error = *(error);
         responseMap.result = result;
+
         return responseMap;
-    }
-    return nil;
+//    }
+//    return nil;
 }
 
 @end

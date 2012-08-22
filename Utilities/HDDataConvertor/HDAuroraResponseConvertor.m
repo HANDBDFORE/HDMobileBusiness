@@ -21,11 +21,15 @@
 -(id)convert:(id)data error:(NSError **)error
 {
     id result = [data valueForKeyPath:@"result.record"];
-    
+    //修改数组内的Dictionary为可变对象.
     if (nil != result && ![result isKindOfClass:[NSArray class]]) {
-        return [NSArray arrayWithObject:result];
+        return [NSArray arrayWithObject:[result mutableCopy]];
     }else{
-        return result;
+        NSMutableArray * mutableResultList = [NSMutableArray array];
+        for(NSDictionary * record in result) {
+            [mutableResultList addObject:[record mutableCopy]];
+        }
+        return mutableResultList;
     }
 }
 
