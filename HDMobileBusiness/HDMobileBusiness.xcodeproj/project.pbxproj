@@ -55,6 +55,7 @@
 		B356A26B15D0A5C900E88192 /* HDCoreStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B356A26A15D0A5C900E88192 /* HDCoreStorage.m */; };
 		B356A26E15D0AA5500E88192 /* HDBaseRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B356A26D15D0AA5500E88192 /* HDBaseRecord.m */; };
 		B356A27115D0B99600E88192 /* HDApprovalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B356A27015D0B99600E88192 /* HDApprovalRecord.m */; };
+		B35BBF7C15E74302008F90E3 /* HDSingltonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B35BBF7B15E74301008F90E3 /* HDSingltonObject.m */; };
 		B368B08815D3A14600B6EAEB /* HDSQLCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B368B08715D3A14600B6EAEB /* HDSQLCenter.m */; };
 		B36BDA9215C64777003A4A5D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9115C64777003A4A5D /* UIKit.framework */; };
 		B36BDA9415C64777003A4A5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9315C64777003A4A5D /* Foundation.framework */; };
@@ -81,11 +82,9 @@
 		B38DC6FB15C6835D00FD0C58 /* HDTableStatusMessageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6EA15C6835D00FD0C58 /* HDTableStatusMessageItem.m */; };
 		B38DC6FC15C6835D00FD0C58 /* HDTableStatusMessageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6EC15C6835D00FD0C58 /* HDTableStatusMessageItemCell.m */; };
 		B38DC6FD15C6835D00FD0C58 /* HDBaseTodoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6EE15C6835D00FD0C58 /* HDBaseTodoListViewController.m */; };
-		B38DC6FE15C6835D00FD0C58 /* HDBaseTodoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6F015C6835D00FD0C58 /* HDBaseTodoListDataSource.m */; };
 		B38DC6FF15C6835D00FD0C58 /* HDTodoListDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6F215C6835D00FD0C58 /* HDTodoListDelegate.m */; };
 		B38DC70015C6835D00FD0C58 /* HDTodoListSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6F415C6835D00FD0C58 /* HDTodoListSearchViewController.m */; };
 		B38DC70115C6835D00FD0C58 /* HDTodoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6F615C6835D00FD0C58 /* HDTodoListModel.m */; };
-		B38DC70415C687FF00FD0C58 /* HDTodoListSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC70315C687FE00FD0C58 /* HDTodoListSearchDataSource.m */; };
 		B38DC70915C6893200FD0C58 /* Approve.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC70815C6893200FD0C58 /* Approve.m */; };
 		B38DC71A15C68C3800FD0C58 /* HDDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */; };
 		B38DC71B15C68C3800FD0C58 /* HDDetailSubmitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71115C68C3800FD0C58 /* HDDetailSubmitModel.m */; };
@@ -256,6 +255,9 @@
 		B3D0977A15DB91E000C3495D /* HDGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977715DB91E000C3495D /* HDGuider.m */; };
 		B3D0977B15DB91E000C3495D /* HDGuiderMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977915DB91E000C3495D /* HDGuiderMap.m */; };
 		B3D0977E15DBA64400C3495D /* HDResponseMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977D15DBA64300C3495D /* HDResponseMap.m */; };
+		B3D4E20315E60AD80061ED4D /* HDXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E20215E60AD80061ED4D /* HDXMLParser.m */; };
+		B3D4E20615E60B210061ED4D /* HDURLMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E20515E60B210061ED4D /* HDURLMaker.m */; };
+		B3D4E20915E60C030061ED4D /* HDTableItemMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E20815E60C030061ED4D /* HDTableItemMaker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -502,6 +504,8 @@
 		B356A26D15D0AA5500E88192 /* HDBaseRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDBaseRecord.m; sourceTree = "<group>"; };
 		B356A26F15D0B99600E88192 /* HDApprovalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDApprovalRecord.h; sourceTree = "<group>"; };
 		B356A27015D0B99600E88192 /* HDApprovalRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDApprovalRecord.m; sourceTree = "<group>"; };
+		B35BBF7A15E74301008F90E3 /* HDSingltonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSingltonObject.h; sourceTree = "<group>"; };
+		B35BBF7B15E74301008F90E3 /* HDSingltonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSingltonObject.m; sourceTree = "<group>"; };
 		B368B08615D3A14600B6EAEB /* HDSQLCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSQLCenter.h; sourceTree = "<group>"; };
 		B368B08715D3A14600B6EAEB /* HDSQLCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSQLCenter.m; sourceTree = "<group>"; };
 		B36BDA8D15C64777003A4A5D /* HDMobileBusiness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HDMobileBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -545,16 +549,12 @@
 		B38DC6EC15C6835D00FD0C58 /* HDTableStatusMessageItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTableStatusMessageItemCell.m; sourceTree = "<group>"; };
 		B38DC6ED15C6835D00FD0C58 /* HDBaseTodoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseTodoListViewController.h; sourceTree = "<group>"; };
 		B38DC6EE15C6835D00FD0C58 /* HDBaseTodoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDBaseTodoListViewController.m; sourceTree = "<group>"; };
-		B38DC6EF15C6835D00FD0C58 /* HDBaseTodoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseTodoListDataSource.h; sourceTree = "<group>"; };
-		B38DC6F015C6835D00FD0C58 /* HDBaseTodoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDBaseTodoListDataSource.m; sourceTree = "<group>"; };
 		B38DC6F115C6835D00FD0C58 /* HDTodoListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListDelegate.h; sourceTree = "<group>"; };
 		B38DC6F215C6835D00FD0C58 /* HDTodoListDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListDelegate.m; sourceTree = "<group>"; };
 		B38DC6F315C6835D00FD0C58 /* HDTodoListSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListSearchViewController.h; sourceTree = "<group>"; };
 		B38DC6F415C6835D00FD0C58 /* HDTodoListSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListSearchViewController.m; sourceTree = "<group>"; };
 		B38DC6F515C6835D00FD0C58 /* HDTodoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListModel.h; sourceTree = "<group>"; };
 		B38DC6F615C6835D00FD0C58 /* HDTodoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListModel.m; sourceTree = "<group>"; };
-		B38DC6F715C6835D00FD0C58 /* HDTodoListSearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListSearchDataSource.h; sourceTree = "<group>"; };
-		B38DC70315C687FE00FD0C58 /* HDTodoListSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListSearchDataSource.m; sourceTree = "<group>"; };
 		B38DC70715C6893200FD0C58 /* Approve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Approve.h; sourceTree = "<group>"; };
 		B38DC70815C6893200FD0C58 /* Approve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Approve.m; sourceTree = "<group>"; };
 		B38DC70E15C68C3800FD0C58 /* HDDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailInfoViewController.h; sourceTree = "<group>"; };
@@ -756,6 +756,12 @@
 		B3D0977915DB91E000C3495D /* HDGuiderMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGuiderMap.m; sourceTree = "<group>"; };
 		B3D0977C15DBA64300C3495D /* HDResponseMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDResponseMap.h; sourceTree = "<group>"; };
 		B3D0977D15DBA64300C3495D /* HDResponseMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDResponseMap.m; sourceTree = "<group>"; };
+		B3D4E20115E60AD80061ED4D /* HDXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDXMLParser.h; sourceTree = "<group>"; };
+		B3D4E20215E60AD80061ED4D /* HDXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDXMLParser.m; sourceTree = "<group>"; };
+		B3D4E20415E60B210061ED4D /* HDURLMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDURLMaker.h; sourceTree = "<group>"; };
+		B3D4E20515E60B210061ED4D /* HDURLMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDURLMaker.m; sourceTree = "<group>"; };
+		B3D4E20715E60C030061ED4D /* HDTableItemMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTableItemMaker.h; sourceTree = "<group>"; };
+		B3D4E20815E60C030061ED4D /* HDTableItemMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTableItemMaker.m; sourceTree = "<group>"; };
 		B3E06E2B15D4F388002A54BE /* TodoListUI.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = TodoListUI.rtfd; path = Requirement/TodoList/TodoListUI.rtfd; sourceTree = "<group>"; };
 		B3E06E2C15D4FFC8002A54BE /* TodoListModel.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = TodoListModel.rtf; path = Requirement/TodoList/TodoListModel.rtf; sourceTree = "<group>"; };
 		B3E06E3015D509F1002A54BE /* ErrorMessage.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ErrorMessage.rtf; sourceTree = "<group>"; };
@@ -1169,8 +1175,8 @@
 		B38DC70A15C68B2900FD0C58 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B38DC6E915C6835D00FD0C58 /* HDTableStatusMessageItem.h */,
 				B38DC6EA15C6835D00FD0C58 /* HDTableStatusMessageItem.m */,
+				B38DC6E915C6835D00FD0C58 /* HDTableStatusMessageItem.h */,
 				B38DC6EB15C6835D00FD0C58 /* HDTableStatusMessageItemCell.h */,
 				B38DC6EC15C6835D00FD0C58 /* HDTableStatusMessageItemCell.m */,
 			);
@@ -1180,8 +1186,6 @@
 		B38DC70B15C68B3800FD0C58 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				B38DC6EF15C6835D00FD0C58 /* HDBaseTodoListDataSource.h */,
-				B38DC6F015C6835D00FD0C58 /* HDBaseTodoListDataSource.m */,
 				B38DC6ED15C6835D00FD0C58 /* HDBaseTodoListViewController.h */,
 				B38DC6EE15C6835D00FD0C58 /* HDBaseTodoListViewController.m */,
 			);
@@ -1191,8 +1195,6 @@
 		B38DC70C15C68B4A00FD0C58 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				B38DC6F715C6835D00FD0C58 /* HDTodoListSearchDataSource.h */,
-				B38DC70315C687FE00FD0C58 /* HDTodoListSearchDataSource.m */,
 				B38DC6F315C6835D00FD0C58 /* HDTodoListSearchViewController.h */,
 				B38DC6F415C6835D00FD0C58 /* HDTodoListSearchViewController.m */,
 			);
@@ -1469,6 +1471,7 @@
 		B38E686A15C654DA00824CB1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B3D4E20015E60ABB0061ED4D /* HDGodXMLParser */,
 				B3D0977515DB91DF00C3495D /* HDEluneGuider */,
 				B356A26815D0A5AE00E88192 /* HDCoreStorage */,
 				B34660BF15C6799500EFDF24 /* ApproveDatabaseHelper.h */,
@@ -1479,6 +1482,8 @@
 				B31E2ECB15C65BAA00880514 /* HDGodXMLFactory.m */,
 				B38E686B15C654DA00824CB1 /* HDHTTPRequest */,
 				B31E2EE215C660B600880514 /* HDUtilities.h */,
+				B35BBF7A15E74301008F90E3 /* HDSingltonObject.h */,
+				B35BBF7B15E74301008F90E3 /* HDSingltonObject.m */,
 			);
 			name = Utilities;
 			path = ../Utilities;
@@ -1545,6 +1550,19 @@
 				B3D0977915DB91E000C3495D /* HDGuiderMap.m */,
 			);
 			path = HDEluneGuider;
+			sourceTree = "<group>";
+		};
+		B3D4E20015E60ABB0061ED4D /* HDGodXMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				B3D4E20115E60AD80061ED4D /* HDXMLParser.h */,
+				B3D4E20215E60AD80061ED4D /* HDXMLParser.m */,
+				B3D4E20415E60B210061ED4D /* HDURLMaker.h */,
+				B3D4E20515E60B210061ED4D /* HDURLMaker.m */,
+				B3D4E20715E60C030061ED4D /* HDTableItemMaker.h */,
+				B3D4E20815E60C030061ED4D /* HDTableItemMaker.m */,
+			);
+			path = HDGodXMLParser;
 			sourceTree = "<group>";
 		};
 		B3E06DCD15D4D0D7002A54BE /* Requirement */ = {
@@ -2047,11 +2065,9 @@
 				B38DC6FB15C6835D00FD0C58 /* HDTableStatusMessageItem.m in Sources */,
 				B38DC6FC15C6835D00FD0C58 /* HDTableStatusMessageItemCell.m in Sources */,
 				B38DC6FD15C6835D00FD0C58 /* HDBaseTodoListViewController.m in Sources */,
-				B38DC6FE15C6835D00FD0C58 /* HDBaseTodoListDataSource.m in Sources */,
 				B38DC6FF15C6835D00FD0C58 /* HDTodoListDelegate.m in Sources */,
 				B38DC70015C6835D00FD0C58 /* HDTodoListSearchViewController.m in Sources */,
 				B38DC70115C6835D00FD0C58 /* HDTodoListModel.m in Sources */,
-				B38DC70415C687FF00FD0C58 /* HDTodoListSearchDataSource.m in Sources */,
 				B38DC70915C6893200FD0C58 /* Approve.m in Sources */,
 				B38DC71A15C68C3800FD0C58 /* HDDetailInfoViewController.m in Sources */,
 				B38DC71B15C68C3800FD0C58 /* HDDetailSubmitModel.m in Sources */,
@@ -2073,6 +2089,10 @@
 				B3D0977A15DB91E000C3495D /* HDGuider.m in Sources */,
 				B3D0977B15DB91E000C3495D /* HDGuiderMap.m in Sources */,
 				B3D0977E15DBA64400C3495D /* HDResponseMap.m in Sources */,
+				B3D4E20315E60AD80061ED4D /* HDXMLParser.m in Sources */,
+				B3D4E20615E60B210061ED4D /* HDURLMaker.m in Sources */,
+				B3D4E20915E60C030061ED4D /* HDTableItemMaker.m in Sources */,
+				B35BBF7C15E74302008F90E3 /* HDSingltonObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
