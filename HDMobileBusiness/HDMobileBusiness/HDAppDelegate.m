@@ -30,6 +30,9 @@
     //Views Managment by Three20
     [TTStyleSheet setGlobalStyleSheet:[[[HDDefaultStyleSheet alloc]init]autorelease]];
     
+    //create database
+    [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordSet:nil];
+    
     TTNavigator * navigator = [TTNavigator navigator];
     
     [navigator.URLMap from:@"init://LoadingViewController" toModalViewController:[HDLoadingViewController class]];
