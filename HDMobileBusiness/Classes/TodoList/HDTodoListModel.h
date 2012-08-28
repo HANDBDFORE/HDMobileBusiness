@@ -8,12 +8,6 @@
 
 #import "HDURLRequestModel.h"
 
-//#import "Approve.h"
-//TODO:考虑不要path了,直接通过viewController来取
-//static NSString * kApproveListBatchSubmitPath = @"APPROVE_LIST_BATCH_SUBMIT_PATH";
-
-//static NSString * kApproveListQueryPath = @"APPROVE_LIST_QUERY_PATH";
-
 /*
  *记录状态,不同的状态cell样式不同
  */
@@ -22,7 +16,8 @@ static NSString * kRecordWaiting = @"WAITING";
 static NSString * kRecordError = @"ERROR";
 static NSString * kRecordDifferent = @"DIFFERENT";
 
-static NSString * kRecordStatusField = @"LOCAL_STATUS";
+static NSString * kRecordStatus = @"kLocalStatus";
+static NSString * kRecordServerMessage = @"kServerMessage";
 /*
  *使用同步方法从本地存储刷新数据使用状态,当前不启用
  */
@@ -33,6 +28,7 @@ static NSString * kStorageRemove = @"REMOVE";
 
 @interface HDTodoListModel : HDURLRequestModel
 {
+    @private
     struct {
         unsigned int isFirstLoad:1;
         unsigned int isSubmitingData:1;
@@ -45,35 +41,29 @@ static NSString * kStorageRemove = @"REMOVE";
     NSString * _searchText;
 }
 
+//结果列表，和界面显示对应，datasource从该列表获取数据
 @property(nonatomic,readonly) NSMutableArray * resultList;
+
+//提交队列
 @property(nonatomic,readonly) NSMutableArray * submitList;
-//@property(nonatomic,readonly) NSMutableArray * searchResultList;
 
-//提交的动作,   动作直接通过函数调用传过来
-//@property(nonatomic,copy) NSString * submitAction;
-
-/*
- *查询字段
- */
+//查询字段
 @property(nonatomic,retain) NSArray * serachFields;
 
-/*
- *排序字段
- */
+//排序字段
 @property(nonatomic,copy) NSString * orderField;
 
-/*
- *主键字段
- */
+//主键字段
 @property(nonatomic,copy) NSString * primaryFiled;
-/*
- *查询的Url
- */
+
+//查询的Url
 @property(nonatomic,copy) NSString * queryUrl;
-/*
- *提交的Url
- */
+
+//提交的Url
 @property(nonatomic,copy) NSString * submitUrl;
+
+//当前指针位置，表识被点击纪录的行号
+@property(nonatomic,assign) NSUInteger selectedIndex;
 
 //提交成功,删除记录
 //-(void)removeSubmitedRecord:(Approve *) submitedRecord;
@@ -81,13 +71,28 @@ static NSString * kStorageRemove = @"REMOVE";
 //提交失败,修改记录
 //-(void)updateErrorRecord:(Approve *) errorRecord;
 
--(void)addObjectAtIndexPathsForSubmit:(NSArray *) indexPaths
-                              comment:(NSString *) comment
-                               action:(NSString *) action;
+//提交制定indexPaths中的纪录，设置纪录的comment和action
+-(void)submitObjectAtIndexPaths:(NSArray *) indexPaths
+                        comment:(NSString *) comment
+                         action:(NSString *) action;
 
-//-(void) setIsSearching:(BOOL) isSearching;
-
+//查询
 - (void)search:(NSString*)text;
+
+//获取当前selectedIndex对应resultList中的纪录
+-(id)currentRecord;
+
+//跳转到下一条有效记录
+-(BOOL)nextRecord;
+
+//跳转到上一条有效记录
+-(BOOL)prevRecord;
+
+//获取当前有效记录数
+-(NSUInteger)effectiveRecordCount;
+
+//清除无效的数据
+-(void)clear;
 
 @end
 

@@ -6,21 +6,12 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "HDBaseTodoListDataSource.h"
+#import "HDTodoListModel.h"
 
-/////////////////
+@interface HDTodoListDataSource : TTListDataSource
 
-//删除//删除//删除//删除//删除//删除//删除//删除//删除
-//删除//删除//删除//删除//删除//删除//删除//删除//删除
-//删除//删除//删除//删除//删除//删除//删除//删除//删除
+@property(nonatomic,retain) HDTodoListModel * todoListModel;
 
-////////////
-
-
-//static NSString * kOpenWillApproveDetailViewPath = @"open://willApproveDetailViewController";
-
-@interface HDTodoListDataSource : HDBaseTodoListDataSource
-
-
+@property(nonatomic,retain) NSDictionary * cellItemMap;
 
 @end

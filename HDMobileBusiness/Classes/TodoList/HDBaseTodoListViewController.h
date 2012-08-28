@@ -6,18 +6,21 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-//#import "HDWillApproveToolBarModel.h"
-//#import "HDDetailSubmitModel.h"
-
 @interface HDBaseTodoListViewController : TTTableViewController<TTPostControllerDelegate>
 {
+    @protected
     UIBarButtonItem *  _acceptButton;
     UIBarButtonItem *  _refuseButton;
     UIBarButtonItem *  _refreshButton;
     UIBarButtonItem *  _composeButton;
-    UIBarButtonItem *  _states;
+    UIBarButtonItem *  _clearButton;
     UIBarButtonItem *  _space;
-    UILabel                 *_refreshTimeLable;
+    UILabel         *  _refreshTimeLable;
+    
+    NSString        *  _submitAction;
 }
 @property(nonatomic,retain) UILabel *refreshTimeLable;
+
+-(void)setToolbarButtonTitleWithCount:(NSNumber *)count;
+
 @end

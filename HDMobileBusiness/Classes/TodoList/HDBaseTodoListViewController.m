@@ -8,16 +8,18 @@
 
 #import "HDBaseTodoListViewController.h"
 #import "HDTodoListDelegate.h"
+#import "HDTodoListModel.h"
 
 @implementation HDBaseTodoListViewController
 @synthesize refreshTimeLable=_refreshTimeLable;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         self.variableHeightRows = YES;
-        _clearsSelectionOnViewWillAppear = NO; 
+        _clearsSelectionOnViewWillAppear = NO;
     }
     return self;
 }
@@ -35,11 +37,12 @@
     _refuseButton.width = 100;
     _refuseButton.tag = 0;
     
+    _clearButton = [[UIBarButtonItem alloc]initWithTitle:@"清理" style:UIBarButtonItemStyleBordered target:_model action:@selector(clear)];
+    
     _space = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
     _refreshButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
     _composeButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
-    _states = [[UIBarButtonItem alloc]initWithTitle:@"loading" style:UIBarButtonItemStylePlain target:nil action:nil];
 
     [self resetButtonTitle];
 }
@@ -61,7 +64,7 @@
     TT_RELEASE_SAFELY(_acceptButton);
     TT_RELEASE_SAFELY(_refreshButton);
     TT_RELEASE_SAFELY(_composeButton);
-    TT_RELEASE_SAFELY(_states);
+    TT_RELEASE_SAFELY(_clearButton);
     TT_RELEASE_SAFELY(_space);
     TT_RELEASE_SAFELY(_refreshTimeLable);
     [super viewDidUnload];
@@ -94,7 +97,6 @@
     }
 }
 
-
 #pragma mark interface orientation
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -117,39 +119,23 @@
 #pragma mark post view controller
 //toolBar button pressed
 -(void)toolBarButtonPressed: (id)sender
-{    
-    if ([self.model respondsToSelector:@selector(setSubmitAction:)]) {
-        [self.model performSelector:@selector(setSubmitAction:)
-                         withObject:[self createBatchAction:[sender tag]]];
-    }
-    [self showPostView];
-}
-
--(NSString *)createBatchAction:(NSUInteger) tag
 {
-    if (tag== 1) {
-        return @"Y";
-    }else {
-        return @"N";
-    }
+    _submitAction = ([sender tag] == 1)?@"Y":@"N";
+    [self showPostView];
 }
 
 -(void)showPostView
 {
-    //准备默认审批内容
-    NSString *defaultText = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
-    //点击后打开模态视图
+    NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     //    controller.originView = [query objectForKey:@"__target__"];
-    NSDictionary * query = [NSDictionary dictionaryWithObjectsAndKeys:defaultText, @"text",self,@"delegate",@"审批意见",@"title",nil];
-    
-    [[TTNavigator navigator]openURLAction:[[TTURLAction actionWithURLPath:@"init://postController"]applyQuery:query]]; 
+    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"init://postController"] applyQuery: @{@"text":defaultComments, @"delegate":self, @"title":@"审批意见"}]];
 }
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
     NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
-    if ([self.model respondsToSelector:@selector(addObjectAtIndexPathsForSubmit:comment:)]) {
-        [self.model performSelector:@selector(addObjectAtIndexPathsForSubmit:comment:)  withObject:indexPaths withObject:text];
+    if ([self.model isKindOfClass:[HDTodoListModel class]]) {
+        [(HDTodoListModel *)self.model  submitObjectAtIndexPaths:indexPaths comment:text action:_submitAction];
     }
     [self setEditing:NO animated:YES];
 }

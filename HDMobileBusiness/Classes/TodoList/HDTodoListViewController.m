@@ -9,8 +9,6 @@
 #import "HDTodoListViewController.h"
 #import "HDTodoListDataSource.h"
 #import "HDTodoListSearchViewController.h"
-//#import "HDTodoListSearchDataSource.h"
-#import "HDDetailSubmitModel.h"
 
 @implementation HDTodoListViewController
 
@@ -18,12 +16,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
         self.title = @"待办事项";
-        [[TTNavigator navigator].URLMap 
-         from:[NSString stringWithFormat:@"%@/(%@:)",kOpenWillApproveDetailViewPath ,@"openDetailViewForKey",nil]
-         toSharedViewController:self 
-         selector:@selector(openDetailViewForKey:)];
+        self.dataSource = [[[HDTodoListDataSource alloc]init]autorelease];
     }
     return self;
 }
@@ -57,36 +51,20 @@
     self.searchViewController = searchController;
     _searchController.searchBar.tintColor = TTSTYLEVAR(searchBarTintColor);
     self.tableView.tableHeaderView = _searchController.searchBar;
+    self.searchViewController.dataSource = self.dataSource;
     self.tableView.contentOffset = CGPointMake(0, TTToolbarHeight());
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setToolbarHidden:NO animated:YES];
+//    [self.navigationController setToolbarHidden:NO animated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.navigationController setToolbarHidden:YES animated:YES];
-}
-
--(void)viewDidUnload
-{
-    [[TTNavigator navigator].URLMap removeURL:[NSString stringWithFormat:@"%@/(%@:)",kOpenWillApproveDetailViewPath ,@"openDetailViewForKey",nil]];
-    [super viewDidUnload];
-}
-
-#pragma mark TTModelViewControler functions
--(void)createModel
-{
-//    id <TTModel> model = [[HDTodoListModel alloc]init];
-    self.dataSource = [[[HDBaseTodoListDataSource alloc]init]autorelease];
-    self.searchViewController.dataSource = self.dataSource;
-//    self.searchViewController.dataSource = [[[HDTodoListSearchDataSource alloc] initWithModel:model]autorelease];
-//    TT_RELEASE_CF_SAFELY(model);
+//    [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -121,92 +99,8 @@
     if (self.editing) {
         return [NSArray arrayWithObjects:_acceptButton,_space,_refuseButton, nil];
     }else {
-        return [NSArray arrayWithObjects:_refreshButton,_space,nil];
+        return [NSArray arrayWithObjects:_refreshButton,_space,_clearButton,nil];
     } 
 }
-
--(UIViewController *)openDetailViewForKey:(NSString *) key
-{
-    TTDPRINT(@"open detail");
-//    HDTodoListModel * _approveListModel = (HDTodoListModel *) self.model;
-//    Approve * _approve = [_approveListModel.resultList objectAtIndex:[key intValue]];
-//    
-//    UIViewController * viewController = [[TTNavigator navigator]viewControllerForURL:@"init://willApproveDetail"];
-//    
-//    viewController.hidesBottomBarWhenPushed = YES;
-//    HDDetailSubmitModel * submitModel = [[[HDDetailSubmitModel alloc]init] autorelease];
-//    submitModel.submitData = _approve;
-//    
-//    
-//    [viewController setValue:submitModel forKey:@"submitModel"];
-//    //    //get webpage url
-//    NSDictionary * urlQuery = [_approve dictionaryWithValuesForKeys:[NSArray arrayWithObjects:@"docPageUrl",@"instanceId", nil]];
-//    
-//    NSString * webPageUrl = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kTodoListDetailWebPagePath query:urlQuery];
-//    
-//    NSString * employeeURLPath = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kUserInfoWebPagePath query:[NSDictionary dictionaryWithObject:_approve.employeeId forKey:@"employeeID"]];
-//    
-//    [viewController setValue:_approve.rowID forKeyPath:@"rowID"];
-//    [viewController setValue:_approve.recordID forKeyPath:@"recordID"];
-//    [viewController setValue:_approve.instanceId forKeyPath:@"instanceID"];
-//    
-//    [viewController setValue:_approve.localStatus forKeyPath:@"localStatus"];
-//    [viewController setValue:webPageUrl forKeyPath:@"webPageURLPath"];
-//    
-//    [viewController setValue:_approve.employeeName forKeyPath:@"employeeName"];
-//    [viewController setValue:employeeURLPath forKeyPath:@"employeeURLPath"];
-//    return viewController;
-}
-//-(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
-//{
-//    NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
-//    [self setEditing:NO animated:YES];
-//    //    TTDPRINT(@"%@",indexPaths);
-//    [(HDWillAproveListModel*)self.model addObjectAtIndexPathsForSubmit:indexPaths comment:text searching:NO];
-//    //    [self reloadIfNeeded];
-//}
-//#pragma mark custom functions
-//-(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
-//{
-//    NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
-//    [(HDWillAproveListModel*)self.model addObjectAtIndexPathsForSubmit:indexPaths comment:text];
-//    [self.searchViewController setEditing:NO animated:YES];
-//    [self reloadIfNeeded];
-//}
-//set toolbar
-//-(void)showToolBar
-//{
-//    [self resetToolBarButtons];
-//    UIBarButtonItem * space = [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil] autorelease];
-////    _toolbar.hidden = NO;
-////    _toolbar.items = [NSArray arrayWithObjects:space,_acceptButton,_refuseButton,space, nil];
-//    [self setToolbarItems:[NSArray arrayWithObjects:space,_acceptButton,_refuseButton,space, nil] animated:YES];
-////    _toolbar.top = TTScreenBounds().size.height-TTToolbarHeight();
-//    self.tableView.frame = HDNavigationStatusbarFrame();
-//}
-
-//-(void)hideToolbar
-//{
-//    self.navigationController.toolbar.hidden =YES;
-//}
-
-//-(void)setHidesToolBar:(BOOL) hidesToolbar animated:(BOOL) animated
-//{
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:animated?0.25:0];
-//    UIToolbar * _toolbar = self.navigationController.toolbar;
-//    if (hidesToolbar) {
-//        self.tableView.height = self.view.height;
-//        _toolbar.top = TTScreenBounds().size.height;
-//        [self resetToolBarButtons];
-//    }
-//    else {
-//        self.tableView.height = self.view.height-TTToolbarHeight();
-//        _toolbar.top = TTScreenBounds().size.height-TTToolbarHeight();
-//    }
-//    [UIView commitAnimations];
-//}
-
-
 
 @end

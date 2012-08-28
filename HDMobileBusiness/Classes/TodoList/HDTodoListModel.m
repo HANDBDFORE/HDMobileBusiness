@@ -9,28 +9,30 @@
 #import "HDTodoListModel.h"
 #import "HDCoreStorage.h"
 
-static NSString * kColumnMapKey = @"Column1";
-static NSString * kColumnMapColumn = @"Column0";
+static NSString * kColumnMapKey = @"column1";
+static NSString * kColumnMapColumn = @"column0";
+
+static NSString * kSQLNull = @"null";
+//submit filed
+static NSString * kAction = @"action_id";
+static NSString * kComments = @"comment";
 
 @interface HDTodoListModel()
 
-//@property(nonatomic,retain)ApproveDatabaseHelper * dbHelper;
 @property(nonatomic,retain)NSString * searchText;
 
 @end
 
 @implementation HDTodoListModel
 @synthesize resultList = _resultList,submitList = _submitList;
-//,searchResultList = _searchResultList;
 
 @synthesize searchText = _searchText;
-//@synthesize submitAction = _submitAction;
-//@synthesize dbHelper = _dbHelper;
 @synthesize serachFields = _serachFields;
 @synthesize orderField = _orderField;
 @synthesize primaryFiled = _primaryFiled;
 @synthesize queryUrl = _queryUrl;
 @synthesize submitUrl = _submitUrl;
+@synthesize selectedIndex = _selectedIndex;
 
 - (void)dealloc
 {
@@ -41,10 +43,6 @@ static NSString * kColumnMapColumn = @"Column0";
     TT_RELEASE_SAFELY(_primaryFiled);
     TT_RELEASE_SAFELY(_queryUrl);
     TT_RELEASE_SAFELY(_submitUrl);
-//    TT_RELEASE_SAFELY(_submitAction);
-//    TT_RELEASE_SAFELY(_dbHelper);
-//    TT_RELEASE_SAFELY(_searchResultList);
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"submitNotification" object:nil];
     [super dealloc];
 }
 
@@ -54,18 +52,14 @@ static NSString * kColumnMapColumn = @"Column0";
     if (self) {
         _submitList = [[NSMutableArray alloc] init];
         _resultList = [[NSMutableArray alloc] init];
-        //TODO:test data
-        self.orderField = @"creationDate";
-        self.primaryFiled = @"record_id";
-        self.serachFields = @[@"orderType",@"nodeName",@"employeeName"];
-        self.queryUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"autocrud/ios.ios_approve.ios_workflow_approve_query/query?_fetchall=true&amp;_autocount=false"];
-        self.submitUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_approve/ios_workflow_approve.svc"];
-        
-        [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordSet:nil];
-//        _searchResultList = [[NSMutableArray alloc]init];
+        //Test Data
+        //        self.orderField = @"creation_date";
+        //        self.primaryFiled = @"record_id";
+        //        self.serachFields = @[@"order_type",@"node_name",@"employee_name"];
+        //        self.queryUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"autocrud/ios.ios_approve.ios_workflow_approve_query/query?_fetchall=true&amp;_autocount=false"];
+        //        self.submitUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_approve/ios_workflow_approve.svc"];
+        _selectedIndex = 0;
         _flags.isFirstLoad = YES;
-//        _dbHelper = [[ApproveDatabaseHelper alloc]init];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveNotification:) name:@"submitNotification" object:nil];
     }
     return self;
 }
@@ -86,12 +80,10 @@ static NSString * kColumnMapColumn = @"Column0";
     if([self shouldSubmit]){
         _flags.isSubmitingData = YES;
         [self submit];
-        //        [self performSelector:@selector(submit) withObject:self afterDelay:0.5];
     }
     if ([self shouldQuery]) {
         _flags.isQueryingData = YES;
         [self loadRemoteRecords];
-        //        [self performSelector:@selector(loadRemoteRecords) withObject:self afterDelay:0.5];
     }
 }
 
@@ -109,9 +101,8 @@ static NSString * kColumnMapColumn = @"Column0";
     }
     //查询状态
     if (_flags.isQueryingData) {
-        //TODO:这里考虑不转化为对象
         _flags.isQueryingData = NO;
-        [self updateResultList:resultMap.result];
+        [self refreshResultList:resultMap.result];
         if (!self.isLoadingMore) {
             self.loadedTime = request.timestamp;
             self.cacheKey = request.cacheKey;
@@ -129,93 +120,80 @@ static NSString * kColumnMapColumn = @"Column0";
     _flags.isSubmitingData = NO;
 }
 
+#pragma -mark Submit data
+-(void)submit
+{
+    HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
+    map.postData = @[[_submitList objectAtIndex:0]];
+    [map.userInfo setObject:[_submitList objectAtIndex:0] forKey:@"postObject"];
+    map.requestPath = self.submitUrl;
+    map.cachePolicy = TTURLRequestCachePolicyNoCache;
+    [self requestWithMap:map];
+}
+
 -(void)didSubmitRecord:(HDResponseMap*) resultMap
 {
     TT_RELEASE_SAFELY(_loadingRequest);
-//    Approve * submitObject = (Approve *) [resultMap.userInfo objectForKey:@"postObject"];
     id submitObject = [resultMap.userInfo objectForKey:@"postObject"];
-//    if ([self isSearching]) {
-//        index = [self.searchResultList indexOfObject:submitObject];
-//    }else {
-        NSUInteger index = [self.resultList indexOfObject:[resultMap.userInfo objectForKey:@"postObject"]];
-//    }
+    NSUInteger index = [self.resultList indexOfObject:[resultMap.userInfo objectForKey:@"postObject"]];
     [_submitList removeObject:submitObject];
     _flags.isSubmitingData = (_submitList.count > 0);
-    //////////////////////////////////////////
-    ///////////////
+    /////////////////////////////////////////////////////////
     if (!resultMap.result) {
-        [submitObject setValue:kRecordError forKey:kRecordStatusField];
-//        submitObject.localStatus = @"ERROR";
-        [submitObject setValue:resultMap.error.localizedDescription forKey:@"SERVER_MESSAGE"];
-//        submitObject.serverMessage = resultMap.error.localizedDescription;
+        [submitObject setValue:kRecordError forKey:kRecordStatus];
+        [submitObject setValue:resultMap.error.localizedDescription forKey:kRecordServerMessage];
         [self didUpdateObject:submitObject
                   atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-        [self updateSubmitRecord:submitObject];
+        [self updateRecords:@[submitObject]];
     }else {
-        [self removeSubmitedRecord:submitObject];
+        //debug:删除数据需要包装成数组
+        //TODO:暂时组装record_id传递
+        [self removeRecords:@[@{@"record_id":[submitObject valueForKey:@"record_id"]}]];
         [_resultList removeObject:submitObject];
-//        [_searchResultList removeObject:submitObject];
         [self setIconBageNumber];
         [self didDeleteObject:submitObject
                   atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
     }
 }
 
-#pragma -mark Submit offline data
--(void)submit
-{
-//    Approve * _approve = [_submitList objectAtIndex:0];
-//    id _postData =[NSDictionary dictionaryWithObjectsAndKeys:[_approve.recordID stringValue],@"record_id", _approve.action,@"action_id",_approve.comment,@"comment",nil];
-    
-    HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    map.postData = [_submitList objectAtIndex:0];
-    [map.userInfo setObject:[_submitList objectAtIndex:0] forKey:@"postObject"];
-    map.requestPath = self.submitUrl;
-//    map.urlName = kApproveListBatchSubmitPath;
-//    map.requestPath = _approve.submitUrl;
-    //    map.urlName = kApproveListBatchSubmitPath;
-    map.cachePolicy = TTURLRequestCachePolicyNoCache;
-    [self requestWithMap:map];
-}
-
--(void)addObjectAtIndexPathsForSubmit:(NSArray *) indexPaths comment:(NSString *) comment action:(NSString *) action
+-(void)submitObjectAtIndexPaths:(NSArray *) indexPaths
+                        comment:(NSString *) comment
+                         action:(NSString *) action
 {
     for (NSIndexPath * indexPath in indexPaths) {
-        //TODO:这里需要判断是search的table还是待办列表的table,一个从result中取对象,一个从search中取
-        
-//        Approve * submitObject = nil;
-        
-//        if ([self isSearching]) {
-//            submitObject = [self.searchResultList objectAtIndex:indexPath.row];
-//        }else {
-        id  submitObject = [self.resultList objectAtIndex:indexPath.row];
-//        }
-        [submitObject setValue:comment forKey:@"COMMENTS"];
-        [submitObject setValue:action forKey:@"SUBMIT_ACTION"];
-        [submitObject setValue:self.submitUrl forKey:@"SUBMIT_URL"];
-//        submitObject.comment = comment;
-//        submitObject.action = self.submitAction;
-//        submitObject.submitUrl = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kApproveListBatchSubmitPath query:nil];
-        [self setObjectForSubmit:submitObject];
+        id  submitRecord = [self.resultList objectAtIndex:indexPath.row];
+        [submitRecord setValue:comment forKey:kComments];
+        [submitRecord setValue:action forKey:kAction];
+        [submitRecord setValue:kRecordWaiting forKeyPath:kRecordStatus];
+        [self.submitList addObject:submitRecord];
     }
+    [self updateRecords:self.submitList];
     //设置超时状态,进入shouldload状态
     self.cacheKey = nil;
     [self didFinishLoad];
 }
 
--(void)receiveNotification:(NSNotification *)notification
+#pragma mark Load local records
+-(void)loadLocalRecords
 {
-    [self setObjectForSubmit:[notification object]];
-    self.cacheKey = nil;
-    [self didFinishLoad];
-}
-
-//这个调用只刷新界面而不应该出发model的load,需要表示model不需要load
--(void)setObjectForSubmit:(id)submitObject
-{
-    [submitObject setValue:kRecordWaiting forKeyPath:kRecordStatusField];
-    [self.submitList addObject:submitObject];
-    [self updateSubmitRecord:submitObject];
+    [self.resultList removeAllObjects];
+    //从数据库读取数据(应该放到一个业务逻辑类中)
+    NSArray *_storageList = [[HDCoreStorage shareStorage]  query:@selector(SQLqueryToDoList:) conditions:nil];
+    for (NSDictionary *record in _storageList) {
+        [_resultList addObject:record];
+        
+        //如果是等待状态,插入提交列表
+        if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordWaiting]) {
+            [_submitList addObject:record];
+        }
+    }
+    
+    [self.resultList sortWithOptions:NSSortConcurrent
+                     usingComparator:^NSComparisonResult (id obj1,id obj2){
+                         return [[obj1 valueForKey:_orderField]
+                                 compare:[obj2 valueForKey:_orderField]];
+                     }];
+    [self setIconBageNumber];
 }
 
 #pragma -mark Load remote records
@@ -223,57 +201,36 @@ static NSString * kColumnMapColumn = @"Column0";
 {
     _flags.isQueryingData = YES;
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-//    map.urlName = kApproveListQueryPath;
     map.requestPath =  self.queryUrl;
     [self requestWithMap:map];
 }
 
-#pragma mark Load local records
--(void)loadLocalRecords
+//对比传入的 result 和当前的 _resultList 生成新的结果列表
+-(void) refreshResultList:(NSArray *) responseList
 {
-    //从数据库读取数据(应该放到一个业务逻辑类中)
-    NSArray *_localArray = [[HDCoreStorage shareStorage]  query:@selector(SQLqueryToDoList:) conditions:nil];
-    NSMutableArray * _localList = [NSMutableArray array];
-    for (NSDictionary *record in _localArray) {
-        [_localList addObject:record];
-        //如果是等待状态,插入提交列表
-        if ([[record valueForKey:kRecordStatusField] isEqualToString:kRecordWaiting]) {
-            [_submitList addObject:record];
-        }
-    }
-    [_resultList addObjectsFromArray:[self orderList:_localList]];
-    [self setIconBageNumber];
-}
-
-//提交成功,删除本地记录
--(void)removeSubmitedRecord:(NSArray *) recordset
-{
-    //删除提交成功的数据
-    //    ApproveDatabaseHelper * _dbHelper = [[ApproveDatabaseHelper alloc]init];
-    //TODO:做成单例...
-    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecord:recordSet:) recordSet:recordset];
-}
-
--(void)updateSubmitRecord:(NSArray *) recordset
-{
-    //修改数据
-    [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordSet:) recordSet:recordset];
-}
-
--(void) updateResultList:(NSArray *) result
-{
-    //对比数据生成新的结果列表
-
-    if(0 < [[[result lastObject] allKeys]count]){
+    if(0 < [[[responseList lastObject] allKeys]count]){
+        //TODO:这里需要确定action,comments字段是服务端传递还是这里强制写死
+        //服务端传递:服务端可以自由使用变量名,提交参数意义明确,缺点是需要强制传递空参数,增加数据传输量.
+        //客户端指定:不需要服务端传递空参数,缺点是提交参数被写死了.
+        [responseList setValue:kRecordNormal forKey:kRecordStatus];
+        [responseList setValue:kSQLNull forKey:kRecordServerMessage];
+        [responseList setValue:kSQLNull forKey:kAction];
+        [responseList setValue:kSQLNull forKey:kComments];
         //刷新columnMap表
-        if (![self refreshColumnMap:[result lastObject]]) {
-            return;
-        }
+        [self refreshColumnMap:[responseList lastObject]];
         
-        NSArray * _newResult = [self combineRecordsWithlocalRecords:_resultList remoteRecords:result];
         
+        NSArray * newResultList =
+        [self combineRecordsWithLocalRecords:_resultList
+                               remoteRecords:responseList];
         [_resultList removeAllObjects];
-        [_resultList addObjectsFromArray:_newResult];
+        [_resultList addObjectsFromArray:newResultList];
+        
+        
+        [_resultList sortWithOptions:NSSortStable usingComparator:^NSComparisonResult(id obj1, id obj2) {
+            return [[obj1 valueForKey:_orderField]
+                    compare:[obj2 valueForKey:_orderField]];
+        }];
         if ([self isSearching]) {
             [self search:self.searchText];
         }
@@ -282,90 +239,99 @@ static NSString * kColumnMapColumn = @"Column0";
     }
 }
 
--(BOOL)refreshColumnMap:(NSDictionary *) record
+-(void)refreshColumnMap:(NSDictionary *) record
+{
+    if (![self matchColumnMap:record]) {
+        [[HDCoreStorage shareStorage]excute:@selector(SQLCleanTable:) recordSet:nil];
+        [self loadLocalRecords];
+        
+        NSMutableArray * columnKeyList = [NSMutableArray array];
+        //set locked field
+        [columnKeyList addObject:@{kColumnMapKey:_primaryFiled,kColumnMapColumn:@"column0"}];
+        //set dinymic field from Column5
+        int i =5;
+        
+        NSMutableDictionary * mutableRecord =  [record mutableCopy];
+        [mutableRecord removeObjectForKey:_primaryFiled];
+        NSArray * keys = [mutableRecord allKeys];
+        for (NSString * key in keys) {
+            [columnKeyList addObject:@{kColumnMapKey : key,kColumnMapColumn:[NSString stringWithFormat:@"column%i",i]}];
+            i++;
+        }
+        [[HDCoreStorage shareStorage] excute:@selector(SQLColumnMapInsert:recordSet:) recordSet:columnKeyList];
+    }
+}
+
+-(BOOL)matchColumnMap:(NSDictionary *) newMatchRecord
 {
     NSArray * oldColumnKeyList = [[HDCoreStorage shareStorage]query:@selector(SQLqueryColumnMap:) conditions:nil];
     
+    if ([newMatchRecord allKeys].count != oldColumnKeyList.count ||
+        oldColumnKeyList.count == 0) {
+        return NO;
+    }
+    
     BOOL matchFlg = YES;
     for (NSDictionary * line  in oldColumnKeyList) {
-        matchFlg = matchFlg && !![record valueForKey:[line valueForKey:kColumnMapKey]];
+        matchFlg = matchFlg && !![newMatchRecord valueForKey:[line valueForKey:kColumnMapKey]];
     }
-    if (!matchFlg) {
-        [[HDCoreStorage shareStorage]excute:@selector(SQLCleanTable:) recordSet:nil];
-    }
-
-    NSMutableArray * columnKeyList = [NSMutableArray array];
-   //set pk
-    [columnKeyList addObject:@{kColumnMapKey:_primaryFiled,kColumnMapColumn:@"Column0"}];
-    
-    NSMutableDictionary * mapRecord = [record mutableCopy];
-    [mapRecord removeObjectForKey:_primaryFiled];
-    
-    NSArray * keys = [mapRecord allKeys];
-    int i =1;
-    for (NSString * key in keys) {
-        [columnKeyList addObject:@{kColumnMapKey : key,kColumnMapColumn:[NSString stringWithFormat:@"Column%i",i]}];
-        i++;
-    }
-    
-    [[HDCoreStorage shareStorage] excute:@selector(SQLColumnMapInsert:recordSet:) recordSet:columnKeyList];
-    return YES;
+    return matchFlg;
 }
 
--(NSArray *)combineRecordsWithlocalRecords:(NSArray *) localRecords remoteRecords:(NSArray *) remoteRecords
+-(NSArray *)combineRecordsWithLocalRecords:(NSArray *) localRecords remoteRecords:(NSArray *) remoteRecords
 {
-    //
-    NSMutableArray * _diffArray = [NSMutableArray arrayWithArray:localRecords];
-    NSMutableArray * _newArray = [NSMutableArray arrayWithArray:remoteRecords] ;
-    NSMutableArray * _localSameArray = [NSMutableArray array];
-    NSMutableArray * _remoteSameArray = [NSMutableArray array];
+    //debug 判断localRecord是否为空，否则copy时会crash
+    if (localRecords.count == 0) {
+        //        [remoteRecords setValue:kRecordDifferent forKey:kRecordStatus];
+        
+        [self insertRecords:remoteRecords];
+        return remoteRecords;
+    }
+    
+    NSMutableArray * diffArray = [localRecords mutableCopy];
+    NSMutableArray * newArray = [remoteRecords mutableCopy] ;
+    NSMutableArray * localSameArray = [NSMutableArray array];
+    NSMutableArray * remoteSameArray = [NSMutableArray array];
     
     //比较数据
     //find same records
-    for (id localApprove in (NSArray *)localRecords) {
-        for (id remoteRecord in remoteRecords) {
-            if ([[localApprove valueForKey:_primaryFiled] isEqualToValue:[remoteRecord valueForKey:_primaryFiled]]) {
-                [_localSameArray addObject:localApprove];
-                [_remoteSameArray addObject:remoteRecord];
+    for (NSMutableDictionary * localApprove in localRecords) {
+        for (NSMutableDictionary * remoteRecord in remoteRecords) {
+            if ([[localApprove valueForKey:_primaryFiled] isEqual:[remoteRecord valueForKey:_primaryFiled]]) {
+                [localSameArray addObject:localApprove];
+                [remoteSameArray addObject:remoteRecord];
             }
         }
     }
     
-    [_diffArray removeObjectsInArray:_localSameArray];
-    [_newArray removeObjectsInArray:_remoteSameArray];
+    [diffArray removeObjectsInArray:localSameArray];
+    [diffArray setValue:kRecordDifferent forKey:kRecordStatus];
+    [diffArray setValue:@"   已在其他地方处理" forKey:kRecordServerMessage];
+    [self updateRecords:diffArray];
     
-    [self updateDifferentRecords:(NSArray *) _diffArray];
-    [self insertNewRecords:(NSArray *) _newArray];
+    [newArray removeObjectsInArray:remoteSameArray];
+    [self insertRecords:newArray];
     
     //合并数据
-    NSArray * resultArray = [[_localSameArray
-                              arrayByAddingObjectsFromArray:_diffArray]
-                             arrayByAddingObjectsFromArray:_newArray];
-    
-    return [self orderList:resultArray];
+    return [[localSameArray arrayByAddingObjectsFromArray:diffArray]
+            arrayByAddingObjectsFromArray:newArray];
 }
 
--(NSArray *)orderList:(NSArray *) list
+#pragma -mark CoreStorage
+-(void)updateRecords:(NSArray *) recordSet
 {
-    return [list sortedArrayWithOptions:NSSortStable usingComparator:^NSComparisonResult (id obj1,id obj2){
-        return [[obj1 valueForKey:_orderField]
-                compare:[obj2 valueForKey:_orderField]];
-    }];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordSet:) recordSet:recordSet];
 }
 
--(void)updateDifferentRecords:(NSArray *) recordset
+-(void)insertRecords:(NSArray *) recordSet
 {
-    //更新数据
-    //    ApproveDatabaseHelper * _dbHelper = [[ApproveDatabaseHelper alloc]init];
-    [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordSet:) recordSet:recordset];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLDataPoolInsert:recordSet:) recordSet:recordSet];
 }
 
--(void)insertNewRecords:(NSArray *) recordset
+-(void)removeRecords:(NSArray *) recordset
 {
-    //    ApproveDatabaseHelper * _dbHelper = [[ApproveDatabaseHelper alloc]init];
-    [[HDCoreStorage shareStorage] excute:@selector(SQLDataPoolInsert:recordSet:) recordSet:recordset];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecord:recordSet:) recordSet:recordset];
 }
-
 #pragma -mark Flags
 /*
  *可以提交的状态:
@@ -391,39 +357,29 @@ static NSString * kColumnMapColumn = @"Column0";
 #pragma mark Search
 - (void)search:(NSString*)text
 {
-    //    TTDPRINT(@"search");
+    TTDPRINT(@"search");
     self.searchText = text;
-//    [_searchResultList removeAllObjects];
-    [_resultList removeAllObjects];
     [self loadLocalRecords];
-    
-    [self loadLocalRecords];
-    if (self.searchText.length) {
-        NSArray * searchResultList = [self createSearchResult];
-        [_resultList removeAllObjects];
-        [_resultList addObjectsFromArray:[self orderList:searchResultList]];
+    if (self.searchText) {
+        NSArray * fetchArray = [NSArray arrayWithArray:self.resultList];
+        for (id record in fetchArray) {
+            BOOL matchFlg = NO;
+            for (NSString * key in self.serachFields) {
+                matchFlg = matchFlg || [[record valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
+            }
+            if (!matchFlg) {
+                [_resultList removeObject:record];
+            }
+        }
         [self didFinishLoad];
     } else {
         [self didChange];
     }
 }
 
--(NSArray *)createSearchResult
+-(BOOL)isSearching
 {
-    NSMutableArray * searchResultList = [NSMutableArray array];
-    for (id record in self.resultList) {
-        BOOL matchFlg = NO;
-        for (NSString * key in self.serachFields) {
-            matchFlg = matchFlg || [[record valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-        }
-//        matchFlg = matchFlg || [[record valueForKey:@"orderType"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-//        matchFlg = matchFlg || [[record valueForKey:@"nodeName"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-//        matchFlg = matchFlg || [[record valueForKey:@"employeeName"] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-        if (matchFlg) {
-            [searchResultList addObject:record];
-        }
-    }
-    return searchResultList;
+    return !!self.searchText;
 }
 
 #pragma mark Others
@@ -432,14 +388,86 @@ static NSString * kColumnMapColumn = @"Column0";
     [UIApplication sharedApplication].applicationIconBadgeNumber = self.resultList.count;
 }
 
-//-(void)setIsSearching:(BOOL)isSearching
-//{
-//    _flags.isSearching = isSearching;
-//}
-
--(BOOL)isSearching
+-(BOOL)isEffectiveRecord:(NSDictionary *)record
 {
-//    return _flags.isSearching;
-    return !!self.searchText;
+    NSString * status = [record valueForKey:kRecordStatus];
+    return [status isEqualToString:kRecordNormal] ||
+    [status isEqualToString:kRecordError];
 }
+
+-(void)clear
+{
+    NSMutableArray * deleteArray = [NSMutableArray array];
+    for (NSDictionary * record in (NSArray *)_resultList) {
+        if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordDifferent]) {
+            //TODO:这里后期处理为直接传递record
+            [deleteArray addObject:@{@"record_id":[record valueForKey:@"record_id"]}];
+        }
+    }
+    
+    [self removeRecords:(NSArray *)deleteArray];
+    _flags.isFirstLoad = YES;
+    [self load:TTURLRequestCachePolicyDefault more:NO];
+}
+
+#pragma mark Detail functions
+-(NSUInteger)effectiveRecordCount
+{
+    NSUInteger count = 0;
+    for (NSUInteger i = 0; i < _resultList.count; i++) {
+        if ([self isEffectiveRecord:[_resultList objectAtIndex:i]]) {
+            count ++;
+        }
+    }
+    return count;
+}
+
+-(id)currentRecord
+{
+    return [_resultList objectAtIndex:_selectedIndex];
+}
+
+-(BOOL)nextRecord
+{
+    if (_selectedIndex == [self effectiveRecordCount]) {
+        return NO;
+    }
+    
+    NSUInteger indexPoint = _selectedIndex;
+    BOOL hasNextRecord = YES;
+    
+    _selectedIndex++;
+    
+    //如果不是有效的记录，获取下一条
+    if (![self isEffectiveRecord:[self currentRecord]]) {
+        hasNextRecord = [self nextRecord];
+    }
+    if (!hasNextRecord) {
+        _selectedIndex = indexPoint;
+    }
+    
+    return hasNextRecord;
+}
+
+-(BOOL)prevRecord
+{
+    if (_selectedIndex == 0) {
+        return NO;
+    }
+    
+    NSUInteger indexPoint = _selectedIndex;
+    BOOL hasPrevRecord = YES;
+    
+    _selectedIndex--;
+    
+    if (![self isEffectiveRecord:[self currentRecord]]) {
+        hasPrevRecord = [self nextRecord];
+    }
+    if (!hasPrevRecord) {
+        _selectedIndex = indexPoint;
+    }
+    
+    return hasPrevRecord;
+}
+
 @end

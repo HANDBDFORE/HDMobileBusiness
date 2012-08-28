@@ -154,22 +154,34 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
         if (item.state) {
             if ([item.state isEqualToString:kTableStatusMessageNormoal]) {
                 self.activityLabel.hidden = YES;
+                self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                self.selectionStyle = UITableViewCellSelectionStyleBlue;
             }
             if ([item.state isEqualToString: kTableStatusMessageError]) {
                 self.stateLabel.style = TTSTYLE(tableStatusLabelError);
                 self.activityLabel.hidden = YES;
+                self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                self.selectionStyle = UITableViewCellSelectionStyleBlue;
             }
             if ([item.state isEqualToString: kTableStatusMessageDifferent]) {
                 self.stateLabel.style = TTSTYLE(tableStatusLabelDifferent);
                 self.activityLabel.hidden = YES;
+                self.accessoryType = UITableViewCellAccessoryNone;
+                self.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             if ([item.state isEqualToString: kTableStatusMessageWaiting]) {
                 self.activityLabel.hidden = NO;
+                self.accessoryType = UITableViewCellAccessoryNone;
+                self.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+        }
+        if (item.warning) {
+            if ([@"Y|y|true|1|TRUE|yes|YES" rangeOfString:item.warning].length != 0) {
+                self.titleLabel.textColor = RGBCOLOR(182, 40, 36);
             }
         }
     }
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////

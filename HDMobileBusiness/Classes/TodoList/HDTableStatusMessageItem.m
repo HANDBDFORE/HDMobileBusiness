@@ -11,12 +11,13 @@
 @implementation HDTableStatusMessageItem
 @synthesize message = _message;
 @synthesize state = _state;
-
+@synthesize warning = _warning;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_message);
     TT_RELEASE_SAFELY(_state);
+    TT_RELEASE_SAFELY(_warning);
     [super dealloc];
 }
 
@@ -26,14 +27,15 @@
 #pragma mark Class public
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-+ (id)itemWithTitle:(NSString*)title 
-            caption:(NSString*)caption 
++ (id)itemWithTitle:(NSString*)title
+            caption:(NSString*)caption
                text:(NSString*)text
-          timestamp:(NSDate*)timestamp 
-           selector:(SEL) selector
+          timestamp:(NSDate*)timestamp
+           selector:(SEL)selector
            delegate:(id)delegate
-            message:(NSString *)message 
+            message:(NSString *)message
               state:(NSString *) state
+             warning:(NSString *) warning
 {
     HDTableStatusMessageItem* item = [[[self alloc] init] autorelease];
     item.title = title;
@@ -44,16 +46,18 @@
     item.delegate = delegate;
     item.message = message;
     item.state = state;
+    item.warning = warning;
     return item;
 }
 
-+ (id)itemWithTitle:(NSString*)title 
-            caption:(NSString*)caption 
++ (id)itemWithTitle:(NSString*)title
+            caption:(NSString*)caption
                text:(NSString*)text
-          timestamp:(NSDate*)timestamp 
+          timestamp:(NSDate*)timestamp
                 URL:(NSString*)URL
-            message:(NSString *)message 
+            message:(NSString *)message
               state:(NSString *) state
+             warning:(NSString *) warning
 {
     HDTableStatusMessageItem* item = [[[self alloc] init] autorelease];
     item.title = title;
@@ -63,18 +67,20 @@
     item.URL = URL;
     item.message = message;
     item.state = state;
+    item.warning = warning;
     return item;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-+ (id)itemWithTitle:(NSString*)title 
-            caption:(NSString*)caption 
++ (id)itemWithTitle:(NSString*)title
+            caption:(NSString*)caption
                text:(NSString*)text
-          timestamp:(NSDate*)timestamp 
-           imageURL:(NSString*)imageURL 
-                URL:(NSString*)URL 
-            message:(NSString*)message 
+          timestamp:(NSDate*)timestamp
+           imageURL:(NSString*)imageURL
+                URL:(NSString*)URL
+            message:(NSString*)message
               state:(NSString*) state
+             warning:(NSString *) warning
 {
     HDTableStatusMessageItem* item = [[[self alloc] init] autorelease];
     item.title = title;
@@ -85,6 +91,7 @@
     item.URL = URL;
     item.message = message;
     item.state = state;
+    item.warning = warning;
     return item;
 }
 
@@ -101,6 +108,7 @@
     if (self) {
         self.message = [decoder decodeObjectForKey:@"message"];
         self.state = [decoder decodeObjectForKey:@"state"];
+        self.warning = [decoder decodeObjectForKey:@"warning"];
     }
     return self;
 }
@@ -113,6 +121,9 @@
     }
     if (self.state) {
         [encoder encodeObject:self.state forKey:@"state"];
+    }
+    if (self.warning) {
+        [encoder encodeObject:self.state forKey:@"warning"];
     }
 }
 
