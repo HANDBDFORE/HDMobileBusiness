@@ -18,4 +18,4 @@
 #import "HDCoreStorage/HDCoreStorage.h"
 #import "HDDataConvertor/HDDataConvertor.h"
 
-#import "ApproveDatabaseHelper.h"
+#import "HDSingletonObject.h"
