@@ -147,8 +147,7 @@ static NSString * kComments = @"comment";
         [self updateRecords:@[submitObject]];
     }else {
         //debug:删除数据需要包装成数组
-        //TODO:暂时组装record_id传递
-        [self removeRecords:@[@{@"record_id":[submitObject valueForKey:@"record_id"]}]];
+        [self removeRecords:@[submitObject]];
         [_resultList removeObject:submitObject];
         [self setIconBageNumber];
         [self didDeleteObject:submitObject
@@ -165,7 +164,7 @@ static NSString * kComments = @"comment";
         [submitRecord setValue:comment forKey:kComments];
         [submitRecord setValue:action forKey:kAction];
         [submitRecord setValue:kRecordWaiting forKeyPath:kRecordStatus];
-        [self.submitList addObject:submitRecord];
+        [_submitList addObject:submitRecord];
     }
     [self updateRecords:self.submitList];
     //设置超时状态,进入shouldload状态
@@ -176,7 +175,7 @@ static NSString * kComments = @"comment";
 #pragma mark Load local records
 -(void)loadLocalRecords
 {
-    [self.resultList removeAllObjects];
+    [_resultList removeAllObjects];
     //从数据库读取数据(应该放到一个业务逻辑类中)
     NSArray *_storageList = [[HDCoreStorage shareStorage]  query:@selector(SQLqueryToDoList:) conditions:nil];
     for (NSDictionary *record in _storageList) {
@@ -188,7 +187,7 @@ static NSString * kComments = @"comment";
         }
     }
     
-    [self.resultList sortWithOptions:NSSortConcurrent
+    [_resultList sortWithOptions:NSSortConcurrent
                      usingComparator:^NSComparisonResult (id obj1,id obj2){
                          return [[obj1 valueForKey:_orderField]
                                  compare:[obj2 valueForKey:_orderField]];
@@ -328,10 +327,16 @@ static NSString * kComments = @"comment";
     [[HDCoreStorage shareStorage] excute:@selector(SQLDataPoolInsert:recordSet:) recordSet:recordSet];
 }
 
--(void)removeRecords:(NSArray *) recordset
+-(void)removeRecords:(NSArray *) recordList
 {
-    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecord:recordSet:) recordSet:recordset];
+    NSMutableArray * deleteArray = [NSMutableArray array];
+    for (NSDictionary * record in recordList) {
+        //TODO:这里后期处理为直接传递record
+        [deleteArray addObject:@{@"record_id":[record valueForKey:@"record_id"]}];
+    }
+    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecord:recordSet:) recordSet:deleteArray];
 }
+
 #pragma -mark Flags
 /*
  *可以提交的状态:
@@ -397,15 +402,12 @@ static NSString * kComments = @"comment";
 
 -(void)clear
 {
-    NSMutableArray * deleteArray = [NSMutableArray array];
-    for (NSDictionary * record in (NSArray *)_resultList) {
-        if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordDifferent]) {
-            //TODO:这里后期处理为直接传递record
-            [deleteArray addObject:@{@"record_id":[record valueForKey:@"record_id"]}];
-        }
-    }
+    NSSet * resultSet = [NSSet setWithArray:self.resultList];
+    NSArray * differentRecords = [[resultSet objectsWithOptions:NSEndsWithPredicateOperatorType passingTest:^BOOL(id obj, BOOL *stop) {
+        return [[obj valueForKey:kRecordStatus] isEqualToString:kRecordDifferent];
+    }] allObjects];
+    [self removeRecords:differentRecords];
     
-    [self removeRecords:(NSArray *)deleteArray];
     _flags.isFirstLoad = YES;
     [self load:TTURLRequestCachePolicyDefault more:NO];
 }
@@ -413,13 +415,11 @@ static NSString * kComments = @"comment";
 #pragma mark Detail functions
 -(NSUInteger)effectiveRecordCount
 {
-    NSUInteger count = 0;
-    for (NSUInteger i = 0; i < _resultList.count; i++) {
-        if ([self isEffectiveRecord:[_resultList objectAtIndex:i]]) {
-            count ++;
-        }
-    }
-    return count;
+    NSSet * resultSet = [NSSet setWithArray:self.resultList];
+    return [[resultSet objectsWithOptions:NSEndsWithPredicateOperatorType
+                              passingTest:^BOOL(id obj, BOOL *stop) {
+                                  return [self isEffectiveRecord:obj];
+                              }] count];
 }
 
 -(id)currentRecord
