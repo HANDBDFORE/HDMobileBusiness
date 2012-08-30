@@ -8,7 +8,7 @@
 
 #import "HDBaseTodoListViewController.h"
 #import "HDTodoListDelegate.h"
-#import "HDTodoListModel.h"
+#import "HDTodoListDataSource.h"
 
 @implementation HDBaseTodoListViewController
 @synthesize refreshTimeLable=_refreshTimeLable;
@@ -20,6 +20,7 @@
         // Custom initialization
         self.variableHeightRows = YES;
         _clearsSelectionOnViewWillAppear = NO;
+        self.dataSource = [[[HDTodoListDataSource alloc]init]autorelease];
     }
     return self;
 }

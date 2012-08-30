@@ -7,8 +7,9 @@
 //
 
 #import "HDTodoListViewController.h"
-#import "HDTodoListDataSource.h"
 #import "HDTodoListSearchViewController.h"
+
+static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
 
 @implementation HDTodoListViewController
 
@@ -17,7 +18,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"待办事项";
-        self.dataSource = [[[HDTodoListDataSource alloc]init]autorelease];
     }
     return self;
 }
@@ -29,6 +29,7 @@
     [super loadView];
     //tab图标
     self.tabBarItem.image = [UIImage imageNamed:@"mailclosed.png"];
+    
     //初始化导航条右侧按钮
     self.editButtonItem.title = @"批量";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -45,14 +46,21 @@
     [self.navigationController.toolbar insertSubview:_refreshTimeLable  atIndex:1 ];
     [self setEditingToolbarItemButtons:NO animated:YES];
     [self.navigationController.toolbar setTintColor:TTSTYLEVAR(toolbarTintColor)];
+    
     //search bar
-    HDTodoListSearchViewController* searchController = [[[HDTodoListSearchViewController alloc] init] autorelease];
-    searchController.refreshTimeLable  = _refreshTimeLable;
-    self.searchViewController = searchController;
+//    HDTodoListSearchViewController* searchController = [[[HDTodoListSearchViewController alloc] init] autorelease];
+    HDTodoListSearchViewController * searchViewController =
+    (HDTodoListSearchViewController *)[[HDGuider guider] controllerWithKeyPath:kSearchPathName query:nil];
+    
+    self.searchViewController = searchViewController;
+    
     _searchController.searchBar.tintColor = TTSTYLEVAR(searchBarTintColor);
+
     self.tableView.tableHeaderView = _searchController.searchBar;
-    self.searchViewController.dataSource = self.dataSource;
     self.tableView.contentOffset = CGPointMake(0, TTToolbarHeight());
+    
+    //
+    searchViewController.refreshTimeLable  = _refreshTimeLable;
 }
 
 -(void)viewWillAppear:(BOOL)animated

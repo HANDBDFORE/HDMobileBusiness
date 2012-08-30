@@ -56,8 +56,8 @@ static NSString * kComments = @"comment";
         //        self.orderField = @"creation_date";
         //        self.primaryFiled = @"record_id";
         //        self.serachFields = @[@"order_type",@"node_name",@"employee_name"];
-        //        self.queryUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"autocrud/ios.ios_approve.ios_workflow_approve_query/query?_fetchall=true&amp;_autocount=false"];
-        //        self.submitUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_approve/ios_workflow_approve.svc"];
+        //        self.queryUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"autocrud/ios.ios_todo_list.ios_todo_list_query/query?_fetchall=true&amp;_autocount=false"];
+        //        self.submitUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_approve_new/ios_todo_list_commit.svc"];
         _selectedIndex = 0;
         _flags.isFirstLoad = YES;
     }
@@ -188,10 +188,10 @@ static NSString * kComments = @"comment";
     }
     
     [_resultList sortWithOptions:NSSortConcurrent
-                     usingComparator:^NSComparisonResult (id obj1,id obj2){
-                         return [[obj1 valueForKey:_orderField]
-                                 compare:[obj2 valueForKey:_orderField]];
-                     }];
+                 usingComparator:^NSComparisonResult (id obj1,id obj2){
+                     return [[obj1 valueForKey:_orderField]
+                             compare:[obj2 valueForKey:_orderField]];
+                 }];
     [self setIconBageNumber];
 }
 
@@ -281,8 +281,6 @@ static NSString * kComments = @"comment";
 {
     //debug 判断localRecord是否为空，否则copy时会crash
     if (localRecords.count == 0) {
-        //        [remoteRecords setValue:kRecordDifferent forKey:kRecordStatus];
-        
         [self insertRecords:remoteRecords];
         return remoteRecords;
     }
@@ -305,7 +303,7 @@ static NSString * kComments = @"comment";
     
     [diffArray removeObjectsInArray:localSameArray];
     [diffArray setValue:kRecordDifferent forKey:kRecordStatus];
-    [diffArray setValue:@"   已在其他地方处理" forKey:kRecordServerMessage];
+    [diffArray setValue:@"已在其他地方处理" forKey:kRecordServerMessage];
     [self updateRecords:diffArray];
     
     [newArray removeObjectsInArray:remoteSameArray];
@@ -362,10 +360,12 @@ static NSString * kComments = @"comment";
 #pragma mark Search
 - (void)search:(NSString*)text
 {
-    TTDPRINT(@"search");
+    [self cancel];
+
     self.searchText = text;
-    [self loadLocalRecords];
-    if (self.searchText) {
+    if (self.searchText.length) {
+        [self loadLocalRecords];
+        
         NSArray * fetchArray = [NSArray arrayWithArray:self.resultList];
         for (id record in fetchArray) {
             BOOL matchFlg = NO;
@@ -378,6 +378,8 @@ static NSString * kComments = @"comment";
         }
         [self didFinishLoad];
     } else {
+        //debug:结束查询状态时，需要清空结果列表，否则再次查询时，查询table和model数据不一致导致crash。
+        [_resultList removeAllObjects];
         [self didChange];
     }
 }
