@@ -8,13 +8,12 @@
 
 #import "HDDoneListViewController.h"
 #import "HDDoneListDataSource.h"
-#import "Approve.h"
 
 @implementation HDDoneListViewController
 
--(void)dealloc
+- (void)dealloc
 {
-    [[TTNavigator navigator].URLMap removeURL:[NSString stringWithFormat:@"%@/(%@:)",kOpenDidApprovedDetailViewPath ,@"openDetailViewForKey",nil]];
+    TT_RELEASE_SAFELY(_refreshButton);
     [super dealloc];
 }
 
@@ -24,52 +23,29 @@
     if (self) {
         self.title = @"审批完成";
         self.variableHeightRows = YES;
-        self.tabBarItem.image = [UIImage imageNamed:@"mailopened.png"];
-        
-        [[TTNavigator navigator].URLMap 
-         from:[NSString stringWithFormat:@"%@/(%@:)",kOpenDidApprovedDetailViewPath ,@"openDetailViewForKey",nil]
-         toSharedViewController:self 
-         selector:@selector(openDetailViewForKey:)];
+        self.dataSource = [[[HDDoneListDataSource alloc]init]autorelease];
     }
     return self;
 }
 
--(UIViewController *)openDetailViewForKey:(NSString *) key
+-(void)loadView
 {
-    HDDoneListModel * _approvedListModel = (HDDoneListModel *)self.model;
-    Approve * _approve = [_approvedListModel.resultList objectAtIndex:[key intValue]];
+    [super loadView];
+     _refreshButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
     
-    NSDictionary * dataInfo = [NSDictionary dictionaryWithObject:_approve forKey:@"data"];
-    
-    UIViewController * viewController = [[TTNavigator navigator]viewControllerForURL:@"init://didApprovedDetail" query:dataInfo];
-    //    //get webpage url
-    NSDictionary * urlQuery = [_approve dictionaryWithValuesForKeys:[NSArray arrayWithObjects:@"docPageUrl",@"instanceId", nil]];
-    
-    NSString * webPageUrl = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kTodoListDetailWebPagePath query:urlQuery];
-    
-    NSString * employeeURLPath = [[HDHTTPRequestCenter sharedURLCenter] requestURLWithKey:kUserInfoWebPagePath query:[NSDictionary dictionaryWithObject:_approve.employeeId forKey:@"employeeID"]];
-    
-    [viewController setValue:webPageUrl forKeyPath:@"webPageURLPath"];
-    
-    [viewController setValue:_approve.employeeName forKeyPath:@"employeeName"];
-    [viewController setValue:employeeURLPath forKeyPath:@"employeeURLPath"];
-    return viewController;
+    self.navigationItem.rightBarButtonItem = _refreshButton;
 }
 
--(void)createModel
+-(void)viewWillAppear:(BOOL)animated
 {
-    self.dataSource = [[[HDDoneListDataSource alloc]init] autorelease];
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:YES];
+    [self.model load:TTURLRequestCachePolicyDefault more:NO];
 }
 
--(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
+-(void)refreshButtonPressed:(id)sender
 {
-    [super model:model didFailLoadWithError:error];
-    TTAlert([error localizedDescription]);
-}
-
--(id<UITableViewDelegate>)createDelegate
-{
-  return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
+    [self.model load:TTURLRequestCachePolicyDefault more:NO];
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{

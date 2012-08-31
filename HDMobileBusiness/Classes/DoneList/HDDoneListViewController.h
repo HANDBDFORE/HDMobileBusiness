@@ -7,5 +7,7 @@
 //
 
 @interface HDDoneListViewController : TTTableViewController
-
+{
+    UIBarButtonItem *  _refreshButton;
+}
 @end
