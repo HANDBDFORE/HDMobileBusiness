@@ -16,18 +16,43 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.title = @"功能列表";
         self.variableHeightRows = YES;
-        [self setTableViewStyle:UITableViewStyleGrouped];
+        self.dataSource = [[[HDFunctionListDataSource alloc]init] autorelease];
+        self.navigationController.navigationBar.translucent = YES;
+        self.navigationController.navigationBar.alpha = 0.300;
     }
     return self;
 }
 
--(void)createModel
+-(void)loadView
 {
-    self.dataSource = [[[HDFunctionListDataSource alloc]init] autorelease];
+    [super loadView];
+    
+//    _settingButton = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(settingButtonPressed:)];
+//    _settingButton.tintColor = RGBCOLOR(0, 152, 0);
+//    self.navigationItem.rightBarButtonItem = _settingButton;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.model load:TTURLRequestCachePolicyDefault more:NO];
+    [self.navigationController setToolbarHidden:YES animated:YES];
+}
+
+-(void)viewDidUnload
+{
+    TT_RELEASE_SAFELY(_settingButton);
+    [super viewDidUnload];
+}
+
+-(void)settingButtonPressed:(id) sender
+{
+    TTDPRINT(@"setting");
+    [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://modalViewControler/SETTINGS_VC_PATH"]applyAnimated:YES]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-    return YES;
+    return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
 }
 
 @end

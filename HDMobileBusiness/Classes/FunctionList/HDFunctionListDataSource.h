@@ -7,13 +7,18 @@
 //
 
 @interface HDFunctionListModel : HDURLRequestModel
+{
+    NSMutableArray * _resultList;
+}
 
-@property(nonatomic,retain) NSArray * resultList;
+@property(nonatomic,readonly) NSArray * resultList;
+@property(nonatomic,copy) NSString * queryURLPath;
 
 @end
 
 @interface HDFunctionListDataSource : TTSectionedDataSource
--(void)addBasicItems;
-//@property(nonatomic,readonly) HDTableImageModel * tableImageModel;
+
+@property(nonatomic,readonly) HDFunctionListModel * functionListModel;
+@property(nonatomic,retain) NSDictionary * cellItemMap;
 
 @end

@@ -8,5 +8,8 @@
 
 
 @interface HDFunctionListViewController : TTTableViewController
-
+{
+    @private
+    UIBarButtonItem * _settingButton;
+}
 @end
