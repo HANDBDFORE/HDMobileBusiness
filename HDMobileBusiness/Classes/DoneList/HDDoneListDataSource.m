@@ -1,6 +1,6 @@
 //
-//  ApprovedListDataSource.m
-//  hrms
+//  HDDoneListListDataSource.m
+//  HandMobile
 //
 //  Created by Rocky Lee on 5/15/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -81,6 +81,7 @@
 {
     NSUInteger index = [self.items indexOfObject:item];
     TTDPRINT(@"row :%i is being selected",index);
+    
     [self.doneListModel setSelectedIndex:index];
     [[HDGuider guider] guideToKeyPath:@"doneListCellSelected"
                                 query:@{@"listModel" : self.doneListModel}];

@@ -1,6 +1,6 @@
 //
-//  HDDidApprovedListModel.m
-//  hrms
+//  HDDoneListModel.m
+//  HandMobile
 //
 //  Created by Rocky Lee on 7/19/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -28,7 +28,7 @@
         _pageNum = 1;
         _resultList = [[NSMutableArray alloc] init];
         //test data
-//        self.queryUrl = [NSString stringWithFormat:@"%@autocrud/ios.ios_approve.ios_workflow_has_approved_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]];
+        //        self.queryUrl = [NSString stringWithFormat:@"%@autocrud/ios.ios_approve.ios_workflow_has_approved_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]];
     }
     return self;
 }
@@ -37,7 +37,9 @@
 {
     if (more) {
         _pageNum ++;
-        _isLoadingMore = more;
+    }else{
+        _pageNum =1;
+        [_resultList removeAllObjects];
     }
     //debug:添加对_queryUrl的nil校验，否则对nil appendding导致crash R
     if (_queryUrl) {
@@ -49,15 +51,7 @@
 
 -(void)requestResultMap:(HDResponseMap *)map
 {
-    if (0 < [[[map.result lastObject] allKeys]count]) {
-        if ([self isLoadingMore]) {
-            [_resultList addObjectsFromArray:map.result];
-            _isLoadingMore = NO;
-        }else {
-            [_resultList removeAllObjects];
-            [_resultList addObjectsFromArray:map.result];
-        }
-    }
+    [_resultList addObjectsFromArray:map.result];
 }
 
 -(id)currentRecord
@@ -90,4 +84,5 @@
 {
     return self.resultList.count;
 }
+
 @end
