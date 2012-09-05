@@ -96,7 +96,7 @@
             [TTTableImageItem itemWithText:[item valueForKeyPath:@"text"]
                                   imageURL:[item valueForKeyPath:@"image_url"]
                                        URL:url];
-            imageItem.imageStyle =[self imageStyle];
+            imageItem.imageStyle =TTSTYLE(functionListCellImageStyle);
 
             [itemArray addObject: imageItem];                     
         }
@@ -108,15 +108,6 @@
     
     [self addBasicItems];
     [self addLogoutItem];
-}
-
--(TTStyle *) imageStyle
-{
-    return [TTImageStyle styleWithImageURL:nil
-                              defaultImage:TTIMAGE(@"bundle://world.png")
-                               contentMode:UIViewContentModeScaleToFill
-                                      size:CGSizeMake(45, 45)
-                                      next:nil];
 }
 
 -(NSString *)createCellItemWithTemplete:(NSString *) templete
@@ -137,13 +128,13 @@
     [TTTableImageItem itemWithText:@"待办事项"
                           imageURL:@"bundle://mailclosed.png"
                                URL:@"guide://createViewControler/TODO_LIST_VC_PATH"];
-    todoListItem.imageStyle = [self imageStyle];
+    todoListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
     
    TTTableImageItem * doneListItem =
     [TTTableImageItem itemWithText:@"审批完成"
                           imageURL:@"bundle://mailopened.png"
                                URL:@"guide://createViewControler/DONE_LIST_VC_PATH"];
-    doneListItem.imageStyle = [self imageStyle];
+    doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
     
     [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:@"审批" footerTitle:nil] atIndex:0];
     [self.items insertObject:@[todoListItem,doneListItem] atIndex:0];

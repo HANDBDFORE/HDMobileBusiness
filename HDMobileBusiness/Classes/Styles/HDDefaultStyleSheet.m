@@ -96,6 +96,15 @@
          ]];
 }
 
+-(TTStyle *) functionListCellImageStyle
+{
+    return [TTImageStyle styleWithImageURL:nil
+                              defaultImage:TTIMAGE(@"bundle://world.png")
+                               contentMode:UIViewContentModeScaleToFill
+                                      size:CGSizeMake(45, 45)
+                                      next:nil];
+}
+
 #pragma -mark color
 -(UIColor *)navigationBarTintColor
 {
