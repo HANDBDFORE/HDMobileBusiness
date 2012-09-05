@@ -40,7 +40,7 @@ static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //tool bar
-    [self.navigationController setToolbarHidden:NO animated:NO];
+    [self.navigationController setToolbarHidden:NO animated:YES];
     [self setEditingToolbarItemButtons:NO animated:YES];
     [self.navigationController.toolbar setTintColor:TTSTYLEVAR(toolbarTintColor)];
     
