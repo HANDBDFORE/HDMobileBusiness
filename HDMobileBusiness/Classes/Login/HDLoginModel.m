@@ -7,20 +7,30 @@
 //
 
 #import "HDLoginModel.h"
-#import "ApproveDatabaseHelper.h"
+//#import "ApproveDatabaseHelper.h"
 #import "HDCoreStorage.h"
 
-static NSString * kLoginSubmitURLPath = @"LOGIN_PATH";
+//static NSString * kLoginSubmitURLPath = @"LOGIN_PATH";
 
 @implementation HDLoginModel
 
 //登陆post数据
 @synthesize loginBean = _loginBean;
+@synthesize submitURLPath = _submitURLPath;
+
+-(void)dealloc
+{
+    TT_RELEASE_SAFELY(_loginBean);
+    TT_RELEASE_SAFELY(_submitURLPath);
+    [super dealloc];
+}
 
 -(id)init
 {
     if (self = [super init]) {
         _loginBean = [[HDLoginBean alloc]init];
+        //TODO:配置
+        self.submitURLPath = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"login_iphone.svc"];
     }
     return self;
 }
@@ -56,16 +66,10 @@ static NSString * kLoginSubmitURLPath = @"LOGIN_PATH";
                    nil];
 
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    map.urlName = kLoginSubmitURLPath;
+    map.requestPath = self.submitURLPath;
     map.postData = postdata;
     
     [self requestWithMap:map]; 
-}
-
--(void)dealloc
-{
-    TT_RELEASE_SAFELY(_loginBean);
-    [super dealloc];
 }
 
 @end

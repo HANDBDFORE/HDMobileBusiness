@@ -15,21 +15,13 @@
 
 @implementation HDAppDelegate
 
-- (void)dealloc
-{
-//    [_window release];
-    [super dealloc];
-}
-
 -(void) applicationDidFinishLaunching:(UIApplication *)application
 {
-    
     //register notification
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
     
     //Views Managment by Three20
     [TTStyleSheet setGlobalStyleSheet:[[[HDDefaultStyleSheet alloc]init]autorelease]];
-    
     //create database
     [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordSet:nil];
     
@@ -41,10 +33,10 @@
     
     if(![navigator restoreViewControllers])
     {
-        if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:VERSION]) {
+        if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {
             [self showLoadingView];
         }else {
-            [[NSUserDefaults standardUserDefaults]setValue:VERSION forKey:@"appVersion"];
+            [[NSUserDefaults standardUserDefaults]setValue:kVersion forKey:@"appVersion"];
             [self showHelpView];
         }
         
@@ -66,7 +58,6 @@
 {
     //get the deivcetoken
     TTDPRINT(@"My token is: %@", deviceToken);
-//    TTDPRINT(@"%@",[[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]]);
     
     //format token
     NSString *tokenWithBlank = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
@@ -78,7 +69,7 @@
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    TTDPRINT(@"Error in registration.Error: %@" ,error);
+    TTDPRINT(@"Error in registration.Error: %@" ,error.localizedDescription);
     [[NSUserDefaults standardUserDefaults] setValue:@"null" forKey:@"deviceToken"];
 }
 
@@ -116,9 +107,8 @@
 - (UIViewController*)loadFromNib:(NSString *)nibName withClass:className {
     UIViewController* newController = [[NSClassFromString(className) alloc]
                                        initWithNibName:nibName bundle:nil];
-    [newController autorelease];
     
-    return newController;
+    return [newController autorelease];
 }
 /**
  * Loads the given viewcontroller from the the nib with the same name as the

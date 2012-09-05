@@ -31,9 +31,9 @@
 -(void)loadView
 {
     [super loadView];
-     _refreshButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
-    
-    self.navigationItem.rightBarButtonItem = _refreshButton;
+//     _refreshButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
+//    
+//    self.navigationItem.rightBarButtonItem = _refreshButton;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -44,9 +44,14 @@
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
--(void)refreshButtonPressed:(id)sender
+//-(void)refreshButtonPressed:(id)sender
+//{
+//    [self.model load:TTURLRequestCachePolicyDefault more:NO];
+//}
+
+-(id<UITableViewDelegate>)createDelegate
 {
-    [self.model load:TTURLRequestCachePolicyDefault more:NO];
+    return [[[TTTableViewDragRefreshDelegate alloc]initWithController:self]autorelease];
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{

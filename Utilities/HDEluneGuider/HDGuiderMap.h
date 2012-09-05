@@ -10,7 +10,21 @@
 
 @interface HDGuiderMap : NSObject
 
-@property (nonatomic, copy)  NSString * urlPath;
+//实际创建view controller的路径
+@property (nonatomic,copy) NSString * urlPath;
+
+//重定向的路径，根据配置不同，使用modal，share，create方式打开
+//@property (nonatomic,copy) NSString * redirectPath;
+
+//
 @property (nonatomic, retain) NSDictionary * propertyMap;
+
+-(id)propertyForkey:(NSString *)key query:(NSDictionary *) query;
+
+@end
+
+@protocol propertyMap <NSObject>
+
+-(id)propertyValueWithQuery;
 
 @end

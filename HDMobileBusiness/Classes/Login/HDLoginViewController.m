@@ -28,8 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self setAutoresizesForKeyboard:YES];
-        
-        
+        self.model = [[HDLoginModel alloc]init];        
         
 //        NSString * path = [NSString  stringWithFormat:@"%@",kResourceRootPath,@"[@name='LOGIN_TITLE']"];
 //        NSString * title = [[HDGodXMLFactory shareBeanFactory]stringFroXPath:path attributeName:@"value"];
@@ -38,11 +37,9 @@
     return self;
 }
 
--(void)createModel
+-(void)viewDidLoad
 {
-    //这里通过url创建
-    _model = [[HDLoginModel alloc]init];
-    [[_model delegates] addObject:self];
+    [super viewDidLoad];
     _username.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     _password.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"password"];
 }

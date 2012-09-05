@@ -9,109 +9,186 @@
 #import "HDGuider.h"
 
 #import "HDGodXMLFactory.h"
-#import "HDGuiderMap.h"
 
-static HDGuider * _globalGuider = nil;
+#import "HDTodoListViewController.h"
+
+static NSString * kGuideModalPath = @"guide://modalViewControler/";
+static NSString * kGuideCreatePath = @"guide://createViewControler/";
+static NSString * kGuideSharePath = @"guide://shareViewControler/";
+
+static NSString * kRedirectSelector = @"(controllerWithKeyPath:)";
 
 typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
 
 @implementation HDGuider
 
-/*
- *跳转到指定路径的视图控制器,路径以 open://vc/ 开头后接控制器配置节点的key
- */
--(void) guideToKeyPath:(NSString *) path query:(NSDictionary *)query;
-{ 
-    [self guideControllerWithKeyPath:path 
-                               withBlock:^UIViewController *(HDGuiderMap *map){
-                                   return [[TTNavigator navigator]openURLAction:[[TTURLAction actionWithURLPath:map.urlPath]applyQuery:query]];                               }];       
+- (void)dealloc
+{
+    [[TTNavigator navigator].URLMap removeURL:[NSString stringWithFormat:@"%@%@",kGuideCreatePath,kRedirectSelector]];
+    [[TTNavigator navigator].URLMap removeURL:[NSString stringWithFormat:@"%@%@",kGuideSharePath,kRedirectSelector]];
+    [[TTNavigator navigator].URLMap removeURL:[NSString stringWithFormat:@"%@%@",kGuideModalPath,kRedirectSelector]];
+    [super dealloc];
 }
 
-/*
- *创建到指定路径的视图控制器,路径以 open://vc/ 开头后接控制器配置节点的key,这个方法不会显示这个视图控制器的视图,只是创建
- */
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        [[TTNavigator navigator].URLMap from:[NSString stringWithFormat:@"%@%@",kGuideCreatePath,kRedirectSelector]
+                      toSharedViewController:self];
+        [[TTNavigator navigator].URLMap from:[NSString stringWithFormat:@"%@%@",kGuideSharePath,kRedirectSelector]
+                      toSharedViewController:self];
+        [[TTNavigator navigator].URLMap from:[NSString stringWithFormat:@"%@%@",kGuideModalPath,kRedirectSelector]
+                       toModalViewController:self];
+    }
+    return self;
+}
+
+-(UIViewController*) guideToKeyPath:(NSString *) keyPath
+                              query:(NSDictionary *)query;
+{
+   return  [self configControllerWithKeyPath:keyPath block: ^UIViewController *(HDGuiderMap * guiderMap) {
+        return [[TTNavigator navigator] openURLAction:
+                [[TTURLAction actionWithURLPath:guiderMap.urlPath] applyQuery:query]];
+    }];    
+}
+
 -(UIViewController *)controllerWithKeyPath:(NSString *) keyPath
                                      query:(NSDictionary *)query
 {
+     UIViewController * vc = [self configControllerWithKeyPath:keyPath block: ^UIViewController *(HDGuiderMap * guiderMap) {
+        return [[TTNavigator navigator]viewControllerForURL:guiderMap.urlPath
+                                                      query:query];
+    }];
+    //TODO:区分第二次从功能列表进入加载
+    if ([keyPath isEqualToString:@"HD_MAIN_VC_PATH"]) {
+        [vc setValue:@1 forKeyPath:@"tableViewStyle"];
+    }
     
-    return [self guideControllerWithKeyPath:keyPath 
-                               withBlock:^UIViewController *(HDGuiderMap *map){
-                                   return [[TTNavigator navigator]viewControllerForURL:map.urlPath query:query];
-                               }];
+    return vc;
 }
 
 /*
  *根据block,打开或创建一个controller,根据配置设置这个controller
  */
--(UIViewController *)guideControllerWithKeyPath:(NSString *) path
-                                      withBlock:(openControllerPathBlock) block
+-(UIViewController *)configControllerWithKeyPath:(NSString *) keyPath
+                                           block:(openControllerPathBlock) block
 {
     HDGuiderMap * guiderMap = nil;
-    if ((guiderMap = [self guiderMapWithPath:path])) {
+    if ((guiderMap = [self guiderMapForKeyPath:keyPath])) {
         //open contoller with path
         UIViewController * controller = block(guiderMap);
-        NSEnumerator * e = [guiderMap.propertyMap keyEnumerator];
-        for (NSString* key ; key = [e nextObject];) {
-            [controller setValue:[guiderMap.propertyMap valueForKeyPath:key] forKeyPath:key];
-        } 
+//        NSEnumerator * e = [guiderMap.propertyMap keyEnumerator];
+//        for (NSString* key ; key = [e nextObject];) {
+//            [controller setValue:[guiderMap.propertyMap valueForKeyPath:key] forKeyPath:key];
+//        }
+        if ([keyPath isEqualToString:@"HD_LOGIN_VC_PATH"]) {
+            return [self configLoginViewController:controller];
+        }
+        if ([keyPath isEqualToString:@"HD_MAIN_VC_PATH"] ||
+            [keyPath isEqualToString:@"TODO_LIST_SEARCH"]||
+            [keyPath isEqualToString:@"TODO_LIST_VC_PATH"]) {
+            return [self configTodoListViewController:controller];
+        }
+        if ([keyPath isEqualToString:@"DONE_LIST_VC_PATH"]) {
+            return [self configDoneListViewController:controller];
+        }
+        if ([keyPath isEqualToString:@"FUNCTION_LIST_VC_PATH"]) {
+            return [self configFunctionListViewController:controller];
+        }
         return controller;
     }
     return nil;
 }
 
+#pragma -mark 配置控制器，之后从配置加载
+//TODO:配置控制器，之后从配置加载
+-(UIViewController *) configLoginViewController:(UIViewController *) controller
+{
+    [controller setValue:[NSString stringWithFormat:@"%@modules/ios/public/login_iphone.svc",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"model.submitURLPath"];
+    return controller;
+}
+
+-(UIViewController *) configTodoListViewController:(UIViewController *) controller
+{
+    [controller setValue:@"TodoList[配置]" forKeyPath:@"title"];
+    [controller setValue: @{@"title":@"${workflow_name}:${employee_name}",
+     @"caption":@"当前节点: ${node_name}",
+     @"text":@"${workflow_desc}",
+     @"timestamp":@"${creation_date}",
+     @"isLate":@"${is_late}"}
+              forKeyPath:@"dataSource.cellItemMap"];
+    [controller setValue:@"creation_date" forKeyPath:@"dataSource.model.orderField"];
+    [controller setValue:@"record_id" forKeyPath:@"dataSource.model.primaryFiled"];
+    [controller setValue:@[@"order_type",@"node_name",@"employee_name"] forKeyPath:@"dataSource.model.serachFields"];
+    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_todo_list.ios_todo_list_query/query?_fetchall=true&amp;_autocount=false",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"dataSource.model.queryUrl"];
+    [controller setValue:[NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_approve_new/ios_todo_list_commit.svc"] forKeyPath:@"dataSource.model.submitUrl"];
+    return controller;
+}
+
+-(UIViewController *) configDoneListViewController:(UIViewController *) controller
+{
+    [controller setValue:@"DoneList[配置]" forKeyPath:@"title"];
+    //            [controller setValue:RGBCOLOR(234, 234, 234) forKeyPath:@"tableView.backgroundColor"];
+    [controller setValue:@1 forKeyPath:@"tableView.separatorStyle"];
+    [controller setValue:RGBCOLOR(53, 53, 53) forKeyPath:@"tableView.separatorColor"];
+    [controller setValue:@{@"title":@"${workflow_name}:${created_by_name}",
+     @"caption":@"当前节点: ${created_by_name}",
+     @"text":@"${workflow_desc}",
+     @"timestamp":@"${creation_date}"}
+              forKeyPath:@"dataSource.cellItemMap"];
+    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_done_list.ios_done_list_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"dataSource.model.queryUrl"];
+    return controller;
+}
+
+-(UIViewController *) configFunctionListViewController:(UIViewController *) controller
+{
+    [controller setValue:@"功能[配置]" forKeyPath:@"title"];
+    [controller setValue:[NSString stringWithFormat:@"%@modules/ios/ios_function_center/ios_function_query.svc", [[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"model.queryURLPath"];
+    return controller;
+}
 /*
  *根据path,获取控制器跳转配置对象
  */
--(HDGuiderMap *) guiderMapWithPath:(NSString *) path
+-(HDGuiderMap *) guiderMapForKeyPath:(NSString *) path
 {
     if (!path) {
         return nil;
     }
-    //TODO:这里考虑从god生成map,想配什么就在map里加吧...
-//    HDGuiderMap * mapX= [[HDGodXMLFactory shareBeanFactory] guiderMapWithPath:path];
     HDGuiderMap * map = [[[HDGuiderMap alloc]init] autorelease];
-    map.urlPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:path];
+    
+    //    if ([path isEqualToString:@"HD_LOGIN_VC_PATH"]) {
+    //        map.redirectPath = [NSString stringWithFormat:@"%@%@",kGuideModalPath,path];
+    //    }
+    //    if ([path isEqualToString:@"HD_MAIN_VC_PATH"]) {
+    //        map.redirectPath = [NSString stringWithFormat:@"%@%@",kGuideSharePath,path];
+    //    }
+    
+    //TODO:这里考虑从god生成map,想配什么就在map里加吧...
+    NSDictionary * urlPathDic =
+    //test
+    @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
+    @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",
+    @"HD_LOGIN_VC_PATH":@"init://modalNib/HDLoginViewController/HDLoginViewController",
+    @"DONE_LIST_VC_PATH":@"init://doneListViewController",
+    @"TODO_LIST_VC_PATH":@"init://todoListViewController",
+    @"FUNCTION_LIST_VC_PATH":@"init://functionListViewController",
+    @"SETTINGS_VC_PATH":@"init://settingsViewController"};
+    //realase
+//    @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
+//    @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",
+//    @"HD_LOGIN_VC_PATH":@"init://modalNib/HDLoginViewController/HDLoginViewController",
+//    @"DONE_LIST_VC_PATH":@"init://doneListViewController"};
+    
+    
+//    map.urlPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:path];
+    map.urlPath = [urlPathDic valueForKey:path];
     return map;
 }
 
 +(id)guider
 {
-    @synchronized(self){
-        if (_globalGuider == nil) {
-            _globalGuider = [[self alloc] init];
-        }
-    }
-    return  _globalGuider;
-}
-
-+(id) allocWithZone:(NSZone *)zone{
-    @synchronized(self){
-        if (_globalGuider == nil) {
-            _globalGuider = [super allocWithZone:zone];
-            return  _globalGuider;
-        }
-    }
-    return nil;
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;
-}
-
-- (id)retain
-{
-    return self;
-}
-
--(unsigned)retainCount
-{
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-
-- (id)autorelease
-{
-    return self;
+    return [self shareObject];
 }
 
 @end

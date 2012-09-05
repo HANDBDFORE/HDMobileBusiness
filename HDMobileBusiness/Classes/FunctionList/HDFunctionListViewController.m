@@ -17,8 +17,6 @@
         self.title = @"功能列表";
         self.variableHeightRows = YES;
         self.dataSource = [[[HDFunctionListDataSource alloc]init] autorelease];
-        self.navigationController.navigationBar.translucent = YES;
-        self.navigationController.navigationBar.alpha = 0.300;
     }
     return self;
 }
@@ -45,14 +43,19 @@
     [super viewDidUnload];
 }
 
--(void)settingButtonPressed:(id) sender
-{
-    TTDPRINT(@"setting");
-    [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://modalViewControler/SETTINGS_VC_PATH"]applyAnimated:YES]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
-}
+//-(void)settingButtonPressed:(id) sender
+//{
+//    TTDPRINT(@"setting");
+//    [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://modalViewControler/SETTINGS_VC_PATH"]applyAnimated:YES]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
+//}
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+}
+
+-(id<UITableViewDelegate>)createDelegate
+{
+    return [[[TTTableViewGroupedVarHeightDelegate alloc]initWithController:self]autorelease];
 }
 
 @end

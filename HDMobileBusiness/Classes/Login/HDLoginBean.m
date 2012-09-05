@@ -14,6 +14,15 @@
 @synthesize language = _language;
 @synthesize deviceType = _deviceType;
 
+- (void)dealloc
+{
+    TT_RELEASE_SAFELY(_username);
+    TT_RELEASE_SAFELY(_password);
+    TT_RELEASE_SAFELY(_language);
+    TT_RELEASE_SAFELY(_deviceType);
+    [super dealloc];
+}
+
 - (id)init
 {
     self = [super init];

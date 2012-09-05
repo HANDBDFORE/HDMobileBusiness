@@ -11,13 +11,23 @@
 @implementation HDGuiderMap
 
 @synthesize urlPath = _urlPath;
-@synthesize propertyMap = _query;
+@synthesize propertyMap = _propertyMap;
 
 -(void)dealloc
 {
     TT_RELEASE_SAFELY(_urlPath);
-    TT_RELEASE_SAFELY(_query);
+    TT_RELEASE_SAFELY(_propertyMap);
     [super dealloc];
 }
 
+-(id)propertyForkey:(NSString *)key query:(NSDictionary *) query
+{
+    id object = [_propertyMap valueForKey:key];
+    if ([object conformsToProtocol:@protocol(propertyMap)]) {
+        return  [object performSelector:@selector(propertyValueWithQuery:)
+                             withObject:query];
+    }else{
+        return object;
+    }
+}
 @end

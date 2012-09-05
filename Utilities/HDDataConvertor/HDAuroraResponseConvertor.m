@@ -23,11 +23,11 @@
     id result = [data valueForKeyPath:@"result.record"];
     //修改数组内的Dictionary为可变对象.
     if (nil != result && ![result isKindOfClass:[NSArray class]]) {
-        return [NSArray arrayWithObject:[result mutableCopy]];
+        return [NSArray arrayWithObject:[[result mutableCopy] autorelease]];
     }else{
         NSMutableArray * mutableResultList = [NSMutableArray array];
         for(NSDictionary * record in result) {
-            [mutableResultList addObject:[record mutableCopy]];
+            [mutableResultList addObject:[[record mutableCopy] autorelease]];
         }
         return mutableResultList;
     }

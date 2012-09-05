@@ -82,6 +82,9 @@ static HDHTTPRequestCenter * _requestCenter = nil;
                                  error:(NSError **) error
 {
     //setting url
+    if (!map.requestPath) {
+        return nil;
+    }
     NSString * urlPath = nil;
     if (!map.urlName) {
         urlPath =  map.requestPath;

@@ -7,27 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HDGuiderMap.h"
+#import "HDSingletonObject.h"
 
-/*
- *通过前缀+keyName可以通过Guider在视图控制器跳转时,加载配置项.
- */
-//static NSString * kOpenViewController = @"open://vc/";
-
-@interface HDGuider : NSObject
+@interface HDGuider : HDSingletonObject
 
 +(id)guider;
 
 /*
- *跳转到指定路径的视图控制器,路径以 open://vc/ 开头后接控制器配置节点的key.
+ *跳转到指定路径的视图控制器,控制器显示之前会通过配置文件加载属性.
  *使用 [TTNavigator navigator]openURLAction: 打开
  */
-
--(void)guideToKeyPath:(NSString *) path query:(NSDictionary *)query;
+-(UIViewController *)guideToKeyPath:(NSString *) path
+                              query:(NSDictionary *)query;
 
 /*
- *创建到指定路径的视图控制器,路径以 open://vc/ 开头后接控制器配置节点的key.
+ *创建到指定keyPathName对应的视图控制器.
  *这个方法不会显示这个视图控制器的视图,只是创建并返回它.
- *使用 [TTNavigator navigator]viewControllerForURL: 创建
+ *
+ *  如果需要通过TTNavigator openURLAction的方式打开，一个视图控制器，通过下面的路径调用，并在配置文件中注册对应keyPathName的视图控制器
+ *
+ *  guide://modalViewControler/${keyPathName}
+ *  guide://createViewControler/${keyPathName}
+ *  guide://shareViewControler/${keyPathName}
  */
 -(UIViewController *)controllerWithKeyPath:(NSString *) keyPath
                                      query:(NSDictionary *) query;

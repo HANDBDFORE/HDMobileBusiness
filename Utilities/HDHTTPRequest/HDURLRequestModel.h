@@ -17,4 +17,7 @@
 //子类实现该方法获取转换后的数据
 -(void)requestResultMap:(HDResponseMap *)map;
 
+//返回结果为空，默认调用didFinishLoad
+-(void)emptyResponse:(TTURLRequest *)request;
+
 @end

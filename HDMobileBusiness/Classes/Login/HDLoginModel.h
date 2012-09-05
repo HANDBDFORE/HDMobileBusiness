@@ -12,6 +12,7 @@
 
 @property(nonatomic,readonly) HDLoginBean * loginBean;
 
+@property(nonatomic,retain) NSString * submitURLPath;
 -(void)login;
 
 @end

@@ -30,18 +30,27 @@
     HDResponseMap * responseMap =
     [[HDHTTPRequestCenter shareHTTPRequestCenter] responseMapWithRequest:request
                                                                    error:&error];
-    if (nil!=error) {
+    if (nil != error) {
         //根据错误状态判断是否走错误流程
 //        if ([error.localizedFailureReason isEqualToString:@""]) {
 //            
 //        }
         [super request:request didFailLoadWithError:error];
-    }else{
+    }
+    if (!error && 0 < [[[responseMap.result lastObject] allKeys]count]) {
         [self requestResultMap:responseMap];
         [super requestDidFinishLoad:request];
+    }
+    if (!error && 0 == [[[responseMap.result lastObject] allKeys]count]) {
+        [self emptyResponse:request];
     }
 }
 
 -(void)requestResultMap:(HDResponseMap *)map{}
+
+-(void)emptyResponse:(TTURLRequest *)request
+{
+    [super requestDidFinishLoad:request];
+}
 
 @end

@@ -11,9 +11,9 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
     #import "Three20/Three20.h"
     #import "Three20/Three20+Additions.h"
-    #import "HDUtilities.h"
 
-    #import "HDApprovalRecord.h"
+    #import "HDUtilities.h"
 #endif
