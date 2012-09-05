@@ -13,8 +13,8 @@
 
 +(id)shareStorage;
 
--(id)query:(SEL) handler conditions:(id) conditions;
+-(NSArray*)query:(SEL) handler conditions:(NSDictionary *) conditions;
 
--(BOOL)excute:(SEL) handler recordSet:(id) recordSet;
+-(BOOL)excute:(SEL) handler recordList:(NSArray *) recordList;
 
 @end

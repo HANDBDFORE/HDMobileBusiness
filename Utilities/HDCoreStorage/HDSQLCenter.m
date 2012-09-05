@@ -13,39 +13,43 @@
 @implementation HDSQLCenter
 //数据库初始化
 -(BOOL)SQLCreatTable:(FMDatabase *)db{
-    NSArray *sqlAry= [NSArray arrayWithObjects:@"create table if not exists DataPool( column0 TEXT primary key,column1 TEXT,column2 TEXT,column3 TEXT,column4 TEXT ,column5 TEXT,column6 TEXT,column7 TEXT ,column8 TEXT,column9 TEXT,column10 TEXT ,column11 TEXT,column12 TEXT,column13 TEXT ,column14 TEXT,column15 TEXT,column16 TEXT ,column17 TEXT,column18 TEXT,column19 TEXT ,column20 TEXT,column21 TEXT,column22 TEXT ,column23 TEXT ,column24 TEXT,column25 TEXT,column26 TEXT ,column27 TEXT,column28 TEXT,column29 TEXT );", @"create table if not exists ColumnMap( column0 TEXT primary key,column1 TEXT,column2 TEXT,column3 TEXT,column4 TEXT );",nil];
+    NSArray *sqlAry= [NSArray arrayWithObjects:@"create table if not exists DataPool( column0 TEXT primary key,column1 TEXT,column2 TEXT,column3 TEXT,column4 TEXT ,column5 TEXT,column6 TEXT,column7 TEXT ,column8 TEXT,column9 TEXT,column10 TEXT ,column11 TEXT,column12 TEXT,column13 TEXT ,column14 TEXT,column15 TEXT,column16 TEXT ,column17 TEXT,column18 TEXT,column19 TEXT ,column20 TEXT,column21 TEXT,column22 TEXT ,column23 TEXT ,column24 TEXT,column25 TEXT,column26 TEXT ,column27 TEXT,column28 TEXT,column29 TEXT );", @"create table if not exists ColumnMap( column0 TEXT primary key,column1 TEXT,column2 TEXT,column3 TEXT,column4 TEXT );",@"create table if not exists Action( id INTEGER primary key ,recordkey TEXT,actionid TEXT,actiontitle TEXT );",nil];
     BOOL state = YES;
     state = [self execBatchInTransaction:db sqlArray:sqlAry];
     return state;
 }
 //清除数据库
 -(BOOL)SQLCleanTable:(FMDatabase *)db{
-    NSArray *sqlAry= [NSArray arrayWithObjects:@"delete from DataPool;",@"delete from ColumnMap;",nil];
+    NSArray *sqlAry= [NSArray arrayWithObjects:@"delete from DataPool;",@"delete from ColumnMap;",@"delete from ColumnMap;",nil];
     BOOL state = YES;
     state = [self execBatchInTransaction:db sqlArray:sqlAry];
     return state;
 }
 //ColumnMap插入
--(BOOL)SQLColumnMapInsert:(FMDatabase *)db recordSet:(id) recordSet{
+-(BOOL)SQLColumnMapInsert:(FMDatabase *)db recordList:(NSArray *) recordList{
+    //不传参会挂掉
+    if (!recordList) return NO;
     NSString *currentSql =@"insert into ColumnMap(column0,column1) values(:column0,:column1);";
     BOOL state = YES;
-    state = [self execLineInTransaction:db recordSet:recordSet currentSql:currentSql];
+    state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
     return state;
 }
 //DataPool表插入
--(BOOL)SQLDataPoolInsert:(FMDatabase *)db recordSet:(id) recordSet{
-    NSString *str1 =@""; 
-    NSString *str2 =@""; 
-    FMResultSet *rs=[self mapRs:db];
-    while ([rs next]){
-        str1 = [NSString stringWithFormat:@"%@,%@",[[rs resultDictionary] objectForKey:@"column0"],str1];
-        str2 = [NSString stringWithFormat:@":%@,%@",[[rs resultDictionary] objectForKey:@"column1"],str2];
-    } 
-    str1 = [str1 substringToIndex:[str1 length]-1];
-    str2 = [str2 substringToIndex:[str2 length]-1];
-    NSString *currentSql = [NSString stringWithFormat:@"insert into DataPool (%@) values (%@)",str1,str2];
+-(BOOL)SQLDataPoolInsert:(FMDatabase *)db recordList:(NSArray *) recordList{
+    //不传参会挂掉
+    if (!recordList) return NO;
+    NSString *strTempColumns =@"";
+    NSString *strTempValues =@"";
+    NSDictionary *mapDic = [self mapDicL2R:db];
+    for (NSString* key in mapDic) {
+        strTempColumns = [NSString stringWithFormat:@"%@,%@",key,strTempColumns];
+        strTempValues = [NSString stringWithFormat:@":%@,%@",[mapDic objectForKey:key],strTempValues];
+    }
+    strTempColumns = [strTempColumns substringToIndex:[strTempColumns length]-1];
+    strTempValues = [strTempValues substringToIndex:[strTempValues length]-1];
+    NSString *currentSql = [NSString stringWithFormat:@"insert into DataPool (%@) values (%@)",strTempColumns,strTempValues];
     BOOL state = YES;
-    state = [self execLineInTransaction:db recordSet:recordSet currentSql:currentSql];
+    state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
     return state;
 }
 //ColumnMap查询
@@ -55,63 +59,107 @@
 }
 //查询ToDoList操作
 -(FMResultSet *)SQLqueryToDoList:(FMDatabase *)db{
-    NSString *str1 =@""; 
-    FMResultSet *rs=[self mapRs:db];
-    while ([rs next]){
-        str1 = [NSString stringWithFormat:@"%@ %@,%@",[[rs resultDictionary] objectForKey:@"column0"],[[rs resultDictionary] objectForKey:@"column1"],str1];
+    NSString *strTemp =@"";
+    NSDictionary *mapDic = [self mapDicL2R:db];
+    for (NSString* key in mapDic) {
+        strTemp = [NSString stringWithFormat:@"%@ %@,%@",key,[mapDic objectForKey:key],strTemp];
     }
-    //debug:return nil unless length == 0;
-    if(![str1 length]){
+    if(![strTemp length]){
         return nil;
     }
-    str1 = [str1 substringToIndex:str1.length -1];
-    NSString *currentSql = [NSString stringWithFormat:@"select %@ from DataPool",str1];
-    rs=[db executeQuery:currentSql];
-    return rs;
+    strTemp = [strTemp substringToIndex:strTemp.length -1];
+    NSString *currentSql = [NSString stringWithFormat:@"select %@ from DataPool",strTemp];
+    return [db executeQuery:currentSql];
 }
 
 //删除记录
--(BOOL)SQLremoveRecord:(FMDatabase *)db recordSet:(id) recordSet{
+-(BOOL)SQLremoveRecords:(FMDatabase *)db recordList:(NSArray *) recordList{
+    //不传参会挂掉
+    if (!recordList) return NO;
     NSDictionary *mapDic = [self mapDicL2R:db];
-    NSString *currentSql = [NSString stringWithFormat:@"delete from datapool where column0 =:%@",[mapDic objectForKey:@"column0"]];
+    NSString *PK = [mapDic objectForKey:@"column0"];
+    NSMutableArray *newrecordList = [[[NSMutableArray alloc]init] autorelease];
+    for (NSDictionary *record in recordList) {
+        [newrecordList addObject:[NSDictionary dictionaryWithObject:[record objectForKey:PK] forKey:PK]];
+    }
+    NSString *currentSql = [NSString stringWithFormat:@"delete from datapool where column0 =:%@",PK];
     BOOL state = YES;
-    state = [self execLineInTransaction:db recordSet:recordSet currentSql:currentSql];
+    state = [self execLineInTransaction:db recordList:newrecordList currentSql:currentSql];
     return state;
 }
 //插入操作
--(BOOL)SQLinsertNewRecords:(FMDatabase *)db recordSet:(id) recordSet{
+-(BOOL)SQLinsertNewRecords:(FMDatabase *)db recordList:(NSArray *) recordList{
+    //不传参会挂掉
+    if (!recordList) return NO;
     NSString *currentSql = [NSString stringWithFormat:@"insert into persons (name) values(:name)"];
     BOOL state = YES;
-    state = [self execLineInTransaction:db recordSet:recordSet currentSql:currentSql];
+    state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
     return state;
 }
 //更新操作
--(BOOL)SQLupdateRecords:(FMDatabase *)db recordSet:(id) recordSet{
+-(BOOL)SQLupdateRecords:(FMDatabase *)db recordList:(NSArray *) recordList{
+    //不传参会挂掉
+    if (!recordList) return NO;
     NSDictionary *mapDic = [self mapDicR2L:db];
     NSString *TEMPSet = @"";
     NSString *TEMPWhere = @"";
     for (id key in [mapDic allKeys]) {
         if ([[mapDic valueForKey:key] isEqualToString:@"column0"]) {
-            TEMPSet = [NSString stringWithFormat:@"%@= :%@",[mapDic valueForKey:key],key];
+            TEMPWhere = [NSString stringWithFormat:@"%@= :%@",[mapDic valueForKey:key],key];
         }else{
-            TEMPWhere = [NSString stringWithFormat:@"%@=:%@,%@",[mapDic valueForKey:key],key,TEMPWhere];
+            TEMPSet = [NSString stringWithFormat:@"%@=:%@,%@",[mapDic valueForKey:key],key,TEMPWhere];
         }
     }
     TEMPWhere = [TEMPWhere substringToIndex:[TEMPWhere length]-1];
-    NSString *currentSql = [NSString stringWithFormat:@"update  DataPool set %@ where %@",TEMPWhere,TEMPSet];
+    NSString *currentSql = [NSString stringWithFormat:@"update  DataPool set %@ where %@",TEMPSet,TEMPWhere];
     BOOL state = YES;
-    state = [self execLineInTransaction:db recordSet:recordSet currentSql:currentSql];
+    state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
     return state;
 }
-#pragma mark-
-#pragma mark 私有方法
+//查询Action操作
+-(FMResultSet *)SQLqueryAction:(FMDatabase *)db conditions:(NSDictionary *) conditions{
+    //不传参会挂掉
+    if (!conditions) return nil;
+    NSDictionary *mapDic = [self mapDicL2R:db];
+    NSString *PK = [mapDic objectForKey:@"column0"];
+    NSString *currentSql = [NSString stringWithFormat:@"select recordkey %@,actionid action_id ,actiontitle action_title from Action where recordkey = :%@ order by actionid",PK,PK];
+    NSDictionary *PKDic = [NSDictionary dictionaryWithObject:[conditions objectForKey:PK] forKey:PK];
+    FMResultSet * rs=[db executeQuery:currentSql withParameterDictionary:PKDic];
+    return  rs;
+}
+//插入Action操作
+-(BOOL)SQLinsertActions:(FMDatabase *)db recordList:(NSArray *) recordList{
+    //不传参会挂掉
+    if (!recordList) return NO;
+    NSDictionary *mapDic = [self mapDicL2R:db];
+    NSString *PK = [mapDic objectForKey:@"column0"];
+    NSString *currentSql = [NSString stringWithFormat:@"insert into Action (recordkey,actionid,actiontitle) values(:%@,:action_id,:action_title)",PK];
+    BOOL state = YES;
+    state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
+    return state;
+}
+//删除Action记录操作
+-(BOOL)SQLremoveActions:(FMDatabase *)db recordList:(NSArray *) recordList{
+    //不传参会挂掉
+    if (!recordList) return NO;
+    //组装新List
+    NSDictionary *mapDic = [self mapDicL2R:db];
+    NSString *PK = [mapDic objectForKey:@"column0"];
+    NSArray *newrecordList = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:[[recordList objectAtIndex:0] objectForKey:PK] forKey:PK]];
+    NSString *currentSql = [NSString stringWithFormat:@"delete from Action where recordkey =:%@",PK];
+    BOOL state = YES;
+    state = [self execLineInTransaction:db recordList:newrecordList currentSql:currentSql];
+    return state;
+}
+#pragma mark- 私有方法 -
+
 //当行SQL执行，传入 数据库，记录集参数，SQL语句
--(BOOL)execLineInTransaction:(FMDatabase *)db recordSet:(id) recordSet currentSql:(NSString *)currentSql{
+-(BOOL)execLineInTransaction:(FMDatabase *)db recordList:(NSArray *) recordList currentSql:(NSString *)currentSql{
     BOOL state = YES;
     if ([db beginTransaction]) {
-        int rCount  = [recordSet count];
+        int rCount  = [recordList count];
         for (int n = 0; n<rCount; n++) {
-            state =  [db executeUpdate:currentSql withParameterDictionary:[recordSet objectAtIndex:n]];
+            state =  [db executeUpdate:currentSql withParameterDictionary:[recordList objectAtIndex:n]];
             if (!state) {
                 if (![db rollback]) {
                     NSLog(@"回滚失败");
@@ -133,9 +181,9 @@
     int sqlCount = [sqlArray count];
     if ([db beginTransaction]) {
         for (int i = 0; i<sqlCount; i++) {
-            NSString * currentSql =[sqlArray objectAtIndex:i]; 
+            NSString * currentSql =[sqlArray objectAtIndex:i];
             if (![db executeUpdate:currentSql]) {
-                state =NO; 
+                state =NO;
             }
         }
         if (!state) {
@@ -148,13 +196,13 @@
     }
     return state;
 }
-//映射表rs
+//映射表rs 不推荐使用这个
 -(FMResultSet *)mapRs:(FMDatabase *)db{
     NSString *currentSql = [NSString stringWithFormat:@"select column0,column1 from ColumnMap"];
     FMResultSet *rs=[db executeQuery:currentSql];
     return rs;
 }
-//映射表MAP
+//映射表L2R
 -(NSDictionary *)mapDicL2R:(FMDatabase *)db{
     FMResultSet *rs=[self mapRs:db];
     NSMutableDictionary * DIC = [[[NSMutableDictionary alloc]init]autorelease];
@@ -164,7 +212,7 @@
     }
     return DIC;
 }
-//映射表MAP
+//映射表R2L
 -(NSDictionary *)mapDicR2L:(FMDatabase *)db{
     FMResultSet *rs=[self mapRs:db];
     NSMutableDictionary * DIC = [[[NSMutableDictionary alloc]init]autorelease];

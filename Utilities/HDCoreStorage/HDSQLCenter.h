@@ -36,9 +36,15 @@ static NSString * kHDSyncTodoList = @"sync";
 //切换用户清理表数据
 -(BOOL)SQLCleanTable:(FMDatabase *)db;
 //提交成功,删除本地记录
--(BOOL)SQLremoveRecord:(FMDatabase *)db recordSet:(id) recordSet;
--(BOOL)SQLupdateRecords:(FMDatabase *)db recordSet:(id) recordSet;
--(BOOL)SQLinsertNewRecords:(FMDatabase *)db recordSet:(id) recordSet;
--(BOOL)SQLColumnMapInsert:(FMDatabase *)db recordSet:(id) recordSet;
--(BOOL)SQLDataPoolInsert:(FMDatabase *)db recordSet:(id) recordSet;
+-(BOOL)SQLremoveRecords:(FMDatabase *)db recordList:(NSArray *) recordList;
+-(BOOL)SQLupdateRecords:(FMDatabase *)db recordList:(NSArray *) recordList;
+-(BOOL)SQLinsertNewRecords:(FMDatabase *)db recordList:(NSArray *) recordList;
+-(BOOL)SQLColumnMapInsert:(FMDatabase *)db recordList:(NSArray *) recordList;
+-(BOOL)SQLDataPoolInsert:(FMDatabase *)db recordList:(NSArray *) recordList;
+//插入Action记录
+-(BOOL)SQLinsertActions:(FMDatabase *)db recordList:(NSArray *) recordList;
+//删除Action记录操作
+-(BOOL)SQLremoveActions:(FMDatabase *)db recordList:(NSArray *) recordList;
+//查询Action操作
+-(FMResultSet *)SQLqueryAction:(FMDatabase *)db conditions:(NSDictionary *) conditions;
 @end
