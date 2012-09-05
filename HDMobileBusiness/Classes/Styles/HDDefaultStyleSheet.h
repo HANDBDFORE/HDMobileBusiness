@@ -10,11 +10,13 @@
 
 @interface HDDefaultStyleSheet : TTDefaultStyleSheet
 
-//-(TTStyle *)tableStatusLabelNormal;
-
+//StatusTableCell状态为error时状态条的样式
 -(TTStyle *)tableStatusLabelError;
 
+//StatusTableCell状态为different时状态条的样式
 -(TTStyle *)tableStatusLabelDifferent;
 
+//confirm单元格按钮样式
+- (TTStyle*)confirmCellButton:(UIControlState)state;
 
 @end
