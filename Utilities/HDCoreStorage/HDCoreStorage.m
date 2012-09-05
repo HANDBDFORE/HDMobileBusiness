@@ -18,7 +18,7 @@ static HDCoreStorage * globalStorage = nil;
     FMDatabasePool *DatabasePool;
     HDSQLCenter *sqlCenter;
 }
-#pragma mark - 
+#pragma mark -
 #pragma mark 单例
 +(id)shareStorage
 {
@@ -68,7 +68,8 @@ static HDCoreStorage * globalStorage = nil;
 {
     return self;
 }
-
+-(oneway void)release{
+}
 -(void)dealloc
 {
     [DatabasePool releaseAllDatabases];
@@ -84,14 +85,14 @@ static HDCoreStorage * globalStorage = nil;
     return [documentsDirectory stringByAppendingPathComponent:@"mydb.db"];
 }
 
--(id)query:(SEL) handler conditions:(id) conditions{
+-(NSArray*)query:(SEL) handler conditions:(NSDictionary *) conditions{
     if ([sqlCenter respondsToSelector:handler]) {
         __block  NSMutableArray  *_DATA = [[[NSMutableArray alloc]init]autorelease];
         void (^doDabase)(FMDatabase *db)=^(FMDatabase *db){
-            FMResultSet *rs=[sqlCenter performSelector:handler withObject:db withObject:conditions]; 
-            while ([rs next]){  
-                [_DATA addObject:[[rs resultDictionary] mutableCopy]];
-            } 
+            FMResultSet *rs=[sqlCenter performSelector:handler withObject:db withObject:conditions];
+            while ([rs next]){
+                [_DATA addObject:[rs resultDictionary]];
+            }
         };
         [DatabasePool inDatabase:doDabase];
         return _DATA;
@@ -100,11 +101,11 @@ static HDCoreStorage * globalStorage = nil;
     return nil;
 }
 
--(BOOL)excute:(SEL) handler recordSet:(id) recordSet{
+-(BOOL)excute:(SEL) handler recordList:(NSArray *) recordList{
     if ([sqlCenter respondsToSelector:handler]) {
         __block  BOOL state = FALSE;
         void (^doDabase)(FMDatabase *db)=^(FMDatabase *db){
-            state=(BOOL)[sqlCenter performSelector:handler withObject:db withObject:recordSet];
+            state=(BOOL)[sqlCenter performSelector:handler withObject:db withObject:recordList];
         };
         [DatabasePool inDatabase:doDabase];
         return state;
