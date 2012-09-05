@@ -23,7 +23,7 @@
     //Views Managment by Three20
     [TTStyleSheet setGlobalStyleSheet:[[[HDDefaultStyleSheet alloc]init]autorelease]];
     //create database
-    [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordSet:nil];
+    [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordList:nil];
     
     TTNavigator * navigator = [TTNavigator navigator];
     

@@ -198,7 +198,7 @@
     [defaults synchronize];
     
     //删除本地数据库
-    [[HDCoreStorage shareStorage] excute:@selector(SQLCleanTable:) recordSet:nil];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLCleanTable:) recordList:nil];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }

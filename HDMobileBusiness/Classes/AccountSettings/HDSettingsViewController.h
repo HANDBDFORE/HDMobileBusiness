@@ -8,6 +8,15 @@
 
 #import <Three20UI/Three20UI.h>
 
-@interface HDSettingViewController : TTTableViewController
+@interface HDSettingsViewController : TTTableViewController
+{
+    UIBarButtonItem * _saveButton;
+    UIBarButtonItem * _cancelButton;
+}
+@end
+
+@interface HDTableViewLogoutCell : UIControl
+
+-(id)initWithLogoutButtonTarget:(id) target selector:(SEL)selector;
 
 @end

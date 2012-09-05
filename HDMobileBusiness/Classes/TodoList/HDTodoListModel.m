@@ -245,7 +245,7 @@ static NSString * kComments = @"comment";
 -(void)refreshColumnMap:(NSDictionary *) record
 {
     if (![self isMatchColumnMapWithDictionary:record]) {
-        [[HDCoreStorage shareStorage]excute:@selector(SQLCleanTable:) recordSet:nil];
+        [[HDCoreStorage shareStorage]excute:@selector(SQLCleanTable:) recordList:nil];
         [self loadLocalRecords];
         
         NSMutableArray * columnKeyList = [NSMutableArray array];
@@ -261,7 +261,7 @@ static NSString * kComments = @"comment";
             [columnKeyList addObject:@{kColumnMapKey : key,kColumnMapColumn:[NSString stringWithFormat:@"column%i",i]}];
             i++;
         }
-        [[HDCoreStorage shareStorage] excute:@selector(SQLColumnMapInsert:recordSet:) recordSet:columnKeyList];
+        [[HDCoreStorage shareStorage] excute:@selector(SQLColumnMapInsert:recordList:) recordList:columnKeyList];
     }
 }
 
@@ -311,55 +311,22 @@ static NSString * kComments = @"comment";
     NSMutableSet * resultSet = [NSMutableSet setWithSet:localSet];
     [resultSet unionSet:newSet];
     return  [resultSet allObjects];
-//    /////////////
-//    NSMutableArray * diffArray = [[localRecords mutableCopy] autorelease];
-//    NSMutableArray * newArray = [[remoteRecords mutableCopy] autorelease] ;
-//    NSMutableArray * localSameArray = [NSMutableArray array];
-//    NSMutableArray * remoteSameArray = [NSMutableArray array];
-//    
-//    //比较数据
-//    //find same records
-//    for (NSMutableDictionary * localApprove in localRecords) {
-//        for (NSMutableDictionary * remoteRecord in remoteRecords) {
-//            if ([[localApprove valueForKey:_primaryFiled] isEqual:[remoteRecord valueForKey:_primaryFiled]]) {
-//                [localSameArray addObject:localApprove];
-//                [remoteSameArray addObject:remoteRecord];
-//            }
-//        }
-//    }
-//    
-//    [diffArray removeObjectsInArray:localSameArray];
-//    [diffArray setValue:kRecordDifferent forKey:kRecordStatus];
-//    [diffArray setValue:@"已在其他地方处理" forKey:kRecordServerMessage];
-////    [self updateRecords:diffArray];
-//    
-//    [newArray removeObjectsInArray:remoteSameArray];
-//    [self insertRecords:newArray];
-    
-    //合并数据
-//    return [[localSameArray arrayByAddingObjectsFromArray:differentArray]
-//            arrayByAddingObjectsFromArray:newArray];
 }
 
 #pragma -mark CoreStorage
--(void)updateRecords:(NSArray *) recordSet
+-(void)updateRecords:(NSArray *) recordList
 {
-    [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordSet:) recordSet:recordSet];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordList:) recordList:recordList];
 }
 
--(void)insertRecords:(NSArray *) recordSet
+-(void)insertRecords:(NSArray *) recordList
 {
-    [[HDCoreStorage shareStorage] excute:@selector(SQLDataPoolInsert:recordSet:) recordSet:recordSet];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLDataPoolInsert:recordList:) recordList:recordList];
 }
 
 -(void)removeRecords:(NSArray *) recordList
 {
-    NSMutableArray * deleteArray = [NSMutableArray array];
-    for (NSDictionary * record in recordList) {
-        //TODO:这里后期处理为直接传递record
-        [deleteArray addObject:@{@"record_id":[record valueForKey:@"record_id"]}];
-    }
-    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecord:recordSet:) recordSet:deleteArray];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecord:recordList:) recordList:recordList];
 }
 
 #pragma -mark Flags
@@ -428,7 +395,7 @@ static NSString * kComments = @"comment";
 #pragma mark Others
 -(void)setIconBageNumber
 {
-    [UIApplication sharedApplication].applicationIconBadgeNumber = self.resultList.count;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = [self effectiveRecordCount];
 }
 
 -(BOOL)isEffectiveRecord:(NSDictionary *)record

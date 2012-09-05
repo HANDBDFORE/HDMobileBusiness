@@ -41,7 +41,7 @@
     if (_loginBean.username != [[NSUserDefaults standardUserDefaults] valueForKey:@"username"]) {
         //
         HDCoreStorage * CoreStorage = [HDCoreStorage shareStorage];
-        [CoreStorage excute:@selector(SQLCleanTable:) recordSet:nil];
+        [CoreStorage excute:@selector(SQLCleanTable:) recordList:nil];
     }   
     [[NSUserDefaults standardUserDefaults] setValue:_loginBean.username forKey:@"username"];
     [[NSUserDefaults standardUserDefaults] setValue:_loginBean.password forKey:@"password"];
