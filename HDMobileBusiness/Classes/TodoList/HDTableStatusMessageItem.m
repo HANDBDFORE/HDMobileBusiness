@@ -50,34 +50,12 @@
     return item;
 }
 
-+ (id)itemWithTitle:(NSString*)title
-            caption:(NSString*)caption
-               text:(NSString*)text
-          timestamp:(NSDate*)timestamp
-                URL:(NSString*)URL
-            message:(NSString *)message
-              state:(NSString *) state
-             warning:(NSString *) warning
-{
-    HDTableStatusMessageItem* item = [[[self alloc] init] autorelease];
-    item.title = title;
-    item.caption = caption;
-    item.text = text;
-    item.timestamp = timestamp;
-    item.URL = URL;
-    item.message = message;
-    item.state = state;
-    item.warning = warning;
-    return item;
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithTitle:(NSString*)title
             caption:(NSString*)caption
                text:(NSString*)text
           timestamp:(NSDate*)timestamp
-           imageURL:(NSString*)imageURL
-                URL:(NSString*)URL
             message:(NSString*)message
               state:(NSString*) state
              warning:(NSString *) warning
@@ -87,8 +65,6 @@
     item.caption = caption;
     item.text = text;
     item.timestamp = timestamp;
-    item.imageURL = imageURL;
-    item.URL = URL;
     item.message = message;
     item.state = state;
     item.warning = warning;

@@ -33,21 +33,11 @@ static NSString * kTableStatusMessageWaiting =@"WAITING";
               state:(NSString *)state
             warning:(NSString *)warning;
 
-+ (id)itemWithTitle:(NSString*)title
-            caption:(NSString*)caption
-               text:(NSString*)text
-          timestamp:(NSDate*)timestamp
-                URL:(NSString*)URL
-            message:(NSString *)message
-              state:(NSString *) state
-            warning:(NSString *) warning;
 
 + (id)itemWithTitle:(NSString*)title
             caption:(NSString*)caption
                text:(NSString*)text
           timestamp:(NSDate*)timestamp
-           imageURL:(NSString*)imageURL
-                URL:(NSString*)URL
             message:(NSString *)message
               state:(NSString *)state
             warning:(NSString *)warning;

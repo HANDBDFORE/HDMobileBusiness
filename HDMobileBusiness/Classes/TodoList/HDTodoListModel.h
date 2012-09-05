@@ -30,7 +30,7 @@ static NSString * kStorageRemove = @"REMOVE";
 {
     @private
     struct {
-        unsigned int isFirstLoad:1;
+        unsigned int shouldLoadingLocalData:1;
         unsigned int isSubmitingData:1;
         unsigned int isQueryingData:1;
     } _flags;

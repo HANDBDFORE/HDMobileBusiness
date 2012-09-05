@@ -1,6 +1,6 @@
 //
-//  HDWillApproveSearchViewController.m
-//  hrms
+//  HDTodoListSearchViewController.m
+//  HandMobile
 //
 //  Created by Rocky Lee on 7/21/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -61,6 +61,7 @@
 {
     [super viewWillDisappear:animated];
     [self revertToolbar];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kEventTodoListSearchViewWillDissappear object:nil];
 }
 
 #pragma mark toolbar setting

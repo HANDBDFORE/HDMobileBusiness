@@ -17,7 +17,7 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
 	self = [super initWithStyle:style reuseIdentifier:identifier];
     if (self) {
-       
+        
     }
     return self;
 }
@@ -25,7 +25,7 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
     TT_RELEASE_SAFELY(_activityLabel);
-    TT_RELEASE_SAFELY(_stateLabel);    
+    TT_RELEASE_SAFELY(_stateLabel);
     [super dealloc];
 }
 
@@ -39,7 +39,7 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
     //Compute height based on font sizes
-//    object
+    //    object
     HDTableStatusMessageItem* item = object;
     
     CGFloat height = 50;
@@ -57,8 +57,6 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark UIView
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)prepareForReuse {
     [super prepareForReuse];
@@ -84,7 +82,7 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
     CGFloat top = kTableCellSmallMargin;
     
     if (_stateLabel.text.length) {
-        _stateLabel.frame = CGRectMake(left, top, width-18,32);
+        _stateLabel.frame = CGRectMake(left, top, width-36,32);
         top += _stateLabel.height;
     }else {
         _stateLabel.frame = CGRectZero;
@@ -151,29 +149,22 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
         if (item.message.length) {
             self.stateLabel.text = item.message;
         }
-        if (item.state) {
-            if ([item.state isEqualToString:kTableStatusMessageNormoal]) {
-                self.activityLabel.hidden = YES;
-                self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                self.selectionStyle = UITableViewCellSelectionStyleBlue;
-            }
-            if ([item.state isEqualToString: kTableStatusMessageError]) {
-                self.stateLabel.style = TTSTYLE(tableStatusLabelError);
-                self.activityLabel.hidden = YES;
-                self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                self.selectionStyle = UITableViewCellSelectionStyleBlue;
-            }
-            if ([item.state isEqualToString: kTableStatusMessageDifferent]) {
-                self.stateLabel.style = TTSTYLE(tableStatusLabelDifferent);
-                self.activityLabel.hidden = YES;
-                self.accessoryType = UITableViewCellAccessoryNone;
-                self.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
-            if ([item.state isEqualToString: kTableStatusMessageWaiting]) {
-                self.activityLabel.hidden = NO;
-                self.accessoryType = UITableViewCellAccessoryNone;
-                self.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
+        
+        self.activityLabel.hidden = YES;
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        self.selectionStyle = UITableViewCellSelectionStyleBlue;
+        
+        if ([item.state isEqualToString: kTableStatusMessageError]) {
+            self.stateLabel.style = TTSTYLE(tableStatusLabelError);
+        }
+        if ([item.state isEqualToString: kTableStatusMessageDifferent]) {
+            self.stateLabel.style = TTSTYLE(tableStatusLabelDifferent);
+            self.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        if ([item.state isEqualToString: kTableStatusMessageWaiting]) {
+            self.activityLabel.hidden = NO;
+            self.accessoryType = UITableViewCellAccessoryNone;
+            self.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         if (item.warning) {
             if ([@"Y|y|true|1|TRUE|yes|YES" rangeOfString:item.warning].length != 0) {

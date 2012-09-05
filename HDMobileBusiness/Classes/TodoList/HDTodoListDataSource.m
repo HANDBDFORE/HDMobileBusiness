@@ -30,11 +30,11 @@
         _todoListModel = [[HDTodoListModel alloc]init];
         self.model = _todoListModel;
        
-//        self.cellItemMap =
-//        @{@"title":@"${workflow_name}:${employee_name}",
-//        @"caption":@"当前节点: ${node_name}",
-//        @"text":@"${workflow_desc}",
-//        @"timestamp":@"${creation_date}"};
+        self.cellItemMap =
+        @{@"title":@"title",
+        @"caption":@"caption",
+        @"text":@"text",
+        @"timestamp":@"timestamp"};
     }
     return self;
 }
@@ -60,6 +60,7 @@
     if (![[object valueForKey:kRecordStatus] isEqualToString:kRecordNormal] &&![[object valueForKey:kRecordStatus] isEqualToString:kRecordWaiting]) {
         stautMessage = [object valueForKey:kRecordServerMessage];
     }
+    
     return [HDTableStatusMessageItem itemWithTitle:title
                                            caption:caption
                                               text:text

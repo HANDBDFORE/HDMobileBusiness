@@ -59,7 +59,7 @@ static NSString * kComments = @"comment";
         //        self.queryUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"autocrud/ios.ios_todo_list.ios_todo_list_query/query?_fetchall=true&amp;_autocount=false"];
         //        self.submitUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_approve_new/ios_todo_list_commit.svc"];
         _selectedIndex = 0;
-        _flags.isFirstLoad = YES;
+        _flags.shouldLoadingLocalData = YES;
     }
     return self;
 }
@@ -69,11 +69,12 @@ static NSString * kComments = @"comment";
 {
     //读取本地数据库数据,把待提交的数据单条循环提交.等待前一条返回才发送下一条
     //第一次加载从本地加载
-    if (_flags.isFirstLoad) {
-        _flags.isFirstLoad = NO;
+    if ([self shouldLoadLocalData]) {
+        _flags.shouldLoadingLocalData = NO;
         [self loadLocalRecords];
         //这里只设置loadedTime表示超时,modelViewController会调用reload方法,之后可以考虑overwrite viewController的shuldreload方法或者model的isOutdated方法
         self.loadedTime = [NSDate dateWithTimeIntervalSinceNow:0];
+        self.cacheKey = nil;
         [self didFinishLoad];
         return;
     }
@@ -102,6 +103,7 @@ static NSString * kComments = @"comment";
     //查询状态
     if (_flags.isQueryingData) {
         _flags.isQueryingData = NO;
+        _flags.shouldLoadingLocalData = YES;
         [self refreshResultList:resultMap.result];
         if (!self.isLoadingMore) {
             self.loadedTime = request.timestamp;
@@ -118,6 +120,7 @@ static NSString * kComments = @"comment";
     [super request:request didFailLoadWithError:error];
     _flags.isQueryingData = NO;
     _flags.isSubmitingData = NO;
+    _flags.shouldLoadingLocalData = YES;
 }
 
 #pragma -mark Submit data
@@ -176,6 +179,7 @@ static NSString * kComments = @"comment";
 -(void)loadLocalRecords
 {
     [_resultList removeAllObjects];
+    [_submitList removeAllObjects];
     //从数据库读取数据(应该放到一个业务逻辑类中)
     NSArray *_storageList = [[HDCoreStorage shareStorage]  query:@selector(SQLqueryToDoList:) conditions:nil];
     for (NSDictionary *record in _storageList) {
@@ -198,7 +202,6 @@ static NSString * kComments = @"comment";
 #pragma -mark Load remote records
 -(void)loadRemoteRecords
 {
-    _flags.isQueryingData = YES;
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     map.requestPath =  self.queryUrl;
     [self requestWithMap:map];
@@ -220,7 +223,7 @@ static NSString * kComments = @"comment";
         
         
         NSArray * newResultList =
-        [self combineRecordsWithLocalRecords:_resultList
+        [self combineRecordsWithLocalRecords:self.resultList
                                remoteRecords:responseList];
         [_resultList removeAllObjects];
         [_resultList addObjectsFromArray:newResultList];
@@ -230,17 +233,18 @@ static NSString * kComments = @"comment";
             return [[obj1 valueForKey:_orderField]
                     compare:[obj2 valueForKey:_orderField]];
         }];
+        
+        [self setIconBageNumber];
+        
         if ([self isSearching]) {
             [self search:self.searchText];
         }
-        
-        [self setIconBageNumber];
     }
 }
 
 -(void)refreshColumnMap:(NSDictionary *) record
 {
-    if (![self matchColumnMap:record]) {
+    if (![self isMatchColumnMapWithDictionary:record]) {
         [[HDCoreStorage shareStorage]excute:@selector(SQLCleanTable:) recordSet:nil];
         [self loadLocalRecords];
         
@@ -250,7 +254,7 @@ static NSString * kComments = @"comment";
         //set dinymic field from Column5
         int i =5;
         
-        NSMutableDictionary * mutableRecord =  [record mutableCopy];
+        NSMutableDictionary * mutableRecord =  [[record mutableCopy] autorelease];
         [mutableRecord removeObjectForKey:_primaryFiled];
         NSArray * keys = [mutableRecord allKeys];
         for (NSString * key in keys) {
@@ -261,18 +265,18 @@ static NSString * kComments = @"comment";
     }
 }
 
--(BOOL)matchColumnMap:(NSDictionary *) newMatchRecord
+-(BOOL)isMatchColumnMapWithDictionary:(NSDictionary *) record
 {
     NSArray * oldColumnKeyList = [[HDCoreStorage shareStorage]query:@selector(SQLqueryColumnMap:) conditions:nil];
     
-    if ([newMatchRecord allKeys].count != oldColumnKeyList.count ||
+    if ([record allKeys].count != oldColumnKeyList.count ||
         oldColumnKeyList.count == 0) {
         return NO;
     }
     
     BOOL matchFlg = YES;
     for (NSDictionary * line  in oldColumnKeyList) {
-        matchFlg = matchFlg && !![newMatchRecord valueForKey:[line valueForKey:kColumnMapKey]];
+        matchFlg = matchFlg && !![record valueForKey:[line valueForKey:kColumnMapKey]];
     }
     return matchFlg;
 }
@@ -280,38 +284,61 @@ static NSString * kComments = @"comment";
 -(NSArray *)combineRecordsWithLocalRecords:(NSArray *) localRecords remoteRecords:(NSArray *) remoteRecords
 {
     //debug 判断localRecord是否为空，否则copy时会crash
-    if (localRecords.count == 0) {
+    if (localRecords.count == 0){
         [self insertRecords:remoteRecords];
         return remoteRecords;
     }
     
-    NSMutableArray * diffArray = [localRecords mutableCopy];
-    NSMutableArray * newArray = [remoteRecords mutableCopy] ;
-    NSMutableArray * localSameArray = [NSMutableArray array];
-    NSMutableArray * remoteSameArray = [NSMutableArray array];
+    NSSet * localSet = [NSSet setWithArray:localRecords];
+    NSSet * remoteSet = [NSSet setWithArray:remoteRecords];
     
-    //比较数据
-    //find same records
-    for (NSMutableDictionary * localApprove in localRecords) {
-        for (NSMutableDictionary * remoteRecord in remoteRecords) {
-            if ([[localApprove valueForKey:_primaryFiled] isEqual:[remoteRecord valueForKey:_primaryFiled]]) {
-                [localSameArray addObject:localApprove];
-                [remoteSameArray addObject:remoteRecord];
-            }
-        }
-    }
+    //找出本地存在，而远程不存在的数据
+    NSSet * differentSet = [localSet objectsWithOptions:NSEnumerationConcurrent passingTest:^BOOL(id obj, BOOL *stop) {
+        return ![[remoteSet valueForKey:_primaryFiled] containsObject:[obj objectForKey:_primaryFiled]];
+    }];
     
-    [diffArray removeObjectsInArray:localSameArray];
-    [diffArray setValue:kRecordDifferent forKey:kRecordStatus];
-    [diffArray setValue:@"已在其他地方处理" forKey:kRecordServerMessage];
-    [self updateRecords:diffArray];
+    //找出远程存在，而本地不存在的数据
+    NSSet * newSet = [remoteSet objectsWithOptions:NSEnumerationConcurrent passingTest:^BOOL(id obj, BOOL *stop) {
+        return ![[localSet valueForKey:_primaryFiled] containsObject:[obj objectForKey:_primaryFiled]];
+    }];
     
-    [newArray removeObjectsInArray:remoteSameArray];
-    [self insertRecords:newArray];
+    [differentSet setValue:kRecordDifferent forKey:kRecordStatus];
+    [differentSet setValue:@"已在其他地方处理" forKey:kRecordServerMessage];
+     
+    [self insertRecords:[newSet allObjects]];
+    [self updateRecords:[differentSet allObjects]];
+    
+    NSMutableSet * resultSet = [NSMutableSet setWithSet:localSet];
+    [resultSet unionSet:newSet];
+    return  [resultSet allObjects];
+//    /////////////
+//    NSMutableArray * diffArray = [[localRecords mutableCopy] autorelease];
+//    NSMutableArray * newArray = [[remoteRecords mutableCopy] autorelease] ;
+//    NSMutableArray * localSameArray = [NSMutableArray array];
+//    NSMutableArray * remoteSameArray = [NSMutableArray array];
+//    
+//    //比较数据
+//    //find same records
+//    for (NSMutableDictionary * localApprove in localRecords) {
+//        for (NSMutableDictionary * remoteRecord in remoteRecords) {
+//            if ([[localApprove valueForKey:_primaryFiled] isEqual:[remoteRecord valueForKey:_primaryFiled]]) {
+//                [localSameArray addObject:localApprove];
+//                [remoteSameArray addObject:remoteRecord];
+//            }
+//        }
+//    }
+//    
+//    [diffArray removeObjectsInArray:localSameArray];
+//    [diffArray setValue:kRecordDifferent forKey:kRecordStatus];
+//    [diffArray setValue:@"已在其他地方处理" forKey:kRecordServerMessage];
+////    [self updateRecords:diffArray];
+//    
+//    [newArray removeObjectsInArray:remoteSameArray];
+//    [self insertRecords:newArray];
     
     //合并数据
-    return [[localSameArray arrayByAddingObjectsFromArray:diffArray]
-            arrayByAddingObjectsFromArray:newArray];
+//    return [[localSameArray arrayByAddingObjectsFromArray:differentArray]
+//            arrayByAddingObjectsFromArray:newArray];
 }
 
 #pragma -mark CoreStorage
@@ -337,27 +364,41 @@ static NSString * kComments = @"comment";
 
 #pragma -mark Flags
 /*
+ *可以加载本地数据
+ */
+-(BOOL)shouldLoadLocalData
+{
+    return _flags.shouldLoadingLocalData;
+}
+
+/*
  *可以提交的状态:
  *1 没有在查询
- *2 不是第一次load
- *3 提交列表不为空
+ *2 提交列表不为空
  */
 -(BOOL) shouldSubmit
 {
-    return !_flags.isQueryingData && !_flags.isFirstLoad && (_submitList.count > 0) ;
+    return !_flags.isQueryingData && (_submitList.count > 0);
 }
 
 /*
  *可以查询远程数据的状态
  *1 没有在提交状态
- *2 不是第一次load
+ *2 没有在查询状态
+ *3 本地数据不可加载
  */
 -(BOOL) shouldQuery
 {
-    return !_flags.isSubmitingData && !_flags.isFirstLoad && !_flags.isQueryingData;
+    return !_flags.isSubmitingData && !_flags.isQueryingData;
 }
 
 #pragma mark Search
+
+-(BOOL)isSearching
+{
+    return nil != self.searchText;
+}
+
 - (void)search:(NSString*)text
 {
     [self cancel];
@@ -384,11 +425,6 @@ static NSString * kComments = @"comment";
     }
 }
 
--(BOOL)isSearching
-{
-    return !!self.searchText;
-}
-
 #pragma mark Others
 -(void)setIconBageNumber
 {
@@ -410,7 +446,7 @@ static NSString * kComments = @"comment";
     }] allObjects];
     [self removeRecords:differentRecords];
     
-    _flags.isFirstLoad = YES;
+//    _flags.isLoadingLocalData = YES;
     [self load:TTURLRequestCachePolicyDefault more:NO];
 }
 

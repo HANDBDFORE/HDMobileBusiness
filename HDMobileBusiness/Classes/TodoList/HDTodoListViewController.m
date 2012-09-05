@@ -1,6 +1,6 @@
 //
-//  HDApproveListViewController.m
-//  hrms
+//  HDTodoListViewController.m
+//  HandMobile
 //
 //  Created by Rocky Lee on 7/6/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -18,6 +18,11 @@ static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"待办事项";
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(reload)
+         name:kEventTodoListSearchViewWillDissappear
+         object:nil];
     }
     return self;
 }
@@ -48,10 +53,10 @@ static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
     [self.navigationController.toolbar setTintColor:TTSTYLEVAR(toolbarTintColor)];
     
     //search bar
-//    HDTodoListSearchViewController* searchController = [[[HDTodoListSearchViewController alloc] init] autorelease];
+//    HDTodoListSearchViewController* searchViewController = [[[HDTodoListSearchViewController alloc] init] autorelease];
     HDTodoListSearchViewController * searchViewController =
     (HDTodoListSearchViewController *)[[HDGuider guider] controllerWithKeyPath:kSearchPathName query:nil];
-    
+//    searchViewController.dataSource = self.dataSource;
     self.searchViewController = searchViewController;
     
     _searchController.searchBar.tintColor = TTSTYLEVAR(searchBarTintColor);
@@ -66,7 +71,7 @@ static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [self.navigationController setToolbarHidden:NO animated:YES];
+    [self.navigationController setToolbarHidden:NO animated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated

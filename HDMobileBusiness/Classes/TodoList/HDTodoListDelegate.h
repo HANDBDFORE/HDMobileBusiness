@@ -7,6 +7,6 @@
 //
 
 
-@interface HDTodoListDelegate : TTTableViewVarHeightDelegate
+@interface HDTodoListDelegate : TTTableViewDragRefreshDelegate
 
 @end
