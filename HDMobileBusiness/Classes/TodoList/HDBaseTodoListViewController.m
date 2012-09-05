@@ -166,14 +166,16 @@
 -(void)modelDidFinishLoad:(id<TTModel>)model
 {
     [super modelDidFinishLoad:model];
-    NSDate *refreshTime =  [(TTURLRequestModel *)model loadedTime];
-    _timeStampLabel.text = [refreshTime formatDate];
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
-//    [dateFormatter setDateFormat:@"上次刷新：yy-MM-dd HH:mm"];
-//    _timeStampLabel.text =[dateFormatter stringFromDate:reflashDate];
-//    [dateFormatter release];
-
+    NSDate * lastUpdatedDate =  [(TTURLRequestModel *)model loadedTime];
+    
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    _timeStampLabel.text = [NSString stringWithFormat:
+                              TTLocalizedString(@"Last updated: %@",
+                                                @"The last time the table view was updated."),
+                              [formatter stringFromDate:lastUpdatedDate]];
+    [formatter release];
 }
 
 -(id<UITableViewDelegate>)createDelegate

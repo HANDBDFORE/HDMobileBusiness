@@ -87,6 +87,16 @@
     }
 }
 
+
+-(TTStyle *)timeStampLabel
+{
+    return
+     [TTBoxStyle styleWithPadding:UIEdgeInsetsMake(-5, 15, 0, 15) next:
+        [TTTextStyle styleWithFont:[UIFont fontWithName:@"Helvetica-Bold" size:12] color:RGBCOLOR(255, 255, 255) textAlignment:UITextAlignmentCenter next:nil
+         ]];
+}
+
+#pragma -mark color
 -(UIColor *)navigationBarTintColor
 {
 //    return RGBACOLOR(102, 102, 102, 0.6);
