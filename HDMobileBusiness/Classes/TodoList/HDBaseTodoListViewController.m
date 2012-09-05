@@ -10,7 +10,6 @@
 #import "HDTodoListDelegate.h"
 
 @implementation HDBaseTodoListViewController
-@synthesize refreshTimeLable=_refreshTimeLable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -18,7 +17,8 @@
     if (self) {
         // Custom initialization
         self.variableHeightRows = YES;
-        _clearsSelectionOnViewWillAppear = NO;
+        self.clearsSelectionOnViewWillAppear = NO;
+        
         self.dataSource = [[[HDTodoListDataSource alloc]init]autorelease];
     }
     return self;
@@ -28,56 +28,79 @@
 -(void)loadView
 {
     [super loadView];
-    _acceptButton = [[UIBarButtonItem alloc]initWithTitle:@"同意" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)]; 
-    _acceptButton.width = 100;
-    _acceptButton.tintColor = RGBCOLOR(0, 153, 0);
-    _acceptButton.tag = 1;
+    _acceptButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"同意" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)]; 
+    _acceptButtonItem.width = 120;
+    _acceptButtonItem.tintColor = RGBCOLOR(0, 153, 0);
+    _acceptButtonItem.tag = 1;
+    ////////////////////////////////////////////////////////////////////////////////
+/////////////////////
     
-    _refuseButton = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];         
-    _refuseButton.width = 100;
-    _refuseButton.tintColor = RGBCOLOR(153, 0, 0);
-    _refuseButton.tag = 0;
+    _refuseButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
+    _refuseButtonItem.width = 120;
+    _refuseButtonItem.tintColor = RGBCOLOR(153, 0, 0);
+    _refuseButtonItem.tag = 0;
+    ////////////////////////////////////////////////////////////////////////////////
+/////////////////////
     
-    _clearButton = [[UIBarButtonItem alloc]initWithTitle:@"清理" style:UIBarButtonItemStyleBordered target:_model action:@selector(clear)];
+    _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"清理" style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
+    ////////////////////////////////////////////////////////////////////////////////
+/////////////////////
     
     _space = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    ////////////////////////////////////////////////////////////////////////////////
+/////////////////////
     
-    _refreshButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
-    _composeButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
-
+    _refreshButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
+    ////////////////////////////////////////////////////////////////////////////////
+/////////////////////
+    
+    _composeButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
+    ////////////////////////////////////////////////////////////////////////////////
+/////////////////////
+    _timeStampLabel = [[TTLabel alloc]init];
+    _timeStampLabel.style = TTSTYLE(timeStampLabel);
+    _timeStampLabel.frame = CGRectMake(0, 0, self.view.width, TTToolbarHeight());
+    _timeStampLabel.backgroundColor = [UIColor clearColor];
+    _timeStampLabel.text = @"...";
+    
+    _stateLabelItem =[[UIBarButtonItem alloc]initWithCustomView:_timeStampLabel];
+    ////////////////////////////////////////////////////////////////////////////////
+/////////////////////
+    
     [self resetButtonTitle];
 }
 
 - (void)viewDidUnload
 {
-    [_refreshTimeLable removeFromSuperview];
-    TT_RELEASE_SAFELY(_refuseButton);
-    TT_RELEASE_SAFELY(_acceptButton);
-    TT_RELEASE_SAFELY(_refreshButton);
-    TT_RELEASE_SAFELY(_composeButton);
-    TT_RELEASE_SAFELY(_clearButton);
+    TT_RELEASE_SAFELY(_refuseButtonItem);
+    TT_RELEASE_SAFELY(_acceptButtonItem);
+    TT_RELEASE_SAFELY(_refreshButtonItem);
+    TT_RELEASE_SAFELY(_composeButtonItem);
+    TT_RELEASE_SAFELY(_clearButtonItem);
+    TT_RELEASE_SAFELY(_stateLabelItem);
+    TT_RELEASE_SAFELY(_timeStampLabel);
     TT_RELEASE_SAFELY(_space);
-    TT_RELEASE_SAFELY(_refreshTimeLable);
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
+#pragma  -mark toolbar Buttons
 -(void)resetButtonTitle
 {
-    _acceptButton.title = @"同意";
-    _acceptButton.enabled = NO;
+    _acceptButtonItem.title = @"同意";
+    _acceptButtonItem.enabled = NO;
     
-    _refuseButton.title = @"拒绝";
-    _refuseButton.enabled = NO;
+    _refuseButtonItem.title = @"拒绝";
+    _refuseButtonItem.enabled = NO;
 }
 
 -(void)setToolbarButtonTitleWithCount:(NSNumber *)count
 {
     if (count.intValue >0) {
-        _refuseButton.title = [NSString stringWithFormat:@"拒绝(%@)",count];
-        _refuseButton.enabled = YES;
-        _acceptButton.title = [NSString stringWithFormat:@"同意(%@)",count];
-        _acceptButton.enabled = YES;
+        _refuseButtonItem.title = [NSString stringWithFormat:@"拒绝(%@)",count];
+        _refuseButtonItem.enabled = YES;
+        _acceptButtonItem.title = [NSString stringWithFormat:@"同意(%@)",count];
+        _acceptButtonItem.enabled = YES;
     }
     else {
         [self resetButtonTitle]; 
@@ -90,10 +113,8 @@
     [self resetButtonTitle];
     if(editing){
         self.editButtonItem.title = @"取消";
-         _refreshTimeLable.hidden = YES;
     }else {
         self.editButtonItem.title = @"批量";
-         _refreshTimeLable.hidden = NO;
     }
 }
 
@@ -107,7 +128,7 @@
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 #pragma refresh
@@ -139,6 +160,20 @@
         [(HDTodoListModel *)self.model  submitObjectAtIndexPaths:indexPaths comment:text action:_submitAction];
     }
     [self setEditing:NO animated:YES];
+}
+
+#pragma -mark TTModel Functions
+-(void)modelDidFinishLoad:(id<TTModel>)model
+{
+    [super modelDidFinishLoad:model];
+    NSDate *refreshTime =  [(TTURLRequestModel *)model loadedTime];
+    _timeStampLabel.text = [refreshTime formatDate];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
+//    [dateFormatter setDateFormat:@"上次刷新：yy-MM-dd HH:mm"];
+//    _timeStampLabel.text =[dateFormatter stringFromDate:reflashDate];
+//    [dateFormatter release];
+
 }
 
 -(id<UITableViewDelegate>)createDelegate

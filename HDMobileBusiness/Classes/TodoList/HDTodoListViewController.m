@@ -40,15 +40,7 @@ static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //tool bar
-    [self.navigationController setToolbarHidden:NO animated:NO]; 
-    _refreshTimeLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0,self.view.width,TTToolbarHeight())];
-    _refreshTimeLable.textAlignment = UITextAlignmentCenter;
-    _refreshTimeLable.textColor = [ UIColor whiteColor];
-    _refreshTimeLable.shadowColor = RGBCOLOR(68, 68, 68);
-    _refreshTimeLable.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    _refreshTimeLable.backgroundColor=[UIColor clearColor];
-    _refreshTimeLable.font=[UIFont fontWithName:@"Helvetica-Bold" size:12];
-    [self.navigationController.toolbar insertSubview:_refreshTimeLable  atIndex:1 ];
+    [self.navigationController setToolbarHidden:NO animated:NO];
     [self setEditingToolbarItemButtons:NO animated:YES];
     [self.navigationController.toolbar setTintColor:TTSTYLEVAR(toolbarTintColor)];
     
@@ -63,9 +55,6 @@ static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
 
     self.tableView.tableHeaderView = _searchController.searchBar;
     self.tableView.contentOffset = CGPointMake(0, TTToolbarHeight());
-    
-    //
-    searchViewController.refreshTimeLable  = _refreshTimeLable;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -110,9 +99,9 @@ static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
 -(NSArray *)createToolbarItems
 {
     if (self.editing) {
-        return [NSArray arrayWithObjects:_acceptButton,_space,_refuseButton, nil];
+        return [NSArray arrayWithObjects:_acceptButtonItem,_space,_refuseButtonItem, nil];
     }else {
-        return [NSArray arrayWithObjects:_refreshButton,_space,_clearButton,nil];
+        return [NSArray arrayWithObjects:_space,_stateLabelItem,_space,nil];
     } 
 }
 

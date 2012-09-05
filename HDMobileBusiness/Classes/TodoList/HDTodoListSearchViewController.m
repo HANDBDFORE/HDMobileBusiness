@@ -19,16 +19,6 @@
     return self;
 }
 
--(void)modelDidFinishLoad:(id<TTModel>)model{
-    [super modelDidFinishLoad:model];
-    NSDate *reflashDate =  [(HDURLRequestModel*)self.model loadedTime];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; 
-    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
-    [dateFormatter setDateFormat:@"上次刷新：yy-MM-dd HH:mm"];
-    _refreshTimeLable.text =[dateFormatter stringFromDate:reflashDate];
-    [dateFormatter release];
-}
-
 #pragma mark edit status
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
@@ -73,9 +63,9 @@
 -(NSArray *)createToolbarItems
 {
     if (self.editing) {
-        return [NSArray arrayWithObjects:_acceptButton,_refuseButton,_space,self.editButtonItem, nil];
+        return [NSArray arrayWithObjects:_acceptButtonItem,_refuseButtonItem,_space,self.editButtonItem, nil];
     }else {
-        return [NSArray arrayWithObjects:_refreshButton,_space,_space,self.editButtonItem, nil];
+        return [NSArray arrayWithObjects:_space,_stateLabelItem,_space,self.editButtonItem, nil];
     } 
 }
 
