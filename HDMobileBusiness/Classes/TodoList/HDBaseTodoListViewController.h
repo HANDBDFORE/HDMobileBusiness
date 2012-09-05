@@ -12,17 +12,17 @@ static NSString * kEventTodoListSearchViewWillDissappear = @"TodoListSearchViewW
 @interface HDBaseTodoListViewController : TTTableViewController<TTPostControllerDelegate>
 {
     @protected
-    UIBarButtonItem *  _acceptButton;
-    UIBarButtonItem *  _refuseButton;
-    UIBarButtonItem *  _refreshButton;
-    UIBarButtonItem *  _composeButton;
-    UIBarButtonItem *  _clearButton;
+    UIBarButtonItem *  _acceptButtonItem;
+    UIBarButtonItem *  _refuseButtonItem;
+    UIBarButtonItem *  _refreshButtonItem;
+    UIBarButtonItem *  _composeButtonItem;
+    UIBarButtonItem *  _clearButtonItem;
+    UIBarButtonItem *  _stateLabelItem;
+    TTLabel         *  _timeStampLabel;
     UIBarButtonItem *  _space;
-    UILabel         *  _refreshTimeLable;
     
     NSString        *  _submitAction;
 }
-@property(nonatomic,retain) UILabel *refreshTimeLable;
 
 -(void)setToolbarButtonTitleWithCount:(NSNumber *)count;
 
