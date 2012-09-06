@@ -7,18 +7,22 @@
 //
 
 #import "HDUserInfoView.h"
+#import "HDTodoListModel.h"
 
-@interface HDDetailInfoViewController : TTWebController
+@interface HDDetailInfoViewController : TTModelViewController<UIWebViewDelegate,UIActionSheetDelegate>
 {
-    HDUserInfoView *_employeeView;
+@protected
+    HDUserInfoView *_userInfoView;
+    UIWebView *_webView;
+    NSInteger index;
 }
-
-@property (nonatomic,copy) NSString * employeeURLPath;
-@property (nonatomic,copy) NSString * employeeName;
-
-/*
- *设置该属性会打开指定路径的页面
- */
-@property (nonatomic,copy) NSString * webPageURLPath;
-
+//单据明细页面URL模板
+@property (nonatomic,copy) NSString * webPageURLTemplate;
+//用户信息页面URL模板
+@property (nonatomic,copy) NSString * userInfoPageURLTemplate;
+//用户信息按钮显示字段
+@property (nonatomic,copy) NSString * userInfoItemTitle;
+//model
+@property (nonatomic,retain) HDTodoListModel * todoListModel;
+//
 @end
