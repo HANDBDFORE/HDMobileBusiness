@@ -198,21 +198,21 @@
 -(void)testCoreStorage
 {
     HDCoreStorage *CoreStorage= [HDCoreStorage shareStorage];
-    STAssertTrue([CoreStorage excute:@selector(SQLcreatTable:) recordSet:nil],@"insert failed");
+    STAssertTrue([CoreStorage excute:@selector(SQLcreatTable:) recordList:nil],@"insert failed");
     NSDictionary *dic1 = [NSDictionary dictionaryWithObjectsAndKeys:@"Column0",@"Column0",@"ID",@"Column1",nil];
     NSDictionary *dic2 = [NSDictionary dictionaryWithObjectsAndKeys:@"Column1",@"Column0",@"NAME",@"Column1",nil];
     NSArray *ary = [NSArray arrayWithObjects:dic1,dic2,nil];
-    STAssertTrue([CoreStorage excute:@selector(SQLColumnMapInsert:recordSet:) recordSet:ary],@"insert failed");
+    STAssertTrue([CoreStorage excute:@selector(SQLColumnMapInsert:recordList:) recordList:ary],@"insert failed");
     dic1 = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"ID",@"罗洪超",@"NAME",nil];
     dic2 = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"ID",@"马豪杰",@"NAME",nil];
     ary = [NSArray arrayWithObjects:dic1,dic2,nil];
-    STAssertTrue([CoreStorage excute:@selector(SQLDataPoolInsert:recordSet:) recordSet:ary],@"insert failed");
+    STAssertTrue([CoreStorage excute:@selector(SQLDataPoolInsert:recordList:) recordList:ary],@"insert failed");
     //query
 
     NSArray * resultList = [CoreStorage query:@selector(SQLqueryPersons:) conditions:nil];
     //列表长度为2
     STAssertTrue(resultList.count == 2,@"list count is:%i",resultList.count);
-    //记录对象是HDApprovalRecordb DIC
+    //记录对象是 DIC
     TTDASSERT([[resultList objectAtIndex:0] isKindOfClass:[NSDictionary class]]);
     //数据校验
     id record1 = [resultList objectAtIndex:0];
@@ -229,13 +229,13 @@
 //    [record1 setValue:@"u测试Title1" forKey:@"recordTitle"];
 //    [record1 setValue:kHDRecordStatusDifferent forKey:@"recordStatus"];
 //    [record1 setValue:kHDStorageStatusUpdate forKey:@"storageStatus"];
-//    STAssertTrue([[HDCoreStorage shareStorage] excute:kHDUpdateTodoList recordSet:[NSArray arrayWithObject:record1]], @"update failed");
+//    STAssertTrue([[HDCoreStorage shareStorage] excute:kHDUpdateTodoList recordList:[NSArray arrayWithObject:record1]], @"update failed");
 //    //sync update
 //    [record2 setValue:[NSDate dateWithTimeIntervalSince1970:10] forKey:@"timeStamp"];
 //    [record2 setValue:@"u测试Title1" forKey:@"recordTitle"];
 //    [record2 setValue:kHDRecordStatusDifferent forKey:@"recordStatus"];
 //    [record2 setValue:kHDStorageStatusUpdate forKey:@"storageStatus"];
-//    [[HDCoreStorage shareStorage] excute:@"sync" recordSet:[NSArray arrayWithObject:record2]];
+//    [[HDCoreStorage shareStorage] excute:@"sync" recordList:[NSArray arrayWithObject:record2]];
 //    resultList = [[HDCoreStorage shareStorage] query:kHDQueryTodoList conditions:nil];
 //    record1 = [resultList objectAtIndex:0];
 //    record2 = [resultList objectAtIndex:1];
@@ -250,9 +250,9 @@
 //    STAssertEqualObjects([record2 valueForKey:@"storageStatus"] ,kHDStorageStatusNormal, @"没有正确设置storageStatus",[record2 valueForKey:@"storageStatus"]);
 //
 //    //remove
-//    STAssertTrue([[HDCoreStorage shareStorage] excute:kHDRemoveTodoList recordSet:[NSArray arrayWithObject:record1]], @"remove failed");
+//    STAssertTrue([[HDCoreStorage shareStorage] excute:kHDRemoveTodoList recordList:[NSArray arrayWithObject:record1]], @"remove failed");
 //    [record2 setValue:kHDStorageStatusRemove forKey:@"storageStatus"];
-//    [[HDCoreStorage shareStorage] excute:kHDSyncTodoList recordSet:[NSArray arrayWithObject:record2]];
+//    [[HDCoreStorage shareStorage] excute:kHDSyncTodoList recordList:[NSArray arrayWithObject:record2]];
 //    
 //    STAssertTrue(![[HDCoreStorage shareStorage] query:kHDQueryTodoList conditions:nil], @"删除记录失败") ;
 }

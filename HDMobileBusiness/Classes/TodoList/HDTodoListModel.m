@@ -326,12 +326,7 @@ static NSString * kComments = @"comment";
 
 -(void)removeRecords:(NSArray *) recordList
 {
-    NSMutableArray * deleteArray = [NSMutableArray array];
-    for (NSDictionary * record in recordList) {
-        //TODO:这里后期处理为直接传递record
-        [deleteArray addObject:@{@"record_id":[record valueForKey:@"record_id"]}];
-    }
-    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecord:recordList:) recordList:deleteArray];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecord:recordList:) recordList:recordList];
 }
 
 #pragma -mark Flags
