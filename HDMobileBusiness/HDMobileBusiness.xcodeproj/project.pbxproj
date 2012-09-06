@@ -81,7 +81,6 @@
 		B38DC70015C6835D00FD0C58 /* HDTodoListSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6F415C6835D00FD0C58 /* HDTodoListSearchViewController.m */; };
 		B38DC70115C6835D00FD0C58 /* HDTodoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC6F615C6835D00FD0C58 /* HDTodoListModel.m */; };
 		B38DC71A15C68C3800FD0C58 /* HDDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */; };
-		B38DC71B15C68C3800FD0C58 /* HDDetailSubmitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71115C68C3800FD0C58 /* HDDetailSubmitModel.m */; };
 		B38DC71C15C68C3800FD0C58 /* HDDetailToolbarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */; };
 		B38DC71D15C68C3800FD0C58 /* HDDetailToolbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71515C68C3800FD0C58 /* HDDetailToolbarViewController.m */; };
 		B38DC71E15C68C3800FD0C58 /* HDUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71715C68C3800FD0C58 /* HDUserInfoView.m */; };
@@ -541,8 +540,6 @@
 		B38DC6F615C6835D00FD0C58 /* HDTodoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListModel.m; sourceTree = "<group>"; };
 		B38DC70E15C68C3800FD0C58 /* HDDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailInfoViewController.h; sourceTree = "<group>"; };
 		B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailInfoViewController.m; sourceTree = "<group>"; };
-		B38DC71015C68C3800FD0C58 /* HDDetailSubmitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailSubmitModel.h; sourceTree = "<group>"; };
-		B38DC71115C68C3800FD0C58 /* HDDetailSubmitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailSubmitModel.m; sourceTree = "<group>"; };
 		B38DC71215C68C3800FD0C58 /* HDDetailToolbarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailToolbarModel.h; sourceTree = "<group>"; };
 		B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailToolbarModel.m; sourceTree = "<group>"; };
 		B38DC71415C68C3800FD0C58 /* HDDetailToolbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailToolbarViewController.h; sourceTree = "<group>"; };
@@ -1161,8 +1158,6 @@
 			children = (
 				B38DC70E15C68C3800FD0C58 /* HDDetailInfoViewController.h */,
 				B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */,
-				B38DC71015C68C3800FD0C58 /* HDDetailSubmitModel.h */,
-				B38DC71115C68C3800FD0C58 /* HDDetailSubmitModel.m */,
 				B38DC71215C68C3800FD0C58 /* HDDetailToolbarModel.h */,
 				B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */,
 				B38DC71415C68C3800FD0C58 /* HDDetailToolbarViewController.h */,
@@ -2014,7 +2009,6 @@
 				B38DC70015C6835D00FD0C58 /* HDTodoListSearchViewController.m in Sources */,
 				B38DC70115C6835D00FD0C58 /* HDTodoListModel.m in Sources */,
 				B38DC71A15C68C3800FD0C58 /* HDDetailInfoViewController.m in Sources */,
-				B38DC71B15C68C3800FD0C58 /* HDDetailSubmitModel.m in Sources */,
 				B38DC71C15C68C3800FD0C58 /* HDDetailToolbarModel.m in Sources */,
 				B38DC71D15C68C3800FD0C58 /* HDDetailToolbarViewController.m in Sources */,
 				B38DC71E15C68C3800FD0C58 /* HDUserInfoView.m in Sources */,
