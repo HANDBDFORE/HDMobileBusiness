@@ -1,5 +1,5 @@
 //
-//  LoginModel.m
+//  HDLoginModel.m
 //  HRMS
 //
 //  Created by Rocky Lee on 3/4/12.
@@ -27,6 +27,7 @@
     if (self = [super init]) {
         //TODO:配置
         self.submitURLPath = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"login_iphone.svc"];
+        self.username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     }
     return self;
 }
@@ -41,7 +42,7 @@
     }   
     [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:@"username"];
     [[NSUserDefaults standardUserDefaults] setValue:self.password forKey:@"password"];
-    [[NSUserDefaults standardUserDefaults]synchronize];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(void)login
@@ -71,5 +72,13 @@
 -(NSString *) deviceType
 {
     return TTIsPad()? @"PAD":@"PHONE";
+}
+
+//binding
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (![[self valueForKeyPath:context] isEqual:[change valueForKey:@"new"]]) {
+        [self setValue:[change valueForKey:@"new"] forKeyPath:context];
+    }
 }
 @end

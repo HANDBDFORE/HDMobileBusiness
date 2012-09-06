@@ -15,24 +15,30 @@
 
 @synthesize backgroundImage = _backgroundImage;
 
-- (void)dealloc
-{
-    TT_RELEASE_SAFELY(_username);
-    TT_RELEASE_SAFELY(_password);
-    TT_RELEASE_SAFELY(_loginModel);
-    TT_RELEASE_SAFELY(_backgroundImage);
-    [super dealloc];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self setAutoresizesForKeyboard:YES];
+        
         _loginModel = [[HDLoginModel alloc]init];
         self.model = _loginModel;
+        //注册_loginModel观察self的username.text。当_loginModel接收到消息时，设置context指定的自己对应的属性
+        [self addObserver:_loginModel forKeyPath:@"username.text" options:NSKeyValueObservingOptionNew context:@"username"];
+        [self addObserver:_loginModel forKeyPath:@"password.text" options:NSKeyValueObservingOptionNew context:@"password"];
     }
     return self;
+}
+
+-(void)viewDidUnload
+{
+    [self removeObserver:_loginModel forKeyPath:@"username.text"];
+    [self removeObserver:_loginModel forKeyPath:@"password.text"];
+    TT_RELEASE_SAFELY(_username);
+    TT_RELEASE_SAFELY(_password);
+    TT_RELEASE_SAFELY(_loginModel);
+    TT_RELEASE_SAFELY(_backgroundImage);
+    [super viewDidUnload];
 }
 
 -(void)viewDidLoad
@@ -42,12 +48,27 @@
     _password.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"password"];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setHidden:YES];
+    
+//    self.backgroundImage = TTIMAGE(@"documents://login_background.png");
+//    if (nil!= self.backgroundImage) {
+//        [(UIImageView *)[self.view viewWithTag:9] setImage:self.backgroundImage];
+//    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setHidden:NO];
+    [super viewWillDisappear:animated];
+}
+
 #pragma login functions
 -(IBAction)loginBtnPressed:(id)sender{
     [_username resignFirstResponder];
     [_password resignFirstResponder];
-    [_loginModel setUsername: _username.text];
-    [_loginModel setPassword: _password.text];
     [_loginModel login];
 }
 
@@ -90,28 +111,11 @@
     [UIView commitAnimations];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setHidden:YES];
-    
-    self.backgroundImage = TTIMAGE(@"documents://login_background.png");
-    if (nil!= self.backgroundImage) {
-        [(UIImageView *)[self.view viewWithTag:9] setImage:self.backgroundImage];
-    }
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [self.navigationController.navigationBar setHidden:NO];
-    [super viewWillDisappear:animated];
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 
 @end
