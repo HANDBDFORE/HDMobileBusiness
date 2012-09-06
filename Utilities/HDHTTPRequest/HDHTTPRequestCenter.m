@@ -7,11 +7,7 @@
 //
 
 #import "HDHTTPRequestCenter.h"
-
 #import "HDDataConvertor.h"
-#import "HDURLCenter.h"
-
-static HDHTTPRequestCenter * _requestCenter = nil;
 
 @implementation HDHTTPRequestCenter
 @synthesize urlCenter = _urlCenter;
@@ -24,32 +20,7 @@ static HDHTTPRequestCenter * _requestCenter = nil;
 
 +(id)shareHTTPRequestCenter
 {
-    @synchronized(self){
-        if (_requestCenter == nil) {
-            _requestCenter = [[self alloc] init];
-        }
-    }
-    return  _requestCenter;
-}
-
-+(id) allocWithZone:(NSZone *)zone{
-    @synchronized(self){
-        if (_requestCenter == nil) {
-            _requestCenter = [super allocWithZone:zone];
-            return  _requestCenter;
-        }
-    }
-    return nil;
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;
-}
-
-- (id)retain
-{
-    return self;
+    return [self shareObject];
 }
 
 -(id)init
@@ -59,16 +30,6 @@ static HDHTTPRequestCenter * _requestCenter = nil;
         _urlCenter = [[HDURLCenter alloc]init];
         [[TTURLRequestQueue mainQueue]setMaxContentLength:0];
     }
-    return self;
-}
-
--(unsigned)retainCount
-{
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-
-- (id)autorelease
-{
     return self;
 }
 
@@ -90,7 +51,7 @@ static HDHTTPRequestCenter * _requestCenter = nil;
         urlPath =  map.requestPath;
     }else {
         urlPath = [_urlCenter requestURLWithKey:map.urlName
-                                           query:map.urlParameters];
+                                          query:map.urlParameters];
     }
     //setting post data
     id<HDDataConvertor> convertor =
@@ -121,7 +82,7 @@ static HDHTTPRequestCenter * _requestCenter = nil;
 }
 
 -(HDResponseMap *)responseMapWithRequest:(TTURLRequest *)request
-                                        error:(NSError **) error
+                                   error:(NSError **) error
 {
     TTURLDataResponse * response = request.response;
     
@@ -133,17 +94,13 @@ static HDHTTPRequestCenter * _requestCenter = nil;
     
     id result = [convertor doConvertor:response.data error:error];
     
-//    if(nil == *(error)){
-        //setting result map
-        HDResponseMap * responseMap = [HDResponseMap map];
-        responseMap.userInfo = request.userInfo;
-        responseMap.urlPath = request.urlPath;
-        responseMap.error = *(error);
-        responseMap.result = result;
-
-        return responseMap;
-//    }
-//    return nil;
+    HDResponseMap * responseMap = [HDResponseMap map];
+    responseMap.userInfo = request.userInfo;
+    responseMap.urlPath = request.urlPath;
+    responseMap.error = *(error);
+    responseMap.result = result;
+    
+    return responseMap;
 }
 
 @end
