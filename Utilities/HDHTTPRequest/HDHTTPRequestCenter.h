@@ -16,7 +16,8 @@
 
 #import "HDURLCenter.h"
 
-@interface HDHTTPRequestCenter : NSObject
+#import "../HDSingletonObject.h"
+@interface HDHTTPRequestCenter : HDSingletonObject
 
 @property(nonatomic,readonly) HDURLCenter * urlCenter;
 
