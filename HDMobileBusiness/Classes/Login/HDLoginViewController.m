@@ -19,6 +19,7 @@
 {
     TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_password);
+    TT_RELEASE_SAFELY(_loginModel);
     TT_RELEASE_SAFELY(_backgroundImage);
     [super dealloc];
 }
@@ -28,11 +29,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self setAutoresizesForKeyboard:YES];
-        self.model = [[HDLoginModel alloc]init];        
-        
-//        NSString * path = [NSString  stringWithFormat:@"%@",kResourceRootPath,@"[@name='LOGIN_TITLE']"];
-//        NSString * title = [[HDGodXMLFactory shareBeanFactory]stringFroXPath:path attributeName:@"value"];
-//        [(UILabel*)[self.view viewWithTag:2] setText:title];
+        _loginModel = [[HDLoginModel alloc]init];
+        self.model = _loginModel;
     }
     return self;
 }
@@ -48,9 +46,9 @@
 -(IBAction)loginBtnPressed:(id)sender{
     [_username resignFirstResponder];
     [_password resignFirstResponder];
-    [[(HDLoginModel *)_model loginBean] setUsername:_username.text];
-    [[(HDLoginModel *)_model loginBean] setPassword:_password.text];
-    [(HDLoginModel *)_model login];
+    [_loginModel setUsername: _username.text];
+    [_loginModel setPassword: _password.text];
+    [_loginModel login];
 }
 
 //模型delegate方法

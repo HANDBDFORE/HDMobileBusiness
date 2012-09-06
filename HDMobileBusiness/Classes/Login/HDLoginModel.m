@@ -7,28 +7,24 @@
 //
 
 #import "HDLoginModel.h"
-//#import "ApproveDatabaseHelper.h"
-#import "HDCoreStorage.h"
-
-//static NSString * kLoginSubmitURLPath = @"LOGIN_PATH";
 
 @implementation HDLoginModel
 
-//登陆post数据
-@synthesize loginBean = _loginBean;
 @synthesize submitURLPath = _submitURLPath;
+@synthesize username = _username;
+@synthesize password = _password;
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_loginBean);
     TT_RELEASE_SAFELY(_submitURLPath);
+    TT_RELEASE_SAFELY(_username);
+    TT_RELEASE_SAFELY(_password);
     [super dealloc];
 }
 
 -(id)init
 {
     if (self = [super init]) {
-        _loginBean = [[HDLoginBean alloc]init];
         //TODO:配置
         self.submitURLPath = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"login_iphone.svc"];
     }
@@ -38,13 +34,13 @@
 -(void)initUsers
 {
     //不同用户登录,清除数据库
-    if (_loginBean.username != [[NSUserDefaults standardUserDefaults] valueForKey:@"username"]) {
+    if (self.username != [[NSUserDefaults standardUserDefaults] valueForKey:@"username"]) {
         //
         HDCoreStorage * CoreStorage = [HDCoreStorage shareStorage];
         [CoreStorage excute:@selector(SQLCleanTable:) recordList:nil];
     }   
-    [[NSUserDefaults standardUserDefaults] setValue:_loginBean.username forKey:@"username"];
-    [[NSUserDefaults standardUserDefaults] setValue:_loginBean.password forKey:@"password"];
+    [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] setValue:self.password forKey:@"password"];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
@@ -54,12 +50,12 @@
     [self initUsers];
 
     id postdata = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                   _loginBean.username,@"user_name",
-                   _loginBean.password,@"user_password",
+                   self.username,@"user_name",
+                   self.password,@"user_password",
                    @"简体中文",@"langugae",
                    @"ZHS",@"user_language",
                    @"N",@"is_ipad", 
-                   @"PHONE",@"device_type",
+                   [self deviceType],@"device_type",
                    @"1",@"company_id",
                    @"41",@"role_id",
                    [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"device_token",
@@ -72,4 +68,8 @@
     [self requestWithMap:map]; 
 }
 
+-(NSString *) deviceType
+{
+    return TTIsPad()? @"PAD":@"PHONE";
+}
 @end
