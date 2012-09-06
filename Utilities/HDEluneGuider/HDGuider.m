@@ -96,6 +96,9 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
         if ([keyPath isEqualToString:@"FUNCTION_LIST_VC_PATH"]) {
             return [self configFunctionListViewController:controller];
         }
+        if ([keyPath isEqualToString:@"DETIAL_VC_PATH"]) {
+            return [self configFunctionListdetialViewController:controller];
+        }
         return controller;
     }
     return nil;
@@ -147,6 +150,15 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     [controller setValue:[NSString stringWithFormat:@"%@modules/ios/ios_function_center/ios_function_query.svc", [[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"model.queryURLPath"];
     return controller;
 }
+
+-(UIViewController *) configFunctionListdetialViewController:(UIViewController *) controller
+{
+//    [controller setValue:@"功能[配置]" forKeyPath:@"title"];
+    [controller setValue:@"employee_name" forKeyPath:@"userInfoItemTitle"];
+    [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
+    [controller setValue:[NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
+    return controller;
+}
 /*
  *根据path,获取控制器跳转配置对象
  */
@@ -173,7 +185,8 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     @"DONE_LIST_VC_PATH":@"init://doneListViewController",
     @"TODO_LIST_VC_PATH":@"init://todoListViewController",
     @"FUNCTION_LIST_VC_PATH":@"init://functionListViewController",
-    @"SETTINGS_VC_PATH":@"init://settingsViewController"};
+    @"SETTINGS_VC_PATH":@"init://settingsViewController",
+    @"DETIAL_VC_PATH":@"init://todoListDetailViewController"};
     //realase
 //    @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
 //    @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",
