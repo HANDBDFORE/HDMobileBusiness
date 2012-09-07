@@ -57,13 +57,13 @@ static NSString * kStorageRemove = @"REMOVE";
 @property(nonatomic,copy) NSString * primaryFiled;
 
 //查询的Url
-@property(nonatomic,copy) NSString * queryUrl;
+@property(nonatomic,copy) NSString * queryURL;
 
 //提交的Url
-@property(nonatomic,copy) NSString * submitUrl;
+@property(nonatomic,copy) NSString * submitURL;
 
 //当前指针位置，表识被点击纪录的行号
-@property(nonatomic,assign) NSUInteger selectedIndex;
+@property(nonatomic,assign) NSUInteger currentIndex;
 
 //提交制定indexPaths中的纪录，设置纪录的comment和action
 -(void)submitObjectAtIndexPaths:(NSArray *) indexPaths
@@ -87,6 +87,9 @@ static NSString * kStorageRemove = @"REMOVE";
 
 //清除无效的数据
 -(void)clear;
+
+//获取当前记录的indexPah
+-(NSIndexPath *) currentIndexPath;
 
 @end
 

@@ -18,7 +18,7 @@
 @property(nonatomic,assign) NSUInteger pageNum;
 
 //查询的Url
-@property(nonatomic,copy) NSString * queryUrl;
+@property(nonatomic,copy) NSString * queryURL;
 
 //当前指针位置，表识被点击纪录的行号
 @property(nonatomic,assign) NSUInteger selectedIndex;

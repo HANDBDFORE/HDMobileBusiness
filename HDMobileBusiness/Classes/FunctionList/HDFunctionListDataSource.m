@@ -12,12 +12,12 @@
 @implementation HDFunctionListModel
 
 @synthesize resultList = _resultList;
-@synthesize queryURLPath = _queryURLPath;
+@synthesize queryURL = _queryURL;
 
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_resultList);
-    TT_RELEASE_SAFELY(_queryURLPath);
+    TT_RELEASE_SAFELY(_queryURL);
     [super dealloc];
 }
 
@@ -25,7 +25,7 @@
 {
     self = [super init];
     if (self) {
-        self.queryURLPath = nil;
+        self.queryURL = nil;
         _resultList = [[NSMutableArray alloc]init];
     }
     return self;
@@ -33,14 +33,14 @@
 
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
-    if (!self.queryURLPath) {
+    if (!self.queryURL) {
         [_loadedTime release];
         _loadedTime = [[NSDate dateWithTimeIntervalSinceNow:0] retain];
         self.cacheKey = @"local items";
-        [self didFinishLoad];
+        [self didFinishLoad];g
     }else{
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-        map.requestPath = self.queryURLPath;
+        map.requestPath = self.queryURL;
         [super requestWithMap:map];
     }
 }
@@ -96,7 +96,7 @@
             [TTTableImageItem itemWithText:[item valueForKeyPath:@"text"]
                                   imageURL:[item valueForKeyPath:@"image_url"]
                                        URL:url];
-            imageItem.imageStyle =[self imageStyle];
+            imageItem.imageStyle =TTSTYLE(functionListCellImageStyle);
 
             [itemArray addObject: imageItem];                     
         }
@@ -108,15 +108,6 @@
     
     [self addBasicItems];
     [self addLogoutItem];
-}
-
--(TTStyle *) imageStyle
-{
-    return [TTImageStyle styleWithImageURL:nil
-                              defaultImage:TTIMAGE(@"bundle://world.png")
-                               contentMode:UIViewContentModeScaleToFill
-                                      size:CGSizeMake(45, 45)
-                                      next:nil];
 }
 
 -(NSString *)createCellItemWithTemplete:(NSString *) templete
@@ -137,13 +128,13 @@
     [TTTableImageItem itemWithText:@"待办事项"
                           imageURL:@"bundle://mailclosed.png"
                                URL:@"guide://createViewControler/TODO_LIST_VC_PATH"];
-    todoListItem.imageStyle = [self imageStyle];
+    todoListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
     
    TTTableImageItem * doneListItem =
     [TTTableImageItem itemWithText:@"审批完成"
                           imageURL:@"bundle://mailopened.png"
                                URL:@"guide://createViewControler/DONE_LIST_VC_PATH"];
-    doneListItem.imageStyle = [self imageStyle];
+    doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
     
     [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:@"审批" footerTitle:nil] atIndex:0];
     [self.items insertObject:@[todoListItem,doneListItem] atIndex:0];

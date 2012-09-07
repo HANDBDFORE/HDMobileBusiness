@@ -70,7 +70,6 @@
                                            message:stautMessage
                                              state:[object valueForKey:kRecordStatus]
                                            warning:warning];
-    
 }
 
 -(NSString *)createCellItemWithTemplete:(NSString *) templete
@@ -139,11 +138,9 @@
 {
     if ([item.state isEqualToString:kRecordNormal] ||
         [item.state isEqualToString:kRecordError]) {
-        NSUInteger index = [self.items indexOfObject:item];
-        [self.todoListModel setSelectedIndex:index];
-        [[HDGuider guider] guideToKeyPath:@"todoListCellSelected"
-                                    query:@{ @"todoListModel" : self.todoListModel}];
-    }  
+        self.todoListModel.currentIndex = [self.items indexOfObject:item];
+        [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.todoListModel}]applyAnimated:YES]];
+    }
 }
 
 - (void)search:(NSString*)text {

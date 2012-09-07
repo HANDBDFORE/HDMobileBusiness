@@ -12,7 +12,7 @@
 }
 
 @property(nonatomic,readonly) NSArray * resultList;
-@property(nonatomic,copy) NSString * queryURLPath;
+@property(nonatomic,copy) NSString * queryURL;
 
 @end
 

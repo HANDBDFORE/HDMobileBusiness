@@ -19,30 +19,31 @@ static NSString * kComments = @"comment";
 
 @interface HDTodoListModel()
 
-@property(nonatomic,retain)NSString * searchText;
+@property(nonatomic,copy)NSString * searchText;
 
 @end
 
 @implementation HDTodoListModel
-@synthesize resultList = _resultList,submitList = _submitList;
-
+@synthesize resultList = _resultList;
+@synthesize submitList = _submitList;
 @synthesize searchText = _searchText;
 @synthesize serachFields = _serachFields;
 @synthesize orderField = _orderField;
 @synthesize primaryFiled = _primaryFiled;
-@synthesize queryUrl = _queryUrl;
-@synthesize submitUrl = _submitUrl;
-@synthesize selectedIndex = _selectedIndex;
+@synthesize queryURL = _queryURL;
+@synthesize submitURL = _submitURL;
+@synthesize currentIndex = _currentIndex;
 
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_resultList);
     TT_RELEASE_SAFELY(_submitList);
+    TT_RELEASE_SAFELY(_searchText);
     TT_RELEASE_SAFELY(_serachFields);
     TT_RELEASE_SAFELY(_orderField);
     TT_RELEASE_SAFELY(_primaryFiled);
-    TT_RELEASE_SAFELY(_queryUrl);
-    TT_RELEASE_SAFELY(_submitUrl);
+    TT_RELEASE_SAFELY(_queryURL);
+    TT_RELEASE_SAFELY(_submitURL);
     [super dealloc];
 }
 
@@ -58,7 +59,7 @@ static NSString * kComments = @"comment";
         //        self.serachFields = @[@"order_type",@"node_name",@"employee_name"];
         //        self.queryUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"autocrud/ios.ios_todo_list.ios_todo_list_query/query?_fetchall=true&amp;_autocount=false"];
         //        self.submitUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_approve_new/ios_todo_list_commit.svc"];
-        _selectedIndex = 0;
+        _currentIndex = 0;
         _flags.shouldLoadingLocalData = YES;
     }
     return self;
@@ -129,7 +130,7 @@ static NSString * kComments = @"comment";
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     map.postData = @[[_submitList objectAtIndex:0]];
     [map.userInfo setObject:[_submitList objectAtIndex:0] forKey:@"postObject"];
-    map.requestPath = self.submitUrl;
+    map.requestPath = self.submitURL;
     map.cachePolicy = TTURLRequestCachePolicyNoCache;
     [self requestWithMap:map];
 }
@@ -203,7 +204,7 @@ static NSString * kComments = @"comment";
 -(void)loadRemoteRecords
 {
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    map.requestPath =  self.queryUrl;
+    map.requestPath =  self.queryURL;
     [self requestWithMap:map];
 }
 
@@ -427,49 +428,51 @@ static NSString * kComments = @"comment";
                               }] count];
 }
 
+-(NSIndexPath *) currentIndexPath
+{
+    return [NSIndexPath indexPathForRow:_currentIndex inSection:0];
+}
+
 -(id)currentRecord
 {
-    return [_resultList objectAtIndex:_selectedIndex];
+    if ( _currentIndex < [self effectiveRecordCount] && [self effectiveRecordCount] > 0) {
+        return [_resultList objectAtIndex:_currentIndex];
+    }
+    return nil;
 }
 
 -(BOOL)nextRecord
 {
-    if (_selectedIndex == [self effectiveRecordCount]) {
+    _currentIndex++;
+    if (_currentIndex >= [self effectiveRecordCount]) {
+        _currentIndex -- ;
         return NO;
     }
     
-    NSUInteger indexPoint = _selectedIndex;
     BOOL hasNextRecord = YES;
-    
-    _selectedIndex++;
-    
     //如果不是有效的记录，获取下一条
     if (![self isEffectiveRecord:[self currentRecord]]) {
         hasNextRecord = [self nextRecord];
     }
-    if (!hasNextRecord) {
-        _selectedIndex = indexPoint;
-    }
-    
     return hasNextRecord;
 }
 
 -(BOOL)prevRecord
 {
-    if (_selectedIndex == 0) {
+    if (_currentIndex == 0) {
         return NO;
     }
     
-    NSUInteger indexPoint = _selectedIndex;
+    NSUInteger indexPoint = _currentIndex;
     BOOL hasPrevRecord = YES;
     
-    _selectedIndex--;
+    _currentIndex--;
     
     if (![self isEffectiveRecord:[self currentRecord]]) {
         hasPrevRecord = [self nextRecord];
     }
     if (!hasPrevRecord) {
-        _selectedIndex = indexPoint;
+        _currentIndex = indexPoint;
     }
     
     return hasPrevRecord;
