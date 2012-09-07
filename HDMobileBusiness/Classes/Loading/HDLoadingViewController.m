@@ -229,14 +229,6 @@ static NSString * kMainPathName = @"HD_MAIN_VC_PATH";
 
     [[HDGuider guider]guideToKeyPath:kMainPathName query:nil];
     [[HDGuider guider]guideToKeyPath:kLoginPathName query:nil];
-    
-//    NSString * kMainViewControllerPathPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:MainPathName];
-//    
-//    NSString * kLoginViewControllerPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:LoginPathName];
-//    
-//        [navigator openURLAction:[TTURLAction actionWithURLPath:kMainViewControllerPathPath]];
-//        
-//        [navigator openURLAction:[TTURLAction actionWithURLPath:kLoginViewControllerPath]];
 }
 
 #pragma mark - life cycle
