@@ -83,8 +83,7 @@
     TTDPRINT(@"row :%i is being selected",index);
     
     [self.doneListModel setSelectedIndex:index];
-    [[HDGuider guider] guideToKeyPath:@"doneListCellSelected"
-                                query:@{@"listModel" : self.doneListModel}];
+    [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.doneListModel}]applyAnimated:YES]];
 }
 
 - (NSString*)titleForLoading:(BOOL)reloading {
