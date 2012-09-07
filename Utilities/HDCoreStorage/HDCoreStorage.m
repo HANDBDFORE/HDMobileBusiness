@@ -82,7 +82,7 @@ static HDCoreStorage * globalStorage = nil;
 - (NSString *) dbPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    return [documentsDirectory stringByAppendingPathComponent:@"mydb.db"];
+    return [documentsDirectory stringByAppendingPathComponent:@"HDMobileBusiness.db"];
 }
 
 -(NSArray*)query:(SEL) handler conditions:(NSDictionary *) conditions{
@@ -97,7 +97,7 @@ static HDCoreStorage * globalStorage = nil;
         [DatabasePool inDatabase:doDabase];
         return _DATA;
     }
-    NSLog(@"无效的selector");
+    NSLog(@"无效的selector:%@",NSStringFromSelector(handler));
     return nil;
 }
 
@@ -110,7 +110,7 @@ static HDCoreStorage * globalStorage = nil;
         [DatabasePool inDatabase:doDabase];
         return state;
     }
-    NSLog(@"无效的selector");
+    NSLog(@"无效的selector:%@",NSStringFromSelector(handler));
     return NO;
 }
 //同步方法

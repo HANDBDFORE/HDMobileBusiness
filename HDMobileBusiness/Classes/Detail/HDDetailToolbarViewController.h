@@ -15,9 +15,11 @@
     
 @protected
     HDDetailToolbarModel * _toolBarModel;
+    NSString* _currentActionId;
 }
 
 -(id)initWithSignature:(NSString *) signature
                  query:(NSDictionary *) query;
 
+@property(nonatomic,copy) NSString * queryActionURLTemplate;
 @end

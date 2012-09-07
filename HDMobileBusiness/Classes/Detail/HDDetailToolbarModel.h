@@ -13,7 +13,8 @@
 
 @property(nonatomic,retain)NSDictionary * detailRecord;
 @property(nonatomic,retain)NSArray * resultList;
-@property(nonatomic,retain)NSString * actionURL;
+@property(nonatomic,retain)NSString * queryURL;
+@property(nonatomic,retain)NSString * selectedAction;
 
 /*
  *确认提交后把本地动作数据删除,确保没有垃圾数据
