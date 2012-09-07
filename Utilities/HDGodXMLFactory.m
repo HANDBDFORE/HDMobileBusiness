@@ -67,9 +67,9 @@ static HDGodXMLFactory * _xmlFactory = nil;
         
 //        NSString *url = [NSString stringWithFormat:@"%@ios-backend-config.xml",[[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"]stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
         
-//      NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(@"ios-backend-config.xml")];
+      NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(@"ios-backend-config.xml")];
         
-        NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-hec-milk.xml"];
+//        NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-hec-milk.xml"];
 //        _document = [[CXMLDocument alloc]initWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding options:0 error:&error];
         _document = [[CXMLDocument alloc]initWithData:data encoding:NSUTF8StringEncoding options:0 error:&error];
 
