@@ -18,8 +18,9 @@
  *跳转到指定路径的视图控制器,控制器显示之前会通过配置文件加载属性.
  *使用 [TTNavigator navigator]openURLAction: 打开
  */
--(UIViewController *)guideToKeyPath:(NSString *) path
+-(UIViewController *)guideToKeyPath:(NSString *) keyPath
                               query:(NSDictionary *)query;
+
 
 /*
  *创建到指定keyPathName对应的视图控制器.

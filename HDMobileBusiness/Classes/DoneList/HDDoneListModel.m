@@ -12,13 +12,13 @@
 @synthesize resultList = _resultList;
 @synthesize pageNum = _pageNum;
 
-@synthesize queryUrl = _queryUrl;
+@synthesize queryURL = _queryURL;
 @synthesize selectedIndex = _selectedIndex;
 
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_resultList);
-    TT_RELEASE_SAFELY(_queryUrl);
+    TT_RELEASE_SAFELY(_queryURL);
     [super dealloc];
 }
 
@@ -42,9 +42,9 @@
         [_resultList removeAllObjects];
     }
     //debug:添加对_queryUrl的nil校验，否则对nil appendding导致crash R
-    if (_queryUrl) {
+    if (_queryURL) {
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-        map.requestPath = [_queryUrl stringByAppendingFormat:@"?pagesize=10&amp;pagenum=%i&amp;_fetchall=false&amp;_autocount=false",_pageNum];
+        map.requestPath = [_queryURL stringByAppendingFormat:@"?pagesize=10&amp;pagenum=%i&amp;_fetchall=false&amp;_autocount=false",_pageNum];
         [self requestWithMap:map];
     }
 }

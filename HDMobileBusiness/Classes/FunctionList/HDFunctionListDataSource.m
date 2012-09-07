@@ -12,12 +12,12 @@
 @implementation HDFunctionListModel
 
 @synthesize resultList = _resultList;
-@synthesize queryURLPath = _queryURLPath;
+@synthesize queryURL = _queryURL;
 
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_resultList);
-    TT_RELEASE_SAFELY(_queryURLPath);
+    TT_RELEASE_SAFELY(_queryURL);
     [super dealloc];
 }
 
@@ -25,7 +25,7 @@
 {
     self = [super init];
     if (self) {
-        self.queryURLPath = nil;
+        self.queryURL = nil;
         _resultList = [[NSMutableArray alloc]init];
     }
     return self;
@@ -33,14 +33,14 @@
 
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
-    if (!self.queryURLPath) {
+    if (!self.queryURL) {
         [_loadedTime release];
         _loadedTime = [[NSDate dateWithTimeIntervalSinceNow:0] retain];
         self.cacheKey = @"local items";
-        [self didFinishLoad];
+        [self didFinishLoad];g
     }else{
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-        map.requestPath = self.queryURLPath;
+        map.requestPath = self.queryURL;
         [super requestWithMap:map];
     }
 }
