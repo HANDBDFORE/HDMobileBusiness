@@ -37,7 +37,7 @@
         [_loadedTime release];
         _loadedTime = [[NSDate dateWithTimeIntervalSinceNow:0] retain];
         self.cacheKey = @"local items";
-        [self didFinishLoad];g
+        [self didFinishLoad];
     }else{
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
         map.requestPath = self.queryURL;
