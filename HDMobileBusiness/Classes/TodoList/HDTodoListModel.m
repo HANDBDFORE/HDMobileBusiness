@@ -326,7 +326,7 @@ static NSString * kComments = @"comment";
 
 -(void)removeRecords:(NSArray *) recordList
 {
-    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecord:recordList:) recordList:recordList];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecords:recordList:) recordList:recordList];
 }
 
 #pragma -mark Flags
