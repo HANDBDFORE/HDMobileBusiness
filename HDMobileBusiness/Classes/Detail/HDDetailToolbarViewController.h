@@ -12,10 +12,7 @@
 
 @interface HDDetailToolbarViewController : HDDetailInfoViewController <TTPostControllerDelegate>
 {
-    
-@protected
     HDDetailToolbarModel * _toolBarModel;
-    NSString* _currentActionId;
 }
 
 -(id)initWithSignature:(NSString *) signature

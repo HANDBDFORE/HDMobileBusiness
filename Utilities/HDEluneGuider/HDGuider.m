@@ -168,7 +168,8 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.iso_my_test.ios_workflow_approve_action_query/query?record_id={record_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"queryActionURLTemplate"];
     [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
     [controller setValue:[NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
-    [controller setValue:[query valueForKeyPath:@"listModel"] forKey:@"todoListModel"];
+    //设置listModel
+    [controller setValue:[query valueForKeyPath:@"listModel"] forKey:@"listModel"];
     return controller;
 }
 
@@ -179,7 +180,7 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     [controller setValue:@"record_id" forKeyPath:@"userInfoItemTitle"];
     [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
     [controller setValue:[NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
-//    [controller setValue:[query valueForKeyPath:@"listModel"] forKey:@"todoListModel"];
+    [controller setValue:[query valueForKeyPath:@"listModel"] forKey:@"listModel"];
     return controller;
 
 }

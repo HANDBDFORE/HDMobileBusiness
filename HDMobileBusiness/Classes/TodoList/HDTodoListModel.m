@@ -46,6 +46,7 @@ static NSString * kComments = @"comment";
     TT_RELEASE_SAFELY(_submitURL);
     [super dealloc];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (id)init
 {
@@ -64,6 +65,7 @@ static NSString * kComments = @"comment";
     }
     return self;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark TTModel protocol
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
@@ -88,6 +90,7 @@ static NSString * kComments = @"comment";
         [self loadRemoteRecords];
     }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark TTURLRequestDelegate
 //因为服务端返回错误状态状态时,需要额外的流程,不能使用 requestResultMap
@@ -115,6 +118,7 @@ static NSString * kComments = @"comment";
     }
     [self didFinishLoad];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)request:(TTURLRequest *)request didFailLoadWithError:(NSError *)error
 {
@@ -134,6 +138,7 @@ static NSString * kComments = @"comment";
     map.cachePolicy = TTURLRequestCachePolicyNoCache;
     [self requestWithMap:map];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)didSubmitRecord:(HDResponseMap*) resultMap
 {
@@ -158,6 +163,7 @@ static NSString * kComments = @"comment";
                   atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
     }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)submitObjectAtIndexPaths:(NSArray *) indexPaths
                         comment:(NSString *) comment
@@ -175,6 +181,7 @@ static NSString * kComments = @"comment";
     self.cacheKey = nil;
     [self didFinishLoad];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark Load local records
 -(void)loadLocalRecords
@@ -191,7 +198,6 @@ static NSString * kComments = @"comment";
             [_submitList addObject:record];
         }
     }
-    
     [_resultList sortWithOptions:NSSortConcurrent
                  usingComparator:^NSComparisonResult (id obj1,id obj2){
                      return [[obj1 valueForKey:_orderField]
@@ -212,7 +218,7 @@ static NSString * kComments = @"comment";
 -(void) refreshResultList:(NSArray *) responseList
 {
     if(0 < [[[responseList lastObject] allKeys]count]){
-        //TODO:这里需要确定action,comments字段是服务端传递还是这里强制写死
+        //TODO:需要确定action,comments字段是服务端传递还是这里强制写死
         //服务端传递:服务端可以自由使用变量名,提交参数意义明确,缺点是需要强制传递空参数,增加数据传输量.
         //客户端指定:不需要服务端传递空参数,缺点是提交参数被写死了.
         [responseList setValue:kRecordNormal forKey:kRecordStatus];
@@ -221,27 +227,25 @@ static NSString * kComments = @"comment";
         [responseList setValue:kSQLNull forKey:kComments];
         //刷新columnMap表
         [self refreshColumnMap:[responseList lastObject]];
-        
-        
+               
         NSArray * newResultList =
         [self combineRecordsWithLocalRecords:self.resultList
                                remoteRecords:responseList];
         [_resultList removeAllObjects];
         [_resultList addObjectsFromArray:newResultList];
-        
-        
-        [_resultList sortWithOptions:NSSortStable usingComparator:^NSComparisonResult(id obj1, id obj2) {
+        [_resultList sortWithOptions:NSSortStable
+                     usingComparator:^NSComparisonResult(id obj1, id obj2)
+        {
             return [[obj1 valueForKey:_orderField]
                     compare:[obj2 valueForKey:_orderField]];
         }];
-        
         [self setIconBageNumber];
-        
         if ([self isSearching]) {
             [self search:self.searchText];
         }
     }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)refreshColumnMap:(NSDictionary *) record
 {
@@ -265,6 +269,7 @@ static NSString * kComments = @"comment";
         [[HDCoreStorage shareStorage] excute:@selector(SQLColumnMapInsert:recordList:) recordList:columnKeyList];
     }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(BOOL)isMatchColumnMapWithDictionary:(NSDictionary *) record
 {
@@ -281,6 +286,7 @@ static NSString * kComments = @"comment";
     }
     return matchFlg;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(NSArray *)combineRecordsWithLocalRecords:(NSArray *) localRecords remoteRecords:(NSArray *) remoteRecords
 {
@@ -313,22 +319,26 @@ static NSString * kComments = @"comment";
     [resultSet unionSet:newSet];
     return  [resultSet allObjects];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark CoreStorage
 -(void)updateRecords:(NSArray *) recordList
 {
     [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordList:) recordList:recordList];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)insertRecords:(NSArray *) recordList
 {
     [[HDCoreStorage shareStorage] excute:@selector(SQLDataPoolInsert:recordList:) recordList:recordList];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)removeRecords:(NSArray *) recordList
 {
     [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecords:recordList:) recordList:recordList];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark Flags
 /*
@@ -359,13 +369,14 @@ static NSString * kComments = @"comment";
 {
     return !_flags.isSubmitingData && !_flags.isQueryingData;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark Search
-
 -(BOOL)isSearching
 {
     return nil != self.searchText;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)search:(NSString*)text
 {
@@ -392,12 +403,14 @@ static NSString * kComments = @"comment";
         [self didChange];
     }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark Others
 -(void)setIconBageNumber
 {
     [UIApplication sharedApplication].applicationIconBadgeNumber = [self effectiveRecordCount];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(BOOL)isEffectiveRecord:(NSDictionary *)record
 {
@@ -405,6 +418,7 @@ static NSString * kComments = @"comment";
     return [status isEqualToString:kRecordNormal] ||
     [status isEqualToString:kRecordError];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)clear
 {
@@ -417,8 +431,9 @@ static NSString * kComments = @"comment";
 //    _flags.isLoadingLocalData = YES;
     [self load:TTURLRequestCachePolicyDefault more:NO];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma mark Detail functions
+#pragma mark Page turning
 -(NSUInteger)effectiveRecordCount
 {
     NSSet * resultSet = [NSSet setWithArray:self.resultList];
@@ -427,55 +442,81 @@ static NSString * kComments = @"comment";
                                   return [self isEffectiveRecord:obj];
                               }] count];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(NSIndexPath *) currentIndexPath
 {
     return [NSIndexPath indexPathForRow:_currentIndex inSection:0];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(id)currentRecord
+-(id)current
 {
     if ( _currentIndex < [self effectiveRecordCount] && [self effectiveRecordCount] > 0) {
         return [_resultList objectAtIndex:_currentIndex];
     }
     return nil;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(BOOL)nextRecord
+-(void)next
 {
-    _currentIndex++;
-    if (_currentIndex >= [self effectiveRecordCount]) {
-        _currentIndex -- ;
+    if ([self hasNext]) {
+        _currentIndex ++;
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(BOOL)hasNext
+{
+    return [self hasNextRecordAtIndex:_currentIndex];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(BOOL)hasNextRecordAtIndex:(NSUInteger)index
+{
+    NSUInteger nextIndex = index + 1;
+    if (nextIndex >= [self effectiveRecordCount]) {
         return NO;
     }
     
     BOOL hasNextRecord = YES;
     //如果不是有效的记录，获取下一条
-    if (![self isEffectiveRecord:[self currentRecord]]) {
-        hasNextRecord = [self nextRecord];
+    id record = [self.resultList objectAtIndex:nextIndex];
+    if (![self isEffectiveRecord:record]) {
+        hasNextRecord = [self hasNextRecordAtIndex:nextIndex];
     }
     return hasNextRecord;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(BOOL)prevRecord
+-(void)prev
 {
-    if (_currentIndex == 0) {
+    if ([self hasPrev]) {
+        _currentIndex --;
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(BOOL)hasPrev
+{
+    return [self hasPrevRecordAtIndex:_currentIndex];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(BOOL)hasPrevRecordAtIndex:(NSUInteger) index
+{
+    if (index == 0) {
         return NO;
     }
-    
-    NSUInteger indexPoint = _currentIndex;
+    NSUInteger prevIndex = index - 1;
     BOOL hasPrevRecord = YES;
+    id record = [self.resultList objectAtIndex:prevIndex];
     
-    _currentIndex--;
-    
-    if (![self isEffectiveRecord:[self currentRecord]]) {
-        hasPrevRecord = [self nextRecord];
+    if (![self isEffectiveRecord:record]) {
+        hasPrevRecord = [self hasPrevRecordAtIndex:prevIndex];
     }
-    if (!hasPrevRecord) {
-        _currentIndex = indexPoint;
-    }
-    
     return hasPrevRecord;
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @end

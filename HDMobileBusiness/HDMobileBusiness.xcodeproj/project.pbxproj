@@ -522,6 +522,7 @@
 		B374676315C76E36003068CB /* HDDoneListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDoneListModel.m; sourceTree = "<group>"; };
 		B37467E815C78112003068CB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		B37467EA15C78118003068CB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		B383113015F9F877005FD54E /* HDVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDVector.h; path = Classes/HDVector.h; sourceTree = "<group>"; };
 		B38DC6E515C6835D00FD0C58 /* HDTodoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListDataSource.h; sourceTree = "<group>"; };
 		B38DC6E615C6835D00FD0C58 /* HDTodoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTodoListDataSource.m; sourceTree = "<group>"; };
 		B38DC6E715C6835D00FD0C58 /* HDTodoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTodoListViewController.h; sourceTree = "<group>"; };
@@ -1105,6 +1106,17 @@
 			path = Classes/DoneList;
 			sourceTree = "<group>";
 		};
+		B383112E15F9F195005FD54E /* List */ = {
+			isa = PBXGroup;
+			children = (
+				B383113015F9F877005FD54E /* HDVector.h */,
+				B374675615C76CAE003068CB /* FunctionList */,
+				B38DC6E415C6835D00FD0C58 /* TodoList */,
+				B374675D15C76E36003068CB /* DoneList */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
 		B38DC6E415C6835D00FD0C58 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1404,12 +1416,10 @@
 				B36BDAA015C64777003A4A5D /* HDAppDelegate.h */,
 				B36BDAA115C64777003A4A5D /* HDAppDelegate.m */,
 				B38DC70D15C68C3800FD0C58 /* Detail */,
-				B374675D15C76E36003068CB /* DoneList */,
-				B374675615C76CAE003068CB /* FunctionList */,
+				B383112E15F9F195005FD54E /* List */,
 				B31E2ED215C65FD300880514 /* Loading */,
 				B34660B315C678DD00EFDF24 /* Login */,
 				B31E2F3815C6714800880514 /* Styles */,
-				B38DC6E415C6835D00FD0C58 /* TodoList */,
 				B31E2ECE15C65DC900880514 /* UserGuide */,
 				B38E686A15C654DA00824CB1 /* Utilities */,
 			);

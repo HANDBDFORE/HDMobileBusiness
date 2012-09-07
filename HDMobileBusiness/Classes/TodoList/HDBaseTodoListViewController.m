@@ -147,7 +147,7 @@
 
 -(void)showPostView
 {
-    //TODO:这里获取默认审批内容使用常量，常量定义位置未定,考虑使用一个全局常量头文件
+    //TODO:获取默认审批内容使用常量，常量定义位置未定,考虑使用一个全局常量头文件
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     //    controller.originView = [query objectForKey:@"__target__"];
     [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"init://postController"] applyQuery: @{@"text":defaultComments, @"delegate":self, @"title":@"审批意见"}]];

@@ -10,13 +10,15 @@
 
 @implementation HDDetailToolbarViewController
 
-- (void)dealloc
-{
-    TT_RELEASE_SAFELY(_toolBarModel);
-    [super dealloc];
-}
 #pragma mark - life cycle
 #pragma mark -
+
+- (void)viewDidUnload
+{
+    TT_RELEASE_SAFELY(_toolBarModel);
+    [super viewDidUnload];
+}
+
 -(id)initWithSignature:(NSString *) signature
                  query:(NSDictionary *) query
 { return nil;
@@ -30,21 +32,6 @@
         self.model = _toolBarModel;
     }
     return self;
-}
-#pragma mark - toolbarmodel
-#pragma mark -
--(BOOL)shouldLoadAction
-{
-    return YES;
-    //!([self.localStatus isEqualToString:@"WAITING"]||[self.localStatus isEqualToString:@"DIFFERENT"]);
-}
-
--(void)createModel
-{
-    if ([self shouldLoadAction]) {
-        //        _toolbarModel.recordID = self.recordID;
-        
-    }
 }
 
 #pragma mark - submit record
@@ -65,7 +52,7 @@
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    [self.todoListModel submitObjectAtIndexPaths:@[self.todoListModel.currentIndexPath] comment:text action: _toolBarModel.selectedAction];
+    [self.listModel submitObjectAtIndexPaths:@[self.listModel.currentIndexPath] comment:text action: _toolBarModel.selectedAction];
     //删除动作
     [_toolBarModel removeTheActions];
     [self.navigationController popViewControllerAnimated:YES];
@@ -100,7 +87,7 @@
 }
 #pragma mark - overWrite -
 -(void)reloadAll{
-    _toolBarModel.detailRecord = [self.todoListModel currentRecord];
+    _toolBarModel.detailRecord = [self.listModel current];
     _toolBarModel.queryURL = [self matchURL:self.queryActionURLTemplate];
     [_toolBarModel load:TTURLRequestCachePolicyDefault more:NO];
     [super reloadAll];

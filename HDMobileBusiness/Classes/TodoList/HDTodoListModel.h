@@ -7,7 +7,7 @@
 //
 
 #import "HDURLRequestModel.h"
-
+#import "../HDVector.h"
 /*
  *记录状态,不同的状态cell样式不同
  */
@@ -26,7 +26,7 @@ static NSString * kStorageInsert = @"INSERT";
 static NSString * kStorageUpdate = @"UPDATE";
 static NSString * kStorageRemove = @"REMOVE";
 
-@interface HDTodoListModel : HDURLRequestModel
+@interface HDTodoListModel : HDURLRequestModel<HDVector>
 {
     @private
     struct {
@@ -62,34 +62,11 @@ static NSString * kStorageRemove = @"REMOVE";
 //提交的Url
 @property(nonatomic,copy) NSString * submitURL;
 
-//当前指针位置，表识被点击纪录的行号
-@property(nonatomic,assign) NSUInteger currentIndex;
-
-//提交制定indexPaths中的纪录，设置纪录的comment和action
--(void)submitObjectAtIndexPaths:(NSArray *) indexPaths
-                        comment:(NSString *) comment
-                         action:(NSString *) action;
-
 //查询
 - (void)search:(NSString*)text;
 
-//获取当前selectedIndex对应resultList中的纪录
--(id)currentRecord;
-
-//跳转到下一条有效记录
--(BOOL)nextRecord;
-
-//跳转到上一条有效记录
--(BOOL)prevRecord;
-
-//获取当前有效记录数
--(NSUInteger)effectiveRecordCount;
-
 //清除无效的数据
 -(void)clear;
-
-//获取当前记录的indexPah
--(NSIndexPath *) currentIndexPath;
 
 @end
 
