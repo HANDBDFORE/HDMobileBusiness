@@ -107,10 +107,10 @@
         if ([[mapDic valueForKey:key] isEqualToString:@"column0"]) {
             TEMPWhere = [NSString stringWithFormat:@"%@= :%@",[mapDic valueForKey:key],key];
         }else{
-            TEMPSet = [NSString stringWithFormat:@"%@=:%@,%@",[mapDic valueForKey:key],key,TEMPWhere];
+            TEMPSet = [NSString stringWithFormat:@"%@=:%@,%@",[mapDic valueForKey:key],key,TEMPSet];
         }
     }
-    TEMPWhere = [TEMPWhere substringToIndex:[TEMPWhere length]-1];
+    TEMPSet = [TEMPSet substringToIndex:[TEMPSet length]-1];
     NSString *currentSql = [NSString stringWithFormat:@"update  DataPool set %@ where %@",TEMPSet,TEMPWhere];
     BOOL state = YES;
     state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
