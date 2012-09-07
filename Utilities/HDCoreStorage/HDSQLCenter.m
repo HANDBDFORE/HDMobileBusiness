@@ -13,14 +13,14 @@
 @implementation HDSQLCenter
 //数据库初始化
 -(BOOL)SQLCreatTable:(FMDatabase *)db{
-    NSArray *sqlAry= [NSArray arrayWithObjects:@"create table if not exists DataPool( column0 TEXT primary key,column1 TEXT,column2 TEXT,column3 TEXT,column4 TEXT ,column5 TEXT,column6 TEXT,column7 TEXT ,column8 TEXT,column9 TEXT,column10 TEXT ,column11 TEXT,column12 TEXT,column13 TEXT ,column14 TEXT,column15 TEXT,column16 TEXT ,column17 TEXT,column18 TEXT,column19 TEXT ,column20 TEXT,column21 TEXT,column22 TEXT ,column23 TEXT ,column24 TEXT,column25 TEXT,column26 TEXT ,column27 TEXT,column28 TEXT,column29 TEXT );", @"create table if not exists ColumnMap( column0 TEXT primary key,column1 TEXT,column2 TEXT,column3 TEXT,column4 TEXT );",@"create table if not exists Action( id INTEGER primary key ,recordkey TEXT,actionid TEXT,actiontitle TEXT );",nil];
+    NSArray *sqlAry= [NSArray arrayWithObjects:@"create table if not exists DataPool( column0 TEXT primary key,column1 TEXT,column2 TEXT,column3 TEXT,column4 TEXT ,column5 TEXT,column6 TEXT,column7 TEXT ,column8 TEXT,column9 TEXT,column10 TEXT ,column11 TEXT,column12 TEXT,column13 TEXT ,column14 TEXT,column15 TEXT,column16 TEXT ,column17 TEXT,column18 TEXT,column19 TEXT ,column20 TEXT,column21 TEXT,column22 TEXT ,column23 TEXT ,column24 TEXT,column25 TEXT,column26 TEXT ,column27 TEXT,column28 TEXT,column29 TEXT );", @"create table if not exists ColumnMap( column0 TEXT primary key,column1 TEXT,column2 TEXT,column3 TEXT,column4 TEXT );",@"create table if not exists Action( id INTEGER primary key ,recordkey TEXT,actionid TEXT,actiontitle TEXT,actiontype TEXT );",nil];
     BOOL state = YES;
     state = [self execBatchInTransaction:db sqlArray:sqlAry];
     return state;
 }
 //清除数据库
 -(BOOL)SQLCleanTable:(FMDatabase *)db{
-    NSArray *sqlAry= [NSArray arrayWithObjects:@"delete from DataPool;",@"delete from ColumnMap;",@"delete from ColumnMap;",nil];
+    NSArray *sqlAry= [NSArray arrayWithObjects:@"delete from DataPool;",@"delete from ColumnMap;",@"delete from Action;",nil];
     BOOL state = YES;
     state = [self execBatchInTransaction:db sqlArray:sqlAry];
     return state;
@@ -122,7 +122,7 @@
     if (!conditions) return nil;
     NSDictionary *mapDic = [self mapDicL2R:db];
     NSString *PK = [mapDic objectForKey:@"column0"];
-    NSString *currentSql = [NSString stringWithFormat:@"select recordkey %@,actionid action_id ,actiontitle action_title from Action where recordkey = :%@ order by actionid",PK,PK];
+    NSString *currentSql = [NSString stringWithFormat:@"select recordkey %@,actionid action_id ,actiontitle action_title,actiontype action_type from Action where recordkey = :%@ order by actionid",PK,PK];
     NSDictionary *PKDic = [NSDictionary dictionaryWithObject:[conditions objectForKey:PK] forKey:PK];
     FMResultSet * rs=[db executeQuery:currentSql withParameterDictionary:PKDic];
     return  rs;
@@ -133,7 +133,7 @@
     if (!recordList) return NO;
     NSDictionary *mapDic = [self mapDicL2R:db];
     NSString *PK = [mapDic objectForKey:@"column0"];
-    NSString *currentSql = [NSString stringWithFormat:@"insert into Action (recordkey,actionid,actiontitle) values(:%@,:action_id,:action_title)",PK];
+    NSString *currentSql = [NSString stringWithFormat:@"insert into Action (recordkey,actionid,actiontitle,actiontype) values(:%@,:action_id,:action_title,:action_type)",PK];
     BOOL state = YES;
     state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
     return state;

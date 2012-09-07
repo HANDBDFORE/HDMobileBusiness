@@ -18,6 +18,7 @@
 
 @implementation HDDetailInfoViewController{
     NSString * _currentURL;
+    UIBarButtonItem *_employeeInfoItem;
 }
 
 //单据明细页面URL模板
@@ -38,12 +39,6 @@
     TT_RELEASE_SAFELY(_todoListModel);
     [super viewDidUnload];
 }
--(id)init{
-    self = [super init];
-    if (self) {
-    }
-    return self;
-}
 - (void)loadView{
     //TTWebController;
     [super loadView];
@@ -63,10 +58,8 @@
     self.todoListModel = [[HDTodoListModel alloc]init];
     [self.todoListModel  load:TTURLRequestCachePolicyDefault more:NO];
     //
-    _userInfoView.employeeUrlPath = [self matchURL:self.userInfoPageURLTemplate];
-    //
-    self.currentURL = [self matchURL:self.webPageURLTemplate];
-    [self openURL:[NSURL URLWithString:self.currentURL]];
+    [self expend];
+    [self reloadAll];
     //添加页面按钮
     //
     UIBarButtonItem *barButtonforwordItem = [[UIBarButtonItem alloc]initWithImage:TTIMAGE(@"bundle://Three20.bundle/images/forwardIcon.png") style:UIBarButtonItemStyleBordered target:self action:@selector(forwordWebPage)];
@@ -74,8 +67,8 @@
     //刷新按钮
     UIBarButtonItem *RefreshItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshWebPage)];
     RefreshItem.style = UIBarButtonItemStyleBordered;
-    UIBarButtonItem *employeeInfoItem = [[UIBarButtonItem alloc]initWithTitle:[[self.todoListModel currentRecord] objectForKey:self.userInfoItemTitle] style:UIBarButtonItemStyleBordered target:_userInfoView action:@selector(show)];
-    self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:barButtonforwordItem,barButtonbackItem,RefreshItem,employeeInfoItem,nil] ;
+    _employeeInfoItem = [[UIBarButtonItem alloc]initWithTitle:[[self.todoListModel currentRecord] objectForKey:self.userInfoItemTitle] style:UIBarButtonItemStyleBordered target:_userInfoView action:@selector(show)];
+    self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:barButtonforwordItem,barButtonbackItem,RefreshItem,_employeeInfoItem,nil] ;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView*)webView {
@@ -91,20 +84,26 @@
 //    [self openURL:[NSURL URLWithString:_webPageURLTemplate]];
 //}
 -(void)refreshWebPage{
-    [self openURL:[NSURL URLWithString:self.currentURL]];
+    [self reloadAll];
 }
 -(void)forwordWebPage{
     if([self.todoListModel nextRecord]){
-        self.currentURL = [self matchURL:self.webPageURLTemplate];
-        [self openURL:[NSURL URLWithString:self.currentURL]];
+        [self reloadAll];
     }
 }
 -(void)backWebPage{
     if([self.todoListModel prevRecord]){
-        self.currentURL = [self matchURL:self.webPageURLTemplate];
-        [self openURL:[NSURL URLWithString:self.currentURL]];
+        [self reloadAll];
     }
-} 
+}
+-(void)expend{
+}
+-(void)reloadAll{
+    _userInfoView.employeeUrlPath = [self matchURL:self.userInfoPageURLTemplate];
+    _employeeInfoItem.title =[[self.todoListModel currentRecord] objectForKey:self.userInfoItemTitle];
+    self.currentURL = [self matchURL:self.webPageURLTemplate];
+    [self openURL:[NSURL URLWithString:self.currentURL]];
+}
 -(NSString *)matchURL:(NSString *)Template{
     NSString * URL = Template;
     NSDictionary * currentRecord =[self.todoListModel currentRecord] ;

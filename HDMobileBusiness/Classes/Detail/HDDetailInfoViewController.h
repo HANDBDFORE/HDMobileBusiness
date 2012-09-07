@@ -25,4 +25,7 @@
 //model
 @property (nonatomic,retain) HDTodoListModel * todoListModel;
 //
+-(NSString *)matchURL:(NSString *)Template;
+-(void)expend;
+-(void)reloadAll;
 @end

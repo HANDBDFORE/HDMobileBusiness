@@ -12,13 +12,13 @@
 @implementation HDDetailToolbarModel
 
 @synthesize resultList = _resultList;
-@synthesize actionURL = _actionURL;
+@synthesize queryURL = _queryURL;
 @synthesize detailRecord = _detailRecord;
+@synthesize selectedAction = _selectedAction;
 
 - (void)dealloc
 {
-    TT_RELEASE_SAFELY(_actionURL);
-    TT_RELEASE_SAFELY(_detailRecord);
+    TT_RELEASE_SAFELY(_queryURL);
     TT_RELEASE_SAFELY(_resultList);
     [super dealloc];
 }
@@ -26,15 +26,14 @@
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
     id actionList  = [self loadTheLocalDataBaseActions];
-    if (nil != actionList) {
+    if ([actionList count]!=0) {
         self.resultList = actionList;
         self.loadedTime = [NSDate dateWithTimeIntervalSinceNow:0];
         self.cacheKey = @"local action";
         [self didFinishLoad];
     }else {
         HDRequestMap * requestMap = [HDRequestMap mapWithDelegate:self];
-        requestMap.requestPath = self.actionURL;
-        requestMap.postData = self.detailRecord;
+        requestMap.requestPath = self.queryURL;
         [self requestWithMap:requestMap];
     }
 }
@@ -44,6 +43,7 @@
     self.resultList = map.result;
     [self saveTheActions];
 }
+
 #pragma mark - SQL -
 //查询本地动作
 -(NSArray*)loadTheLocalDataBaseActions
@@ -66,12 +66,12 @@
 #pragma mark - -
 -(NSArray *)toolbarItems
 {
-    if(self.resultList)return nil;
+    if(!self.resultList)return nil;
     NSMutableArray * actionItems = [NSMutableArray array];
     for (NSDictionary * actionRecord in self.resultList) {
         HDToolbarItem * actionItem = [[[HDToolbarItem alloc]init]autorelease];
         actionItem.tag = [[actionRecord objectForKey:@"action_id"] intValue];
-        actionItem.title = [actionRecord objectForKey:@"action_title"];
+        actionItem.title = [actionRecord objectForKey:@"action_id"];
         [actionItems addObject:actionItem];
     }
     return actionItems;

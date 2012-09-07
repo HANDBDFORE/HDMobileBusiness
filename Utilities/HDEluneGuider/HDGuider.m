@@ -156,12 +156,13 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     [controller setValue:[NSString stringWithFormat:@"%@modules/ios/ios_function_center/ios_function_query.svc", [[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"model.queryURL"];
     return controller;
 }
-
+//明细页面配置
 -(UIViewController *) configFunctionListdetialViewController:(UIViewController *) controller
                                                        query:(NSDictionary *)query
 {
 //    [controller setValue:@"功能[配置]" forKeyPath:@"title"];
-    [controller setValue:@"employee_name" forKeyPath:@"userInfoItemTitle"];
+    [controller setValue:@"record_id" forKeyPath:@"userInfoItemTitle"];
+    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.iso_my_test.ios_workflow_approve_action_query/query?record_id={record_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"queryActionURLTemplate"];
     [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
     [controller setValue:[NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
     [controller setValue:[query valueForKeyPath:@"listModel"] forKey:@"todoListModel"];
