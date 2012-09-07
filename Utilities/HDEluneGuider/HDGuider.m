@@ -102,8 +102,11 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
         if ([keyPath isEqualToString:@"FUNCTION_LIST_VC_PATH"]) {
             return [self configFunctionListViewController:controller];
         }
+        if ([keyPath isEqualToString:@"TOOLBAR_DETIAL_VC_PATH"]) {
+            return [self configTodoListDetialViewController:controller query:query];
+        }
         if ([keyPath isEqualToString:@"DETIAL_VC_PATH"]) {
-            return [self configFunctionListdetialViewController:controller query:query];
+            return [self configDoneListDetialViewController:controller query:query];
         }
         return controller;
     }
@@ -156,8 +159,8 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     [controller setValue:[NSString stringWithFormat:@"%@modules/ios/ios_function_center/ios_function_query.svc", [[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"model.queryURL"];
     return controller;
 }
-//明细页面配置
--(UIViewController *) configFunctionListdetialViewController:(UIViewController *) controller
+//todolist明细页面配置
+-(UIViewController *) configTodoListDetialViewController:(UIViewController *) controller
                                                        query:(NSDictionary *)query
 {
 //    [controller setValue:@"功能[配置]" forKeyPath:@"title"];
@@ -168,6 +171,20 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     [controller setValue:[query valueForKeyPath:@"listModel"] forKey:@"todoListModel"];
     return controller;
 }
+
+//done detail
+-(UIViewController *) configDoneListDetialViewController:(UIViewController *) controller
+                                                   query:(NSDictionary *)query
+{
+    [controller setValue:@"record_id" forKeyPath:@"userInfoItemTitle"];
+    [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
+    [controller setValue:[NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
+//    [controller setValue:[query valueForKeyPath:@"listModel"] forKey:@"todoListModel"];
+    return controller;
+
+}
+
+
 /*
  *根据path,获取控制器跳转配置对象
  */
@@ -195,7 +212,8 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     @"TODO_LIST_VC_PATH":@"init://todoListViewController",
     @"FUNCTION_LIST_VC_PATH":@"init://functionListViewController",
     @"SETTINGS_VC_PATH":@"init://settingsViewController",
-    @"DETIAL_VC_PATH":@"init://todoListDetailViewController"};
+    @"TOOLBAR_DETIAL_VC_PATH":@"init://toolbarDetailViewController",
+    @"DETIAL_VC_PATH":@"init://detailViewController"};
     //realase
 //    @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
 //    @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",

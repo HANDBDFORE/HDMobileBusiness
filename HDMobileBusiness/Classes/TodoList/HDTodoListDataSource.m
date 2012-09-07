@@ -139,7 +139,7 @@
     if ([item.state isEqualToString:kRecordNormal] ||
         [item.state isEqualToString:kRecordError]) {
         self.todoListModel.currentIndex = [self.items indexOfObject:item];
-        [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.todoListModel}]applyAnimated:YES]];
+        [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/TOOLBAR_DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.todoListModel}]applyAnimated:YES]];
     }
 }
 
