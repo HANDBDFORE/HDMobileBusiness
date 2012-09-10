@@ -37,15 +37,16 @@ static NSString * kStorageRemove = @"REMOVE";
     
     NSMutableArray * _resultList;
     NSMutableArray * _submitList;
-    
     NSString * _searchText;
+    
+    NSRange _vectorRange;
 }
 
 //结果列表，和界面显示对应，datasource从该列表获取数据
 @property(nonatomic,readonly) NSArray * resultList;
 
 //提交队列
-@property(nonatomic,readonly) NSArray * submitList;
+//@property(nonatomic,readonly) NSArray * submitList;
 
 //查询字段
 @property(nonatomic,retain) NSArray * serachFields;

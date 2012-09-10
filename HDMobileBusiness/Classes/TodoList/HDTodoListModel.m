@@ -25,7 +25,7 @@ static NSString * kComments = @"comment";
 
 @implementation HDTodoListModel
 @synthesize resultList = _resultList;
-@synthesize submitList = _submitList;
+//@synthesize submitList = _submitList;
 @synthesize searchText = _searchText;
 @synthesize serachFields = _serachFields;
 @synthesize orderField = _orderField;
@@ -54,6 +54,7 @@ static NSString * kComments = @"comment";
     if (self) {
         _submitList = [[NSMutableArray alloc] init];
         _resultList = [[NSMutableArray alloc] init];
+        _vectorRange = NSMakeRange(0, 0);
         //Test Data
         //        self.orderField = @"creation_date";
         //        self.primaryFiled = @"record_id";
@@ -176,7 +177,7 @@ static NSString * kComments = @"comment";
         [submitRecord setValue:kRecordWaiting forKeyPath:kRecordStatus];
         [_submitList addObject:submitRecord];
     }
-    [self updateRecords:self.submitList];
+    [self updateRecords:_submitList];
     //设置超时状态,进入shouldload状态
     self.cacheKey = nil;
     [self didFinishLoad];
@@ -462,13 +463,14 @@ static NSString * kComments = @"comment";
 -(void)next
 {
     if ([self hasNext]) {
-        _currentIndex ++;
+        _currentIndex += _vectorRange.length;
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(BOOL)hasNext
 {
+    _vectorRange.length = 0;
     return [self hasNextRecordAtIndex:_currentIndex];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -476,6 +478,7 @@ static NSString * kComments = @"comment";
 -(BOOL)hasNextRecordAtIndex:(NSUInteger)index
 {
     NSUInteger nextIndex = index + 1;
+    _vectorRange.length ++;
     if (nextIndex >= [self effectiveRecordCount]) {
         return NO;
     }
@@ -493,13 +496,15 @@ static NSString * kComments = @"comment";
 -(void)prev
 {
     if ([self hasPrev]) {
-        _currentIndex --;
+        _currentIndex -= _vectorRange.length;
+        _vectorRange.length = 0;
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(BOOL)hasPrev
 {
+    _vectorRange.length = 0;
     return [self hasPrevRecordAtIndex:_currentIndex];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -510,6 +515,7 @@ static NSString * kComments = @"comment";
         return NO;
     }
     NSUInteger prevIndex = index - 1;
+    _vectorRange.length ++ ;
     BOOL hasPrevRecord = YES;
     id record = [self.resultList objectAtIndex:prevIndex];
     
