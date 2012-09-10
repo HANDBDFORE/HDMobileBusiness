@@ -69,6 +69,8 @@ static NSString * kStorageRemove = @"REMOVE";
 //清除无效的数据
 -(void)clear;
 
+-(void)removeRecordAtIndex:(NSUInteger) index;
+
 @end
 
 

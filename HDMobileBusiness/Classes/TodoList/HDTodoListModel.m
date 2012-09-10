@@ -199,11 +199,12 @@ static NSString * kComments = @"comment";
             [_submitList addObject:record];
         }
     }
-    [_resultList sortWithOptions:NSSortConcurrent
-                 usingComparator:^NSComparisonResult (id obj1,id obj2){
-                     return [[obj1 valueForKey:_orderField]
-                             compare:[obj2 valueForKey:_orderField]];
-                 }];
+//    [_resultList sortWithOptions:NSSortConcurrent
+//                 usingComparator:^NSComparisonResult (id obj1,id obj2)
+//    {
+//        return [[obj1 valueForKey:_orderField]
+//                compare:[obj2 valueForKey:_orderField]];
+//    }];
     [self setIconBageNumber];
 }
 
@@ -228,18 +229,15 @@ static NSString * kComments = @"comment";
         [responseList setValue:kSQLNull forKey:kComments];
         //刷新columnMap表
         [self refreshColumnMap:[responseList lastObject]];
-               
-        NSArray * newResultList =
-        [self combineRecordsWithLocalRecords:self.resultList
-                               remoteRecords:responseList];
-        [_resultList removeAllObjects];
-        [_resultList addObjectsFromArray:newResultList];
-        [_resultList sortWithOptions:NSSortStable
-                     usingComparator:^NSComparisonResult(id obj1, id obj2)
-        {
-            return [[obj1 valueForKey:_orderField]
-                    compare:[obj2 valueForKey:_orderField]];
-        }];
+        [self combineRecordsWithLocalRecords:self.resultList remoteRecords:responseList];
+        [self loadLocalRecords];
+
+//        [_resultList sortWithOptions:NSSortStable
+//                     usingComparator:^NSComparisonResult(id obj1, id obj2)
+//        {
+//            return [[obj1 valueForKey:_orderField]
+//                    compare:[obj2 valueForKey:_orderField]];
+//        }];
         [self setIconBageNumber];
         if ([self isSearching]) {
             [self search:self.searchText];
@@ -289,36 +287,38 @@ static NSString * kComments = @"comment";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(NSArray *)combineRecordsWithLocalRecords:(NSArray *) localRecords remoteRecords:(NSArray *) remoteRecords
+-(void)combineRecordsWithLocalRecords:(NSArray *) localRecords remoteRecords:(NSArray *) remoteRecords
 {
-    //debug 判断localRecord是否为空，否则copy时会crash
-    if (localRecords.count == 0){
+    if (localRecords.count == 0) {
+        //        [remoteRecords setValue:kRecordDifferent forKey:kRecordStatus];
+        
         [self insertRecords:remoteRecords];
-        return remoteRecords;
+        return;
     }
     
-    NSSet * localSet = [NSSet setWithArray:localRecords];
-    NSSet * remoteSet = [NSSet setWithArray:remoteRecords];
+    NSMutableArray * diffArray = [localRecords mutableCopy];
+    NSMutableArray * newArray = [remoteRecords mutableCopy] ;
+    NSMutableArray * localSameArray = [NSMutableArray array];
+    NSMutableArray * remoteSameArray = [NSMutableArray array];
     
-    //找出本地存在，而远程不存在的数据
-    NSSet * differentSet = [localSet objectsWithOptions:NSEnumerationConcurrent passingTest:^BOOL(id obj, BOOL *stop) {
-        return ![[remoteSet valueForKey:_primaryFiled] containsObject:[obj objectForKey:_primaryFiled]];
-    }];
+    //比较数据
+    //find same records
+    for (NSMutableDictionary * localApprove in localRecords) {
+        for (NSMutableDictionary * remoteRecord in remoteRecords) {
+            if ([[localApprove valueForKey:_primaryFiled] isEqual:[remoteRecord valueForKey:_primaryFiled]]) {
+                [localSameArray addObject:localApprove];
+                [remoteSameArray addObject:remoteRecord];
+            }
+        }
+    }
     
-    //找出远程存在，而本地不存在的数据
-    NSSet * newSet = [remoteSet objectsWithOptions:NSEnumerationConcurrent passingTest:^BOOL(id obj, BOOL *stop) {
-        return ![[localSet valueForKey:_primaryFiled] containsObject:[obj objectForKey:_primaryFiled]];
-    }];
+    [diffArray removeObjectsInArray:localSameArray];
+    [diffArray setValue:kRecordDifferent forKey:kRecordStatus];
+    [diffArray setValue:@"   已在其他地方处理" forKey:kRecordServerMessage];
+    [self updateRecords:diffArray];
     
-    [differentSet setValue:kRecordDifferent forKey:kRecordStatus];
-    [differentSet setValue:@"已在其他地方处理" forKey:kRecordServerMessage];
-     
-    [self insertRecords:[newSet allObjects]];
-    [self updateRecords:[differentSet allObjects]];
-    
-    NSMutableSet * resultSet = [NSMutableSet setWithSet:localSet];
-    [resultSet unionSet:newSet];
-    return  [resultSet allObjects];
+    [newArray removeObjectsInArray:remoteSameArray];
+    [self insertRecords:newArray];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -453,7 +453,7 @@ static NSString * kComments = @"comment";
 
 -(id)current
 {
-    if ( _currentIndex < [self effectiveRecordCount] && [self effectiveRecordCount] > 0) {
+    if ( _currentIndex < [self.resultList count] && [self effectiveRecordCount] > 0) {
         return [_resultList objectAtIndex:_currentIndex];
     }
     return nil;
@@ -479,7 +479,7 @@ static NSString * kComments = @"comment";
 {
     NSUInteger nextIndex = index + 1;
     _vectorRange.length ++;
-    if (nextIndex >= [self effectiveRecordCount]) {
+    if (nextIndex >= [self.resultList count]) {
         return NO;
     }
     
@@ -525,4 +525,15 @@ static NSString * kComments = @"comment";
     return hasPrevRecord;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)removeRecordAtIndex:(NSUInteger) index
+{
+    id record = [self.resultList objectAtIndex:index];
+    if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordDifferent]) {
+        //remove
+        [self removeRecords:@[record]];
+        [_resultList removeObjectAtIndex:index];
+        [self didDeleteObject:record atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    }
+}
 @end
