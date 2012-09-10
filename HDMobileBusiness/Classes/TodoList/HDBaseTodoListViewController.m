@@ -25,6 +25,20 @@
 }
 
 #pragma mark viewController life circle
+- (void)viewDidUnload
+{
+    TT_RELEASE_SAFELY(_refuseButtonItem);
+    TT_RELEASE_SAFELY(_acceptButtonItem);
+    TT_RELEASE_SAFELY(_refreshButtonItem);
+    TT_RELEASE_SAFELY(_composeButtonItem);
+    TT_RELEASE_SAFELY(_clearButtonItem);
+    TT_RELEASE_SAFELY(_stateLabelItem);
+    TT_RELEASE_SAFELY(_timeStampLabel);
+    TT_RELEASE_SAFELY(_space);
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+}
+
 -(void)loadView
 {
     [super loadView];
@@ -70,18 +84,14 @@
     [self resetButtonTitle];
 }
 
-- (void)viewDidUnload
+-(void)viewWillAppear:(BOOL)animated
 {
-    TT_RELEASE_SAFELY(_refuseButtonItem);
-    TT_RELEASE_SAFELY(_acceptButtonItem);
-    TT_RELEASE_SAFELY(_refreshButtonItem);
-    TT_RELEASE_SAFELY(_composeButtonItem);
-    TT_RELEASE_SAFELY(_clearButtonItem);
-    TT_RELEASE_SAFELY(_stateLabelItem);
-    TT_RELEASE_SAFELY(_timeStampLabel);
-    TT_RELEASE_SAFELY(_space);
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    [super viewWillAppear:animated];
+    //swipe
+    UISwipeGestureRecognizer *removeRecordRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwiped:)]autorelease];
+    removeRecordRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    removeRecordRecognizer.numberOfTouchesRequired = 1;
+    [self.tableView addGestureRecognizer:removeRecordRecognizer];
 }
 
 #pragma  -mark toolbar Buttons
@@ -183,4 +193,10 @@
     return  [[[HDTodoListDelegate alloc] initWithController:self] autorelease];
 }
 
+#pragma -mark swipe
+-(void)didSwiped:(UISwipeGestureRecognizer *)recognizer{
+    CGPoint swipeLocation = [recognizer locationInView:self.tableView];
+    NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
+    [(HDTodoListModel *)self.model removeRecordAtIndex:swipedIndexPath.row];
+}
 @end
