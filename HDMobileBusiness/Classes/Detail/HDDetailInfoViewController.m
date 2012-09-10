@@ -46,15 +46,15 @@
 
 - (void)loadView{
     [super loadView];
-    
-    _webView = [[UIWebView alloc] initWithFrame:HDNavigationLandscapeFrame()];
+
+    _webView = [[UIWebView alloc] initWithFrame:TTNavigationFrame()];
     _webView.delegate = self;
-    _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     _webView.scalesPageToFit = YES;
+    _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_webView];
     
     //user info view
-    _userInfoView = [[HDUserInfoView alloc]initWithFrame:HDNavigationLandscapeFrame()];
+    _userInfoView = [[HDUserInfoView alloc]initWithFrame:TTNavigationFrame()];
     [self.view addSubview:_userInfoView];
     
     //next button
@@ -74,7 +74,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setToolbarHidden:YES animated:YES];
     [self expend];
     [self reloadAll];
 }
@@ -127,11 +126,6 @@
     }
     return URL;
 }
-///内容区域
-CGRect HDNavigationLandscapeFrame() {
-    CGRect frame = TTScreenBounds();
-    return  CGRectMake(0, 0, frame.size.width, frame.size.height-TTToolbarHeight()-TTStatusHeight());
-}
 
 - (void)openURL:(NSURL*)URL {
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
@@ -141,5 +135,8 @@ CGRect HDNavigationLandscapeFrame() {
 - (void)openRequest:(NSURLRequest*)request {
     //    [self view];
     [_webView loadRequest:request];
+}
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    return toInterfaceOrientation!=UIInterfaceOrientationPortraitUpsideDown;
 }
 @end

@@ -26,8 +26,8 @@
         _isFirstLoad = YES;
 //        self.backgroundColor = RGBCOLOR(255, 255, 255);      
         //        CGSize floatWebViewSize = CGSizeMake(320, 140);
-        CGRect screenFrame = TTScreenBounds();
-        _empWebView = [[UIWebView alloc]initWithFrame:CGRectMake((screenFrame.size.width-310)/2,-140, 310, 140)];
+        CGRect frame = [UIScreen mainScreen].applicationFrame;
+        _empWebView = [[UIWebView alloc]initWithFrame:CGRectMake((frame.size.width-310)/2,-140, 310, 140)];
         _empWebView.layer.shadowOpacity = 0.7f;
         _empWebView.layer.shadowOffset = CGSizeMake(0, 5);
         _empWebView.layer.shadowColor = [[UIColor darkGrayColor]CGColor];
