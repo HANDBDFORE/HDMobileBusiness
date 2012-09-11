@@ -13,6 +13,7 @@
 @interface HDDetailToolbarViewController : HDDetailInfoViewController <TTPostControllerDelegate>
 {
     HDDetailToolbarModel * _toolBarModel;
+    UIBarButtonItem * _spaceItem;
 }
 
 -(id)initWithSignature:(NSString *) signature

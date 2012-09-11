@@ -38,9 +38,9 @@
 {
     if (more) {
         _pageNum ++;
-    }else{
+    }
+    if (!more && [_resultList count] == 0) {
         _pageNum =1;
-        [_resultList removeAllObjects];
     }
     //debug:添加对_queryUrl的nil校验，否则对nil appendding导致crash R
     if (_queryURL) {
@@ -74,7 +74,7 @@
 
 -(BOOL)hasNext
 {
-    return  (_currentIndex != [self effectiveRecordCount]);
+    return  (_currentIndex < [self effectiveRecordCount]);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -88,7 +88,7 @@
 
 -(BOOL)hasPrev
 {
-    return  (_currentIndex != 0);
+    return  (_currentIndex > 0);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

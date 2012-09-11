@@ -45,14 +45,8 @@ static NSString * kStorageRemove = @"REMOVE";
 //结果列表，和界面显示对应，datasource从该列表获取数据
 @property(nonatomic,readonly) NSArray * resultList;
 
-//提交队列
-//@property(nonatomic,readonly) NSArray * submitList;
-
 //查询字段
 @property(nonatomic,retain) NSArray * serachFields;
-
-//排序字段
-@property(nonatomic,copy) NSString * orderField;
 
 //主键字段
 @property(nonatomic,copy) NSString * primaryFiled;

@@ -15,7 +15,7 @@ static NSString * kColumnMapColumn = @"column0";
 static NSString * kSQLNull = @"null";
 //submit filed
 static NSString * kAction = @"action_id";
-static NSString * kComments = @"comment";
+static NSString * kComments = @"comments";
 
 @interface HDTodoListModel()
 
@@ -25,10 +25,8 @@ static NSString * kComments = @"comment";
 
 @implementation HDTodoListModel
 @synthesize resultList = _resultList;
-//@synthesize submitList = _submitList;
 @synthesize searchText = _searchText;
 @synthesize serachFields = _serachFields;
-@synthesize orderField = _orderField;
 @synthesize primaryFiled = _primaryFiled;
 @synthesize queryURL = _queryURL;
 @synthesize submitURL = _submitURL;
@@ -37,13 +35,12 @@ static NSString * kComments = @"comment";
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_resultList);
-    TT_RELEASE_SAFELY(_submitList);
     TT_RELEASE_SAFELY(_searchText);
     TT_RELEASE_SAFELY(_serachFields);
-    TT_RELEASE_SAFELY(_orderField);
     TT_RELEASE_SAFELY(_primaryFiled);
     TT_RELEASE_SAFELY(_queryURL);
     TT_RELEASE_SAFELY(_submitURL);
+    TT_RELEASE_SAFELY(_submitList);
     [super dealloc];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -199,12 +196,6 @@ static NSString * kComments = @"comment";
             [_submitList addObject:record];
         }
     }
-//    [_resultList sortWithOptions:NSSortConcurrent
-//                 usingComparator:^NSComparisonResult (id obj1,id obj2)
-//    {
-//        return [[obj1 valueForKey:_orderField]
-//                compare:[obj2 valueForKey:_orderField]];
-//    }];
     [self setIconBageNumber];
 }
 
@@ -232,13 +223,6 @@ static NSString * kComments = @"comment";
         [self combineRecordsWithLocalRecords:self.resultList remoteRecords:responseList];
         [self loadLocalRecords];
 
-//        [_resultList sortWithOptions:NSSortStable
-//                     usingComparator:^NSComparisonResult(id obj1, id obj2)
-//        {
-//            return [[obj1 valueForKey:_orderField]
-//                    compare:[obj2 valueForKey:_orderField]];
-//        }];
-        [self setIconBageNumber];
         if ([self isSearching]) {
             [self search:self.searchText];
         }
@@ -289,15 +273,13 @@ static NSString * kComments = @"comment";
 
 -(void)combineRecordsWithLocalRecords:(NSArray *) localRecords remoteRecords:(NSArray *) remoteRecords
 {
-    if (localRecords.count == 0) {
-        //        [remoteRecords setValue:kRecordDifferent forKey:kRecordStatus];
-        
+    if (localRecords.count == 0) {        
         [self insertRecords:remoteRecords];
         return;
     }
     
-    NSMutableArray * diffArray = [localRecords mutableCopy];
-    NSMutableArray * newArray = [remoteRecords mutableCopy] ;
+    NSMutableArray * diffArray = [[localRecords mutableCopy] autorelease];
+    NSMutableArray * newArray = [[remoteRecords mutableCopy] autorelease];
     NSMutableArray * localSameArray = [NSMutableArray array];
     NSMutableArray * remoteSameArray = [NSMutableArray array];
     
@@ -409,7 +391,7 @@ static NSString * kComments = @"comment";
 #pragma mark Others
 -(void)setIconBageNumber
 {
-    [UIApplication sharedApplication].applicationIconBadgeNumber = [self effectiveRecordCount];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = [_resultList count];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

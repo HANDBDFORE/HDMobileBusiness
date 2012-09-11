@@ -18,8 +18,10 @@
 
 - (void)dealloc
 {
-    TT_RELEASE_SAFELY(_queryURL);
     TT_RELEASE_SAFELY(_resultList);
+    TT_RELEASE_SAFELY(_queryURL);
+    TT_RELEASE_SAFELY(_detailRecord);
+    TT_RELEASE_SAFELY(_selectedAction);
     [super dealloc];
 }
 
@@ -63,19 +65,7 @@
 {
     [[HDCoreStorage shareStorage]excute:@selector(SQLremoveActions:recordList:) recordList:self.resultList];
 }
-#pragma mark - -
--(NSArray *)toolbarItems
-{
-    if(!self.resultList)return nil;
-    NSMutableArray * actionItems = [NSMutableArray array];
-    for (NSDictionary * actionRecord in self.resultList) {
-        HDToolbarItem * actionItem = [[[HDToolbarItem alloc]init]autorelease];
-        actionItem.tag = [[actionRecord objectForKey:@"action_id"] intValue];
-        actionItem.title = [actionRecord objectForKey:@"action_id"];
-        [actionItems addObject:actionItem];
-    }
-    return actionItems;
-}
+
 
 @end
 

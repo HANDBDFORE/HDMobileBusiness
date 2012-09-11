@@ -7,20 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HDToolbarItem.h"
-//#import "HDToolbarModel.h"
+
 @interface HDDetailToolbarModel : HDURLRequestModel
 
 @property(nonatomic,retain)NSDictionary * detailRecord;
 @property(nonatomic,retain)NSArray * resultList;
-@property(nonatomic,retain)NSString * queryURL;
-@property(nonatomic,retain)NSString * selectedAction;
+@property(nonatomic,copy)NSString * queryURL;
+@property(nonatomic,copy)NSString * selectedAction;
 
 /*
  *确认提交后把本地动作数据删除,确保没有垃圾数据
  *保存之前尝试删除相关数据,防止切换地址遗留数据导致唯一索引错误
  */
 -(void)removeTheActions;
--(NSArray *)toolbarItems;
 
 @end

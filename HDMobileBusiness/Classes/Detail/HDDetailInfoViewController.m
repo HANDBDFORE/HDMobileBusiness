@@ -41,6 +41,7 @@
     TT_RELEASE_SAFELY(_nextButtonItem);
     TT_RELEASE_SAFELY(_prevButtonItem);
     TT_RELEASE_SAFELY(_refreshButtonItem);
+    TT_RELEASE_SAFELY(_employeeInfoItem);
     [super viewDidUnload];
 }
 

@@ -130,11 +130,10 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
      @"timestamp":@"${creation_date}",
      @"isLate":@"${is_late}"}
               forKeyPath:@"dataSource.cellItemMap"];
-    [controller setValue:@"creation_date" forKeyPath:@"dataSource.model.orderField"];
     [controller setValue:@"record_id" forKeyPath:@"dataSource.model.primaryFiled"];
     [controller setValue:@[@"order_type",@"node_name",@"employee_name"] forKeyPath:@"dataSource.model.serachFields"];
-    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_todo_list.ios_todo_list_query/query?_fetchall=true&amp;_autocount=false",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"dataSource.model.queryURL"];
-    [controller setValue:[NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_approve_new/ios_todo_list_commit.svc"] forKeyPath:@"dataSource.model.submitURL"];
+    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"dataSource.model.queryURL"];
+    [controller setValue:[NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_test/ios_todo_list_commit.svc"] forKeyPath:@"dataSource.model.submitURL"];
     return controller;
 }
 
@@ -165,7 +164,7 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
 {
 //    [controller setValue:@"功能[配置]" forKeyPath:@"title"];
     [controller setValue:@"record_id" forKeyPath:@"userInfoItemTitle"];
-    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.iso_my_test.ios_workflow_approve_action_query/query?record_id={record_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"queryActionURLTemplate"];
+    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_detail_action_query/query?record_id={record_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"queryActionURLTemplate"];
     [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
     [controller setValue:[NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
     //设置listModel

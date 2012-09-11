@@ -167,7 +167,9 @@
 {
     if ([self.model isKindOfClass:[HDTodoListModel class]]) {
          NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
-        [(HDTodoListModel *)self.model  submitObjectAtIndexPaths:indexPaths comment:text action:_submitAction];
+        [(HDTodoListModel *)self.model submitObjectAtIndexPaths:indexPaths
+                                                        comment:text
+                                                         action:_submitAction];
     }
     [self setEditing:NO animated:YES];
 }

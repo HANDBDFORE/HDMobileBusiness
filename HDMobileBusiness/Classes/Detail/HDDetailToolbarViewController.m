@@ -16,7 +16,15 @@
 - (void)viewDidUnload
 {
     TT_RELEASE_SAFELY(_toolBarModel);
+    TT_RELEASE_SAFELY(_queryActionURLTemplate);
+    TT_RELEASE_SAFELY(_spaceItem);
     [super viewDidUnload];
+}
+
+-(void)loadView
+{
+    [super loadView];
+    _spaceItem  = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
 }
 
 -(id)initWithSignature:(NSString *) signature
@@ -58,33 +66,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - set toolbar
-#pragma mark -
-//根据item设定toolbar的内容,每个item之间用 FlexibleSpace 隔开
--(NSArray *) toolbarItemButtons:(NSArray *)toolbarItems
-{
-    NSMutableArray * itemButtons = [NSMutableArray array];
-    for (HDToolbarItem * item in toolbarItems) {
-        if ([item isMemberOfClass:[HDToolbarItem class]]) {
-            [itemButtons addObject:[self barButtonWithItem:item]];
-            UIBarButtonItem * space = [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil] autorelease];
-            [itemButtons addObject:space];
-        }
-    }
-    [itemButtons removeLastObject];
-    return itemButtons;
-}
-
--(UIBarButtonItem *)barButtonWithItem:(HDToolbarItem *) item
-{
-    UIBarButtonItem * actionButton =
-    [[[UIBarButtonItem alloc]initWithTitle:item.title
-                                     style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(toolbarButtonPressed:)] autorelease];
-    actionButton.tag = item.tag;
-    return actionButton;
-}
 #pragma mark - overWrite -
 -(void)reloadAll{
     _toolBarModel.detailRecord = [self.listModel current];
@@ -93,15 +74,28 @@
     [super reloadAll];
     
 }
-#pragma mark - TTModel delegate functions -
 
+#pragma mark - TTModel delegate functions -
 -(void)modelDidFinishLoad:(id <TTModel>)model
 {
-    _toolBarModel = (HDDetailToolbarModel *)model;
-    if ([self toolbarItemButtons:_toolBarModel.toolbarItems] >0) {
+    if ([_toolBarModel.resultList count] > 0) {
         self.navigationController.toolbarHidden = NO;
-        self.toolbarItems = [self toolbarItemButtons:_toolBarModel.toolbarItems];
-    }
+        //
+        NSMutableArray * itemButtons = [NSMutableArray array];
+        for (NSDictionary * actionRecord in _toolBarModel.resultList) {
+            UIBarButtonItem * actionButton =
+            [[[UIBarButtonItem alloc]initWithTitle:[actionRecord valueForKey:@"action_id"]
+                                             style:UIBarButtonItemStyleBordered
+                                            target:self
+                                            action:@selector(toolbarButtonPressed:)] autorelease];
+            actionButton.tag = [[actionRecord valueForKey:@"action_id"] intValue];
+            
+            [itemButtons addObject:actionButton];
+            [itemButtons addObject:_spaceItem];
+        }
+        [itemButtons removeLastObject];
+        self.toolbarItems = itemButtons;
+    }    
 }
 
 //-(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
