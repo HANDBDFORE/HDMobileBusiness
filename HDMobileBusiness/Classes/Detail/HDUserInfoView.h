@@ -15,7 +15,6 @@
     UIWebView * _empWebView;
     
     BOOL _isPullDown;
-    BOOL _isFirstLoad;
 }
 
 @property(nonatomic,copy) NSString * employeeUrlPath;

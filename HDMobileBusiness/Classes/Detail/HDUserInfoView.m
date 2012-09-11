@@ -23,7 +23,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         _isPullDown = NO;
-        _isFirstLoad = YES;
 //        self.backgroundColor = RGBCOLOR(255, 255, 255);      
         //        CGSize floatWebViewSize = CGSizeMake(320, 140);
         CGRect frame = [UIScreen mainScreen].applicationFrame;
@@ -43,13 +42,14 @@
     }
     return self;
 }
-
--(void)show{
-    
-    if (_isFirstLoad) {
-        _isFirstLoad = NO;
+-(void)setEmployeeUrlPath:(NSString *)employeeUrlPath{
+    if (![self.employeeUrlPath isEqualToString:employeeUrlPath] ) {
+        TT_RELEASE_SAFELY(_employeeUrlPath);
+        _employeeUrlPath = [employeeUrlPath copy];
         [_empWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.employeeUrlPath]]];
     }
+}
+-(void)show{
     
     if (_isPullDown) {
         //名片动画
