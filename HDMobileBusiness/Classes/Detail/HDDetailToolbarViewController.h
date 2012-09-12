@@ -20,4 +20,7 @@
                  query:(NSDictionary *) query;
 
 @property(nonatomic,copy) NSString * queryActionURLTemplate;
+
+@property (nonatomic,retain) id<HDListModelVector,HDListModelSubmit> listModel;
+
 @end

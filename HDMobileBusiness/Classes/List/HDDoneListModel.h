@@ -7,9 +7,9 @@
 //
 
 #import "HDURLRequestModel.h"
-#import "../HDVector.h"
+#import "HDListModel.h"
 
-@interface HDDoneListModel : HDURLRequestModel<HDVector>
+@interface HDDoneListModel : HDURLRequestModel<HDListModelVector>
 {
     @private
     NSMutableArray * _resultList;

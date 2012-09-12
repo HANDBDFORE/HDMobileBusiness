@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "../HDVector.h"
+#import "HDListModel.h"
 
 @interface HDFunctionListModel : HDURLRequestModel<HDListModelQuery>
 {

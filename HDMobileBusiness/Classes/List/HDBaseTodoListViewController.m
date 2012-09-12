@@ -172,11 +172,10 @@
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    if ([self.listModel respondsToSelector:@selector(submitRecordsAtIndexPaths:query:)]) {
-        NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
-        [self.listModel submitRecordsAtIndexPaths:indexPaths
-                                            query:@{kComments:text,kAction:_submitAction}];
-    }
+    NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
+    [self.listModel submitRecordsAtIndexPaths:indexPaths
+                                        query:@{kComments:text,kAction:_submitAction}];
+
     [self setEditing:NO animated:YES];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -206,8 +205,6 @@
 -(void)didSwiped:(UISwipeGestureRecognizer *)recognizer{
     CGPoint swipeLocation = [recognizer locationInView:self.tableView];
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
-    if ([self.listModel respondsToSelector:@selector(removeRecordAtIndex:)]) {
-        [self.listModel removeRecordAtIndex:swipedIndexPath.row];
-    }
+    [self.listModel removeRecordAtIndex:swipedIndexPath.row];
 }
 @end

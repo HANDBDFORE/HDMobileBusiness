@@ -7,7 +7,7 @@
 //
 
 #import "HDURLRequestModel.h"
-#import "../HDListModel.h"
+#import "HDListModel.h"
 /*
  *记录状态,不同的状态cell样式不同
  */
@@ -26,7 +26,7 @@ static NSString * kStorageInsert = @"INSERT";
 static NSString * kStorageUpdate = @"UPDATE";
 static NSString * kStorageRemove = @"REMOVE";
 
-@interface HDTodoListModel : HDURLRequestModel<HDListModel>
+@interface HDTodoListModel : HDURLRequestModel<HDListModelVector,HDListModelSubmit>
 {
     @private
     struct {

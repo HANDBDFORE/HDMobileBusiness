@@ -10,7 +10,7 @@
 
 @interface HDTodoListDataSource : TTListDataSource
 
-@property(nonatomic,assign) id<HDListModel> listModel;
+@property(nonatomic,assign) id<HDListModelVector,HDListModelSubmit> listModel;
 
 @property(nonatomic,retain) NSDictionary * cellItemMap;
 
