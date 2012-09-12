@@ -10,6 +10,7 @@
 #import "HDTodoListDelegate.h"
 
 @implementation HDBaseTodoListViewController
+@synthesize listModel = _listModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -19,7 +20,9 @@
         self.variableHeightRows = YES;
         self.clearsSelectionOnViewWillAppear = NO;
         
-        self.dataSource = [[[HDTodoListDataSource alloc]init]autorelease];
+        HDTodoListDataSource * listDataSource = [[[HDTodoListDataSource alloc]init]autorelease];
+        self.dataSource = listDataSource;
+        self.listModel = listDataSource.listModel;
     }
     return self;
 }
@@ -169,9 +172,10 @@
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    if ([self.model isKindOfClass:[HDTodoListModel class]]) {
-         NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
-        [(HDTodoListModel *)self.model submitRecordsAtIndexPaths:indexPaths query:@{ kComments : text,kAction:_submitAction }];
+    if ([self.listModel respondsToSelector:@selector(submitRecordsAtIndexPaths:query:)]) {
+        NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
+        [self.listModel submitRecordsAtIndexPaths:indexPaths
+                                            query:@{kComments:text,kAction:_submitAction}];
     }
     [self setEditing:NO animated:YES];
 }
@@ -202,6 +206,8 @@
 -(void)didSwiped:(UISwipeGestureRecognizer *)recognizer{
     CGPoint swipeLocation = [recognizer locationInView:self.tableView];
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
-    [(HDTodoListModel *)self.model removeRecordAtIndex:swipedIndexPath.row];
+    if ([self.listModel respondsToSelector:@selector(removeRecordAtIndex:)]) {
+        [self.listModel removeRecordAtIndex:swipedIndexPath.row];
+    }
 }
 @end

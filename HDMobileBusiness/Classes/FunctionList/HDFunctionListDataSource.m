@@ -60,21 +60,21 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation HDFunctionListDataSource
-@synthesize functionListModel = _functionListModel;
+@synthesize listModel = _listModel;
 @synthesize cellItemMap = _cellItemMap;
 
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_cellItemMap);
-    TT_RELEASE_SAFELY(_functionListModel)
     [super dealloc];
 }
 
 -(id)init
 {
     if (self= [super init]) {
-        _functionListModel = [[HDFunctionListModel alloc]init];
-        self.model = _functionListModel;
+        HDFunctionListModel * model = [[[HDFunctionListModel alloc]init] autorelease];
+        self.model = model;
+        self.listModel = model;
     }
     return self;
 }
@@ -84,7 +84,7 @@
     NSMutableArray* itemsArray = [NSMutableArray array];
     NSMutableArray* sectionArray = [NSMutableArray array];
     
-    for (id section in _functionListModel.resultList) {
+    for (id section in self.listModel.resultList) {
         [sectionArray addObject:[TTTableSection sectionWithHeaderTitle:[section valueForKeyPath:@"head_title"] footerTitle:nil]];
         NSMutableArray* itemArray =[NSMutableArray array];
         for (id item in [section valueForKeyPath:@"record"]) {

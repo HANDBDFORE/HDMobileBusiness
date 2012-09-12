@@ -65,9 +65,12 @@
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    [self.listModel submitRecordsAtIndexPaths:@[self.listModel.currentIndexPath] query:@{ kComments : text,kAction:_toolBarModel.selectedAction }];
-    //删除动作
-    [_toolBarModel removeTheActions];
+    if ([self.listModel respondsToSelector:@selector(submitRecordsAtIndexPaths:query:)]) {
+        [self.listModel submitRecordsAtIndexPaths:@[self.listModel.currentIndexPath]
+                                            query:@{kComments:text,kAction:_toolBarModel.selectedAction}];
+        //删除动作
+        [_toolBarModel removeTheActions];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -12,7 +12,15 @@
 static NSString * kAction = @"action_id";
 static NSString * kComments = @"comments";
 
-@protocol HDVector <NSObject>
+@protocol HDListModelQuery <NSObject>
+
+@required
+//获取结果列表
+@property(nonatomic,readonly) NSArray * resultList;
+
+@end
+
+@protocol HDVector <NSObject,HDListModelQuery>
 
 //当前指针位置，表识被点击纪录的行号
 @property(nonatomic,assign) NSUInteger currentIndex;
@@ -38,11 +46,4 @@ static NSString * kComments = @"comments";
 //获取当前有效记录数
 -(NSUInteger)effectiveRecordCount;
 
-//TODO:如果存在更多类似函数在抽取出来
-//提交制定indexPaths中的纪录，设置纪录的comment和action
-//@optional
-//
--(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
-                           query:(NSDictionary *)query;
-//
 @end

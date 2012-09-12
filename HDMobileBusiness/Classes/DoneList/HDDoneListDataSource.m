@@ -7,15 +7,15 @@
 //
 
 #import "HDDoneListDataSource.h"
+#import "HDDoneListModel.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation HDDoneListDataSource
-@synthesize doneListModel = _doneListModel;
+@synthesize listModel = _listModel;
 @synthesize cellItemMap = _cellItemMap;
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_doneListModel);
     TT_RELEASE_SAFELY(_cellItemMap);
     [super dealloc];
 }
@@ -24,8 +24,10 @@
 {
     self = [super init];
     if (self) {
-        _doneListModel = [[HDDoneListModel alloc]init];
-        self.model = _doneListModel;
+        HDDoneListModel * model = [[[HDDoneListModel alloc]init] autorelease];
+        self.model = model;
+        self.listModel = model;
+        
         self.cellItemMap =
         @{@"title":@"title",
         @"caption":@"caption",
@@ -38,7 +40,7 @@
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
     self.items = [NSMutableArray array];
-    for (NSDictionary * record in _doneListModel.resultList) {
+    for (NSDictionary * record in self.listModel.resultList) {
         
         NSString * title = [self createCellItemWithTemplete:[_cellItemMap valueForKey: @"title"] query:record];
         NSString * caption = [self createCellItemWithTemplete:[_cellItemMap valueForKey:@"caption"] query:record];
@@ -82,8 +84,8 @@
     NSUInteger index = [self.items indexOfObject:item];
     TTDPRINT(@"row :%i is being selected",index);
     
-    [self.doneListModel setCurrentIndex:index];
-    [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.doneListModel}]applyAnimated:YES]];
+    [self.listModel setCurrentIndex:index];
+    [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.listModel}]applyAnimated:YES]];
 }
 
 - (NSString*)titleForLoading:(BOOL)reloading {

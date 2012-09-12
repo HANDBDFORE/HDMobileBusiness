@@ -11,12 +11,11 @@
 
 @implementation HDTodoListDataSource
 
-@synthesize todoListModel = _todoListModel;
+@synthesize listModel = _listModel;
 @synthesize cellItemMap = _cellItemMap;
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_todoListModel);
     TT_RELEASE_SAFELY(_cellItemMap);
     [super dealloc];
 }
@@ -27,9 +26,10 @@
 {
     self = [super init];
     if (self) {
-        _todoListModel = [[HDTodoListModel alloc]init];
-        self.model = _todoListModel;
-       
+        HDTodoListModel *model = [[[HDTodoListModel alloc]init] autorelease];
+        self.model = model;
+        self.listModel = model;
+        
         self.cellItemMap =
         @{@"title":@"title",
         @"caption":@"caption",
@@ -38,6 +38,7 @@
     }
     return self;
 }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -117,8 +118,8 @@
 {
     //tableload完成生成cell item 对象列表
     self.items = [NSMutableArray array];
-    for (id approvedRecord in self.todoListModel.resultList) {
-        [self.items addObject:[self createItemWithObject:approvedRecord]
+    for (id record in self.listModel.resultList) {
+        [self.items addObject:[self createItemWithObject:record]
          ];
     }
 }
@@ -128,7 +129,7 @@
 #pragma mark UITable datasource
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString * localStatus =  [[self.todoListModel.resultList objectAtIndex:indexPath.row] valueForKeyPath:kRecordStatus];
+    NSString * localStatus =  [[self.listModel.resultList objectAtIndex:indexPath.row] valueForKeyPath:kRecordStatus];
     
     return ([localStatus isEqualToString:kRecordNormal] ||
             [localStatus isEqualToString:kRecordError]);
@@ -138,13 +139,15 @@
 {
     if ([item.state isEqualToString:kRecordNormal] ||
         [item.state isEqualToString:kRecordError]) {
-        self.todoListModel.currentIndex = [self.items indexOfObject:item];
-        [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/TOOLBAR_DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.todoListModel}]applyAnimated:YES]];
+        self.listModel.currentIndex = [self.items indexOfObject:item];
+        [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/TOOLBAR_DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.listModel}]applyAnimated:YES]];
     }
 }
 
 - (void)search:(NSString*)text {
-    [self.todoListModel search:text];
+    if ([self.listModel performSelector:@selector(search:)]) {
+        [self.listModel search:text];
+    }
 }
 
 - (NSString*)titleForLoading:(BOOL)reloading {

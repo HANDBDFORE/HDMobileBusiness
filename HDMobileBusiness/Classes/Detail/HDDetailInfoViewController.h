@@ -7,7 +7,7 @@
 //
 
 #import "HDUserInfoView.h"
-#import "../HDVector.h"
+#import "../HDListModel.h"
 
 @interface HDDetailInfoViewController : TTModelViewController<UIWebViewDelegate,UIActionSheetDelegate>
 {
@@ -27,7 +27,7 @@
 //用户信息按钮显示字段
 @property (nonatomic,copy) NSString * userInfoItemTitle;
 
-@property (nonatomic,retain) id<HDVector> listModel;
+@property (nonatomic,retain) id<HDListModel> listModel;
 //
 -(NSString *)matchURL:(NSString *)Template;
 -(void)expend;
