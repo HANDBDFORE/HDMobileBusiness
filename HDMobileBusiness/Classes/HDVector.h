@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+//submit filed
+static NSString * kAction = @"action_id";
+static NSString * kComments = @"comments";
+
 @protocol HDVector <NSObject>
 
 //当前指针位置，表识被点击纪录的行号
@@ -36,9 +40,9 @@
 
 //TODO:如果存在更多类似函数在抽取出来
 //提交制定indexPaths中的纪录，设置纪录的comment和action
-@optional
--(void)submitObjectAtIndexPaths:(NSArray *) indexPaths
-                        comment:(NSString *) comment
-                         action:(NSString *) action;
-
+//@optional
+//
+-(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
+                           query:(NSDictionary *)query;
+//
 @end

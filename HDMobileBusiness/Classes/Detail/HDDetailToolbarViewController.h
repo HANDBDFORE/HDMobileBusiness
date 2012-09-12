@@ -10,7 +10,7 @@
 #import "HDDetailToolbarModel.h"
 #import "HDDetailInfoViewController.h"
 
-@interface HDDetailToolbarViewController : HDDetailInfoViewController <TTPostControllerDelegate>
+@interface HDDetailToolbarViewController : HDDetailInfoViewController <TTMessageControllerDelegate,TTPostControllerDelegate>
 {
     HDDetailToolbarModel * _toolBarModel;
     UIBarButtonItem * _spaceItem;

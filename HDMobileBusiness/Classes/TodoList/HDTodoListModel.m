@@ -13,9 +13,7 @@ static NSString * kColumnMapKey = @"column1";
 static NSString * kColumnMapColumn = @"column0";
 
 static NSString * kSQLNull = @"null";
-//submit filed
-static NSString * kAction = @"action_id";
-static NSString * kComments = @"comments";
+
 
 @interface HDTodoListModel()
 
@@ -163,19 +161,20 @@ static NSString * kComments = @"comments";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)submitObjectAtIndexPaths:(NSArray *) indexPaths
-                        comment:(NSString *) comment
-                         action:(NSString *) action
+-(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
+                           query:(NSDictionary *)query
 {
+    NSMutableArray * submitRecords = [NSMutableArray array];
     for (NSIndexPath * indexPath in indexPaths) {
-        id  submitRecord = [self.resultList objectAtIndex:indexPath.row];
-        [submitRecord setValue:comment forKey:kComments];
-        [submitRecord setValue:action forKey:kAction];
-        [submitRecord setValue:kRecordWaiting forKeyPath:kRecordStatus];
-        [_submitList addObject:submitRecord];
+        [submitRecords addObject: [self.resultList objectAtIndex:indexPath.row]];
     }
-    [self updateRecords:_submitList];
-    //设置超时状态,进入shouldload状态
+    for (NSString * key in query) {
+        [submitRecords setValue:[query valueForKey:key] forKey:key];
+    }
+    
+    [submitRecords setValue:kRecordWaiting forKey:kRecordStatus];
+    [_submitList addObject:submitRecords];
+    [self updateRecords:submitRecords];
     self.cacheKey = nil;
     [self didFinishLoad];
 }

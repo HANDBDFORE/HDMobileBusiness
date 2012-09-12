@@ -7,7 +7,8 @@
 //
 
 #import "HDDetailToolbarViewController.h"
-
+#import "../PersonList/HDPersonListDataSource.h"
+#import "../Compose/HDMessageSingleRecipientField.h"
 @implementation HDDetailToolbarViewController
 
 #pragma mark - life cycle
@@ -18,6 +19,7 @@
     TT_RELEASE_SAFELY(_toolBarModel);
     TT_RELEASE_SAFELY(_queryActionURLTemplate);
     TT_RELEASE_SAFELY(_spaceItem);
+    [[TTNavigator navigator].URLMap removeURL:@"init://messageController"];
     [super viewDidUnload];
 }
 
@@ -38,6 +40,9 @@
         //创建toolBarmodel
         _toolBarModel = [[HDDetailToolbarModel alloc]init];
         self.model = _toolBarModel;
+        
+        [[TTNavigator navigator].URLMap from:@"init://messageController"
+                       toModalViewController:self selector:@selector(createMessageViewController:)];
     }
     return self;
 }
@@ -60,7 +65,7 @@
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    [self.listModel submitObjectAtIndexPaths:@[self.listModel.currentIndexPath] comment:text action: _toolBarModel.selectedAction];
+    [self.listModel submitRecordsAtIndexPaths:@[self.listModel.currentIndexPath] query:@{ kComments : text,kAction:_toolBarModel.selectedAction }];
     //删除动作
     [_toolBarModel removeTheActions];
     [self.navigationController popViewControllerAnimated:YES];
@@ -93,10 +98,73 @@
             [itemButtons addObject:actionButton];
             [itemButtons addObject:_spaceItem];
         }
-        [itemButtons removeLastObject];
+        //TODO:deliver
+        [itemButtons addObject:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(deliver:)] autorelease]];
+//        [itemButtons removeLastObject];
         self.toolbarItems = itemButtons;
     }    
 }
+
+-(void)deliver:(id)sender
+{
+    TTDPRINT(@"deliver");
+    [[TTNavigator navigator]openURLAction:[[TTURLAction actionWithURLPath:@"init://messageController"] applyAnimated:YES]];
+}
+
+-(UIViewController *)createMessageViewController:(NSString*)recipient
+{
+    TTDPRINT(@"create view controller :%@",recipient);
+    TTMessageController* controller = [[[TTMessageController alloc] initWithRecipients:nil] autorelease];
+    controller.title = @"deliver";
+    controller.showsRecipientPicker = YES;
+    TTMessageRecipientField * recipientField =
+    [[[HDMessageSingleRecipientField alloc] initWithTitle: TTLocalizedString(@"To:", @"")
+                                           required: YES] autorelease];
+
+    controller.fields =@[recipientField];
+
+    
+    controller.dataSource = [[[HDPersonListDataSource alloc]init] autorelease];
+    controller.delegate = self;
+    
+    return controller;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TTMessageControllerDelegate
+
+- (void)composeController:(TTMessageController*)controller didSendFields:(NSArray*)fields {
+    NSMutableArray * names = [NSMutableArray array];
+    NSString * comments = nil;
+    
+    //获取第一个单元格的第一个cell
+    for (id field in fields) {
+        if ([field isKindOfClass:[TTMessageRecipientField class]]) {
+            for (TTTableTextItem * item in [field recipients]) {
+                [names addObject:item.text];
+            }
+//            TTPickerTextField* textField = [_fieldViews objectAtIndex:i];
+//            [(TTMessageRecipientField*)field setRecipients:textField.cells];
+        } else if ([field isKindOfClass:[TTMessageTextField class]]) {
+            comments = [(TTMessageTextField *)field text];
+//            UITextField* textField = [_fieldViews objectAtIndex:i];
+//            [(TTMessageTextField*)field setText:textField.text];
+        }
+    }
+    TTDPRINT(@"did send :%@     %@" ,names,comments);
+    //获取第二个单元格的内容
+    [controller dismissModalViewControllerAnimated:YES];
+}
+
+- (void)composeControllerDidCancel:(TTMessageController*)controller {
+    TTDPRINT(@"did cancel");
+}
+
+- (void)composeControllerShowRecipientPicker:(TTMessageController*)controller {
+    TTDPRINT(@"show picker");
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 //-(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
 //{

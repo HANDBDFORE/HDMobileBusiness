@@ -135,17 +135,19 @@
     return (interfaceOrientation!=UIInterfaceOrientationPortraitUpsideDown);
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-//    [self.tableView reloadData];
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma refresh
 -(void)refreshButtonPressed:(id)sender
 {
     [self.model load:TTURLRequestCachePolicyNetwork more:NO];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark post view controller
 //toolBar button pressed
@@ -154,6 +156,7 @@
     _submitAction = ([sender tag] == 1)?@"Y":@"N";
     [self showPostView];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)showPostView
 {
@@ -162,17 +165,17 @@
     //    controller.originView = [query objectForKey:@"__target__"];
     [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"init://postController"] applyQuery: @{@"text":defaultComments, @"delegate":self, @"title":@"审批意见"}]];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
     if ([self.model isKindOfClass:[HDTodoListModel class]]) {
          NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
-        [(HDTodoListModel *)self.model submitObjectAtIndexPaths:indexPaths
-                                                        comment:text
-                                                         action:_submitAction];
+        [(HDTodoListModel *)self.model submitRecordsAtIndexPaths:indexPaths query:@{ kComments : text,kAction:_submitAction }];
     }
     [self setEditing:NO animated:YES];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark TTModel Functions
 -(void)modelDidFinishLoad:(id<TTModel>)model
