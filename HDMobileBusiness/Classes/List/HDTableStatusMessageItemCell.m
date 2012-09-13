@@ -169,6 +169,8 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
         if (item.warning) {
             if ([@"Y|y|true|1|TRUE|yes|YES" rangeOfString:item.warning].length != 0) {
                 self.titleLabel.textColor = RGBCOLOR(182, 40, 36);
+            }else{
+                self.titleLabel.textColor = [UIColor blackColor];
             }
         }
     }

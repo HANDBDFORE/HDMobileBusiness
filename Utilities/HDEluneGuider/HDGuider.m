@@ -148,7 +148,7 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
      @"text":@"${workflow_desc}",
      @"timestamp":@"${creation_date}"}
               forKeyPath:@"dataSource.cellItemMap"];
-    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_done_list.ios_done_list_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"dataSource.model.queryURL"];
+    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_done_list_test/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"dataSource.model.queryURL"];
     return controller;
 }
 

@@ -145,7 +145,7 @@
 }
 
 - (void)search:(NSString*)text {
-    if ([self.listModel performSelector:@selector(search:)]) {
+    if ([self.listModel respondsToSelector:@selector(search:)]) {
         [self.listModel search:text];
     }
 }

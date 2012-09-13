@@ -38,14 +38,14 @@
 {
     if (more) {
         _pageNum ++;
-    }
-    if (!more && [_resultList count] == 0) {
-        _pageNum =1;
+    }else {
+        _pageNum = 1;
+        [_resultList removeAllObjects];
     }
     //debug:添加对_queryUrl的nil校验，否则对nil appendding导致crash R
     if (_queryURL.length) {
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-        map.requestPath = [_queryURL stringByAppendingFormat:@"?pagesize=10&amp;pagenum=%i&amp;_fetchall=false&amp;_autocount=false",_pageNum];
+        map.requestPath = [_queryURL stringByAppendingFormat:@"?pagesize=10&pagenum=%i&_fetchall=false_autocount=false",_pageNum];
         [self requestWithMap:map];
     }
 }
@@ -74,7 +74,7 @@
 
 -(BOOL)hasNext
 {
-    return  (_currentIndex < [self effectiveRecordCount]);
+    return  (_currentIndex + 1< [self effectiveRecordCount]);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

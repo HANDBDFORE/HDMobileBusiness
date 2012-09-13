@@ -70,7 +70,7 @@ static NSString * kSQLNull = @"null";
     //第一次加载从本地加载
     if ([self shouldLoadLocalData]) {
         _flags.shouldLoadingLocalData = NO;
-        [self loadLocalRecords];
+        [self reloadResultList];
         //这里只设置loadedTime表示超时,modelViewController会调用reload方法,之后可以考虑overwrite viewController的shuldreload方法或者model的isOutdated方法
         self.loadedTime = [NSDate dateWithTimeIntervalSinceNow:0];
         self.cacheKey = nil;
@@ -82,6 +82,7 @@ static NSString * kSQLNull = @"null";
         [self submit];
     }
     if ([self shouldQuery]) {
+        //TODO:test
         _flags.isQueryingData = YES;
         [self loadRemoteRecords];
     }
@@ -96,7 +97,7 @@ static NSString * kSQLNull = @"null";
     HDResponseMap * resultMap = [[HDHTTPRequestCenter shareHTTPRequestCenter] responseMapWithRequest:request error:&error];
     //提交状态
     if (_flags.isSubmitingData) {
-        [self performSelector:@selector(didSubmitRecord:) withObject:resultMap afterDelay:0.6];
+        [self performSelector:@selector(submitResponse:) withObject:resultMap afterDelay:0.6];
         //debug:这里加入return,否则在执行完update或delete之后会改变当前状态,如果继续执行会导致,执行查询状态代码,而这个时候返回的请求实际上是提交的请求.
         return;
     }
@@ -104,13 +105,12 @@ static NSString * kSQLNull = @"null";
     if (_flags.isQueryingData) {
         _flags.isQueryingData = NO;
         _flags.shouldLoadingLocalData = YES;
-        [self refreshResultList:resultMap.result];
         if (!self.isLoadingMore) {
             self.loadedTime = request.timestamp;
             self.cacheKey = request.cacheKey;
         }
-        TT_RELEASE_SAFELY(_loadingRequest);
-        [self didFinishLoad];
+        [self performSelector:@selector(queryResponse:) withObject:resultMap afterDelay:0.6];
+        return;
     }
     [self didFinishLoad];
 }
@@ -124,7 +124,7 @@ static NSString * kSQLNull = @"null";
     _flags.shouldLoadingLocalData = YES;
 }
 
-#pragma -mark Submit data
+#pragma -mark Submit record
 -(void)submit
 {
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
@@ -136,11 +136,11 @@ static NSString * kSQLNull = @"null";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)didSubmitRecord:(HDResponseMap*) resultMap
+-(void)submitResponse:(HDResponseMap*) resultMap
 {
     TT_RELEASE_SAFELY(_loadingRequest);
     id submitObject = [resultMap.userInfo objectForKey:@"postObject"];
-    NSUInteger index = [self.resultList indexOfObject:[resultMap.userInfo objectForKey:@"postObject"]];
+    NSUInteger index = [self.resultList indexOfObject:submitObject];
     [_submitList removeObject:submitObject];
     _flags.isSubmitingData = (_submitList.count > 0);
     /////////////////////////////////////////////////////////
@@ -161,43 +161,6 @@ static NSString * kSQLNull = @"null";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
-                           query:(NSDictionary *)query
-{
-    NSMutableArray * submitRecords = [NSMutableArray array];
-    for (NSIndexPath * indexPath in indexPaths) {
-        [submitRecords addObject: [self.resultList objectAtIndex:indexPath.row]];
-    }
-    for (NSString * key in query) {
-        [submitRecords setValue:[query valueForKey:key] forKey:key];
-    }
-    
-    [submitRecords setValue:kRecordWaiting forKey:kRecordStatus];
-    [_submitList addObject:submitRecords];
-    [self updateRecords:submitRecords];
-    self.cacheKey = nil;
-    [self didFinishLoad];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#pragma mark Load local records
--(void)loadLocalRecords
-{
-    [_resultList removeAllObjects];
-    [_submitList removeAllObjects];
-    //从数据库读取数据(应该放到一个业务逻辑类中)
-    NSArray *_storageList = [[HDCoreStorage shareStorage]  query:@selector(SQLqueryToDoList:) conditions:nil];
-    for (NSDictionary *record in _storageList) {
-        [_resultList addObject:record];
-        
-        //如果是等待状态,插入提交列表
-        if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordWaiting]) {
-            [_submitList addObject:record];
-        }
-    }
-    [self setIconBageNumber];
-}
-
 #pragma -mark Load remote records
 -(void)loadRemoteRecords
 {
@@ -205,6 +168,15 @@ static NSString * kSQLNull = @"null";
     map.requestPath =  self.queryURL;
     [self requestWithMap:map];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)queryResponse:(HDResponseMap*) resultMap
+{
+    [self refreshResultList:resultMap.result];
+    TT_RELEASE_SAFELY(_loadingRequest);
+    [self didFinishLoad];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //对比传入的 result 和当前的 _resultList 生成新的结果列表
 -(void) refreshResultList:(NSArray *) responseList
@@ -217,14 +189,10 @@ static NSString * kSQLNull = @"null";
         [responseList setValue:kSQLNull forKey:kRecordServerMessage];
         [responseList setValue:kSQLNull forKey:kAction];
         [responseList setValue:kSQLNull forKey:kComments];
-        //刷新columnMap表
+        
         [self refreshColumnMap:[responseList lastObject]];
-        [self combineRecordsWithLocalRecords:self.resultList remoteRecords:responseList];
-        [self loadLocalRecords];
-
-        if ([self isSearching]) {
-            [self search:self.searchText];
-        }
+        [self refreshDataBaseWithList:responseList];
+        [self reloadResultList];
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -270,9 +238,10 @@ static NSString * kSQLNull = @"null";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)combineRecordsWithLocalRecords:(NSArray *) localRecords remoteRecords:(NSArray *) remoteRecords
+-(void)refreshDataBaseWithList:(NSArray *) remoteRecords
 {
-    if (localRecords.count == 0) {        
+    NSArray * localRecords = [self queryRecords];
+    if (localRecords.count == 0) {
         [self insertRecords:remoteRecords];
         return;
     }
@@ -295,15 +264,49 @@ static NSString * kSQLNull = @"null";
     
     [diffArray removeObjectsInArray:localSameArray];
     [diffArray setValue:kRecordDifferent forKey:kRecordStatus];
-    [diffArray setValue:@"   已在其他地方处理" forKey:kRecordServerMessage];
+    [diffArray setValue:@"已在其他地方处理" forKey:kRecordServerMessage];
     [self updateRecords:diffArray];
     
     [newArray removeObjectsInArray:remoteSameArray];
     [self insertRecords:newArray];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark Load local records
+-(void)loadLocalRecords
+{
+    [_resultList removeAllObjects];
+    [_submitList removeAllObjects];
+    //从数据库读取数据(应该放到一个业务逻辑类中)
+    NSArray *_storageList = [self queryRecords];
+    for (NSDictionary *record in _storageList) {
+        [_resultList addObject:record];
+        
+        //如果是等待状态,插入提交列表
+        if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordWaiting]) {
+            [_submitList addObject:record];
+        }
+    }
+    [self setIconBageNumber];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)reloadResultList
+{
+    if ([self isSearching]) {
+        [self search:self.searchText];
+    }else{
+        [self loadLocalRecords];
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark CoreStorage
+-(NSArray *)queryRecords
+{
+    return [[HDCoreStorage shareStorage] query:@selector(SQLqueryToDoList:)
+                                    conditions:nil];
+}
+
 -(void)updateRecords:(NSArray *) recordList
 {
     [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordList:) recordList:recordList];
@@ -353,37 +356,9 @@ static NSString * kSQLNull = @"null";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma mark Search
 -(BOOL)isSearching
 {
     return nil != self.searchText;
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-- (void)search:(NSString*)text
-{
-    [self cancel];
-
-    self.searchText = text;
-    if (self.searchText.length) {
-        [self loadLocalRecords];
-        
-        NSArray * fetchArray = [NSArray arrayWithArray:self.resultList];
-        for (id record in fetchArray) {
-            BOOL matchFlg = NO;
-            for (NSString * key in self.serachFields) {
-                matchFlg = matchFlg || [[record valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-            }
-            if (!matchFlg) {
-                [_resultList removeObject:record];
-            }
-        }
-        [self didFinishLoad];
-    } else {
-        //debug:结束查询状态时，需要清空结果列表，否则再次查询时，查询table和model数据不一致导致crash。
-        [_resultList removeAllObjects];
-        [self didChange];
-    }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -410,12 +385,71 @@ static NSString * kSQLNull = @"null";
     }] allObjects];
     [self removeRecords:differentRecords];
     
-//    _flags.isLoadingLocalData = YES;
+    //    _flags.isLoadingLocalData = YES;
     [self load:TTURLRequestCachePolicyDefault more:NO];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark ListModel Query
+- (void)search:(NSString*)text
+{
+    [self cancel];
+    self.searchText = text;
+    if (self.searchText.length) {
+        [self loadLocalRecords];
+        NSArray * fetchArray = [NSArray arrayWithArray:self.resultList];
+        //TODO:这里考虑拼接参数直接从数据库查询出来
+        for (id record in fetchArray) {
+            BOOL matchFlg = NO;
+            for (NSString * key in self.serachFields) {
+                matchFlg = matchFlg || [[record valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
+            }
+            if (!matchFlg) {
+                [_resultList removeObject:record];
+            }
+        }
+        [self didFinishLoad];
+    } else {
+        //debug:结束查询状态时，需要清空结果列表，否则再次查询时，查询table和model数据不一致导致crash。
+        [_resultList removeAllObjects];
+        [self didChange];
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma mark Page turning
+#pragma mark ListModel Submit
+-(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
+                           query:(NSDictionary *)query
+{
+    NSMutableArray * submitRecords = [NSMutableArray array];
+    for (NSIndexPath * indexPath in indexPaths) {
+        [submitRecords addObject: [self.resultList objectAtIndex:indexPath.row]];
+    }
+    for (NSString * key in query) {
+        [submitRecords setValue:[query valueForKey:key] forKey:key];
+    }
+    
+    [submitRecords setValue:kRecordWaiting forKey:kRecordStatus];
+    //debug:调用了错误的方法,不应该使用 addObject
+    [_submitList addObjectsFromArray:submitRecords];
+    [self updateRecords:submitRecords];
+    self.cacheKey = nil;
+    [self didFinishLoad];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)removeRecordAtIndex:(NSUInteger) index
+{
+    id record = [self.resultList objectAtIndex:index];
+    if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordDifferent]) {
+        //remove
+        [self removeRecords:@[record]];
+        [_resultList removeObjectAtIndex:index];
+        [self didDeleteObject:record atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma mark ListModel Vector
 -(NSUInteger)effectiveRecordCount
 {
     NSSet * resultSet = [NSSet setWithArray:self.resultList];
@@ -506,15 +540,4 @@ static NSString * kSQLNull = @"null";
     return hasPrevRecord;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)removeRecordAtIndex:(NSUInteger) index
-{
-    id record = [self.resultList objectAtIndex:index];
-    if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordDifferent]) {
-        //remove
-        [self removeRecords:@[record]];
-        [_resultList removeObjectAtIndex:index];
-        [self didDeleteObject:record atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-    }
-}
 @end
