@@ -7,17 +7,13 @@
 //
 
 #import "HDURLRequestModel.h"
+#import "HDListModel.h"
 
-@interface HDPersonListModel : HDURLRequestModel
+@interface HDPersonListModel : HDURLRequestModel<HDListModelQuery>
 {
     NSMutableArray * _resultList;
 }
 
-@property(nonatomic,readonly) NSArray * resultList;
-
 @property(nonatomic,copy) NSString * queryURL;
-
-//查询
-- (void)search:(NSString*)text;
 
 @end

@@ -31,6 +31,9 @@
     
     [navigator.URLMap from:@"init://HDUserGuideViewController" toSharedViewController:[HDUserGuideViewController class]];
     
+    //TODO:暂时注册部分class到这里
+    [navigator.URLMap from:@"init://messageController" toModalViewController:[TTMessageController class]];
+    
     if(![navigator restoreViewControllers])
     {
         if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {

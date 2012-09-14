@@ -9,11 +9,12 @@
 #import "HDPersonListDataSource.h"
 
 @implementation HDPersonListDataSource
-@synthesize personListModel = _personListModel;
+@synthesize listModel = _listModel;
+@synthesize itemDictionary = _itemDictionary;
 
 - (void)dealloc
 {
-    TT_RELEASE_SAFELY(_personListModel);
+    TT_RELEASE_SAFELY(_itemDictionary)
     [super dealloc];
 }
 
@@ -21,8 +22,13 @@
 {
     self = [super init];
     if (self) {
-        _personListModel = [[HDPersonListModel alloc]init];
-        self.model = _personListModel;
+        HDPersonListModel * model = [[[HDPersonListModel alloc]init] autorelease];
+        self.model = model;
+        self.listModel = model;
+        self.itemDictionary =
+        @{ @"text" : @"text",
+        @"subtitle":@"subtitle",
+        @"userInfo":@"userInfo"};
     }
     return self;
 }
@@ -30,16 +36,34 @@
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
     self.items = [NSMutableArray array];
-    
-    for (NSString* name in _personListModel.resultList) {
-        TTTableItem* item = [TTTableTextItem itemWithText:name URL:@"http://google.com"];
-        item.userInfo = @"1024";
+    for (NSDictionary * record in self.listModel.resultList) {
+        NSString * text = [self createCellItemWithTemplete:[self.itemDictionary valueForKey: @"text"] query:record];
+        NSString * subtitle = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"subtitle"] query:record];
+        NSString * userInfo = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"userInfo"] query:record];
+        
+        TTTableSubtitleItem * item = [TTTableSubtitleItem itemWithText:text subtitle:subtitle];
+        item.userInfo = userInfo;
         [_items addObject:item];
     }
 }
 
+-(NSString *)createCellItemWithTemplete:(NSString *) templete
+                                  query:(NSDictionary *)query
+{
+    NSEnumerator * e = [query keyEnumerator];
+    for (NSString * key; (key = [e nextObject]);) {
+        NSString * replaceString = [NSString stringWithFormat:@"${%@}",key];
+        NSString * valueString = [NSString stringWithFormat:@"%@",[query valueForKey:key]];
+        
+        templete = [templete stringByReplacingOccurrencesOfString:replaceString withString:valueString];
+    }
+    return templete;
+}
+
 -(void)search:(NSString *)text
 {
-    [_personListModel search:text];
+    if ([self.listModel respondsToSelector:@selector(search:)]){
+        [self.listModel search:text];
+    }
 }
 @end

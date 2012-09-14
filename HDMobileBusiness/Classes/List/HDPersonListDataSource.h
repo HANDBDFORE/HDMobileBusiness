@@ -7,8 +7,12 @@
 //
 
 #import "HDPersonListModel.h"
+
 @interface HDPersonListDataSource : TTListDataSource
 
-@property(nonatomic,readonly) HDPersonListModel * personListModel;
+@property(nonatomic,assign) id<HDListModelQuery> listModel;
+
+//item字典，描述如何从record中获取数据设置到item中 
+@property(nonatomic,retain) NSDictionary * itemDictionary;
 
 @end
