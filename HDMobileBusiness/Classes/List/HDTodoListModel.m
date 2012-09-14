@@ -82,7 +82,6 @@ static NSString * kSQLNull = @"null";
         [self submit];
     }
     if ([self shouldQuery]) {
-        //TODO:test
         _flags.isQueryingData = YES;
         [self loadRemoteRecords];
     }
@@ -189,6 +188,7 @@ static NSString * kSQLNull = @"null";
         [responseList setValue:kSQLNull forKey:kRecordServerMessage];
         [responseList setValue:kSQLNull forKey:kAction];
         [responseList setValue:kSQLNull forKey:kComments];
+        [responseList setValue:kSQLNull forKey:kEmployeeID];
         
         [self refreshColumnMap:[responseList lastObject]];
         [self refreshDataBaseWithList:responseList];
@@ -418,20 +418,32 @@ static NSString * kSQLNull = @"null";
 
 #pragma mark ListModel Submit
 -(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
-                           query:(NSDictionary *)query
+                      dictionary:(NSDictionary *)dictionary
 {
     NSMutableArray * submitRecords = [NSMutableArray array];
     for (NSIndexPath * indexPath in indexPaths) {
         [submitRecords addObject: [self.resultList objectAtIndex:indexPath.row]];
     }
-    for (NSString * key in query) {
-        [submitRecords setValue:[query valueForKey:key] forKey:key];
-    }
-    
-    [submitRecords setValue:kRecordWaiting forKey:kRecordStatus];
+    [self submitRecords:submitRecords dictionary:dictionary];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary
+{
+    [self submitRecords:@[[_resultList objectAtIndex:_currentIndex]]
+             dictionary:dictionary];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)submitRecords:(NSArray *)records dictionary:(NSDictionary *)dictionary
+{
+    for (NSString * key in dictionary) {
+        [records setValue:[dictionary valueForKey:key] forKey:key];
+    }    
+    [records setValue:kRecordWaiting forKey:kRecordStatus];
     //debug:调用了错误的方法,不应该使用 addObject
-    [_submitList addObjectsFromArray:submitRecords];
-    [self updateRecords:submitRecords];
+    [_submitList addObjectsFromArray:records];
+    [self updateRecords:records];
     self.cacheKey = nil;
     [self didFinishLoad];
 }

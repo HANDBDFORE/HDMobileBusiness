@@ -34,7 +34,9 @@ static NSString * kEmployeeID = @"employee_id";
 
 //提交IndexPath指定的记录，提交参数通过query传递
 -(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
-                           query:(NSDictionary *)query;
+                      dictionary:(NSDictionary *)dictionary;
+
+-(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary;
 
 @end
 
@@ -47,7 +49,7 @@ static NSString * kEmployeeID = @"employee_id";
 @required
 
 //获取当前记录的indexPah
--(NSIndexPath *) currentIndexPath;
+//-(NSIndexPath *) currentIndexPath;
 
 //获取当前selectedIndex对应resultList中的纪录
 -(id)current;
