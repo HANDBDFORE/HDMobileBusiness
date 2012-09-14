@@ -15,6 +15,8 @@
 
 @property(nonatomic,readonly) NSArray * resultList;
 
+@property(nonatomic,copy) NSString * queryURL;
+
 //查询
 - (void)search:(NSString*)text;
 

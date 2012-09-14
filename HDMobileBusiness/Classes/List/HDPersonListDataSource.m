@@ -33,6 +33,7 @@
     
     for (NSString* name in _personListModel.resultList) {
         TTTableItem* item = [TTTableTextItem itemWithText:name URL:@"http://google.com"];
+        item.userInfo = @"1024";
         [_items addObject:item];
     }
 }

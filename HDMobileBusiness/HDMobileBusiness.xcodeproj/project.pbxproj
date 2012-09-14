@@ -32,8 +32,6 @@
 		B30376A31600890600238923 /* HDFunctionListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A01600890600238923 /* HDFunctionListDataSource.m */; };
 		B30376A41600890600238923 /* HDFunctionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A11600890600238923 /* HDFunctionListViewController.m */; };
 		B30376A51600890600238923 /* HDTableConfirmViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A21600890600238923 /* HDTableConfirmViewCell.m */; };
-		B307FDF215FF307800EA5133 /* HDPersonListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B307FDF115FF307800EA5133 /* HDPersonListDataSource.m */; };
-		B307FDF515FF30A500EA5133 /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B307FDF415FF30A500EA5133 /* HDPersonListModel.m */; };
 		B30BF63E15EC95A200DB83E9 /* HDSingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */; };
 		B31E2ECC15C65BAA00880514 /* HDGodXMLFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ECB15C65BAA00880514 /* HDGodXMLFactory.m */; };
 		B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */; };
@@ -251,6 +249,8 @@
 		B3D0977B15DB91E000C3495D /* HDGuiderMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977915DB91E000C3495D /* HDGuiderMap.m */; };
 		B3D0977E15DBA64400C3495D /* HDResponseMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977D15DBA64300C3495D /* HDResponseMap.m */; };
 		B3D4E20315E60AD80061ED4D /* HDXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E20215E60AD80061ED4D /* HDXMLParser.m */; };
+		B3D71B8416030344004E1BFD /* HDPersonListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */; };
+		B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8316030344004E1BFD /* HDPersonListModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -452,10 +452,6 @@
 		B30376A01600890600238923 /* HDFunctionListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDFunctionListDataSource.m; path = Classes/List/HDFunctionListDataSource.m; sourceTree = SOURCE_ROOT; };
 		B30376A11600890600238923 /* HDFunctionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDFunctionListViewController.m; path = Classes/List/HDFunctionListViewController.m; sourceTree = SOURCE_ROOT; };
 		B30376A21600890600238923 /* HDTableConfirmViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTableConfirmViewCell.m; path = Classes/List/HDTableConfirmViewCell.m; sourceTree = SOURCE_ROOT; };
-		B307FDF015FF307700EA5133 /* HDPersonListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDPersonListDataSource.h; path = Classes/PersonList/HDPersonListDataSource.h; sourceTree = "<group>"; };
-		B307FDF115FF307800EA5133 /* HDPersonListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDPersonListDataSource.m; path = Classes/PersonList/HDPersonListDataSource.m; sourceTree = "<group>"; };
-		B307FDF315FF30A400EA5133 /* HDPersonListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDPersonListModel.h; path = Classes/PersonList/HDPersonListModel.h; sourceTree = "<group>"; };
-		B307FDF415FF30A500EA5133 /* HDPersonListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDPersonListModel.m; path = Classes/PersonList/HDPersonListModel.m; sourceTree = "<group>"; };
 		B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSingletonObject.m; sourceTree = "<group>"; };
 		B31E2ECA15C65BAA00880514 /* HDGodXMLFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGodXMLFactory.h; sourceTree = "<group>"; };
 		B31E2ECB15C65BAA00880514 /* HDGodXMLFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGodXMLFactory.m; sourceTree = "<group>"; };
@@ -743,6 +739,10 @@
 		B3D0977D15DBA64300C3495D /* HDResponseMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDResponseMap.m; sourceTree = "<group>"; };
 		B3D4E20115E60AD80061ED4D /* HDXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDXMLParser.h; sourceTree = "<group>"; };
 		B3D4E20215E60AD80061ED4D /* HDXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDXMLParser.m; sourceTree = "<group>"; };
+		B3D71B8016030343004E1BFD /* HDPersonListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDPersonListDataSource.h; path = Classes/List/HDPersonListDataSource.h; sourceTree = "<group>"; };
+		B3D71B8116030343004E1BFD /* HDPersonListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDPersonListModel.h; path = Classes/List/HDPersonListModel.h; sourceTree = "<group>"; };
+		B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDPersonListDataSource.m; path = Classes/List/HDPersonListDataSource.m; sourceTree = "<group>"; };
+		B3D71B8316030344004E1BFD /* HDPersonListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDPersonListModel.m; path = Classes/List/HDPersonListModel.m; sourceTree = "<group>"; };
 		B3E06E2B15D4F388002A54BE /* TodoListUI.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = TodoListUI.rtfd; path = Requirement/TodoList/TodoListUI.rtfd; sourceTree = "<group>"; };
 		B3E06E2C15D4FFC8002A54BE /* TodoListModel.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = TodoListModel.rtf; path = Requirement/TodoList/TodoListModel.rtf; sourceTree = "<group>"; };
 		B3E06E3015D509F1002A54BE /* ErrorMessage.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ErrorMessage.rtf; sourceTree = "<group>"; };
@@ -860,10 +860,10 @@
 		B307FDEC15FF2F8E00EA5133 /* PersonList */ = {
 			isa = PBXGroup;
 			children = (
-				B307FDF015FF307700EA5133 /* HDPersonListDataSource.h */,
-				B307FDF115FF307800EA5133 /* HDPersonListDataSource.m */,
-				B307FDF315FF30A400EA5133 /* HDPersonListModel.h */,
-				B307FDF415FF30A500EA5133 /* HDPersonListModel.m */,
+				B3D71B8016030343004E1BFD /* HDPersonListDataSource.h */,
+				B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */,
+				B3D71B8116030343004E1BFD /* HDPersonListModel.h */,
+				B3D71B8316030344004E1BFD /* HDPersonListModel.m */,
 			);
 			name = PersonList;
 			sourceTree = "<group>";
@@ -2043,8 +2043,6 @@
 				B3D0977E15DBA64400C3495D /* HDResponseMap.m in Sources */,
 				B3D4E20315E60AD80061ED4D /* HDXMLParser.m in Sources */,
 				B30BF63E15EC95A200DB83E9 /* HDSingletonObject.m in Sources */,
-				B307FDF215FF307800EA5133 /* HDPersonListDataSource.m in Sources */,
-				B307FDF515FF30A500EA5133 /* HDPersonListModel.m in Sources */,
 				B303763E1600303E00238923 /* HDMessageSingleRecipientField.m in Sources */,
 				B3037641160049D400238923 /* HDSinglePickerTextFiled.m in Sources */,
 				B303768C1600883D00238923 /* HDBaseTodoListViewController.m in Sources */,
@@ -2061,6 +2059,8 @@
 				B30376A31600890600238923 /* HDFunctionListDataSource.m in Sources */,
 				B30376A41600890600238923 /* HDFunctionListViewController.m in Sources */,
 				B30376A51600890600238923 /* HDTableConfirmViewCell.m in Sources */,
+				B3D71B8416030344004E1BFD /* HDPersonListDataSource.m in Sources */,
+				B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,6 @@
 //
 
 #import "HDPersonListModel.h"
-
 @interface HDPersonListDataSource : TTListDataSource
 
 @property(nonatomic,readonly) HDPersonListModel * personListModel;
