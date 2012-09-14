@@ -166,7 +166,9 @@
     //TODO:获取默认审批内容使用常量，常量定义位置未定,考虑使用一个全局常量头文件
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     //    controller.originView = [query objectForKey:@"__target__"];
-    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"init://postController"] applyQuery: @{@"text":defaultComments, @"delegate":self, @"title":@"审批意见"}]];
+    [[HDGuider guider] guideToKeyPath:@"POST_VC_PATH"
+                                query:@{@"text":defaultComments, @"delegate":self, @"title":@"审批意见"}
+                             animated:NO];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -174,7 +176,7 @@
 {
     NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
     [self.listModel submitRecordsAtIndexPaths:indexPaths
-                                        query:@{kComments:text,kAction:_submitAction}];
+                                   dictionary:@{kComments:text,kAction:_submitAction}];
 
     [self setEditing:NO animated:YES];
 }

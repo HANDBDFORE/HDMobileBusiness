@@ -19,8 +19,8 @@
  *使用 [TTNavigator navigator]openURLAction: 打开
  */
 -(UIViewController *)guideToKeyPath:(NSString *) keyPath
-                              query:(NSDictionary *)query;
-
+                              query:(NSDictionary *)query
+                           animated:(BOOL) animated;
 
 /*
  *创建到指定keyPathName对应的视图控制器.

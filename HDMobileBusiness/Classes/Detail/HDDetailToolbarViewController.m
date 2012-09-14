@@ -7,7 +7,7 @@
 //
 
 #import "HDDetailToolbarViewController.h"
-#import "../PersonList/HDPersonListDataSource.h"
+#import "../List/HDPersonListDataSource.h"
 #import "../Compose/HDMessageSingleRecipientField.h"
 @implementation HDDetailToolbarViewController
 
@@ -19,7 +19,6 @@
     TT_RELEASE_SAFELY(_toolBarModel);
     TT_RELEASE_SAFELY(_queryActionURLTemplate);
     TT_RELEASE_SAFELY(_spaceItem);
-    [[TTNavigator navigator].URLMap removeURL:@"init://messageController"];
     [super viewDidUnload];
 }
 
@@ -40,9 +39,6 @@
         //创建toolBarmodel
         _toolBarModel = [[HDDetailToolbarModel alloc]init];
         self.model = _toolBarModel;
-        
-        [[TTNavigator navigator].URLMap from:@"init://messageController"
-                       toModalViewController:self selector:@selector(createMessageViewController:)];
     }
     return self;
 }
@@ -59,15 +55,14 @@
     //点击后打开模态视图
     //    controller.originView = [query objectForKey:@"__target__"];
     NSDictionary * query = [NSDictionary dictionaryWithObjectsAndKeys:defaultText, @"text",self,@"delegate",nil];
-    [[TTNavigator navigator]openURLAction:[[TTURLAction actionWithURLPath:@"init://postController"]applyQuery:query]];
+    [[HDGuider guider] guideToKeyPath:@"POST_VC_PATH" query:query animated:YES];
     //    [self showOpinionView:0];
 }
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    if ([self.listModel respondsToSelector:@selector(submitRecordsAtIndexPaths:query:)]) {
-        [self.listModel submitRecordsAtIndexPaths:@[self.listModel.currentIndexPath]
-                                            query:@{kComments:text,kAction:_toolBarModel.selectedAction}];
+    if ([self.listModel respondsToSelector:@selector(submitRecordsAtIndexPaths:dictionary:)]) {
+        [self.listModel submitCurrentRecordWithDictionary:@{kComments:text,kAction:_toolBarModel.selectedAction}];
         //删除动作
         [_toolBarModel removeTheActions];
     }
@@ -110,53 +105,44 @@
 
 -(void)deliver:(id)sender
 {
-    TTDPRINT(@"deliver");
-    [[TTNavigator navigator]openURLAction:[[TTURLAction actionWithURLPath:@"init://messageController"] applyAnimated:YES]];
-}
-
--(UIViewController *)createMessageViewController:(NSString*)recipient
-{
-    TTDPRINT(@"create view controller :%@",recipient);
-    TTMessageController* controller = [[[TTMessageController alloc] initWithRecipients:nil] autorelease];
-    controller.title = @"deliver";
-    controller.showsRecipientPicker = YES;
     TTMessageRecipientField * recipientField =
     [[[HDMessageSingleRecipientField alloc] initWithTitle: TTLocalizedString(@"To:", @"")
-                                           required: YES] autorelease];
-
-    controller.fields =@[recipientField];
-
+                                                 required: YES] autorelease];
     
-    controller.dataSource = [[[HDPersonListDataSource alloc]init] autorelease];
-    controller.delegate = self;
+    NSDictionary * query =
+    @{@"delegate":self,
+    @"fields":@[recipientField],
+    @"dataSource":[[[HDPersonListDataSource alloc]init] autorelease]
+    };
     
-    return controller;
+    [[HDGuider guider] guideToKeyPath:@"MESSAGE_VC_PATH"
+                                query:query
+                             animated:YES];
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTMessageControllerDelegate
 
 - (void)composeController:(TTMessageController*)controller didSendFields:(NSArray*)fields {
-    NSMutableArray * names = [NSMutableArray array];
-    NSString * comments = nil;
+    NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
     
-    //获取第一个单元格的第一个cell
     for (id field in fields) {
+        //获取第一个单元格的第一个cell
         if ([field isKindOfClass:[TTMessageRecipientField class]]) {
             for (TTTableTextItem * item in [field recipients]) {
-                [names addObject:item.text];
+                [dictionary setValue:item.userInfo forKeyPath:kEmployeeID];
             }
-//            TTPickerTextField* textField = [_fieldViews objectAtIndex:i];
-//            [(TTMessageRecipientField*)field setRecipients:textField.cells];
+            //获取第二个单元格的内容
         } else if ([field isKindOfClass:[TTMessageTextField class]]) {
-            comments = [(TTMessageTextField *)field text];
-//            UITextField* textField = [_fieldViews objectAtIndex:i];
-//            [(TTMessageTextField*)field setText:textField.text];
+            [dictionary  setValue:[(TTMessageTextField *)field text] forKeyPath:kComments];
         }
     }
-    TTDPRINT(@"did send :%@     %@" ,names,comments);
-    //获取第二个单元格的内容
+    [dictionary setValue:@"D" forKeyPath:kAction];
+    TTDPRINT(@"did send :%@",dictionary);
+    [self.listModel submitCurrentRecordWithDictionary:dictionary];
+    
     [controller dismissModalViewControllerAnimated:YES];
+    //如何pop出去不会crash
+    [self.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@"YES" afterDelay:0.5];
 }
 
 - (void)composeControllerDidCancel:(TTMessageController*)controller {
