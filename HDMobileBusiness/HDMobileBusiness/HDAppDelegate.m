@@ -12,7 +12,7 @@
 #import "HDDefaultStyleSheet.h"
 #import "HDLoadingViewController.h"
 #import "HDUserGuideViewController.h"
-
+#import "../Classes/Compose/HDDeliverViewController.h"
 @implementation HDAppDelegate
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application
@@ -32,7 +32,8 @@
     [navigator.URLMap from:@"init://HDUserGuideViewController" toSharedViewController:[HDUserGuideViewController class]];
     
     //TODO:暂时注册部分class到这里
-    [navigator.URLMap from:@"init://messageController" toModalViewController:[TTMessageController class]];
+    [navigator.URLMap from:@"init://deliverViewController" toModalViewController:[HDDeliverViewController class]];
+    
     
     if(![navigator restoreViewControllers])
     {

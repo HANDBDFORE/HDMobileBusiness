@@ -103,8 +103,8 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
             return [self configDoneListDetialViewController:
                     [self configViewController:controller query:query]];
         }
-        if ([keyPath isEqualToString:@"MESSAGE_VC_PATH"]) {
-            return [self configMessageViewController:
+        if ([keyPath isEqualToString:@"DELIVER_VC_PATH"]) {
+            return [self configDeliverViewController:
                     [self configViewController:controller
                                          query:query]];
         }
@@ -178,15 +178,13 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
 }
 
 //选人界面
--(UIViewController *)configMessageViewController:(UIViewController *) controller
+-(UIViewController *)configDeliverViewController:(UIViewController *) controller
 {
     [controller setValue:@"转交[配置]" forKeyPath:@"title"];
     //是否显示+号，可以点加号通过列表选人
     [controller setValue:@0 forKeyPath:@"showsRecipientPicker"];
     [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_deliver.ios_wprkflow_deliver_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"dataSource.model.queryURL"];
     [controller setValue:@{ @"text" : @"${name}",@"subtitle":@"${position_name}",@"userInfo":@"${employee_id}"} forKeyPath: @"dataSource.itemDictionary"];
-
-    [controller loadView];
     return controller;
 }
 
@@ -229,7 +227,7 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     @"TOOLBAR_DETIAL_VC_PATH":@"init://toolbarDetailViewController",
     @"DETIAL_VC_PATH":@"init://detailViewController",
     @"POST_VC_PATH":@"init://postController",
-    @"MESSAGE_VC_PATH":@"init://messageController"};
+    @"DELIVER_VC_PATH":@"init://deliverViewController"};
     //realase
 //    @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
 //    @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",

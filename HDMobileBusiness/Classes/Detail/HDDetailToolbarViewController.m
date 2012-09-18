@@ -8,7 +8,7 @@
 
 #import "HDDetailToolbarViewController.h"
 #import "../List/HDPersonListDataSource.h"
-#import "../Compose/HDMessageSingleRecipientField.h"
+//#import "../Compose/HDMessageSingleRecipientField.h"
 @implementation HDDetailToolbarViewController
 
 #pragma mark - life cycle
@@ -50,6 +50,7 @@
     //设置当前审批动作
     _toolBarModel.selectedAction = [NSString stringWithFormat:@"%i",[sender tag]];
     //准备默认审批内容
+    //TODO:考虑由guider获取,包括baseURL
     NSString *defaultText = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     //block
     //点击后打开模态视图
@@ -116,17 +117,12 @@
 #pragma -mark deliver
 -(void)deliver:(id)sender
 {
-    TTMessageRecipientField * recipientField =
-    [[[HDMessageSingleRecipientField alloc] initWithTitle: TTLocalizedString(@"To:", @"")
-                                                 required: YES] autorelease];
-    
     NSDictionary * query =
     @{@"delegate":self,
-    @"fields":@[recipientField],
+    @"body": [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"],
     @"dataSource":[[[HDPersonListDataSource alloc]init] autorelease]
     };
-    
-    [[HDGuider guider] guideToKeyPath:@"MESSAGE_VC_PATH"
+    [[HDGuider guider] guideToKeyPath:@"DELIVER_VC_PATH"
                                 query:query
                              animated:YES];
 }

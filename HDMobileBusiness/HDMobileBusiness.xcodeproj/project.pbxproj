@@ -251,6 +251,7 @@
 		B3D4E20315E60AD80061ED4D /* HDXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E20215E60AD80061ED4D /* HDXMLParser.m */; };
 		B3D71B8416030344004E1BFD /* HDPersonListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */; };
 		B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8316030344004E1BFD /* HDPersonListModel.m */; };
+		B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -743,6 +744,8 @@
 		B3D71B8116030343004E1BFD /* HDPersonListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDPersonListModel.h; path = Classes/List/HDPersonListModel.h; sourceTree = "<group>"; };
 		B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDPersonListDataSource.m; path = Classes/List/HDPersonListDataSource.m; sourceTree = "<group>"; };
 		B3D71B8316030344004E1BFD /* HDPersonListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDPersonListModel.m; path = Classes/List/HDPersonListModel.m; sourceTree = "<group>"; };
+		B3D9EFE51608594D00454A5E /* HDDeliverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeliverViewController.h; path = Classes/Compose/HDDeliverViewController.h; sourceTree = "<group>"; };
+		B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDDeliverViewController.m; path = Classes/Compose/HDDeliverViewController.m; sourceTree = "<group>"; };
 		B3E06E2B15D4F388002A54BE /* TodoListUI.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = TodoListUI.rtfd; path = Requirement/TodoList/TodoListUI.rtfd; sourceTree = "<group>"; };
 		B3E06E2C15D4FFC8002A54BE /* TodoListModel.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = TodoListModel.rtf; path = Requirement/TodoList/TodoListModel.rtf; sourceTree = "<group>"; };
 		B3E06E3015D509F1002A54BE /* ErrorMessage.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ErrorMessage.rtf; sourceTree = "<group>"; };
@@ -853,6 +856,8 @@
 				B303763D1600303E00238923 /* HDMessageSingleRecipientField.m */,
 				B303763F160049D300238923 /* HDSinglePickerTextFiled.h */,
 				B3037640160049D400238923 /* HDSinglePickerTextFiled.m */,
+				B3D9EFE51608594D00454A5E /* HDDeliverViewController.h */,
+				B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */,
 			);
 			name = Compose;
 			sourceTree = "<group>";
@@ -2061,6 +2066,7 @@
 				B30376A51600890600238923 /* HDTableConfirmViewCell.m in Sources */,
 				B3D71B8416030344004E1BFD /* HDPersonListDataSource.m in Sources */,
 				B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */,
+				B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
