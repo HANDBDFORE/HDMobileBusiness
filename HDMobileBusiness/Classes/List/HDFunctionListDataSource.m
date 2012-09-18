@@ -34,8 +34,7 @@
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
     if (!self.queryURL) {
-        [_loadedTime release];
-        _loadedTime = [[NSDate dateWithTimeIntervalSinceNow:0] retain];
+        self.loadedTime = [NSDate dateWithTimeIntervalSinceNow:0];
         self.cacheKey = @"local items";
         [self didFinishLoad];
     }else{
@@ -158,7 +157,7 @@
 -(void)addLogoutItem
 {
     NSString * userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
-    HDTableConfirmViewCell * logoutCell = [[HDTableConfirmViewCell alloc]initWithlableText:userName buttonTitle:TTLocalizedString(@"Logout", @"注销")];
+    HDTableConfirmViewCell * logoutCell = [[[HDTableConfirmViewCell alloc]initWithlableText:userName buttonTitle:TTLocalizedString(@"Logout", @"注销")] autorelease];
     [logoutCell addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.sections addObject:[TTTableSection sectionWithHeaderTitle:@" " footerTitle:nil]];

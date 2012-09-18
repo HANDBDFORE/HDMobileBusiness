@@ -19,7 +19,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.fields = @[[[HDMessageSingleRecipientField alloc] initWithTitle: TTLocalizedString(@"To:", @"") required: YES]];
+        self.fields = @[[[[HDMessageSingleRecipientField alloc] initWithTitle: TTLocalizedString(@"To:", @"") required: YES]autorelease]];
     }
     return self;
 }

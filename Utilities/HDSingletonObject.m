@@ -22,7 +22,7 @@ static NSMutableDictionary * _gSingletonMap;
     @synchronized(self){
         if ([_gSingletonMap valueForKey:className] == nil)
         {
-            id object = [[self alloc] init];
+            id object = [[[self alloc] init] autorelease];
             [_gSingletonMap setObject:object forKey:className];
         }
     }
