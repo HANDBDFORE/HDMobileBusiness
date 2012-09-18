@@ -109,9 +109,6 @@
             
             NSString * URL = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"URL"] query:record];
             
-//            NSString *prefix = [[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"];
-//            NSString *url = [NSString stringWithFormat:@"%@%@",prefix,URL];
-            
             TTTableImageItem * imageItem =
             [TTTableImageItem itemWithText:text
                                   imageURL:imageURL
@@ -143,60 +140,35 @@
 
 -(void)addBasicItems{
     TTTableImageItem * todoListItem =
-    [TTTableImageItem itemWithText:@"待办事项"
+    [TTTableImageItem itemWithText:TTLocalizedString(@"Todo List", @"待办事项")
                           imageURL:@"bundle://mailclosed.png"
                                URL:@"guide://createViewControler/TODO_LIST_VC_PATH"];
     todoListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
     
    TTTableImageItem * doneListItem =
-    [TTTableImageItem itemWithText:@"审批完成"
+    [TTTableImageItem itemWithText:TTLocalizedString(@"Approved List", @"审批完成")
                           imageURL:@"bundle://mailopened.png"
                                URL:@"guide://createViewControler/DONE_LIST_VC_PATH"];
     doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
     
-    [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:@"审批" footerTitle:nil] atIndex:0];
+    [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:TTLocalizedString(@"Approve", @"审批") footerTitle:nil] atIndex:0];
     [self.items insertObject:@[todoListItem,doneListItem] atIndex:0];
 }
 
 -(void)addLogoutItem
 {
     NSString * userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
-    HDTableConfirmViewCell * logoutCell = [[HDTableConfirmViewCell alloc]initWithlableText:userName buttonTitle:@"注销"];
+    HDTableConfirmViewCell * logoutCell = [[HDTableConfirmViewCell alloc]initWithlableText:userName buttonTitle:TTLocalizedString(@"Logout", @"注销")];
     [logoutCell addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.sections addObject:[TTTableSection sectionWithHeaderTitle:@" " footerTitle:nil]];
     [self.items addObject:@[logoutCell]];
 }
 
-//TODO:注销，目前先复制原来的退出功能，之后改为退回到登录界面
 -(void) logout:(id) sender
 {
-    TTDPRINT(@"logout");
-    [self performAnimationAndClean];
-
-}
-
--(void)performAnimationAndClean{
-    UIWindow * window = [[UIApplication sharedApplication].windows objectAtIndex:0];
-    CALayer *animationLayer = window.layer;
-    //动画处理
-    [UIView animateWithDuration:0.3 animations:^{
-        
-        animationLayer.affineTransform =CGAffineTransformMakeScale(1, 0.005);
-        animationLayer.backgroundColor = [[UIColor whiteColor]CGColor];
-    }
-                     completion:^(BOOL isFinished){
-                         if (isFinished) {
-                             [UIView animateWithDuration:0.2 animations:^{
-                                 animationLayer.affineTransform = CGAffineTransformScale(animationLayer.affineTransform, 0.001, 1);
-                             } completion:^(BOOL isAllFinished){
-                                 if (isAllFinished) {
-                                     [self clearDatas];
-                                     exit(0);
-                                 }
-                             }];
-                         }
-                     }];
+    [self clearDatas];
+    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
 }
 
 -(void)clearDatas{
@@ -208,7 +180,6 @@
     
     //删除本地数据库
     [[HDCoreStorage shareStorage] excute:@selector(SQLCleanTable:) recordList:nil];
-    
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 

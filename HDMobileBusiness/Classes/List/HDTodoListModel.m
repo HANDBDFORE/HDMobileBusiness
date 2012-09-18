@@ -397,7 +397,6 @@ static NSString * kSQLNull = @"null";
     if (self.searchText.length) {
         [self loadLocalRecords];
         NSArray * fetchArray = [NSArray arrayWithArray:self.resultList];
-        //TODO:这里考虑拼接参数直接从数据库查询出来
         for (id record in fetchArray) {
             BOOL matchFlg = NO;
             for (NSString * key in self.serachFields) {

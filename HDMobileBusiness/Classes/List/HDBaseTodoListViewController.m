@@ -45,21 +45,21 @@
 -(void)loadView
 {
     [super loadView];
-    _acceptButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"同意" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)]; 
+    _acceptButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Accept", @"同意") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)]; 
     _acceptButtonItem.width = 120;
     _acceptButtonItem.tintColor = RGBCOLOR(0, 153, 0);
     _acceptButtonItem.tag = 1;
     ////////////////////////////////////////////////////////////////////////////////
 /////////////////////
     
-    _refuseButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
+    _refuseButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Refuse", @"拒绝") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
     _refuseButtonItem.width = 120;
     _refuseButtonItem.tintColor = RGBCOLOR(153, 0, 0);
     _refuseButtonItem.tag = 0;
     ////////////////////////////////////////////////////////////////////////////////
 /////////////////////
     
-    _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"清理" style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
+    _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Clear", @"清理") style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
     ////////////////////////////////////////////////////////////////////////////////
 /////////////////////
     
@@ -100,20 +100,20 @@
 #pragma  -mark toolbar Buttons
 -(void)resetButtonTitle
 {
-    _acceptButtonItem.title = @"同意";
+    _acceptButtonItem.title = TTLocalizedString(@"Accept", @"同意");
     _acceptButtonItem.enabled = NO;
     
-    _refuseButtonItem.title = @"拒绝";
+    _refuseButtonItem.title = TTLocalizedString(@"Refuse", @"拒绝");
     _refuseButtonItem.enabled = NO;
 }
 
 -(void)setToolbarButtonTitleWithCount:(NSNumber *)count
 {
     if (count.intValue >0) {
-        _refuseButtonItem.title = [NSString stringWithFormat:@"拒绝(%@)",count];
-        _refuseButtonItem.enabled = YES;
-        _acceptButtonItem.title = [NSString stringWithFormat:@"同意(%@)",count];
+        _acceptButtonItem.title = [NSString stringWithFormat:@"%@(%@)",TTLocalizedString(@"Accept", @"同意"),count];
         _acceptButtonItem.enabled = YES;
+        _refuseButtonItem.title = [NSString stringWithFormat:@"%@(%@)",TTLocalizedString(@"Refuse", @"拒绝"),count];
+        _refuseButtonItem.enabled = YES;
     }
     else {
         [self resetButtonTitle]; 
@@ -125,9 +125,9 @@
     [super setEditing:editing animated:animated];
     [self resetButtonTitle];
     if(editing){
-        self.editButtonItem.title = @"取消";
+        self.editButtonItem.title = TTLocalizedString(@"Cancel", @"取消");
     }else {
-        self.editButtonItem.title = @"批量";
+        self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
     }
 }
 
@@ -167,8 +167,9 @@
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     //    controller.originView = [query objectForKey:@"__target__"];
     [[HDGuider guider] guideToKeyPath:@"POST_VC_PATH"
-                                query:@{@"text":defaultComments, @"delegate":self, @"title":@"审批意见"}
+                                query:@{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")}
                              animated:NO];
+    
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
