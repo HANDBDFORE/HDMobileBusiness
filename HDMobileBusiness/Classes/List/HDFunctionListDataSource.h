@@ -20,6 +20,6 @@
 @interface HDFunctionListDataSource : TTSectionedDataSource
 
 @property(nonatomic,assign) id<HDListModelQuery> listModel;
-@property(nonatomic,retain) NSDictionary * cellItemMap;
+@property(nonatomic,retain) NSDictionary * itemDictionary;
 
 @end

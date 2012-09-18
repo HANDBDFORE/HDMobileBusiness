@@ -61,11 +61,11 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation HDFunctionListDataSource
 @synthesize listModel = _listModel;
-@synthesize cellItemMap = _cellItemMap;
+@synthesize itemDictionary = _itemDictionary;
 
 - (void)dealloc
 {
-    TT_RELEASE_SAFELY(_cellItemMap);
+    TT_RELEASE_SAFELY(_itemDictionary);
     [super dealloc];
 }
 
@@ -75,37 +75,55 @@
         HDFunctionListModel * model = [[[HDFunctionListModel alloc]init] autorelease];
         self.model = model;
         self.listModel = model;
+        self.itemDictionary =
+        @{ @"typeField" : @"${function_type}",
+        @"sectionFlag" : @"SECTION",
+        @"sectionText" : @"${text}",
+        @"text":@"${text}",
+        @"URL" : [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"],@"${url}"],
+        @"imageURL" : @"${image_url}"};
     }
     return self;
 }
 
 -(void)tableViewDidLoadModel:(UITableView *)tableView
-{    
-    NSMutableArray* itemsArray = [NSMutableArray array];
-    NSMutableArray* sectionArray = [NSMutableArray array];
+{
+    NSArray * functionList = [self.listModel resultList];
     
-    for (id section in self.listModel.resultList) {
-        [sectionArray addObject:[TTTableSection sectionWithHeaderTitle:[section valueForKeyPath:@"head_title"] footerTitle:nil]];
-        NSMutableArray* itemArray =[NSMutableArray array];
-        for (id item in [section valueForKeyPath:@"record"]) {
-            NSString *prefix = [[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"];
-            NSString *endfix = [item valueForKeyPath:@"url"];
-            NSString *url = [NSString stringWithFormat:@"%@%@",prefix,endfix] ;
-
+    NSMutableArray* items = [NSMutableArray array];
+    NSMutableArray* sections = [NSMutableArray array];
+    NSMutableArray* section = nil;
+   
+    for (NSDictionary * record in functionList) {
+        NSString * recordType = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"typeField"] query:record];
+        
+        if ([recordType isEqualToString:[self.itemDictionary valueForKey:@"sectionFlag"]]) {
+            NSString * sectionText = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"sectionText"] query:record];
+            [sections addObject:sectionText];
+            section = [NSMutableArray array];
+            [items addObject:section];
+        } else {
+            NSString * text = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"text"] query:record];
+            
+            NSString * imageURL = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"imageURL"] query:record];
+            
+            NSString * URL = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"URL"] query:record];
+            
+//            NSString *prefix = [[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"];
+//            NSString *url = [NSString stringWithFormat:@"%@%@",prefix,URL];
+            
             TTTableImageItem * imageItem =
-            [TTTableImageItem itemWithText:[item valueForKeyPath:@"text"]
-                                  imageURL:[item valueForKeyPath:@"image_url"]
-                                       URL:url];
+            [TTTableImageItem itemWithText:text
+                                  imageURL:imageURL
+                                       URL:URL];
             imageItem.imageStyle =TTSTYLE(functionListCellImageStyle);
 
-            [itemArray addObject: imageItem];                     
+            [section addObject:imageItem];
         }
-        [itemsArray addObject:itemArray];
     }
     
-    self.sections = sectionArray;
-    self.items = itemsArray;
-    
+    self.items = items;
+    self.sections = sections;
     [self addBasicItems];
     [self addLogoutItem];
 }
