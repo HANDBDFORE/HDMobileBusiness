@@ -48,7 +48,7 @@
 -(void)toolbarButtonPressed: (id)sender
 {
     //设置当前审批动作
-     _toolBarModel.selectedAction = [NSString stringWithFormat:@"%i",[sender tag]];
+    _toolBarModel.selectedAction = [NSString stringWithFormat:@"%i",[sender tag]];
     //准备默认审批内容
     NSString *defaultText = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     //block
@@ -56,7 +56,6 @@
     //    controller.originView = [query objectForKey:@"__target__"];
     NSDictionary * query = [NSDictionary dictionaryWithObjectsAndKeys:defaultText, @"text",self,@"delegate",nil];
     [[HDGuider guider] guideToKeyPath:@"POST_VC_PATH" query:query animated:YES];
-    //    [self showOpinionView:0];
 }
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
@@ -86,23 +85,35 @@
         //
         NSMutableArray * itemButtons = [NSMutableArray array];
         for (NSDictionary * actionRecord in _toolBarModel.resultList) {
+            
             UIBarButtonItem * actionButton =
-            [[[UIBarButtonItem alloc]initWithTitle:[actionRecord valueForKey:@"action_id"]
+            [[[UIBarButtonItem alloc]initWithTitle:[actionRecord valueForKey:@"action_title"]
                                              style:UIBarButtonItemStyleBordered
                                             target:self
                                             action:@selector(toolbarButtonPressed:)] autorelease];
             actionButton.tag = [[actionRecord valueForKey:@"action_id"] intValue];
+            //button color
+            if ([[actionRecord valueForKey:@"action_type"] isEqualToString:kActionTypeApprove]) {
+                actionButton.tintColor = RGBCOLOR(0, 153, 0);
+            }
+            if ([[actionRecord valueForKey:@"action_type"] isEqualToString:kActionTypeReject]) {
+                actionButton.tintColor = RGBCOLOR(153, 0, 0);
+            }
+            if ([[actionRecord valueForKey:@"action_type"] isEqualToString:kActionTypeDeliver]) {
+                actionButton.tintColor = RGBCOLOR(0, 0, 153);
+                actionButton.action = @selector(deliver:);
+            }
             
             [itemButtons addObject:actionButton];
             [itemButtons addObject:_spaceItem];
         }
-        //TODO:deliver
-        [itemButtons addObject:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(deliver:)] autorelease]];
-//        [itemButtons removeLastObject];
+        
+        [itemButtons removeLastObject];
         self.toolbarItems = itemButtons;
-    }    
+    }
 }
 
+#pragma -mark deliver
 -(void)deliver:(id)sender
 {
     TTMessageRecipientField * recipientField =
@@ -137,7 +148,6 @@
         }
     }
     [dictionary setValue:@"D" forKeyPath:kAction];
-    TTDPRINT(@"did send :%@",dictionary);
     [self.listModel submitCurrentRecordWithDictionary:dictionary];
     
     [controller dismissModalViewControllerAnimated:YES];
@@ -145,9 +155,9 @@
     [self.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@"YES" afterDelay:0.5];
 }
 
-- (void)composeControllerDidCancel:(TTMessageController*)controller {
-    TTDPRINT(@"did cancel");
-}
+//- (void)composeControllerDidCancel:(TTMessageController*)controller {
+//    TTDPRINT(@"did cancel");
+//}
 
 - (void)composeControllerShowRecipientPicker:(TTMessageController*)controller {
     TTDPRINT(@"show picker");

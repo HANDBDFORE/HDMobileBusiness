@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString * kActionTypeApprove =  @"APPROVE";
+static NSString * kActionTypeReject =  @"REJECT";
+static NSString * kActionTypeDeliver=  @"DELIVER";
+
 @interface HDDetailToolbarModel : HDURLRequestModel
 
 @property(nonatomic,retain)NSDictionary * detailRecord;
