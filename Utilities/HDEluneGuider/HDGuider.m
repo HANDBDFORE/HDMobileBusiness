@@ -181,6 +181,7 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
 -(UIViewController *)configMessageViewController:(UIViewController *) controller
 {
     [controller setValue:@"转交[配置]" forKeyPath:@"title"];
+    //是否显示+号，可以点加号通过列表选人
     [controller setValue:@0 forKeyPath:@"showsRecipientPicker"];
     [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_deliver.ios_wprkflow_deliver_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"dataSource.model.queryURL"];
     [controller setValue:@{ @"text" : @"${name}",@"subtitle":@"${position_name}",@"userInfo":@"${employee_id}"} forKeyPath: @"dataSource.itemDictionary"];

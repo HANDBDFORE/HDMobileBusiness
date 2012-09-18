@@ -322,6 +322,7 @@ static NSString * kSQLNull = @"null";
 -(void)removeRecords:(NSArray *) recordList
 {
     [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecords:recordList:) recordList:recordList];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveActions:recordList:) recordList:recordList];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
