@@ -10,4 +10,6 @@
 
 @interface HDMessageSingleRecipientField : TTMessageRecipientField
 
+@property(nonatomic,copy) NSString * placeholder;
+
 @end

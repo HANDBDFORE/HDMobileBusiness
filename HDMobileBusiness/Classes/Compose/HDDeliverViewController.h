@@ -7,7 +7,10 @@
 //
 
 #import <Three20UI/Three20UI.h>
+#import "HDMessageSingleRecipientField.h"
 
 @interface HDDeliverViewController : TTMessageController
+
+@property(nonatomic,retain) HDMessageSingleRecipientField * personPickerTextField;
 
 @end

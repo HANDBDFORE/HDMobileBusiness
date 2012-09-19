@@ -83,46 +83,14 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
     if ((guiderMap = [self guiderMapForKeyPath:keyPath])) {
         //open contoller with path
         UIViewController * controller = block(guiderMap.urlPath);
-        //如果配置中要求从query配置属性
+        //如果配置中要求从query配置属性，query为前一个视图控制器传递出啊来的参数
         if(guiderMap.shouldConfigWithQuery)
         {
+            //TODO:这里配置方式有问题，应该在配置文件中指定需要从query中获取什么参数，而不是让query中的参数顺序set，可能造成set了被配置vc不需要的参数而导致程序崩溃（undefinedKey exception）
             [self configViewController:controller dictionary:query];
         }
         return [self configViewController:controller dictionary:guiderMap.propertyDictionary];
-        
-        ///////////
-        //TODO:使用map哦
-        ///////////
-//        if ([keyPath isEqualToString:@"HD_LOGIN_VC_PATH"]) {
-//            return [self configLoginViewController:controller];
-//        }
-//        if ([keyPath isEqualToString:@"HD_MAIN_VC_PATH"] ||
-//            [keyPath isEqualToString:@"TODO_LIST_SEARCH"]||
-//            [keyPath isEqualToString:@"TODO_LIST_VC_PATH"]) {
-//            return [self configTodoListViewController:controller];
-//        }
-//        if ([keyPath isEqualToString:@"DONE_LIST_VC_PATH"]) {
-//            return [self configDoneListViewController:controller];
-//        }
-//        if ([keyPath isEqualToString:@"FUNCTION_LIST_VC_PATH"]) {
-//            return [self configFunctionListViewController:controller];
-//        }
-//        if ([keyPath isEqualToString:@"TOOLBAR_DETIAL_VC_PATH"]) {
-//            return [self configTodoListDetialViewController:
-//                    [self configViewController:controller query:query]];
-//        }
-//        if ([keyPath isEqualToString:@"DETIAL_VC_PATH"]) {
-//            return [self configDoneListDetialViewController:
-//                    [self configViewController:controller query:query]];
-//        }
-//        if ([keyPath isEqualToString:@"DELIVER_VC_PATH"]) {
-//            return [self configDeliverViewController:
-//                    [self configViewController:controller
-//                                         query:query]];
-//        }
-//        
-//        return controller;
-    }
+        }
     return nil;
 }
 

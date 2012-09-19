@@ -10,6 +10,13 @@
 #import "HDSinglePickerTextFiled.h"
 
 @implementation HDMessageSingleRecipientField
+@synthesize placeholder = _placeholder;
+
+- (void)dealloc
+{
+    TT_RELEASE_SAFELY(_placeholder);
+    [super dealloc];
+}
 
 -(TTPickerTextField *)createViewForController:(TTMessageController *)controller
 {
@@ -18,13 +25,13 @@
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.rightViewMode = UITextFieldViewModeAlways;
-    
     if (controller.showsRecipientPicker) {
         UIButton* addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
         [addButton addTarget:controller action:@selector(showRecipientPicker)
             forControlEvents:UIControlEventTouchUpInside];
         textField.rightView = addButton;
     }
+    textField.placeholder = self.placeholder;
     return textField;
 }
 
