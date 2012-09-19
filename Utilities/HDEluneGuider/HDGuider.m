@@ -247,7 +247,8 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
         [keyPath isEqualToString:@"TODO_LIST_VC_PATH"]) {
         map.propertyDictionary =
         @{ @"title" : @"TodoList[配置]",
-        @"tableView.backgroundColor" : RGBCOLOR(204, 255, 255),
+        //设置tableview背景色导致tableView重绘制，搜索框消失，可以在style中统一设置背景色。
+//        @"tableView.backgroundColor" : RGBCOLOR(204, 255, 255),
         @"dataSource.cellItemMap": @{@"title":@"${workflow_name}:${employee_name}",
                                     @"caption":@"当前节点: ${node_name}",
                                     @"text":@"${workflow_desc}",
