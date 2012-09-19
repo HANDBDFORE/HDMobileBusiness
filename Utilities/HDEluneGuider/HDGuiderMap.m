@@ -11,23 +11,33 @@
 @implementation HDGuiderMap
 
 @synthesize urlPath = _urlPath;
-@synthesize propertyMap = _propertyMap;
+@synthesize propertyDictionary = _propertyDictionary;
+@synthesize shouldConfigWithQuery = _shouldConfigWithQuery;
 
 -(void)dealloc
 {
     TT_RELEASE_SAFELY(_urlPath);
-    TT_RELEASE_SAFELY(_propertyMap);
+    TT_RELEASE_SAFELY(_propertyDictionary);
     [super dealloc];
 }
 
--(id)propertyForkey:(NSString *)key query:(NSDictionary *) query
+- (id)init
 {
-    id object = [_propertyMap valueForKey:key];
-    if ([object conformsToProtocol:@protocol(propertyMap)]) {
-        return  [object performSelector:@selector(propertyValueWithQuery:)
-                             withObject:query];
-    }else{
-        return object;
+    self = [super init];
+    if (self) {
+        _shouldConfigWithQuery = NO;
     }
+    return self;
 }
+
+//-(id)propertyForkey:(NSString *)key query:(NSDictionary *) query
+//{
+//    id object = [_propertyMap valueForKey:key];
+//    if ([object conformsToProtocol:@protocol(propertyMap)]) {
+//        return  [object performSelector:@selector(propertyValueWithQuery:)
+//                             withObject:query];
+//    }else{
+//        return object;
+//    }
+//}
 @end

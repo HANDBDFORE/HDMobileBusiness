@@ -17,14 +17,15 @@
 //@property (nonatomic,copy) NSString * redirectPath;
 
 //
-@property (nonatomic, retain) NSDictionary * propertyMap;
+@property (nonatomic, retain) NSDictionary * propertyDictionary;
 
--(id)propertyForkey:(NSString *)key query:(NSDictionary *) query;
-
-@end
-
-@protocol propertyMap <NSObject>
-
--(id)propertyValueWithQuery;
+//-(id)propertyForkey:(NSString *)key query:(NSDictionary *) query;
+@property (nonatomic,assign) BOOL shouldConfigWithQuery;
 
 @end
+
+//@protocol propertyMap <NSObject>
+
+//-(id)propertyValueWithQuery;
+
+//@end

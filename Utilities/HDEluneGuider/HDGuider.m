@@ -10,17 +10,20 @@
 
 #import "HDGodXMLFactory.h"
 
-#import "HDTodoListViewController.h"
-#import "HDMessageSingleRecipientField.h"
 static NSString * kGuideModalPath = @"guide://modalViewControler/";
 static NSString * kGuideCreatePath = @"guide://createViewControler/";
 static NSString * kGuideSharePath = @"guide://shareViewControler/";
 
 static NSString * kRedirectSelector = @"(controllerWithKeyPath:)";
 
-typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
+typedef UIViewController * (^openControllerPathBlock)(NSString *);
 
 @implementation HDGuider
+
++(id)guider
+{
+    return [self shareObject];
+}
 
 - (void)dealloc
 {
@@ -49,10 +52,10 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
                            animated:(BOOL)animated;
 {
    return [self configControllerWithKeyPath:keyPath
-                                       block: ^UIViewController *(HDGuiderMap * guiderMap)
+                                       block: ^UIViewController *(NSString * urlPath)
     {
         return [[TTNavigator navigator] openURLAction:
-                [[[TTURLAction actionWithURLPath:guiderMap.urlPath] applyQuery:query]applyAnimated:animated]];
+                [[[TTURLAction actionWithURLPath:urlPath] applyQuery:query] applyAnimated:animated]];
     }
                                        query:query];
 }
@@ -61,9 +64,9 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
                                      query:(NSDictionary *)query
 {
     return [self configControllerWithKeyPath:keyPath
-                                       block: ^UIViewController *(HDGuiderMap * guiderMap)
+                                       block: ^UIViewController *(NSString * urlPath)
     {
-        return [[TTNavigator navigator]viewControllerForURL:guiderMap.urlPath
+        return [[TTNavigator navigator]viewControllerForURL:urlPath
                                                       query:query];
     }
                                         query:query];
@@ -79,36 +82,46 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     HDGuiderMap * guiderMap = nil;
     if ((guiderMap = [self guiderMapForKeyPath:keyPath])) {
         //open contoller with path
-        UIViewController * controller = block(guiderMap);
-
-        if ([keyPath isEqualToString:@"HD_LOGIN_VC_PATH"]) {
-            return [self configLoginViewController:controller];
+        UIViewController * controller = block(guiderMap.urlPath);
+        //如果配置中要求从query配置属性
+        if(guiderMap.shouldConfigWithQuery)
+        {
+            [self configViewController:controller dictionary:query];
         }
-        if ([keyPath isEqualToString:@"HD_MAIN_VC_PATH"] ||
-            [keyPath isEqualToString:@"TODO_LIST_SEARCH"]||
-            [keyPath isEqualToString:@"TODO_LIST_VC_PATH"]) {
-            return [self configTodoListViewController:controller];
-        }
-        if ([keyPath isEqualToString:@"DONE_LIST_VC_PATH"]) {
-            return [self configDoneListViewController:controller];
-        }
-        if ([keyPath isEqualToString:@"FUNCTION_LIST_VC_PATH"]) {
-            return [self configFunctionListViewController:controller];
-        }
-        if ([keyPath isEqualToString:@"TOOLBAR_DETIAL_VC_PATH"]) {
-            return [self configTodoListDetialViewController:
-                    [self configViewController:controller query:query]];
-        }
-        if ([keyPath isEqualToString:@"DETIAL_VC_PATH"]) {
-            return [self configDoneListDetialViewController:
-                    [self configViewController:controller query:query]];
-        }
-        if ([keyPath isEqualToString:@"DELIVER_VC_PATH"]) {
-            return [self configDeliverViewController:
-                    [self configViewController:controller
-                                         query:query]];
-        }
-        return controller;
+        return [self configViewController:controller dictionary:guiderMap.propertyDictionary];
+        
+        ///////////
+        //TODO:使用map哦
+        ///////////
+//        if ([keyPath isEqualToString:@"HD_LOGIN_VC_PATH"]) {
+//            return [self configLoginViewController:controller];
+//        }
+//        if ([keyPath isEqualToString:@"HD_MAIN_VC_PATH"] ||
+//            [keyPath isEqualToString:@"TODO_LIST_SEARCH"]||
+//            [keyPath isEqualToString:@"TODO_LIST_VC_PATH"]) {
+//            return [self configTodoListViewController:controller];
+//        }
+//        if ([keyPath isEqualToString:@"DONE_LIST_VC_PATH"]) {
+//            return [self configDoneListViewController:controller];
+//        }
+//        if ([keyPath isEqualToString:@"FUNCTION_LIST_VC_PATH"]) {
+//            return [self configFunctionListViewController:controller];
+//        }
+//        if ([keyPath isEqualToString:@"TOOLBAR_DETIAL_VC_PATH"]) {
+//            return [self configTodoListDetialViewController:
+//                    [self configViewController:controller query:query]];
+//        }
+//        if ([keyPath isEqualToString:@"DETIAL_VC_PATH"]) {
+//            return [self configDoneListDetialViewController:
+//                    [self configViewController:controller query:query]];
+//        }
+//        if ([keyPath isEqualToString:@"DELIVER_VC_PATH"]) {
+//            return [self configDeliverViewController:
+//                    [self configViewController:controller
+//                                         query:query]];
+//        }
+//        
+//        return controller;
     }
     return nil;
 }
@@ -190,29 +203,23 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
 
 //配置从query传递的参数
 -(UIViewController *)configViewController:(UIViewController *) controller
-                                    query:(NSDictionary *)query
+                               dictionary:(NSDictionary *)dictionary
 {
-    for (NSString * key in [query allKeys]){
-        [controller setValue:[query valueForKey:key] forKeyPath:key];
+    for (NSString * keyPath in [dictionary allKeys]){
+        [controller setValue:[dictionary valueForKey:keyPath] forKeyPath:keyPath];
     }
     return controller;
 }
+
 /*
  *根据path,获取控制器跳转配置对象
  */
--(HDGuiderMap *) guiderMapForKeyPath:(NSString *) path
+-(HDGuiderMap *) guiderMapForKeyPath:(NSString *) keyPath
 {
-    if (!path) {
+    if (!keyPath) {
         return nil;
     }
     HDGuiderMap * map = [[[HDGuiderMap alloc]init] autorelease];
-    
-    //    if ([path isEqualToString:@"HD_LOGIN_VC_PATH"]) {
-    //        map.redirectPath = [NSString stringWithFormat:@"%@%@",kGuideModalPath,path];
-    //    }
-    //    if ([path isEqualToString:@"HD_MAIN_VC_PATH"]) {
-    //        map.redirectPath = [NSString stringWithFormat:@"%@%@",kGuideSharePath,path];
-    //    }
     
     //TODO:这里考虑从god生成map,想配什么就在map里加吧...
     NSDictionary * urlPathDic =
@@ -228,19 +235,77 @@ typedef UIViewController * (^openControllerPathBlock)(HDGuiderMap *);
     @"DETIAL_VC_PATH":@"init://detailViewController",
     @"POST_VC_PATH":@"init://postController",
     @"DELIVER_VC_PATH":@"init://deliverViewController"};
-    //realase
-//    @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
-//    @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",
-//    @"HD_LOGIN_VC_PATH":@"init://modalNib/HDLoginViewController/HDLoginViewController",
-//    @"DONE_LIST_VC_PATH":@"init://doneListViewController"};
     
-    map.urlPath = [urlPathDic valueForKey:path];
+    map.urlPath = [urlPathDic valueForKey:keyPath];
+    
+    if ([keyPath isEqualToString:@"HD_LOGIN_VC_PATH"]) {
+        map.propertyDictionary = @{ @"model.submitURLPath" : [NSString stringWithFormat:@"%@modules/ios/public/login_iphone.svc",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] };
+    }
+    
+    if ([keyPath isEqualToString:@"HD_MAIN_VC_PATH"] ||
+        [keyPath isEqualToString:@"TODO_LIST_SEARCH"]||
+        [keyPath isEqualToString:@"TODO_LIST_VC_PATH"]) {
+        map.propertyDictionary =
+        @{ @"title" : @"TodoList[配置]",
+        @"tableView.backgroundColor" : RGBCOLOR(204, 255, 255),
+        @"dataSource.cellItemMap": @{@"title":@"${workflow_name}:${employee_name}",
+                                    @"caption":@"当前节点: ${node_name}",
+                                    @"text":@"${workflow_desc}",
+                                    @"timestamp":@"${creation_date}",
+                                    @"isLate":@"${is_late}"},
+        @"dataSource.model.primaryFiled" : @"record_id",
+        @"dataSource.model.serachFields" : @[@"order_type",@"node_name",@"employee_name"],
+        @"dataSource.model.queryURL" : [NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
+        @"dataSource.model.submitURL" : [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_test/ios_todo_list_commit.svc"] 
+        };
+    }
+    if ([keyPath isEqualToString:@"DONE_LIST_VC_PATH"]) {
+        map.propertyDictionary =
+        @{ @"title" : @"DoneList[配置]",
+        @"tableView.separatorStyle" : @1,
+        @"tableView.separatorColor" : RGBCOLOR(53, 53, 53),
+        @"dataSource.cellItemMap" : @{@"title":@"${workflow_name}:${created_by_name}",
+                                    @"caption":@"当前节点: ${created_by_name}",
+                                    @"text":@"${workflow_desc}",
+                                    @"timestamp":@"${creation_date}"},
+        @"dataSource.model.queryURL" : [NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_done_list_test/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
+        };
+    }
+    if ([keyPath isEqualToString:@"FUNCTION_LIST_VC_PATH"]) {
+        map.propertyDictionary =
+        @{ @"title" : @"功能[配置]",
+        @"model.queryURL" : [NSString stringWithFormat:@"%@autocrud/ios.ios_function_center.ios_function_center_list/query", [[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
+        };
+    }
+    if ([keyPath isEqualToString:@"TOOLBAR_DETIAL_VC_PATH"]) {
+        map.shouldConfigWithQuery = YES;
+        map.propertyDictionary =
+        @{ @"userInfoItemTitle" : @"record_id" ,
+        @"queryActionURLTemplate" : [NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_detail_action_query/query?record_id={record_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
+        @"userInfoPageURLTemplate" : [NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
+        @"webPageURLTemplate" : [NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
+        };
+    }
+    if ([keyPath isEqualToString:@"DETIAL_VC_PATH"]) {
+        map.shouldConfigWithQuery = YES;
+        map.propertyDictionary =
+        @{ @"userInfoItemTitle" : @"record_id",
+        @"userInfoPageURLTemplate" : [NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
+        @"webPageURLTemplate" : [NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
+        };
+    }
+    if ([keyPath isEqualToString:@"DELIVER_VC_PATH"]) {
+        map.shouldConfigWithQuery = YES;
+        map.propertyDictionary =
+        @{ @"title" : @"转交[配置]",
+        @"showsRecipientPicker" : @0,
+        @"dataSource.model.queryURL" : [NSString stringWithFormat:@"%@autocrud/ios.ios_deliver.ios_wprkflow_deliver_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
+        @"dataSource.itemDictionary" : @{ @"text" : @"${name}",
+                                        @"subtitle":@"${position_name}",
+                                        @"userInfo":@"${employee_id}"}
+        };
+    }
     return map;
-}
-
-+(id)guider
-{
-    return [self shareObject];
 }
 
 @end
