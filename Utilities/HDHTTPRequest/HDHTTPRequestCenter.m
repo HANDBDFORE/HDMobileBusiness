@@ -60,7 +60,7 @@
     if (nil == *(error)) {
         //create request
         TTURLRequest * request = [TTURLRequest request];
-        request.urlPath = map.urlPath;
+        request.urlPath = [map.urlPath stringByReplacingSpaceHodlerWithDictionary:@{@"base_url" : [self baseURL]}];
         [request.parameters setObject:postParameter forKey:@"_request_data"];
         request.cachePolicy = map.cachePolicy;
         request.httpMethod = map.httpMethod;
@@ -97,4 +97,8 @@
     return responseMap;
 }
 
+-(NSString * ) baseURL
+{
+    return [_urlCenter baseURLPath];
+}
 @end
