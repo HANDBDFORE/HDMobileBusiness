@@ -8,8 +8,6 @@
 
 #import "HDGuider.h"
 
-#import "HDGodXMLFactory.h"
-
 static NSString * kGuideModalPath = @"guide://modalViewControler/";
 static NSString * kGuideCreatePath = @"guide://createViewControler/";
 static NSString * kGuideSharePath = @"guide://shareViewControler/";
@@ -52,8 +50,9 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
                            animated:(BOOL)animated;
 {
    return [self configControllerWithKeyPath:keyPath
-                                       block: ^UIViewController *(NSString * urlPath)
+                                      block: ^UIViewController *(NSString * urlPath)
     {
+        //TODO:这里转发到controllerWithKeyPath
         return [[TTNavigator navigator] openURLAction:
                 [[[TTURLAction actionWithURLPath:urlPath] applyQuery:query] applyAnimated:animated]];
     }
@@ -63,6 +62,8 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
 -(UIViewController *)controllerWithKeyPath:(NSString *) keyPath
                                      query:(NSDictionary *)query
 {
+    TTDPRINT(@"keyPath :%@",keyPath);
+    //TODO:这里创建改成直接create
     return [self configControllerWithKeyPath:keyPath
                                        block: ^UIViewController *(NSString * urlPath)
     {
@@ -95,80 +96,6 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
 }
 
 #pragma -mark 配置控制器，之后从配置加载
-//TODO:配置控制器，之后从配置加载
--(UIViewController *) configLoginViewController:(UIViewController *) controller
-{
-    [controller setValue:[NSString stringWithFormat:@"%@modules/ios/public/login_iphone.svc",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"model.submitURLPath"];
-    return controller;
-}
-
--(UIViewController *) configTodoListViewController:(UIViewController *) controller
-{
-    [controller setValue:@"TodoList[配置]" forKeyPath:@"title"];
-    [controller setValue:RGBCOLOR(204, 255, 255) forKeyPath:@"tableView.backgroundColor"];
-    [controller setValue: @{@"title":@"${workflow_name}:${employee_name}",
-     @"caption":@"当前节点: ${node_name}",
-     @"text":@"${workflow_desc}",
-     @"timestamp":@"${creation_date}",
-     @"isLate":@"${is_late}"}
-              forKeyPath:@"dataSource.cellItemMap"];
-    [controller setValue:@"record_id" forKeyPath:@"dataSource.model.primaryFiled"];
-    [controller setValue:@[@"order_type",@"node_name",@"employee_name"] forKeyPath:@"dataSource.model.serachFields"];
-    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"dataSource.model.queryURL"];
-    [controller setValue:[NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_test/ios_todo_list_commit.svc"] forKeyPath:@"dataSource.model.submitURL"];
-    return controller;
-}
-
--(UIViewController *) configDoneListViewController:(UIViewController *) controller
-{
-    [controller setValue:@"DoneList[配置]" forKeyPath:@"title"];
-    [controller setValue:@1 forKeyPath:@"tableView.separatorStyle"];
-    [controller setValue:RGBCOLOR(53, 53, 53) forKeyPath:@"tableView.separatorColor"];
-    [controller setValue:@{@"title":@"${workflow_name}:${created_by_name}",
-     @"caption":@"当前节点: ${created_by_name}",
-     @"text":@"${workflow_desc}",
-     @"timestamp":@"${creation_date}"}
-              forKeyPath:@"dataSource.cellItemMap"];
-    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_done_list_test/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"dataSource.model.queryURL"];
-    return controller;
-}
-
--(UIViewController *) configFunctionListViewController:(UIViewController *) controller
-{
-    [controller setValue:@"功能[配置]" forKeyPath:@"title"];
-    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_function_center.ios_function_center_list/query", [[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"model.queryURL"];
-    return controller;
-}
-//todolist明细页面配置
--(UIViewController *) configTodoListDetialViewController:(UIViewController *) controller
-{
-    [controller setValue:@"record_id" forKeyPath:@"userInfoItemTitle"];
-    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"queryActionURLTemplate"];
-    [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
-    [controller setValue:[NSString stringWithFormat:@"%@${screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
-    return controller;
-}
-
-//done detail
--(UIViewController *) configDoneListDetialViewController:(UIViewController *) controller
-{
-    [controller setValue:@"record_id" forKeyPath:@"userInfoItemTitle"];
-    [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
-    [controller setValue:[NSString stringWithFormat:@"%@${screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
-    return controller;
-}
-
-//选人界面
--(UIViewController *)configDeliverViewController:(UIViewController *) controller
-{
-    [controller setValue:@"转交[配置]" forKeyPath:@"title"];
-    //是否显示+号，可以点加号通过列表选人
-    [controller setValue:@0 forKeyPath:@"showsRecipientPicker"];
-    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_deliver.ios_wprkflow_deliver_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] forKeyPath:@"dataSource.model.queryURL"];
-    [controller setValue:@{ @"text" : @"${name}",@"subtitle":@"${position_name}",@"userInfo":@"${employee_id}"} forKeyPath: @"dataSource.itemDictionary"];
-    return controller;
-}
-
 //配置从query传递的参数
 -(UIViewController *)configViewController:(UIViewController *) controller
                                dictionary:(NSDictionary *)dictionary
@@ -191,7 +118,7 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
     
     //TODO:这里考虑从god生成map,想配什么就在map里加吧...
     NSDictionary * urlPathDic =
-    //test
+    //TODO:视图控制器考虑从工厂创建，而不是让ttnavigator创建
     @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
     @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",
     @"HD_LOGIN_VC_PATH":@"init://modalNib/HDLoginViewController/HDLoginViewController",
@@ -204,10 +131,24 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
     @"POST_VC_PATH":@"init://postController",
     @"DELIVER_VC_PATH":@"init://deliverViewController"};
     
-    map.urlPath = [urlPathDic valueForKey:keyPath];
+    NSDictionary * testURLPathDic =
+    //TODO:视图控制器考虑从工厂创建，而不是让ttnavigator创建
+    @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
+    @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",
+    @"HD_LOGIN_VC_PATH":@"init://modalNib/HDLoginViewController/HDLoginViewController",
+    @"DONE_LIST_VC_PATH":@"init://doneListViewController",
+    @"TODO_LIST_VC_PATH":@"init://todoListViewController",
+    @"FUNCTION_LIST_VC_PATH":@"init://functionListViewController",
+    @"SETTINGS_VC_PATH":@"init://settingsViewController",
+    @"TOOLBAR_DETIAL_VC_PATH":@"init://toolbarDetailViewController",
+    @"DETIAL_VC_PATH":@"init://detailViewController",
+    @"POST_VC_PATH":@"init://postController",
+    @"DELIVER_VC_PATH":@"init://deliverViewController"};
+        
+    map.urlPath = [testURLPathDic valueForKey:keyPath];
     
     if ([keyPath isEqualToString:@"HD_LOGIN_VC_PATH"]) {
-        map.propertyDictionary = @{ @"model.submitURLPath" : [NSString stringWithFormat:@"%@modules/ios/public/login_iphone.svc",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]] };
+        map.propertyDictionary = @{ @"model.submitURLPath" : @"${base_url}modules/ios/public/login_iphone.svc"};
     }
     
     if ([keyPath isEqualToString:@"HD_MAIN_VC_PATH"] ||
@@ -224,8 +165,8 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
                                     @"isLate":@"${is_late}"},
         @"dataSource.model.primaryFiled" : @"record_id",
         @"dataSource.model.serachFields" : @[@"order_type",@"node_name",@"employee_name"],
-        @"dataSource.model.queryURL" : [NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
-        @"dataSource.model.submitURL" : [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_test/ios_todo_list_commit.svc"] 
+        @"dataSource.model.queryURL" : @"${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false",
+        @"dataSource.model.submitURL" : @"${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"
         };
     }
     if ([keyPath isEqualToString:@"DONE_LIST_VC_PATH"]) {
@@ -237,30 +178,30 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
                                     @"caption":@"当前节点: ${created_by_name}",
                                     @"text":@"${workflow_desc}",
                                     @"timestamp":@"${creation_date}"},
-        @"dataSource.model.queryURL" : [NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_done_list_test/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
+        @"dataSource.model.queryURL" : @"${base_url}autocrud/ios.ios_test.ios_done_list_test/query"
         };
     }
     if ([keyPath isEqualToString:@"FUNCTION_LIST_VC_PATH"]) {
         map.propertyDictionary =
         @{ @"title" : @"功能[配置]",
-        @"model.queryURL" : [NSString stringWithFormat:@"%@autocrud/ios.ios_function_center.ios_function_center_list/query", [[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
+        @"model.queryURL" : @"${base_url}autocrud/ios.ios_function_center.ios_function_center_list/query"
         };
     }
     if ([keyPath isEqualToString:@"TOOLBAR_DETIAL_VC_PATH"]) {
         map.shouldConfigWithQuery = YES;
         map.propertyDictionary =
         @{ @"userInfoItemTitle" : @"record_id" ,
-        @"queryActionURLTemplate" : [NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
-        @"userInfoPageURLTemplate" : [NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
-        @"webPageURLTemplate" : [NSString stringWithFormat:@"%@${screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
+        @"queryActionURLTemplate" : @"${base_url}autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}",
+        @"userInfoPageURLTemplate" : @"${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",
+        @"webPageURLTemplate" : @"${base_url}${screen_name}"
         };
     }
     if ([keyPath isEqualToString:@"DETIAL_VC_PATH"]) {
         map.shouldConfigWithQuery = YES;
         map.propertyDictionary =
         @{ @"userInfoItemTitle" : @"record_id",
-        @"userInfoPageURLTemplate" : [NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
-        @"webPageURLTemplate" : [NSString stringWithFormat:@"%@${screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
+        @"userInfoPageURLTemplate" : @"${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",
+        @"webPageURLTemplate" : @"${base_url}${screen_name}"
         };
     }
     if ([keyPath isEqualToString:@"DELIVER_VC_PATH"]) {
@@ -268,7 +209,7 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
         map.propertyDictionary =
         @{ @"title" : @"转交[配置]",
         @"showsRecipientPicker" : @0,
-        @"dataSource.model.queryURL" : [NSString stringWithFormat:@"%@autocrud/ios.ios_deliver.ios_wprkflow_deliver_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
+        @"dataSource.model.queryURL" : @"${base_url}autocrud/ios.ios_deliver.ios_wprkflow_deliver_query/query",
         @"dataSource.itemDictionary" : @{ @"text" : @"${name}",
                                         @"subtitle":@"${position_name}",
                                         @"userInfo":@"${employee_id}"}
