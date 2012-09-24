@@ -82,6 +82,7 @@
 		B36BDAB715C64777003A4A5D /* HDMobileBusinessTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B36BDAB615C64777003A4A5D /* HDMobileBusinessTests.m */; };
 		B37467E915C78112003068CB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467E815C78112003068CB /* Default.png */; };
 		B37467EB15C78118003068CB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467EA15C78118003068CB /* Default@2x.png */; };
+		B3881EF8161025F700FEF878 /* NSString+HDAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3881EF7161025F700FEF878 /* NSString+HDAddtions.m */; };
 		B38DC71A15C68C3800FD0C58 /* HDDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */; };
 		B38DC71C15C68C3800FD0C58 /* HDDetailToolbarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */; };
 		B38DC71D15C68C3800FD0C58 /* HDDetailToolbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71515C68C3800FD0C58 /* HDDetailToolbarViewController.m */; };
@@ -544,6 +545,8 @@
 		B36BDAB615C64777003A4A5D /* HDMobileBusinessTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDMobileBusinessTests.m; sourceTree = "<group>"; };
 		B37467E815C78112003068CB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		B37467EA15C78118003068CB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		B3881EF6161025F700FEF878 /* NSString+HDAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HDAddtions.h"; sourceTree = "<group>"; };
+		B3881EF7161025F700FEF878 /* NSString+HDAddtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HDAddtions.m"; sourceTree = "<group>"; };
 		B38DC70E15C68C3800FD0C58 /* HDDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailInfoViewController.h; sourceTree = "<group>"; };
 		B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailInfoViewController.m; sourceTree = "<group>"; };
 		B38DC71215C68C3800FD0C58 /* HDDetailToolbarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailToolbarModel.h; sourceTree = "<group>"; };
@@ -1470,6 +1473,8 @@
 				B38E689315C656B000824CB1 /* HDGlobalMetrics */,
 				B38E686B15C654DA00824CB1 /* HDHTTPRequest */,
 				B3D4E20015E60ABB0061ED4D /* HDGodXMLParser */,
+				B3881EF6161025F700FEF878 /* NSString+HDAddtions.h */,
+				B3881EF7161025F700FEF878 /* NSString+HDAddtions.m */,
 			);
 			name = Utilities;
 			path = ../Utilities;
@@ -2067,6 +2072,7 @@
 				B3D71B8416030344004E1BFD /* HDPersonListDataSource.m in Sources */,
 				B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */,
 				B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */,
+				B3881EF8161025F700FEF878 /* NSString+HDAddtions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

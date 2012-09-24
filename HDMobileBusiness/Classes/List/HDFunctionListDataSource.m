@@ -39,7 +39,7 @@
         [self didFinishLoad];
     }else{
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-        map.requestPath = self.queryURL;
+        map.urlPath = self.queryURL;
         [super requestWithMap:map];
     }
 }
@@ -94,19 +94,19 @@
     NSMutableArray* section = nil;
    
     for (NSDictionary * record in functionList) {
-        NSString * recordType = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"typeField"] query:record];
+        NSString * recordType = [[self.itemDictionary valueForKey:@"typeField"] stringByReplacingSpaceHodlerWithDictionary:record];
         
         if ([recordType isEqualToString:[self.itemDictionary valueForKey:@"sectionFlag"]]) {
-            NSString * sectionText = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"sectionText"] query:record];
+            NSString * sectionText = [[self.itemDictionary valueForKey:@"sectionText"] stringByReplacingSpaceHodlerWithDictionary:record];
             [sections addObject:sectionText];
             section = [NSMutableArray array];
             [items addObject:section];
         } else {
-            NSString * text = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"text"] query:record];
+            NSString * text = [[self.itemDictionary valueForKey:@"text"] stringByReplacingSpaceHodlerWithDictionary:record];
             
-            NSString * imageURL = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"imageURL"] query:record];
+            NSString * imageURL = [[self.itemDictionary valueForKey:@"imageURL"] stringByReplacingSpaceHodlerWithDictionary:record];
             
-            NSString * URL = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"URL"] query:record];
+            NSString * URL = [[self.itemDictionary valueForKey:@"URL"] stringByReplacingSpaceHodlerWithDictionary:record];
             
             TTTableImageItem * imageItem =
             [TTTableImageItem itemWithText:text
@@ -122,19 +122,6 @@
     self.sections = sections;
     [self addBasicItems];
     [self addLogoutItem];
-}
-
--(NSString *)createCellItemWithTemplete:(NSString *) templete
-                                  query:(NSDictionary *)query
-{
-    NSEnumerator * e = [query keyEnumerator];
-    for (NSString * key; (key = [e nextObject]);) {
-        NSString * replaceString = [NSString stringWithFormat:@"${%@}",key];
-        NSString * valueString = [NSString stringWithFormat:@"%@",[query valueForKey:key]];
-        
-        templete = [templete stringByReplacingOccurrencesOfString:replaceString withString:valueString];
-    }
-    return templete;
 }
 
 -(void)addBasicItems{

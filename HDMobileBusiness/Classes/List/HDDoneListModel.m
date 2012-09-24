@@ -45,7 +45,7 @@
     //debug:添加对_queryURL的nil校验，否则对nil appendding导致crash R
     if (_queryURL.length) {
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-        map.requestPath = [_queryURL stringByAppendingFormat:@"?pagesize=10&pagenum=%i&_fetchall=false_autocount=false",_pageNum];
+        map.urlPath = [_queryURL stringByAppendingFormat:@"?pagesize=10&pagenum=%i&_fetchall=false_autocount=false",_pageNum];
         [self requestWithMap:map];
     }
 }

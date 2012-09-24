@@ -110,22 +110,14 @@
 }
 
 -(void)reloadAll{
-    _userInfoView.employeeUrlPath = [self matchURL:self.userInfoPageURLTemplate];
+    _userInfoView.employeeUrlPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]] ;
+
     _employeeInfoItem.title =[[self.listModel current] objectForKey:self.userInfoItemTitle];
-    self.currentURL = [self matchURL:self.webPageURLTemplate];
+     self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]];
+
     [self openURL:[NSURL URLWithString:self.currentURL]];
     _nextButtonItem.enabled = [self.listModel hasNext];
     _prevButtonItem.enabled = [self.listModel hasPrev];
-}
-
--(NSString *)matchURL:(NSString *)Template{
-    NSString * URL = Template;
-    NSDictionary * currentRecord =[self.listModel current] ;
-    for ( NSString* key in currentRecord) {
-        NSString *temp = [NSString stringWithFormat:@"{%@}",key];
-       URL = [URL stringByReplacingOccurrencesOfString:temp withString:[currentRecord objectForKey:key]];
-    }
-    return URL;
 }
 
 - (void)openURL:(NSURL*)URL {

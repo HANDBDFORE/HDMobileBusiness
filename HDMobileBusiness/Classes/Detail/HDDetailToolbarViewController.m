@@ -72,7 +72,8 @@
 #pragma mark - overWrite -
 -(void)reloadAll{
     _toolBarModel.detailRecord = [self.listModel current];
-    _toolBarModel.queryURL = [self matchURL:self.queryActionURLTemplate];
+    _toolBarModel.queryURL = [self.queryActionURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]];
+
     [_toolBarModel load:TTURLRequestCachePolicyDefault more:NO];
     [super reloadAll];
     

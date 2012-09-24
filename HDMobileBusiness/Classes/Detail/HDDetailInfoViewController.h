@@ -28,8 +28,7 @@
 @property (nonatomic,copy) NSString * userInfoItemTitle;
 
 @property (nonatomic,retain) id<HDListModelVector> listModel;
-//
--(NSString *)matchURL:(NSString *)Template;
+
 -(void)expend;
 -(void)reloadAll;
 @end

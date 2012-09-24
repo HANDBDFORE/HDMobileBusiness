@@ -62,7 +62,7 @@
                    nil];
 
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    map.requestPath = self.submitURLPath;
+    map.urlPath = self.submitURLPath;
     map.postData = postdata;
     
     [self requestWithMap:map]; 
