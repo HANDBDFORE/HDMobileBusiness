@@ -37,27 +37,14 @@
 {
     self.items = [NSMutableArray array];
     for (NSDictionary * record in self.listModel.resultList) {
-        NSString * text = [self createCellItemWithTemplete:[self.itemDictionary valueForKey: @"text"] query:record];
-        NSString * subtitle = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"subtitle"] query:record];
-        NSString * userInfo = [self createCellItemWithTemplete:[self.itemDictionary valueForKey:@"userInfo"] query:record];
+        NSString * text = [[self.itemDictionary valueForKey: @"text"] stringByReplacingSpaceHodlerWithDictionary:record];
+        NSString * subtitle = [[self.itemDictionary valueForKey:@"subtitle"] stringByReplacingSpaceHodlerWithDictionary:record];
+        NSString * userInfo = [[self.itemDictionary valueForKey:@"userInfo"] stringByReplacingSpaceHodlerWithDictionary:record];
         
         TTTableSubtitleItem * item = [TTTableSubtitleItem itemWithText:text subtitle:subtitle];
         item.userInfo = userInfo;
         [_items addObject:item];
     }
-}
-
--(NSString *)createCellItemWithTemplete:(NSString *) templete
-                                  query:(NSDictionary *)query
-{
-    NSEnumerator * e = [query keyEnumerator];
-    for (NSString * key; (key = [e nextObject]);) {
-        NSString * replaceString = [NSString stringWithFormat:@"${%@}",key];
-        NSString * valueString = [NSString stringWithFormat:@"%@",[query valueForKey:key]];
-        
-        templete = [templete stringByReplacingOccurrencesOfString:replaceString withString:valueString];
-    }
-    return templete;
 }
 
 -(void)search:(NSString *)text

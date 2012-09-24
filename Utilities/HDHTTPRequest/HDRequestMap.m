@@ -10,14 +10,9 @@
 
 @implementation HDRequestMap
 
-@synthesize urlName = _urlName;
-@synthesize requestPath = _requestPath;
-@synthesize urlParameters = _urlParameters;
+@synthesize urlPath = _urlPath;
 @synthesize postData = _postData;
-//@synthesize postBean = _postBean;
-//@synthesize tag = _tag;
 @synthesize delegates = _delegates;
-
 @synthesize httpMethod = _httpMethod;
 @synthesize multiPartForm = _multiPartForm;
 @synthesize cachePolicy = _cachePolicy;
@@ -26,11 +21,8 @@
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_requestPath);
-    TT_RELEASE_SAFELY(_urlName);
-    TT_RELEASE_SAFELY(_urlParameters);
+    TT_RELEASE_SAFELY(_urlPath);
     TT_RELEASE_SAFELY(_postData);
-//    TT_RELEASE_SAFELY(_postBean);
     TT_RELEASE_SAFELY(_delegates);
     TT_RELEASE_SAFELY(_httpMethod);
     TT_RELEASE_SAFELY(_response);
@@ -69,37 +61,14 @@
     return self;
 }
 
--(void)setUrlName:(NSString *)urlName
+-(void)setUrlPath:(NSString *)urlPath
 {
-    if (nil != _urlName) {
-        [_urlName release];
-        _urlName = nil;
+    if (_urlPath != urlPath) {
+        TT_RELEASE_SAFELY(_urlPath);
     }
-    _urlName = [urlName retain];
-    [self.userInfo setObject:urlName forKey:@"urlName"];
+    _urlPath = [urlPath retain];
+    [self.userInfo setValue:urlPath forKey:@"urlPath"];
 }
+
 @end
 
-//@implementation HDRequestResultMap
-//
-//@synthesize result = _result;
-//@synthesize urlPath = _urlPath;
-////@synthesize tag = _tag;
-//@synthesize userInfo = _userInfo;
-//@synthesize error = _error;
-//
-//-(void)dealloc
-//{
-//    TT_RELEASE_SAFELY(_result);
-//    TT_RELEASE_SAFELY(_urlPath);
-//    TT_RELEASE_SAFELY(_userInfo);
-//    TT_RELEASE_SAFELY(_error);
-//    [super dealloc];
-//}
-//
-//+(id)map
-//{
-//      return [[[HDRequestResultMap alloc]init]autorelease];
-//}
-
-//@end

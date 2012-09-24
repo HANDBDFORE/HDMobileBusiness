@@ -9,22 +9,10 @@
 //request config map
 @interface HDRequestMap: NSObject
 
-@property (nonatomic,copy) NSString * requestPath;
-
-//the key of url .It may be id in the config file
-@property (nonatomic,copy) NSString * urlName;
-
-//parameters of url ,replace the key in url
-@property (nonatomic,retain) NSDictionary * urlParameters;
+@property (nonatomic,copy) NSString * urlPath;
 
 //post data,filter will parser it and convert it into really post data.
 @property (nonatomic,retain) id postData;
-
-//post bean,if use bean to be the post parameter
-//@property (nonatomic,retain) id postBean;
-
-//sign the request,three20 dose not has it.it appears in ASIHTTPRequest
-//@property (nonatomic,assign) NSUInteger tag;
 
 //the delegate list
 @property (nonatomic,readonly) NSMutableArray *delegates;
@@ -49,7 +37,5 @@
 +(id)map;
 
 +(id)mapWithDelegate:(id) delegate;
-
-//-(id)initWithDelegate:(id) delegate;
 
 @end

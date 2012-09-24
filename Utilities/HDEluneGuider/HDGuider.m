@@ -143,9 +143,9 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
 -(UIViewController *) configTodoListDetialViewController:(UIViewController *) controller
 {
     [controller setValue:@"record_id" forKeyPath:@"userInfoItemTitle"];
-    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_detail_action_query/query?record_id={record_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"queryActionURLTemplate"];
-    [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
-    [controller setValue:[NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
+    [controller setValue:[NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"queryActionURLTemplate"];
+    [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
+    [controller setValue:[NSString stringWithFormat:@"%@${screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
     return controller;
 }
 
@@ -153,8 +153,8 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
 -(UIViewController *) configDoneListDetialViewController:(UIViewController *) controller
 {
     [controller setValue:@"record_id" forKeyPath:@"userInfoItemTitle"];
-    [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
-    [controller setValue:[NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
+    [controller setValue:[NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"userInfoPageURLTemplate"];
+    [controller setValue:[NSString stringWithFormat:@"%@${screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]forKeyPath:@"webPageURLTemplate"];
     return controller;
 }
 
@@ -250,17 +250,17 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
         map.shouldConfigWithQuery = YES;
         map.propertyDictionary =
         @{ @"userInfoItemTitle" : @"record_id" ,
-        @"queryActionURLTemplate" : [NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_detail_action_query/query?record_id={record_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
-        @"userInfoPageURLTemplate" : [NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
-        @"webPageURLTemplate" : [NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
+        @"queryActionURLTemplate" : [NSString stringWithFormat:@"%@autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
+        @"userInfoPageURLTemplate" : [NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
+        @"webPageURLTemplate" : [NSString stringWithFormat:@"%@${screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
         };
     }
     if ([keyPath isEqualToString:@"DETIAL_VC_PATH"]) {
         map.shouldConfigWithQuery = YES;
         map.propertyDictionary =
         @{ @"userInfoItemTitle" : @"record_id",
-        @"userInfoPageURLTemplate" : [NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id={user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
-        @"webPageURLTemplate" : [NSString stringWithFormat:@"%@{screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
+        @"userInfoPageURLTemplate" : [NSString stringWithFormat:@"%@modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]],
+        @"webPageURLTemplate" : [NSString stringWithFormat:@"%@${screen_name}",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]]
         };
     }
     if ([keyPath isEqualToString:@"DELIVER_VC_PATH"]) {

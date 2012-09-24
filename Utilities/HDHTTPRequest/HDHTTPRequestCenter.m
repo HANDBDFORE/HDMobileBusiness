@@ -43,16 +43,10 @@
                                  error:(NSError **) error
 {
     //setting url
-    if (!map.requestPath) {
+    if (!map.urlPath) {
         return nil;
     }
-    NSString * urlPath = nil;
-    if (!map.urlName) {
-        urlPath =  map.requestPath;
-    }else {
-        urlPath = [_urlCenter requestURLWithKey:map.urlName
-                                          query:map.urlParameters];
-    }
+    
     //setting post data
     id<HDDataConvertor> convertor =
     [[[HDAuroraRequestConvertor alloc]initWithNextConvertor:
@@ -66,7 +60,7 @@
     if (nil == *(error)) {
         //create request
         TTURLRequest * request = [TTURLRequest request];
-        request.urlPath = urlPath;
+        request.urlPath = map.urlPath;
         [request.parameters setObject:postParameter forKey:@"_request_data"];
         request.cachePolicy = map.cachePolicy;
         request.httpMethod = map.httpMethod;
