@@ -12,7 +12,9 @@ function login(){
 }
 
 function batch(i){
+	target.delay(1);
 	target.frontMostApp().toolbar().buttons()[i%2].tap();
+	target.delay(1);
 	target.frontMostApp().mainWindow().elements()[3].rightButton().tap();
 	target.delay(2);
 }
@@ -39,10 +41,11 @@ function single(i){
 		
 	}	
 	target.frontMostApp().navigationBar().rightButton().tap();		
-	target.delay(1);	
+	target.delay(2);	
 }
 
 function search(){
+	target.frontMostApp().mainWindow().tableViews()[0].searchBars()[0].scrollToVisible();
 	target.frontMostApp().mainWindow().tableViews()[0].searchBars()[0].tap();
 	target.delay(1);
 	target.frontMostApp().keyboard().typeString("9");
