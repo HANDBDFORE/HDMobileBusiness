@@ -129,6 +129,8 @@
     if ([item.state isEqualToString:kRecordNormal] ||
         [item.state isEqualToString:kRecordError]) {
         self.listModel.currentIndex = [self.items indexOfObject:item];
+        //TODO:why I can't use guider here?
+//        [[HDGuider guider]guideToKeyPath:@"TOOLBAR_DETIAL_VC_PATH" query:@{ @"listModel" : self.listModel} animated:YES];
         [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/TOOLBAR_DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.listModel}]applyAnimated:YES]];
     }
 }

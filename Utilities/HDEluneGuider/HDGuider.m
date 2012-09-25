@@ -131,21 +131,7 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
     @"POST_VC_PATH":@"init://postController",
     @"DELIVER_VC_PATH":@"init://deliverViewController"};
     
-    NSDictionary * testURLPathDic =
-    //TODO:视图控制器考虑从工厂创建，而不是让ttnavigator创建
-    @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
-    @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",
-    @"HD_LOGIN_VC_PATH":@"init://modalNib/HDLoginViewController/HDLoginViewController",
-    @"DONE_LIST_VC_PATH":@"init://doneListViewController",
-    @"TODO_LIST_VC_PATH":@"init://todoListViewController",
-    @"FUNCTION_LIST_VC_PATH":@"init://functionListViewController",
-    @"SETTINGS_VC_PATH":@"init://settingsViewController",
-    @"TOOLBAR_DETIAL_VC_PATH":@"init://toolbarDetailViewController",
-    @"DETIAL_VC_PATH":@"init://detailViewController",
-    @"POST_VC_PATH":@"init://postController",
-    @"DELIVER_VC_PATH":@"init://deliverViewController"};
-        
-    map.urlPath = [testURLPathDic valueForKey:keyPath];
+    map.urlPath = [urlPathDic valueForKey:keyPath];
     
     if ([keyPath isEqualToString:@"HD_LOGIN_VC_PATH"]) {
         map.propertyDictionary = @{ @"model.submitURLPath" : @"${base_url}modules/ios/public/login_iphone.svc"};
