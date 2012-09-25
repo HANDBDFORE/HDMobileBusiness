@@ -7,7 +7,7 @@
 //
 
 #import "HDURLRequestModel.h"
-#import "../HDVector.h"
+#import "HDListModel.h"
 /*
  *记录状态,不同的状态cell样式不同
  */
@@ -26,7 +26,7 @@ static NSString * kStorageInsert = @"INSERT";
 static NSString * kStorageUpdate = @"UPDATE";
 static NSString * kStorageRemove = @"REMOVE";
 
-@interface HDTodoListModel : HDURLRequestModel<HDVector>
+@interface HDTodoListModel : HDURLRequestModel<HDListModelVector,HDListModelSubmit>
 {
     @private
     struct {
@@ -43,7 +43,7 @@ static NSString * kStorageRemove = @"REMOVE";
 }
 
 //结果列表，和界面显示对应，datasource从该列表获取数据
-@property(nonatomic,readonly) NSArray * resultList;
+//@property(nonatomic,readonly) NSArray * resultList;
 
 //查询字段
 @property(nonatomic,retain) NSArray * serachFields;
@@ -57,13 +57,8 @@ static NSString * kStorageRemove = @"REMOVE";
 //提交的Url
 @property(nonatomic,copy) NSString * submitURL;
 
-//查询
-- (void)search:(NSString*)text;
-
 //清除无效的数据
 -(void)clear;
-
--(void)removeRecordAtIndex:(NSUInteger) index;
 
 @end
 

@@ -28,7 +28,7 @@
         _pageNum = 1;
         _resultList = [[NSMutableArray alloc] init];
         //test data
-        //        self.queryUrl = [NSString stringWithFormat:@"%@autocrud/ios.ios_approve.ios_workflow_has_approved_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]];
+        //        self.queryURL = [NSString stringWithFormat:@"%@autocrud/ios.ios_approve.ios_workflow_has_approved_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]];
     }
     return self;
 }
@@ -38,14 +38,14 @@
 {
     if (more) {
         _pageNum ++;
+    }else {
+        _pageNum = 1;
+        [_resultList removeAllObjects];
     }
-    if (!more && [_resultList count] == 0) {
-        _pageNum =1;
-    }
-    //debug:添加对_queryUrl的nil校验，否则对nil appendding导致crash R
-    if (_queryURL) {
+    //debug:添加对_queryURL的nil校验，否则对nil appendding导致crash R
+    if (_queryURL.length) {
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-        map.requestPath = [_queryURL stringByAppendingFormat:@"?pagesize=10&amp;pagenum=%i&amp;_fetchall=false&amp;_autocount=false",_pageNum];
+        map.requestPath = [_queryURL stringByAppendingFormat:@"?pagesize=10&pagenum=%i&_fetchall=false_autocount=false",_pageNum];
         [self requestWithMap:map];
     }
 }
@@ -74,7 +74,7 @@
 
 -(BOOL)hasNext
 {
-    return  (_currentIndex < [self effectiveRecordCount]);
+    return  (_currentIndex + 1< [self effectiveRecordCount]);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

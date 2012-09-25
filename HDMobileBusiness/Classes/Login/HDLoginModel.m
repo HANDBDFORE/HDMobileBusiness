@@ -25,8 +25,7 @@
 -(id)init
 {
     if (self = [super init]) {
-        //TODO:配置
-        self.submitURLPath = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"login_iphone.svc"];
+//        self.submitURLPath = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/public/login_iphone.svc"];
         self.username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     }
     return self;

@@ -8,11 +8,6 @@
 
 #import "HDCoreStorage.h"
 #import "FMDatabase.h"
-#import "FMDatabasePool.h"
-#import "FMResultSet.h"
-#import "HDSQLCenter.h"
-
-static HDCoreStorage * globalStorage = nil;
 
 @implementation HDCoreStorage{
     FMDatabasePool *DatabasePool;
@@ -22,69 +17,33 @@ static HDCoreStorage * globalStorage = nil;
 #pragma mark 单例
 +(id)shareStorage
 {
-    if (nil == globalStorage) {
-        globalStorage = [[self alloc]init];
-    }
-    return globalStorage;
-}
-
-+(id) allocWithZone:(NSZone *)zone{
-    @synchronized(self){
-        if (globalStorage == nil) {
-            globalStorage = [super allocWithZone:zone];
-            return  globalStorage;
-        }
-    }
-    return nil;
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;
-}
-
-- (id)retain
-{
-    return self;
+    return [self shareObject];
 }
 
 -(id)init
 {
     self = [super init];
     if (self) {
-        DatabasePool = [[FMDatabasePool databasePoolWithPath:[self dbPath]] retain];
+        //使用tt函数直接获取document路径
+        DatabasePool = [[FMDatabasePool alloc] initWithPath:TTPathForDocumentsResource(@"HDMobileBusiness.db")];
         DatabasePool.maximumNumberOfDatabasesToCreate = 3;
         sqlCenter = [[HDSQLCenter alloc]init];
     }
     return self;
 }
 
--(unsigned)retainCount
-{
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-
-- (id)autorelease
-{
-    return self;
-}
--(oneway void)release{
-}
 -(void)dealloc
 {
     [DatabasePool releaseAllDatabases];
-    [DatabasePool release];
-    [sqlCenter release];
+    //使用宏释放内存，防止野指针造成crash
+    TT_RELEASE_SAFELY(DatabasePool);
+    TT_RELEASE_SAFELY(sqlCenter);
+//    [DatabasePool release];
+//    [sqlCenter release];
     [super dealloc];
 }
 #pragma mark-
 #pragma mark 方法
-- (NSString *) dbPath {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    return [documentsDirectory stringByAppendingPathComponent:@"HDMobileBusiness.db"];
-}
-
 -(NSArray*)query:(SEL) handler conditions:(NSDictionary *) conditions{
     if ([sqlCenter respondsToSelector:handler]) {
         __block  NSMutableArray  *_DATA = [[[NSMutableArray alloc]init]autorelease];

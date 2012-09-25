@@ -16,8 +16,6 @@
 
 @property (nonatomic, retain) NSDictionary * userInfo;
 
-@property (nonatomic,copy)NSString * d;
-
 @property (nonatomic,copy) NSString * urlPath;
 
 +(id)map;

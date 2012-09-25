@@ -10,6 +10,7 @@
 #import "HDTodoListDelegate.h"
 
 @implementation HDBaseTodoListViewController
+@synthesize listModel = _listModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -19,7 +20,9 @@
         self.variableHeightRows = YES;
         self.clearsSelectionOnViewWillAppear = NO;
         
-        self.dataSource = [[[HDTodoListDataSource alloc]init]autorelease];
+        HDTodoListDataSource * listDataSource = [[[HDTodoListDataSource alloc]init]autorelease];
+        self.dataSource = listDataSource;
+        self.listModel = listDataSource.listModel;
     }
     return self;
 }
@@ -42,21 +45,21 @@
 -(void)loadView
 {
     [super loadView];
-    _acceptButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"同意" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)]; 
+    _acceptButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Accept", @"同意") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)]; 
     _acceptButtonItem.width = 120;
     _acceptButtonItem.tintColor = RGBCOLOR(0, 153, 0);
     _acceptButtonItem.tag = 1;
     ////////////////////////////////////////////////////////////////////////////////
 /////////////////////
     
-    _refuseButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"拒绝" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
+    _refuseButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Refuse", @"拒绝") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
     _refuseButtonItem.width = 120;
     _refuseButtonItem.tintColor = RGBCOLOR(153, 0, 0);
     _refuseButtonItem.tag = 0;
     ////////////////////////////////////////////////////////////////////////////////
 /////////////////////
     
-    _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"清理" style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
+    _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Clear", @"清理") style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
     ////////////////////////////////////////////////////////////////////////////////
 /////////////////////
     
@@ -97,20 +100,20 @@
 #pragma  -mark toolbar Buttons
 -(void)resetButtonTitle
 {
-    _acceptButtonItem.title = @"同意";
+    _acceptButtonItem.title = TTLocalizedString(@"Accept", @"同意");
     _acceptButtonItem.enabled = NO;
     
-    _refuseButtonItem.title = @"拒绝";
+    _refuseButtonItem.title = TTLocalizedString(@"Refuse", @"拒绝");
     _refuseButtonItem.enabled = NO;
 }
 
 -(void)setToolbarButtonTitleWithCount:(NSNumber *)count
 {
     if (count.intValue >0) {
-        _refuseButtonItem.title = [NSString stringWithFormat:@"拒绝(%@)",count];
-        _refuseButtonItem.enabled = YES;
-        _acceptButtonItem.title = [NSString stringWithFormat:@"同意(%@)",count];
+        _acceptButtonItem.title = [NSString stringWithFormat:@"%@(%@)",TTLocalizedString(@"Accept", @"同意"),count];
         _acceptButtonItem.enabled = YES;
+        _refuseButtonItem.title = [NSString stringWithFormat:@"%@(%@)",TTLocalizedString(@"Refuse", @"拒绝"),count];
+        _refuseButtonItem.enabled = YES;
     }
     else {
         [self resetButtonTitle]; 
@@ -122,9 +125,9 @@
     [super setEditing:editing animated:animated];
     [self resetButtonTitle];
     if(editing){
-        self.editButtonItem.title = @"取消";
+        self.editButtonItem.title = TTLocalizedString(@"Cancel", @"取消");
     }else {
-        self.editButtonItem.title = @"批量";
+        self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
     }
 }
 
@@ -135,17 +138,19 @@
     return (interfaceOrientation!=UIInterfaceOrientationPortraitUpsideDown);
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-//    [self.tableView reloadData];
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma refresh
 -(void)refreshButtonPressed:(id)sender
 {
     [self.model load:TTURLRequestCachePolicyNetwork more:NO];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark post view controller
 //toolBar button pressed
@@ -154,25 +159,29 @@
     _submitAction = ([sender tag] == 1)?@"Y":@"N";
     [self showPostView];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)showPostView
 {
     //TODO:获取默认审批内容使用常量，常量定义位置未定,考虑使用一个全局常量头文件
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     //    controller.originView = [query objectForKey:@"__target__"];
-    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"init://postController"] applyQuery: @{@"text":defaultComments, @"delegate":self, @"title":@"审批意见"}]];
+    [[HDGuider guider] guideToKeyPath:@"POST_VC_PATH"
+                                query:@{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")}
+                             animated:NO];
+    
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    if ([self.model isKindOfClass:[HDTodoListModel class]]) {
-         NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
-        [(HDTodoListModel *)self.model submitObjectAtIndexPaths:indexPaths
-                                                        comment:text
-                                                         action:_submitAction];
-    }
+    NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
+    [self.listModel submitRecordsAtIndexPaths:indexPaths
+                                   dictionary:@{kComments:text,kAction:_submitAction}];
+
     [self setEditing:NO animated:YES];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark TTModel Functions
 -(void)modelDidFinishLoad:(id<TTModel>)model
@@ -199,6 +208,6 @@
 -(void)didSwiped:(UISwipeGestureRecognizer *)recognizer{
     CGPoint swipeLocation = [recognizer locationInView:self.tableView];
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
-    [(HDTodoListModel *)self.model removeRecordAtIndex:swipedIndexPath.row];
+    [self.listModel removeRecordAtIndex:swipedIndexPath.row];
 }
 @end

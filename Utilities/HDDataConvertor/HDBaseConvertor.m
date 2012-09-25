@@ -14,7 +14,7 @@
 
 -(id)initWithNextConvertor:(id<HDDataConvertor>) next
 {
-    if ([self init]) {
+    if (self = [self init]) {
         self.nextConvertor = next;
     }
     return self;

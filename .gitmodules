@@ -1,6 +1,6 @@
 [submodule "Frameworks/Three20"]
 	path = Frameworks/Three20
-	url = git://github.com/facebook/three20.git
+	url = git://github.com/HAND-MAS/three20.git
 [submodule "Frameworks/TouchXML"]
 	path = Frameworks/TouchXML
 	url = git://github.com/TouchCode/TouchXML.git

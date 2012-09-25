@@ -36,7 +36,7 @@ static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
     self.tabBarItem.image = [UIImage imageNamed:@"mailclosed.png"];
     
     //初始化导航条右侧按钮
-    self.editButtonItem.title = @"批量";
+    self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //tool bar

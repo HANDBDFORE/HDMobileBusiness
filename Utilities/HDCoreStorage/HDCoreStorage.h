@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "HDSQLCenter.h"
+#import "../HDSingletonObject.h"
 
-@interface HDCoreStorage : NSObject
+@interface HDCoreStorage : HDSingletonObject
 
 +(id)shareStorage;
 

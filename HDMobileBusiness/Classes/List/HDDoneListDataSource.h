@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "HDDoneListModel.h"
+#import "HDListModel.h"
 
 @interface HDDoneListDataSource : TTListDataSource
 
-@property(nonatomic,readonly) HDDoneListModel * doneListModel;
+@property(nonatomic,assign) id<HDListModelVector> listModel;
 
 @property(nonatomic,retain) NSDictionary * cellItemMap;
 
