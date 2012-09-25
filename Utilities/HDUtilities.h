@@ -19,3 +19,5 @@
 #import "HDDataConvertor/HDDataConvertor.h"
 
 #import "HDSingletonObject.h"
+
+#import "NSString+HDAddtions.h"

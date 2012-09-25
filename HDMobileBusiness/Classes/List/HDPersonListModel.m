@@ -41,7 +41,7 @@
     [_resultList removeAllObjects];
     if (text.length) {
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-        map.requestPath = self.queryURL;
+        map.urlPath = self.queryURL;
         map.postData = @{ @"parameter" : text};
         [self requestWithMap:map];
     } else {

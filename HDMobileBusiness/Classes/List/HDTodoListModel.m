@@ -129,7 +129,7 @@ static NSString * kSQLNull = @"null";
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     map.postData = @[[_submitList objectAtIndex:0]];
     [map.userInfo setObject:[_submitList objectAtIndex:0] forKey:@"postObject"];
-    map.requestPath = self.submitURL;
+    map.urlPath = self.submitURL;
     map.cachePolicy = TTURLRequestCachePolicyNoCache;
     [self requestWithMap:map];
 }
@@ -164,7 +164,7 @@ static NSString * kSQLNull = @"null";
 -(void)loadRemoteRecords
 {
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    map.requestPath =  self.queryURL;
+    map.urlPath =  self.queryURL;
     [self requestWithMap:map];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

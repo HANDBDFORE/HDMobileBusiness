@@ -46,16 +46,18 @@
  */
 -(TTTableItem *) createItemWithObject:(NSDictionary *) object
 {
-    NSString * title = [self createCellItemWithTemplete:[_cellItemMap valueForKey: @"title"] query:object];
-    NSString * caption = [self createCellItemWithTemplete:[_cellItemMap valueForKey:@"caption"] query:object];
-    NSString * text = [self createCellItemWithTemplete:[_cellItemMap valueForKey:@"text"] query:object];
+    NSString * title = [[_cellItemMap valueForKey:@"title"] stringByReplacingSpaceHodlerWithDictionary:object];
+
+    NSString * caption =[[_cellItemMap valueForKey:@"caption"] stringByReplacingSpaceHodlerWithDictionary:object];
+
+    NSString * text = [[_cellItemMap valueForKey:@"text"] stringByReplacingSpaceHodlerWithDictionary:object];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    NSDate * timestamp = [dateFormatter dateFromString:[self createCellItemWithTemplete:[_cellItemMap valueForKey:@"timestamp"] query:object]];
+    NSDate * timestamp = [dateFormatter dateFromString:[[_cellItemMap valueForKey:@"timestamp"] stringByReplacingSpaceHodlerWithDictionary:object]];
     TT_RELEASE_SAFELY(dateFormatter);
     
-    NSString * warning = [self createCellItemWithTemplete:[_cellItemMap valueForKey:@"isLate"] query:object];
+    NSString * warning = [[_cellItemMap valueForKey:@"isLate"] stringByReplacingSpaceHodlerWithDictionary:object];
     
     NSString * stautMessage = nil;
     if (![[object valueForKey:kRecordStatus] isEqualToString:kRecordNormal] &&![[object valueForKey:kRecordStatus] isEqualToString:kRecordWaiting]) {
@@ -71,19 +73,6 @@
                                            message:stautMessage
                                              state:[object valueForKey:kRecordStatus]
                                            warning:warning];
-}
-
--(NSString *)createCellItemWithTemplete:(NSString *) templete
-                                  query:(NSDictionary *)query
-{
-    NSEnumerator * e = [query keyEnumerator];
-    for (NSString * key; (key = [e nextObject]);) {
-        NSString * replaceString = [NSString stringWithFormat:@"${%@}",key];
-        NSString * valueString = [NSString stringWithFormat:@"%@",[query valueForKey:key]];
-        
-        templete = [templete stringByReplacingOccurrencesOfString:replaceString withString:valueString];
-    }
-    return templete;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -140,6 +129,8 @@
     if ([item.state isEqualToString:kRecordNormal] ||
         [item.state isEqualToString:kRecordError]) {
         self.listModel.currentIndex = [self.items indexOfObject:item];
+        //TODO:why I can't use guider here?
+//        [[HDGuider guider]guideToKeyPath:@"TOOLBAR_DETIAL_VC_PATH" query:@{ @"listModel" : self.listModel} animated:YES];
         [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/TOOLBAR_DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.listModel}]applyAnimated:YES]];
     }
 }
