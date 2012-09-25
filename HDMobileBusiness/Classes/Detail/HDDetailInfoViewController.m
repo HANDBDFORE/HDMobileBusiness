@@ -110,11 +110,15 @@
 }
 
 -(void)reloadAll{
-    _userInfoView.employeeUrlPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]] ;
-
+    NSString * employeeURLPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]] ;
+    _userInfoView.employeeUrlPath = [employeeURLPath stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[[HDHTTPRequestCenter sharedURLCenter] baseURLPath]}] ;
+    
     _employeeInfoItem.title =[[self.listModel current] objectForKey:self.userInfoItemTitle];
-     self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]];
+    
+    NSString *currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]];
 
+    self.currentURL = [currentURL stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[[HDHTTPRequestCenter sharedURLCenter] baseURLPath]}];
+    
     [self openURL:[NSURL URLWithString:self.currentURL]];
     _nextButtonItem.enabled = [self.listModel hasNext];
     _prevButtonItem.enabled = [self.listModel hasPrev];
