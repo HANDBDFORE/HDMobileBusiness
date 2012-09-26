@@ -7,11 +7,10 @@
 //
 
 #import "HDTodoListModel.h"
+#import "HDTableDataSource.h"
 
-@interface HDTodoListDataSource : TTListDataSource
+@interface HDTodoListDataSource : TTListDataSource <HDTableDataSource>
 
 @property(nonatomic,assign) id<HDListModelVector,HDListModelSubmit> listModel;
-
-@property(nonatomic,retain) NSDictionary * cellItemMap;
 
 @end

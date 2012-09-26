@@ -12,11 +12,11 @@
 @implementation HDTodoListDataSource
 
 @synthesize listModel = _listModel;
-@synthesize cellItemMap = _cellItemMap;
+@synthesize itemDictionary = _itemDictionary;
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_cellItemMap);
+    TT_RELEASE_SAFELY(_itemDictionary);
     [super dealloc];
 }
 
@@ -30,7 +30,7 @@
         self.model = model;
         self.listModel = model;
         
-        self.cellItemMap =
+        self.itemDictionary =
         @{@"title":@"title",
         @"caption":@"caption",
         @"text":@"text",
@@ -46,18 +46,18 @@
  */
 -(TTTableItem *) createItemWithObject:(NSDictionary *) object
 {
-    NSString * title = [[_cellItemMap valueForKey:@"title"] stringByReplacingSpaceHodlerWithDictionary:object];
+    NSString * title = [[_itemDictionary valueForKey:@"title"] stringByReplacingSpaceHodlerWithDictionary:object];
 
-    NSString * caption =[[_cellItemMap valueForKey:@"caption"] stringByReplacingSpaceHodlerWithDictionary:object];
+    NSString * caption =[[_itemDictionary valueForKey:@"caption"] stringByReplacingSpaceHodlerWithDictionary:object];
 
-    NSString * text = [[_cellItemMap valueForKey:@"text"] stringByReplacingSpaceHodlerWithDictionary:object];
+    NSString * text = [[_itemDictionary valueForKey:@"text"] stringByReplacingSpaceHodlerWithDictionary:object];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    NSDate * timestamp = [dateFormatter dateFromString:[[_cellItemMap valueForKey:@"timestamp"] stringByReplacingSpaceHodlerWithDictionary:object]];
+    NSDate * timestamp = [dateFormatter dateFromString:[[_itemDictionary valueForKey:@"timestamp"] stringByReplacingSpaceHodlerWithDictionary:object]];
     TT_RELEASE_SAFELY(dateFormatter);
     
-    NSString * warning = [[_cellItemMap valueForKey:@"isLate"] stringByReplacingSpaceHodlerWithDictionary:object];
+    NSString * warning = [[_itemDictionary valueForKey:@"isLate"] stringByReplacingSpaceHodlerWithDictionary:object];
     
     NSString * stautMessage = nil;
     if (![[object valueForKey:kRecordStatus] isEqualToString:kRecordNormal] &&![[object valueForKey:kRecordStatus] isEqualToString:kRecordWaiting]) {

@@ -7,6 +7,7 @@
 //
 
 #import "HDListModel.h"
+#import "HDTableDataSource.h"
 
 @interface HDFunctionListModel : HDURLRequestModel<HDListModelQuery>
 {
@@ -17,9 +18,8 @@
 
 @end
 
-@interface HDFunctionListDataSource : TTSectionedDataSource
+@interface HDFunctionListDataSource : TTSectionedDataSource <HDTableDataSource>
 
 @property(nonatomic,assign) id<HDListModelQuery> listModel;
-@property(nonatomic,retain) NSDictionary * itemDictionary;
 
 @end

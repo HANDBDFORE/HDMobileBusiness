@@ -12,11 +12,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation HDDoneListDataSource
 @synthesize listModel = _listModel;
-@synthesize cellItemMap = _cellItemMap;
+@synthesize itemDictionary = _itemDictionary;
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_cellItemMap);
+    TT_RELEASE_SAFELY(_itemDictionary);
     [super dealloc];
 }
 
@@ -28,7 +28,7 @@
         self.model = model;
         self.listModel = model;
         
-        self.cellItemMap =
+        self.itemDictionary =
         @{@"title":@"title",
         @"caption":@"caption",
         @"text":@"text",
@@ -42,13 +42,13 @@
     self.items = [NSMutableArray array];
     for (NSDictionary * record in self.listModel.resultList) {
         
-        NSString * title = [[_cellItemMap valueForKey: @"title"] stringByReplacingSpaceHodlerWithDictionary:record];
-        NSString * caption = [[_cellItemMap valueForKey:@"caption"] stringByReplacingSpaceHodlerWithDictionary:record];
-        NSString * text = [[_cellItemMap valueForKey:@"text"] stringByReplacingSpaceHodlerWithDictionary:record];
+        NSString * title = [[_itemDictionary valueForKey: @"title"] stringByReplacingSpaceHodlerWithDictionary:record];
+        NSString * caption = [[_itemDictionary valueForKey:@"caption"] stringByReplacingSpaceHodlerWithDictionary:record];
+        NSString * text = [[_itemDictionary valueForKey:@"text"] stringByReplacingSpaceHodlerWithDictionary:record];
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-        NSDate * timestamp = [dateFormatter dateFromString:[[_cellItemMap valueForKey:@"timestamp"] stringByReplacingSpaceHodlerWithDictionary:record]];
+        NSDate * timestamp = [dateFormatter dateFromString:[[_itemDictionary valueForKey:@"timestamp"] stringByReplacingSpaceHodlerWithDictionary:record]];
         TT_RELEASE_SAFELY(dateFormatter);
         if (!timestamp) {
             timestamp = [NSDate dateWithToday];
