@@ -6,9 +6,6 @@
 //  Copyright (c) 2012 hand. All rights reserved.
 //
 
-
-#import "HDBaseConfigObject.h"
-#import "HDValueConfigObject.h"
 #import "HDSingletonObject.h"
 
 @interface HDXMLParser : HDSingletonObject

@@ -10,11 +10,17 @@
 
 @protocol HDConfig <NSObject>
 
-@property(nonatomic,copy) NSString * key;
+@property(nonatomic,copy) NSString * propertyKey;
+
+@property(nonatomic,retain) id propertyValue;
+
++(id<HDConfig>)configWithKey:(NSString *) key value:(id) value;
+
+-(id)initWithKey:(NSString *) key value:(id)value;
 
 -(NSDictionary *)createPropertyDictionary;
 
--(void)addPropertyConfig:(id<HDConfig>)configObject;
+-(void)addSubConfig:(id<HDConfig>)configObject;
 
 
 @end

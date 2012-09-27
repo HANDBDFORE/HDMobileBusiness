@@ -9,77 +9,67 @@
 #import "HDBaseConfigObject.h"
 
 @implementation HDBaseConfigObject
-@synthesize key = _key;
+{
+    NSMutableArray * _children;
+}
+
+@synthesize propertyKey = _propertyKey;
+@synthesize propertyValue = _propertyValue;
 
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_children);
-    TT_RELEASE_SAFELY(_key);
+    TT_RELEASE_SAFELY(_propertyKey);
+    TT_RELEASE_SAFELY(_propertyValue);
     [super dealloc];
 }
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        _children = [[NSMutableArray alloc]init];
-    }
-    return self;
-}
-
--(id)initWithKey:(NSString *) key
+-(id)initWithKey:(NSString *) key value:(id)value
 {
     self = [self init];
     if (self) {
-        self.key = key;
+        self.propertyKey = key;
+        self.propertyValue = value;
     }
     return self;
 }
 
-+(id<HDConfig>)configWithKey:(NSString *) key
++(id<HDConfig>)configWithKey:(NSString *) key value:(id)value
 {
-    return [[[HDBaseConfigObject alloc]initWithKey:key]autorelease];
+    return [[[self alloc]initWithKey:key value:value]autorelease];
 }
 
 -(NSDictionary *)createPropertyDictionary
 {
-    if (_children.count == 0) {
-        return nil;
+    if (self.propertyKey && self.propertyValue) {
+        return @{self.propertyKey : self.propertyValue};
     }
-    
-    NSMutableDictionary * propertyDictionary = [NSMutableDictionary dictionary];
-    for (id<HDConfig> configObject in _children) {
-        NSDictionary * properties = [configObject createPropertyDictionary];
-        if ([self shouldAddKey]) {
-            for (NSString * childPropertyKey in [properties allKeys]) {
-                id value = [properties valueForKey:childPropertyKey];
-                [propertyDictionary setValue:value
-                                      forKey:[self.key stringByAppendingFormat:@".%@",childPropertyKey]];
-            }
-        }else{
-            [propertyDictionary setValuesForKeysWithDictionary:properties];
-        }
+    if (_children.count) {
+        return [self configPropertyDictionaryWithChildren:_children];
     }
-    return propertyDictionary;
+    return nil;
 }
 
--(void)addPropertyConfig:(id<HDConfig>)configObject
+-(NSDictionary *)configPropertyDictionaryWithChildren:(NSArray *)children;
 {
+    return nil;
+}
+
+-(void)addSubConfig:(id<HDConfig>)configObject
+{
+    if (!_children) {
+        _children = [[NSMutableArray alloc]init];
+    }
     if (configObject) {
         [_children addObject:configObject];
     }
 }
 
--(BOOL)shouldAddKey
-{
-    return !!self.key;
-}
-
 -(NSString *)description
 {
-    NSMutableString * str = [NSMutableString stringWithFormat:@"%@ \n ",self.key];
+    NSMutableString * str = [NSMutableString stringWithFormat:@"class:%@ \n key:%@ \n value:%@ \n",NSStringFromClass([self class]),self.propertyKey,self.propertyValue];
     for (id <HDConfig> child in _children) {
-        [str appendFormat:@"base:%@ \n ",[child description]];
+        [str appendFormat:@"child: %@ \n ",[child description]];
     }
     return str;
 }

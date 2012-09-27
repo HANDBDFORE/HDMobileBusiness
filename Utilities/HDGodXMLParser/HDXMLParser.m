@@ -8,9 +8,16 @@
 
 #import "HDXMLParser.h"
 #import "TouchXML.h"
+
+#import "HDContainerConfigObject.h"
+#import "HDNumberConfigObject.h"
+#import "HDDictionaryConfigObject.h"
+#import "HDArrayConfigObject.h"
+
 @interface HDXMLParser()
 {
     CXMLDocument * _document;
+    NSDictionary * _dataTypeDictionary;
 }
 
 @end
@@ -20,6 +27,7 @@
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_configDictionary);
+    TT_RELEASE_SAFELY(_dataTypeDictionary);
     [super dealloc];
 }
 
@@ -27,6 +35,13 @@
 {
     self = [super init];
     if (self) {
+        _dataTypeDictionary =
+        @{
+        @"NSString" : [HDBaseConfigObject class],
+        @"NSNumber" : [HDNumberConfigObject class],
+        @"NSArray" : [HDArrayConfigObject class],
+        @"NSDictionary" : [HDDictionaryConfigObject class]
+        };
         _configDictionary = [[NSMutableDictionary alloc]init];
         
         //        NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(@"ios-backend-config.xml")];
@@ -34,7 +49,7 @@
         
         NSError * error = nil;
         _document = [[CXMLDocument alloc]initWithData:data encoding:NSUTF8StringEncoding options:0 error:&error];
-        
+        //解析配置文件
         if ([[[_document rootElement] name] isEqualToString:@"backend-config"]) {
             NSError * error = nil;
             NSArray * vcArray = [_document nodesForXPath:@"//viewController" error:&error];
@@ -74,68 +89,43 @@
     
     //如果没有设置共享，创建一个配置
     if (!shareTo) {
-        sharedConfig = [self createProperties:viewControllerElement];
+        sharedConfig = [self createConfigs:viewControllerElement];
         [_configDictionary setValue:sharedConfig forKey:keyPath];
         return sharedConfig;
     }
     
+    //如果有设置共享，获取共享链接的配置
     NSString * searchPath = [NSString stringWithFormat:@"//viewController[@keyPath='%@']",shareTo];
     sharedConfig = [self parserConfigXML:(CXMLElement *)[_document nodeForXPath:searchPath error:nil]];
-     [_configDictionary setValue:sharedConfig forKey:keyPath];
+    [_configDictionary setValue:sharedConfig forKey:keyPath];
     
     return sharedConfig;
 }
 
--(id<HDConfig>)createProperties:(CXMLElement *) node
+-(id<HDConfig>)createConfigs:(CXMLElement *) element
 {
-    //TODO:先创建值对象
-    //value节点
-    if ([[[node attributeForName:@"dataType"] stringValue] isEqual:@"NSString"]) {
-        return [HDValueConfigObject configWithKey:[node name]
-                                            value:[[node attributeForName:@"value"] stringValue]];
-    }
-
-    //值容器对象，array和map
-    if ([[[node attributeForName:@"dataType"] stringValue] isEqual:@"NSArray"]) {
-        NSMutableArray * arrayValue = [NSMutableArray array];
-        for (CXMLNode * childNode in [node children]) {
-            if ([childNode isKindOfClass:[CXMLElement class]]) {
-                [arrayValue addObject:[[(CXMLElement *)childNode attributeForName:@"value"] stringValue]];
-            }
-        }
-        return [HDValueConfigObject configWithKey:[node name]
-                                            value:arrayValue];
+    //根据数据类型创建配置对象，如果没有数据类型，创建容器对象
+    Class class = [_dataTypeDictionary valueForKey:[[element attributeForName:@"dataType"] stringValue]];
+    if (!class) {
+        class = [HDContainerConfigObject class];
     }
     
-       
-    if ([[[node attributeForName:@"dataType"] stringValue] isEqual:@"NSDictionary"]) {
-        NSError * error = nil;
-        id value = [NSJSONSerialization JSONObjectWithData:[[[node attributeForName:@"value"] stringValue] dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
-        
-        return [HDValueConfigObject configWithKey:[node name]
-                                            value:value];
+    HDBaseConfigObject * configObject = [[[class alloc]init]autorelease];
+    [configObject setPropertyKey:[element name]];
+    [configObject setPropertyValue:[[element attributeForName:@"value"] stringValue]];
+    
+    //设置子节点，容器，数组，字典,之后如果有复杂类型对象，在添加子类
+    for (CXMLNode * childNode in [element children]) {
+        if ([childNode isKindOfClass:[CXMLElement class]]) {
+            [configObject addSubConfig:[self createConfigs:(CXMLElement *)childNode]];
+        }
     }
 
-    //创建配置容器对象,设定配置路径
-    if ([node childCount] >0) {
-        HDBaseConfigObject * baseConfig = nil;
-        //如果是view节点，创建key为nil的配置，否则用节点名称创建配置key
-        if ([[node name] isEqualToString:@"viewController"]) {
-            baseConfig = [HDBaseConfigObject configWithKey:nil];
-        }else{
-            baseConfig = [HDBaseConfigObject configWithKey:[node name]];
-        }
-        
-        for (CXMLNode * childNode in [node children]) {
-            if ([childNode isKindOfClass:[CXMLElement class]]) {
-                [baseConfig addPropertyConfig:[self createProperties:(CXMLElement *)childNode]];
-            }
-        }
-        return baseConfig;
+    //viewControoler节点设置key为nil，容器对象会对每一个子节点的字典key添加自己的key
+    if ([[element name] isEqualToString:@"viewController"]) {
+        [configObject setPropertyKey:nil];
     }
-    
-    //防止程序挂掉，返回一个根容器
-    return [HDBaseConfigObject configWithKey:nil];
+    return configObject;
 }
 
 @end
