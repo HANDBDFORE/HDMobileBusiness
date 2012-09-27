@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HDConfig.h"
 
-@interface HDBaseConfigNode : NSObject
+@interface HDBaseConfigObject : NSObject <HDConfig>
+{
+    NSMutableArray * _children;
+}
+
++(id<HDConfig>)configWithKey:(NSString *) key;
 
 @end

@@ -8,7 +8,7 @@
 
 @interface HDLoginModel : HDURLRequestModel
 
-@property(nonatomic,retain) NSString * submitURLPath;
+@property(nonatomic,retain) NSString * submitURL;
 
 @property(nonatomic,copy) NSString * username;
 

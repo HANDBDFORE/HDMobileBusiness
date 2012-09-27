@@ -246,6 +246,8 @@
 		B38E688F15C655C600824CB1 /* HDJSONToDataConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E688815C655C600824CB1 /* HDJSONToDataConvertor.m */; };
 		B38E689215C6562700824CB1 /* HDURLCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E689115C6562600824CB1 /* HDURLCenter.m */; };
 		B38E689615C656B000824CB1 /* HDGlobalMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E689515C656B000824CB1 /* HDGlobalMetrics.m */; };
+		B3CC44CB161197BA007BABA4 /* HDBaseConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CC44CA161197BA007BABA4 /* HDBaseConfigObject.m */; };
+		B3CC44CE16119CD1007BABA4 /* HDValueConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CC44CD16119CD0007BABA4 /* HDValueConfigObject.m */; };
 		B3D0977A15DB91E000C3495D /* HDGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977715DB91E000C3495D /* HDGuider.m */; };
 		B3D0977B15DB91E000C3495D /* HDGuiderMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977915DB91E000C3495D /* HDGuiderMap.m */; };
 		B3D0977E15DBA64400C3495D /* HDResponseMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977D15DBA64300C3495D /* HDResponseMap.m */; };
@@ -517,6 +519,7 @@
 		B33A234515D893100066383C /* TodoListDetailViewModel.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TodoListDetailViewModel.rtf; sourceTree = "<group>"; };
 		B33A23B815D903380066383C /* HDDataToStringConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDataToStringConvertor.h; sourceTree = "<group>"; };
 		B33A23B915D903390066383C /* HDDataToStringConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDataToStringConvertor.m; sourceTree = "<group>"; };
+		B33F1D2E1612ABB400E65A1D /* HDTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTableDataSource.h; path = Classes/List/HDTableDataSource.h; sourceTree = "<group>"; };
 		B34660B615C678DD00EFDF24 /* HDLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLoginModel.h; sourceTree = "<group>"; };
 		B34660B715C678DD00EFDF24 /* HDLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoginModel.m; sourceTree = "<group>"; };
 		B34660B815C678DD00EFDF24 /* HDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLoginViewController.h; sourceTree = "<group>"; };
@@ -735,6 +738,11 @@
 		B38E689415C656B000824CB1 /* HDGlobalMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGlobalMetrics.h; sourceTree = "<group>"; };
 		B38E689515C656B000824CB1 /* HDGlobalMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGlobalMetrics.m; sourceTree = "<group>"; };
 		B39BC5581601765C00551C63 /* HDListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDListModel.h; path = Classes/List/HDListModel.h; sourceTree = "<group>"; };
+		B3CC44C616119408007BABA4 /* HDConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDConfig.h; sourceTree = "<group>"; };
+		B3CC44C71611966D007BABA4 /* HDBaseConfigObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseConfigObject.h; sourceTree = "<group>"; };
+		B3CC44CA161197BA007BABA4 /* HDBaseConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDBaseConfigObject.m; sourceTree = "<group>"; };
+		B3CC44CC16119CD0007BABA4 /* HDValueConfigObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDValueConfigObject.h; sourceTree = "<group>"; };
+		B3CC44CD16119CD0007BABA4 /* HDValueConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDValueConfigObject.m; sourceTree = "<group>"; };
 		B3D0977615DB91E000C3495D /* HDGuider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGuider.h; sourceTree = "<group>"; };
 		B3D0977715DB91E000C3495D /* HDGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGuider.m; sourceTree = "<group>"; };
 		B3D0977815DB91E000C3495D /* HDGuiderMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGuiderMap.h; sourceTree = "<group>"; };
@@ -1142,6 +1150,7 @@
 		B383112E15F9F195005FD54E /* List */ = {
 			isa = PBXGroup;
 			children = (
+				B33F1D2E1612ABB400E65A1D /* HDTableDataSource.h */,
 				B39BC5581601765C00551C63 /* HDListModel.h */,
 				B374675615C76CAE003068CB /* FunctionList */,
 				B38DC6E415C6835D00FD0C58 /* TodoList */,
@@ -1544,6 +1553,11 @@
 		B3D4E20015E60ABB0061ED4D /* HDGodXMLParser */ = {
 			isa = PBXGroup;
 			children = (
+				B3CC44C616119408007BABA4 /* HDConfig.h */,
+				B3CC44C71611966D007BABA4 /* HDBaseConfigObject.h */,
+				B3CC44CA161197BA007BABA4 /* HDBaseConfigObject.m */,
+				B3CC44CC16119CD0007BABA4 /* HDValueConfigObject.h */,
+				B3CC44CD16119CD0007BABA4 /* HDValueConfigObject.m */,
 				B3D4E20115E60AD80061ED4D /* HDXMLParser.h */,
 				B3D4E20215E60AD80061ED4D /* HDXMLParser.m */,
 			);
@@ -2073,6 +2087,8 @@
 				B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */,
 				B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */,
 				B3881EF8161025F700FEF878 /* NSString+HDAddtions.m in Sources */,
+				B3CC44CB161197BA007BABA4 /* HDBaseConfigObject.m in Sources */,
+				B3CC44CE16119CD1007BABA4 /* HDValueConfigObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,4 +10,11 @@
 
 @protocol HDConfig <NSObject>
 
+@property(nonatomic,copy) NSString * key;
+
+-(NSDictionary *)createPropertyDictionary;
+
+-(void)addPropertyConfig:(id<HDConfig>)configObject;
+
+
 @end

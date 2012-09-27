@@ -10,13 +10,13 @@
 
 @implementation HDLoginModel
 
-@synthesize submitURLPath = _submitURLPath;
+@synthesize submitURL = _submitURL;
 @synthesize username = _username;
 @synthesize password = _password;
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_submitURLPath);
+    TT_RELEASE_SAFELY(_submitURL);
     TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_password);
     [super dealloc];
@@ -62,7 +62,7 @@
                    nil];
 
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    map.urlPath = self.submitURLPath;
+    map.urlPath = self.submitURL;
     map.postData = postdata;
     
     [self requestWithMap:map]; 

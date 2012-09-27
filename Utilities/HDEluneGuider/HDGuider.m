@@ -7,6 +7,7 @@
 //
 
 #import "HDGuider.h"
+#import "HDXMLParser.h"
 
 static NSString * kGuideModalPath = @"guide://modalViewControler/";
 static NSString * kGuideCreatePath = @"guide://createViewControler/";
@@ -116,9 +117,7 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
     }
     HDGuiderMap * map = [[[HDGuiderMap alloc]init] autorelease];
     
-    //TODO:这里考虑从god生成map,想配什么就在map里加吧...
     NSDictionary * urlPathDic =
-    //TODO:视图控制器考虑从工厂创建，而不是让ttnavigator创建
     @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
     @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",
     @"HD_LOGIN_VC_PATH":@"init://modalNib/HDLoginViewController/HDLoginViewController",
@@ -133,74 +132,14 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
     
     map.urlPath = [urlPathDic valueForKey:keyPath];
     
-    if ([keyPath isEqualToString:@"HD_LOGIN_VC_PATH"]) {
-        map.propertyDictionary = @{ @"model.submitURLPath" : @"${base_url}modules/ios/public/login_iphone.svc"};
+    map.propertyDictionary = [HDXMLParser createPropertyDictionaryForKeyPath:keyPath];
+    if ([keyPath isEqualToString:@"TOOLBAR_DETIAL_VC_PATH"] ||
+        [keyPath isEqualToString:@"DETIAL_VC_PATH"] ||
+        [keyPath isEqualToString:@"DELIVER_VC_PATH"]) {
+        map.shouldConfigWithQuery = YES;
     }
     
-    if ([keyPath isEqualToString:@"HD_MAIN_VC_PATH"] ||
-        [keyPath isEqualToString:@"TODO_LIST_SEARCH"]||
-        [keyPath isEqualToString:@"TODO_LIST_VC_PATH"]) {
-        map.propertyDictionary =
-        @{ @"title" : @"TodoList[配置]",
-        //设置tableview背景色导致tableView重绘制，搜索框消失，可以在style中统一设置背景色。
-//        @"tableView.backgroundColor" : RGBCOLOR(204, 255, 255),
-        @"dataSource.cellItemMap": @{@"title":@"${workflow_name}:${employee_name}",
-                                    @"caption":@"当前节点: ${node_name}",
-                                    @"text":@"${workflow_desc}",
-                                    @"timestamp":@"${creation_date}",
-                                    @"isLate":@"${is_late}"},
-        @"dataSource.model.primaryFiled" : @"record_id",
-        @"dataSource.model.serachFields" : @[@"order_type",@"node_name",@"employee_name"],
-        @"dataSource.model.queryURL" : @"${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false",
-        @"dataSource.model.submitURL" : @"${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"
-        };
-    }
-    if ([keyPath isEqualToString:@"DONE_LIST_VC_PATH"]) {
-        map.propertyDictionary =
-        @{ @"title" : @"DoneList[配置]",
-        @"tableView.separatorStyle" : @1,
-        @"tableView.separatorColor" : RGBCOLOR(53, 53, 53),
-        @"dataSource.cellItemMap" : @{@"title":@"${workflow_name}:${created_by_name}",
-                                    @"caption":@"当前节点: ${created_by_name}",
-                                    @"text":@"${workflow_desc}",
-                                    @"timestamp":@"${creation_date}"},
-        @"dataSource.model.queryURL" : @"${base_url}autocrud/ios.ios_test.ios_done_list_test/query"
-        };
-    }
-    if ([keyPath isEqualToString:@"FUNCTION_LIST_VC_PATH"]) {
-        map.propertyDictionary =
-        @{ @"title" : @"功能[配置]",
-        @"model.queryURL" : @"${base_url}autocrud/ios.ios_function_center.ios_function_center_list/query"
-        };
-    }
-    if ([keyPath isEqualToString:@"TOOLBAR_DETIAL_VC_PATH"]) {
-        map.shouldConfigWithQuery = YES;
-        map.propertyDictionary =
-        @{ @"userInfoItemTitle" : @"record_id" ,
-        @"queryActionURLTemplate" : @"${base_url}autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}",
-        @"userInfoPageURLTemplate" : @"${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",
-        @"webPageURLTemplate" : @"${base_url}${screen_name}"
-        };
-    }
-    if ([keyPath isEqualToString:@"DETIAL_VC_PATH"]) {
-        map.shouldConfigWithQuery = YES;
-        map.propertyDictionary =
-        @{ @"userInfoItemTitle" : @"record_id",
-        @"userInfoPageURLTemplate" : @"${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}",
-        @"webPageURLTemplate" : @"${base_url}${screen_name}"
-        };
-    }
-    if ([keyPath isEqualToString:@"DELIVER_VC_PATH"]) {
-        map.shouldConfigWithQuery = YES;
-        map.propertyDictionary =
-        @{ @"title" : @"转交[配置]",
-        @"showsRecipientPicker" : @0,
-        @"dataSource.model.queryURL" : @"${base_url}autocrud/ios.ios_deliver.ios_wprkflow_deliver_query/query",
-        @"dataSource.itemDictionary" : @{ @"text" : @"${name}",
-                                        @"subtitle":@"${position_name}",
-                                        @"userInfo":@"${employee_id}"}
-        };
-    }
+    //TODO:考虑添加一个dic，配置从前一个视图控制器传递过来的参数映射
     return map;
 }
 

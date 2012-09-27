@@ -21,3 +21,5 @@
 #import "HDSingletonObject.h"
 
 #import "NSString+HDAddtions.h"
+
+#import "HDXMLParser.h"
