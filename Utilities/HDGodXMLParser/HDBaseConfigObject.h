@@ -10,7 +10,9 @@
 #import "HDConfig.h"
 
 @interface HDBaseConfigObject : NSObject <HDConfig>
-
+{
+    id _propertyValue;
+}
 -(NSDictionary *)configPropertyDictionaryWithChildren:(NSArray *)children;
 
 @end

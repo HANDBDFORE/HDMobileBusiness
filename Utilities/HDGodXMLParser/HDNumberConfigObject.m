@@ -13,7 +13,7 @@
 -(id)propertyValue
 {
     NSNumberFormatter * formatter =[[[NSNumberFormatter alloc]init] autorelease];
-    return [formatter numberFromString:self.propertyValue];
+    return [formatter numberFromString:_propertyValue];
 }
 
 @end
