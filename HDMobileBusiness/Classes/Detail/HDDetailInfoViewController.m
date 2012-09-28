@@ -66,10 +66,6 @@
     
     //refresh button
     _refreshButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshWebPage)];
-    
-    //employee info button
-    _employeeInfoItem = [[UIBarButtonItem alloc]initWithTitle:[[self.listModel current] objectForKey:self.userInfoItemTitle] style:UIBarButtonItemStyleBordered target:_userInfoView action:@selector(show)];
-    self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:_nextButtonItem,_prevButtonItem,_refreshButtonItem,_employeeInfoItem,nil] ;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -112,14 +108,18 @@
 -(void)reloadAll{
     NSString * employeeURLPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]] ;
     _userInfoView.employeeUrlPath = [employeeURLPath stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[[HDHTTPRequestCenter sharedURLCenter] baseURLPath]}] ;
-    
-    _employeeInfoItem.title =[[self.listModel current] objectForKey:self.userInfoItemTitle];
-    
     NSString *currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]];
 
     self.currentURL = [currentURL stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[[HDHTTPRequestCenter sharedURLCenter] baseURLPath]}];
     
     [self openURL:[NSURL URLWithString:self.currentURL]];
+    //employee info button
+    if(_employeeInfoItem){
+        TT_RELEASE_SAFELY(_employeeInfoItem);
+    }
+    _employeeInfoItem = [[UIBarButtonItem alloc]initWithTitle:[[self.listModel current] objectForKey:self.userInfoItemTitle] style:UIBarButtonItemStyleBordered target:_userInfoView action:@selector(show)];
+    
+    self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:_nextButtonItem,_prevButtonItem,_refreshButtonItem,_employeeInfoItem,nil] ;
     _nextButtonItem.enabled = [self.listModel hasNext];
     _prevButtonItem.enabled = [self.listModel hasPrev];
 }

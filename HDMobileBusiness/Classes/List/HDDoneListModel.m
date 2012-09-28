@@ -40,7 +40,7 @@
         _pageNum ++;
     }else {
         _pageNum = 1;
-        [_resultList removeAllObjects];
+//        [_resultList removeAllObjects];
     }
     //debug:添加对_queryURL的nil校验，否则对nil appendding导致crash R
     if (_queryURL.length) {
@@ -53,7 +53,11 @@
 
 -(void)requestResultMap:(HDResponseMap *)map
 {
+    if(_pageNum==1){
+        [_resultList removeAllObjects];
+    }
     [_resultList addObjectsFromArray:map.result];
+    
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

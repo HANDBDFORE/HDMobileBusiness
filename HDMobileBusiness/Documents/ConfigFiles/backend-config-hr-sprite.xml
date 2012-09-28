@@ -26,8 +26,8 @@
                     <item dataType="NSString" value="node_name"/>
                     <item dataType="NSString" value="employee_name"/>
                 </serachFields>
-                <queryURL dataType="NSString" value="${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false"/>
-                <submitURL dataType="NSString" value="${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"/>
+                <queryURL dataType="NSString" value="${base_url}autocrud/ios.ios_todo_list.ios_todo_list_query/query?_fetchall=true&amp;_autocount=false"/>
+                <submitURL dataType="NSString" value="${base_url}modules/ios/ios_todo_list/ios_todo_list_commit.svc"/>
             </model>
         </dataSource>
     </viewController>
@@ -44,7 +44,7 @@
                 <timestamp dataType="NSString" value="${creation_date}"/>
             </itemDictionary>
             <model>
-                <queryURL dataType="NSString" value="${base_url}autocrud/ios.ios_test.ios_done_list_test/query"/>
+                <queryURL dataType="NSString" value="${base_url}autocrud/ios.ios_done_list.ios_done_list_query/query"/>
             </model>
         </dataSource>
     </viewController>
@@ -58,7 +58,7 @@
     <!--待办明细页面-->
     <viewController keyPath="TOOLBAR_DETIAL_VC_PATH">
         <userInfoItemTitle dataType="NSString" value="record_id"/>
-        <queryActionURLTemplate dataType="NSString" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}"/>
+        <queryActionURLTemplate dataType="NSString" value="${base_url}autocrud/ios.ios_action_query.ios_workflow_approve_action_query/query?record_id=${record_id}"/>
         <userInfoPageURLTemplate dataType="NSString" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
         <webPageURLTemplate dataType="NSString" value="${base_url}${screen_name}"/>
     </viewController>
