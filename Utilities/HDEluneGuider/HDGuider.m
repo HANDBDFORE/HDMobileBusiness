@@ -7,7 +7,6 @@
 //
 
 #import "HDGuider.h"
-#import "HDXMLParser.h"
 
 static NSString * kGuideModalPath = @"guide://modalViewControler/";
 static NSString * kGuideCreatePath = @"guide://createViewControler/";
@@ -118,6 +117,7 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
     HDGuiderMap * map = [[[HDGuiderMap alloc]init] autorelease];
     
     NSDictionary * urlPathDic =
+    //TODO:视图控制器考虑从工厂创建，而不是让ttnavigator创建
     @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
     @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",
     @"HD_LOGIN_VC_PATH":@"init://modalNib/HDLoginViewController/HDLoginViewController",
