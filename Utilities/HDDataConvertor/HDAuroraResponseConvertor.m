@@ -42,6 +42,13 @@
         errorMessage = @"data is not dictionary";
     }
     
+    if (!errorMessage) {
+        errorMessage = [data valueForKeyPath:@"error.code"];
+    }
+    if (!errorMessage) {
+        errorMessage = @"unknown error";
+    }
+    
     return [NSError errorWithDomain:kHDConvertErrorDomain
                                code:kHDConvertErrorCode
                            userInfo:[NSDictionary dictionaryWithObject:errorMessage forKey:NSLocalizedDescriptionKey]];
