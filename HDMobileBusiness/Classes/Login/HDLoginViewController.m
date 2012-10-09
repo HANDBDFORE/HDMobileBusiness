@@ -12,6 +12,7 @@
 
 @synthesize username = _username;
 @synthesize password = _password;
+@synthesize loginBtn = _loginBtn;
 
 @synthesize backgroundImage = _backgroundImage;
 
@@ -38,6 +39,7 @@
     TT_RELEASE_SAFELY(_password);
     TT_RELEASE_SAFELY(_loginModel);
     TT_RELEASE_SAFELY(_backgroundImage);
+    TT_RELEASE_SAFELY(_loginBtn);
     [super viewDidUnload];
 }
 
@@ -69,7 +71,17 @@
 -(IBAction)loginBtnPressed:(id)sender{
     [_username resignFirstResponder];
     [_password resignFirstResponder];
-    [_loginModel login];
+    if ([self.loginBtn tag] == 20) {
+        [_loginModel login];
+        [self.loginBtn setTitle:@"取消" forState:UIControlStateNormal];
+        [self.loginBtn setTag:21];
+    }else{
+        [_loginModel cancel];
+        [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+        [self.loginBtn setTag:20];
+    }
+    
+    
 }
 
 //模型delegate方法
@@ -80,6 +92,8 @@
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error
 {
+    [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [self.loginBtn  setTag:20];
     NSString * errorDescription = nil;
     if (!errorDescription) {
         errorDescription = [[error userInfo] valueForKeyPath:@"error"];

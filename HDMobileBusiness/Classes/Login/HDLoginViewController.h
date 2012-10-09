@@ -15,6 +15,7 @@
 //界面上的用户名和密码
 @property (nonatomic,retain) IBOutlet UITextField * username;
 @property (nonatomic,retain) IBOutlet UITextField * password;
+@property (nonatomic,retain) IBOutlet UIButton * loginBtn;
 
 @property (nonatomic,retain) UIImage * backgroundImage;
 
