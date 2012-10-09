@@ -7,6 +7,7 @@
 //
 
 #import "HDClassLoader.h"
+#import "HDWebViewController.h"
 
 static NSString * kClassName = @"name";
 static NSString * kNavigationMode = @"navigation_mode";
@@ -24,7 +25,7 @@ static NSString * kModal = @"modal";
     TTDPRINT(@"start loading");
     //获取classes节点,用于加载类的配置
     HDClassConfigParser * classConfigParser = [[HDClassConfigParser alloc]init];
-    [[TTNavigator navigator].URLMap from:@"*" toSharedViewController:[TTWebController class]];
+    [[TTNavigator navigator].URLMap from:@"*" toSharedViewController:[HDWebViewController class]];
     [classConfigParser setDelegate:self];
     [classConfigParser startParse];
     [classConfigParser release];

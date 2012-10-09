@@ -258,6 +258,7 @@
 		B3DAE3FF1614125400981662 /* HDContainerConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE3FE1614125400981662 /* HDContainerConfigObject.m */; };
 		B3DAE402161425A300981662 /* HDDictionaryConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE401161425A300981662 /* HDDictionaryConfigObject.m */; };
 		B3DAE4051614401400981662 /* HDArrayConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE4041614401400981662 /* HDArrayConfigObject.m */; };
+		B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ED3BA21623E71100505988 /* HDWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -769,6 +770,8 @@
 		B3E06E2B15D4F388002A54BE /* TodoListUI.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = TodoListUI.rtfd; path = Requirement/TodoList/TodoListUI.rtfd; sourceTree = "<group>"; };
 		B3E06E2C15D4FFC8002A54BE /* TodoListModel.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = TodoListModel.rtf; path = Requirement/TodoList/TodoListModel.rtf; sourceTree = "<group>"; };
 		B3E06E3015D509F1002A54BE /* ErrorMessage.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ErrorMessage.rtf; sourceTree = "<group>"; };
+		B3ED3BA11623E71100505988 /* HDWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDWebViewController.h; sourceTree = "<group>"; };
+		B3ED3BA21623E71100505988 /* HDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDWebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1228,6 +1231,8 @@
 				B38DC71515C68C3800FD0C58 /* HDDetailToolbarViewController.m */,
 				B38DC71615C68C3800FD0C58 /* HDUserInfoView.h */,
 				B38DC71715C68C3800FD0C58 /* HDUserInfoView.m */,
+				B3ED3BA11623E71100505988 /* HDWebViewController.h */,
+				B3ED3BA21623E71100505988 /* HDWebViewController.m */,
 			);
 			name = Detail;
 			path = Classes/Detail;
@@ -2107,6 +2112,7 @@
 				B3DAE3FF1614125400981662 /* HDContainerConfigObject.m in Sources */,
 				B3DAE402161425A300981662 /* HDDictionaryConfigObject.m in Sources */,
 				B3DAE4051614401400981662 /* HDArrayConfigObject.m in Sources */,
+				B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2188,6 +2194,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"ARCHS[sdk=*]" = (
+					armv6,
+					armv7,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2221,6 +2231,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"ARCHS[sdk=*]" = (
+					armv6,
+					armv7,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

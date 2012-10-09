@@ -57,4 +57,10 @@
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     return (toInterfaceOrientation != UIDeviceOrientationPortraitUpsideDown);
 }
+
+-(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
+{
+    TTAlert(error.localizedDescription);
+}
+
 @end

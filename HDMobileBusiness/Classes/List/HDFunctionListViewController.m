@@ -58,4 +58,9 @@
     return [[[TTTableViewGroupedVarHeightDelegate alloc]initWithController:self]autorelease];
 }
 
+-(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
+{
+    TTAlert(error.localizedDescription);
+}
+
 @end

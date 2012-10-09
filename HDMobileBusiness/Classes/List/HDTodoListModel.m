@@ -94,6 +94,11 @@ static NSString * kSQLNull = @"null";
 {
     NSError * error = nil;
     HDResponseMap * resultMap = [[HDHTTPRequestCenter shareHTTPRequestCenter] responseMapWithRequest:request error:&error];
+    
+    if (resultMap.error) {
+        [self request:request didFailLoadWithError:error];
+        return;
+    }
     //提交状态
     if (_flags.isSubmitingData) {
         [self performSelector:@selector(submitResponse:) withObject:resultMap afterDelay:0.6];

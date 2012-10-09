@@ -46,14 +46,14 @@
 {
     [super loadView];
     _acceptButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Accept", @"同意") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)]; 
-    _acceptButtonItem.width = 120;
+    _acceptButtonItem.width = 110;
     _acceptButtonItem.tintColor = RGBCOLOR(0, 153, 0);
     _acceptButtonItem.tag = 1;
     ////////////////////////////////////////////////////////////////////////////////
 /////////////////////
     
     _refuseButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Refuse", @"拒绝") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
-    _refuseButtonItem.width = 120;
+    _refuseButtonItem.width = 110;
     _refuseButtonItem.tintColor = RGBCOLOR(153, 0, 0);
     _refuseButtonItem.tag = 0;
     ////////////////////////////////////////////////////////////////////////////////
@@ -210,4 +210,10 @@
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
     [self.listModel removeRecordAtIndex:swipedIndexPath.row];
 }
+
+-(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
+{
+    TTAlert(error.localizedDescription);
+}
+
 @end
