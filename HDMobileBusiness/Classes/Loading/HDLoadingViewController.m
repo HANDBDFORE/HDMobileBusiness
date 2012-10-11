@@ -302,7 +302,7 @@ static NSString * kMainPathName = @"HD_MAIN_VC_PATH";
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return NO;
 }
 
 @end
