@@ -10,7 +10,7 @@
     <viewController keyPath="TODO_LIST_SEARCH" shareTo="TODO_LIST_VC_PATH"/>
     <!--待办页面-->
     <viewController keyPath="TODO_LIST_VC_PATH">
-        <title dataType="NSString" value="TodoList[配]"/>
+        <title dataType="NSString" value="待办事项"/>
         <dataSource>
             <itemDictionary dataType="NSDictionary">
                 <title dataType="NSString" value="${workflow_name}:${employee_name}"/>
@@ -35,7 +35,7 @@
     <viewController keyPath="HD_MAIN_VC_PATH" shareTo="TODO_LIST_VC_PATH"/>
     <!--审批完成页面-->
     <viewController keyPath="DONE_LIST_VC_PATH">
-        <title dataType="NSString" value="DoneList[配]"/>
+        <title dataType="NSString" value="审批完成"/>
         <dataSource>
             <itemDictionary dataType="NSDictionary">
                 <title dataType="NSString" value="${workflow_name}:${created_by_name}"/>
@@ -50,27 +50,27 @@
     </viewController>
     <!--功能列表页面-->
     <viewController keyPath="FUNCTION_LIST_VC_PATH">
-        <title dataType="NSString" value="功能[配]"/>
+        <title dataType="NSString" value="功能列表"/>
         <model>
             <queryURL dataType="NSString" value="${base_url}autocrud/ios.ios_function_center.ios_function_center_list/query"/>
         </model>
     </viewController>
     <!--待办明细页面-->
     <viewController keyPath="TOOLBAR_DETIAL_VC_PATH">
-        <userInfoItemTitle dataType="NSString" value="record_id"/>
+        <userInfoItemTitle dataType="NSString" value="employee_name"/>
         <queryActionURLTemplate dataType="NSString" value="${base_url}autocrud/ios.ios_action_query.ios_workflow_approve_action_query/query?record_id=${record_id}"/>
         <userInfoPageURLTemplate dataType="NSString" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
         <webPageURLTemplate dataType="NSString" value="${base_url}${screen_name}"/>
     </viewController>
     <!--审批完成页面-->
     <viewController keyPath="DETIAL_VC_PATH">
-        <userInfoItemTitle dataType="NSString" value="record_id"/>
+        <userInfoItemTitle dataType="NSString" value="created_by_name"/>
         <userInfoPageURLTemplate dataType="NSString" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
         <webPageURLTemplate dataType="NSString" value="${base_url}${screen_name}"/>
     </viewController>
     <!--转交页面-->
     <viewController keyPath="DELIVER_VC_PATH">
-        <title dataType="NSString" value="转交[配]"/>
+        <title dataType="NSString" value="转交"/>
         <dataSource>
             <model>
                 <queryURL dataType="NSString" value="${base_url}autocrud/ios.ios_deliver.ios_wprkflow_deliver_query/query"/>
