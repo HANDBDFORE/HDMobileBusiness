@@ -167,10 +167,9 @@
 
 -(void)showPostView
 {
-    //TODO:获取默认审批内容使用常量，常量定义位置未定,考虑使用一个全局常量头文件
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     //    controller.originView = [query objectForKey:@"__target__"];
-    [[HDGuider guider] guideToKeyPath:@"POST_VC_PATH"
+    [[HDGuider guider] guideToKeyPath:kPostControllerPath
                                 query:@{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")}
                              animated:YES];
     

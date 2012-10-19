@@ -10,6 +10,11 @@
 #import "HDGuiderMap.h"
 #import "HDSingletonObject.h"
 
+static NSString * kPostControllerPath = @"POST_VC_PATH";
+static NSString * kDeliverControllerPath = @"DELIVER_VC_PATH";
+static NSString * kLoginControllerPath = @"HD_LOGIN_VC_PATH";
+static NSString * kMainControllerPath = @"HD_MAIN_VC_PATH";
+
 @interface HDGuider : HDSingletonObject
 
 +(id)guider;

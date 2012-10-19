@@ -56,7 +56,7 @@
     //点击后打开模态视图
     //    controller.originView = [query objectForKey:@"__target__"];
     NSDictionary * query = [NSDictionary dictionaryWithObjectsAndKeys:defaultText, @"text",self,@"delegate",nil];
-    [[HDGuider guider] guideToKeyPath:@"POST_VC_PATH" query:query animated:YES];
+    [[HDGuider guider] guideToKeyPath:kPostControllerPath query:query animated:YES];
 }
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
@@ -123,7 +123,7 @@
     @"body": [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"],
     @"dataSource":[[[HDPersonListDataSource alloc]init] autorelease]
     };
-    [[HDGuider guider] guideToKeyPath:@"DELIVER_VC_PATH"
+    [[HDGuider guider] guideToKeyPath:kDeliverControllerPath
                                 query:query
                              animated:YES];
 }

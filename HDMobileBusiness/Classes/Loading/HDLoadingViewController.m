@@ -9,9 +9,6 @@
 #import "HDLoadingViewController.h"
 #import "HDResourceLoader.h"
 
-static NSString * kLoginPathName = @"HD_LOGIN_VC_PATH";
-static NSString * kMainPathName = @"HD_MAIN_VC_PATH";
-
 @interface HDLoadingViewController ()
 
 @end
@@ -216,8 +213,8 @@ static NSString * kMainPathName = @"HD_MAIN_VC_PATH";
     TTNavigator* navigator = [TTNavigator navigator];
     [navigator removeAllViewControllers];
 
-    [[HDGuider guider]guideToKeyPath:kMainPathName query:nil animated:NO];
-    [[HDGuider guider]guideToKeyPath:kLoginPathName query:nil animated:NO];
+    [[HDGuider guider]guideToKeyPath:kMainControllerPath query:nil animated:NO];
+    [[HDGuider guider]guideToKeyPath:kLoginControllerPath query:nil animated:NO];
 }
 
 #pragma mark - life cycle
