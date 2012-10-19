@@ -543,6 +543,8 @@
 		B36BDAB315C64777003A4A5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B36BDAB515C64777003A4A5D /* HDMobileBusinessTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDMobileBusinessTests.h; sourceTree = "<group>"; };
 		B36BDAB615C64777003A4A5D /* HDMobileBusinessTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDMobileBusinessTests.m; sourceTree = "<group>"; };
+		B36F7A6F16312EC60090646E /* backend-config-hr-sprite.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "backend-config-hr-sprite.xml"; sourceTree = "<group>"; };
+		B36F7A7016312F780090646E /* backend-config-hr-sprite_for_test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "backend-config-hr-sprite_for_test.xml"; sourceTree = "<group>"; };
 		B37467E815C78112003068CB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		B37467EA15C78118003068CB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		B3881EF6161025F700FEF878 /* NSString+HDAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HDAddtions.h"; sourceTree = "<group>"; };
@@ -704,7 +706,6 @@
 		B38E678215C64E6700824CB1 /* world@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world@2x.png"; sourceTree = "<group>"; };
 		B38E685A15C6526A00824CB1 /* backend-config-hec-sprite.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hec-sprite.xml"; sourceTree = "<group>"; };
 		B38E685B15C6526A00824CB1 /* backend-config-hec.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hec.xml"; sourceTree = "<group>"; };
-		B38E685C15C6526A00824CB1 /* backend-config-hr-sprite.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hr-sprite.xml"; sourceTree = "<group>"; };
 		B38E685D15C6526A00824CB1 /* backend-config-hr.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hr.xml"; sourceTree = "<group>"; };
 		B38E686315C6531300824CB1 /* bugList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = bugList.rtf; sourceTree = "<group>"; };
 		B38E686415C6531300824CB1 /* developList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = developList.rtf; sourceTree = "<group>"; };
@@ -1435,9 +1436,10 @@
 		B38E685915C6526A00824CB1 /* ConfigFiles */ = {
 			isa = PBXGroup;
 			children = (
+				B36F7A7016312F780090646E /* backend-config-hr-sprite_for_test.xml */,
+				B36F7A6F16312EC60090646E /* backend-config-hr-sprite.xml */,
 				B38E685A15C6526A00824CB1 /* backend-config-hec-sprite.xml */,
 				B38E685B15C6526A00824CB1 /* backend-config-hec.xml */,
-				B38E685C15C6526A00824CB1 /* backend-config-hr-sprite.xml */,
 				B38E685D15C6526A00824CB1 /* backend-config-hr.xml */,
 			);
 			path = ConfigFiles;
