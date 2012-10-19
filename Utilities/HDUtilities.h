@@ -7,7 +7,6 @@
 //
 
 
-#import "HDGodXMLFactory.h"
 #import "HDGlobalMetrics.h"
 
 #import "HDEluneGuider/HDGuider.h"

@@ -27,8 +27,6 @@
     if (self = [super init]) {
         _pageNum = 1;
         _resultList = [[NSMutableArray alloc] init];
-        //test data
-        //        self.queryURL = [NSString stringWithFormat:@"%@autocrud/ios.ios_approve.ios_workflow_has_approved_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]];
     }
     return self;
 }

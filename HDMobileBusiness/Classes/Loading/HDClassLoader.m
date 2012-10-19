@@ -7,119 +7,69 @@
 //
 
 #import "HDClassLoader.h"
+
 #import "HDWebViewController.h"
-
-static NSString * kClassName = @"name";
-static NSString * kNavigationMode = @"navigation_mode";
-static NSString * kURL = @"url";
-static NSString * kParent = @"parent";
-
-static NSString * kShare = @"share";
-static NSString * kCreate = @"create";
-static NSString * kModal = @"modal";
+#import "HDLoadingViewController.h"
+#import "HDUserGuideViewController.h"
+#import "HDDeliverViewController.h"
+#import "HDTodoListViewController.h"
+#import "HDDoneListViewController.h"
+#import "HDFunctionListViewController.h"
+#import "HDDetailToolbarViewController.h"
 
 @implementation HDClassLoader
 
--(void)startLoadClass
++(void)startLoad
 {
-    TTDPRINT(@"start loading");
-    //获取classes节点,用于加载类的配置
-    HDClassConfigParser * classConfigParser = [[HDClassConfigParser alloc]init];
-    [[TTNavigator navigator].URLMap from:@"*" toSharedViewController:[HDWebViewController class]];
-    [classConfigParser setDelegate:self];
-    [classConfigParser startParse];
-    [classConfigParser release];
-}
-
-#pragma -mark delegate functions of class parser
--(void)setNibLoadPathWithElement:(CXMLElement *)element
-{   
-    TTNavigator * _navigator = [TTNavigator navigator];
-    if (!_navigator) {
-        return;
-    }
-    NSString * urlPath = [[element attributeForName:kURL]stringValue];
-    NSString * mode = [[element attributeForName:kNavigationMode]stringValue];
+    TTNavigator * navigator = [TTNavigator navigator];
     
+    [navigator.URLMap from:@"*" toSharedViewController:[HDWebViewController class]];
+    
+    [navigator.URLMap from:@"init://LoadingViewController" toModalViewController:[HDLoadingViewController class]];
+    
+    [navigator.URLMap from:@"init://HDUserGuideViewController" toSharedViewController:[HDUserGuideViewController class]];
+    
+//    <class name="HDTodoListViewController" navigation_mode="create" parent="guide://shareViewControler/FUNCTION_LIST_VC_PATH" url="init://todoListViewController"/>
+    [navigator.URLMap from:@"init://todoListViewController"
+                    parent:@"guide://shareViewControler/FUNCTION_LIST_VC_PATH"
+          toViewController:[HDTodoListViewController class]
+                  selector:nil
+                transition:0];
+    
+//    <class name="HDTodoListSearchViewController" navigation_mode="create" url="init://todoListSearchViewController"/>
+    [navigator.URLMap from:@"init://todoListSearchViewController" toViewController:[HDTodoListSearchViewController class]];
+    
+//    <class name="HDDoneListViewController" navigation_mode="create" parent="guide://shareViewControler/FUNCTION_LIST_VC_PATH" url="init://doneListViewController"/>
+    [navigator.URLMap from:@"init://doneListViewController"
+                    parent:@"guide://shareViewControler/FUNCTION_LIST_VC_PATH"
+          toViewController:[HDDoneListViewController class]
+                  selector:nil
+                transition:0];
+    
+//    <class name="HDFunctionListViewController" navigation_mode="share" url="init://functionListViewController"/>
+    [navigator.URLMap from:@"init://functionListViewController" toSharedViewController:[HDFunctionListViewController class]];
+    
+//    <class name="HDDetailToolbarViewController"  navigation_mode="create" url="init://toolbarDetailViewController"/>
+    [navigator.URLMap from:@"init://toolbarDetailViewController" toViewController:[HDDetailToolbarViewController class]];
+    
+//    <class name="HDDetailInfoViewController" navigation_mode="create" url="init://detailViewController"/>
+    [navigator.URLMap from:@"init://detailViewController" toViewController:[HDDetailToolbarViewController class]];
+    
+//    <class name="TTPostController" navigation_mode="share" url="init://postController"/>
+    [navigator.URLMap from:@"init://postController" toSharedViewController:[TTPostController class]];
+    
+    [navigator.URLMap from:@"init://deliverViewController" toModalViewController:[HDDeliverViewController class]];
+    
+    //nibs
     id delegate =  [UIApplication sharedApplication].delegate;
-    if ([mode isEqualToString:kShare]) {
-        [_navigator.URLMap from:urlPath toSharedViewController:delegate];
-    }
-    if ([mode isEqualToString:kModal]) {
-        [_navigator.URLMap from:urlPath toModalViewController:delegate];
-        
-    }
-}   
 
--(void)setClassLoadPathWithElement:(CXMLElement *)element
-{
-    TTNavigator * _navigator = [TTNavigator navigator];
-    if (!_navigator) {
-        return;
-    }
-    NSString * urlPath = [[element attributeForName:kURL]stringValue];
-    NSString * mode = [[element attributeForName:kNavigationMode]stringValue];
-    NSString * parentPath =[[element attributeForName:kParent]stringValue];
-    NSString * className = [[element attributeForName:kClassName]stringValue];
-    
-    if (!parentPath) {
-        [self setClassLoadPath:urlPath 
-                     className:className
-                          mode:mode];
-        
-    }else {
-        [self setClassLoadPath:urlPath 
-                        parent:parentPath
-                     className:className
-                          mode:mode];
-    }
+    [navigator.URLMap from:@"init://shareNib/(loadFromNib:)" toSharedViewController:delegate];
+    [navigator.URLMap from:@"init://shareNib/(loadFromNib:)/(withClass:)"
+    toSharedViewController:delegate];
+
+    [navigator.URLMap from:@"init://modalNib/(loadFromNib:)" toModalViewController:delegate];
+    [navigator.URLMap from:@"init://modalNib/(loadFromNib:)/(withClass:)"
+     toModalViewController:delegate];
 }
-
--(void)setClassLoadPath:(NSString *) urlPath
-                 parent:(NSString *) parentPath
-              className:(NSString *)className
-                   mode:(NSString *)mode
-{
-    TTNavigator * _navigator = [TTNavigator navigator];
-    if ([mode isEqualToString:kShare]) {
-        [_navigator.URLMap from:urlPath
-                         parent:parentPath 
-         toSharedViewController:NSClassFromString(className)];
-    }
-    if ([mode isEqualToString:kModal]) {
-        [_navigator.URLMap from:urlPath 
-                         parent:parentPath 
-          toModalViewController:NSClassFromString(className) 
-                       selector:nil 
-                     transition:0];
-    }
-    if ([mode isEqualToString:kCreate]) {
-        [_navigator.URLMap from:urlPath
-                         parent:parentPath
-               toViewController:NSClassFromString(className)
-                       selector:nil
-                     transition:0];
-    }
-}
-
--(void)setClassLoadPath:(NSString *) urlPath 
-              className:(NSString *)className
-                   mode:(NSString *)mode
-{
-    TTNavigator * _navigator = [TTNavigator navigator];
-    if ([mode isEqualToString:kShare]) {
-        [_navigator.URLMap from:urlPath 
-         toSharedViewController:NSClassFromString(className)];
-    }
-    if ([mode isEqualToString:kModal]) {
-        [_navigator.URLMap from:urlPath 
-          toModalViewController:NSClassFromString(className)];
-    }
-    if ([mode isEqualToString:kCreate]) {
-        [_navigator.URLMap from:urlPath 
-               toViewController:NSClassFromString(className)];
-    }
-}
-
 
 @end

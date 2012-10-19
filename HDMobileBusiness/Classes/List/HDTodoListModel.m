@@ -50,12 +50,6 @@ static NSString * kSQLNull = @"null";
         _submitList = [[NSMutableArray alloc] init];
         _resultList = [[NSMutableArray alloc] init];
         _vectorRange = NSMakeRange(0, 0);
-        //Test Data
-        //        self.orderField = @"creation_date";
-        //        self.primaryFiled = @"record_id";
-        //        self.serachFields = @[@"order_type",@"node_name",@"employee_name"];
-        //        self.queryUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"autocrud/ios.ios_todo_list.ios_todo_list_query/query?_fetchall=true&amp;_autocount=false"];
-        //        self.submitUrl = [NSString stringWithFormat:@"%@%@",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath],@"modules/ios/ios_approve_new/ios_todo_list_commit.svc"];
         _currentIndex = 0;
         _flags.shouldLoadingLocalData = YES;
     }

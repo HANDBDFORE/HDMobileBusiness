@@ -25,7 +25,6 @@
     self = [super init];
     if (self) {
         _resultList = [[NSMutableArray alloc]init];
-//        self.queryURL = [NSString stringWithFormat:@"%@autocrud/ios.ios_deliver.ios_wprkflow_deliver_query/query",[[HDHTTPRequestCenter sharedURLCenter]baseURLPath]];
     }
     return self;
 }

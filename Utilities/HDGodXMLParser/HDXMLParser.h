@@ -13,6 +13,10 @@
     NSMutableDictionary * _configDictionary;
 }
 
+//创建配置 PropertyDictionary
 +(NSDictionary *)createPropertyDictionaryForKeyPath:(NSString *) keyPath;
+
+//解析成功
++(BOOL)hasParsedSuccess;
 
 @end

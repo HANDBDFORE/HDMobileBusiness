@@ -107,10 +107,10 @@
 
 -(void)reloadAll{
     NSString * employeeURLPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]] ;
-    _userInfoView.employeeUrlPath = [employeeURLPath stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[[HDHTTPRequestCenter sharedURLCenter] baseURLPath]}] ;
+    _userInfoView.employeeUrlPath = [employeeURLPath stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[HDHTTPRequestCenter baseURLPath]}] ;
     NSString *currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]];
 
-    self.currentURL = [currentURL stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[[HDHTTPRequestCenter sharedURLCenter] baseURLPath]}];
+    self.currentURL = [currentURL stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[HDHTTPRequestCenter baseURLPath]}];
     
     [self openURL:[NSURL URLWithString:self.currentURL]];
     //employee info button

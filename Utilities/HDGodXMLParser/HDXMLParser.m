@@ -44,8 +44,8 @@
         };
         _configDictionary = [[NSMutableDictionary alloc]init];
         
-        NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(@"ios-backend-config.xml")];
-//        NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-hr-sprite.xml"];
+//        NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(@"ios-backend-config.xml")];
+        NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-hr-sprite.xml"];
         
         NSError * error = nil;
         _document = [[CXMLDocument alloc]initWithData:data encoding:NSUTF8StringEncoding options:0 error:&error];
@@ -62,6 +62,16 @@
     return self;
 }
 
+//
++(BOOL)hasParsedSuccess
+{
+    return [[[[HDXMLParser shareObject]configDictionary] allKeys] count] > 0;
+}
+
+-(NSDictionary *) configDictionary
+{
+    return _configDictionary;
+}
 //创建配置 PropertyDictionary
 +(NSDictionary *)createPropertyDictionaryForKeyPath:(NSString *)keyPath
 {

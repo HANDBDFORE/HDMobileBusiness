@@ -10,9 +10,8 @@
 
 //styleSheet
 #import "HDDefaultStyleSheet.h"
-#import "HDLoadingViewController.h"
-#import "HDUserGuideViewController.h"
-#import "../Classes/Compose/HDDeliverViewController.h"
+#import "HDClassLoader.h"
+
 @implementation HDAppDelegate
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application
@@ -25,15 +24,10 @@
     //create database
     [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordList:nil];
     
+    //load class
+    [HDClassLoader startLoad];
+    
     TTNavigator * navigator = [TTNavigator navigator];
-    
-    [navigator.URLMap from:@"init://LoadingViewController" toModalViewController:[HDLoadingViewController class]];
-    
-    [navigator.URLMap from:@"init://HDUserGuideViewController" toSharedViewController:[HDUserGuideViewController class]];
-    
-    //TODO:暂时注册部分class到这里
-    [navigator.URLMap from:@"init://deliverViewController" toModalViewController:[HDDeliverViewController class]];
-    
     
     if(![navigator restoreViewControllers])
     {

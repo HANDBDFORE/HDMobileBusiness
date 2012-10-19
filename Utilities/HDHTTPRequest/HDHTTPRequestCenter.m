@@ -10,11 +10,9 @@
 #import "HDDataConvertor.h"
 
 @implementation HDHTTPRequestCenter
-@synthesize urlCenter = _urlCenter;
 
 - (void)dealloc
 {
-    TT_RELEASE_CF_SAFELY(_urlCenter);
     [super dealloc];
 }
 
@@ -27,15 +25,31 @@
 {
     self = [super init];
     if (self) {
-        _urlCenter = [[HDURLCenter alloc]init];
         [[TTURLRequestQueue mainQueue]setMaxContentLength:0];
     }
     return self;
 }
 
-+(id) sharedURLCenter
++(NSString*)baseURLPath
 {
-    return [[HDHTTPRequestCenter shareHTTPRequestCenter] urlCenter];
+    NSString * basePath = [[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"];
+    
+    basePath = [basePath stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([basePath isEqualToString:@""]) {
+        return basePath;
+    }
+    if (![basePath hasSuffix:@"/"]) {
+        basePath = [basePath stringByAppendingString:@"/"];
+    }
+    if (![basePath hasPrefix:@"http://"]) {
+        basePath = [@"http://" stringByAppendingString:basePath];
+    }
+    basePath = [basePath stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    [[NSUserDefaults standardUserDefaults]setValue:basePath
+                                            forKey:@"base_url_preference"];
+    return basePath;
 }
 
 #pragma -mark create request use ttRequest
@@ -60,7 +74,7 @@
     if (nil == *(error)) {
         //create request
         TTURLRequest * request = [TTURLRequest request];
-        request.urlPath = [map.urlPath stringByReplacingSpaceHodlerWithDictionary:@{@"base_url" : [self baseURL]}];
+        request.urlPath = [map.urlPath stringByReplacingSpaceHodlerWithDictionary:@{@"base_url" : [HDHTTPRequestCenter baseURLPath]}];
         [request.parameters setObject:postParameter forKey:@"_request_data"];
         request.cachePolicy = map.cachePolicy;
         request.httpMethod = map.httpMethod;
@@ -97,8 +111,4 @@
     return responseMap;
 }
 
--(NSString * ) baseURL
-{
-    return [_urlCenter baseURLPath];
-}
 @end

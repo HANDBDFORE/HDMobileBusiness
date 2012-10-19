@@ -7,7 +7,6 @@
 //
 
 #import "HDLoadingViewController.h"
-#import "HDClassLoader.h"
 #import "HDResourceLoader.h"
 
 static NSString * kLoginPathName = @"HD_LOGIN_VC_PATH";
@@ -18,8 +17,6 @@ static NSString * kMainPathName = @"HD_MAIN_VC_PATH";
 @end
 
 @implementation HDLoadingViewController
-
-
 
 #pragma mark -
 #pragma mark  方法
@@ -34,7 +31,7 @@ static NSString * kMainPathName = @"HD_MAIN_VC_PATH";
         [_retryButton setUserInteractionEnabled:YES];
     }else {
         //开始发请求  
-        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-sprite.xml",[[HDHTTPRequestCenter sharedURLCenter] baseURLPath]];
+        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-sprite.xml",[HDHTTPRequestCenter baseURLPath]];
         NSURL *url = [NSURL URLWithString:fileUrl];
         NSMutableURLRequest *postRequest = [[[NSMutableURLRequest alloc]initWithURL:url]autorelease];
         [postRequest setHTTPMethod:@"GET"];
@@ -108,8 +105,7 @@ static NSString * kMainPathName = @"HD_MAIN_VC_PATH";
                 }else {
                     BOOL writeSuccess = [data writeToFile:TTPathForDocumentsResource(@"ios-backend-config.xml") atomically:YES];
                     if (writeSuccess) {
-                        HDGodXMLFactory *god = [HDGodXMLFactory shareBeanFactory];
-                        if (![god isConfigFileLegally]) {
+                        if (![HDXMLParser hasParsedSuccess]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 _errorSummury.text = @"服务器返回文件异常";
                                 _errorDetail.text = @"服务器返回文件未能被成功解析，请联系技术支持。";
@@ -120,7 +116,7 @@ static NSString * kMainPathName = @"HD_MAIN_VC_PATH";
                         }else {
                             //最终状态
                             dispatch_async(dispatch_get_main_queue(), ^{     
-                            [self loadClass];
+//                            [self loadClass];
 //                            [self loadResource];
                             [self dismissModalViewControllerAnimated:NO];
                             [self showLoginView];
@@ -174,13 +170,6 @@ static NSString * kMainPathName = @"HD_MAIN_VC_PATH";
     }else {
         return YES;
     }
-}
-
--(void)loadClass
-{
-    HDClassLoader * classLoader = [[HDClassLoader alloc]init];
-    [classLoader startLoadClass];
-    TT_RELEASE_SAFELY(classLoader);
 }
 
 -(void)loadResource

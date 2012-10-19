@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HDClassConfigParser.h"
 
-@interface HDClassLoader : NSObject<HDClassConfigParserDelegate>
+@interface HDClassLoader : NSObject
 
--(void)startLoadClass;
++(void)startLoad;
 
 @end

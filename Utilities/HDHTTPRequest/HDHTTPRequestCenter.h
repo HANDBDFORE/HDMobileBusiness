@@ -13,17 +13,13 @@
 
 #import "HDRequestMap.h"
 #import "HDResponseMap.h"
-
-#import "HDURLCenter.h"
-
 #import "../HDSingletonObject.h"
-@interface HDHTTPRequestCenter : HDSingletonObject
 
-@property(nonatomic,readonly) HDURLCenter * urlCenter;
+@interface HDHTTPRequestCenter : HDSingletonObject
 
 +(id)shareHTTPRequestCenter;
 
-+(id)sharedURLCenter;
++(NSString*)baseURLPath;
 
 //根据map创建request对象
 -(TTURLRequest *)requestWithRequestMap:(HDRequestMap *) map
