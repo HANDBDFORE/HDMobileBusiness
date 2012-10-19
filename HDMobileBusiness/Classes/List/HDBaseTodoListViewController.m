@@ -214,9 +214,4 @@
     [self.listModel removeRecordAtIndex:swipedIndexPath.row];
 }
 
--(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
-{
-    TTAlert(error.localizedDescription);
-}
-
 @end
