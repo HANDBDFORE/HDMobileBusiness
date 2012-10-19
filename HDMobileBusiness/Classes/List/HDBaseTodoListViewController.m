@@ -45,6 +45,10 @@
 -(void)loadView
 {
     [super loadView];
+     self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
+    self.editButtonItem.width = 60;
+    //////////////////////
+    
     _acceptButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Accept", @"同意") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)]; 
     _acceptButtonItem.width = 110;
     _acceptButtonItem.tintColor = RGBCOLOR(0, 153, 0);
@@ -168,7 +172,7 @@
     //    controller.originView = [query objectForKey:@"__target__"];
     [[HDGuider guider] guideToKeyPath:@"POST_VC_PATH"
                                 query:@{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")}
-                             animated:NO];
+                             animated:YES];
     
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
