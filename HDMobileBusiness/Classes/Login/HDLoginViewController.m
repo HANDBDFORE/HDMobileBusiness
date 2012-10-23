@@ -90,8 +90,14 @@
 
 #pragma login functions
 -(IBAction)loginBtnPressed:(id)sender{
-    [_username resignFirstResponder];
-    [_password resignFirstResponder];
+     [_username resignFirstResponder];
+     [_password resignFirstResponder];
+    
+    if (!(_username.text.length && _password.text.length)) {
+        TTAlertNoTitle(@"用户名和密码不能为空");
+        return;
+    }
+    
     if ([self.loginBtn tag] == 20) {
         [_loginModel login];
         [self.loginBtn setTitle:@"取消" forState:UIControlStateNormal];
@@ -101,14 +107,13 @@
         [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
         [self.loginBtn setTag:20];
     }
-    
-    
 }
 
 //模型delegate方法
 - (void)modelDidFinishLoad:(HDLoginModel *)model
-{    
-    [self dismissModalViewControllerAnimated:YES];
+{
+    [self dismissModalViewControllerAnimated:NO];
+    [[HDGuider guider]guideToKeyPath:kMainControllerPath query:nil animated:NO];
 }
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error

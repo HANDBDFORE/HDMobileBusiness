@@ -31,6 +31,7 @@
 -(void)loadView
 {
     [super loadView];
+    [self.model load:TTURLRequestCachePolicyDefault more:NO];
 //     _refreshButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
 //    
 //    self.navigationItem.rightBarButtonItem = _refreshButton;
@@ -39,8 +40,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setToolbarHidden:YES];
-    [self.model load:TTURLRequestCachePolicyDefault more:NO];
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
 

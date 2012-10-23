@@ -114,7 +114,7 @@
                             //最终状态
                             dispatch_async(dispatch_get_main_queue(), ^{     
 //                            [self loadClass];
-//                            [self loadResource];
+                            [self loadResource];
                             [self dismissModalViewControllerAnimated:NO];
                             [self showLoginView];
                             });
@@ -213,7 +213,7 @@
     TTNavigator* navigator = [TTNavigator navigator];
     [navigator removeAllViewControllers];
 
-    [[HDGuider guider]guideToKeyPath:kMainControllerPath query:nil animated:NO];
+//    [[HDGuider guider]guideToKeyPath:kMainControllerPath query:nil animated:NO];
     [[HDGuider guider]guideToKeyPath:kLoginControllerPath query:nil animated:NO];
 }
 
