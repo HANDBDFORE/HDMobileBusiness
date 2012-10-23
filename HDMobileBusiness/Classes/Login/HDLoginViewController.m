@@ -10,6 +10,7 @@
 
 @implementation HDLoginViewController
 
+@synthesize titleLabel = _titleLabel;
 @synthesize username = _username;
 @synthesize password = _password;
 @synthesize loginBtn = _loginBtn;
@@ -35,11 +36,15 @@
 {
     [self removeObserver:_loginModel forKeyPath:@"username.text"];
     [self removeObserver:_loginModel forKeyPath:@"password.text"];
+    TT_RELEASE_SAFELY(_titleLabel);
     TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_password);
     TT_RELEASE_SAFELY(_loginModel);
     TT_RELEASE_SAFELY(_backgroundImage);
     TT_RELEASE_SAFELY(_loginBtn);
+    
+    TT_RELEASE_SAFELY(_usernameDelegate);
+    TT_RELEASE_SAFELY(_passwordDelegate);
     [super viewDidUnload];
 }
 
@@ -48,6 +53,22 @@
     [super viewDidLoad];
     _username.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     _password.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"password"];
+    
+    _usernameDelegate = [[HDTextFieldDelegate alloc]initWithTarget:self selector:@selector(usernameFieldShouldReturn:)];
+    _username.delegate = _usernameDelegate;
+    
+    _passwordDelegate = [[HDTextFieldDelegate alloc]initWithTarget:self selector:@selector(passwordFieldShouldReturn:)];
+    _password.delegate = _passwordDelegate;
+}
+
+-(void)usernameFieldShouldReturn:(UITextField *) textField
+{
+    [_password becomeFirstResponder];
+}
+
+-(void)passwordFieldShouldReturn:(UITextField *) textFiled
+{
+    [_password resignFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -125,11 +146,22 @@
     [UIView commitAnimations];
 }
 
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+//    if (toInterfaceOrientation == UIInterfaceOrientationMaskPortrait) {
+//        _username.origin = CGPointMake(75, 231);
+//        _password.origin = CGPointMake(75, 271);
+//    }else{
+//        _username.origin = CGPointMake(100, 80);
+//        _password.origin = CGPointMake(100, 105);
+//    }
+    
+    
+}
 @end

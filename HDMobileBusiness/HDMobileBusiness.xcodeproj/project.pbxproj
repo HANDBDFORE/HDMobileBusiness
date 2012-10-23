@@ -78,6 +78,7 @@
 		B36BDAAC15C64777003A4A5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9315C64777003A4A5D /* Foundation.framework */; };
 		B36BDAB415C64777003A4A5D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B36BDAB215C64777003A4A5D /* InfoPlist.strings */; };
 		B36BDAB715C64777003A4A5D /* HDMobileBusinessTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B36BDAB615C64777003A4A5D /* HDMobileBusinessTests.m */; };
+		B36F7A731631440B0090646E /* HDTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B36F7A721631440B0090646E /* HDTextFieldDelegate.m */; };
 		B37467E915C78112003068CB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467E815C78112003068CB /* Default.png */; };
 		B37467EB15C78118003068CB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467EA15C78118003068CB /* Default@2x.png */; };
 		B3881EF8161025F700FEF878 /* NSString+HDAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3881EF7161025F700FEF878 /* NSString+HDAddtions.m */; };
@@ -545,6 +546,8 @@
 		B36BDAB615C64777003A4A5D /* HDMobileBusinessTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDMobileBusinessTests.m; sourceTree = "<group>"; };
 		B36F7A6F16312EC60090646E /* backend-config-hr-sprite.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "backend-config-hr-sprite.xml"; sourceTree = "<group>"; };
 		B36F7A7016312F780090646E /* backend-config-hr-sprite_for_test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "backend-config-hr-sprite_for_test.xml"; sourceTree = "<group>"; };
+		B36F7A711631440A0090646E /* HDTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTextFieldDelegate.h; sourceTree = "<group>"; };
+		B36F7A721631440B0090646E /* HDTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTextFieldDelegate.m; sourceTree = "<group>"; };
 		B37467E815C78112003068CB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		B37467EA15C78118003068CB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		B3881EF6161025F700FEF878 /* NSString+HDAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HDAddtions.h"; sourceTree = "<group>"; };
@@ -1001,6 +1004,8 @@
 				B34660B815C678DD00EFDF24 /* HDLoginViewController.h */,
 				B34660B915C678DD00EFDF24 /* HDLoginViewController.m */,
 				B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */,
+				B36F7A711631440A0090646E /* HDTextFieldDelegate.h */,
+				B36F7A721631440B0090646E /* HDTextFieldDelegate.m */,
 			);
 			name = Login;
 			path = Classes/Login;
@@ -1476,15 +1481,15 @@
 		B38E686A15C654DA00824CB1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				B31E2EE215C660B600880514 /* HDUtilities.h */,
-				B35BBF7A15E74301008F90E3 /* HDSingletonObject.h */,
-				B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */,
-				B3D0977515DB91DF00C3495D /* HDEluneGuider */,
 				B356A26815D0A5AE00E88192 /* HDCoreStorage */,
 				B38E687915C655C600824CB1 /* HDDataConvertor */,
+				B3D0977515DB91DF00C3495D /* HDEluneGuider */,
 				B38E689315C656B000824CB1 /* HDGlobalMetrics */,
-				B38E686B15C654DA00824CB1 /* HDHTTPRequest */,
 				B3D4E20015E60ABB0061ED4D /* HDGodXMLParser */,
+				B38E686B15C654DA00824CB1 /* HDHTTPRequest */,
+				B35BBF7A15E74301008F90E3 /* HDSingletonObject.h */,
+				B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */,
+				B31E2EE215C660B600880514 /* HDUtilities.h */,
 				B3881EF6161025F700FEF878 /* NSString+HDAddtions.h */,
 				B3881EF7161025F700FEF878 /* NSString+HDAddtions.m */,
 			);
@@ -2097,6 +2102,7 @@
 				B3DAE402161425A300981662 /* HDDictionaryConfigObject.m in Sources */,
 				B3DAE4051614401400981662 /* HDArrayConfigObject.m in Sources */,
 				B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */,
+				B36F7A731631440B0090646E /* HDTextFieldDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
