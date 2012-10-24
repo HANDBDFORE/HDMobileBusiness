@@ -2,6 +2,30 @@
 <backend-config>
     <!--登录页面-->
     <viewController keyPath="HD_LOGIN_VC_PATH">
+        <titleLabel>
+            <text dataType="NSString" value="hand@ios"/>
+        </titleLabel>
+        <backgroundImage dataType="UIImage">
+            <localFileName dataType="NSString" value="documents://background.png"/>
+            <remoteURL dataType="NSString" value="http://files.anidea.com/themes/joshb2/wallpapers/bg_320x480.jpg"/>
+            <saveFileName dataType="NSString" value="background.png"/>
+            <retinaRemoteURL dataType="NSString" value="http://files.anidea.com/themes/joshb2/wallpapers/bg_320x480.jpg"/>
+            <retinaSaveFileName dataType="NSString" value="background@2x.png"/>
+        </backgroundImage>
+        <loginButtonNormalImage dataType="UIImage">
+            <localFileName dataType="NSString" value="documents://normalButton.png"/>
+            <remoteURL dataType="NSString" value="${base_url}images/mobile/loginButton.png"/>
+            <saveFileName dataType="NSString" value="normalButton.png"/>
+            <retinaRemoteURL dataType="NSString" value="${base_url}images/mobile/loginButton.png"/>
+            <retinaSaveFileName dataType="NSString" value="normalButton@2x.png"/>
+        </loginButtonNormalImage>
+        <loginButonHighlightedImage dataType="UIImage">
+            <localFileName dataType="NSString" value="documents://highlightedButton.png"/>
+            <remoteURL dataType="NSString" value="${base_url}images/mobile/loginButtonActive.png"/>
+            <saveFileName dataType="NSString" value="highlightedButton.png"/>
+            <retinaRemoteURL dataType="NSString" value="${base_url}images/mobile/loginButtonActive.png"/>
+            <retinaSaveFileName dataType="NSString" value="highlightedButton@2x.png"/>
+        </loginButonHighlightedImage>
         <model>
             <submitURL dataType="NSString" value="${base_url}modules/ios/public/login_iphone.svc"/>
         </model>
