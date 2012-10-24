@@ -56,7 +56,7 @@
     [navigator.URLMap from:@"init://toolbarDetailViewController" toViewController:[HDDetailToolbarViewController class]];
     
 //    <class name="HDDetailInfoViewController" navigation_mode="create" url="init://detailViewController"/>
-    [navigator.URLMap from:@"init://detailViewController" toViewController:[HDDetailToolbarViewController class]];
+    [navigator.URLMap from:@"init://detailViewController" toViewController:[HDDetailInfoViewController class]];
     
 //    <class name="TTPostController" navigation_mode="share" url="init://postController"/>
     [navigator.URLMap from:@"init://postController" toSharedViewController:[TTPostController class]];
