@@ -16,6 +16,16 @@ static NSString * kRedirectSelector = @"(controllerWithKeyPath:)";
 
 typedef UIViewController * (^openControllerPathBlock)(NSString *);
 
+@interface HDGuider()
+{
+    //将配置缓存
+    NSMutableDictionary * _guiderMapDictionary;
+}
+
+@property(nonatomic,retain) HDGuiderMap * guiderMap;
+
+@end
+
 @implementation HDGuider
 
 +(id)guider
@@ -28,6 +38,8 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
     [[TTNavigator navigator].URLMap removeURL:[NSString stringWithFormat:@"%@%@",kGuideCreatePath,kRedirectSelector]];
     [[TTNavigator navigator].URLMap removeURL:[NSString stringWithFormat:@"%@%@",kGuideSharePath,kRedirectSelector]];
     [[TTNavigator navigator].URLMap removeURL:[NSString stringWithFormat:@"%@%@",kGuideModalPath,kRedirectSelector]];
+    TT_RELEASE_SAFELY(_guiderMap);
+    TT_RELEASE_SAFELY(_guiderMapDictionary);
     [super dealloc];
 }
 
@@ -41,6 +53,9 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
                       toSharedViewController:self];
         [[TTNavigator navigator].URLMap from:[NSString stringWithFormat:@"%@%@",kGuideModalPath,kRedirectSelector]
                       toModalViewController:self];
+        
+        [TTNavigator navigator].delegate = self;
+        _guiderMapDictionary = [[NSMutableDictionary alloc]init];
     }
     return self;
 }
@@ -49,50 +64,23 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
                               query:(NSDictionary *)query
                            animated:(BOOL)animated;
 {
-   return [self configControllerWithKeyPath:keyPath
-                                      block: ^UIViewController *(NSString * urlPath)
-    {
-        //TODO:这里转发到controllerWithKeyPath
-        return [[TTNavigator navigator] openURLAction:
-                [[[TTURLAction actionWithURLPath:urlPath] applyQuery:query] applyAnimated:animated]];
-    }
-                                       query:query];
+    self.guiderMap = [self guiderMapForKeyPath:keyPath];
+    return [[TTNavigator navigator] openURLAction:
+            [[[TTURLAction actionWithURLPath:self.guiderMap.urlPath] applyQuery:query] applyAnimated:animated]];
 }
 
 -(UIViewController *)controllerWithKeyPath:(NSString *) keyPath
                                      query:(NSDictionary *)query
 {
-    TTDPRINT(@"keyPath :%@",keyPath);
-    //TODO:这里创建改成直接create
-    return [self configControllerWithKeyPath:keyPath
-                                       block: ^UIViewController *(NSString * urlPath)
-    {
-        return [[TTNavigator navigator]viewControllerForURL:urlPath
-                                                      query:query];
-    }
-                                        query:query];
-}
-
-/*
- *根据block,打开或创建一个controller,根据配置设置这个controller
- */
--(UIViewController *)configControllerWithKeyPath:(NSString *) keyPath
-                                           block:(openControllerPathBlock) block
-                                           query:query
-{
-    HDGuiderMap * guiderMap = nil;
-    if ((guiderMap = [self guiderMapForKeyPath:keyPath])) {
-        //open contoller with path
-        UIViewController * controller = block(guiderMap.urlPath);
-        //如果配置中要求从query配置属性，query为前一个视图控制器传递出啊来的参数
-        if(guiderMap.shouldConfigWithQuery)
-        {
-            //TODO:这里配置方式有问题，应该在配置文件中指定需要从query中获取什么参数，而不是让query中的参数顺序set，可能造成set了被配置vc不需要的参数而导致程序崩溃（undefinedKey exception）
-            [self configViewController:controller dictionary:query];
-        }
-        return [self configViewController:controller dictionary:guiderMap.propertyDictionary];
-        }
-    return nil;
+    self.guiderMap = [self guiderMapForKeyPath:keyPath];
+    UIViewController * controller =
+    [[TTNavigator navigator]viewControllerForURL:self.guiderMap.urlPath
+                                           query:query];
+    
+    [self configViewController:controller
+                    dictionary:query];
+    return [self configViewController:controller
+                           dictionary:self.guiderMap.propertyDictionary];
 }
 
 #pragma -mark 配置控制器，之后从配置加载
@@ -114,10 +102,14 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
     if (!keyPath) {
         return nil;
     }
+    
+    if ([_guiderMapDictionary objectForKey:keyPath]) {
+        return [_guiderMapDictionary objectForKey:keyPath];
+    }
+    
     HDGuiderMap * map = [[[HDGuiderMap alloc]init] autorelease];
     
     NSDictionary * urlPathDic =
-    //TODO:视图控制器考虑从工厂创建，而不是让ttnavigator创建
     @{@"HD_MAIN_VC_PATH":@"init://todoListViewController",
     @"TODO_LIST_SEARCH":@"init://todoListSearchViewController",
     @"HD_LOGIN_VC_PATH":@"init://modalNib/HDLoginViewController/HDLoginViewController",
@@ -139,8 +131,14 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
         map.shouldConfigWithQuery = YES;
     }
     
-    //TODO:考虑添加一个dic，配置从前一个视图控制器传递过来的参数映射
+    [_guiderMapDictionary setValue:map forKey:keyPath];
     return map;
 }
 
+#pragma -mark TTNavigatorDelegate
+-(void)navigator:(TTBaseNavigator *)navigator willOpenURL:(NSURL *)URL inViewController:(UIViewController *)controller
+{
+    [self configViewController:controller
+                    dictionary:self.guiderMap.propertyDictionary];
+}
 @end

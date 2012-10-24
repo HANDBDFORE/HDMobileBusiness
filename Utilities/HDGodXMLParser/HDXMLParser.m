@@ -13,6 +13,7 @@
 #import "HDNumberConfigObject.h"
 #import "HDDictionaryConfigObject.h"
 #import "HDArrayConfigObject.h"
+#import "HDImageConfigObject.h"
 
 @interface HDXMLParser()
 {
@@ -40,12 +41,13 @@
         @"NSString" : [HDBaseConfigObject class],
         @"NSNumber" : [HDNumberConfigObject class],
         @"NSArray" : [HDArrayConfigObject class],
-        @"NSDictionary" : [HDDictionaryConfigObject class]
+        @"NSDictionary" : [HDDictionaryConfigObject class],
+        @"UIImage" : [HDImageConfigObject class]
         };
         _configDictionary = [[NSMutableDictionary alloc]init];
         
-        NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(@"ios-backend-config.xml")];
-//        NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-hr-sprite.xml"];
+//        NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(@"ios-backend-config.xml")];
+        NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-hr-sprite_for_test.xml"];
         
         NSError * error = nil;
         _document = [[CXMLDocument alloc]initWithData:data encoding:NSUTF8StringEncoding options:0 error:&error];

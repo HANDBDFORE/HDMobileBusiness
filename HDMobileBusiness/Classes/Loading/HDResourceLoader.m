@@ -1,5 +1,5 @@
 //
-//  SFResourceLoader.m
+//  HDResourceLoader.m
 //  Three20GitCoreDataLab
 //
 //  Created by Rocky Lee on 6/4/12.
@@ -8,8 +8,6 @@
 
 #import "HDResourceLoader.h"
 
-static HDResourceLoader * _globalLoader = nil;
-
 @interface HDResourceLoader()
 
 @property(nonatomic,readonly) TTURLRequestQueue * queue;
@@ -17,7 +15,6 @@ static HDResourceLoader * _globalLoader = nil;
 @end
 
 @implementation HDResourceLoader
-@synthesize resourceList = _resourceList;
 @synthesize queue = _queue;
 
 -(void)dealloc
@@ -32,40 +29,14 @@ static HDResourceLoader * _globalLoader = nil;
     if (self = [super init]) {
         _queue = [[TTURLRequestQueue alloc]init];
         _queue.maxContentLength = 0;
+        _resourceList = [[NSMutableArray alloc]initWithCapacity:3];
     }
     return self;
 }
-
-#pragma -mark sigleton functions
 
 +(id)shareLoader
 {
-    @synchronized(self){
-        if (_globalLoader == nil) {
-            _globalLoader = [[self alloc] init];
-        }
-    }
-    return  _globalLoader;
-}
-
-+(id)allocWithZone:(NSZone *)zone{
-    @synchronized(self){
-        if (_globalLoader == nil) {
-            _globalLoader = [super allocWithZone:zone];
-            return  _globalLoader;
-        }
-    }
-    return nil;
-}
-
--(unsigned)retainCount
-{
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-
-- (id)autorelease
-{
-    return self;
+    return [self shareObject];
 }
 
 #pragma -mark load resource
@@ -73,8 +44,8 @@ static HDResourceLoader * _globalLoader = nil;
 
 -(void)startLoad
 {
-    for (HDResourceMap * map in _resourceList) {
-        TTURLRequest * request = [TTURLRequest requestWithURL:map.resourceURL delegate:self];
+    for (NSDictionary * map in _resourceList) {
+        TTURLRequest * request = [TTURLRequest requestWithURL:[map valueForKey:kResourceURL] delegate:self];
         request.response = [[[TTURLDataResponse alloc]init] autorelease];
         request.cachePolicy = TTURLRequestCachePolicyDefault;
         request.userInfo = map;
@@ -88,10 +59,15 @@ static HDResourceLoader * _globalLoader = nil;
     [_queue cancelAllRequests];
 }
 
+-(void)addResource:(NSDictionary *) resourceDictionary
+{
+    [_resourceList addObject:resourceDictionary];
+}
+
 -(void)removeResourceWithResourceList:(NSArray *)list
 {
-    for (HDResourceMap * map in list) {
-        NSString * path = TTPathForDocumentsResource(map.resourceName);
+    for (NSDictionary * map in list) {
+        NSString * path = TTPathForDocumentsResource([map valueForKey:kResourceName]);
         NSError * error = nil;
         [[NSFileManager defaultManager]removeItemAtPath:path error:&error];  
         if (error) {
@@ -105,8 +81,8 @@ static HDResourceLoader * _globalLoader = nil;
 {
     if(!request.respondedFromCache){
         TTURLDataResponse * response =  request.response;
-        HDResourceMap * map = request.userInfo;
-        [response.data writeToFile:TTPathForDocumentsResource(map.resourceName) atomically:YES];
+        NSDictionary * map = request.userInfo;
+        [response.data writeToFile:TTPathForDocumentsResource([map valueForKey:kResourceName]) atomically:YES];
     }
 }
 

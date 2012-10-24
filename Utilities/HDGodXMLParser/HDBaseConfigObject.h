@@ -11,6 +11,7 @@
 
 @interface HDBaseConfigObject : NSObject <HDConfig>
 {
+    NSString * _propertyKey;
     id _propertyValue;
 }
 -(NSDictionary *)configPropertyDictionaryWithChildren:(NSArray *)children;

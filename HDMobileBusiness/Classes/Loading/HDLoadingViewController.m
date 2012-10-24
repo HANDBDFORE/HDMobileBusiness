@@ -114,7 +114,7 @@
                             //最终状态
                             dispatch_async(dispatch_get_main_queue(), ^{     
 //                            [self loadClass];
-                            [self loadResource];
+//                            [self loadResource];
                             [self dismissModalViewControllerAnimated:NO];
                             [self showLoginView];
                             });
@@ -169,15 +169,15 @@
     }
 }
 
--(void)loadResource
-{
-    HDResourceLoader * loader = [HDResourceLoader shareLoader];
-    HDResourceMap * map = [[[HDResourceMap alloc]init]autorelease];
-    map.resourceName = @"login_background.png";
-    map.resourceURL = @"LOGIN_BACKGROUND_IMAGE_PATH";    
-    loader.resourceList = [NSArray arrayWithObject:map];
-    [loader startLoad];
-}
+//-(void)loadResource
+//{
+//    HDResourceLoader * loader = [HDResourceLoader shareLoader];
+//    HDResourceMap * map = [[[HDResourceMap alloc]init]autorelease];
+//    map.resourceName = @"login_background.png";
+//    map.resourceURL = @"LOGIN_BACKGROUND_IMAGE_PATH";    
+//    loader.resourceList = [NSArray arrayWithObject:map];
+//    [loader startLoad];
+//}
 
 //设置用户选项
 - (void)setupByPreferences
@@ -288,7 +288,7 @@
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return NO;
+    return TTIsSupportedOrientation(interfaceOrientation);
 }
 
 @end

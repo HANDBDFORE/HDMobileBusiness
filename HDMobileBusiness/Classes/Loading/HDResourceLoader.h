@@ -1,5 +1,5 @@
 //
-//  SFResourceLoader.h
+//  HDResourceLoader.h
 //  Three20GitCoreDataLab
 //
 //  Created by Rocky Lee on 6/4/12.
@@ -7,18 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HDResourceMap.h"
 
-//typedef id (^resoucesTransformerBlock)(NSData *);
+static NSString * kResourceURL = @"remoteURL";
+static NSString * kResourceName = @"saveFileName";
 
-@interface HDResourceLoader : NSObject <TTURLRequestDelegate>
-
-//资源列表,应该包含资源名称,网络路径,存放地址,刷新间隔,是否需要立即刷新
-@property(nonatomic,retain) NSArray * resourceList;
+@interface HDResourceLoader : HDSingletonObject <TTURLRequestDelegate>
+{
+    NSMutableArray * _resourceList;
+}
 
 +(id)shareLoader;
 
 -(void)removeResourceWithResourceList:(NSArray *) list;
+
+//资源字典,应该包含资源名称,网络路径,存放地址,刷新间隔,是否需要立即刷新
+-(void)addResource:(NSDictionary *) resourceDictionary;
 
 -(void)stopLoad;
 

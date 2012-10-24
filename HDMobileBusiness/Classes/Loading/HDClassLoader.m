@@ -21,6 +21,9 @@
 
 +(void)startLoad
 {
+    //初始化guider的url注册
+    [HDGuider guider];
+    
     TTNavigator * navigator = [TTNavigator navigator];
     
     [navigator.URLMap from:@"*" toSharedViewController:[HDWebViewController class]];

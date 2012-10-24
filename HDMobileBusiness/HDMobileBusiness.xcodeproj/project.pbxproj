@@ -81,6 +81,7 @@
 		B36F7A731631440B0090646E /* HDTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B36F7A721631440B0090646E /* HDTextFieldDelegate.m */; };
 		B37467E915C78112003068CB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467E815C78112003068CB /* Default.png */; };
 		B37467EB15C78118003068CB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467EA15C78118003068CB /* Default@2x.png */; };
+		B38693AA1636582100223924 /* HDImageConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B38693A91636582100223924 /* HDImageConfigObject.m */; };
 		B3881EF8161025F700FEF878 /* NSString+HDAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3881EF7161025F700FEF878 /* NSString+HDAddtions.m */; };
 		B38DC71A15C68C3800FD0C58 /* HDDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */; };
 		B38DC71C15C68C3800FD0C58 /* HDDetailToolbarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */; };
@@ -550,6 +551,8 @@
 		B36F7A721631440B0090646E /* HDTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTextFieldDelegate.m; sourceTree = "<group>"; };
 		B37467E815C78112003068CB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		B37467EA15C78118003068CB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		B38693A81636582100223924 /* HDImageConfigObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDImageConfigObject.h; sourceTree = "<group>"; };
+		B38693A91636582100223924 /* HDImageConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDImageConfigObject.m; sourceTree = "<group>"; };
 		B3881EF6161025F700FEF878 /* NSString+HDAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HDAddtions.h"; sourceTree = "<group>"; };
 		B3881EF7161025F700FEF878 /* NSString+HDAddtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HDAddtions.m"; sourceTree = "<group>"; };
 		B38DC70E15C68C3800FD0C58 /* HDDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailInfoViewController.h; sourceTree = "<group>"; };
@@ -1572,6 +1575,8 @@
 				B3CC44CD16119CD0007BABA4 /* HDNumberConfigObject.m */,
 				B3D4E20115E60AD80061ED4D /* HDXMLParser.h */,
 				B3D4E20215E60AD80061ED4D /* HDXMLParser.m */,
+				B38693A81636582100223924 /* HDImageConfigObject.h */,
+				B38693A91636582100223924 /* HDImageConfigObject.m */,
 			);
 			path = HDGodXMLParser;
 			sourceTree = "<group>";
@@ -2103,6 +2108,7 @@
 				B3DAE4051614401400981662 /* HDArrayConfigObject.m in Sources */,
 				B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */,
 				B36F7A731631440B0090646E /* HDTextFieldDelegate.m in Sources */,
+				B38693AA1636582100223924 /* HDImageConfigObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2190,7 +2196,7 @@
 				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HAND Enterprise Solutions CO., LTD.";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2212,6 +2218,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-ObjC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
