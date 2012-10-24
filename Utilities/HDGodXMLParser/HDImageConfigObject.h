@@ -8,6 +8,11 @@
 
 #import "HDBaseConfigObject.h"
 
+static NSString * kHDImageURL = @"remoteURL";
+static NSString * kHDImageName = @"saveFileName";
+static NSString * kHDRetinaImageURL = @"retinaRemoteURL";
+static NSString * kHDRetinaImageName = @"retinaSaveFileName";
+
 @interface HDImageConfigObject : HDBaseConfigObject
 
 -(NSDictionary *)configPropertyDictionaryWithChildren:(NSArray *)children;

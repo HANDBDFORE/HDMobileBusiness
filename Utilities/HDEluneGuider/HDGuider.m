@@ -20,9 +20,8 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
 {
     //将配置缓存
     NSMutableDictionary * _guiderMapDictionary;
+    HDGuiderMap * _guiderMap;
 }
-
-@property(nonatomic,retain) HDGuiderMap * guiderMap;
 
 @end
 
@@ -38,8 +37,8 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
     [[TTNavigator navigator].URLMap removeURL:[NSString stringWithFormat:@"%@%@",kGuideCreatePath,kRedirectSelector]];
     [[TTNavigator navigator].URLMap removeURL:[NSString stringWithFormat:@"%@%@",kGuideSharePath,kRedirectSelector]];
     [[TTNavigator navigator].URLMap removeURL:[NSString stringWithFormat:@"%@%@",kGuideModalPath,kRedirectSelector]];
-    TT_RELEASE_SAFELY(_guiderMap);
     TT_RELEASE_SAFELY(_guiderMapDictionary);
+    TT_RELEASE_SAFELY(_guiderMap);
     [super dealloc];
 }
 
@@ -64,23 +63,33 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
                               query:(NSDictionary *)query
                            animated:(BOOL)animated;
 {
-    self.guiderMap = [self guiderMapForKeyPath:keyPath];
-    return [[TTNavigator navigator] openURLAction:
-            [[[TTURLAction actionWithURLPath:self.guiderMap.urlPath] applyQuery:query] applyAnimated:animated]];
+    //使用全局变量，在视图控制器显示之前设置配置
+    _guiderMap = [[self guiderMapForKeyPath:keyPath] retain];
+    HDGuiderMap * guiderMap = [self guiderMapForKeyPath:keyPath];
+    
+    UIViewController * controller = [[TTNavigator navigator] openURLAction:
+            [[[TTURLAction actionWithURLPath:_guiderMap.urlPath] applyQuery:query] applyAnimated:animated]];
+    
+    //设置需要在视图load之后设置的属性
+    return [self configViewController:controller
+                           dictionary:guiderMap.propertyDictionary];
 }
 
 -(UIViewController *)controllerWithKeyPath:(NSString *) keyPath
                                      query:(NSDictionary *)query
 {
-    self.guiderMap = [self guiderMapForKeyPath:keyPath];
+    HDGuiderMap * guiderMap = [self guiderMapForKeyPath:keyPath];
     UIViewController * controller =
-    [[TTNavigator navigator]viewControllerForURL:self.guiderMap.urlPath
+    [[TTNavigator navigator]viewControllerForURL:guiderMap.urlPath
                                            query:query];
     
-    [self configViewController:controller
-                    dictionary:query];
+    if (guiderMap.shouldConfigWithQuery) {
+        [self configViewController:controller
+                        dictionary:query];
+    }
+    
     return [self configViewController:controller
-                           dictionary:self.guiderMap.propertyDictionary];
+                           dictionary:guiderMap.propertyDictionary];
 }
 
 #pragma -mark 配置控制器，之后从配置加载
@@ -91,6 +100,8 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
     for (NSString * keyPath in [dictionary allKeys]){
         [controller setValue:[dictionary valueForKey:keyPath] forKeyPath:keyPath];
     }
+    //debug:使用完map之后需要置空，否则使用正常tt方式打开如loading页面时会导致配置错误的设置到别的控制器上
+    TT_RELEASE_SAFELY(_guiderMap);
     return controller;
 }
 
@@ -103,9 +114,9 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
         return nil;
     }
     
-    if ([_guiderMapDictionary objectForKey:keyPath]) {
-        return [_guiderMapDictionary objectForKey:keyPath];
-    }
+//    if ([_guiderMapDictionary objectForKey:keyPath]) {
+//        return [_guiderMapDictionary objectForKey:keyPath];
+//    }
     
     HDGuiderMap * map = [[[HDGuiderMap alloc]init] autorelease];
     
@@ -131,7 +142,7 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
         map.shouldConfigWithQuery = YES;
     }
     
-    [_guiderMapDictionary setValue:map forKey:keyPath];
+//    [_guiderMapDictionary setValue:map forKey:keyPath];
     return map;
 }
 
@@ -139,6 +150,7 @@ typedef UIViewController * (^openControllerPathBlock)(NSString *);
 -(void)navigator:(TTBaseNavigator *)navigator willOpenURL:(NSURL *)URL inViewController:(UIViewController *)controller
 {
     [self configViewController:controller
-                    dictionary:self.guiderMap.propertyDictionary];
+                    dictionary:_guiderMap.propertyDictionary];
 }
+
 @end

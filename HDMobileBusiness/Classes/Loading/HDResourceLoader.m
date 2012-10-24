@@ -19,7 +19,6 @@
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_resourceList);
     TT_RELEASE_SAFELY(_queue);
     [super dealloc];
 }
@@ -29,7 +28,6 @@
     if (self = [super init]) {
         _queue = [[TTURLRequestQueue alloc]init];
         _queue.maxContentLength = 0;
-        _resourceList = [[NSMutableArray alloc]initWithCapacity:3];
     }
     return self;
 }
@@ -40,73 +38,37 @@
 }
 
 #pragma -mark load resource
-//scan local resouces,setlastUpdateDate,or load resources
-
--(void)startLoad
+-(void)loadResource:(NSDictionary *) resourceDictionary
 {
-    for (NSDictionary * map in _resourceList) {
-        TTURLRequest * request = [TTURLRequest requestWithURL:[map valueForKey:kResourceURL] delegate:self];
-        request.response = [[[TTURLDataResponse alloc]init] autorelease];
-        request.cachePolicy = TTURLRequestCachePolicyDefault;
-        request.userInfo = map;
-        request.httpMethod = @"GET";
-        [_queue sendRequest:request];
-    }
+    NSString * resourceURL = [[resourceDictionary valueForKey:kResourceURL] stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[HDHTTPRequestCenter baseURLPath]}] ;
+
+    TTURLRequest * request = [TTURLRequest requestWithURL:resourceURL delegate:self];
+    request.response = [[[TTURLDataResponse alloc]init] autorelease];
+    request.cachePolicy = TTURLRequestCachePolicyDefault;
+    request.userInfo = resourceDictionary;
+    request.httpMethod = @"GET";
+    [_queue sendRequest:request];
+
 }
 
 -(void)stopLoad
 {
-    [_queue cancelAllRequests];
-}
-
--(void)addResource:(NSDictionary *) resourceDictionary
-{
-    [_resourceList addObject:resourceDictionary];
-}
-
--(void)removeResourceWithResourceList:(NSArray *)list
-{
-    for (NSDictionary * map in list) {
-        NSString * path = TTPathForDocumentsResource([map valueForKey:kResourceName]);
-        NSError * error = nil;
-        [[NSFileManager defaultManager]removeItemAtPath:path error:&error];  
-        if (error) {
-            TTDPRINT(@"%@",[error description]);
-        }
-    }
+//    [_queue cancelAllRequests];
 }
 
 #pragma -mark request delegate
 -(void)requestDidFinishLoad:(TTURLRequest *)request
 {
-    if(!request.respondedFromCache){
+//    if(!request.respondedFromCache){
         TTURLDataResponse * response =  request.response;
         NSDictionary * map = request.userInfo;
         [response.data writeToFile:TTPathForDocumentsResource([map valueForKey:kResourceName]) atomically:YES];
-    }
+//    }
 }
 
-#pragma -mark get Resource functions
-
-//get file path
-//-(NSString *)filePathWithFileName:(NSString *)fileName
-//{
-//    NSArray * paths = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) autorelease];
-//    NSString * documentsDicrectory = [paths objectAtIndex:0];
-//    return [documentsDicrectory stringByAppendingPathComponent:fileName];
-//}
-//
-////get file data
-//-(NSData *)resourceDataWithName:(NSString *) name
-//{
-//    NSString * filePath = [self filePathWithFileName:name];
-//    return [NSData dataWithContentsOfFile:filePath];;
-//}
-//
-////return the specified type of resource,the resources is transformed by block
-//-(id)resourceWithName:(NSString *) name withBlock:(resoucesTransformerBlock) block
-//{
-//    return block([self resourceDataWithName:name]);
-//}
-
+-(void)request:(TTURLRequest *)request didFailLoadWithError:(NSError *)error
+{
+    NSDictionary * map = request.userInfo;
+    [[NSFileManager defaultManager]removeItemAtPath:TTPathForDocumentsResource([map valueForKey:kResourceName]) error:nil];
+}
 @end

@@ -15,7 +15,7 @@
 @synthesize password = _password;
 @synthesize loginBtn = _loginBtn;
 
-@synthesize backgroundImage = _backgroundImage;
+@synthesize  backgroundImage = _backgroundImage,loginButtonNormalImage = _loginButtonNormalImage,loginButonHighlightedImage = _loginButonHighlightedImage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,8 +40,12 @@
     TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_password);
     TT_RELEASE_SAFELY(_loginModel);
-    TT_RELEASE_SAFELY(_backgroundImage);
     TT_RELEASE_SAFELY(_loginBtn);
+
+    TT_RELEASE_SAFELY(_backgroundImage);
+    TT_RELEASE_SAFELY(_loginButtonNormalImage);
+    TT_RELEASE_SAFELY(_loginButonHighlightedImage);
+//    TT_RELEASE_SAFELY(_titleLabelText);
     
     TT_RELEASE_SAFELY(_usernameDelegate);
     TT_RELEASE_SAFELY(_passwordDelegate);
@@ -59,6 +63,22 @@
     
     _passwordDelegate = [[HDTextFieldDelegate alloc]initWithTarget:self selector:@selector(passwordFieldShouldReturn:)];
     _password.delegate = _passwordDelegate;
+    
+//    if (self.titleLabelText) {
+//        self.titleLabel.text = self.titleLabelText;
+//    }
+    
+    if (self.backgroundImage) {
+        [(UIImageView *)[self.view viewWithTag:9] setImage:self.backgroundImage];
+    }
+    
+    if (self.loginButtonNormalImage) {
+        [_loginBtn setBackgroundImage:self.loginButtonNormalImage forState:UIControlStateNormal];
+    }
+    
+    if (self.loginButonHighlightedImage) {
+        [_loginBtn setBackgroundImage:self.loginButonHighlightedImage forState:UIControlStateHighlighted];
+    }
 }
 
 -(void)usernameFieldShouldReturn:(UITextField *) textField
@@ -75,11 +95,6 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:YES];
-    
-//    self.backgroundImage = TTIMAGE(@"documents://login_background.png");
-//    if (nil!= self.backgroundImage) {
-//        [(UIImageView *)[self.view viewWithTag:9] setImage:self.backgroundImage];
-//    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated

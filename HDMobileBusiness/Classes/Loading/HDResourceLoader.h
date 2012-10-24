@@ -12,19 +12,12 @@ static NSString * kResourceURL = @"remoteURL";
 static NSString * kResourceName = @"saveFileName";
 
 @interface HDResourceLoader : HDSingletonObject <TTURLRequestDelegate>
-{
-    NSMutableArray * _resourceList;
-}
 
 +(id)shareLoader;
 
--(void)removeResourceWithResourceList:(NSArray *) list;
+//根据指定dictionary下载资源到本地，kResourceName为存储到本地的文件名称，kResourceURL为资源的访问路径
+-(void)loadResource:(NSDictionary *) resourceDictionary;
 
-//资源字典,应该包含资源名称,网络路径,存放地址,刷新间隔,是否需要立即刷新
--(void)addResource:(NSDictionary *) resourceDictionary;
-
--(void)stopLoad;
-
--(void)startLoad;
+-(void)stopLoad;//Unimplemented
 
 @end

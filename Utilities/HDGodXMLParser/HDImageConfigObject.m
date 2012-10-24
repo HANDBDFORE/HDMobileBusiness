@@ -18,9 +18,16 @@
         [propertyDictionary addEntriesFromDictionary:[childConfig createPropertyDictionary]];
     }
     
-    if ([[propertyDictionary objectForKey:@"remoteURL"] isKindOfClass:[NSString class]] && [[propertyDictionary objectForKey:@"saveFileName"] isKindOfClass:[NSString class]]) {
-        [[HDResourceLoader shareLoader] addResource:propertyDictionary];
-        [[HDResourceLoader shareLoader] startLoad];
+    if ([[propertyDictionary objectForKey:kHDImageURL] isKindOfClass:[NSString class]] && [[propertyDictionary objectForKey:kHDImageName] isKindOfClass:[NSString class]]) {
+        [[HDResourceLoader shareLoader] loadResource:
+         @{kResourceURL : [propertyDictionary objectForKey:kHDImageURL],
+           kResourceName: [propertyDictionary objectForKey:kHDImageName]}];
+    }
+    
+    if ([[propertyDictionary objectForKey:kHDRetinaImageURL] isKindOfClass:[NSString class]] && [[propertyDictionary objectForKey:kHDRetinaImageName] isKindOfClass:[NSString class]]) {
+        [[HDResourceLoader shareLoader] loadResource:
+         @{kResourceURL : [propertyDictionary objectForKey:kHDRetinaImageURL],
+           kResourceName: [propertyDictionary objectForKey:kHDRetinaImageName]}];
     }
     
     if ([[propertyDictionary objectForKey:@"localFileName"] isKindOfClass:[NSString class]]) {

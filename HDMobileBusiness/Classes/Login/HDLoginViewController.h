@@ -23,7 +23,11 @@
 @property (nonatomic,retain) IBOutlet UITextField * password;
 @property (nonatomic,retain) IBOutlet UIButton * loginBtn;
 
+//配置项
+//@property (nonatomic,copy) NSString * titleLabelText;
 @property (nonatomic,retain) UIImage * backgroundImage;
+@property (nonatomic,retain) UIImage * loginButtonNormalImage;
+@property (nonatomic,retain) UIImage * loginButonHighlightedImage;
 
 -(IBAction)loginBtnPressed:(id)sender;
 
