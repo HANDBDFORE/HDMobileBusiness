@@ -7,7 +7,7 @@
 //
 
 #import "HDMessageSingleRecipientField.h"
-#import "HDSinglePickerTextFiled.h"
+#import "HDSinglePickerTextField.h"
 
 @implementation HDMessageSingleRecipientField
 @synthesize placeholder = _placeholder;
@@ -20,7 +20,7 @@
 
 -(TTPickerTextField *)createViewForController:(TTMessageController *)controller
 {
-    TTPickerTextField* textField = [[[HDSinglePickerTextFiled alloc] init] autorelease];
+    TTPickerTextField* textField = [[[HDSinglePickerTextField alloc] init] autorelease];
     textField.dataSource = controller.dataSource;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;

@@ -86,7 +86,7 @@
     [_password becomeFirstResponder];
 }
 
--(void)passwordFieldShouldReturn:(UITextField *) textFiled
+-(void)passwordFieldShouldReturn:(UITextField *) textField
 {
     [_password resignFirstResponder];
 }

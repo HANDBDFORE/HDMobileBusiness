@@ -24,8 +24,8 @@ static NSString * kSQLNull = @"null";
 @implementation HDTodoListModel
 @synthesize resultList = _resultList;
 @synthesize searchText = _searchText;
-@synthesize serachFields = _serachFields;
-@synthesize primaryFiled = _primaryFiled;
+@synthesize searchFields = _searchFields;
+@synthesize primaryField = _primaryField;
 @synthesize queryURL = _queryURL;
 @synthesize submitURL = _submitURL;
 @synthesize currentIndex = _currentIndex;
@@ -34,8 +34,8 @@ static NSString * kSQLNull = @"null";
 {
     TT_RELEASE_SAFELY(_resultList);
     TT_RELEASE_SAFELY(_searchText);
-    TT_RELEASE_SAFELY(_serachFields);
-    TT_RELEASE_SAFELY(_primaryFiled);
+    TT_RELEASE_SAFELY(_searchFields);
+    TT_RELEASE_SAFELY(_primaryField);
     TT_RELEASE_SAFELY(_queryURL);
     TT_RELEASE_SAFELY(_submitURL);
     TT_RELEASE_SAFELY(_submitList);
@@ -199,12 +199,12 @@ static NSString * kSQLNull = @"null";
         
         NSMutableArray * columnKeyList = [NSMutableArray array];
         //set locked field
-        [columnKeyList addObject:@{kColumnMapKey:_primaryFiled,kColumnMapColumn:@"column0"}];
+        [columnKeyList addObject:@{kColumnMapKey:_primaryField,kColumnMapColumn:@"column0"}];
         //set dinymic field from Column5
         int i =5;
         
         NSMutableDictionary * mutableRecord =  [[record mutableCopy] autorelease];
-        [mutableRecord removeObjectForKey:_primaryFiled];
+        [mutableRecord removeObjectForKey:_primaryField];
         NSArray * keys = [mutableRecord allKeys];
         for (NSString * key in keys) {
             [columnKeyList addObject:@{kColumnMapKey : key,kColumnMapColumn:[NSString stringWithFormat:@"column%i",i]}];
@@ -249,7 +249,7 @@ static NSString * kSQLNull = @"null";
     //find same records
     for (NSMutableDictionary * localApprove in localRecords) {
         for (NSMutableDictionary * remoteRecord in remoteRecords) {
-            if ([[localApprove valueForKey:_primaryFiled] isEqual:[remoteRecord valueForKey:_primaryFiled]]) {
+            if ([[localApprove valueForKey:_primaryField] isEqual:[remoteRecord valueForKey:_primaryField]]) {
                 [localSameArray addObject:localApprove];
                 [remoteSameArray addObject:remoteRecord];
             }
@@ -394,7 +394,7 @@ static NSString * kSQLNull = @"null";
         NSArray * fetchArray = [NSArray arrayWithArray:self.resultList];
         for (id record in fetchArray) {
             BOOL matchFlg = NO;
-            for (NSString * key in self.serachFields) {
+            for (NSString * key in self.searchFields) {
                 matchFlg = matchFlg || [[record valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
             }
             if (!matchFlg) {

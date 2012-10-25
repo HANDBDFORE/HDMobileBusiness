@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 hand. All rights reserved.
 //
 
-//submit filed
+//submit field
 static NSString * kAction = @"action_id";
 static NSString * kComments = @"comments";
 static NSString * kEmployeeID = @"employee_id";

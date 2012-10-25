@@ -44,12 +44,12 @@
                 <isLate dataType="NSString" value="${is_late}"/>
             </itemDictionary>
             <model>
-                <primaryFiled dataType="NSString" value="record_id"/>
-                <serachFields dataType="NSArray">
+                <primaryField dataType="NSString" value="record_id"/>
+                <searchFields dataType="NSArray">
                     <item dataType="NSString" value="order_type"/>
                     <item dataType="NSString" value="node_name"/>
                     <item dataType="NSString" value="employee_name"/>
-                </serachFields>
+                </searchFields>
                 <queryURL dataType="NSString" value="${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false"/>
                 <submitURL dataType="NSString" value="${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"/>
             </model>

@@ -46,10 +46,10 @@ static NSString * kStorageRemove = @"REMOVE";
 //@property(nonatomic,readonly) NSArray * resultList;
 
 //查询字段
-@property(nonatomic,retain) NSArray * serachFields;
+@property(nonatomic,retain) NSArray * searchFields;
 
 //主键字段
-@property(nonatomic,copy) NSString * primaryFiled;
+@property(nonatomic,copy) NSString * primaryField;
 
 //查询的Url
 @property(nonatomic,copy) NSString * queryURL;

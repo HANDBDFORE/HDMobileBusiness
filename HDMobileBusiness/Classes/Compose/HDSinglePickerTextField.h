@@ -1,5 +1,5 @@
 //
-//  HDSinglePickerTextFiled.h
+//  HDSinglePickerTextField.h
 //  HDMobileBusiness
 //
 //  Created by Plato on 9/12/12.
@@ -8,6 +8,6 @@
 
 #import <Three20UI/Three20UI.h>
 
-@interface HDSinglePickerTextFiled : TTPickerTextField
+@interface HDSinglePickerTextField : TTPickerTextField
 
 @end
