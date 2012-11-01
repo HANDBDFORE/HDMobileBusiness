@@ -127,14 +127,16 @@
 //模型delegate方法
 - (void)modelDidFinishLoad:(HDLoginModel *)model
 {
-    [self dismissModalViewControllerAnimated:NO];
+//    [self dismissModalViewControllerAnimated:NO];
+    self.view.window.rootViewController = [[TTNavigator navigator]rootViewController];
+//    [[[UIApplication sharedApplication].windows objectAtIndex:0] setRootViewController:[[TTNavigator navigator]rootViewController]];
     [[HDGuider guider]guideToKeyPath:kMainControllerPath query:nil animated:NO];
 }
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error
 {
     [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
-    [self.loginBtn  setTag:20];
+    [self.loginBtn setTag:20];
     NSString * errorDescription = nil;
     if (!errorDescription) {
         errorDescription = [[error userInfo] valueForKeyPath:@"error"];
@@ -172,8 +174,18 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+-(NSUInteger)supportedInterfaceOrientations
 {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+//-(BOOL)shouldAutorotate
+//{
+//    return NO;
+//}
+
+//-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+//{
 //    if (toInterfaceOrientation == UIInterfaceOrientationMaskPortrait) {
 //        _username.origin = CGPointMake(75, 231);
 //        _password.origin = CGPointMake(75, 271);
@@ -183,5 +195,5 @@
 //    }
     
     
-}
+//}
 @end

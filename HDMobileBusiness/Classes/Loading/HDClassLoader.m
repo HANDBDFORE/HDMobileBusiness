@@ -27,7 +27,7 @@
     TTNavigator * navigator = [TTNavigator navigator];
     
     [navigator.URLMap from:@"*" toSharedViewController:[HDWebViewController class]];
-    
+    [navigator.URLMap from:@"init://UserGuideViewController" toViewController:[HDUserGuideViewController class]];
     [navigator.URLMap from:@"init://LoadingViewController" toModalViewController:[HDLoadingViewController class]];
     
     [navigator.URLMap from:@"init://HDUserGuideViewController" toSharedViewController:[HDUserGuideViewController class]];

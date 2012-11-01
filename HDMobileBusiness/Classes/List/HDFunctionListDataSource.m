@@ -8,6 +8,7 @@
 
 #import "HDFunctionListDataSource.h"
 #import "HDTableConfirmViewCell.h"
+#import "HDLoadingViewController.h"
 
 @implementation HDFunctionListModel
 
@@ -154,7 +155,8 @@
 -(void) logout:(id) sender
 {
     [self clearDatas];
-    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
+    [[[[UIApplication sharedApplication] windows] objectAtIndex:0] setRootViewController:[[[HDLoadingViewController alloc] init] autorelease]];
+//    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
 }
 
 -(void)clearDatas{

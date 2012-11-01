@@ -12,4 +12,6 @@ static NSString * kVersion = @"1.0.0";
 
 @interface HDAppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (strong, nonatomic) UIWindow *window;
+
 @end

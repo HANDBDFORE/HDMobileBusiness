@@ -7,7 +7,7 @@
 //
 
 #import "HDUserGuideViewController.h"
-
+#import "HDLoadingViewController.h"
 @interface HDUserGuideViewController ()
 
 @end
@@ -27,7 +27,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+//        [[UIApplication sharedApplication] setStatusBarHidden:YES];
 
         NSArray *images = [[NSArray alloc]initWithObjects:[UIImage imageNamed:@"page1.jpg"],[UIImage imageNamed:@"page2.jpg"],[UIImage imageNamed:@"page3.jpg"],[UIImage imageNamed:@"page4.jpg"], nil];
         
@@ -96,18 +96,6 @@
     [self.view addSubview:_pageControl];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
@@ -116,6 +104,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,8 +141,9 @@
 }
 
 -(void)finish{
-    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    self.view.window.rootViewController = [[[HDLoadingViewController alloc]init]autorelease];
+//    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
+//    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
 -(BOOL)scrollViewShouldZoom:(TTScrollView *)scrollView{

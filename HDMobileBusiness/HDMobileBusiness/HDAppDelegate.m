@@ -12,6 +12,9 @@
 #import "HDDefaultStyleSheet.h"
 #import "HDClassLoader.h"
 
+#import "HDLoadingViewController.h"
+#import "HDUserGuideViewController.h"
+
 @implementation HDAppDelegate
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application
@@ -27,28 +30,35 @@
     //load class
     [HDClassLoader startLoad];
     
-    TTNavigator * navigator = [TTNavigator navigator];
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]autorelease];
+//    TTNavigator * navigator = [TTNavigator navigator];
     
-    if(![navigator restoreViewControllers])
-    {
+//    if(![navigator restoreViewControllers])
+//    {
         if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {
             [self showLoadingView];
         }else {
             [[NSUserDefaults standardUserDefaults]setValue:kVersion forKey:@"appVersion"];
             [self showHelpView];
-        }
-        
-    }
+        }   
+//    }
+    [self.window makeKeyAndVisible];
 }
 
 -(void)showHelpView
 {
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"init://UserGuideViewController"]];
+    [self.window.rootViewController = [[HDUserGuideViewController alloc]init]autorelease];
+    
+//    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"init://UserGuideViewController"]];
 }
 
 -(void)showLoadingView
 {
-    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
+//    UIViewController * controller = [[HDLoadingViewController alloc]init];
+//    [[TTNavigator navigator] rootViewController]= controller;
+    
+    [self.window.rootViewController =[[HDLoadingViewController alloc]init]autorelease];
+//    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
 }
 
 //获取token成功,格式化token,放入用户设置中

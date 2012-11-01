@@ -8,7 +8,7 @@
 
 #import "HDLoadingViewController.h"
 #import "HDResourceLoader.h"
-
+#import "HDLoginViewController.h"
 @interface HDLoadingViewController ()
 
 @end
@@ -210,11 +210,17 @@
 
 -(void)showLoginView
 {
-    TTNavigator* navigator = [TTNavigator navigator];
-    [navigator removeAllViewControllers];
+//    TTNavigator* navigator = [TTNavigator navigator];
+//    [navigator removeAllViewControllers];
+    
+    HDGuiderMap * map = [[HDGuider guider] guiderMapForKeyPath:kLoginControllerPath];
+    UIViewController * controller = [[HDLoginViewController alloc]initWithNibName:@"HDLoginViewController" bundle:nil];
+    
+    self.view.window.rootViewController = [[HDGuider guider]configViewController:controller dictionary:map.propertyDictionary];
+//    [self presentModalViewController:[[HDGuider guider]configViewController:controller dictionary:map.propertyDictionary] animated:NO];
 
 //    [[HDGuider guider]guideToKeyPath:kMainControllerPath query:nil animated:NO];
-    [[HDGuider guider]guideToKeyPath:kLoginControllerPath query:nil animated:NO];
+//    [[HDGuider guider]guideToKeyPath:kLoginControllerPath query:nil animated:NO];
 }
 
 #pragma mark - life cycle
@@ -273,6 +279,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupByPreferences];
+    [self loadGodConfig];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 - (void)viewDidUnload
@@ -282,13 +290,16 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self setupByPreferences];
-    [self loadGodConfig];
     
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return TTIsSupportedOrientation(interfaceOrientation);
+    return UIInterfaceOrientationPortrait == interfaceOrientation;
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end

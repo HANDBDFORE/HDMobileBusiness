@@ -40,4 +40,11 @@ static NSString * kMainControllerPath = @"HD_MAIN_VC_PATH";
 -(UIViewController *)controllerWithKeyPath:(NSString *) keyPath
                                      query:(NSDictionary *) query;
 
+//获取对应keyPath的配置对象
+-(HDGuiderMap *) guiderMapForKeyPath:(NSString *) keyPath;
+
+//配置视图控制器
+-(UIViewController *)configViewController:(UIViewController *) controller
+                               dictionary:(NSDictionary *)dictionary;
+
 @end
