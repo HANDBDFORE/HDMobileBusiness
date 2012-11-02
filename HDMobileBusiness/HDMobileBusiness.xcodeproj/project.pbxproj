@@ -2196,7 +2196,8 @@
 				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HAND Enterprise Solutions CO., LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HAND Enterprise Solutions CO., LTD.";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2218,7 +2219,8 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-ObjC";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "27099DB0-89E5-405B-ACF0-F6E2E05E53EB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "27099DB0-89E5-405B-ACF0-F6E2E05E53EB";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2234,7 +2236,8 @@
 				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HAND Enterprise Solutions CO., LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HAND Enterprise Solutions CO., LTD.";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -2250,6 +2253,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
+				PROVISIONING_PROFILE = "27099DB0-89E5-405B-ACF0-F6E2E05E53EB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "27099DB0-89E5-405B-ACF0-F6E2E05E53EB";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
