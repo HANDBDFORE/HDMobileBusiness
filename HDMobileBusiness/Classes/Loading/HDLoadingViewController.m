@@ -27,20 +27,20 @@
         _retryButton.hidden = NO;
         [_retryButton setUserInteractionEnabled:YES];
     }else {
-        //开始发请求  
+        //开始发请求
         NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-sprite.xml",[HDHTTPRequestCenter baseURLPath]];
         NSURL *url = [NSURL URLWithString:fileUrl];
         NSMutableURLRequest *postRequest = [[[NSMutableURLRequest alloc]initWithURL:url]autorelease];
         [postRequest setHTTPMethod:@"GET"];
         [postRequest setTimeoutInterval:30];
         NSOperationQueue *queue = [[[NSOperationQueue alloc] init]autorelease];
- 
+        
         //构造block
         void(^completionHandler)(NSURLResponse *response,
                                  NSData *data,
                                  NSError *error) = ^(NSURLResponse *response,
-                                                NSData *data,
-                                                NSError *error){
+                                                     NSData *data,
+                                                     NSError *error){
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             //count
             if (error) {
@@ -67,7 +67,7 @@
                             _alertView.hidden = NO;
                             _retryButton.userInteractionEnabled = YES;
                         });
-
+                        
                     }
                 }else if (errorCode == -1004) {
                     //没有网
@@ -90,7 +90,7 @@
                 }
                 
             }else{
-                NSInteger responseCode = [httpResponse statusCode];          
+                NSInteger responseCode = [httpResponse statusCode];
                 if (responseCode!=200) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         _errorSummury.text = @"服务器状态异常";
@@ -112,22 +112,22 @@
                             });
                         }else {
                             //最终状态
-                            dispatch_async(dispatch_get_main_queue(), ^{     
-//                            [self loadClass];
-//                            [self loadResource];
-                            [self dismissModalViewControllerAnimated:NO];
-                            [self showLoginView];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                //                            [self loadClass];
+                                //                            [self loadResource];
+                                [self dismissModalViewControllerAnimated:NO];
+                                [self showLoginView];
                             });
                             
-
+                            
                         }
                     }
                 }
             }
         };
         
-        [NSURLConnection sendAsynchronousRequest:postRequest 
-                                           queue:queue 
+        [NSURLConnection sendAsynchronousRequest:postRequest
+                                           queue:queue
                                completionHandler:completionHandler];
         
         
@@ -144,7 +144,7 @@
     [postRequest setTimeoutInterval:10];
     NSHTTPURLResponse* response = nil;
     NSData *resData = nil;
-
+    
     resData= [NSURLConnection sendSynchronousRequest:postRequest returningResponse:&response error:nil];
     
     if (resData) {
@@ -169,16 +169,6 @@
     }
 }
 
-//-(void)loadResource
-//{
-//    HDResourceLoader * loader = [HDResourceLoader shareLoader];
-//    HDResourceMap * map = [[[HDResourceMap alloc]init]autorelease];
-//    map.resourceName = @"login_background.png";
-//    map.resourceURL = @"LOGIN_BACKGROUND_IMAGE_PATH";    
-//    loader.resourceList = [NSArray arrayWithObject:map];
-//    [loader startLoad];
-//}
-
 //设置用户选项
 - (void)setupByPreferences
 {
@@ -198,7 +188,7 @@
         for (NSDictionary *prefItem in prefSpecifierArray)
         {
             if ([prefItem objectForKey:@"DefaultValue"] != nil) {
-                [appDefaults setValue:[prefItem objectForKey:@"DefaultValue"] 
+                [appDefaults setValue:[prefItem objectForKey:@"DefaultValue"]
                                forKey:[prefItem objectForKey:@"Key"]];
             }
         }
@@ -210,39 +200,30 @@
 
 -(void)showLoginView
 {
-//    TTNavigator* navigator = [TTNavigator navigator];
-//    [navigator removeAllViewControllers];
-    
-    HDGuiderMap * map = [[HDGuider guider] guiderMapForKeyPath:kLoginControllerPath];
-    UIViewController * controller = [[HDLoginViewController alloc]initWithNibName:@"HDLoginViewController" bundle:nil];
-    
-    self.view.window.rootViewController = [[HDGuider guider]configViewController:controller dictionary:map.propertyDictionary];
-//    [self presentModalViewController:[[HDGuider guider]configViewController:controller dictionary:map.propertyDictionary] animated:NO];
-
-//    [[HDGuider guider]guideToKeyPath:kMainControllerPath query:nil animated:NO];
-//    [[HDGuider guider]guideToKeyPath:kLoginControllerPath query:nil animated:NO];
+    self.view.window.rootViewController = [[HDGuider guider]controllerWithKeyPath:kLoginControllerPath query:nil];
 }
 
 #pragma mark - life cycle
 -(void)loadView{
     self.navigationController.navigationBarHidden = YES;
-    UIView *view = [[[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds]autorelease];
-    view.backgroundColor = RGBCOLOR(235, 240, 243);
-    _customBackground = [[[UIView alloc] initWithFrame:CGRectMake(0,0, 300, 440)]autorelease]; 
+    UIView *view = [[[UIView alloc]initWithFrame:[UIScreen mainScreen].applicationFrame]autorelease];
+    self.view = view;
+    self.view.backgroundColor = RGBCOLOR(235, 240, 243);
+    _customBackground = [[[UIView alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width*0.98, self.view.frame.size.height*0.98)]autorelease];
     _customBackground.backgroundColor = RGBCOLOR(229, 232, 237);
-    _customBackground.center = CGPointMake(160, 230);
+    _customBackground.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
     _customBackground.layer.cornerRadius = 8;
     _customBackground.layer.shadowOffset = CGSizeMake(0,0);
     _customBackground.layer.shadowColor =[UIColor blackColor].CGColor;
     _customBackground.layer.shadowOpacity = 1;
-    [view insertSubview:_customBackground atIndex:0];
+    [self.view insertSubview:_customBackground atIndex:0];
     _alertView = [[[UIImageView alloc]initWithImage:TTIMAGE(@"bundle://loadingAlert.png")]autorelease];
-    _alertView.center = CGPointMake(160,60);
-    _alertView.hidden = YES;
-    [view addSubview:_alertView];
-    _errorSummury = [[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 270, 50)]autorelease];
+    _alertView.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.2);
+    //    _alertView.hidden = YES;
+    [self.view addSubview:_alertView];
+    _errorSummury = [[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*0.8, 50)]autorelease];
     //样式
-    _errorSummury.center = CGPointMake(160, 130);
+    _errorSummury.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.4);
     _errorSummury.numberOfLines = 2;
     _errorSummury.backgroundColor = [UIColor clearColor];
     //_errorSummury.backgroundColor = [UIColor  redColor];
@@ -251,29 +232,36 @@
     _errorSummury.font = [UIFont fontWithName:@"Helvetica" size:18];
     _errorSummury.textColor = RGBCOLOR(133, 141, 155);
     _errorSummury.text = @"正在加载配置文件，请稍候";
-    [view addSubview:_errorSummury];
+    [self.view addSubview:_errorSummury];
     
-    _errorDetail = [[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 270, 200)]autorelease];
+    _errorDetail = [[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*0.8, 200)]autorelease];
     //样式
-    _errorDetail.center = CGPointMake(160, 270);
+    _errorDetail.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.6);
     _errorDetail.numberOfLines = 20;
     _errorDetail.font = [UIFont fontWithName:@"Helvetica" size:14];
     _errorDetail.textAlignment = UITextAlignmentCenter;
     _errorDetail.backgroundColor = [UIColor clearColor];
     //_errorDetail.backgroundColor = [UIColor  redColor];
     _errorDetail.textColor = RGBCOLOR(100,103,108);
-    [view addSubview:_errorDetail];
+    [self.view addSubview:_errorDetail];
     
     _retryButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_retryButton setImage:[UIImage imageNamed:@"reloadButton"] forState:UIControlStateNormal];
     [_retryButton setImage:[UIImage imageNamed:@"reloadButtonActive"] forState:UIControlStateHighlighted];
     [_retryButton addTarget:self action:@selector(retry) forControlEvents:UIControlEventTouchUpInside];
-    _retryButton.center = CGPointMake(160, 400);
+    _retryButton.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.8);
     _retryButton.bounds = CGRectMake(0, 0, 100, 100);
     _retryButton.hidden = YES;
     [_retryButton setUserInteractionEnabled:NO];
-    [view addSubview:_retryButton];
-    self.view = view;
+    [self.view addSubview:_retryButton];
+    if (TTIsPad()) {
+        //        _alertView.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.2);
+        //        _errorSummury.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.4);
+        //        _errorDetail.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.6);
+        //        _retryButton.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.8);
+        _errorSummury.font = [UIFont fontWithName:@"Helvetica" size:32];
+        _errorDetail.font = [UIFont fontWithName:@"Helvetica" size:24];
+    }
 }
 
 - (void)viewDidLoad
