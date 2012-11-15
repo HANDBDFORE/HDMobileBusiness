@@ -73,7 +73,14 @@
     TTDPRINT(@"row :%i is being selected",index);
     
     [self.listModel setCurrentIndex:index];
-    [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.listModel}]applyAnimated:YES]];
+//    [[HDGuider guider] guideToKeyPath:@"DETIAL_VC_PATH" query:@{ @"listModel" : self.listModel} animated:YES];
+    HDGuideSegment * segment = [HDGuideSegment segmentWithKeyPath:@"DETIAL_VC_PATH"];
+    segment.query = @{ @"listModel" : self.listModel};
+    segment.animated = YES;
+    segment.invoker = [self.model.delegates objectAtIndex:0];
+    [[HDGuider guider]guideWithSegment:segment];
+    
+//    [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.listModel}]applyAnimated:YES]];
 }
 
 - (NSString*)titleForLoading:(BOOL)reloading {

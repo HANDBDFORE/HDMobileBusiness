@@ -499,8 +499,6 @@
 		B3D0977A15DB91E000C3495D /* HDGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977715DB91E000C3495D /* HDGuider.m */; };
 		B3D0977B15DB91E000C3495D /* HDGuiderMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977915DB91E000C3495D /* HDGuiderMap.m */; };
 		B3D0977E15DBA64400C3495D /* HDResponseMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977D15DBA64300C3495D /* HDResponseMap.m */; };
-		B3D468481650DBAC0073E9FE /* HDGuideSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D468471650DBAC0073E9FE /* HDGuideSegment.m */; };
-		B3D468491650DBAC0073E9FE /* HDGuideSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D468471650DBAC0073E9FE /* HDGuideSegment.m */; };
 		B3D4E20315E60AD80061ED4D /* HDXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E20215E60AD80061ED4D /* HDXMLParser.m */; };
 		B3D71B8416030344004E1BFD /* HDPersonListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */; };
 		B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8316030344004E1BFD /* HDPersonListModel.m */; };
@@ -1085,8 +1083,6 @@
 		B3D0977915DB91E000C3495D /* HDGuiderMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGuiderMap.m; sourceTree = "<group>"; };
 		B3D0977C15DBA64300C3495D /* HDResponseMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDResponseMap.h; sourceTree = "<group>"; };
 		B3D0977D15DBA64300C3495D /* HDResponseMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDResponseMap.m; sourceTree = "<group>"; };
-		B3D468461650DBAC0073E9FE /* HDGuideSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGuideSegment.h; sourceTree = "<group>"; };
-		B3D468471650DBAC0073E9FE /* HDGuideSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGuideSegment.m; sourceTree = "<group>"; };
 		B3D4E20115E60AD80061ED4D /* HDXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDXMLParser.h; sourceTree = "<group>"; };
 		B3D4E20215E60AD80061ED4D /* HDXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDXMLParser.m; sourceTree = "<group>"; };
 		B3D71B8016030343004E1BFD /* HDPersonListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDPersonListDataSource.h; path = Classes/List/HDPersonListDataSource.h; sourceTree = "<group>"; };
@@ -1989,8 +1985,6 @@
 				B3D0977715DB91E000C3495D /* HDGuider.m */,
 				B3D0977815DB91E000C3495D /* HDGuiderMap.h */,
 				B3D0977915DB91E000C3495D /* HDGuiderMap.m */,
-				B3D468461650DBAC0073E9FE /* HDGuideSegment.h */,
-				B3D468471650DBAC0073E9FE /* HDGuideSegment.m */,
 			);
 			path = HDEluneGuider;
 			sourceTree = "<group>";
@@ -2765,7 +2759,6 @@
 				B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */,
 				B36F7A731631440B0090646E /* HDTextFieldDelegate.m in Sources */,
 				B38693AA1636582100223924 /* HDImageConfigObject.m in Sources */,
-				B3D468481650DBAC0073E9FE /* HDGuideSegment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2864,7 +2857,6 @@
 				B318F168164B861900FC05E7 /* StackScrollViewController.m in Sources */,
 				B318F16B164B865900FC05E7 /* UIViewWithShadow.m in Sources */,
 				B318F174164B887000FC05E7 /* HDSplitViewController.m in Sources */,
-				B3D468491650DBAC0073E9FE /* HDGuideSegment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -127,10 +127,8 @@
 //模型delegate方法
 - (void)modelDidFinishLoad:(HDLoginModel *)model
 {
-//    [self dismissModalViewControllerAnimated:NO];
     self.view.window.rootViewController = [[TTNavigator navigator]rootViewController];
-//    [[[UIApplication sharedApplication].windows objectAtIndex:0] setRootViewController:[[TTNavigator navigator]rootViewController]];
-    [[HDGuider guider]guideToKeyPath:kMainControllerPath query:nil animated:NO];
+    [[HDGuider guider]guideWithSegment:[HDGuideSegment segmentWithKeyPath:kMainControllerPath]];
 }
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error

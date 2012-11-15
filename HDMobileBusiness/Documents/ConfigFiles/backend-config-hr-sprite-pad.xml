@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<backend-config>
+    <!--登录页面-->
+    <viewController keyPath="HD_LOGIN_VC_PATH">
+        <titleLabel>
+            <text dataType="NSString" value="hand@ios"/>
+        </titleLabel>
+        <backgroundImage dataType="UIImage">
+            <localFileName dataType="NSString" value="documents://background.png"/>
+            <remoteURL dataType="NSString" value="http://files.anidea.com/themes/joshb2/wallpapers/bg_320x480.jpg"/>
+            <saveFileName dataType="NSString" value="background.png"/>
+            <retinaRemoteURL dataType="NSString" value="http://files.anidea.com/themes/joshb2/wallpapers/bg_320x480.jpg"/>
+            <retinaSaveFileName dataType="NSString" value="background@2x.png"/>
+        </backgroundImage>
+        <loginButtonNormalImage dataType="UIImage">
+            <localFileName dataType="NSString" value="documents://normalButton.png"/>
+            <remoteURL dataType="NSString" value="${base_url}images/mobile/loginButton.png"/>
+            <saveFileName dataType="NSString" value="normalButton.png"/>
+            <retinaRemoteURL dataType="NSString" value="${base_url}images/mobile/loginButton.png"/>
+            <retinaSaveFileName dataType="NSString" value="normalButton@2x.png"/>
+        </loginButtonNormalImage>
+        <loginButonHighlightedImage dataType="UIImage">
+            <localFileName dataType="NSString" value="documents://highlightedButton.png"/>
+            <remoteURL dataType="NSString" value="${base_url}images/mobile/loginButtonActive.png"/>
+            <saveFileName dataType="NSString" value="highlightedButton.png"/>
+            <retinaRemoteURL dataType="NSString" value="${base_url}images/mobile/loginButtonActive.png"/>
+            <retinaSaveFileName dataType="NSString" value="highlightedButton@2x.png"/>
+        </loginButonHighlightedImage>
+        <model>
+            <submitURL dataType="NSString" value="${base_url}modules/ios/public/login_iphone.svc"/>
+        </model>
+    </viewController>
+    <!--待办查询页面，和待办列表共享配置-->
+    <viewController keyPath="TODO_LIST_SEARCH" shareTo="TODO_LIST_VC_PATH"/>
+    <!--待办页面-->
+    <viewController keyPath="TODO_LIST_VC_PATH">
+        <title dataType="NSString" value="TodoList[配]"/>
+        <dataSource>
+            <itemDictionary dataType="NSDictionary">
+                <title dataType="NSString" value="${workflow_name}:${employee_name}"/>
+                <caption dataType="NSString" value="当前节点: ${node_name}"/>
+                <text dataType="NSString" value="${workflow_desc}"/>
+                <timestamp dataType="NSString" value="${creation_date}"/>
+                <isLate dataType="NSString" value="${is_late}"/>
+            </itemDictionary>
+            <model>
+                <primaryField dataType="NSString" value="record_id"/>
+                <searchFields dataType="NSArray">
+                    <item dataType="NSString" value="order_type"/>
+                    <item dataType="NSString" value="node_name"/>
+                    <item dataType="NSString" value="employee_name"/>
+                </searchFields>
+                <queryURL dataType="NSString" value="${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false"/>
+                <submitURL dataType="NSString" value="${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"/>
+            </model>
+        </dataSource>
+    </viewController>
+    <!--登录完主页面，目前是待办列表，所以和待办列表共享配置-->
+    <viewController keyPath="HD_MAIN_VC_PATH"/>
+    <!--审批完成页面-->
+    <viewController keyPath="DONE_LIST_VC_PATH">
+        <title dataType="NSString" value="DoneList[配]"/>
+        <dataSource>
+            <itemDictionary dataType="NSDictionary">
+                <title dataType="NSString" value="${workflow_name}:${created_by_name}"/>
+                <caption dataType="NSString" value="当前节点: ${creation_date}"/>
+                <text dataType="NSString" value="${workflow_desc}"/>
+                <timestamp dataType="NSString" value="${creation_date}"/>
+            </itemDictionary>
+            <model>
+                <queryURL dataType="NSString" value="${base_url}autocrud/ios.ios_test.ios_done_list_test/query"/>
+            </model>
+        </dataSource>
+    </viewController>
+    <!--功能列表页面-->
+    <viewController keyPath="FUNCTION_LIST_VC_PATH">
+        <title dataType="NSString" value="功能[配]"/>
+        <model>
+            <queryURL dataType="NSString" value="${base_url}autocrud/ios.ios_function_center.ios_function_center_list/query"/>
+        </model>
+    </viewController>
+    <!--待办明细页面-->
+    <viewController keyPath="TOOLBAR_DETIAL_VC_PATH">
+        <userInfoItemTitle dataType="NSString" value="record_id"/>
+        <queryActionURLTemplate dataType="NSString" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}"/>
+        <userInfoPageURLTemplate dataType="NSString" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
+        <webPageURLTemplate dataType="NSString" value="${base_url}${screen_name}"/>
+    </viewController>
+    <!--审批完成页面-->
+    <viewController keyPath="DETIAL_VC_PATH">
+        <userInfoItemTitle dataType="NSString" value="record_id"/>
+        <userInfoPageURLTemplate dataType="NSString" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
+        <webPageURLTemplate dataType="NSString" value="${base_url}${screen_name}"/>
+    </viewController>
+    <!--转交页面-->
+    <viewController keyPath="DELIVER_VC_PATH">
+        <title dataType="NSString" value="转交[配]"/>
+        <dataSource>
+            <model>
+                <queryURL dataType="NSString" value="${base_url}autocrud/ios.ios_deliver.ios_wprkflow_deliver_query/query"/>
+            </model>
+            <itemDictionary dataType="NSDictionary">
+                <text dataType="NSString" value="${name}"/>
+                <subtitle dataType="NSString" value="${position_name}"/>
+                <userInfo dataType="NSString" value="${employee_id}"/>
+            </itemDictionary>
+        </dataSource>
+    </viewController>
+</backend-config>

@@ -111,9 +111,15 @@
             
             TTTableImageItem * imageItem =
             [TTTableImageItem itemWithText:text
-                                  imageURL:imageURL
-                                       URL:URL];
-            imageItem.imageStyle =TTSTYLE(functionListCellImageStyle);
+                                  delegate:self
+                                  selector:@selector(openURLForItem:)];
+            imageItem.imageURL = imageURL;
+            imageItem.imageStyle = TTSTYLE(functionListCellImageStyle);
+            imageItem.userInfo = URL;
+//            [TTTableImageItem itemWithText:text
+//                                  imageURL:imageURL
+//                                       URL:URL];
+//            imageItem.imageStyle =TTSTYLE(functionListCellImageStyle);
 
             [section addObject:imageItem];
         }
@@ -128,18 +134,47 @@
 -(void)addBasicItems{
     TTTableImageItem * todoListItem =
     [TTTableImageItem itemWithText:TTLocalizedString(@"Todo List", @"待办事项")
-                          imageURL:@"bundle://mailclosed.png"
-                               URL:@"guide://createViewControler/TODO_LIST_VC_PATH"];
+                          delegate:self
+                          selector:@selector(openURLForItem:)];
+    todoListItem.imageURL = @"bundle://mailclosed.png";
     todoListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
+    todoListItem.userInfo = kTodoListControllerPath;
     
+//    ///////////////////////////
    TTTableImageItem * doneListItem =
     [TTTableImageItem itemWithText:TTLocalizedString(@"Approved List", @"审批完成")
-                          imageURL:@"bundle://mailopened.png"
-                               URL:@"guide://createViewControler/DONE_LIST_VC_PATH"];
+                          delegate:self
+                          selector:@selector(openURLForItem:)];
+    doneListItem.imageURL = @"bundle://mailopened.png";
     doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
+    doneListItem.userInfo = kDoneListControllerPath;
     
+    /////////////////////////////////
+//    TTTableImageItem * todoListItem =
+//    [TTTableImageItem itemWithText:TTLocalizedString(@"Todo List", @"待办事项")
+//                          imageURL:@"bundle://mailclosed.png"
+//                               URL:@"guide://createViewControler/TODO_LIST_VC_PATH"];
+//    todoListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
+//    
+//    TTTableImageItem * doneListItem =
+//    [TTTableImageItem itemWithText:TTLocalizedString(@"Approved List", @"审批完成")
+//                          imageURL:@"bundle://mailopened.png"
+//                               URL:@"guide://createViewControler/DONE_LIST_VC_PATH"];
+//    doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
+    
+    ///////////////////////////////
     [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:TTLocalizedString(@"Approve", @"审批") footerTitle:nil] atIndex:0];
     [self.items insertObject:@[todoListItem,doneListItem] atIndex:0];
+}
+
+-(void)openURLForItem:(TTTableItem *) item
+{
+    TTDPRINT(@"%@",item.userInfo);
+    HDGuideSegment * segment = [[[HDGuideSegment alloc]init] autorelease];
+    segment.keyPath = item.userInfo;
+    segment.invoker = [self.model.delegates objectAtIndex:0];
+    segment.animated = YES;
+    [[HDGuider guider] guideWithSegment:segment];
 }
 
 -(void)addLogoutItem
@@ -155,6 +190,7 @@
 -(void) logout:(id) sender
 {
     [self clearDatas];
+    [[TTNavigator navigator]removeAllViewControllers];
     [[[[UIApplication sharedApplication] windows] objectAtIndex:0] setRootViewController:[[[HDLoadingViewController alloc] init] autorelease]];
 //    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
 }

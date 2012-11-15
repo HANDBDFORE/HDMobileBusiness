@@ -15,6 +15,9 @@
 
 #import "HDLoadingViewController.h"
 #import "HDUserGuideViewController.h"
+
+#import "HDSplitViewController.h"
+
 @class HDDefaultStyleSheet;
 
 @implementation HDAppDelegate
@@ -27,16 +30,16 @@
     //Views Managment by Three20
     [TTStyleSheet setGlobalStyleSheet:[[[HDDefaultStyleSheet alloc]init]autorelease]];
     //create database
-//    [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordList:nil];
+    [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordList:nil];
     
     //load class
-//    [HDClassLoader startLoad];
+    [HDClassLoader startLoad];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]autorelease];
-    //    TTNavigator * navigator = [TTNavigator navigator];
+    TTNavigator * navigator = [TTNavigator navigator];
     
-    //    if(![navigator restoreViewControllers])
-    //    {
+    [navigator.URLMap from:@"init://HDSplitViewController" toSharedViewController:[HDSplitViewController class]];
+
     if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {
         [self showLoadingView];
     }else {

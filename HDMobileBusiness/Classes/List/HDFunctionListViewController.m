@@ -35,6 +35,7 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
+//    [self.model load:TTURLRequestCachePolicyDefault more:NO];
 }
 
 -(void)viewDidUnload

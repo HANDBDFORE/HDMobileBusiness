@@ -45,12 +45,10 @@
         @"UIImage" : [HDImageConfigObject class]
         };
         _configDictionary = [[NSMutableDictionary alloc]init];
+        TTDPRINT(@"%@",TTPathForDocumentsResource(@"ios-backend-config.xml"));
+
+        _document = [[HDXMLParser document] retain];
         
-        NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(@"ios-backend-config.xml")];
-//        NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-hr-sprite.xml"];
-        
-        NSError * error = nil;
-        _document = [[CXMLDocument alloc]initWithData:data encoding:NSUTF8StringEncoding options:0 error:&error];
         //解析配置文件
         if ([[[_document rootElement] name] isEqualToString:@"backend-config"]) {
             NSError * error = nil;
@@ -64,10 +62,21 @@
     return self;
 }
 
++(CXMLDocument *)document
+{
+    TTDPRINT(@"%@",TTPathForDocumentsResource(@"ios-backend-config.xml"));
+    NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(@"ios-backend-config.xml")];
+    //        NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-hr-sprite-pad.xml"];
+    
+    NSError * error = nil;
+    
+    return [[[CXMLDocument alloc]initWithData:data encoding:NSUTF8StringEncoding options:0 error:&error] autorelease];
+}
+
 //
 +(BOOL)hasParsedSuccess
 {
-    return [[[[HDXMLParser shareObject]configDictionary] allKeys] count] > 0;
+    return !![[HDXMLParser document] nodeForXPath:@"//backend-config" error:nil];
 }
 
 -(NSDictionary *) configDictionary

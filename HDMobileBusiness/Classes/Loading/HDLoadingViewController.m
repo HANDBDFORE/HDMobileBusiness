@@ -28,7 +28,7 @@
         [_retryButton setUserInteractionEnabled:YES];
     }else {
         //开始发请求  
-        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-sprite.xml",[HDHTTPRequestCenter baseURLPath]];
+        NSString *fileUrl = [NSString stringWithFormat:@"%@backend-config-hr-sprite_for_test.xml",[HDHTTPRequestCenter baseURLPath]];
         NSURL *url = [NSURL URLWithString:fileUrl];
         NSMutableURLRequest *postRequest = [[[NSMutableURLRequest alloc]initWithURL:url]autorelease];
         [postRequest setHTTPMethod:@"GET"];
@@ -210,17 +210,7 @@
 
 -(void)showLoginView
 {
-//    TTNavigator* navigator = [TTNavigator navigator];
-//    [navigator removeAllViewControllers];
-    
-    HDGuiderMap * map = [[HDGuider guider] guiderMapForKeyPath:kLoginControllerPath];
-    UIViewController * controller = [[HDLoginViewController alloc]initWithNibName:@"HDLoginViewController" bundle:nil];
-    
-    self.view.window.rootViewController = [[HDGuider guider]configViewController:controller dictionary:map.propertyDictionary];
-//    [self presentModalViewController:[[HDGuider guider]configViewController:controller dictionary:map.propertyDictionary] animated:NO];
-
-//    [[HDGuider guider]guideToKeyPath:kMainControllerPath query:nil animated:NO];
-//    [[HDGuider guider]guideToKeyPath:kLoginControllerPath query:nil animated:NO];
+    self.view.window.rootViewController = [[HDGuider guider]controllerWithKeyPath:kLoginControllerPath query:nil];
 }
 
 #pragma mark - life cycle

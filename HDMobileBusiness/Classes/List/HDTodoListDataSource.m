@@ -131,7 +131,14 @@
         self.listModel.currentIndex = [self.items indexOfObject:item];
         //TODO:why I can't use guider here?
 //        [[HDGuider guider]guideToKeyPath:@"TOOLBAR_DETIAL_VC_PATH" query:@{ @"listModel" : self.listModel} animated:YES];
-        [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/TOOLBAR_DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.listModel}]applyAnimated:YES]];
+        HDGuideSegment * segment = [HDGuideSegment segmentWithKeyPath:@"TOOLBAR_DETIAL_VC_PATH"];
+        segment.query = @{ @"listModel" : self.listModel};
+        segment.animated = YES;
+        segment.invoker = [self.model.delegates objectAtIndex:0];
+        [[HDGuider guider]guideWithSegment:segment];
+
+        
+//        [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/TOOLBAR_DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.listModel}]applyAnimated:YES]];
     }
 }
 
