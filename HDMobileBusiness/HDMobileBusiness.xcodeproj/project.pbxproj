@@ -373,6 +373,11 @@
 		B3DAE3FF1614125400981662 /* HDContainerConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE3FE1614125400981662 /* HDContainerConfigObject.m */; };
 		B3DAE402161425A300981662 /* HDDictionaryConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE401161425A300981662 /* HDDictionaryConfigObject.m */; };
 		B3DAE4051614401400981662 /* HDArrayConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE4041614401400981662 /* HDArrayConfigObject.m */; };
+		B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12326165486B400C685CB /* HDSplitViewController.m */; };
+		B3E1232A165486B400C685CB /* StackScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12327165486B400C685CB /* StackScrollViewController.m */; };
+		B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12328165486B400C685CB /* UIViewWithShadow.m */; };
+		B3E1232E1654872000C685CB /* HDGuideSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1232D1654872000C685CB /* HDGuideSegment.m */; };
+		B3E1232F1654872000C685CB /* HDGuideSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1232D1654872000C685CB /* HDGuideSegment.m */; };
 		B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ED3BA21623E71100505988 /* HDWebViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -959,6 +964,14 @@
 		B3E06E2B15D4F388002A54BE /* TodoListUI.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = TodoListUI.rtfd; path = Requirement/TodoList/TodoListUI.rtfd; sourceTree = "<group>"; };
 		B3E06E2C15D4FFC8002A54BE /* TodoListModel.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = TodoListModel.rtf; path = Requirement/TodoList/TodoListModel.rtf; sourceTree = "<group>"; };
 		B3E06E3015D509F1002A54BE /* ErrorMessage.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ErrorMessage.rtf; sourceTree = "<group>"; };
+		B3E12323165486B400C685CB /* HDSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSplitViewController.h; path = Classes/StackScroll/HDSplitViewController.h; sourceTree = "<group>"; };
+		B3E12324165486B400C685CB /* StackScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackScrollViewController.h; path = Classes/StackScroll/StackScrollViewController.h; sourceTree = "<group>"; };
+		B3E12325165486B400C685CB /* UIViewWithShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewWithShadow.h; path = Classes/StackScroll/UIViewWithShadow.h; sourceTree = "<group>"; };
+		B3E12326165486B400C685CB /* HDSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSplitViewController.m; path = Classes/StackScroll/HDSplitViewController.m; sourceTree = "<group>"; };
+		B3E12327165486B400C685CB /* StackScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackScrollViewController.m; path = Classes/StackScroll/StackScrollViewController.m; sourceTree = "<group>"; };
+		B3E12328165486B400C685CB /* UIViewWithShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewWithShadow.m; path = Classes/StackScroll/UIViewWithShadow.m; sourceTree = "<group>"; };
+		B3E1232C1654872000C685CB /* HDGuideSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGuideSegment.h; sourceTree = "<group>"; };
+		B3E1232D1654872000C685CB /* HDGuideSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGuideSegment.m; sourceTree = "<group>"; };
 		B3ED3BA11623E71100505988 /* HDWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDWebViewController.h; sourceTree = "<group>"; };
 		B3ED3BA21623E71100505988 /* HDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDWebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1401,6 +1414,12 @@
 		B3893CEA164A3FDE004E326A /* Pad */ = {
 			isa = PBXGroup;
 			children = (
+				B3E12323165486B400C685CB /* HDSplitViewController.h */,
+				B3E12324165486B400C685CB /* StackScrollViewController.h */,
+				B3E12325165486B400C685CB /* UIViewWithShadow.h */,
+				B3E12326165486B400C685CB /* HDSplitViewController.m */,
+				B3E12327165486B400C685CB /* StackScrollViewController.m */,
+				B3E12328165486B400C685CB /* UIViewWithShadow.m */,
 				B3893CEB164A404E004E326A /* HDPadLoginViewController.xib */,
 			);
 			name = Pad;
@@ -1832,6 +1851,8 @@
 		B3D0977515DB91DF00C3495D /* HDEluneGuider */ = {
 			isa = PBXGroup;
 			children = (
+				B3E1232C1654872000C685CB /* HDGuideSegment.h */,
+				B3E1232D1654872000C685CB /* HDGuideSegment.m */,
 				B3D0977615DB91E000C3495D /* HDGuider.h */,
 				B3D0977715DB91E000C3495D /* HDGuider.m */,
 				B3D0977815DB91E000C3495D /* HDGuiderMap.h */,
@@ -2480,6 +2501,7 @@
 				B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */,
 				B36F7A731631440B0090646E /* HDTextFieldDelegate.m in Sources */,
 				B38693AA1636582100223924 /* HDImageConfigObject.m in Sources */,
+				B3E1232E1654872000C685CB /* HDGuideSegment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2575,6 +2597,10 @@
 				B398B88C164A08140017FCD6 /* HDURLRequestModel.m in Sources */,
 				B398B88E164A08140017FCD6 /* HDSingletonObject.m in Sources */,
 				B398B891164A08140017FCD6 /* NSString+HDAddtions.m in Sources */,
+				B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */,
+				B3E1232A165486B400C685CB /* StackScrollViewController.m in Sources */,
+				B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */,
+				B3E1232F1654872000C685CB /* HDGuideSegment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
