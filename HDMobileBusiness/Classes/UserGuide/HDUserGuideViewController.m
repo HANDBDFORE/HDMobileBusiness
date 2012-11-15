@@ -29,37 +29,23 @@
     if (self) {
 //        [[UIApplication sharedApplication] setStatusBarHidden:YES];
 
-        NSArray *images = [[NSArray alloc]initWithObjects:[UIImage imageNamed:@"page1.jpg"],[UIImage imageNamed:@"page2.jpg"],[UIImage imageNamed:@"page3.jpg"],[UIImage imageNamed:@"page4.jpg"], nil];
+        NSArray *images = [[NSArray alloc]initWithObjects:[UIImage imageNamed:@"page1.jpg"],[UIImage imageNamed:@"page2.jpg"],[UIImage imageNamed:@"page3.jpg"],[UIImage imageNamed:@"page4.jpg"],[UIImage imageNamed:@"page5.jpg"],nil];
         
         NSMutableArray *pageViews = [NSMutableArray arrayWithCapacity:[images count]];
         
         //前几步
-        for (int i=0; i<images.count; i++) {
+        for (int i=0; i<[images count]-1; i++) {
             UIImageView *imgView = [[UIImageView alloc]initWithImage:[images objectAtIndex:i]];
             [pageViews addObject:imgView];
-            
             [imgView release];
         }
-        
-        //最后一步
-//        UIView *view = [[UIView alloc]init];
-//        UIButton *finishButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect]retain];
-//        [finishButton setTitle:@"开始吧" forState:UIControlStateNormal];
-//        [finishButton setFrame:CGRectMake(100, 100, 100, 100)];
-//        finishButton.opaque = false;
-//        [finishButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
-//        
-//        [view addSubview:finishButton];
-//        [view bringSubviewToFront:finishButton];
-//        
-//        view.backgroundColor = [UIColor redColor];
-        
         UIImageView *lastView = [[UIImageView alloc]init];
-        [lastView setImage:[UIImage imageNamed:@"page5.jpg"]];
+        [lastView setImage:[images objectAtIndex:[images count]-1]];
         
         UIButton *finishButton = [[UIButton buttonWithType:UIButtonTypeCustom]retain];
-        [finishButton setTitle:@"" forState:UIControlStateNormal];
-        [finishButton setFrame:CGRectMake(53, 288, 214, 60)];
+        [finishButton setBackgroundImage:[UIImage imageNamed:@"finish.png"] forState:UIControlStateNormal];
+        [finishButton setFrame:CGRectMake(0, 0, 185, 50)];
+        [finishButton setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height*0.7)];
         [finishButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
         [lastView addSubview:finishButton];
         
