@@ -36,10 +36,6 @@
     [HDClassLoader startLoad];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]autorelease];
-    TTNavigator * navigator = [TTNavigator navigator];
-    
-    [navigator.URLMap from:@"init://HDSplitViewController" toSharedViewController:[HDSplitViewController class]];
-
     if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {
         [self showLoadingView];
     }else {

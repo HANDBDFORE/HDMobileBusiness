@@ -16,6 +16,7 @@
 #import "HDDoneListViewController.h"
 #import "HDFunctionListViewController.h"
 #import "HDDetailToolbarViewController.h"
+#import "HDSplitViewController.h"
 
 @implementation HDClassLoader
 
@@ -27,6 +28,7 @@
     TTNavigator * navigator = [TTNavigator navigator];
     
     [navigator.URLMap from:@"*" toSharedViewController:[HDWebViewController class]];
+    [navigator.URLMap from:@"init://HDSplitViewController" toSharedViewController:[HDSplitViewController class]];
     [navigator.URLMap from:@"init://UserGuideViewController" toViewController:[HDUserGuideViewController class]];
     [navigator.URLMap from:@"init://LoadingViewController" toModalViewController:[HDLoadingViewController class]];
     
