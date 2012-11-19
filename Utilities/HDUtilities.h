@@ -23,3 +23,7 @@
 
 #import "HDXMLParser.h"
 
+#import "HDApplicationContext.h"
+#import "HDViewGuider.h"
+#import "HDRootViewGuider.h"
+

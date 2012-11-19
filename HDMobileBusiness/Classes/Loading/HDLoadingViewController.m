@@ -201,7 +201,12 @@
 
 -(void)showLoginView
 {
-    self.view.window.rootViewController = [[HDGuider guider]controllerWithKeyPath:kLoginControllerPath query:nil];
+    [HDApplicationContext configApplicationContextForXmlPath:@"ios-backend-config-sprite.xml"];
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"loadingGuider"];
+    [guider perform];
+    
+//    self.view.window.rootViewController = [guider destinationController];
+//    self.view.window.rootViewController = [[HDGuider guider]controllerWithKeyPath:kLoginControllerPath query:nil];
 }
 
 #pragma mark - life cycle
