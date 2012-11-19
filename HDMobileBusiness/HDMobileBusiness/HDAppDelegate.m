@@ -56,8 +56,14 @@
 {
 //    UIViewController * controller = [[HDLoadingViewController alloc]init];
 //    [[TTNavigator navigator] rootViewController]= controller;
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"rootGuider"];
+    [guider perform];
     
-    [self.window.rootViewController =[[HDLoadingViewController alloc]init]autorelease];
+//    self.window.rootViewController = [[HDApplicationContext shareContext] objectForIdentifier:@"loadingViewCtrl"];
+    
+//    [[[HDLoadingViewController alloc]init]autorelease];
+    
+    
 //    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
 }
 

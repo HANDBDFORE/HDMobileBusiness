@@ -18,9 +18,12 @@ static NSString * kMainControllerPath = @"HD_MAIN_VC_PATH";
 static NSString * kFunctionControllerPath = @"FUNCTION_LIST_VC_PATH";
 static NSString * kTodoListControllerPath = @"TODO_LIST_VC_PATH";
 static NSString * kDoneListControllerPath = @"DONE_LIST_VC_PATH";
+static NSString * kDetailToolbarControllerPath = @"TOOLBAR_DETIAL_VC_PATH";
+static NSString * kDetailInfoViewController = @"DETIAL_VC_PATH";
 
 @interface HDGuider : HDSingletonObject<TTNavigatorDelegate>
 
+///////////////////////
 +(id)guider;
 
 //TODO:准备使用新的guider方式，只用keyPath不能满足需求
