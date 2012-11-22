@@ -7,7 +7,6 @@
 //
 
 #import "HDDoneListDataSource.h"
-#import "HDDoneListModel.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation HDDoneListDataSource
@@ -16,6 +15,7 @@
 
 -(void)dealloc
 {
+    TT_RELEASE_SAFELY(_listModel);
     TT_RELEASE_SAFELY(_itemDictionary);
     [super dealloc];
 }
@@ -24,10 +24,6 @@
 {
     self = [super init];
     if (self) {
-        HDDoneListModel * model = [[[HDDoneListModel alloc]init] autorelease];
-        self.model = model;
-        self.listModel = model;
-        
         self.itemDictionary =
         @{@"title":@"title",
         @"caption":@"caption",
@@ -70,17 +66,10 @@
 -(void)openURLForKey:(TTTableItem *)item
 {
     NSUInteger index = [self.items indexOfObject:item];
-    TTDPRINT(@"row :%i is being selected",index);
-    
     [self.listModel setCurrentIndex:index];
-//    [[HDGuider guider] guideToKeyPath:@"DETIAL_VC_PATH" query:@{ @"listModel" : self.listModel} animated:YES];
-    HDGuideSegment * segment = [HDGuideSegment segmentWithKeyPath:@"DETIAL_VC_PATH"];
-    segment.query = @{ @"listModel" : self.listModel};
-    segment.animated = YES;
-    segment.invoker = [self.model.delegates objectAtIndex:0];
-    [[HDGuider guider]guideWithSegment:segment];
     
-//    [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.listModel}]applyAnimated:YES]];
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"doneListTableGuider"];
+    [guider perform];
 }
 
 - (NSString*)titleForLoading:(BOOL)reloading {

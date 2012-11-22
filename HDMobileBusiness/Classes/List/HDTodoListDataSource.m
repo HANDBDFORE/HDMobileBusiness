@@ -8,6 +8,7 @@
 
 #import "HDTodoListDataSource.h"
 #import "HDTableStatusMessageItemCell.h"
+#import "HDTodoListModelStatus.h"
 
 @implementation HDTodoListDataSource
 
@@ -17,6 +18,7 @@
 -(void)dealloc
 {
     TT_RELEASE_SAFELY(_itemDictionary);
+    TT_RELEASE_SAFELY(_listModel);
     [super dealloc];
 }
 
@@ -26,10 +28,6 @@
 {
     self = [super init];
     if (self) {
-        HDTodoListModel *model = [[[HDTodoListModel alloc]init] autorelease];
-        self.model = model;
-        self.listModel = model;
-        
         self.itemDictionary =
         @{@"title":@"title",
         @"caption":@"caption",
@@ -63,7 +61,7 @@
     if (![[object valueForKey:kRecordStatus] isEqualToString:kRecordNormal] &&![[object valueForKey:kRecordStatus] isEqualToString:kRecordWaiting]) {
         stautMessage = [object valueForKey:kRecordServerMessage];
     }
-    
+        
     return [HDTableStatusMessageItem itemWithTitle:title
                                            caption:caption
                                               text:text
@@ -129,16 +127,12 @@
     if ([item.state isEqualToString:kRecordNormal] ||
         [item.state isEqualToString:kRecordError]) {
         self.listModel.currentIndex = [self.items indexOfObject:item];
-        //TODO:why I can't use guider here?
-//        [[HDGuider guider]guideToKeyPath:@"TOOLBAR_DETIAL_VC_PATH" query:@{ @"listModel" : self.listModel} animated:YES];
-        HDGuideSegment * segment = [HDGuideSegment segmentWithKeyPath:@"TOOLBAR_DETIAL_VC_PATH"];
-        segment.query = @{ @"listModel" : self.listModel};
-        segment.animated = YES;
-        segment.invoker = [self.model.delegates objectAtIndex:0];
-        [[HDGuider guider]guideWithSegment:segment];
 
-        
-//        [[TTNavigator navigator]openURLAction:[[[TTURLAction actionWithURLPath:@"guide://createViewControler/TOOLBAR_DETIAL_VC_PATH"]applyQuery:@{ @"listModel" : self.listModel}]applyAnimated:YES]];
+        HDViewGuider  * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
+        if ([guider.destinationController respondsToSelector:@selector(setListModel:)]){
+            [guider.destinationController performSelector:@selector(setListModel:) withObject:self.listModel];
+        }
+        [guider perform];
     }
 }
 

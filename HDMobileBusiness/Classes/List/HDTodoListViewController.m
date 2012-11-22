@@ -41,14 +41,7 @@ static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
     //tool bar
     [self.navigationController setToolbarHidden:NO animated:YES];
     [self setEditingToolbarItemButtons:NO animated:YES];
-    
-    //search bar
-//    HDTodoListSearchViewController* searchViewController = [[[HDTodoListSearchViewController alloc] init] autorelease];
-    HDTodoListSearchViewController * searchViewController =
-    (HDTodoListSearchViewController *)[[HDGuider guider] controllerWithKeyPath:kSearchPathName query:nil];
-//    searchViewController.dataSource = self.dataSource;
-    self.searchViewController = searchViewController;
-    
+        
     _searchController.searchBar.tintColor = TTSTYLEVAR(searchBarTintColor);
     self.tableView.tableHeaderView = _searchController.searchBar;
     self.tableView.contentOffset = CGPointMake(0, TTToolbarHeight());

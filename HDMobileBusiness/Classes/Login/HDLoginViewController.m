@@ -15,6 +15,8 @@
 @synthesize password = _password;
 @synthesize loginBtn = _loginBtn;
 
+@dynamic loginModel;
+
 @synthesize  backgroundImage = _backgroundImage,loginButtonNormalImage = _loginButtonNormalImage,loginButonHighlightedImage = _loginButonHighlightedImage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -23,13 +25,26 @@
     if (self) {
         [self setAutoresizesForKeyboard:YES];
         
-        _loginModel = [[HDLoginModel alloc]init];
-        self.model = _loginModel;
+//        _loginModel = [[HDLoginModel alloc]init];
+//        self.model = _loginModel;
         //注册_loginModel观察self的username.text。当_loginModel接收到消息时，设置context指定的自己对应的属性
-        [self addObserver:_loginModel forKeyPath:@"username.text" options:NSKeyValueObservingOptionNew context:@"username"];
-        [self addObserver:_loginModel forKeyPath:@"password.text" options:NSKeyValueObservingOptionNew context:@"password"];
+        
     }
     return self;
+}
+
+-(void)setLoginModel:(id<HDLoginModel>)loginModel
+{
+    _loginModel = loginModel;
+    self.model = loginModel;
+    
+    [self addObserver:_loginModel forKeyPath:@"username.text" options:NSKeyValueObservingOptionNew context:@"username"];
+    [self addObserver:_loginModel forKeyPath:@"password.text" options:NSKeyValueObservingOptionNew context:@"password"];
+}
+
+-(id<HDLoginModel>)loginModel
+{
+    return _loginModel;
 }
 
 -(void)viewDidUnload
@@ -39,7 +54,7 @@
     TT_RELEASE_SAFELY(_titleLabel);
     TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_password);
-    TT_RELEASE_SAFELY(_loginModel);
+//    TT_RELEASE_SAFELY(_loginModel);
     TT_RELEASE_SAFELY(_loginBtn);
 
     TT_RELEASE_SAFELY(_backgroundImage);
@@ -127,8 +142,9 @@
 //模型delegate方法
 - (void)modelDidFinishLoad:(HDLoginModel *)model
 {
-    self.view.window.rootViewController = [[TTNavigator navigator]rootViewController];
-    [[HDGuider guider]guideWithSegment:[HDGuideSegment segmentWithKeyPath:kMainControllerPath]];
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"loginGuider"];
+    [guider perform];
+
 }
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error

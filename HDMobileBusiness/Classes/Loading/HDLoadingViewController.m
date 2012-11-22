@@ -201,12 +201,9 @@
 
 -(void)showLoginView
 {
+    //TODO:这个应该在下载完成后就解析
     [HDApplicationContext configApplicationContextForXmlPath:@"ios-backend-config-sprite.xml"];
-    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"loadingGuider"];
-    [guider perform];
-    
-//    self.view.window.rootViewController = [guider destinationController];
-//    self.view.window.rootViewController = [[HDGuider guider]controllerWithKeyPath:kLoginControllerPath query:nil];
+    [[[HDApplicationContext shareContext]objectForIdentifier:@"loadingGuider"] perform];
 }
 
 #pragma mark - life cycle

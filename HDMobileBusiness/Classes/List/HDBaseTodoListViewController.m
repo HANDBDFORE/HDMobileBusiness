@@ -19,10 +19,6 @@
         // Custom initialization
         self.variableHeightRows = YES;
         self.clearsSelectionOnViewWillAppear = NO;
-        
-        HDTodoListDataSource * listDataSource = [[[HDTodoListDataSource alloc]init]autorelease];
-        self.dataSource = listDataSource;
-        self.listModel = listDataSource.listModel;
     }
     return self;
 }
@@ -161,19 +157,22 @@
 -(void)toolBarButtonPressed: (id)sender
 {
     _submitAction = ([sender tag] == 1)?@"Y":@"N";
-    [self showPostView];
+    [self showPostView:sender];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)showPostView
+-(void)showPostView:(id)sender
 {
-    NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
-    //    controller.originView = [query objectForKey:@"__target__"];
-    [[HDGuider guider] guideToKeyPath:kPostControllerPath
-                                query:@{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")}
-                             animated:YES];
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"todoListPostGuider"];
     
+    NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
+    
+    guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")};
+
+    [guider setSourceController:self];
+    [guider perform];
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result

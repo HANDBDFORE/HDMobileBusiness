@@ -7,7 +7,7 @@
 //
 
 #import "HDDetailToolbarViewController.h"
-#import "../List/HDPersonListDataSource.h"
+//#import "../List/HDPersonListDataSource.h"
 //#import "../Compose/HDMessageSingleRecipientField.h"
 @implementation HDDetailToolbarViewController
 
@@ -28,17 +28,17 @@
     _spaceItem  = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
 }
 
--(id)initWithSignature:(NSString *) signature
-                 query:(NSDictionary *) query
-{ return nil;
-}
+//-(id)initWithSignature:(NSString *) signature
+//                 query:(NSDictionary *) query
+//{ return nil;
+//}
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         //创建toolBarmodel
         _toolBarModel = [[HDDetailToolbarModel alloc]init];
-        self.model = _toolBarModel;
+//        self.model = _toolBarModel;
     }
     return self;
 }
@@ -49,14 +49,14 @@
 {
     //设置当前审批动作
     _toolBarModel.selectedAction = [NSString stringWithFormat:@"%i",[sender tag]];
+    
     //准备默认审批内容
-    //TODO:考虑由guider获取,包括baseURL
-    NSString *defaultText = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
-    //block
-    //点击后打开模态视图
-    //    controller.originView = [query objectForKey:@"__target__"];
-    NSDictionary * query = [NSDictionary dictionaryWithObjectsAndKeys:defaultText, @"text",self,@"delegate",nil];
-    [[HDGuider guider] guideToKeyPath:kPostControllerPath query:query animated:YES];
+    NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
+    
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"todoDetailPostGuider"];
+    
+    guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")};
+    [guider perform];
 }
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
@@ -118,15 +118,10 @@
 #pragma -mark deliver
 -(void)deliver:(id)sender
 {
-    NSDictionary * query =
-    @{@"delegate":self,
-    @"body": [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"],
-    @"dataSource":[[[HDPersonListDataSource alloc]init] autorelease]
-    };
-    [[HDGuider guider] guideToKeyPath:kDeliverControllerPath
-                                query:query
-                             animated:YES];
+    HDViewGuider * guider = [[HDApplicationContext shareContext] objectForIdentifier:@"todoDetailDeliverGuider"];
+    [guider perform];
 }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTMessageControllerDelegate
 

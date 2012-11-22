@@ -16,8 +16,8 @@
     UIBarButtonItem * _spaceItem;
 }
 
--(id)initWithSignature:(NSString *) signature
-                 query:(NSDictionary *) query;
+//-(id)initWithSignature:(NSString *) signature
+//                 query:(NSDictionary *) query;
 
 @property(nonatomic,copy) NSString * queryActionURLTemplate;
 

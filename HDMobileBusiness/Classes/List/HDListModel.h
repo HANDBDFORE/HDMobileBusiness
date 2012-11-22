@@ -12,9 +12,11 @@ static NSString * kComments = @"comments";
 static NSString * kEmployeeID = @"employee_id";
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@protocol HDListModelQuery <NSObject>
+@protocol HDListModelQuery <TTModel>
 
 @required
+
+@property(nonatomic,copy) NSString * queryURL;
 
 //获取结果列表
 @property(nonatomic,readonly) NSArray * resultList;
@@ -28,6 +30,8 @@ static NSString * kEmployeeID = @"employee_id";
 @protocol HDListModelSubmit <NSObject,HDListModelQuery>
 
 @required
+
+@property(nonatomic,copy) NSString * submitURL;
 
 //删除指定位置的记录
 -(void)removeRecordAtIndex:(NSUInteger) index;

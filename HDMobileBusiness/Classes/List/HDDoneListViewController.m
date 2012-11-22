@@ -7,7 +7,6 @@
 //
 
 #import "HDDoneListViewController.h"
-#import "HDDoneListDataSource.h"
 
 @implementation HDDoneListViewController
 
@@ -17,7 +16,6 @@
     if (self) {
         self.title = @"审批完成";
         self.variableHeightRows = YES;
-        self.dataSource = [[[HDDoneListDataSource alloc]init]autorelease];
     }
     return self;
 }
@@ -31,7 +29,6 @@
 -(void)loadView
 {
     [super loadView];
-    [self.model load:TTURLRequestCachePolicyDefault more:NO];
 //     _refreshButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
 //    
 //    self.navigationItem.rightBarButtonItem = _refreshButton;

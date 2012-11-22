@@ -11,8 +11,6 @@
 //styleSheet
 #import "HDDefaultStyleSheet.h"
 
-#import "HDClassLoader.h"
-
 #import "HDLoadingViewController.h"
 #import "HDUserGuideViewController.h"
 
@@ -32,14 +30,9 @@
     //create database
     [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordList:nil];
     
-    //load class
-    [HDClassLoader startLoad];
-    
+    //load class    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]autorelease];
-    TTNavigator * navigator = [TTNavigator navigator];
-    
-    [navigator.URLMap from:@"init://HDSplitViewController" toSharedViewController:[HDSplitViewController class]];
-
+ 
     if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {
         [self showLoadingView];
     }else {
@@ -53,17 +46,11 @@
 -(void)showHelpView
 {
     [self.window.rootViewController = [[HDUserGuideViewController alloc]init]autorelease];
-    
-    //    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"init://UserGuideViewController"]];
 }
 
 -(void)showLoadingView
 {
-//    UIViewController * controller = [[HDLoadingViewController alloc]init];
-    //    [[TTNavigator navigator] rootViewController]= controller;
-    
     [self.window.rootViewController =[[HDLoadingViewController alloc]init]autorelease];
-    //    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
 }
 
 //获取token成功,格式化token,放入用户设置中

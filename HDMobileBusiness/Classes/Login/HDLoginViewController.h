@@ -11,10 +11,12 @@
 
 @interface HDLoginViewController : TTModelViewController
 {
-    HDLoginModel * _loginModel;
+    id<HDLoginModel,TTModel>  _loginModel;
     HDTextFieldDelegate * _usernameDelegate;
     HDTextFieldDelegate * _passwordDelegate;
 }
+
+@property(nonatomic,assign) id<HDLoginModel> loginModel;
 
 @property(nonatomic,retain) IBOutlet UILabel * titleLabel;
 

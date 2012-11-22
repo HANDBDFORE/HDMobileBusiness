@@ -14,12 +14,16 @@
 @synthesize sourceController = _sourceController;
 @synthesize destinationController = _destinationController;
 @synthesize animated = _animated;
+@synthesize sourceQuery = _sourceQuery;
+@synthesize destinationQuery = _destinationQuery;
 
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_identifier);
     TT_RELEASE_SAFELY(_sourceController);
     TT_RELEASE_SAFELY(_destinationController);
+    TT_RELEASE_SAFELY(_sourceQuery);
+    TT_RELEASE_SAFELY(_destinationQuery);
     [super dealloc];
 }
 
@@ -47,5 +51,21 @@
 }
 
 -(void)perform{}
+
+-(id)sourceController
+{
+    if ([_sourceController isKindOfClass:[NSString class]]) {
+        self.sourceController = [[HDApplicationContext shareContext]objectForIdentifier:_sourceController query:self.sourceQuery];
+    }
+    return _sourceController;
+}
+
+-(id)destinationController
+{
+    if ([_destinationController isKindOfClass:[NSString class]]) {
+        self.destinationController = [[HDApplicationContext shareContext]objectForIdentifier:_destinationController query:self.destinationQuery];
+    }
+    return _destinationController;
+}
 
 @end

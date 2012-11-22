@@ -16,10 +16,17 @@
 
 @property(nonatomic,copy) NSString * queryURL;
 
+@property(nonatomic,readonly) NSArray * resultList;
+
 @end
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @interface HDFunctionListDataSource : TTSectionedDataSource <HDTableDataSource>
 
-@property(nonatomic,assign) id<HDListModelQuery> listModel;
+@property(nonatomic,retain) id<HDListModelQuery> listModel;
+
+#pragma -override
+@property(nonatomic,retain) NSDictionary * itemDictionary;
 
 @end

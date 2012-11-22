@@ -7,7 +7,7 @@
 //
 
 #import "HDUserInfoView.h"
-#import "../List/HDListModel.h"
+#import "HDListModel.h"
 
 @interface HDDetailInfoViewController : TTModelViewController<UIWebViewDelegate,UIActionSheetDelegate>
 {
