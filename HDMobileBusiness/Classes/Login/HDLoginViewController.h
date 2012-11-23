@@ -8,6 +8,7 @@
 
 #import "HDLoginModel.h"
 #import "HDTextFieldDelegate.h"
+#import "HDImageLoader.h"
 
 @interface HDLoginViewController : TTModelViewController
 {
@@ -27,9 +28,9 @@
 
 //配置项
 //@property (nonatomic,copy) NSString * titleLabelText;
-@property (nonatomic,retain) UIImage * backgroundImage;
-@property (nonatomic,retain) UIImage * loginButtonNormalImage;
-@property (nonatomic,retain) UIImage * loginButonHighlightedImage;
+@property (nonatomic,retain) id<HDImageLoader>  backgroundImageLoader;
+@property (nonatomic,retain) id<HDImageLoader>  loginButtonNormalImageLoader;
+@property (nonatomic,retain) id<HDImageLoader>  loginButonHighlightedImageLoader;
 
 -(IBAction)loginBtnPressed:(id)sender;
 

@@ -34,9 +34,7 @@
 		B30376A51600890600238923 /* HDTableConfirmViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A21600890600238923 /* HDTableConfirmViewCell.m */; };
 		B30BF63E15EC95A200DB83E9 /* HDSingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */; };
 		B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */; };
-		B31E2EDE15C65FD400880514 /* HDClassLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED615C65FD400880514 /* HDClassLoader.m */; };
 		B31E2EDF15C65FD400880514 /* HDLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED815C65FD400880514 /* HDLoadingViewController.m */; };
-		B31E2EE015C65FD400880514 /* HDResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2EDA15C65FD400880514 /* HDResourceLoader.m */; };
 		B31E2EE115C65FD400880514 /* HDResourceMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2EDC15C65FD400880514 /* HDResourceMap.m */; };
 		B31E2F1315C6673F00880514 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0315C6673F00880514 /* CXMLDocument_CreationExtensions.m */; };
 		B31E2F1415C6673F00880514 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0515C6673F00880514 /* CXMLNode_CreationExtensions.m */; };
@@ -300,9 +298,7 @@
 		B398B843164A08140017FCD6 /* HDDoneListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037699160088A100238923 /* HDDoneListViewController.m */; };
 		B398B845164A08140017FCD6 /* HDPersonListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */; };
 		B398B847164A08140017FCD6 /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8316030344004E1BFD /* HDPersonListModel.m */; };
-		B398B849164A08140017FCD6 /* HDClassLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED615C65FD400880514 /* HDClassLoader.m */; };
 		B398B84B164A08140017FCD6 /* HDLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED815C65FD400880514 /* HDLoadingViewController.m */; };
-		B398B84D164A08140017FCD6 /* HDResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2EDA15C65FD400880514 /* HDResourceLoader.m */; };
 		B398B84F164A08140017FCD6 /* HDResourceMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2EDC15C65FD400880514 /* HDResourceMap.m */; };
 		B398B851164A08140017FCD6 /* HDLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B715C678DD00EFDF24 /* HDLoginModel.m */; };
 		B398B853164A08140017FCD6 /* HDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B915C678DD00EFDF24 /* HDLoginViewController.m */; };
@@ -360,6 +356,10 @@
 		B3CC44CE16119CD1007BABA4 /* HDNumberConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CC44CD16119CD0007BABA4 /* HDNumberConfigObject.m */; };
 		B3D0977E15DBA64400C3495D /* HDResponseMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977D15DBA64300C3495D /* HDResponseMap.m */; };
 		B3D4E20315E60AD80061ED4D /* HDXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E20215E60AD80061ED4D /* HDXMLParser.m */; };
+		B3D5B847165F1BD00073C9D5 /* HDClassLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B846165F1BD00073C9D5 /* HDClassLoader.m */; };
+		B3D5B84A165F33940073C9D5 /* HDImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B849165F33940073C9D5 /* HDImageLoader.m */; };
+		B3D5B84D165F43000073C9D5 /* HDResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B84C165F42FD0073C9D5 /* HDResourceLoader.m */; };
+		B3D5B851165F4DC40073C9D5 /* HDApplicationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B850165F4DC30073C9D5 /* HDApplicationContext.m */; };
 		B3D71B8416030344004E1BFD /* HDPersonListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */; };
 		B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8316030344004E1BFD /* HDPersonListModel.m */; };
 		B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */; };
@@ -369,8 +369,6 @@
 		B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12326165486B400C685CB /* HDSplitViewController.m */; };
 		B3E1232A165486B400C685CB /* StackScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12327165486B400C685CB /* StackScrollViewController.m */; };
 		B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12328165486B400C685CB /* UIViewWithShadow.m */; };
-		B3E60EED1659D768006C8119 /* HDApplicationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60EEA1659D768006C8119 /* HDApplicationContext.m */; };
-		B3E60EEE1659D768006C8119 /* HDApplicationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60EEA1659D768006C8119 /* HDApplicationContext.m */; };
 		B3E60EEF1659D768006C8119 /* HDObjectPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60EEC1659D768006C8119 /* HDObjectPattern.m */; };
 		B3E60EF01659D768006C8119 /* HDObjectPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60EEC1659D768006C8119 /* HDObjectPattern.m */; };
 		B3E60EF91659D7C7006C8119 /* finish.png in Resources */ = {isa = PBXBuildFile; fileRef = B3E60EF21659D7C7006C8119 /* finish.png */; };
@@ -652,12 +650,8 @@
 		B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSingletonObject.m; sourceTree = "<group>"; };
 		B31E2ECF15C65DC900880514 /* HDUserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUserGuideViewController.h; sourceTree = "<group>"; };
 		B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDUserGuideViewController.m; sourceTree = "<group>"; };
-		B31E2ED515C65FD400880514 /* HDClassLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDClassLoader.h; sourceTree = "<group>"; };
-		B31E2ED615C65FD400880514 /* HDClassLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDClassLoader.m; sourceTree = "<group>"; };
 		B31E2ED715C65FD400880514 /* HDLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLoadingViewController.h; sourceTree = "<group>"; };
 		B31E2ED815C65FD400880514 /* HDLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoadingViewController.m; sourceTree = "<group>"; };
-		B31E2ED915C65FD400880514 /* HDResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDResourceLoader.h; sourceTree = "<group>"; };
-		B31E2EDA15C65FD400880514 /* HDResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDResourceLoader.m; sourceTree = "<group>"; };
 		B31E2EDB15C65FD400880514 /* HDResourceMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDResourceMap.h; sourceTree = "<group>"; };
 		B31E2EDC15C65FD400880514 /* HDResourceMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDResourceMap.m; sourceTree = "<group>"; };
 		B31E2EE215C660B600880514 /* HDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUtilities.h; sourceTree = "<group>"; };
@@ -959,6 +953,13 @@
 		B3D0977D15DBA64300C3495D /* HDResponseMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDResponseMap.m; sourceTree = "<group>"; };
 		B3D4E20115E60AD80061ED4D /* HDXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDXMLParser.h; sourceTree = "<group>"; };
 		B3D4E20215E60AD80061ED4D /* HDXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDXMLParser.m; sourceTree = "<group>"; };
+		B3D5B845165F1BD00073C9D5 /* HDClassLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDClassLoader.h; sourceTree = "<group>"; };
+		B3D5B846165F1BD00073C9D5 /* HDClassLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDClassLoader.m; sourceTree = "<group>"; };
+		B3D5B848165F33940073C9D5 /* HDImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDImageLoader.h; sourceTree = "<group>"; };
+		B3D5B849165F33940073C9D5 /* HDImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDImageLoader.m; sourceTree = "<group>"; };
+		B3D5B84C165F42FD0073C9D5 /* HDResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDResourceLoader.m; sourceTree = "<group>"; };
+		B3D5B84F165F448D0073C9D5 /* HDResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDResourceLoader.h; sourceTree = "<group>"; };
+		B3D5B850165F4DC30073C9D5 /* HDApplicationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDApplicationContext.m; sourceTree = "<group>"; };
 		B3D71B8016030343004E1BFD /* HDPersonListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDPersonListDataSource.h; path = Classes/List/HDPersonListDataSource.h; sourceTree = "<group>"; };
 		B3D71B8116030343004E1BFD /* HDPersonListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDPersonListModel.h; path = Classes/List/HDPersonListModel.h; sourceTree = "<group>"; };
 		B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDPersonListDataSource.m; path = Classes/List/HDPersonListDataSource.m; sourceTree = "<group>"; };
@@ -981,7 +982,6 @@
 		B3E12327165486B400C685CB /* StackScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackScrollViewController.m; path = Classes/StackScroll/StackScrollViewController.m; sourceTree = "<group>"; };
 		B3E12328165486B400C685CB /* UIViewWithShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewWithShadow.m; path = Classes/StackScroll/UIViewWithShadow.m; sourceTree = "<group>"; };
 		B3E60EE91659D768006C8119 /* HDApplicationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDApplicationContext.h; sourceTree = "<group>"; };
-		B3E60EEA1659D768006C8119 /* HDApplicationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDApplicationContext.m; sourceTree = "<group>"; };
 		B3E60EEB1659D768006C8119 /* HDObjectPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDObjectPattern.h; sourceTree = "<group>"; };
 		B3E60EEC1659D768006C8119 /* HDObjectPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDObjectPattern.m; sourceTree = "<group>"; };
 		B3E60EF21659D7C7006C8119 /* finish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finish.png; sourceTree = "<group>"; };
@@ -1176,12 +1176,8 @@
 		B31E2ED215C65FD300880514 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
-				B31E2ED515C65FD400880514 /* HDClassLoader.h */,
-				B31E2ED615C65FD400880514 /* HDClassLoader.m */,
 				B31E2ED715C65FD400880514 /* HDLoadingViewController.h */,
 				B31E2ED815C65FD400880514 /* HDLoadingViewController.m */,
-				B31E2ED915C65FD400880514 /* HDResourceLoader.h */,
-				B31E2EDA15C65FD400880514 /* HDResourceLoader.m */,
 				B31E2EDB15C65FD400880514 /* HDResourceMap.h */,
 				B31E2EDC15C65FD400880514 /* HDResourceMap.m */,
 			);
@@ -1810,6 +1806,10 @@
 				B38E689315C656B000824CB1 /* HDGlobalMetrics */,
 				B3D4E20015E60ABB0061ED4D /* HDGodXMLParser */,
 				B38E686B15C654DA00824CB1 /* HDHTTPRequest */,
+				B3D5B848165F33940073C9D5 /* HDImageLoader.h */,
+				B3D5B849165F33940073C9D5 /* HDImageLoader.m */,
+				B3D5B84F165F448D0073C9D5 /* HDResourceLoader.h */,
+				B3D5B84C165F42FD0073C9D5 /* HDResourceLoader.m */,
 				B35BBF7A15E74301008F90E3 /* HDSingletonObject.h */,
 				B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */,
 				B31E2EE215C660B600880514 /* HDUtilities.h */,
@@ -1981,8 +1981,10 @@
 		B3E60EE81659D766006C8119 /* ApplicationContext */ = {
 			isa = PBXGroup;
 			children = (
+				B3D5B845165F1BD00073C9D5 /* HDClassLoader.h */,
+				B3D5B846165F1BD00073C9D5 /* HDClassLoader.m */,
 				B3E60EE91659D768006C8119 /* HDApplicationContext.h */,
-				B3E60EEA1659D768006C8119 /* HDApplicationContext.m */,
+				B3D5B850165F4DC30073C9D5 /* HDApplicationContext.m */,
 				B3E60EEB1659D768006C8119 /* HDObjectPattern.h */,
 				B3E60EEC1659D768006C8119 /* HDObjectPattern.m */,
 			);
@@ -2541,9 +2543,7 @@
 				B38E688F15C655C600824CB1 /* HDJSONToDataConvertor.m in Sources */,
 				B38E689615C656B000824CB1 /* HDGlobalMetrics.m in Sources */,
 				B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */,
-				B31E2EDE15C65FD400880514 /* HDClassLoader.m in Sources */,
 				B31E2EDF15C65FD400880514 /* HDLoadingViewController.m in Sources */,
-				B31E2EE015C65FD400880514 /* HDResourceLoader.m in Sources */,
 				B31E2EE115C65FD400880514 /* HDResourceMap.m in Sources */,
 				B31E2F1315C6673F00880514 /* CXMLDocument_CreationExtensions.m in Sources */,
 				B31E2F1415C6673F00880514 /* CXMLNode_CreationExtensions.m in Sources */,
@@ -2604,7 +2604,6 @@
 				B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */,
 				B36F7A731631440B0090646E /* HDTextFieldDelegate.m in Sources */,
 				B38693AA1636582100223924 /* HDImageConfigObject.m in Sources */,
-				B3E60EED1659D768006C8119 /* HDApplicationContext.m in Sources */,
 				B3E60EEF1659D768006C8119 /* HDObjectPattern.m in Sources */,
 				B3E60F151659DC14006C8119 /* HDViewGuider.m in Sources */,
 				B3E60F511659F924006C8119 /* HDRootViewGuider.m in Sources */,
@@ -2612,6 +2611,10 @@
 				B3EBF1CA165B327B006E6018 /* HDModalViewGuider.m in Sources */,
 				B3B67ED2165CC666003B7D11 /* HDShowInViewGuider.m in Sources */,
 				B336DEF6165E252100057B95 /* HDNavigationController.m in Sources */,
+				B3D5B847165F1BD00073C9D5 /* HDClassLoader.m in Sources */,
+				B3D5B84A165F33940073C9D5 /* HDImageLoader.m in Sources */,
+				B3D5B84D165F43000073C9D5 /* HDResourceLoader.m in Sources */,
+				B3D5B851165F4DC40073C9D5 /* HDApplicationContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2671,9 +2674,7 @@
 				B398B843164A08140017FCD6 /* HDDoneListViewController.m in Sources */,
 				B398B845164A08140017FCD6 /* HDPersonListDataSource.m in Sources */,
 				B398B847164A08140017FCD6 /* HDPersonListModel.m in Sources */,
-				B398B849164A08140017FCD6 /* HDClassLoader.m in Sources */,
 				B398B84B164A08140017FCD6 /* HDLoadingViewController.m in Sources */,
-				B398B84D164A08140017FCD6 /* HDResourceLoader.m in Sources */,
 				B398B84F164A08140017FCD6 /* HDResourceMap.m in Sources */,
 				B398B851164A08140017FCD6 /* HDLoginModel.m in Sources */,
 				B398B853164A08140017FCD6 /* HDLoginViewController.m in Sources */,
@@ -2708,7 +2709,6 @@
 				B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */,
 				B3E1232A165486B400C685CB /* StackScrollViewController.m in Sources */,
 				B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */,
-				B3E60EEE1659D768006C8119 /* HDApplicationContext.m in Sources */,
 				B3E60EF01659D768006C8119 /* HDObjectPattern.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

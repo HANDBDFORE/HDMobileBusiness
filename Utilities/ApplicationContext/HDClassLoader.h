@@ -10,6 +10,8 @@
 
 @interface HDClassLoader : NSObject
 
-+(void)startLoad;
+//+(void)startLoad;
+
++(void)loadURLMap:(TTURLMap *) map;
 
 @end

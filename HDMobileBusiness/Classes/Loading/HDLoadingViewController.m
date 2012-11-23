@@ -103,7 +103,8 @@
                 }else {
                     BOOL writeSuccess = [data writeToFile:TTPathForDocumentsResource(@"ios-backend-config.xml") atomically:YES];
                     if (writeSuccess) {
-                        if (![HDXMLParser hasParsedSuccess]) {
+                        //在这里解析
+                        if (![HDApplicationContext configApplicationContextForXmlPath:@"ios-backend-config-sprite.xml"]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 _errorSummury.text = @"服务器返回文件异常";
                                 _errorDetail.text = @"服务器返回文件未能被成功解析，请联系技术支持。";
@@ -200,9 +201,7 @@
 }
 
 -(void)showLoginView
-{
-    //TODO:这个应该在下载完成后就解析
-    [HDApplicationContext configApplicationContextForXmlPath:@"ios-backend-config-sprite.xml"];
+{    
     [[[HDApplicationContext shareContext]objectForIdentifier:@"loadingGuider"] perform];
 }
 

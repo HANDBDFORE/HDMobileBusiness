@@ -11,9 +11,6 @@
 //styleSheet
 #import "HDDefaultStyleSheet.h"
 
-#import "HDLoadingViewController.h"
-#import "HDUserGuideViewController.h"
-
 @implementation HDAppDelegate
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application
@@ -40,24 +37,14 @@
 
 -(void)showHelpView
 {
-    [self.window.rootViewController = [[HDUserGuideViewController alloc]init]autorelease];
-    
-    //    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"init://UserGuideViewController"]];
+    HDViewGuider * guider = [[HDApplicationContext shareObject] objectForIdentifier:@"firstRootGuider"];
+    [guider perform];
 }
 
 -(void)showLoadingView
 {
-    //    UIViewController * controller = [[HDLoadingViewController alloc]init];
-    //    [[TTNavigator navigator] rootViewController]= controller;
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"rootGuider"];
-    [guider perform];
-    
-    //    self.window.rootViewController = [[HDApplicationContext shareContext] objectForIdentifier:@"loadingViewCtrl"];
-    
-    //    [[[HDLoadingViewController alloc]init]autorelease];
-    
-    
-    //    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
+    [guider perform];    
 }
 
 //获取token成功,格式化token,放入用户设置中

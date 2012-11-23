@@ -38,7 +38,7 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         //创建toolBarmodel
         _toolBarModel = [[HDDetailToolbarModel alloc]init];
-//        self.model = _toolBarModel;
+        self.model = _toolBarModel;
     }
     return self;
 }

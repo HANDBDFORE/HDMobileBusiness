@@ -11,7 +11,15 @@
 static NSString * kResourceURL = @"remoteURL";
 static NSString * kResourceName = @"saveFileName";
 
-@interface HDResourceLoader : HDSingletonObject <TTURLRequestDelegate>
+@protocol HDResourceLoader <NSObject>
+
+-(void)loadResource:(NSDictionary *) resourceDictionary;
+
+-(void)stopLoad;//Unimplemented
+
+@end
+
+@interface HDResourceLoader : HDSingletonObject <TTURLRequestDelegate,HDResourceLoader>
 
 +(id)shareLoader;
 

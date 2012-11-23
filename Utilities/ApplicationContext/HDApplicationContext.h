@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "HDSingletonObject.h"
+#import "HDXMLParser.h"
 
 static NSString * kTodoListControllerIdentifier = @"todoListViewController";
 static NSString * kDoneListControllerIdentifier = @"doneListViewController";
 
 //附加到guider里面
-@interface HDApplicationContext : HDSingletonObject
+@interface HDApplicationContext : HDSingletonObject <HDXMlParserDelegate>
 {
     //对象配置模式，保存了对象id和相关属性，创建url等信息
     NSMutableDictionary * _objectPatterns;
@@ -35,5 +36,12 @@ static NSString * kDoneListControllerIdentifier = @"doneListViewController";
 -(id)objectForIdentifier:(NSString *)identifier;
 
 -(id)objectForIdentifier:(NSString *)identifier query:(NSDictionary *)query;
+
+-(void) setPattern:(HDObjectPattern *) pattern forIdentifier:(NSString *)identifier;
+
+//从nib创建视图控制器
+- (UIViewController*)loadFromNib:(NSString *)nibName withClass:className;
+- (UIViewController*)loadFromNib:(NSString*)className;
+
 
 @end
