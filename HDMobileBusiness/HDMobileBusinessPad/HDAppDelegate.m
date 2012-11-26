@@ -27,30 +27,33 @@
     
     //Views Managment by Three20
     [TTStyleSheet setGlobalStyleSheet:[[[HDDefaultStyleSheet alloc]init]autorelease]];
+    
     //create database
     [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordList:nil];
     
-    //load class    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]autorelease];
- 
+
     if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {
         [self showLoadingView];
     }else {
         [[NSUserDefaults standardUserDefaults]setValue:kVersion forKey:@"appVersion"];
         [self showHelpView];
     }
-    //    }
     [self.window makeKeyAndVisible];
 }
 
 -(void)showHelpView
 {
-    [self.window.rootViewController = [[HDUserGuideViewController alloc]init]autorelease];
+    HDViewGuider * guider = [[HDApplicationContext shareObject] objectForIdentifier:@"firstRootGuider"];
+    [guider perform];
+//    [self.window.rootViewController = [[HDUserGuideViewController alloc]init]autorelease];
 }
 
 -(void)showLoadingView
 {
-    [self.window.rootViewController =[[HDLoadingViewController alloc]init]autorelease];
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"rootGuider"];
+    [guider perform];
+//    [self.window.rootViewController =[[HDLoadingViewController alloc]init]autorelease];
 }
 
 //获取token成功,格式化token,放入用户设置中
@@ -104,17 +107,17 @@
 /**
  * Loads the given viewcontroller from the nib
  */
-- (UIViewController*)loadFromNib:(NSString *)nibName withClass:className {
-    UIViewController* newController = [[NSClassFromString(className) alloc]
-                                       initWithNibName:nibName bundle:nil];
-    
-    return [newController autorelease];
-}
-/**
- * Loads the given viewcontroller from the the nib with the same name as the
- * class
- */
-- (UIViewController*)loadFromNib:(NSString*)className {
-    return [self loadFromNib:className withClass:className];
-}
+//- (UIViewController*)loadFromNib:(NSString *)nibName withClass:className {
+//    UIViewController* newController = [[NSClassFromString(className) alloc]
+//                                       initWithNibName:nibName bundle:nil];
+//    
+//    return [newController autorelease];
+//}
+///**
+// * Loads the given viewcontroller from the the nib with the same name as the
+// * class
+// */
+//- (UIViewController*)loadFromNib:(NSString*)className {
+//    return [self loadFromNib:className withClass:className];
+//}
 @end

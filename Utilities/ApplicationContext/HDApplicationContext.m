@@ -85,18 +85,7 @@
         //set value properties
         for (NSString * keyPath in [objectPattern.values allKeys]) {
             id value = [objectPattern.values valueForKey:keyPath];
-            //            id objectProperty = nil;
-            
-            //            if ([value isKindOfClass:[NSString class]]) {
-            //                //如果是创建路径，从urlMap中获取对象，用于设置颜色等对象值
-            //                objectProperty = [_objectFactoryMap objectForURL:value];
-            //            }
-            
-            //            if (objectProperty) {
-            //                [object setValue:objectProperty forKeyPath:keyPath];
-            //            }else{
             [object setValue:value forKeyPath:keyPath];
-            //            }
         }
         
         //set ref properies
@@ -139,6 +128,8 @@
     if (nil == _objectFactoryMap) {
         _objectFactoryMap = [[TTURLMap alloc]init];
     }
+    //基础服务 url 注册
+    //从nib创建视图控制器
     [_objectFactoryMap from:@"tt://nib/(loadFromNib:)/(withClass:)"
            toViewController:self];
     

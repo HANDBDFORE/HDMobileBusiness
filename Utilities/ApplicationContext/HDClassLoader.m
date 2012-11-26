@@ -37,10 +37,15 @@
 //person choice for deliver
 #import "HDPersonListDataSource.h"
 
+#import "HDResourceLoader.h"
+
 @implementation HDClassLoader
 
 +(void)loadURLMap:(TTURLMap *) map
 {
+    //通过资源加载器获取资源对象，资源会通过load对象下载到本地然后通过url获取资源对象，资源通过identifirer标识
+    [map from:@"tt://image/(imageWithIdentifier:)" toObject:[HDResourceLoader shareLoader] selector:@selector(imageWithIdentifier:)];
+    
     //
     [map from:@"*" toViewController:[HDWebViewController class]];
     

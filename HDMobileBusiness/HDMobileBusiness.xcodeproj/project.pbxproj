@@ -354,6 +354,16 @@
 		B3B67ED2165CC666003B7D11 /* HDShowInViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */; };
 		B3CC44CB161197BA007BABA4 /* HDBaseConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CC44CA161197BA007BABA4 /* HDBaseConfigObject.m */; };
 		B3CC44CE16119CD1007BABA4 /* HDNumberConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CC44CD16119CD0007BABA4 /* HDNumberConfigObject.m */; };
+		B3CD01891662F518002321A9 /* HDApplicationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B850165F4DC30073C9D5 /* HDApplicationContext.m */; };
+		B3CD018A1662F52E002321A9 /* HDImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B849165F33940073C9D5 /* HDImageLoader.m */; };
+		B3CD018B1662F52E002321A9 /* HDResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B84C165F42FD0073C9D5 /* HDResourceLoader.m */; };
+		B3CD018C1662F5DC002321A9 /* HDClassLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B846165F1BD00073C9D5 /* HDClassLoader.m */; };
+		B3CD018D1662F600002321A9 /* HDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B336DEF5165E252100057B95 /* HDNavigationController.m */; };
+		B3CD018E1662F600002321A9 /* HDModalViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF1C9165B327A006E6018 /* HDModalViewGuider.m */; };
+		B3CD018F1662F600002321A9 /* HDNavigatorViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60F53165A21D3006C8119 /* HDNavigatorViewGuider.m */; };
+		B3CD01901662F600002321A9 /* HDRootViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60F501659F922006C8119 /* HDRootViewGuider.m */; };
+		B3CD01911662F600002321A9 /* HDViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60F141659DC14006C8119 /* HDViewGuider.m */; };
+		B3CD01921662F600002321A9 /* HDShowInViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */; };
 		B3D0977E15DBA64400C3495D /* HDResponseMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977D15DBA64300C3495D /* HDResponseMap.m */; };
 		B3D4E20315E60AD80061ED4D /* HDXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E20215E60AD80061ED4D /* HDXMLParser.m */; };
 		B3D5B847165F1BD00073C9D5 /* HDClassLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B846165F1BD00073C9D5 /* HDClassLoader.m */; };
@@ -746,7 +756,7 @@
 		B3893CDD164A321C004E326A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		B3893CE4164A37FE004E326A /* loadingAlert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loadingAlert@2x.png"; sourceTree = "<group>"; };
 		B3893CE7164A3810004E326A /* loadingAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingAlert.png; sourceTree = "<group>"; };
-		B3893CEB164A404E004E326A /* HDPadLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HDPadLoginViewController.xib; path = Classes/Login/HDPadLoginViewController.xib; sourceTree = "<group>"; };
+		B3893CEB164A404E004E326A /* HDPadLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDPadLoginViewController.xib; sourceTree = "<group>"; };
 		B38DC70E15C68C3800FD0C58 /* HDDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailInfoViewController.h; sourceTree = "<group>"; };
 		B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailInfoViewController.m; sourceTree = "<group>"; };
 		B38DC71215C68C3800FD0C58 /* HDDetailToolbarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailToolbarModel.h; sourceTree = "<group>"; };
@@ -1302,6 +1312,7 @@
 				B34660B815C678DD00EFDF24 /* HDLoginViewController.h */,
 				B34660B915C678DD00EFDF24 /* HDLoginViewController.m */,
 				B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */,
+				B3893CEB164A404E004E326A /* HDPadLoginViewController.xib */,
 				B36F7A711631440A0090646E /* HDTextFieldDelegate.h */,
 				B36F7A721631440B0090646E /* HDTextFieldDelegate.m */,
 			);
@@ -1480,7 +1491,6 @@
 				B3E12326165486B400C685CB /* HDSplitViewController.m */,
 				B3E12327165486B400C685CB /* StackScrollViewController.m */,
 				B3E12328165486B400C685CB /* UIViewWithShadow.m */,
-				B3893CEB164A404E004E326A /* HDPadLoginViewController.xib */,
 			);
 			name = Pad;
 			sourceTree = "<group>";
@@ -2630,6 +2640,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3CD018D1662F600002321A9 /* HDNavigationController.m in Sources */,
+				B3CD018E1662F600002321A9 /* HDModalViewGuider.m in Sources */,
+				B3CD018F1662F600002321A9 /* HDNavigatorViewGuider.m in Sources */,
+				B3CD01901662F600002321A9 /* HDRootViewGuider.m in Sources */,
+				B3CD01911662F600002321A9 /* HDViewGuider.m in Sources */,
+				B3CD01921662F600002321A9 /* HDShowInViewGuider.m in Sources */,
+				B3CD018C1662F5DC002321A9 /* HDClassLoader.m in Sources */,
+				B3CD018A1662F52E002321A9 /* HDImageLoader.m in Sources */,
+				B3CD018B1662F52E002321A9 /* HDResourceLoader.m in Sources */,
+				B3CD01891662F518002321A9 /* HDApplicationContext.m in Sources */,
 				B398B8A5164A08E70017FCD6 /* HDAppDelegate.m in Sources */,
 				B398B8A4164A08B60017FCD6 /* main.m in Sources */,
 				B398B897164A08A10017FCD6 /* CXMLDocument_CreationExtensions.m in Sources */,

@@ -94,21 +94,4 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-#pragma -mark load from nib
-/**
- * Loads the given viewcontroller from the nib
- */
-- (UIViewController*)loadFromNib:(NSString *)nibName withClass:className {
-    UIViewController* newController = [[NSClassFromString(className) alloc]
-                                       initWithNibName:nibName bundle:nil];
-    
-    return [newController autorelease];
-}
-/**
- * Loads the given viewcontroller from the the nib with the same name as the
- * class
- */
-- (UIViewController*)loadFromNib:(NSString*)className {
-    return [self loadFromNib:className withClass:className];
-}
 @end

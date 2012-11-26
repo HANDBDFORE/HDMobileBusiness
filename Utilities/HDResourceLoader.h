@@ -21,6 +21,8 @@ static NSString * kResourceName = @"saveFileName";
 
 @interface HDResourceLoader : HDSingletonObject <TTURLRequestDelegate,HDResourceLoader>
 
+-(UIImage *)imageWithIdentifier:(NSString *) identifier;
+
 +(id)shareLoader;
 
 //根据指定dictionary下载资源到本地，kResourceName为存储到本地的文件名称，kResourceURL为资源的访问路径

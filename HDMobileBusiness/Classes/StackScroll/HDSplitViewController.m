@@ -70,14 +70,14 @@
         _leftViewPercentWidth = 0.5;
         _leftViewWidth = 320;
         
-        self.leftViewController =
+//        self.leftViewController =
         //        [[HDGuider guider]controllerWithKeyPath:kFunctionControllerPath query:nil];
-        [[HDGuider guider]controllerWithKeyPath:kFunctionControllerPath className:[HDFunctionListViewController class] nibName:nil];
+//        [[HDGuider guider]controllerWithKeyPath:kFunctionControllerPath className:[HDFunctionListViewController class] nibName:nil];
         
-        self.rightViewController =
+//        self.rightViewController =
 //        [[[UIViewController alloc]init]autorelease];
 //        [self.rightViewController.view setBackgroundColor:[UIColor colorWithRed:0.5 green:0.5 blue:0 alpha:0.5]];
-        [[[StackScrollViewController alloc]init]autorelease];
+//        [[[StackScrollViewController alloc]init]autorelease];
     }
     return self;
 }

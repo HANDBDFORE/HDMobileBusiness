@@ -158,11 +158,11 @@
     ///loginVC
     HDObjectPattern * login =
     [HDObjectPattern patternWithURL:@"tt://nib/HDLoginViewController/HDLoginViewController"
-                     propertyValues:@{@"titleLabel.text" : @"hand"}
+                     propertyValues:@{@"titleLabelText":@"hand=hand"}
                    propertyRefBeans:@{@"loginModel":@"loginModel",
-     @"backgroundImageLoader":@"loginBackImage",
-     @"loginButtonNormalImageLoader":@"loginButton",
-     @"loginButonHighlightedImageLoader":@"loginHighLightButton"}
+     @"backgroundImageLoader" : @"loginBackImage",
+     @"loginButtonNormalImageLoader" : @"loginButton",
+     @"loginButonHighlightedImageLoader" : @"loginHighLightButton"}
                          objectMode:HDObjectModeCreate];
     [self.delegate setPattern:login forIdentifier:@"loginViewCtrl"];
     
@@ -393,6 +393,19 @@
                          objectMode:HDObjectModeCreate];
     
     [self.delegate setPattern:loginHighLightButtonPattern forIdentifier:@"loginHighLightButton"];
+    
+    
+    if (TTIsPad()) {
+        HDObjectPattern * loginPad =
+        [HDObjectPattern patternWithURL:@"tt://nib/HDPadLoginViewController/HDLoginViewController"
+                         propertyValues:@{@"titleLabel.text" : @"hand-hand"}
+                       propertyRefBeans:@{@"loginModel":@"loginModel",
+         @"backgroundImageLoader":@"loginBackImage",
+         @"loginButtonNormalImageLoader":@"loginButton",
+         @"loginButonHighlightedImageLoader":@"loginHighLightButton"}
+                             objectMode:HDObjectModeCreate];
+        [self.delegate setPattern:loginPad forIdentifier:@"loginViewCtrl"];
+    }
     
     return YES;
 }

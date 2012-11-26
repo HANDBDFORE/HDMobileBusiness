@@ -17,10 +17,6 @@
 
 @dynamic loginModel;
 
-@synthesize  backgroundImageLoader = _backgroundImageLoader;
-@synthesize  loginButtonNormalImageLoader = _loginButtonNormalImageLoader;
-@synthesize  loginButonHighlightedImageLoader = _loginButonHighlightedImageLoader;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -53,7 +49,7 @@
     TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_password);
     TT_RELEASE_SAFELY(_loginBtn);
-
+    
     TT_RELEASE_SAFELY(_backgroundImageLoader);
     TT_RELEASE_SAFELY(_loginButtonNormalImageLoader);
     TT_RELEASE_SAFELY(_loginButonHighlightedImageLoader);
@@ -75,6 +71,10 @@
     _passwordDelegate = [[HDTextFieldDelegate alloc]initWithTarget:self selector:@selector(passwordFieldShouldReturn:)];
     _password.delegate = _passwordDelegate;
     
+    if (self.titleLabelText) {
+        self.titleLabel.text = self.titleLabelText;
+    }
+    
     if (self.backgroundImageLoader) {
         [(UIImageView *)[self.view viewWithTag:9] setImage:[self.backgroundImageLoader image]];
     }
@@ -83,7 +83,7 @@
         [_loginBtn setBackgroundImage:[self.loginButtonNormalImageLoader image]
                              forState:UIControlStateNormal];
     }
-    
+
     if (self.loginButonHighlightedImageLoader) {
         [_loginBtn setBackgroundImage:[self.loginButonHighlightedImageLoader image]
                              forState:UIControlStateHighlighted];

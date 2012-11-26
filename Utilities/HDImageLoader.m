@@ -18,7 +18,19 @@
     TT_RELEASE_SAFELY(_saveFileName);
     TT_RELEASE_SAFELY(_retinaRemoteURL);
     TT_RELEASE_SAFELY(_retinaSaveFileName);
+    
+//    [[[HDApplicationContext shareContext] objectFactoryMap]removeURL:[NSString stringWithFormat:@"tt://image/%@" ,_saveFileName]];
+    
     [super dealloc];
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+//        [[[HDApplicationContext shareContext] objectFactoryMap] from:[NSString stringWithFormat:@"tt://image/%@" ,_saveFileName] toObject:self selector:@selector(image)];
+    }
+    return self;
 }
 
 -(UIImage *)image

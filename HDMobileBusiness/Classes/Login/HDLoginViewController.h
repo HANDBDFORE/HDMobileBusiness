@@ -27,7 +27,7 @@
 @property (nonatomic,retain) IBOutlet UIButton * loginBtn;
 
 //配置项
-//@property (nonatomic,copy) NSString * titleLabelText;
+@property (nonatomic,copy) NSString * titleLabelText;
 @property (nonatomic,retain) id<HDImageLoader>  backgroundImageLoader;
 @property (nonatomic,retain) id<HDImageLoader>  loginButtonNormalImageLoader;
 @property (nonatomic,retain) id<HDImageLoader>  loginButonHighlightedImageLoader;
