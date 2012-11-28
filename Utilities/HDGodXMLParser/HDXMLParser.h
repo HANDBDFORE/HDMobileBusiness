@@ -6,7 +6,8 @@
 //  Copyright (c) 2012 hand. All rights reserved.
 //
 @interface HDXMLParser : NSObject<NSXMLParserDelegate>
-//解析成功
-@property (retain, nonatomic) NSDictionary *Patternes;
+@property (retain, nonatomic) NSDictionary *patternes;
 @property (retain, nonatomic) NSError *parseError;
+-(id)initWithXmlPath:(NSString *)xmlpath;
+-(BOOL)parse;
 @end

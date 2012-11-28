@@ -8,6 +8,8 @@
 #import "HDObjectPattern.h"
 #import "HDXMLParser.h"
 @interface HDXMLParser(){
+    //xmlPath
+    NSString *xmlPath;
     //所有解析出来的Beans
     NSMutableDictionary *Beans;
     //当前bean的ID
@@ -27,15 +29,16 @@
 }
 @end
 @implementation HDXMLParser
-@synthesize Patternes = _Patternes;
+@synthesize patternes = _Patternes;
 @synthesize parseError = _parseError;
-- (id)init
-{
+
+-(id)initWithXmlPath:(NSString *)xmlpath{
     self = [super init];
     if (self) {
         Beans = [[NSMutableDictionary alloc]init];
         propertyRefBeans = [[NSMutableDictionary alloc]init];
         propertyValues = [[NSMutableDictionary alloc]init];
+        xmlPath = xmlpath;
     }
     return self;
 }
@@ -47,6 +50,21 @@
     [currentArray release];
     [currentDict release];
     [super dealloc];
+}
+
+-(BOOL)parse{
+    NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(xmlPath)];
+    NSXMLParser *parser = [[NSXMLParser alloc]initWithData:data]; //设置XML数据
+    [parser setShouldProcessNamespaces:NO];
+    [parser setShouldReportNamespacePrefixes:NO];
+    [parser setShouldResolveExternalEntities:NO];
+    [parser setDelegate:self];
+    [parser parse];
+    if(![self parseError]){
+        return YES;
+    }else{
+        return NO;
+    }
 }
 #pragma mark - bean
 -(void)initdata{
@@ -127,7 +145,8 @@
 }
 //报告不可恢复的解析错误
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError{
-    self.parseError = parseError;
+    [self setParseError:parseError];
+    [self setPatternes:nil];
 }
 @end
 
