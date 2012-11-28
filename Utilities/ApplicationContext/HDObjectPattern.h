@@ -19,9 +19,10 @@ typedef enum {
 
 +(id)patternWithURL:(NSString *) url propertyValues:(NSDictionary *) values propertyRefBeans:(NSDictionary *) beans objectMode:(NSInteger) mode;
 
-@property(nonatomic,readonly) NSDictionary * values;
-@property(nonatomic,readonly) NSDictionary * beans;
-@property(nonatomic,readonly) NSString * url;
-@property(nonatomic,readonly) NSInteger objectMode;
+@property(nonatomic,retain) NSDictionary * values;
+@property(nonatomic,retain) NSDictionary * beans;
+@property(nonatomic,retain) NSString * url;
+@property(nonatomic,assign) NSInteger objectMode;
+
 
 @end

@@ -17,9 +17,9 @@
 
 - (void)dealloc
 {
-    TT_RELEASE_SAFELY(_url);
-    TT_RELEASE_SAFELY(_values);
-    TT_RELEASE_SAFELY(_beans);
+    [_url release];
+    [_values release];
+    [_beans release];
     [super dealloc];
 }
 
