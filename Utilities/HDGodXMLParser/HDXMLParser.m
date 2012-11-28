@@ -158,7 +158,7 @@
     ///loginVC
     HDObjectPattern * login =
     [HDObjectPattern patternWithURL:@"tt://nib/HDLoginViewController/HDLoginViewController"
-                     propertyValues:@{@"titleLabelText":@"hand=hand"}
+                     propertyValues:@{@"titleLabelText":@"had=hand"}
                    propertyRefBeans:@{@"loginModel":@"loginModel",
      @"backgroundImageLoader" : @"loginBackImage",
      @"loginButtonNormalImageLoader" : @"loginButton",
@@ -396,15 +396,58 @@
     
     
     if (TTIsPad()) {
+        //guider
+        HDObjectPattern * loginGuiderPattern =
+        [HDObjectPattern patternWithURL:@"tt://rootGuider/rootGuider"
+                         propertyValues:nil
+                       propertyRefBeans:@{@"sourceController" :@"rootWindow",
+         @"destinationController":@"splitViewController"}
+                             objectMode:HDObjectModeCreate];
+        [self.delegate setPattern:loginGuiderPattern forIdentifier:@"loginGuider"];
+        
+        //functionlistGuider
+        HDObjectPattern * functionCellGuiderPattern =
+        [HDObjectPattern patternWithURL:@"tt://splitViewGuider/functionListTableGuider"
+                         propertyValues:@{@"animated" : @1,
+         @"shouldGuideToRight":@1}
+                       propertyRefBeans:@{@"sourceController":@"splitViewController"}
+                             objectMode:HDObjectModeCreate];
+        [self.delegate setPattern:functionCellGuiderPattern forIdentifier:@"functionListTableGuider"];
+        
+        //View Controllers
         HDObjectPattern * loginPad =
         [HDObjectPattern patternWithURL:@"tt://nib/HDPadLoginViewController/HDLoginViewController"
-                         propertyValues:@{@"titleLabel.text" : @"hand-hand"}
+                         propertyValues:@{@"titleLabelText" : @"had$hand"}
                        propertyRefBeans:@{@"loginModel":@"loginModel",
          @"backgroundImageLoader":@"loginBackImage",
          @"loginButtonNormalImageLoader":@"loginButton",
          @"loginButonHighlightedImageLoader":@"loginHighLightButton"}
                              objectMode:HDObjectModeCreate];
         [self.delegate setPattern:loginPad forIdentifier:@"loginViewCtrl"];
+        
+        HDObjectPattern * splitPattern =
+        [HDObjectPattern patternWithURL:@"tt://split"
+                         propertyValues:nil
+                       propertyRefBeans:@{@"leftViewController":@"leftNavigator",
+         @"rightViewController":@"rightNavigator"}
+                             objectMode:HDObjectModeShare];
+        [self.delegate setPattern:splitPattern forIdentifier:@"splitViewController"];
+        
+        //leftNavigatorVC
+        HDObjectPattern * leftNavigatorPattern =
+        [HDObjectPattern patternWithURL:@"tt://navigator"
+                         propertyValues:@{@"pushedViewControllers" : @[@"functionListViewController"]}
+                       propertyRefBeans:nil
+                             objectMode:HDObjectModeCreate];
+        [self.delegate setPattern:leftNavigatorPattern forIdentifier:@"leftNavigator"];
+        
+        //rightNavigatorVC
+        HDObjectPattern * rightNavigatorPattern =
+        [HDObjectPattern patternWithURL:@"tt://navigator"
+                         propertyValues:@{@"pushedViewControllers" : @[@"todoListViewController"]}
+                       propertyRefBeans:nil
+                             objectMode:HDObjectModeShare];
+        [self.delegate setPattern:rightNavigatorPattern forIdentifier:@"rightNavigator"];
     }
     
     return YES;

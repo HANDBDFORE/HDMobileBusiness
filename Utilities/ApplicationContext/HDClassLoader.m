@@ -37,6 +37,11 @@
 //person choice for deliver
 #import "HDPersonListDataSource.h"
 
+
+//pad
+#import "HDSplitViewController.h"
+
+//gloable
 #import "HDResourceLoader.h"
 
 @implementation HDClassLoader
@@ -57,6 +62,8 @@
     [map from:@"tt://modalGuider/(initWithKeyIdentifier:)" toViewController:[HDModalViewGuider class]];
     
     [map from:@"tt://showInViewGuider/(initWithKeyIdentifier:)" toViewController:[HDShowInViewGuider class]];
+    
+    [map from:@"tt://splitViewGuider/(initWithKeyIdentifier:)" toViewController:[HDSplitViewGuider class]];
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////    
     //view Controllers
@@ -112,6 +119,10 @@
     [map from:@"tt://resourceLoader" toObject:[HDResourceLoader class] selector:@selector(shareLoader)];
 
     [map from:@"tt://imageLoader" toViewController:[HDImageLoader class]];
+    
+    if (TTIsPad()) {
+        [map from:@"tt://split" toViewController:[HDSplitViewController class]];
+    }
 }
 
 @end

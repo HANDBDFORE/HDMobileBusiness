@@ -19,4 +19,5 @@
 //confirm单元格按钮样式
 - (TTStyle*)confirmCellButton:(UIControlState)state;
 
+-(UIColor *)splitBorderColor;
 @end

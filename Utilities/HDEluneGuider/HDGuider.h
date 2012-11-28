@@ -14,5 +14,6 @@
 #import "HDNavigatorViewGuider.h"
 #import "HDModalViewGuider.h"
 #import "HDRootViewGuider.h"
+#import "HDSplitViewGuider.h"
 
 #endif

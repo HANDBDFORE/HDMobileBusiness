@@ -140,7 +140,7 @@
 {
     //这些配置需要在获取配置文件前加载
     //配置bean
-    [self setObject:[[[UIApplication sharedApplication] windows] objectAtIndex:0] forIdentifier:@"rootWindow"];
+    [self setObject:[[[UIApplication sharedApplication] delegate]window] forIdentifier:@"rootWindow"];
     
     //第一次加载入口guider
     HDObjectPattern * firstRootGuiderPattern =

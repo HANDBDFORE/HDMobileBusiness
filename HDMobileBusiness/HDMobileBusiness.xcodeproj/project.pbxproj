@@ -364,6 +364,7 @@
 		B3CD01901662F600002321A9 /* HDRootViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60F501659F922006C8119 /* HDRootViewGuider.m */; };
 		B3CD01911662F600002321A9 /* HDViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60F141659DC14006C8119 /* HDViewGuider.m */; };
 		B3CD01921662F600002321A9 /* HDShowInViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */; };
+		B3CD019516635305002321A9 /* HDSplitViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD019416635305002321A9 /* HDSplitViewGuider.m */; };
 		B3D0977E15DBA64400C3495D /* HDResponseMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977D15DBA64300C3495D /* HDResponseMap.m */; };
 		B3D4E20315E60AD80061ED4D /* HDXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E20215E60AD80061ED4D /* HDXMLParser.m */; };
 		B3D5B847165F1BD00073C9D5 /* HDClassLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B846165F1BD00073C9D5 /* HDClassLoader.m */; };
@@ -959,6 +960,8 @@
 		B3CC44CA161197BA007BABA4 /* HDBaseConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDBaseConfigObject.m; sourceTree = "<group>"; };
 		B3CC44CC16119CD0007BABA4 /* HDNumberConfigObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDNumberConfigObject.h; sourceTree = "<group>"; };
 		B3CC44CD16119CD0007BABA4 /* HDNumberConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDNumberConfigObject.m; sourceTree = "<group>"; };
+		B3CD019316635305002321A9 /* HDSplitViewGuider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSplitViewGuider.h; sourceTree = "<group>"; };
+		B3CD019416635305002321A9 /* HDSplitViewGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSplitViewGuider.m; sourceTree = "<group>"; };
 		B3D0977C15DBA64300C3495D /* HDResponseMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDResponseMap.h; sourceTree = "<group>"; };
 		B3D0977D15DBA64300C3495D /* HDResponseMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDResponseMap.m; sourceTree = "<group>"; };
 		B3D4E20115E60AD80061ED4D /* HDXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDXMLParser.h; sourceTree = "<group>"; };
@@ -1936,6 +1939,8 @@
 				B3E60F141659DC14006C8119 /* HDViewGuider.m */,
 				B3B67ED0165CC665003B7D11 /* HDShowInViewGuider.h */,
 				B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */,
+				B3CD019316635305002321A9 /* HDSplitViewGuider.h */,
+				B3CD019416635305002321A9 /* HDSplitViewGuider.m */,
 			);
 			path = HDEluneGuider;
 			sourceTree = "<group>";
@@ -2730,6 +2735,7 @@
 				B3E1232A165486B400C685CB /* StackScrollViewController.m in Sources */,
 				B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */,
 				B3E60EF01659D768006C8119 /* HDObjectPattern.m in Sources */,
+				B3CD019516635305002321A9 /* HDSplitViewGuider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
