@@ -7,6 +7,7 @@
 //
 
 #import "HDTableStatusMessageItemCell.h"
+#import "HDTodoListModelStatus.h"
 
 static const NSInteger  kMessageTextLineCount       = 2;
 static const CGFloat    kDefaultMessageImageWidth   = 34.0f;
@@ -154,14 +155,14 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         self.selectionStyle = UITableViewCellSelectionStyleBlue;
         
-        if ([item.state isEqualToString: kTableStatusMessageError]) {
+        if ([item.state isEqualToString: kRecordError]) {
             self.stateLabel.style = TTSTYLE(tableStatusLabelError);
         }
-        if ([item.state isEqualToString: kTableStatusMessageDifferent]) {
+        if ([item.state isEqualToString: kRecordDifferent]) {
             self.stateLabel.style = TTSTYLE(tableStatusLabelDifferent);
             self.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        if ([item.state isEqualToString: kTableStatusMessageWaiting]) {
+        if ([item.state isEqualToString: kRecordWaiting]) {
             self.activityLabel.hidden = NO;
             self.accessoryType = UITableViewCellAccessoryNone;
             self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -187,6 +188,7 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
     if (!_stateLabel) {
         _stateLabel = [[TTLabel alloc] init];
         _stateLabel.contentMode = UIViewContentModeTopLeft;
+        _stateLabel.backgroundColor = self.backgroundColor;
         [self.contentView addSubview:_stateLabel];
     }
     return _stateLabel;

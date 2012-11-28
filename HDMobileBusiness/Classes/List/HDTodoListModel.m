@@ -8,6 +8,7 @@
 
 #import "HDTodoListModel.h"
 #import "HDCoreStorage.h"
+#import "HDTodoListModelStatus.h"
 
 static NSString * kColumnMapKey = @"column1";
 static NSString * kColumnMapColumn = @"column0";
@@ -371,18 +372,18 @@ static NSString * kSQLNull = @"null";
     [status isEqualToString:kRecordError];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)clear
-{
-    NSSet * resultSet = [NSSet setWithArray:self.resultList];
-    NSArray * differentRecords = [[resultSet objectsWithOptions:NSEndsWithPredicateOperatorType passingTest:^BOOL(id obj, BOOL *stop) {
-        return [[obj valueForKey:kRecordStatus] isEqualToString:kRecordDifferent];
-    }] allObjects];
-    [self removeRecords:differentRecords];
-    
-    //    _flags.isLoadingLocalData = YES;
-    [self load:TTURLRequestCachePolicyDefault more:NO];
-}
+//未使用的函数，清楚状态different的记录
+//-(void)clear
+//{
+//    NSSet * resultSet = [NSSet setWithArray:self.resultList];
+//    NSArray * differentRecords = [[resultSet objectsWithOptions:NSEndsWithPredicateOperatorType passingTest:^BOOL(id obj, BOOL *stop) {
+//        return [[obj valueForKey:kRecordStatus] isEqualToString:kRecordDifferent];
+//    }] allObjects];
+//    [self removeRecords:differentRecords];
+//    
+//    //    _flags.isLoadingLocalData = YES;
+//    [self load:TTURLRequestCachePolicyDefault more:NO];
+//}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark ListModel Query
 - (void)search:(NSString*)text

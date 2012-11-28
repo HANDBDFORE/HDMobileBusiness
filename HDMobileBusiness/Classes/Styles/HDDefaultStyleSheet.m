@@ -145,4 +145,8 @@
     return RGBCOLOR(255, 255, 255);
 }
 
+-(UIColor *)splitBorderColor
+{
+    return RGBCOLOR(204, 204, 204);
+}
 @end

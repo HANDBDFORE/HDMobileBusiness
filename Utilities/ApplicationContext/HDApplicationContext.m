@@ -7,13 +7,17 @@
 //
 
 #import "HDApplicationContext.h"
-#import "HDDoneListModel.h"
-#import "HDObjectPattern.h"
-
-#import "HDLoadingViewController.h"
-#import "HDLoginViewController.h"
+#import "HDClassLoader.h"
 
 @implementation HDApplicationContext
+
+- (void)dealloc
+{
+    TT_RELEASE_SAFELY(_objectFactoryMap);
+    TT_RELEASE_SAFELY(_objectMappings);
+    TT_RELEASE_SAFELY(_objectPatterns);
+    [super dealloc];
+}
 
 +(BOOL)configApplicationContextForXmlPath:(NSString *)xmlPath
 {
@@ -25,31 +29,19 @@
     return [self shareObject];
 }
 
+-(void)clearObjects
+{
+    [_objectMappings removeAllObjects];
+    [self loadLocalPattern];
+}
+
 - (id)init
 {
     self = [super init];
     if (self) {
         //加载对象创建路径
-        [self loadMap];
-        
-        //这些配置需要在获取配置文件前加载
-        //配置bean
-        [self setObject:[[[UIApplication sharedApplication] windows] objectAtIndex:0] forIdentifier:@"rootWindow"];
-
-        //入口guider
-        HDObjectPattern * rootGuiderPattern =
-        [HDObjectPattern patternWithURL:@"tt://rootGuiderPattern/rootGuider"
-                         propertyValues:nil
-                       propertyRefBeans:@{@"sourceController" :@"rootWindow",
-         @"destinationController":@"loadingViewCtrl"}
-                             objectMode:HDObjectModeCreate];
-        
-        [self setPattern:rootGuiderPattern forIdentifier:@"rootGuider"];
-        
-        //初始化loading。。。
-        HDObjectPattern * loading = [HDObjectPattern patternWithURL:@"tt://LoadingViewController" propertyValues:nil propertyRefBeans:nil objectMode:HDObjectModeShare];
-        
-        [self setPattern:loading forIdentifier:@"loadingViewCtrl"];
+        [self loadFactoryMap];
+        [self loadLocalPattern];
     }
     return self;
 }
@@ -59,32 +51,19 @@
     if (![HDXMLParser hasParsedSuccess]) {
         return NO;
     }
-    //login guider
-    HDObjectPattern * loadingGuiderPattern =
-    [HDObjectPattern patternWithURL:@"tt://rootGuiderPattern/rootGuider"
-                     propertyValues:nil
-                   propertyRefBeans:@{@"sourceController" :@"rootWindow",
-     @"destinationController":@"loginViewCtrl"}
-                         objectMode:HDObjectModeCreate];
-    
-    [self setPattern:loadingGuiderPattern forIdentifier:@"loadingGuider"];
-
-    ///loginVC
-    HDObjectPattern * loginPattern =
-    [HDObjectPattern patternWithURL:@"tt://nib/HDLoginViewController/HDLoginViewController"
-                     propertyValues:@{@"titleLabel.text" : @"hand"}
-                   propertyRefBeans:@{@"loginModel":@"loginModel"}
-                         objectMode:HDObjectModeShare];
-    [self setPattern:loginPattern forIdentifier:@"loginViewCtrl"];
-    
-    //loginM
-    HDObjectPattern * loginM = [HDObjectPattern patternWithURL:@"tt://loginModel" propertyValues:@{@"submitURL":@"${base_url}modules/ios/public/login_iphone.svc"} propertyRefBeans:nil objectMode:HDObjectModeShare];
-    [self setPattern:loginM forIdentifier:@"loginModel"];
-    
+    [[HDXMLParser shareObject]setDelegate:self];
+    if (![[HDXMLParser shareObject] parserForXmlPath:xmlPath]) {
+        return NO;
+    }
     return YES;
 }
 
 -(id)objectForIdentifier:(NSString *)identifier
+{
+    return [self objectForIdentifier:identifier query:nil];
+}
+
+-(id)objectForIdentifier:(NSString *)identifier query:(NSDictionary *)query
 {
     id object = nil;
     if (_objectMappings) {
@@ -94,22 +73,19 @@
         }
     }
     
+    //如果是网页，返回一个网页视图控制器，这样后面的property就可以启用了
+    if ([identifier hasPrefix:@"http://"]) {
+        return [_objectFactoryMap objectForURL:identifier];
+    }
+    
     HDObjectPattern * objectPattern =  [self objectPatternForIdentifier:identifier];
     if (objectPattern) {
-        object = [_objectFactoryMap objectForURL:objectPattern.url];
+        object = [_objectFactoryMap objectForURL:objectPattern.url query:query];
         
         //set value properties
         for (NSString * keyPath in [objectPattern.values allKeys]) {
-            NSString * value = [objectPattern.values valueForKey:keyPath];
-            
-            //如果是创建路径，从urlMap中获取对象
-            id objectProperty = [_objectFactoryMap objectForURL:value];
-            if (objectProperty) {
-                [object setValue:objectProperty forKeyPath:keyPath];
-            }else{
-                //否则按照字符串处理
-                [object setValue:value forKeyPath:keyPath];
-            }
+            id value = [objectPattern.values valueForKey:keyPath];
+            [object setValue:value forKeyPath:keyPath];
         }
         
         //set ref properies
@@ -133,7 +109,7 @@
 -(void)setObject:(id)object forIdentifier:(NSString *)identifier
 {
     if (nil == _objectMappings) {
-        _objectMappings = TTCreateNonRetainingDictionary();
+        _objectMappings = [[NSMutableDictionary alloc]init];
     }
     [_objectMappings setObject:object forKey:identifier];
 }
@@ -141,31 +117,85 @@
 -(void) setPattern:(HDObjectPattern *) pattern forIdentifier:(NSString *)identifier
 {
     if (nil == _objectPatterns) {
-        _objectPatterns = TTCreateNonRetainingDictionary();
+        _objectPatterns = [[NSMutableDictionary alloc]init];
     }
     [_objectPatterns setObject:pattern forKey:identifier];
 }
 
 
--(void)loadMap
+-(void)loadFactoryMap
 {
     if (nil == _objectFactoryMap) {
         _objectFactoryMap = [[TTURLMap alloc]init];
     }
-    
-    [_objectFactoryMap from:@"tt://LoadingViewController" toViewController:[HDLoadingViewController class]];
-    
-    
-    [_objectFactoryMap from:@"tt://(initWithNibName:)/(bundle:)" toViewController:[HDLoginViewController class]];
-    
+    //基础服务 url 注册
+    //从nib创建视图控制器
     [_objectFactoryMap from:@"tt://nib/(loadFromNib:)/(withClass:)"
-    toViewController:[UIApplication sharedApplication].delegate];
+           toViewController:self];
+    
+    [HDClassLoader loadURLMap:_objectFactoryMap];
+}
 
+-(void)loadLocalPattern
+{
+    //这些配置需要在获取配置文件前加载
+    //配置bean
+    [self setObject:[[[UIApplication sharedApplication] delegate]window] forIdentifier:@"rootWindow"];
     
-    [_objectFactoryMap from:@"tt://loginModel" toViewController:[HDLoginModel class]];
+    //第一次加载入口guider
+    HDObjectPattern * firstRootGuiderPattern =
+    [HDObjectPattern patternWithURL:@"tt://rootGuider/firstRootGuider"
+                     propertyValues:nil
+                   propertyRefBeans:@{@"sourceController" :@"rootWindow",
+     @"destinationController":@"userHelpCtrl"}
+                         objectMode:HDObjectModeCreate];
+    [self setPattern:firstRootGuiderPattern forIdentifier:@"firstRootGuider"];
     
-    [_objectFactoryMap from:@"tt://rootGuiderPattern/(initWithKeyIdentifier:)" toViewController:[HDRootViewGuider class]];
+    //user help。。。
+    HDObjectPattern * userHelpCtrl =
+    [HDObjectPattern patternWithURL:@"tt://UserGuideViewController"
+                     propertyValues:nil
+                   propertyRefBeans:nil
+                         objectMode:HDObjectModeCreate];
     
+    [self setPattern:userHelpCtrl forIdentifier:@"userHelpCtrl"];
+    
+    //入口guider
+    HDObjectPattern * rootGuiderPattern =
+    [HDObjectPattern patternWithURL:@"tt://rootGuider/rootGuider"
+                     propertyValues:nil
+                   propertyRefBeans:@{@"sourceController" :@"rootWindow",
+     @"destinationController":@"loadingViewCtrl"}
+                         objectMode:HDObjectModeCreate];
+    
+    [self setPattern:rootGuiderPattern forIdentifier:@"rootGuider"];
+    
+    //初始化loading。。。
+    HDObjectPattern * loading =
+    [HDObjectPattern patternWithURL:@"tt://LoadingViewController"
+                     propertyValues:nil
+                   propertyRefBeans:nil
+                         objectMode:HDObjectModeCreate];
+    
+    [self setPattern:loading forIdentifier:@"loadingViewCtrl"];
+}
+
+#pragma -mark load from nib
+/**
+ * Loads the given viewcontroller from the nib
+ */
+- (UIViewController*)loadFromNib:(NSString *)nibName withClass:className {
+    UIViewController* newController = [[NSClassFromString(className) alloc]
+                                       initWithNibName:nibName bundle:nil];
+    
+    return [newController autorelease];
+}
+/**
+ * Loads the given viewcontroller from the the nib with the same name as the
+ * class
+ */
+- (UIViewController*)loadFromNib:(NSString*)className {
+    return [self loadFromNib:className withClass:className];
 }
 
 @end

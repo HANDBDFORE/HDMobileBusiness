@@ -8,7 +8,8 @@
 
 #import "HDBaseTodoListViewController.h"
 
-
 @interface HDTodoListSearchViewController : HDBaseTodoListViewController
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated;
 
 @end

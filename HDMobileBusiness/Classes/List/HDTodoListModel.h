@@ -8,23 +8,14 @@
 
 #import "HDURLRequestModel.h"
 #import "HDListModel.h"
-/*
- *记录状态,不同的状态cell样式不同
- */
-static NSString * kRecordNormal = @"NORMAL";
-static NSString * kRecordWaiting = @"WAITING";
-static NSString * kRecordError = @"ERROR";
-static NSString * kRecordDifferent = @"DIFFERENT";
 
-static NSString * kRecordStatus = @"kLocalStatus";
-static NSString * kRecordServerMessage = @"kServerMessage";
 /*
  *使用同步方法从本地存储刷新数据使用状态,当前不启用
  */
-static NSString * kStorageNormal = @"NORMAL";
-static NSString * kStorageInsert = @"INSERT";
-static NSString * kStorageUpdate = @"UPDATE";
-static NSString * kStorageRemove = @"REMOVE";
+//static NSString * kStorageNormal = @"NORMAL";
+//static NSString * kStorageInsert = @"INSERT";
+//static NSString * kStorageUpdate = @"UPDATE";
+//static NSString * kStorageRemove = @"REMOVE";
 
 @interface HDTodoListModel : HDURLRequestModel<HDListModelVector,HDListModelSubmit>
 {
@@ -42,8 +33,27 @@ static NSString * kStorageRemove = @"REMOVE";
     NSRange _vectorRange;
 }
 
-//结果列表，和界面显示对应，datasource从该列表获取数据
-//@property(nonatomic,readonly) NSArray * resultList;
+#pragma override ModelQuery 
+@property(nonatomic,copy) NSString * queryURL;
+
+//获取结果列表
+@property(nonatomic,readonly) NSArray * resultList;
+
+//查询
+- (void)search:(NSString*)text;
+
+#pragma override ModelSubmit
+//提交的Url
+@property(nonatomic,copy) NSString * submitURL;
+
+-(void)removeRecordAtIndex:(NSUInteger) index;
+
+//提交IndexPath指定的记录，提交参数通过query传递
+-(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
+                      dictionary:(NSDictionary *)dictionary;
+
+-(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary;
+
 
 //查询字段
 @property(nonatomic,retain) NSArray * searchFields;
@@ -51,14 +61,8 @@ static NSString * kStorageRemove = @"REMOVE";
 //主键字段
 @property(nonatomic,copy) NSString * primaryField;
 
-//查询的Url
-@property(nonatomic,copy) NSString * queryURL;
-
-//提交的Url
-@property(nonatomic,copy) NSString * submitURL;
-
-//清除无效的数据
--(void)clear;
+//清除无效的数据,未使用
+//-(void)clear;
 
 @end
 

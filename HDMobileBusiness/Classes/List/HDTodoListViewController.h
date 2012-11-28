@@ -10,4 +10,8 @@
 
 @interface HDTodoListViewController : HDBaseTodoListViewController
 
+
+#pragma -override
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated;
+
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "HDFunctionListViewController.h"
-#import "HDFunctionListDataSource.h"
 
 @implementation HDFunctionListViewController
 
@@ -16,26 +15,14 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.title = @"功能列表";
         self.variableHeightRows = YES;
-        self.dataSource = [[[HDFunctionListDataSource alloc]init] autorelease];
     }
     return self;
-}
-
--(void)loadView
-{
-    [super loadView];
-    [self.model load:TTURLRequestCachePolicyDefault more:NO];
-
-//    _settingButton = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(settingButtonPressed:)];
-//    _settingButton.tintColor = RGBCOLOR(0, 152, 0);
-//    self.navigationItem.rightBarButtonItem = _settingButton;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
-//    [self.model load:TTURLRequestCachePolicyDefault more:NO];
 }
 
 -(void)viewDidUnload

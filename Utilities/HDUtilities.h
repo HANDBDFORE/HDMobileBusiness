@@ -9,8 +9,6 @@
 
 #import "HDGlobalMetrics.h"
 
-#import "HDEluneGuider/HDGuider.h"
-
 #import "HDHTTPRequest/HDHTTPRequestCenter.h"
 #import "HDHTTPRequest/HDURLRequestModel.h"
 
@@ -24,6 +22,4 @@
 #import "HDXMLParser.h"
 
 #import "HDApplicationContext.h"
-#import "HDViewGuider.h"
-#import "HDRootViewGuider.h"
-
+#import "HDGuider.h"

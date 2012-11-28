@@ -6,7 +6,19 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-@interface HDLoginModel : HDURLRequestModel
+@protocol HDLoginModel <TTModel>
+
+@property(nonatomic,retain) NSString * submitURL;
+
+@property(nonatomic,copy) NSString * username;
+
+@property(nonatomic,copy) NSString * password;
+
+-(void)login;
+
+@end
+
+@interface HDLoginModel : HDURLRequestModel<HDLoginModel>
 
 @property(nonatomic,retain) NSString * submitURL;
 

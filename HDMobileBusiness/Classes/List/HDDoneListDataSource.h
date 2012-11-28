@@ -11,6 +11,9 @@
 
 @interface HDDoneListDataSource : TTListDataSource <HDTableDataSource>
 
-@property(nonatomic,assign) id<HDListModelVector> listModel;
+@property(nonatomic,retain) id<HDListModelVector> listModel;
+
+#pragma -override
+@property(nonatomic,retain) NSDictionary * itemDictionary;
 
 @end

@@ -7,60 +7,18 @@
 //
 
 #import "HDSplitViewController.h"
-#import "StackScrollViewController.h"
-#import "HDFunctionListViewController.h"
-
-@interface UIViewExt : UIView {}
-@end
-
-
-@implementation UIViewExt
-- (UIView *) hitTest: (CGPoint) pt withEvent: (UIEvent *) event
-{
-	
-	UIView* viewToReturn=nil;
-	CGPoint pointToReturn;
-	
-	UIView* rightView = (UIView*)[[self subviews] objectAtIndex:1];
-	
-//	if ([[rightView subviews] objectAtIndex:0]) {
-		
-//		UIView* uiStackScrollView = [[rightView subviews] objectAtIndex:0];
-		
-		if ([[rightView subviews] objectAtIndex:1]) {
-			
-			UIView* uiSlideView = [[rightView subviews] objectAtIndex:1];
-			
-			for (UIView* subView in [uiSlideView subviews]) {
-				CGPoint point  = [subView convertPoint:pt fromView:self];
-				if ([subView pointInside:point withEvent:event]) {
-					viewToReturn = subView;
-					pointToReturn = point;
-				}
-				
-			}
-		}
-		
-//	}
-	
-	if(viewToReturn != nil) {
-		return [viewToReturn hitTest:pointToReturn withEvent:event];
-	}
-	
-	return [super hitTest:pt withEvent:event];
-	
-}
-
-@end
-
-@interface HDSplitViewController ()
-
-@end
 
 @implementation HDSplitViewController
 @synthesize leftViewController = _leftViewController;
 @synthesize rightViewController = _rightViewController;
 @synthesize leftViewPercentWidth = _leftViewPercentWidth,leftViewWidth = _leftViewWidth;
+
+-(void)viewDidUnload
+{
+    [super viewDidUnload];
+    TT_RELEASE_SAFELY(_leftViewController);
+    TT_RELEASE_SAFELY(_rightViewController);
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,15 +27,6 @@
         // Custom initialization
         _leftViewPercentWidth = 0.5;
         _leftViewWidth = 320;
-        
-        self.leftViewController =
-        //        [[HDGuider guider]controllerWithKeyPath:kFunctionControllerPath query:nil];
-        [[HDGuider guider]controllerWithKeyPath:kFunctionControllerPath className:[HDFunctionListViewController class] nibName:nil];
-        
-        self.rightViewController =
-//        [[[UIViewController alloc]init]autorelease];
-//        [self.rightViewController.view setBackgroundColor:[UIColor colorWithRed:0.5 green:0.5 blue:0 alpha:0.5]];
-        [[[StackScrollViewController alloc]init]autorelease];
     }
     return self;
 }
@@ -85,22 +34,28 @@
 -(void)setLeftViewController:(UIViewController *)leftViewController
 {
     if (_leftViewController != leftViewController) {
-        [_leftViewController release];
         [_leftView removeFromSuperview];
+        [_leftViewController release];
+        
+        _leftViewController = [leftViewController retain];
+        _leftView = _leftViewController.view;
+        [self resizeSubViews];
+        [self.view insertSubview:_leftView atIndex:0];
     }
-    _leftViewController = [leftViewController retain];
-    _leftView = _leftViewController.view;
 }
 
 -(void)setRightViewController:(UIViewController *)rightViewController
 {
     if (_rightViewController != rightViewController) {
-        [_rightViewController release];
         [_rightView removeFromSuperview];
+        [_rightViewController release];
+        
+        _rightViewController = [rightViewController retain];
+        _rightView = _rightViewController.view;
+        _rightView.tag = 201;
+        [self resizeSubViews];
+        [self.view insertSubview:_rightView atIndex:1];
     }
-    _rightViewController = [rightViewController retain];
-    _rightView = _rightViewController.view;
-    _rightView.tag = 201;
 }
 
 #pragma -mark life cycle
@@ -114,7 +69,7 @@
 {
     [super viewDidLoad];
     
-    self.view = [[[UIViewExt alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
+    self.view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage: [UIImage imageNamed:@"backgroundImage_repeat.png"]]];
     
@@ -124,12 +79,6 @@
     
     [_rightViewController viewWillAppear:NO];
 	[_rightViewController viewDidAppear:NO];
-
-    [self resizeSubViews];
-    [self.view insertSubview:_leftView atIndex:0];
-    [self.view insertSubview:_rightView atIndex:1];
-
-	// Do any additional setup after loading the view.
 }
 
 -(void)resizeSubViews
@@ -141,8 +90,18 @@
     }else{
         leftViewWidth = self.view.frame.size.width * _leftViewPercentWidth;
     }
-    _leftView.frame = CGRectMake(0, 0, leftViewWidth, CGRectGetHeight(self.view.frame));
-    _rightView.frame = CGRectMake(leftViewWidth, 0, CGRectGetWidth(self.view.frame)-leftViewWidth, CGRectGetHeight(self.view.frame));
+    UIColor * borderColor = TTSTYLEVAR(splitBorderColor);
+        
+    _leftView.frame = CGRectMake(0, 0, leftViewWidth, CGRectGetHeight(self.view.bounds));
+    _leftView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    [_leftView.layer setBorderWidth:1.5f];
+    [_leftView.layer setCornerRadius:5];
+    [_leftView.layer setBorderColor:borderColor.CGColor];
+    
+    
+    _rightView.frame = CGRectMake(leftViewWidth, 0, CGRectGetWidth(self.view.bounds)-leftViewWidth, CGRectGetHeight(self.view.bounds));
+    _rightView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    [_rightView.layer setCornerRadius:5];
 }
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {

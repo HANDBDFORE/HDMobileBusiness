@@ -7,10 +7,10 @@
 //
 
 
-static NSString * kTableStatusMessageNormoal  = @"NORMAL";
-static NSString * kTableStatusMessageError  = @"ERROR";
-static NSString * kTableStatusMessageDifferent = @"DIFFERENT";
-static NSString * kTableStatusMessageWaiting =@"WAITING";
+//static NSString * kTableStatusMessageNormoal  = @"NORMAL";
+//static NSString * kTableStatusMessageError  = @"ERROR";
+//static NSString * kTableStatusMessageDifferent = @"DIFFERENT";
+//static NSString * kTableStatusMessageWaiting =@"WAITING";
 
 @interface HDTableStatusMessageItem : TTTableMessageItem
 {

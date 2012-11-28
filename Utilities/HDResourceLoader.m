@@ -7,6 +7,7 @@
 //
 
 #import "HDResourceLoader.h"
+#import "HDImageLoader.h"
 
 @interface HDResourceLoader()
 
@@ -30,6 +31,12 @@
         _queue.maxContentLength = 0;
     }
     return self;
+}
+
+-(UIImage *)imageWithIdentifier:(NSString *) identifier
+{
+    HDImageLoader * loader = [[HDApplicationContext shareContext]objectForIdentifier:identifier];
+    return  [loader image];
 }
 
 +(id)shareLoader

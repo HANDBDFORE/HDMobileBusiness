@@ -11,11 +11,8 @@
 @implementation HDRootViewGuider
 
 -(void)perform
-{
+{    
     [(UIWindow *)self.sourceController setRootViewController:self.destinationController];
-    TTDPRINT(@"%@",self.sourceController);
-    TTDPRINT(@"%@",self.destinationController);
-    TTDPRINT(@"%@",self.identifier);
 }
 
 @end

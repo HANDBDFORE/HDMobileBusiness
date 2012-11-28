@@ -10,10 +10,6 @@
 
 //styleSheet
 #import "HDDefaultStyleSheet.h"
-#import "HDClassLoader.h"
-
-#import "HDLoadingViewController.h"
-#import "HDUserGuideViewController.h"
 
 @implementation HDAppDelegate
 
@@ -27,44 +23,28 @@
     //create database
     [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordList:nil];
     
-    //load class
-    [HDClassLoader startLoad];
-    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]autorelease];
-//    TTNavigator * navigator = [TTNavigator navigator];
     
-//    if(![navigator restoreViewControllers])
-//    {
-        if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {
-            [self showLoadingView];
-        }else {
-            [[NSUserDefaults standardUserDefaults]setValue:kVersion forKey:@"appVersion"];
-            [self showHelpView];
-        }   
-//    }
+    if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {
+        [self showLoadingView];
+    }else {
+        [[NSUserDefaults standardUserDefaults]setValue:kVersion forKey:@"appVersion"];
+        [self showHelpView];
+    }
+    
     [self.window makeKeyAndVisible];
 }
 
 -(void)showHelpView
 {
-    [self.window.rootViewController = [[HDUserGuideViewController alloc]init]autorelease];
-    
-//    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"init://UserGuideViewController"]];
+    HDViewGuider * guider = [[HDApplicationContext shareObject] objectForIdentifier:@"firstRootGuider"];
+    [guider perform];
 }
 
 -(void)showLoadingView
 {
-//    UIViewController * controller = [[HDLoadingViewController alloc]init];
-//    [[TTNavigator navigator] rootViewController]= controller;
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"rootGuider"];
-    [guider perform];
-    
-//    self.window.rootViewController = [[HDApplicationContext shareContext] objectForIdentifier:@"loadingViewCtrl"];
-    
-//    [[[HDLoadingViewController alloc]init]autorelease];
-    
-    
-//    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
+    [guider perform];    
 }
 
 //获取token成功,格式化token,放入用户设置中
@@ -95,7 +75,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -114,21 +94,4 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-#pragma -mark load from nib
-/**
- * Loads the given viewcontroller from the nib
- */
-- (UIViewController*)loadFromNib:(NSString *)nibName withClass:className {
-    UIViewController* newController = [[NSClassFromString(className) alloc]
-                                       initWithNibName:nibName bundle:nil];
-    
-    return [newController autorelease];
-}
-/**
- * Loads the given viewcontroller from the the nib with the same name as the
- * class
- */
-- (UIViewController*)loadFromNib:(NSString*)className {
-    return [self loadFromNib:className withClass:className];
-}
 @end

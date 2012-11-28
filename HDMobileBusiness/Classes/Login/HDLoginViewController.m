@@ -15,21 +15,30 @@
 @synthesize password = _password;
 @synthesize loginBtn = _loginBtn;
 
-@synthesize  backgroundImage = _backgroundImage,loginButtonNormalImage = _loginButtonNormalImage,loginButonHighlightedImage = _loginButonHighlightedImage;
+@dynamic loginModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self setAutoresizesForKeyboard:YES];
-        
-        _loginModel = [[HDLoginModel alloc]init];
-        self.model = _loginModel;
-        //注册_loginModel观察self的username.text。当_loginModel接收到消息时，设置context指定的自己对应的属性
-        [self addObserver:_loginModel forKeyPath:@"username.text" options:NSKeyValueObservingOptionNew context:@"username"];
-        [self addObserver:_loginModel forKeyPath:@"password.text" options:NSKeyValueObservingOptionNew context:@"password"];
     }
     return self;
+}
+
+-(void)setLoginModel:(id<HDLoginModel>)loginModel
+{
+    _loginModel = loginModel;
+    self.model = loginModel;
+    
+    //注册模型键值观察
+    [self addObserver:_loginModel forKeyPath:@"username.text" options:NSKeyValueObservingOptionNew context:@"username"];
+    [self addObserver:_loginModel forKeyPath:@"password.text" options:NSKeyValueObservingOptionNew context:@"password"];
+}
+
+-(id<HDLoginModel>)loginModel
+{
+    return _loginModel;
 }
 
 -(void)viewDidUnload
@@ -39,13 +48,11 @@
     TT_RELEASE_SAFELY(_titleLabel);
     TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_password);
-    TT_RELEASE_SAFELY(_loginModel);
     TT_RELEASE_SAFELY(_loginBtn);
-
-    TT_RELEASE_SAFELY(_backgroundImage);
-    TT_RELEASE_SAFELY(_loginButtonNormalImage);
-    TT_RELEASE_SAFELY(_loginButonHighlightedImage);
-//    TT_RELEASE_SAFELY(_titleLabelText);
+    
+    TT_RELEASE_SAFELY(_backgroundImageLoader);
+    TT_RELEASE_SAFELY(_loginButtonNormalImageLoader);
+    TT_RELEASE_SAFELY(_loginButonHighlightedImageLoader);
     
     TT_RELEASE_SAFELY(_usernameDelegate);
     TT_RELEASE_SAFELY(_passwordDelegate);
@@ -64,20 +71,22 @@
     _passwordDelegate = [[HDTextFieldDelegate alloc]initWithTarget:self selector:@selector(passwordFieldShouldReturn:)];
     _password.delegate = _passwordDelegate;
     
-//    if (self.titleLabelText) {
-//        self.titleLabel.text = self.titleLabelText;
-//    }
-    
-    if (self.backgroundImage) {
-        [(UIImageView *)[self.view viewWithTag:9] setImage:self.backgroundImage];
+    if (self.titleLabelText) {
+        self.titleLabel.text = self.titleLabelText;
     }
     
-    if (self.loginButtonNormalImage) {
-        [_loginBtn setBackgroundImage:self.loginButtonNormalImage forState:UIControlStateNormal];
+    if (self.backgroundImageLoader) {
+        [(UIImageView *)[self.view viewWithTag:9] setImage:[self.backgroundImageLoader image]];
     }
     
-    if (self.loginButonHighlightedImage) {
-        [_loginBtn setBackgroundImage:self.loginButonHighlightedImage forState:UIControlStateHighlighted];
+    if (self.loginButtonNormalImageLoader) {
+        [_loginBtn setBackgroundImage:[self.loginButtonNormalImageLoader image]
+                             forState:UIControlStateNormal];
+    }
+
+    if (self.loginButonHighlightedImageLoader) {
+        [_loginBtn setBackgroundImage:[self.loginButonHighlightedImageLoader image]
+                             forState:UIControlStateHighlighted];
     }
 }
 
@@ -127,8 +136,9 @@
 //模型delegate方法
 - (void)modelDidFinishLoad:(HDLoginModel *)model
 {
-    self.view.window.rootViewController = [[TTNavigator navigator]rootViewController];
-    [[HDGuider guider]guideWithSegment:[HDGuideSegment segmentWithKeyPath:kMainControllerPath]];
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"loginGuider"];
+    [guider perform];
+
 }
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error
@@ -177,21 +187,4 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
-//-(BOOL)shouldAutorotate
-//{
-//    return NO;
-//}
-
-//-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-//{
-//    if (toInterfaceOrientation == UIInterfaceOrientationMaskPortrait) {
-//        _username.origin = CGPointMake(75, 231);
-//        _password.origin = CGPointMake(75, 271);
-//    }else{
-//        _username.origin = CGPointMake(100, 80);
-//        _password.origin = CGPointMake(100, 105);
-//    }
-    
-    
-//}
 @end

@@ -25,7 +25,7 @@
 
 +(id)patternWithURL:(NSString *)url propertyValues:(NSDictionary *)values propertyRefBeans:(NSDictionary *)beans objectMode:(NSInteger)mode
 {
-    return [[self alloc]initWithURL:url propertyValues:values propertyRefBeans:beans objectMode:mode];
+    return [[[self alloc]initWithURL:url propertyValues:values propertyRefBeans:beans objectMode:mode] autorelease];
 }
 
 -(id)initWithURL:(NSString *) url propertyValues:(NSDictionary *)values propertyRefBeans:(NSDictionary *)beans objectMode:(NSInteger)mode{
