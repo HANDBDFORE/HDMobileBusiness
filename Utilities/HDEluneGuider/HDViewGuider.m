@@ -57,7 +57,7 @@
     if ([_sourceController isKindOfClass:[NSString class]]) {
         self.sourceController = [[HDApplicationContext shareContext]objectForIdentifier:_sourceController query:self.sourceQuery];
     }
-    if (![_sourceController isKindOfClass:[UIViewController class]]||
+    if (![_sourceController isKindOfClass:[UIViewController class]]&&
         ![_sourceController isKindOfClass:[UIWindow class]]) {
         return nil;
     }
