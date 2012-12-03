@@ -201,8 +201,9 @@
 }
 
 -(void)showLoginView
-{    
-    [[[HDApplicationContext shareContext]objectForIdentifier:@"loadingGuider"] perform];
+{
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"loadingGuider"] ;
+    [guider perform];
 }
 
 #pragma mark - life cycle
