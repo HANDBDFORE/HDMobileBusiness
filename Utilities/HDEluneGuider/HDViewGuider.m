@@ -57,10 +57,6 @@
     if ([_sourceController isKindOfClass:[NSString class]]) {
         self.sourceController = [[HDApplicationContext shareContext]objectForIdentifier:_sourceController query:self.sourceQuery];
     }
-    if (![_sourceController isKindOfClass:[UIViewController class]]||
-        ![_sourceController isKindOfClass:[UIWindow class]]) {
-        return nil;
-    }
     return _sourceController;
 }
 
@@ -68,9 +64,6 @@
 {
     if ([_destinationController isKindOfClass:[NSString class]]) {
         self.destinationController = [[HDApplicationContext shareContext]objectForIdentifier:_destinationController query:self.destinationQuery];
-    }
-    if (![_destinationController isKindOfClass:[UIViewController class]]) {
-        return nil;
     }
     return _destinationController;
 }
