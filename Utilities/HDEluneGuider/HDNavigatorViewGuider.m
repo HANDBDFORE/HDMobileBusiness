@@ -30,10 +30,10 @@
     
     UINavigationController * navigator = [(UIViewController *)self.sourceController navigationController];
     
-    if (!navigator) {
-        navigator = [[HDNavigationController alloc]initWithRootViewController:self.sourceController];
-    }
-    
+//    if (!navigator) {
+//        navigator = [[HDNavigationController alloc]initWithRootViewController:self.sourceController];
+//    }
+//    
     if ([self.destinationController isKindOfClass:[UIViewController class]]) {
         [navigator pushViewController:self.destinationController animated:self.animated];
     }

@@ -48,14 +48,14 @@
 
 -(BOOL)configWithXmlPath:(NSString *) xmlPath
 {
-    if (![HDXMLParser hasParsedSuccess]) {
-        return NO;
+    HDXMLParser *Parser = [[HDXMLParser alloc]initWithXmlPath:xmlPath];
+    BOOL hasParsedSuccess = [Parser parse];
+    if (hasParsedSuccess){
+        for (NSString*key in Parser.patternes) {
+            [self setPattern:[Parser.patternes objectForKey:key] forIdentifier:key];
+        }
     }
-    [[HDXMLParser shareObject]setDelegate:self];
-    if (![[HDXMLParser shareObject] parserForXmlPath:xmlPath]) {
-        return NO;
-    }
-    return YES;
+    return  hasParsedSuccess;
 }
 
 -(id)objectForIdentifier:(NSString *)identifier
@@ -78,7 +78,7 @@
         return [_objectFactoryMap objectForURL:identifier];
     }
     
-    HDObjectPattern * objectPattern =  [self objectPatternForIdentifier:identifier];
+    HDObjectPattern *objectPattern =  [self objectPatternForIdentifier:identifier];
     if (objectPattern) {
         object = [_objectFactoryMap objectForURL:objectPattern.url query:query];
         

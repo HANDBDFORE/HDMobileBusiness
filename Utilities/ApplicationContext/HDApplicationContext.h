@@ -14,7 +14,7 @@ static NSString * kTodoListControllerIdentifier = @"todoListViewController";
 static NSString * kDoneListControllerIdentifier = @"doneListViewController";
 
 //附加到guider里面
-@interface HDApplicationContext : HDSingletonObject <HDXMlParserDelegate>
+@interface HDApplicationContext : HDSingletonObject
 {
     //对象配置模式，保存了对象id和相关属性，创建url等信息
     NSMutableDictionary * _objectPatterns;

@@ -13,7 +13,14 @@
 @synthesize values = _values;
 @synthesize beans = _beans;
 @synthesize objectMode = _objectMode;
-
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _objectMode =HDObjectModeShare;
+    }
+    return self;
+}
 
 - (void)dealloc
 {
@@ -37,5 +44,9 @@
     }
     return self;
 }
-
+-(NSString *)description{
+    NSString * str = [NSString stringWithFormat:@"[url:%@$$values:%@$$beans:%@]$$",_url,_values,_beans];
+    
+    return str;
+}
 @end
