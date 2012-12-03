@@ -11,11 +11,6 @@
 //styleSheet
 #import "HDDefaultStyleSheet.h"
 
-#import "HDLoadingViewController.h"
-#import "HDUserGuideViewController.h"
-
-#import "HDSplitViewController.h"
-
 @class HDDefaultStyleSheet;
 
 @implementation HDAppDelegate
@@ -31,8 +26,7 @@
     //create database
     [[HDCoreStorage shareStorage]excute:@selector(SQLCreatTable:) recordList:nil];
     
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]autorelease];
-    
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]autorelease];    
     if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {
         [self showLoadingView];
     }else {
@@ -46,14 +40,12 @@
 {
     HDViewGuider * guider = [[HDApplicationContext shareObject] objectForIdentifier:@"firstRootGuider"];
     [guider perform];
-//    [self.window.rootViewController = [[HDUserGuideViewController alloc]init]autorelease];
 }
 
 -(void)showLoadingView
 {
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"rootGuider"];
     [guider perform];
-//    [self.window.rootViewController =[[HDLoadingViewController alloc]init]autorelease];
 }
 
 //获取token成功,格式化token,放入用户设置中
