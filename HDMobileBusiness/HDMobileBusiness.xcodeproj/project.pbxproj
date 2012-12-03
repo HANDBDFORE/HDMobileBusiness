@@ -16,6 +16,10 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		B2307431166739AB00DFF2E0 /* backend-config-cola.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-cola.xml */; };
+		B2307432166739AB00DFF2E0 /* backend-config-cola.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-cola.xml */; };
+		B2524B03166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2524B02166BB1CD00515477 /* backend-config-cola-pad.xml */; };
+		B2524B04166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2524B02166BB1CD00515477 /* backend-config-cola-pad.xml */; };
 		B303763E1600303E00238923 /* HDMessageSingleRecipientField.m in Sources */ = {isa = PBXBuildFile; fileRef = B303763D1600303E00238923 /* HDMessageSingleRecipientField.m */; };
 		B3037641160049D400238923 /* HDSinglePickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037640160049D400238923 /* HDSinglePickerTextField.m */; };
 		B303768C1600883D00238923 /* HDBaseTodoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376841600883300238923 /* HDBaseTodoListViewController.m */; };
@@ -626,6 +630,8 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../Frameworks/Three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../Frameworks/Three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../Frameworks/Three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		B2307430166739AB00DFF2E0 /* backend-config-cola.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-cola.xml"; sourceTree = "<group>"; };
+		B2524B02166BB1CD00515477 /* backend-config-cola-pad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-cola-pad.xml"; sourceTree = "<group>"; };
 		B303763C1600303E00238923 /* HDMessageSingleRecipientField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDMessageSingleRecipientField.h; path = Classes/Compose/HDMessageSingleRecipientField.h; sourceTree = "<group>"; };
 		B303763D1600303E00238923 /* HDMessageSingleRecipientField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDMessageSingleRecipientField.m; path = Classes/Compose/HDMessageSingleRecipientField.m; sourceTree = "<group>"; };
 		B303763F160049D300238923 /* HDSinglePickerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSinglePickerTextField.h; path = Classes/Compose/HDSinglePickerTextField.h; sourceTree = "<group>"; };
@@ -1773,6 +1779,8 @@
 			isa = PBXGroup;
 			children = (
 				B36F7A7016312F780090646E /* backend-config-hr-sprite_for_test.xml */,
+				B2307430166739AB00DFF2E0 /* backend-config-cola.xml */,
+				B2524B02166BB1CD00515477 /* backend-config-cola-pad.xml */,
 				B36F7A6F16312EC60090646E /* backend-config-hr-sprite.xml */,
 				B38E685A15C6526A00824CB1 /* backend-config-hec-sprite.xml */,
 				B38E685B15C6526A00824CB1 /* backend-config-hec.xml */,
@@ -2447,6 +2455,8 @@
 				B3E60F0C1659D7D4006C8119 /* page3.jpg in Resources */,
 				B3E60F0D1659D7D4006C8119 /* page4.jpg in Resources */,
 				B3E60F0E1659D7D4006C8119 /* page5.jpg in Resources */,
+				B2307431166739AB00DFF2E0 /* backend-config-cola.xml in Resources */,
+				B2524B03166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2484,6 +2494,8 @@
 				B3E60EFD1659D7C7006C8119 /* page3.jpg in Resources */,
 				B3E60EFE1659D7C7006C8119 /* page4.jpg in Resources */,
 				B3E60EFF1659D7C7006C8119 /* page5.jpg in Resources */,
+				B2307432166739AB00DFF2E0 /* backend-config-cola.xml in Resources */,
+				B2524B04166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
