@@ -37,7 +37,7 @@
     <bean id="todoDetailDeliverGuider"  create-url="tt://modalGuider/todoDetailDeliverGuider" mode="create">
         <property name="animated" value="true"/>
         <property name="destinationController" value="deliverNavigator"/>
-        <property name="sourceController" ref="todoDetailController"/>
+        <property name="sourceController" ref="splitViewController"/>
     </bean>
     <!--doneListTableGuider-->
     <bean id="doneListTableGuider"  create-url="tt://navigatorGuider/doneListTableGuider" mode="create">
@@ -135,11 +135,13 @@
     <!--todoListSearchDataSource-->
     <bean id="todoListSearchDataSource" create-url="tt://todoListDataSource" mode="share">
         <property name="itemDictionary">
-            <element key="title" value="${workflow_name}:${employee_name}"/>
-            <element key="caption" value="当前节点: ${node_name}"/>
-            <element key="text" value="${workflow_desc}"/>
-            <element key="timestamp" value="${creation_date}"/>
-            <element key="isLate" value="${is_late}"/>
+            <map>
+                <element key="title" value="${workflow_name}:${employee_name}"/>
+                <element key="caption" value="当前节点: ${node_name}"/>
+                <element key="text" value="${workflow_desc}"/>
+                <element key="timestamp" value="${creation_date}"/>
+                <element key="isLate" value="${is_late}"/>
+            </map>
         </property>
         <property name="listModel" ref="doneListModel"/>
         <property name="model" ref="doneListModel"/>
@@ -154,10 +156,12 @@
     <!--doneListDataSource-->
     <bean id="doneListDataSource" create-url="tt://doneListDataSource" mode="share">
         <property name="itemDictionary">
-            <element key="title" value="${workflow_name}:${employee_name}"/>
-            <element key="caption" value="当前节点: ${node_name}"/>
-            <element key="text" value="${workflow_desc}"/>
-            <element key="timestamp" value="${creation_date}"/>
+            <map>
+                <element key="title" value="${workflow_name}:${employee_name}"/>
+                <element key="caption" value="当前节点: ${node_name}"/>
+                <element key="text" value="${workflow_desc}"/>
+                <element key="timestamp" value="${creation_date}"/>
+            </map>
         </property>
         <property name="listModel" ref="doneListModel"/>
         <property name="model" ref="doneListModel"/>
