@@ -127,9 +127,8 @@
 }
 
 -(void)finish{
-    self.view.window.rootViewController = [[[HDLoadingViewController alloc]init]autorelease];
-//    [[TTNavigator navigator]openURLAction:[TTURLAction actionWithURLPath:@"init://LoadingViewController"]];
-//    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"helpViewGuider"];
+    [guider perform];
 }
 
 -(BOOL)scrollViewShouldZoom:(TTScrollView *)scrollView{

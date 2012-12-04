@@ -405,6 +405,10 @@
 		B3E60F54165A21D4006C8119 /* HDNavigatorViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60F53165A21D3006C8119 /* HDNavigatorViewGuider.m */; };
 		B3EBF1CA165B327B006E6018 /* HDModalViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF1C9165B327A006E6018 /* HDModalViewGuider.m */; };
 		B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ED3BA21623E71100505988 /* HDWebViewController.m */; };
+		B3FE7AD0166D89CF00CA0B0C /* padIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7ACE166D89CF00CA0B0C /* padIcon.png */; };
+		B3FE7AD1166D89CF00CA0B0C /* padIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */; };
+		B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD2166D8A0400CA0B0C /* padIcon.png */; };
+		B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1027,6 +1031,10 @@
 		B3EBF1C9165B327A006E6018 /* HDModalViewGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDModalViewGuider.m; sourceTree = "<group>"; };
 		B3ED3BA11623E71100505988 /* HDWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDWebViewController.h; sourceTree = "<group>"; };
 		B3ED3BA21623E71100505988 /* HDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDWebViewController.m; sourceTree = "<group>"; };
+		B3FE7ACE166D89CF00CA0B0C /* padIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = padIcon.png; sourceTree = "<group>"; };
+		B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "padIcon@2x.png"; sourceTree = "<group>"; };
+		B3FE7AD2166D8A0400CA0B0C /* padIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = padIcon.png; path = ../padIcon.png; sourceTree = "<group>"; };
+		B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "padIcon@2x.png"; path = "../padIcon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1624,6 +1632,8 @@
 		B38E66FF15C64E6700824CB1 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				B3FE7ACE166D89CF00CA0B0C /* padIcon.png */,
+				B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */,
 				B38E670015C64E6700824CB1 /* mobileIcon.png */,
 				B38E670115C64E6700824CB1 /* mobileIcon@2x.png */,
 			);
@@ -1903,6 +1913,8 @@
 		B398B6F71649F6DC0017FCD6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */,
+				B3FE7AD2166D8A0400CA0B0C /* padIcon.png */,
 				B398B6F81649F6DC0017FCD6 /* HDMobileBusinessPad-Info.plist */,
 				B398B6F91649F6DC0017FCD6 /* InfoPlist.strings */,
 				B398B6FC1649F6DC0017FCD6 /* main.m */,
@@ -2496,6 +2508,10 @@
 				B3E60EFF1659D7C7006C8119 /* page5.jpg in Resources */,
 				B2307432166739AB00DFF2E0 /* backend-config-cola.xml in Resources */,
 				B2524B04166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */,
+				B3FE7AD0166D89CF00CA0B0C /* padIcon.png in Resources */,
+				B3FE7AD1166D89CF00CA0B0C /* padIcon@2x.png in Resources */,
+				B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */,
+				B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

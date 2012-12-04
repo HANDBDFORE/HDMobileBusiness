@@ -28,7 +28,7 @@
         [_retryButton setUserInteractionEnabled:YES];
     }else {
         //开始发请求
-        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-sprite.xml",[HDHTTPRequestCenter baseURLPath]];
+        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-cola-pad.xml",[HDHTTPRequestCenter baseURLPath]];
 
         NSURL *url = [NSURL URLWithString:fileUrl];
         NSMutableURLRequest *postRequest = [[[NSMutableURLRequest alloc]initWithURL:url]autorelease];
@@ -104,7 +104,7 @@
                     BOOL writeSuccess = [data writeToFile:TTPathForDocumentsResource(@"ios-backend-config.xml") atomically:YES];
                     if (writeSuccess) {
                         //在这里解析
-                        if (![HDApplicationContext configApplicationContextForXmlPath:@"ios-backend-config-sprite.xml"]) {
+                        if (![HDApplicationContext configApplicationContextForXmlPath:@"ios-backend-config.xml"]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 _errorSummury.text = @"服务器返回文件异常";
                                 _errorDetail.text = @"服务器返回文件未能被成功解析，请联系技术支持。";
