@@ -218,31 +218,42 @@
     <!--loginBackImage-->
     <bean id="loginBackImage" create-url="tt://imageLoader" mode="create">
         <property name="defaultFilePath" value="bundle://login.png"/>
-        <property name="filePath" value="documents://background.png"/>
-        <property name="remoteURL" value="${base_url}images/mobile/login.png"/>
-        <property name="saveFileName" value="background.png"/>
-        <property name="retinaRemoteURL" value="${base_url}images/mobile/login@2x.png"/>
+        <property name="filePath" value="documents://background1.png"/>
+        <property name="remoteURL" value="${base_url}images/mobile/loginHZ_pad.png"/>
+        <property name="saveFileName" value="background1.png"/>
+        <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ_pad.png"/>
         <property name="retinaSaveFileName" value="background@2x.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
     <!--loginButton-->
     <bean id="loginButton" create-url="tt://imageLoader" mode="create">
         <property name="defaultFilePath" value="bundle://loginButton.png"/>
-        <property name="filePath" value="documents://normalButton.png"/>
-        <property name="remoteURL" value="${base_url}images/mobile/loginButton.png"/>
-        <property name="saveFileName" value="normalButton.png"/>
-        <property name="retinaRemoteURL" value="${base_url}images/mobile/loginButton.png"/>
-        <property name="retinaSaveFileName" value="normalButton@2x.png"/>
+        <property name="filePath" value="documents://normalButton1.png"/>
+        <property name="remoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
+        <property name="saveFileName" value="normalButton1.png"/>
+        <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
+        <property name="retinaSaveFileName" value="normalButton1@2x.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
     <!--loginHighLightButton-->
     <bean id="loginHighLightButton" create-url="tt://imageLoader" mode="create">
         <property name="defaultFilePath" value="bundle://loginButtonActive.png"/>
-        <property name="filePath" value="documents://highlightedButton.png"/>
-        <property name="remoteURL" value="${base_url}images/mobile/loginButtonActive.png"/>
-        <property name="saveFileName" value="highlightedButton.png"/>
-        <property name="retinaRemoteURL" value="${base_url}images/mobile/loginButtonActive.png"/>
-        <property name="retinaSaveFileName" value="highlightedButton@2x.png"/>
+        <property name="filePath" value="documents://highlightedButton1.png"/>
+        <property name="remoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
+        <property name="saveFileName" value="highlightedButton1.png"/>
+        <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
+        <property name="retinaSaveFileName" value="highlightedButton1@2x.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
+    <bean id="groupedTodoListViewController" create-url="tt://groupedTodoListViewController">
+        <property name="title" value="todo"/>
+        <property name="dataSource" ref="groupedTodoListDataSource"/>
+    </bean>
+    <bean id="groupedTodoListDataSource" create-url="tt://groupedTodoListDataSource">
+        <property name="groupedField" value="employee_name"/>
+        <property name="listModel" ref="groupedTodoListModel"/>
+        <property name="model" ref="groupedTodoListModel"/>
+    </bean>
+    <bean id="groupedTodoListModel" create-url="tt://groupedTodoListModel">
+    </bean>    
 </beans>

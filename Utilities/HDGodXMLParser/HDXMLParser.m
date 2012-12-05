@@ -50,8 +50,8 @@
 }
 
 -(BOOL)parse{
-//    NSData * data = [NSData dataWithContentsOfFile:@"/Users/hand/Documents/workspace/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-cola.xml"];
-    NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(xmlPath)];
+    NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-cola-pad.xml"];
+//    NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(xmlPath)];
     NSXMLParser *parser = [[NSXMLParser alloc]initWithData:data]; //设置XML数据
     [parser setShouldProcessNamespaces:NO];
     [parser setShouldReportNamespacePrefixes:NO];
@@ -61,7 +61,7 @@
     if(![self parseError]){
         return YES;
     }else{
-        NSLog(@"%@",[[self parseError] localizedDescription]);
+//        NSLog(@"%@",[[self parseError] localizedDescription]);
         return NO;
     }
 }
@@ -84,14 +84,14 @@
 #pragma mark - NSXMLParserDelegate
 //发现元素开始符的处理函数  （即报告元素的开始以及元素的属性）
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict{
-    NSLog(@"%@",elementName);
+//    NSLog(@"%@",elementName);
     //解析到BEAN标签则初始化数据
     if ([[elementName uppercaseString] isEqualToString:@"BEAN"] ) {
         isContinue = YES;
         propertyRefBeans = [[NSMutableDictionary alloc]init];
         propertyValues = [[NSMutableDictionary alloc]init];
         beanId = [attributeDict objectForKey:@"id"];
-        NSLog(@"%@",[attributeDict objectForKey:@"id"]);
+//        NSLog(@"%@",[attributeDict objectForKey:@"id"]);
         [self parserattribute:attributeDict];
     }else if(isContinue&&[[elementName uppercaseString] isEqualToString:@"PROPERTY"] ){
         currentProperty = [attributeDict objectForKey:@"name"];
@@ -139,7 +139,7 @@
         currentArray = nil;
     }else if(isContinue&&[[elementName uppercaseString] isEqualToString:@"MAP"] ){
         [propertyValues setObject:currentDict forKey:currentProperty];
-        NSLog(@"currentDict:%i",[currentDict retainCount]);
+//        NSLog(@"currentDict:%i",[currentDict retainCount]);
         [currentDict release];
         currentDict = nil;
     }

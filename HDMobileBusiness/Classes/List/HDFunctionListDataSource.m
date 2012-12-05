@@ -10,6 +10,9 @@
 #import "HDTableConfirmViewCell.h"
 #import "HDLoadingViewController.h"
 
+static NSString * kTodoListControllerIdentifier = @"todoListViewController";
+static NSString * kDoneListControllerIdentifier = @"doneListViewController";
+
 @implementation HDFunctionListModel
 
 @synthesize resultList = _resultList;
@@ -78,7 +81,11 @@
         @"sectionFlag" : @"SECTION",
         @"sectionText" : @"${text}",
         @"text":@"${text}",
-        @"URL" : [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"],@"${url}"],
+        @"URL" :
+//        [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"],
+        @"${url}"
+//        ]
+        ,
         @"imageURL" : @"${image_url}"};
     }
     return self;
@@ -105,7 +112,8 @@
             
             NSString * imageURL = [[self.itemDictionary valueForKey:@"imageURL"] stringByReplacingSpaceHodlerWithDictionary:record];
             
-            NSString * URL = [[self.itemDictionary valueForKey:@"URL"] stringByReplacingSpaceHodlerWithDictionary:record];
+            NSString * URL = [[[self.itemDictionary valueForKey:@"URL"] stringByReplacingSpaceHodlerWithDictionary:record] stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"]}];
+            
             
             TTTableImageItem * imageItem =
             [TTTableImageItem itemWithText:text

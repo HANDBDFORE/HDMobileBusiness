@@ -36,6 +36,10 @@
 		B30376A31600890600238923 /* HDFunctionListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A01600890600238923 /* HDFunctionListDataSource.m */; };
 		B30376A41600890600238923 /* HDFunctionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A11600890600238923 /* HDFunctionListViewController.m */; };
 		B30376A51600890600238923 /* HDTableConfirmViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A21600890600238923 /* HDTableConfirmViewCell.m */; };
+		B307C848166EDB6B00A03573 /* HDGroupedTodoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B307C847166EDB6B00A03573 /* HDGroupedTodoListModel.m */; };
+		B307C84B166EE26000A03573 /* loginHZ_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B307C849166EE26000A03573 /* loginHZ_pad.png */; };
+		B307C84C166EE26000A03573 /* loginHZ-padBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = B307C84A166EE26000A03573 /* loginHZ-padBtn.png */; };
+		B307C850166EEA5000A03573 /* HDGroupedTodoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */; };
 		B30BF63E15EC95A200DB83E9 /* HDSingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */; };
 		B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */; };
 		B31E2EDF15C65FD400880514 /* HDLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED815C65FD400880514 /* HDLoadingViewController.m */; };
@@ -668,6 +672,12 @@
 		B30376A01600890600238923 /* HDFunctionListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDFunctionListDataSource.m; path = Classes/List/HDFunctionListDataSource.m; sourceTree = SOURCE_ROOT; };
 		B30376A11600890600238923 /* HDFunctionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDFunctionListViewController.m; path = Classes/List/HDFunctionListViewController.m; sourceTree = SOURCE_ROOT; };
 		B30376A21600890600238923 /* HDTableConfirmViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTableConfirmViewCell.m; path = Classes/List/HDTableConfirmViewCell.m; sourceTree = SOURCE_ROOT; };
+		B307C846166EDB6B00A03573 /* HDGroupedTodoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDGroupedTodoListModel.h; path = Classes/List/HDGroupedTodoListModel.h; sourceTree = SOURCE_ROOT; };
+		B307C847166EDB6B00A03573 /* HDGroupedTodoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDGroupedTodoListModel.m; path = Classes/List/HDGroupedTodoListModel.m; sourceTree = SOURCE_ROOT; };
+		B307C849166EE26000A03573 /* loginHZ_pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loginHZ_pad.png; path = ../../../../../../../../../Volumes/hr_new/web/images/mobile/loginHZ_pad.png; sourceTree = "<group>"; };
+		B307C84A166EE26000A03573 /* loginHZ-padBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loginHZ-padBtn.png"; path = "../../../../../../../../../Volumes/hr_new/web/images/mobile/loginHZ-padBtn.png"; sourceTree = "<group>"; };
+		B307C84E166EEA5000A03573 /* HDGroupedTodoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDGroupedTodoListDataSource.h; path = Classes/List/HDGroupedTodoListDataSource.h; sourceTree = SOURCE_ROOT; };
+		B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDGroupedTodoListDataSource.m; path = Classes/List/HDGroupedTodoListDataSource.m; sourceTree = SOURCE_ROOT; };
 		B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSingletonObject.m; sourceTree = "<group>"; };
 		B31E2ECF15C65DC900880514 /* HDUserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUserGuideViewController.h; sourceTree = "<group>"; };
 		B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDUserGuideViewController.m; sourceTree = "<group>"; };
@@ -1166,6 +1176,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B307C84D166EE9DA00A03573 /* Grouped */ = {
+			isa = PBXGroup;
+			children = (
+				B307C846166EDB6B00A03573 /* HDGroupedTodoListModel.h */,
+				B307C847166EDB6B00A03573 /* HDGroupedTodoListModel.m */,
+				B307C84E166EEA5000A03573 /* HDGroupedTodoListDataSource.h */,
+				B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */,
+			);
+			name = Grouped;
+			sourceTree = "<group>";
+		};
 		B307FDE215FF134700EA5133 /* Compose */ = {
 			isa = PBXGroup;
 			children = (
@@ -1324,6 +1345,8 @@
 		B34660B315C678DD00EFDF24 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B307C849166EE26000A03573 /* loginHZ_pad.png */,
+				B307C84A166EE26000A03573 /* loginHZ-padBtn.png */,
 				B34660B615C678DD00EFDF24 /* HDLoginModel.h */,
 				B34660B715C678DD00EFDF24 /* HDLoginModel.m */,
 				B34660B815C678DD00EFDF24 /* HDLoginViewController.h */,
@@ -1515,6 +1538,7 @@
 		B38DC6E415C6835D00FD0C58 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				B307C84D166EE9DA00A03573 /* Grouped */,
 				B38DC70C15C68B4A00FD0C58 /* Search */,
 				B38DC70B15C68B3800FD0C58 /* Base */,
 				B38DC70A15C68B2900FD0C58 /* Cell */,
@@ -2512,6 +2536,8 @@
 				B3FE7AD1166D89CF00CA0B0C /* padIcon@2x.png in Resources */,
 				B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */,
 				B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */,
+				B307C84B166EE26000A03573 /* loginHZ_pad.png in Resources */,
+				B307C84C166EE26000A03573 /* loginHZ-padBtn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2764,6 +2790,8 @@
 				B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */,
 				B3E60EF01659D768006C8119 /* HDObjectPattern.m in Sources */,
 				B3CD019516635305002321A9 /* HDSplitViewGuider.m in Sources */,
+				B307C848166EDB6B00A03573 /* HDGroupedTodoListModel.m in Sources */,
+				B307C850166EEA5000A03573 /* HDGroupedTodoListDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

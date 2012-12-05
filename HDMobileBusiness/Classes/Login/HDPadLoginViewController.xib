@@ -41,7 +41,7 @@
 					<object class="IBUIImageView" id="552719866">
 						<reference key="NSNextResponder" ref="880376551"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{-9, -200}, {768, 1004}}</string>
+						<string key="NSFrameSize">{768, 1004}</string>
 						<reference key="NSSuperview" ref="880376551"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="295942669"/>
@@ -51,13 +51,13 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">launch.png</string>
+							<string key="NSResourceName">loginHZ_pad.png</string>
 						</object>
 					</object>
 					<object class="IBUITextField" id="79326390">
 						<reference key="NSNextResponder" ref="880376551"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{257, 400}, {200, 30}}</string>
+						<string key="NSFrame">{{257, 337}, {303, 30}}</string>
 						<reference key="NSSuperview" ref="880376551"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="815498503"/>
@@ -67,20 +67,17 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUIText"/>
-						<int key="IBUIBorderStyle">3</int>
 						<string key="IBUIPlaceholder">请输入用户名</string>
-						<object class="NSColor" key="IBUITextColor">
+						<object class="NSColor" key="IBUITextColor" id="164691815">
 							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MAA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace" id="1672466">
-								<int key="NSID">2</int>
-							</object>
+							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
+						<int key="IBUIClearButtonMode">1</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="420481005">
 							<int key="type">1</int>
 							<double key="pointSize">14</double>
@@ -94,7 +91,7 @@
 					<object class="IBUITextField" id="752012676">
 						<reference key="NSNextResponder" ref="880376551"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{257, 471}, {200, 30}}</string>
+						<string key="NSFrame">{{258, 423}, {302, 30}}</string>
 						<reference key="NSSuperview" ref="880376551"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="296258796"/>
@@ -104,26 +101,22 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUIText"/>
-						<int key="IBUIBorderStyle">3</int>
 						<string key="IBUIPlaceholder">请输入密码</string>
-						<object class="NSColor" key="IBUITextColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MAA</bytes>
-							<reference key="NSCustomColorSpace" ref="1672466"/>
-						</object>
+						<reference key="IBUITextColor" ref="164691815"/>
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<bool key="IBUISecureTextEntry">YES</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
+						<int key="IBUIClearButtonMode">1</int>
 						<reference key="IBUIFontDescription" ref="420481005"/>
 						<reference key="IBUIFont" ref="72162708"/>
 					</object>
 					<object class="IBUILabel" id="66368033">
 						<reference key="NSNextResponder" ref="880376551"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{181, 404}, {42, 21}}</string>
+						<string key="NSFrame">{{207, 341}, {42, 21}}</string>
 						<reference key="NSSuperview" ref="880376551"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="79326390"/>
@@ -155,7 +148,7 @@
 					<object class="IBUILabel" id="815498503">
 						<reference key="NSNextResponder" ref="880376551"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{181, 475}, {42, 21}}</string>
+						<string key="NSFrame">{{207, 427}, {42, 21}}</string>
 						<reference key="NSSuperview" ref="880376551"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="752012676"/>
@@ -181,7 +174,7 @@
 					<object class="IBUILabel" id="295942669">
 						<reference key="NSNextResponder" ref="880376551"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{207, 280}, {300, 44}}</string>
+						<string key="NSFrame">{{234, 187}, {300, 44}}</string>
 						<reference key="NSSuperview" ref="880376551"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="66368033"/>
@@ -193,6 +186,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<string key="IBUIText">汉得移动商务</string>
+						<reference key="IBUITextColor" ref="164691815"/>
 						<nil key="IBUIHighlightedColor"/>
 						<object class="NSColor" key="IBUIShadowColor" id="485422104">
 							<int key="NSColorSpace">3</int>
@@ -202,11 +196,11 @@
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">1</int>
-							<double key="pointSize">21</double>
+							<double key="pointSize">38</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
-							<double key="NSSize">21</double>
+							<double key="NSSize">38</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
@@ -214,7 +208,7 @@
 					<object class="IBUIButton" id="296258796">
 						<reference key="NSNextResponder" ref="880376551"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{258, 550}, {200, 44}}</string>
+						<string key="NSFrame">{{193, 525}, {383, 52}}</string>
 						<reference key="NSSuperview" ref="880376551"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -223,29 +217,21 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">登录</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-						</object>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">6</int>
-							<string key="NSCatalogName">System</string>
-							<string key="NSColorName">keyboardFocusIndicatorColor</string>
-							<object class="NSColor" key="NSColor">
-								<int key="NSColorSpace">3</int>
-								<bytes key="NSWhite">MAA</bytes>
-							</object>
-						</object>
+						<reference key="IBUIHighlightedTitleColor" ref="164691815"/>
+						<reference key="IBUINormalTitleColor" ref="164691815"/>
 						<reference key="IBUINormalTitleShadowColor" ref="485422104"/>
+						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">loginHZ-padBtn.png</string>
+						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
-							<double key="pointSize">15</double>
+							<int key="size">2</int>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">15</double>
+							<double key="NSSize">18</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
@@ -258,7 +244,9 @@
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
-					<reference key="NSCustomColorSpace" ref="1672466"/>
+					<object class="NSColorSpace" key="NSCustomColorSpace">
+						<int key="NSID">2</int>
+					</object>
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
@@ -338,13 +326,13 @@
 						<int key="objectID">7</int>
 						<reference key="object" ref="880376551"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="552719866"/>
-							<reference ref="79326390"/>
-							<reference ref="752012676"/>
-							<reference ref="296258796"/>
-							<reference ref="295942669"/>
 							<reference ref="66368033"/>
 							<reference ref="815498503"/>
+							<reference ref="752012676"/>
+							<reference ref="295942669"/>
+							<reference ref="79326390"/>
+							<reference ref="552719866"/>
+							<reference ref="296258796"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -503,10 +491,10 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">launch.png</string>
-			<string key="NS.object.0">{320, 480}</string>
-		</object>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="loginHZ-padBtn.png">{373, 48}</string>
+			<string key="loginHZ_pad.png">{768, 1024}</string>
+		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>
 </archive>
