@@ -21,15 +21,11 @@
 
 @property(nonatomic,copy) NSString * defaultFilePath;
 
-@property(nonatomic,copy) NSString * filePath;
-
 @property(nonatomic,copy) NSString * remoteURL;
-
-@property(nonatomic,copy) NSString * saveFileName;
 
 @property(nonatomic,copy) NSString * retinaRemoteURL;
 
-@property(nonatomic,copy) NSString * retinaSaveFileName;
+@property(nonatomic,copy) NSString * saveFileName;
 
 @property(nonatomic,assign) id<HDResourceLoader> resourceLoader;
 

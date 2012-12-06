@@ -16,6 +16,8 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		B224BA66166F3C24004CD7DC /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = B224BA64166F3C24004CD7DC /* login.png */; };
+		B224BA67166F3C24004CD7DC /* login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B224BA65166F3C24004CD7DC /* login@2x.png */; };
 		B2307431166739AB00DFF2E0 /* backend-config-cola.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-cola.xml */; };
 		B2307432166739AB00DFF2E0 /* backend-config-cola.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-cola.xml */; };
 		B2524B03166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2524B02166BB1CD00515477 /* backend-config-cola-pad.xml */; };
@@ -630,6 +632,8 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../Frameworks/Three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../Frameworks/Three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../Frameworks/Three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		B224BA64166F3C24004CD7DC /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
+		B224BA65166F3C24004CD7DC /* login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login@2x.png"; sourceTree = "<group>"; };
 		B2307430166739AB00DFF2E0 /* backend-config-cola.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-cola.xml"; sourceTree = "<group>"; };
 		B2524B02166BB1CD00515477 /* backend-config-cola-pad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-cola-pad.xml"; sourceTree = "<group>"; };
 		B303763C1600303E00238923 /* HDMessageSingleRecipientField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDMessageSingleRecipientField.h; path = Classes/Compose/HDMessageSingleRecipientField.h; sourceTree = "<group>"; };
@@ -1158,6 +1162,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B224BA63166F3C24004CD7DC /* ipad */ = {
+			isa = PBXGroup;
+			children = (
+				B224BA64166F3C24004CD7DC /* login.png */,
+				B224BA65166F3C24004CD7DC /* login@2x.png */,
+			);
+			path = ipad;
+			sourceTree = "<group>";
+		};
 		B307FDE215FF134700EA5133 /* Compose */ = {
 			isa = PBXGroup;
 			children = (
@@ -1593,6 +1606,7 @@
 				B38E66ED15C64E6700824CB1 /* launch@2x.png */,
 				B38E66EE15C64E6700824CB1 /* login.png */,
 				B38E66EF15C64E6700824CB1 /* login@2x.png */,
+				B224BA63166F3C24004CD7DC /* ipad */,
 			);
 			path = Background;
 			sourceTree = "<group>";
@@ -2496,6 +2510,8 @@
 				B3E60EFF1659D7C7006C8119 /* page5.jpg in Resources */,
 				B2307432166739AB00DFF2E0 /* backend-config-cola.xml in Resources */,
 				B2524B04166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */,
+				B224BA66166F3C24004CD7DC /* login.png in Resources */,
+				B224BA67166F3C24004CD7DC /* login@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

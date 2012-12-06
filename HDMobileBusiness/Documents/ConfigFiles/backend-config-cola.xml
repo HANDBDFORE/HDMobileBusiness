@@ -205,31 +205,25 @@
     <!--loginBackImage-->
     <bean id="loginBackImage" create-url="tt://imageLoader" mode="create">
         <property name="defaultFilePath" value="bundle://login.png"/>
-        <property name="filePath" value="documents://background.png"/>
         <property name="remoteURL" value="${base_url}images/mobile/login.png"/>
-        <property name="saveFileName" value="background.png"/>
         <property name="retinaRemoteURL" value="${base_url}images/mobile/login@2x.png"/>
-        <property name="retinaSaveFileName" value="background@2x.png"/>
+        <property name="saveFileName" value="background.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
     <!--loginButton-->
     <bean id="loginButton" create-url="tt://imageLoader" mode="create">
         <property name="defaultFilePath" value="bundle://loginButton.png"/>
-        <property name="filePath" value="documents://normalButton.png"/>
         <property name="remoteURL" value="${base_url}images/mobile/loginButton.png"/>
-        <property name="saveFileName" value="normalButton.png"/>
         <property name="retinaRemoteURL" value="${base_url}images/mobile/loginButton.png"/>
-        <property name="retinaSaveFileName" value="normalButton@2x.png"/>
+        <property name="saveFileName" value="normalButton.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
     <!--loginHighLightButton-->
     <bean id="loginHighLightButton" create-url="tt://imageLoader" mode="create">
         <property name="defaultFilePath" value="bundle://loginButtonActive.png"/>
-        <property name="filePath" value="documents://highlightedButton.png"/>
         <property name="remoteURL" value="${base_url}images/mobile/loginButtonActive.png"/>
-        <property name="saveFileName" value="highlightedButton.png"/>
         <property name="retinaRemoteURL" value="${base_url}images/mobile/loginButtonActive.png"/>
-        <property name="retinaSaveFileName" value="highlightedButton@2x.png"/>
+        <property name="saveFileName" value="highlightedButton.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
 </beans>
