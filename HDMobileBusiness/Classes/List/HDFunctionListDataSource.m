@@ -10,9 +10,6 @@
 #import "HDTableConfirmViewCell.h"
 #import "HDLoadingViewController.h"
 
-static NSString * kTodoListControllerIdentifier = @"todoListViewController";
-static NSString * kDoneListControllerIdentifier = @"doneListViewController";
-
 @implementation HDFunctionListModel
 
 @synthesize resultList = _resultList;
@@ -139,7 +136,7 @@ static NSString * kDoneListControllerIdentifier = @"doneListViewController";
                           selector:@selector(openURLForItem:)];
     todoListItem.imageURL = @"bundle://mailclosed.png";
     todoListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-    todoListItem.userInfo = kTodoListControllerIdentifier;
+    todoListItem.userInfo = @"todoListViewController";
     
 //    ///////////////////////////
    TTTableImageItem * doneListItem =
@@ -148,7 +145,7 @@ static NSString * kDoneListControllerIdentifier = @"doneListViewController";
                           selector:@selector(openURLForItem:)];
     doneListItem.imageURL = @"bundle://mailopened.png";
     doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-    doneListItem.userInfo = kDoneListControllerIdentifier;
+    doneListItem.userInfo = @"doneListViewController";
     
     ///////////////////////////////
     [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:TTLocalizedString(@"Approve", @"审批") footerTitle:nil] atIndex:0];

@@ -55,6 +55,7 @@
             [self setPattern:[Parser.patternes objectForKey:key] forIdentifier:key];
         }
     }
+    [Parser release];
     return  hasParsedSuccess;
 }
 

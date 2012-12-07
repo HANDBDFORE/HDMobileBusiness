@@ -31,6 +31,8 @@ static NSString * kSQLNull = @"null";
 @synthesize submitURL = _submitURL;
 @synthesize currentIndex = _currentIndex;
 
+@dynamic  groupResultList;
+
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_resultList);
@@ -40,6 +42,10 @@ static NSString * kSQLNull = @"null";
     TT_RELEASE_SAFELY(_queryURL);
     TT_RELEASE_SAFELY(_submitURL);
     TT_RELEASE_SAFELY(_submitList);
+    
+    TT_RELEASE_SAFELY(_groupedCode);
+    TT_RELEASE_SAFELY(_groupedCodeField);
+    TT_RELEASE_SAFELY(_groupedValueField);
     [super dealloc];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,6 +59,10 @@ static NSString * kSQLNull = @"null";
         _vectorRange = NSMakeRange(0, 0);
         _currentIndex = 0;
         _flags.shouldLoadingLocalData = YES;
+        
+        self.groupedCodeField = @"employee_name";
+        self.groupedValueField = @"employee_name";
+        self.groupedCode = @"9999";
     }
     return self;
 }
@@ -294,6 +304,42 @@ static NSString * kSQLNull = @"null";
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-(NSArray *)resultList
+{
+    if (!self.groupedCode || !self.groupedCodeField)
+    {
+        return _resultList;
+    }
+    TTDPRINT(@"get resultList");
+    NSIndexSet * matchedIndexSet = [_resultList indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        BOOL matchFlag = [[obj valueForKey:_groupedCodeField] isEqualToString:_groupedCode];
+        if (self.searchText) {
+            BOOL searchMatchFlag = NO;
+            for (NSString * key in self.searchFields) {
+                searchMatchFlag = searchMatchFlag || [[obj valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
+            }
+            matchFlag = matchFlag && searchMatchFlag;
+        }
+        return matchFlag;
+    }];
+    
+    return [_resultList objectsAtIndexes:matchedIndexSet];
+}
+
+-(NSArray *)groupResultList
+{
+    if (!self.groupedValueField || !self.groupedCodeField)
+    {
+        return nil;
+    }
+    NSMutableSet * groupSet = [NSMutableSet set];
+    for (NSDictionary * record in _resultList) {
+        [groupSet addObject:@{@"codeField":[record valueForKeyPath:_groupedCodeField],
+             @"valueField":[record valueForKeyPath:_groupedValueField]}];
+    }
+    return [groupSet sortedArrayUsingDescriptors:nil];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark CoreStorage
 -(NSArray *)queryRecords
@@ -380,7 +426,7 @@ static NSString * kSQLNull = @"null";
 //        return [[obj valueForKey:kRecordStatus] isEqualToString:kRecordDifferent];
 //    }] allObjects];
 //    [self removeRecords:differentRecords];
-//    
+//
 //    //    _flags.isLoadingLocalData = YES;
 //    [self load:TTURLRequestCachePolicyDefault more:NO];
 //}
@@ -392,16 +438,15 @@ static NSString * kSQLNull = @"null";
     self.searchText = text;
     if (self.searchText.length) {
         [self loadLocalRecords];
-        NSArray * fetchArray = [NSArray arrayWithArray:self.resultList];
-        for (id record in fetchArray) {
-            BOOL matchFlg = NO;
-            for (NSString * key in self.searchFields) {
-                matchFlg = matchFlg || [[record valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-            }
-            if (!matchFlg) {
-                [_resultList removeObject:record];
-            }
-        }
+//        NSIndexSet * unmatchedIndexSet = [self.resultList indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+//            BOOL matchFlg = NO;
+//            for (NSString * key in self.searchFields) {
+//                matchFlg = matchFlg || [[obj valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
+//            }
+//            return !matchFlg;
+//        }];
+//        
+//        [_resultList removeObjectsAtIndexes:unmatchedIndexSet];
         [self didFinishLoad];
     } else {
         //debug:结束查询状态时，需要清空结果列表，否则再次查询时，查询table和model数据不一致导致crash。
@@ -425,7 +470,7 @@ static NSString * kSQLNull = @"null";
 
 -(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary
 {
-    [self submitRecords:@[[_resultList objectAtIndex:_currentIndex]]
+    [self submitRecords:@[[self.resultList objectAtIndex:_currentIndex]]
              dictionary:dictionary];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -434,7 +479,7 @@ static NSString * kSQLNull = @"null";
 {
     for (NSString * key in dictionary) {
         [records setValue:[dictionary valueForKey:key] forKey:key];
-    }    
+    }
     [records setValue:kRecordWaiting forKey:kRecordStatus];
     //debug:调用了错误的方法,不应该使用 addObject
     [_submitList addObjectsFromArray:records];
@@ -450,7 +495,7 @@ static NSString * kSQLNull = @"null";
     if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordDifferent]) {
         //remove
         [self removeRecords:@[record]];
-        [_resultList removeObjectAtIndex:index];
+        [_resultList removeObject:record];
         [self didDeleteObject:record atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
     }
 }
@@ -476,7 +521,7 @@ static NSString * kSQLNull = @"null";
 -(id)current
 {
     if ( _currentIndex < [self.resultList count] && [self effectiveRecordCount] > 0) {
-        return [_resultList objectAtIndex:_currentIndex];
+        return [self.resultList objectAtIndex:_currentIndex];
     }
     return nil;
 }

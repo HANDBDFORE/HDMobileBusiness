@@ -9,14 +9,6 @@
 #import "HDURLRequestModel.h"
 #import "HDListModel.h"
 
-/*
- *使用同步方法从本地存储刷新数据使用状态,当前不启用
- */
-//static NSString * kStorageNormal = @"NORMAL";
-//static NSString * kStorageInsert = @"INSERT";
-//static NSString * kStorageUpdate = @"UPDATE";
-//static NSString * kStorageRemove = @"REMOVE";
-
 @interface HDTodoListModel : HDURLRequestModel<HDListModelVector,HDListModelSubmit>
 {
     @private
@@ -63,6 +55,15 @@
 
 //清除无效的数据,未使用
 //-(void)clear;
+
+#pragma override ModelGroup
+@property(nonatomic,readonly) NSArray * groupResultList;
+
+@property(nonatomic,copy) NSString * groupedCode;
+
+@property(nonatomic,copy) NSString * groupedCodeField;
+
+@property(nonatomic,copy) NSString * groupedValueField;
 
 @end
 

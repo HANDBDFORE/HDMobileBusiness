@@ -41,7 +41,7 @@
 //pad
 #import "HDSplitViewController.h"
 
-#import "HDGroupedTodoListModel.h"
+#import "HDGroupedViewController.h"
 
 #import "HDGroupedTodoListDataSource.h"
 
@@ -133,7 +133,7 @@
         
         [map from:@"tt://todoListModel" toViewController:[HDGroupedTodoListModel class]];
         
-        [map from:@"tt://groupedTodoListViewController" toModalViewController:[TTTableViewController class]];
+        [map from:@"tt://groupedTodoListViewController" toModalViewController:[HDGroupedViewController class]];
         
         [map from:@"tt://groupedTodoListDataSource" toViewController:[HDGroupedTodoListDataSource class]];
         

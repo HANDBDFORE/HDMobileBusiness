@@ -12,8 +12,10 @@
 
 @interface HDGroupedTodoListDataSource : TTListDataSource
 
-@property(nonatomic,retain) id<HDListModelQuery> listModel;
+@property(nonatomic,retain) id<HDListModelQuery,HDListModelGroupe> listModel;
 
-@property(nonatomic,copy) NSString * groupedField;
+@property(nonatomic,copy) NSString * groupedCodeField;
+
+@property(nonatomic,copy) NSString * groupedValueField;
 
 @end

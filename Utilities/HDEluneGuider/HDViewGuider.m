@@ -69,9 +69,6 @@
     if ([_destinationController isKindOfClass:[NSString class]]) {
         self.destinationController = [[HDApplicationContext shareContext]objectForIdentifier:_destinationController query:self.destinationQuery];
     }
-    if (![_destinationController isKindOfClass:[UIViewController class]]) {
-        return nil;
-    }
     return _destinationController;
 }
 

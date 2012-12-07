@@ -10,11 +10,17 @@
         <property name="sourceController" ref="rootWindow"/>
         <property name="destinationController" ref="splitViewController"/>
     </bean>
-    <!--functionListViewController-->
+    <!--functionListViewTableGuider-->
     <bean id="functionListTableGuider"  create-url="tt://splitViewGuider/functionListTableGuider" mode="create">
         <property name="animated" value="true"/>
         <property name="shouldGuideToRight" value="true"/>
         <property name="sourceController" ref="splitViewController"/>
+    </bean>
+    <!--groupedTodoListViewGuirder-->
+    <bean id="groupedTodoListViewGuirder"  create-url="tt://navigatorGuider/groupedTodoListViewGuirder" mode="create">
+        <property name="animated" value="true"/>
+        <property name="sourceController" ref="groupedTodoListViewController"/>
+        <property name="destinationController" ref="todoListViewController"/>
     </bean>
     <!--todolistTableGuider-->
     <bean id="todolistTableGuider" create-url="tt://navigatorGuider/todolistTableGuider" mode="create">
@@ -37,7 +43,7 @@
     <bean id="todoDetailDeliverGuider"  create-url="tt://modalGuider/todoDetailDeliverGuider" mode="create">
         <property name="animated" value="true"/>
         <property name="destinationController" value="deliverNavigator"/>
-        <property name="sourceController" ref="todoDetailController"/>
+        <property name="sourceController" ref="splitViewController"/>
     </bean>
     <!--doneListTableGuider-->
     <bean id="doneListTableGuider"  create-url="tt://navigatorGuider/doneListTableGuider" mode="create">
@@ -96,7 +102,7 @@
     <bean id="todoListViewController" create-url="tt://todoListViewController" mode="share">
         <property name="title" value="todo"/>
         <property name="dataSource" ref="todoListDataSource"/>
-        <property name="listModel" ref="todoListModel"/>
+        <property name="listModel" ref="groupedTodoListModel"/>
         <property name="searchViewController" ref="todoListSearchViewController"/>
     </bean>
     <!--todoListDataSource-->
@@ -110,8 +116,8 @@
                 <element key="isLate" value="${is_late}"/>
             </map>
         </property>
-        <property name="listModel" ref="todoListModel"/>
-        <property name="model" ref="todoListModel"/>
+        <property name="listModel" ref="groupedTodoListModel"/>
+        <property name="model" ref="groupedTodoListModel"/>
     </bean>
     <!--todoListModel-->
     <bean id="todoListModel" create-url="tt://todoListModel" mode="share">
@@ -135,14 +141,16 @@
     <!--todoListSearchDataSource-->
     <bean id="todoListSearchDataSource" create-url="tt://todoListDataSource" mode="share">
         <property name="itemDictionary">
-            <element key="title" value="${workflow_name}:${employee_name}"/>
-            <element key="caption" value="当前节点: ${node_name}"/>
-            <element key="text" value="${workflow_desc}"/>
-            <element key="timestamp" value="${creation_date}"/>
-            <element key="isLate" value="${is_late}"/>
+            <map>
+                <element key="title" value="${workflow_name}:${employee_name}"/>
+                <element key="caption" value="当前节点: ${node_name}"/>
+                <element key="text" value="${workflow_desc}"/>
+                <element key="timestamp" value="${creation_date}"/>
+                <element key="isLate" value="${is_late}"/>
+            </map>
         </property>
-        <property name="listModel" ref="doneListModel"/>
-        <property name="model" ref="doneListModel"/>
+        <property name="listModel" ref="todoListModel"/>
+        <property name="model" ref="todoListModel"/>
     </bean>
     <!--todoListSearchModel-->
     <bean id="todoListSearchModel" share="todoListModel" />
@@ -154,10 +162,12 @@
     <!--doneListDataSource-->
     <bean id="doneListDataSource" create-url="tt://doneListDataSource" mode="share">
         <property name="itemDictionary">
-            <element key="title" value="${workflow_name}:${employee_name}"/>
-            <element key="caption" value="当前节点: ${node_name}"/>
-            <element key="text" value="${workflow_desc}"/>
-            <element key="timestamp" value="${creation_date}"/>
+            <map>
+                <element key="title" value="${workflow_name}:${employee_name}"/>
+                <element key="caption" value="当前节点: ${node_name}"/>
+                <element key="text" value="${workflow_desc}"/>
+                <element key="timestamp" value="${creation_date}"/>
+            </map>
         </property>
         <property name="listModel" ref="doneListModel"/>
         <property name="model" ref="doneListModel"/>
@@ -246,14 +256,23 @@
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
     <bean id="groupedTodoListViewController" create-url="tt://groupedTodoListViewController">
-        <property name="title" value="todo"/>
+        <property name="title" value="Grouped"/>
         <property name="dataSource" ref="groupedTodoListDataSource"/>
     </bean>
     <bean id="groupedTodoListDataSource" create-url="tt://groupedTodoListDataSource">
-        <property name="groupedField" value="employee_name"/>
         <property name="listModel" ref="groupedTodoListModel"/>
         <property name="model" ref="groupedTodoListModel"/>
     </bean>
     <bean id="groupedTodoListModel" create-url="tt://groupedTodoListModel">
+        <property name="primaryField" value="record_id"/>
+        <property name="searchFields">
+            <array>
+                <list value="order_type"/>
+                <list value="node_name"/>
+                <list value="employee_name"/>
+            </array>
+        </property>
+        <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false"/>
+        <property name="submitURL" value="${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"/>
     </bean>    
 </beans>
