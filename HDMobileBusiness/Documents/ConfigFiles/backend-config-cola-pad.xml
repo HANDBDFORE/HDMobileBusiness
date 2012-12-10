@@ -53,7 +53,6 @@
     </bean>
     <!--loginViewController-->
     <bean id="loginViewController"  create-url="tt://nib/HDPadLoginViewController/HDLoginViewController" mode="create">
-        <property name="titleLabelText" value="had=hand"/>
         <property name="loginModel" ref="loginModel"/>
         <property name="backgroundImageLoader" ref="loginBackImage"/>
         <property name="loginButtonNormalImageLoader" ref="loginButton"/>
@@ -248,26 +247,26 @@
     <bean id="resourceLoader" create-url="tt://resourceLoader" mode="share"/>
     <!--loginBackImage-->
     <bean id="loginBackImage" create-url="tt://imageLoader" mode="create">
-        <property name="defaultFilePath" value="bundle://login.png"/>
-        <property name="remoteURL" value="${base_url}images/mobile/loginHZ_pad.png"/>
+        <property name="defaultFilePath" value="bundle://login_pad.png"/>
+        <property name="remoteURL" value="${base_url}images/mobile/loginHZ_pad1.png"/>
         <property name="saveFileName" value="background1.png"/>
-        <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ_pad.png"/>
+        <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ_pad1.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
     <!--loginButton-->
     <bean id="loginButton" create-url="tt://imageLoader" mode="create">
-        <property name="defaultFilePath" value="bundle://loginButton.png"/>
-        <property name="remoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
+        <property name="defaultFilePath" value="bundle://loginButton_pad.png"/>
+        <property name="remoteURL" value="${base_url}images/mobile/loginHZ-padBtnxx.png"/>
         <property name="saveFileName" value="normalButton1.png"/>
-        <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
+        <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ-padBtn3.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
     <!--loginHighLightButton-->
     <bean id="loginHighLightButton" create-url="tt://imageLoader" mode="create">
-        <property name="defaultFilePath" value="bundle://loginButtonActive.png"/>
-        <property name="remoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
+        <property name="defaultFilePath" value="bundle://loginButtonActive_pad.png"/>
+        <property name="remoteURL" value="${base_url}images/mobile/loginHZ-padBtnxx.png"/>
         <property name="saveFileName" value="highlightedButton1.png"/>
-        <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
+        <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ-padBtn2.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
 </beans>

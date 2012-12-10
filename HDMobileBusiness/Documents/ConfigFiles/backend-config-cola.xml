@@ -46,7 +46,6 @@
     </bean>
     <!--loginViewCtrl-->
     <bean id="loginViewCtrl"  create-url="tt://nib/HDLoginViewController/HDLoginViewController" mode="create">
-        <property name="titleLabelText" value="had=hand"/>
         <property name="loginModel" ref="loginModel"/>
         <property name="backgroundImageLoader" ref="loginBackImage"/>
         <property name="loginButtonNormalImageLoader" ref="loginButton"/>

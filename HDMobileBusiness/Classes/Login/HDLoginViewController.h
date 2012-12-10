@@ -19,15 +19,13 @@
 
 @property(nonatomic,assign) id<HDLoginModel> loginModel;
 
-@property(nonatomic,retain) IBOutlet UILabel * titleLabel;
-
 //界面上的用户名和密码
 @property (nonatomic,retain) IBOutlet UITextField * username;
 @property (nonatomic,retain) IBOutlet UITextField * password;
 @property (nonatomic,retain) IBOutlet UIButton * loginBtn;
 
 //配置项
-@property (nonatomic,copy) NSString * titleLabelText;
+//@property (nonatomic,copy) NSString * titleLabelText;
 @property (nonatomic,retain) id<HDImageLoader>  backgroundImageLoader;
 @property (nonatomic,retain) id<HDImageLoader>  loginButtonNormalImageLoader;
 @property (nonatomic,retain) id<HDImageLoader>  loginButonHighlightedImageLoader;

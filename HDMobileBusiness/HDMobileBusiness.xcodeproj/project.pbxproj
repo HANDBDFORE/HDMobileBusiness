@@ -64,14 +64,18 @@
 		B31E2F3715C66EB400880514 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F3115C66EB400880514 /* FMResultSet.m */; };
 		B31E2F3B15C6714800880514 /* HDDefaultStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F3A15C6714800880514 /* HDDefaultStyleSheet.m */; };
 		B31E2F3D15C6732100880514 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B31E2F3C15C6732100880514 /* Settings.bundle */; };
-		B32E7102166F3648006D768D /* loginHD-padBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = B32E7100166F3648006D768D /* loginHD-padBtn.png */; };
-		B32E7103166F3648006D768D /* loginHZ_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B32E7101166F3648006D768D /* loginHZ_pad.png */; };
 		B336DEF6165E252100057B95 /* HDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B336DEF5165E252100057B95 /* HDNavigationController.m */; };
 		B33A23BA15D9033A0066383C /* HDDataToStringConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B33A23B915D903390066383C /* HDDataToStringConvertor.m */; };
 		B34660BC15C678DD00EFDF24 /* HDLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B715C678DD00EFDF24 /* HDLoginModel.m */; };
 		B34660BD15C678DD00EFDF24 /* HDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B915C678DD00EFDF24 /* HDLoginViewController.m */; };
 		B34660BE15C678DD00EFDF24 /* HDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */; };
 		B356A26B15D0A5C900E88192 /* HDCoreStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B356A26A15D0A5C900E88192 /* HDCoreStorage.m */; };
+		B366463E1675BB0300A13F76 /* login_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B366463D1675BB0300A13F76 /* login_pad.png */; };
+		B36646431675BE2900A13F76 /* loginButton_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B366463F1675BE2900A13F76 /* loginButton_pad.png */; };
+		B36646441675BE2900A13F76 /* loginButton_pad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B36646401675BE2900A13F76 /* loginButton_pad@2x.png */; };
+		B36646451675BE2900A13F76 /* loginButtonActive_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B36646411675BE2900A13F76 /* loginButtonActive_pad.png */; };
+		B36646461675BE2900A13F76 /* loginButtonActive_pad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B36646421675BE2900A13F76 /* loginButtonActive_pad@2x.png */; };
+		B36646481675C81E00A13F76 /* login_pad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B36646471675C81E00A13F76 /* login_pad@2x.png */; };
 		B368B08815D3A14600B6EAEB /* HDSQLCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B368B08715D3A14600B6EAEB /* HDSQLCenter.m */; };
 		B36BDA9215C64777003A4A5D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9115C64777003A4A5D /* UIKit.framework */; };
 		B36BDA9415C64777003A4A5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36BDA9315C64777003A4A5D /* Foundation.framework */; };
@@ -725,8 +729,6 @@
 		B31E2F3915C6714800880514 /* HDDefaultStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDefaultStyleSheet.h; sourceTree = "<group>"; };
 		B31E2F3A15C6714800880514 /* HDDefaultStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDefaultStyleSheet.m; sourceTree = "<group>"; };
 		B31E2F3C15C6732100880514 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		B32E7100166F3648006D768D /* loginHD-padBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loginHD-padBtn.png"; path = "../../../../../../../Downloads/HMBS/loginHD-padBtn.png"; sourceTree = "<group>"; };
-		B32E7101166F3648006D768D /* loginHZ_pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loginHZ_pad.png; path = ../../../../../../../Downloads/HMBS/loginHZ_pad.png; sourceTree = "<group>"; };
 		B336DEF1165E0B8400057B95 /* HDTodoListModelStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListModelStatus.h; path = Classes/List/HDTodoListModelStatus.h; sourceTree = SOURCE_ROOT; };
 		B336DEF4165E252100057B95 /* HDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDNavigationController.h; sourceTree = "<group>"; };
 		B336DEF5165E252100057B95 /* HDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDNavigationController.m; sourceTree = "<group>"; };
@@ -744,6 +746,12 @@
 		B356A26915D0A5C900E88192 /* HDCoreStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDCoreStorage.h; sourceTree = "<group>"; };
 		B356A26A15D0A5C900E88192 /* HDCoreStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDCoreStorage.m; sourceTree = "<group>"; };
 		B35BBF7A15E74301008F90E3 /* HDSingletonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSingletonObject.h; sourceTree = "<group>"; };
+		B366463D1675BB0300A13F76 /* login_pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_pad.png; sourceTree = "<group>"; };
+		B366463F1675BE2900A13F76 /* loginButton_pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginButton_pad.png; sourceTree = "<group>"; };
+		B36646401675BE2900A13F76 /* loginButton_pad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginButton_pad@2x.png"; sourceTree = "<group>"; };
+		B36646411675BE2900A13F76 /* loginButtonActive_pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginButtonActive_pad.png; sourceTree = "<group>"; };
+		B36646421675BE2900A13F76 /* loginButtonActive_pad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginButtonActive_pad@2x.png"; sourceTree = "<group>"; };
+		B36646471675C81E00A13F76 /* login_pad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_pad@2x.png"; sourceTree = "<group>"; };
 		B368B08615D3A14600B6EAEB /* HDSQLCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSQLCenter.h; sourceTree = "<group>"; };
 		B368B08715D3A14600B6EAEB /* HDSQLCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSQLCenter.m; sourceTree = "<group>"; };
 		B36BDA8D15C64777003A4A5D /* HDMobileBusiness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HDMobileBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1345,8 +1353,6 @@
 		B34660B315C678DD00EFDF24 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B32E7100166F3648006D768D /* loginHD-padBtn.png */,
-				B32E7101166F3648006D768D /* loginHZ_pad.png */,
 				B34660B615C678DD00EFDF24 /* HDLoginModel.h */,
 				B34660B715C678DD00EFDF24 /* HDLoginModel.m */,
 				B34660B815C678DD00EFDF24 /* HDLoginViewController.h */,
@@ -1619,6 +1625,8 @@
 		B38E66EB15C64E6700824CB1 /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				B36646471675C81E00A13F76 /* login_pad@2x.png */,
+				B366463D1675BB0300A13F76 /* login_pad.png */,
 				B3893CE7164A3810004E326A /* loadingAlert.png */,
 				B3893CE4164A37FE004E326A /* loadingAlert@2x.png */,
 				B38E66EC15C64E6700824CB1 /* launch.png */,
@@ -1632,6 +1640,10 @@
 		B38E66F015C64E6700824CB1 /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				B366463F1675BE2900A13F76 /* loginButton_pad.png */,
+				B36646401675BE2900A13F76 /* loginButton_pad@2x.png */,
+				B36646411675BE2900A13F76 /* loginButtonActive_pad.png */,
+				B36646421675BE2900A13F76 /* loginButtonActive_pad@2x.png */,
 				B38E66F115C64E6700824CB1 /* loginButton.png */,
 				B38E66F215C64E6700824CB1 /* loginButton@2x.png */,
 				B38E66F315C64E6700824CB1 /* loginButtonActive.png */,
@@ -2536,8 +2548,12 @@
 				B3FE7AD1166D89CF00CA0B0C /* padIcon@2x.png in Resources */,
 				B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */,
 				B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */,
-				B32E7102166F3648006D768D /* loginHD-padBtn.png in Resources */,
-				B32E7103166F3648006D768D /* loginHZ_pad.png in Resources */,
+				B366463E1675BB0300A13F76 /* login_pad.png in Resources */,
+				B36646431675BE2900A13F76 /* loginButton_pad.png in Resources */,
+				B36646441675BE2900A13F76 /* loginButton_pad@2x.png in Resources */,
+				B36646451675BE2900A13F76 /* loginButtonActive_pad.png in Resources */,
+				B36646461675BE2900A13F76 /* loginButtonActive_pad@2x.png in Resources */,
+				B36646481675C81E00A13F76 /* login_pad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

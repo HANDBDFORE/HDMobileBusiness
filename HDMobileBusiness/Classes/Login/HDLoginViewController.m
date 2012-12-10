@@ -10,7 +10,6 @@
 
 @implementation HDLoginViewController
 
-@synthesize titleLabel = _titleLabel;
 @synthesize username = _username;
 @synthesize password = _password;
 @synthesize loginBtn = _loginBtn;
@@ -45,7 +44,6 @@
 {
     [self removeObserver:_loginModel forKeyPath:@"username.text"];
     [self removeObserver:_loginModel forKeyPath:@"password.text"];
-    TT_RELEASE_SAFELY(_titleLabel);
     TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_password);
     TT_RELEASE_SAFELY(_loginBtn);
@@ -70,10 +68,6 @@
     
     _passwordDelegate = [[HDTextFieldDelegate alloc]initWithTarget:self selector:@selector(passwordFieldShouldReturn:)];
     _password.delegate = _passwordDelegate;
-    
-    if (self.titleLabelText) {
-        self.titleLabel.text = self.titleLabelText;
-    }
     
     if (self.backgroundImageLoader) {
         [(UIImageView *)[self.view viewWithTag:9] setImage:[self.backgroundImageLoader image]];
