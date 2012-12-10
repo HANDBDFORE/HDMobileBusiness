@@ -48,14 +48,14 @@
 
 -(BOOL)configWithXmlPath:(NSString *) xmlPath
 {
-    HDXMLParser *Parser = [[HDXMLParser alloc]initWithXmlPath:xmlPath];
-    BOOL hasParsedSuccess = [Parser parse];
+    HDXMLParser *parser = [[HDXMLParser alloc]initWithXmlPath:xmlPath];
+    BOOL hasParsedSuccess = [parser parse];
     if (hasParsedSuccess){
-        for (NSString*key in Parser.patternes) {
-            [self setPattern:[Parser.patternes objectForKey:key] forIdentifier:key];
+        for (NSString*key in parser.patternes) {
+            [self setPattern:[parser.patternes objectForKey:key] forIdentifier:key];
         }
     }
-    [Parser release];
+    [parser release];
     return  hasParsedSuccess;
 }
 

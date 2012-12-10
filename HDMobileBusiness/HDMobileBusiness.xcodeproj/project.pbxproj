@@ -91,7 +91,6 @@
 		B36F7A731631440B0090646E /* HDTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B36F7A721631440B0090646E /* HDTextFieldDelegate.m */; };
 		B37467E915C78112003068CB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467E815C78112003068CB /* Default.png */; };
 		B37467EB15C78118003068CB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B37467EA15C78118003068CB /* Default@2x.png */; };
-		B38693AA1636582100223924 /* HDImageConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B38693A91636582100223924 /* HDImageConfigObject.m */; };
 		B3881EF8161025F700FEF878 /* NSString+HDAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = B3881EF7161025F700FEF878 /* NSString+HDAddtions.m */; };
 		B3893CDB164A31DC004E326A /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 320B6C86F11D9990244A9730 /* Three20.bundle */; };
 		B3893CDE164A321C004E326A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B3893CDD164A321C004E326A /* Settings.bundle */; };
@@ -327,13 +326,7 @@
 		B398B86B164A08140017FCD6 /* HDJSONToDataConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E688815C655C600824CB1 /* HDJSONToDataConvertor.m */; };
 		B398B86D164A08140017FCD6 /* HDDataToStringConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B33A23B915D903390066383C /* HDDataToStringConvertor.m */; };
 		B398B873164A08140017FCD6 /* HDGlobalMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E689515C656B000824CB1 /* HDGlobalMetrics.m */; };
-		B398B875164A08140017FCD6 /* HDArrayConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE4041614401400981662 /* HDArrayConfigObject.m */; };
-		B398B877164A08140017FCD6 /* HDBaseConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CC44CA161197BA007BABA4 /* HDBaseConfigObject.m */; };
-		B398B87A164A08140017FCD6 /* HDContainerConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE3FE1614125400981662 /* HDContainerConfigObject.m */; };
-		B398B87C164A08140017FCD6 /* HDDictionaryConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE401161425A300981662 /* HDDictionaryConfigObject.m */; };
-		B398B87E164A08140017FCD6 /* HDNumberConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CC44CD16119CD0007BABA4 /* HDNumberConfigObject.m */; };
 		B398B880164A08140017FCD6 /* HDXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E20215E60AD80061ED4D /* HDXMLParser.m */; };
-		B398B882164A08140017FCD6 /* HDImageConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B38693A91636582100223924 /* HDImageConfigObject.m */; };
 		B398B884164A08140017FCD6 /* HDResponseMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D0977D15DBA64300C3495D /* HDResponseMap.m */; };
 		B398B886164A08140017FCD6 /* HDHTTPRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E687315C654DA00824CB1 /* HDHTTPRequestCenter.m */; };
 		B398B888164A08140017FCD6 /* HDRequestGetMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B38E686D15C654DA00824CB1 /* HDRequestGetMap.m */; };
@@ -363,8 +356,6 @@
 		B398B8A5164A08E70017FCD6 /* HDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B398B7001649F6DC0017FCD6 /* HDAppDelegate.m */; };
 		B398B8A6164A099E0017FCD6 /* mobileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E670015C64E6700824CB1 /* mobileIcon.png */; };
 		B3B67ED2165CC666003B7D11 /* HDShowInViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */; };
-		B3CC44CB161197BA007BABA4 /* HDBaseConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CC44CA161197BA007BABA4 /* HDBaseConfigObject.m */; };
-		B3CC44CE16119CD1007BABA4 /* HDNumberConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CC44CD16119CD0007BABA4 /* HDNumberConfigObject.m */; };
 		B3CD01891662F518002321A9 /* HDApplicationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B850165F4DC30073C9D5 /* HDApplicationContext.m */; };
 		B3CD018A1662F52E002321A9 /* HDImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B849165F33940073C9D5 /* HDImageLoader.m */; };
 		B3CD018B1662F52E002321A9 /* HDResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B84C165F42FD0073C9D5 /* HDResourceLoader.m */; };
@@ -385,9 +376,6 @@
 		B3D71B8416030344004E1BFD /* HDPersonListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */; };
 		B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8316030344004E1BFD /* HDPersonListModel.m */; };
 		B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */; };
-		B3DAE3FF1614125400981662 /* HDContainerConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE3FE1614125400981662 /* HDContainerConfigObject.m */; };
-		B3DAE402161425A300981662 /* HDDictionaryConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE401161425A300981662 /* HDDictionaryConfigObject.m */; };
-		B3DAE4051614401400981662 /* HDArrayConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B3DAE4041614401400981662 /* HDArrayConfigObject.m */; };
 		B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12326165486B400C685CB /* HDSplitViewController.m */; };
 		B3E1232A165486B400C685CB /* StackScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12327165486B400C685CB /* StackScrollViewController.m */; };
 		B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12328165486B400C685CB /* UIViewWithShadow.m */; };
@@ -776,8 +764,6 @@
 		B36F7A721631440B0090646E /* HDTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTextFieldDelegate.m; sourceTree = "<group>"; };
 		B37467E815C78112003068CB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		B37467EA15C78118003068CB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
-		B38693A81636582100223924 /* HDImageConfigObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDImageConfigObject.h; sourceTree = "<group>"; };
-		B38693A91636582100223924 /* HDImageConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDImageConfigObject.m; sourceTree = "<group>"; };
 		B3881EF6161025F700FEF878 /* NSString+HDAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HDAddtions.h"; sourceTree = "<group>"; };
 		B3881EF7161025F700FEF878 /* NSString+HDAddtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HDAddtions.m"; sourceTree = "<group>"; };
 		B3893CDD164A321C004E326A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -981,11 +967,6 @@
 		B39BC5581601765C00551C63 /* HDListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDListModel.h; path = Classes/List/HDListModel.h; sourceTree = "<group>"; };
 		B3B67ED0165CC665003B7D11 /* HDShowInViewGuider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDShowInViewGuider.h; sourceTree = "<group>"; };
 		B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDShowInViewGuider.m; sourceTree = "<group>"; };
-		B3CC44C616119408007BABA4 /* HDConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDConfig.h; sourceTree = "<group>"; };
-		B3CC44C71611966D007BABA4 /* HDBaseConfigObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDBaseConfigObject.h; sourceTree = "<group>"; };
-		B3CC44CA161197BA007BABA4 /* HDBaseConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDBaseConfigObject.m; sourceTree = "<group>"; };
-		B3CC44CC16119CD0007BABA4 /* HDNumberConfigObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDNumberConfigObject.h; sourceTree = "<group>"; };
-		B3CC44CD16119CD0007BABA4 /* HDNumberConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDNumberConfigObject.m; sourceTree = "<group>"; };
 		B3CD019316635305002321A9 /* HDSplitViewGuider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSplitViewGuider.h; sourceTree = "<group>"; };
 		B3CD019416635305002321A9 /* HDSplitViewGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSplitViewGuider.m; sourceTree = "<group>"; };
 		B3D0977C15DBA64300C3495D /* HDResponseMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDResponseMap.h; sourceTree = "<group>"; };
@@ -1005,12 +986,6 @@
 		B3D71B8316030344004E1BFD /* HDPersonListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDPersonListModel.m; path = Classes/List/HDPersonListModel.m; sourceTree = "<group>"; };
 		B3D9EFE51608594D00454A5E /* HDDeliverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeliverViewController.h; path = Classes/Compose/HDDeliverViewController.h; sourceTree = "<group>"; };
 		B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDDeliverViewController.m; path = Classes/Compose/HDDeliverViewController.m; sourceTree = "<group>"; };
-		B3DAE3FD1614125400981662 /* HDContainerConfigObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDContainerConfigObject.h; sourceTree = "<group>"; };
-		B3DAE3FE1614125400981662 /* HDContainerConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDContainerConfigObject.m; sourceTree = "<group>"; };
-		B3DAE400161425A300981662 /* HDDictionaryConfigObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDictionaryConfigObject.h; sourceTree = "<group>"; };
-		B3DAE401161425A300981662 /* HDDictionaryConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDictionaryConfigObject.m; sourceTree = "<group>"; };
-		B3DAE4031614401300981662 /* HDArrayConfigObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDArrayConfigObject.h; sourceTree = "<group>"; };
-		B3DAE4041614401400981662 /* HDArrayConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDArrayConfigObject.m; sourceTree = "<group>"; };
 		B3E06E2B15D4F388002A54BE /* TodoListUI.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = TodoListUI.rtfd; path = Requirement/TodoList/TodoListUI.rtfd; sourceTree = "<group>"; };
 		B3E06E2C15D4FFC8002A54BE /* TodoListModel.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = TodoListModel.rtf; path = Requirement/TodoList/TodoListModel.rtf; sourceTree = "<group>"; };
 		B3E06E3015D509F1002A54BE /* ErrorMessage.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ErrorMessage.rtf; sourceTree = "<group>"; };
@@ -1318,26 +1293,6 @@
 			);
 			name = Styles;
 			path = Classes/Styles;
-			sourceTree = "<group>";
-		};
-		B336DEF2165E23D900057B95 /* trash */ = {
-			isa = PBXGroup;
-			children = (
-				B38693A81636582100223924 /* HDImageConfigObject.h */,
-				B38693A91636582100223924 /* HDImageConfigObject.m */,
-				B3DAE4031614401300981662 /* HDArrayConfigObject.h */,
-				B3DAE4041614401400981662 /* HDArrayConfigObject.m */,
-				B3CC44C71611966D007BABA4 /* HDBaseConfigObject.h */,
-				B3CC44CA161197BA007BABA4 /* HDBaseConfigObject.m */,
-				B3CC44C616119408007BABA4 /* HDConfig.h */,
-				B3DAE3FD1614125400981662 /* HDContainerConfigObject.h */,
-				B3DAE3FE1614125400981662 /* HDContainerConfigObject.m */,
-				B3DAE400161425A300981662 /* HDDictionaryConfigObject.h */,
-				B3DAE401161425A300981662 /* HDDictionaryConfigObject.m */,
-				B3CC44CC16119CD0007BABA4 /* HDNumberConfigObject.h */,
-				B3CC44CD16119CD0007BABA4 /* HDNumberConfigObject.m */,
-			);
-			name = trash;
 			sourceTree = "<group>";
 		};
 		B336DEF3165E250500057B95 /* Navigatior */ = {
@@ -2004,7 +1959,6 @@
 		B3D4E20015E60ABB0061ED4D /* HDGodXMLParser */ = {
 			isa = PBXGroup;
 			children = (
-				B336DEF2165E23D900057B95 /* trash */,
 				B3D4E20115E60AD80061ED4D /* HDXMLParser.h */,
 				B3D4E20215E60AD80061ED4D /* HDXMLParser.m */,
 			);
@@ -2681,14 +2635,8 @@
 				B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */,
 				B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */,
 				B3881EF8161025F700FEF878 /* NSString+HDAddtions.m in Sources */,
-				B3CC44CB161197BA007BABA4 /* HDBaseConfigObject.m in Sources */,
-				B3CC44CE16119CD1007BABA4 /* HDNumberConfigObject.m in Sources */,
-				B3DAE3FF1614125400981662 /* HDContainerConfigObject.m in Sources */,
-				B3DAE402161425A300981662 /* HDDictionaryConfigObject.m in Sources */,
-				B3DAE4051614401400981662 /* HDArrayConfigObject.m in Sources */,
 				B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */,
 				B36F7A731631440B0090646E /* HDTextFieldDelegate.m in Sources */,
-				B38693AA1636582100223924 /* HDImageConfigObject.m in Sources */,
 				B3E60EEF1659D768006C8119 /* HDObjectPattern.m in Sources */,
 				B3E60F151659DC14006C8119 /* HDViewGuider.m in Sources */,
 				B3E60F511659F924006C8119 /* HDRootViewGuider.m in Sources */,
@@ -2787,13 +2735,7 @@
 				B398B86B164A08140017FCD6 /* HDJSONToDataConvertor.m in Sources */,
 				B398B86D164A08140017FCD6 /* HDDataToStringConvertor.m in Sources */,
 				B398B873164A08140017FCD6 /* HDGlobalMetrics.m in Sources */,
-				B398B875164A08140017FCD6 /* HDArrayConfigObject.m in Sources */,
-				B398B877164A08140017FCD6 /* HDBaseConfigObject.m in Sources */,
-				B398B87A164A08140017FCD6 /* HDContainerConfigObject.m in Sources */,
-				B398B87C164A08140017FCD6 /* HDDictionaryConfigObject.m in Sources */,
-				B398B87E164A08140017FCD6 /* HDNumberConfigObject.m in Sources */,
 				B398B880164A08140017FCD6 /* HDXMLParser.m in Sources */,
-				B398B882164A08140017FCD6 /* HDImageConfigObject.m in Sources */,
 				B398B884164A08140017FCD6 /* HDResponseMap.m in Sources */,
 				B398B886164A08140017FCD6 /* HDHTTPRequestCenter.m in Sources */,
 				B398B888164A08140017FCD6 /* HDRequestGetMap.m in Sources */,

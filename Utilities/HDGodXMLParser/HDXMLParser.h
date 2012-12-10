@@ -7,8 +7,12 @@
 //
 #import "HDObjectPattern.h"
 @interface HDXMLParser : NSObject<NSXMLParserDelegate>
+
 @property (retain, nonatomic) NSMutableDictionary *patternes;
 @property (retain, nonatomic) NSError *parseError;
+
 -(id)initWithXmlPath:(NSString *)xmlpath;
+
 -(BOOL)parse;
+
 @end

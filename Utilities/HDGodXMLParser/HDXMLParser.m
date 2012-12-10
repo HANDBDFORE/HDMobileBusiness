@@ -26,20 +26,20 @@
 }
 @end
 @implementation HDXMLParser
-@synthesize patternes = _Patternes;
+@synthesize patternes = _patternes;
 @synthesize parseError = _parseError;
 
 -(id)initWithXmlPath:(NSString *)xmlpath{
     self = [super init];
     if (self) {
-        _Patternes = [[NSMutableDictionary alloc]init];
+        _patternes = [[NSMutableDictionary alloc]init];
         xmlPath = xmlpath;
     }
     return self;
 }
 - (void)dealloc
 {
-    [_Patternes release];
+    [_patternes release];
     [propertyRefbeans release];
     [propertyValues release];
     [currentArray release];
@@ -48,8 +48,8 @@
 }
 
 -(BOOL)parse{
-    NSData * data = [NSData dataWithContentsOfFile:@"Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-cola-pad.xml"];
-//    NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(xmlPath)];
+//    NSData * data = [NSData dataWithContentsOfFile:@"Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-cola-pad.xml"];
+    NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(xmlPath)];
     NSXMLParser *parser = [[NSXMLParser alloc]initWithData:data]; //设置XML数据
     [parser setShouldProcessNamespaces:NO];
     [parser setShouldReportNamespacePrefixes:NO];
@@ -66,15 +66,15 @@
 -(void)parserattribute:attributeDict{
     if ([attributeDict objectForKey:@"copy"]) {
         //复制参数
-        propertyRefbeans = (NSMutableDictionary *)[(HDObjectPattern *)[_Patternes objectForKey:[attributeDict objectForKey:@"copy"]] beans];
-        propertyValues = (NSMutableDictionary *)[(HDObjectPattern *)[_Patternes objectForKey:[attributeDict objectForKey:@"copy"]] values];
-        [_Patternes setObject:[[(HDObjectPattern *)[_Patternes objectForKey:[attributeDict objectForKey:@"copy"]]copy] autorelease] forKey:[attributeDict objectForKey:@"id"]];
+        propertyRefbeans = (NSMutableDictionary *)[(HDObjectPattern *)[_patternes objectForKey:[attributeDict objectForKey:@"copy"]] beans];
+        propertyValues = (NSMutableDictionary *)[(HDObjectPattern *)[_patternes objectForKey:[attributeDict objectForKey:@"copy"]] values];
+        [_patternes setObject:[[(HDObjectPattern *)[_patternes objectForKey:[attributeDict objectForKey:@"copy"]]copy] autorelease] forKey:[attributeDict objectForKey:@"id"]];
     }else if([attributeDict objectForKey:@"share"]){
-        [_Patternes setObject:(HDObjectPattern *)[_Patternes objectForKey:[attributeDict objectForKey:@"share"]]forKey:[attributeDict objectForKey:@"id"]];
+        [_patternes setObject:(HDObjectPattern *)[_patternes objectForKey:[attributeDict objectForKey:@"share"]]forKey:[attributeDict objectForKey:@"id"]];
         isContinue = NO;
     }else{
         HDObjectPattern *newPattern =[HDObjectPattern patternWithURL:[attributeDict objectForKey:@"create-url"]propertyValues:nil propertyRefBeans:nil objectMode:[[attributeDict objectForKey:@"mode"] isEqualToString:@"create"]?HDObjectModeCreate:HDObjectModeShare];
-        [_Patternes setObject:newPattern forKey:[attributeDict objectForKey:@"id"]];
+        [_patternes setObject:newPattern forKey:[attributeDict objectForKey:@"id"]];
     }
     
 }
@@ -120,8 +120,8 @@
     //解析完bean
     if ([[elementName uppercaseString] isEqualToString:@"BEAN"] ) {
         if (isContinue) {
-            [(HDObjectPattern *)[_Patternes objectForKey:beanId ] setValues:propertyValues];
-            [(HDObjectPattern *)[_Patternes objectForKey:beanId ] setBeans:propertyRefbeans];
+            [(HDObjectPattern *)[_patternes objectForKey:beanId ] setValues:propertyValues];
+            [(HDObjectPattern *)[_patternes objectForKey:beanId ] setBeans:propertyRefbeans];
         }
         [propertyRefbeans release];
         propertyRefbeans = nil;
