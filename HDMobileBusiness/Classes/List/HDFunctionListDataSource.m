@@ -136,16 +136,16 @@
                           selector:@selector(openURLForItem:)];
     todoListItem.imageURL = @"bundle://mailclosed.png";
     todoListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-    todoListItem.userInfo = @"todoListViewController";
+    todoListItem.userInfo = @"groupedTodoListViewController";
     
-//    ///////////////////////////
+/////////////////////////////
    TTTableImageItem * doneListItem =
     [TTTableImageItem itemWithText:TTLocalizedString(@"Approved List", @"审批完成")
                           delegate:self
                           selector:@selector(openURLForItem:)];
     doneListItem.imageURL = @"bundle://mailopened.png";
     doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-    doneListItem.userInfo = @"doneListViewController";
+    doneListItem.userInfo = @"doneListViewControllerNavigator";
     
     ///////////////////////////////
     [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:TTLocalizedString(@"Approve", @"审批") footerTitle:nil] atIndex:0];

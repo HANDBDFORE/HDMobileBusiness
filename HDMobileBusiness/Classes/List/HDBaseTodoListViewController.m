@@ -95,6 +95,7 @@
     removeRecordRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     removeRecordRecognizer.numberOfTouchesRequired = 1;
     [self.tableView addGestureRecognizer:removeRecordRecognizer];
+    [self.model load:TTURLRequestCachePolicyDefault more:NO];
 }
 
 #pragma  -mark toolbar Buttons

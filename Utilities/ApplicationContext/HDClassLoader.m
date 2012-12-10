@@ -45,8 +45,6 @@
 
 #import "HDGroupedTodoListDataSource.h"
 
-#import "HDGroupedTodoListModel.h"
-
 //gloable
 #import "HDResourceLoader.h"
 
@@ -131,13 +129,11 @@
     if (TTIsPad()) {
         [map from:@"tt://split" toViewController:[HDSplitViewController class]];
         
-        [map from:@"tt://todoListModel" toViewController:[HDGroupedTodoListModel class]];
+        [map from:@"tt://todoListModel" toViewController:[HDTodoListModel class]];
         
         [map from:@"tt://groupedTodoListViewController" toModalViewController:[HDGroupedViewController class]];
         
         [map from:@"tt://groupedTodoListDataSource" toViewController:[HDGroupedTodoListDataSource class]];
-        
-        [map from:@"tt://groupedTodoListModel" toViewController:[HDGroupedTodoListModel class]];
     }
 }
 

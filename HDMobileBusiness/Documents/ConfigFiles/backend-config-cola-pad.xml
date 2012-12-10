@@ -80,7 +80,7 @@
     <bean id="rightNavigator"  create-url="tt://navigator" mode="share">
         <property name="pushedViewControllers" >
             <array>
-                <list value="todoListViewController"/>
+                <list value="groupedTodoListViewController"/>
             </array>
         </property>
     </bean>
@@ -102,7 +102,7 @@
     <bean id="todoListViewController" create-url="tt://todoListViewController" mode="share">
         <property name="title" value="todo"/>
         <property name="dataSource" ref="todoListDataSource"/>
-        <property name="listModel" ref="groupedTodoListModel"/>
+        <property name="listModel" ref="todoListModel"/>
         <property name="searchViewController" ref="todoListSearchViewController"/>
     </bean>
     <!--todoListDataSource-->
@@ -116,8 +116,8 @@
                 <element key="isLate" value="${is_late}"/>
             </map>
         </property>
-        <property name="listModel" ref="groupedTodoListModel"/>
-        <property name="model" ref="groupedTodoListModel"/>
+        <property name="listModel" ref="todoListModel"/>
+        <property name="model" ref="todoListModel"/>
     </bean>
     <!--todoListModel-->
     <bean id="todoListModel" create-url="tt://todoListModel" mode="share">
@@ -129,6 +129,8 @@
                 <list value="employee_name"/>
             </array>
         </property>
+        <property name="groupedCodeField" value="employee_name"/>
+        <property name="groupedValueField" value="employee_name"/>
         <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false"/>
         <property name="submitURL" value="${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"/>
     </bean>
@@ -149,11 +151,20 @@
                 <element key="isLate" value="${is_late}"/>
             </map>
         </property>
-        <property name="listModel" ref="todoListModel"/>
-        <property name="model" ref="todoListModel"/>
+        <property name="listModel" ref="todoListSearchModel"/>
+        <property name="model" ref="todoListSearchModel"/>
     </bean>
     <!--todoListSearchModel-->
     <bean id="todoListSearchModel" share="todoListModel" />
+    
+    <!--doneListViewControllerNavigator-->
+    <bean id="doneListViewControllerNavigator"  create-url="tt://navigator" mode="share">
+        <property name="pushedViewControllers" >
+            <array>
+                <list value="doneListViewController"/>
+            </array>
+        </property>
+    </bean>
     <!--doneListViewController-->
     <bean id="doneListViewController" create-url="tt://doneListViewController" mode="share">
         <property name="title" value="done list"/>
@@ -255,24 +266,12 @@
         <property name="retinaSaveFileName" value="highlightedButton1@2x.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
-    <bean id="groupedTodoListViewController" create-url="tt://groupedTodoListViewController">
+    <bean id="groupedTodoListViewController" create-url="tt://groupedTodoListViewController" mode="share">
         <property name="title" value="Grouped"/>
         <property name="dataSource" ref="groupedTodoListDataSource"/>
     </bean>
     <bean id="groupedTodoListDataSource" create-url="tt://groupedTodoListDataSource">
-        <property name="listModel" ref="groupedTodoListModel"/>
-        <property name="model" ref="groupedTodoListModel"/>
+        <property name="listModel" ref="todoListModel"/>
+        <property name="model" ref="todoListModel"/>
     </bean>
-    <bean id="groupedTodoListModel" create-url="tt://groupedTodoListModel">
-        <property name="primaryField" value="record_id"/>
-        <property name="searchFields">
-            <array>
-                <list value="order_type"/>
-                <list value="node_name"/>
-                <list value="employee_name"/>
-            </array>
-        </property>
-        <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false"/>
-        <property name="submitURL" value="${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"/>
-    </bean>    
 </beans>
