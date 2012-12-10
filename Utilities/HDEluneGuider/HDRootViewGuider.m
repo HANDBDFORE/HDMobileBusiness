@@ -11,12 +11,8 @@
 @implementation HDRootViewGuider
 
 -(void)perform
-{
+{    
     [(UIWindow *)self.sourceController setRootViewController:self.destinationController];
-
-//    if ([self.sourceController isKindOfClass:[UIWindow class]]) {
-//        [self.sourceController setRootViewController:self.destinationController];
-//    }
 }
 
 @end

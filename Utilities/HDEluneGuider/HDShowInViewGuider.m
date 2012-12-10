@@ -11,9 +11,7 @@
 @implementation HDShowInViewGuider
 
 -(void)perform{
-    if ([self.destinationController respondsToSelector:@selector(showInView:animated:)]) {
-        [self.destinationController showInView:[(UIViewController *)self.sourceController view]
-                                      animated:self.animated];
-    }
+    [self.destinationController showInView:[(UIViewController *)self.sourceController view]
+                                  animated:self.animated];
 }
 @end

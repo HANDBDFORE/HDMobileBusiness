@@ -9,12 +9,10 @@
 @interface HDXMLParser(){
     //xmlPath
     NSString *xmlPath;
-    //所有解析出来的Beans
-    NSMutableDictionary *Beans;
     //当前bean的ID
     NSString *beanId;
-    //当前Bean的RefBeans
-    NSMutableDictionary *propertyRefBeans;
+    //当前Bean的Refbeans
+    NSMutableDictionary *propertyRefbeans;
     //当前Bean的Values
     NSMutableDictionary *propertyValues;
     //当前的property
@@ -34,15 +32,15 @@
 -(id)initWithXmlPath:(NSString *)xmlpath{
     self = [super init];
     if (self) {
-        Beans = [[NSMutableDictionary alloc]init];
+        _Patternes = [[NSMutableDictionary alloc]init];
         xmlPath = xmlpath;
     }
     return self;
 }
 - (void)dealloc
 {
-    [Beans release];
-    [propertyRefBeans release];
+    [_Patternes release];
+    [propertyRefbeans release];
     [propertyValues release];
     [currentArray release];
     [currentDict release];
@@ -50,7 +48,7 @@
 }
 
 -(BOOL)parse{
-//    NSData * data = [NSData dataWithContentsOfFile:@"/Users/hand/Documents/workspace/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-cola.xml"];
+//    NSData * data = [NSData dataWithContentsOfFile:@"/Users/hand/Documents/workspace/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-cola-pad.xml"];
     NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(xmlPath)];
     NSXMLParser *parser = [[NSXMLParser alloc]initWithData:data]; //设置XML数据
     [parser setShouldProcessNamespaces:NO];
@@ -69,29 +67,27 @@
 -(void)parserattribute:attributeDict{
     if ([attributeDict objectForKey:@"copy"]) {
         //复制参数
-        propertyRefBeans = (NSMutableDictionary *)[(HDObjectPattern *)[Beans objectForKey:[attributeDict objectForKey:@"copy"]] beans];
-        propertyValues = (NSMutableDictionary *)[(HDObjectPattern *)[Beans objectForKey:[attributeDict objectForKey:@"copy"]] values];
-        [Beans setObject:[(HDObjectPattern *)[Beans objectForKey:[attributeDict objectForKey:@"copy"]]copy] forKey:[attributeDict objectForKey:@"id"]];
+        propertyRefbeans = (NSMutableDictionary *)[(HDObjectPattern *)[_Patternes objectForKey:[attributeDict objectForKey:@"copy"]] beans];
+        propertyValues = (NSMutableDictionary *)[(HDObjectPattern *)[_Patternes objectForKey:[attributeDict objectForKey:@"copy"]] values];
+        [_Patternes setObject:[[(HDObjectPattern *)[_Patternes objectForKey:[attributeDict objectForKey:@"copy"]]copy] autorelease] forKey:[attributeDict objectForKey:@"id"]];
     }else if([attributeDict objectForKey:@"share"]){
-        [Beans setObject:(HDObjectPattern *)[Beans objectForKey:[attributeDict objectForKey:@"share"]]forKey:[attributeDict objectForKey:@"id"]];
+        [_Patternes setObject:(HDObjectPattern *)[_Patternes objectForKey:[attributeDict objectForKey:@"share"]]forKey:[attributeDict objectForKey:@"id"]];
         isContinue = NO;
     }else{
-        HDObjectPattern *newPattern = [[HDObjectPattern patternWithURL:[attributeDict objectForKey:@"create-url"] propertyValues:nil propertyRefBeans:nil objectMode:[[attributeDict objectForKey:@"mode"] isEqualToString:@"create"]?HDObjectModeCreate:HDObjectModeShare] autorelease];
-        [Beans setObject:newPattern forKey:[attributeDict objectForKey:@"id"]];
+        HDObjectPattern *newPattern =[HDObjectPattern patternWithURL:[attributeDict objectForKey:@"create-url"]propertyValues:nil propertyRefBeans:nil objectMode:[[attributeDict objectForKey:@"mode"] isEqualToString:@"create"]?HDObjectModeCreate:HDObjectModeShare];
+        [_Patternes setObject:newPattern forKey:[attributeDict objectForKey:@"id"]];
     }
     
 }
 #pragma mark - NSXMLParserDelegate
 //发现元素开始符的处理函数  （即报告元素的开始以及元素的属性）
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict{
-    NSLog(@"%@",elementName);
     //解析到BEAN标签则初始化数据
     if ([[elementName uppercaseString] isEqualToString:@"BEAN"] ) {
         isContinue = YES;
-        propertyRefBeans = [[NSMutableDictionary alloc]init];
+        propertyRefbeans = [[NSMutableDictionary alloc]init];
         propertyValues = [[NSMutableDictionary alloc]init];
         beanId = [attributeDict objectForKey:@"id"];
-        NSLog(@"%@",[attributeDict objectForKey:@"id"]);
         [self parserattribute:attributeDict];
     }else if(isContinue&&[[elementName uppercaseString] isEqualToString:@"PROPERTY"] ){
         currentProperty = [attributeDict objectForKey:@"name"];
@@ -104,7 +100,7 @@
                 [propertyValues setObject:[attributeDict objectForKey:@"value"] forKey:currentProperty];
             }
         }else if ([attributeDict objectForKey:@"ref"]){
-            [propertyRefBeans setObject:[attributeDict objectForKey:@"ref"] forKey:currentProperty];
+            [propertyRefbeans setObject:[attributeDict objectForKey:@"ref"] forKey:currentProperty];
         }
     }else if(isContinue&&[[elementName uppercaseString] isEqualToString:@"ARRAY"] ){
         currentArray = [[NSMutableArray alloc]init];
@@ -123,15 +119,16 @@
 //发现元素结束符的处理函数，保存元素各项目数据（即报告元素的结束标记）
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
     //解析完bean
-    if (isContinue&&[[elementName uppercaseString] isEqualToString:@"BEAN"] ) {
-        [(HDObjectPattern *)[Beans objectForKey:beanId ] setValues:propertyValues];
-        [(HDObjectPattern *)[Beans objectForKey:beanId ] setBeans:propertyRefBeans];
-        [propertyRefBeans release];
-        propertyRefBeans = nil;
+    if ([[elementName uppercaseString] isEqualToString:@"BEAN"] ) {
+        if (isContinue) {
+            [(HDObjectPattern *)[_Patternes objectForKey:beanId ] setValues:propertyValues];
+            [(HDObjectPattern *)[_Patternes objectForKey:beanId ] setBeans:propertyRefbeans];
+        }
+        [propertyRefbeans release];
+        propertyRefbeans = nil;
         [propertyValues release];
         propertyValues =nil;
-        [propertyRefBeans removeAllObjects];
-    }else if(isContinue&&[[elementName uppercaseString] isEqualToString:@"PROPERTY"] ){
+    }else if([[elementName uppercaseString] isEqualToString:@"PROPERTY"] ){
         currentProperty = nil;
     }else if(isContinue&&[[elementName uppercaseString] isEqualToString:@"ARRAY"] ){
         [propertyValues setObject:currentArray forKey:currentProperty];
@@ -139,7 +136,6 @@
         currentArray = nil;
     }else if(isContinue&&[[elementName uppercaseString] isEqualToString:@"MAP"] ){
         [propertyValues setObject:currentDict forKey:currentProperty];
-        NSLog(@"currentDict:%i",[currentDict retainCount]);
         [currentDict release];
         currentDict = nil;
     }
@@ -147,7 +143,8 @@
 }
 //报告解析的结束
 - (void)parserDidEndDocument:(NSXMLParser *)parser{
-    self.Patternes = Beans;
+    [parser release];
+    parser=nil;
 }
 //报告不可恢复的解析错误
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError{
