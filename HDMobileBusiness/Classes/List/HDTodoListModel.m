@@ -310,7 +310,6 @@ static NSString * kSQLNull = @"null";
     {
         return _resultList;
     }
-    TTDPRINT(@"get resultList");
     NSIndexSet * matchedIndexSet = [_resultList indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         BOOL matchFlag = [[obj valueForKey:_groupedCodeField] isEqualToString:_groupedCode];
         if (self.searchText) {

@@ -41,6 +41,10 @@
 //pad
 #import "HDSplitViewController.h"
 
+#import "HDGroupedViewController.h"
+
+#import "HDGroupedTodoListDataSource.h"
+
 //gloable
 #import "HDResourceLoader.h"
 
@@ -90,6 +94,8 @@
     [map from:@"tt://todoListDataSource" toViewController:[HDTodoListDataSource class]];
     
     [map from:@"tt://todoListModel" toViewController:[HDTodoListModel class]];
+    
+    
     [map from:@"tt://todoListSearchViewController" toViewController:[HDTodoListSearchViewController class]];
     
     //done list classes
@@ -121,7 +127,11 @@
     [map from:@"tt://imageLoader" toViewController:[HDImageLoader class]];
     
     if (TTIsPad()) {
-        [map from:@"tt://split" toViewController:[HDSplitViewController class]];
+        [map from:@"tt://splitViewController" toViewController:[HDSplitViewController class]];
+                
+        [map from:@"tt://groupedTodoListViewController" toModalViewController:[HDGroupedViewController class]];
+        
+        [map from:@"tt://groupedTodoListDataSource" toViewController:[HDGroupedTodoListDataSource class]];
     }
 }
 

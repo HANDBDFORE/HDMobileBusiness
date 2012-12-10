@@ -152,6 +152,14 @@
                          objectMode:HDObjectModeCreate];
     [self setPattern:firstRootGuiderPattern forIdentifier:@"firstRootGuider"];
     
+    HDObjectPattern * helpViewGuiderPattern =
+    [HDObjectPattern patternWithURL:@"tt://rootGuider/helpViewGuider"
+                     propertyValues:nil
+                   propertyRefBeans:@{@"sourceController" : @"rootWindow",
+     @"destinationController":@"loadingViewCtrl"}
+                         objectMode:HDObjectModeCreate];
+    [self setPattern:helpViewGuiderPattern forIdentifier:@"helpViewGuider"];
+    
     //user help。。。
     HDObjectPattern * userHelpCtrl =
     [HDObjectPattern patternWithURL:@"tt://UserGuideViewController"

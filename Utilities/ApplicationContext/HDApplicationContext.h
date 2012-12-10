@@ -10,9 +10,6 @@
 #import "HDSingletonObject.h"
 #import "HDXMLParser.h"
 
-static NSString * kTodoListControllerIdentifier = @"todoListViewController";
-static NSString * kDoneListControllerIdentifier = @"doneListViewController";
-
 //附加到guider里面
 @interface HDApplicationContext : HDSingletonObject
 {

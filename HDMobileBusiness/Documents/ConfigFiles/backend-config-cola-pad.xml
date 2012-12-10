@@ -3,7 +3,7 @@
     <!--loadingGuider-->
     <bean id="loadingGuider"  create-url="tt://rootGuider/rootGuider" mode="create">
         <property name="sourceController" ref="rootWindow"/>
-        <property name="destinationController" ref="loginViewCtrl"/>
+        <property name="destinationController" ref="loginViewController"/>
     </bean>
     <!--login guider-->
     <bean id="loginGuider"  create-url="tt://rootGuider/rootGuider" mode="create">
@@ -51,8 +51,8 @@
         <property name="destinationController" ref="doneDetailController"/>
         <property name="sourceController" ref="doneListViewController"/>
     </bean>
-    <!--loginViewCtrl-->
-    <bean id="loginViewCtrl"  create-url="tt://nib/HDPadLoginViewController/HDLoginViewController" mode="create">
+    <!--loginViewController-->
+    <bean id="loginViewController"  create-url="tt://nib/HDPadLoginViewController/HDLoginViewController" mode="create">
         <property name="titleLabelText" value="had=hand"/>
         <property name="loginModel" ref="loginModel"/>
         <property name="backgroundImageLoader" ref="loginBackImage"/>
@@ -64,9 +64,9 @@
         <property name="submitURL" value="${base_url}modules/ios/public/login_iphone.svc"/>
     </bean>
     <!--splitViewController-->
-    <bean id="splitViewController" create-url="tt://split" mode="share">
+    <bean id="splitViewController" create-url="tt://splitViewController" mode="share">
         <property name="leftViewController" ref="leftNavigator"/>
-        <property name="rightViewController" ref="rightNavigator"/>
+        <property name="rightViewController" ref="todoListNavigator"/>
     </bean>
     <!--leftNavigator-->
     <bean id="leftNavigator"  create-url="tt://navigator" mode="create">
@@ -76,15 +76,7 @@
             </array>
         </property>
     </bean>
-    <!--rightNavigator-->
-    <bean id="rightNavigator"  create-url="tt://navigator" mode="share">
-        <property name="pushedViewControllers" >
-            <array>
-                <list value="groupedTodoListViewController"/>
-            </array>
-        </property>
-    </bean>
-    <!--functionListViewController-->
+       <!--functionListViewController-->
     <bean id="functionListViewController"  create-url="tt://functionListViewController" mode="share">
         <property name="title" value="function"/>
         <property name="dataSource" ref="functionDataSource"/>
@@ -97,6 +89,24 @@
     <!--functionModel-->
     <bean id="functionModel" create-url="tt://functionModel" mode="share">
         <property name="queryURL" value="${base_url}autocrud/ios.ios_function_center.ios_function_center_list/query"/>
+    </bean>
+    <!--rightNavigator-->
+    <bean id="todoListNavigator"  create-url="tt://navigator" mode="share">
+        <property name="pushedViewControllers" >
+            <array>
+                <list value="groupedTodoListViewController"/>
+            </array>
+        </property>
+    </bean>
+    <!--groupedTodoListViewController-->
+    <bean id="groupedTodoListViewController" create-url="tt://groupedTodoListViewController" mode="share">
+        <property name="title" value="Grouped"/>
+        <property name="dataSource" ref="groupedTodoListDataSource"/>
+    </bean>
+    <!--groupedTodoListDataSource-->
+    <bean id="groupedTodoListDataSource" create-url="tt://groupedTodoListDataSource">
+        <property name="listModel" ref="todoListModel"/>
+        <property name="model" ref="todoListModel"/>
     </bean>
     <!--todoListViewController-->
     <bean id="todoListViewController" create-url="tt://todoListViewController" mode="share">
@@ -158,7 +168,7 @@
     <bean id="todoListSearchModel" share="todoListModel" />
     
     <!--doneListViewControllerNavigator-->
-    <bean id="doneListViewControllerNavigator"  create-url="tt://navigator" mode="share">
+    <bean id="doneListNavigator"  create-url="tt://navigator" mode="share">
         <property name="pushedViewControllers" >
             <array>
                 <list value="doneListViewController"/>
@@ -239,39 +249,25 @@
     <!--loginBackImage-->
     <bean id="loginBackImage" create-url="tt://imageLoader" mode="create">
         <property name="defaultFilePath" value="bundle://login.png"/>
-        <property name="filePath" value="documents://background1.png"/>
         <property name="remoteURL" value="${base_url}images/mobile/loginHZ_pad.png"/>
         <property name="saveFileName" value="background1.png"/>
         <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ_pad.png"/>
-        <property name="retinaSaveFileName" value="background@2x.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
     <!--loginButton-->
     <bean id="loginButton" create-url="tt://imageLoader" mode="create">
         <property name="defaultFilePath" value="bundle://loginButton.png"/>
-        <property name="filePath" value="documents://normalButton1.png"/>
         <property name="remoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
         <property name="saveFileName" value="normalButton1.png"/>
         <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
-        <property name="retinaSaveFileName" value="normalButton1@2x.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
     </bean>
     <!--loginHighLightButton-->
     <bean id="loginHighLightButton" create-url="tt://imageLoader" mode="create">
         <property name="defaultFilePath" value="bundle://loginButtonActive.png"/>
-        <property name="filePath" value="documents://highlightedButton1.png"/>
         <property name="remoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
         <property name="saveFileName" value="highlightedButton1.png"/>
         <property name="retinaRemoteURL" value="${base_url}images/mobile/loginHZ-padBtn.png"/>
-        <property name="retinaSaveFileName" value="highlightedButton1@2x.png"/>
         <property name="resourceLoader" ref="resourceLoader"/>
-    </bean>
-    <bean id="groupedTodoListViewController" create-url="tt://groupedTodoListViewController" mode="share">
-        <property name="title" value="Grouped"/>
-        <property name="dataSource" ref="groupedTodoListDataSource"/>
-    </bean>
-    <bean id="groupedTodoListDataSource" create-url="tt://groupedTodoListDataSource">
-        <property name="listModel" ref="todoListModel"/>
-        <property name="model" ref="todoListModel"/>
     </bean>
 </beans>
