@@ -30,14 +30,6 @@
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
     self.items = [NSMutableArray array];
-    
-//    //获取分组的集合    
-//    NSMutableSet * groupSet = [NSMutableSet set];
-//    for (NSDictionary * record in [self.listModel groupListResult]) {
-//        [groupSet addObject:@{@"codeField":[record valueForKeyPath:_groupedCodeField],
-//         @"valueField":[record valueForKeyPath:_groupedValueField]}];
-//    }
-
     for (id record in [self.listModel groupResultList]) {
         [self.items addObject:[self createItemWithObject:record]
          ];
@@ -74,6 +66,7 @@
     
     HDViewGuider  * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"groupedTodoListViewGuirder"];
     [self.listModel setGroupedCode:item.userInfo];
+    [self.model load:TTURLRequestCachePolicyDefault more:NO];
     [guider.destinationController setValue:item.userInfo forKeyPath:@"searchViewController.model.groupedCode"];
     [guider perform];
 }

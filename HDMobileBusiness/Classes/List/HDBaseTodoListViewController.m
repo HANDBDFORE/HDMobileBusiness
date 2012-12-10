@@ -91,11 +91,10 @@
 {
     [super viewWillAppear:animated];
     //swipe
-//    UISwipeGestureRecognizer *removeRecordRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwiped:)]autorelease];
-//    removeRecordRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-//    removeRecordRecognizer.numberOfTouchesRequired = 1;
-//    [self.tableView addGestureRecognizer:removeRecordRecognizer];
-    [self.model load:TTURLRequestCachePolicyDefault more:NO];
+    UISwipeGestureRecognizer *removeRecordRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwiped:)]autorelease];
+    removeRecordRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    removeRecordRecognizer.numberOfTouchesRequired = 1;
+    [self.tableView addGestureRecognizer:removeRecordRecognizer];
 }
 
 #pragma  -mark toolbar Buttons
