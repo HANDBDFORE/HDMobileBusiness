@@ -78,11 +78,7 @@
         @"sectionFlag" : @"SECTION",
         @"sectionText" : @"${text}",
         @"text":@"${text}",
-        @"URL" :
-//        [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"],
-        @"${url}"
-//        ]
-        ,
+        @"URL" :@"${url}",
         @"imageURL" : @"${image_url}"};
     }
     return self;
@@ -136,7 +132,7 @@
                           selector:@selector(openURLForItem:)];
     todoListItem.imageURL = @"bundle://mailclosed.png";
     todoListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-    todoListItem.userInfo = @"groupedTodoListViewController";
+    todoListItem.userInfo = @"todoListNavigator";
     
 /////////////////////////////
    TTTableImageItem * doneListItem =
@@ -145,7 +141,7 @@
                           selector:@selector(openURLForItem:)];
     doneListItem.imageURL = @"bundle://mailopened.png";
     doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-    doneListItem.userInfo = @"doneListViewControllerNavigator";
+    doneListItem.userInfo = @"doneListNavigator";
     
     ///////////////////////////////
     [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:TTLocalizedString(@"Approve", @"审批") footerTitle:nil] atIndex:0];
