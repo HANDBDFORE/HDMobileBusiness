@@ -74,3 +74,15 @@ static NSString * kEmployeeID = @"employee_id";
 -(NSUInteger)effectiveRecordCount;
 
 @end
+
+@protocol HDListModelGroupe <NSObject>
+
+@property(nonatomic,readonly) NSArray * groupResultList;
+
+@property(nonatomic,copy) NSString * groupedCode;
+
+@property(nonatomic,copy) NSString * groupedCodeField;
+
+@property(nonatomic,copy) NSString * groupedValueField;
+
+@end

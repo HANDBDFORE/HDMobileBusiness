@@ -28,7 +28,7 @@
         [_retryButton setUserInteractionEnabled:YES];
     }else {
         //开始发请求
-        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-sprite.xml",[HDHTTPRequestCenter baseURLPath]];
+        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-cola-pad.xml",[HDHTTPRequestCenter baseURLPath]];
 
         NSURL *url = [NSURL URLWithString:fileUrl];
         NSMutableURLRequest *postRequest = [[[NSMutableURLRequest alloc]initWithURL:url]autorelease];
@@ -104,7 +104,7 @@
                     BOOL writeSuccess = [data writeToFile:TTPathForDocumentsResource(@"ios-backend-config.xml") atomically:YES];
                     if (writeSuccess) {
                         //在这里解析
-                        if (![HDApplicationContext configApplicationContextForXmlPath:@"ios-backend-config-sprite.xml"]) {
+                        if (![HDApplicationContext configApplicationContextForXmlPath:@"ios-backend-config.xml"]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 _errorSummury.text = @"服务器返回文件异常";
                                 _errorDetail.text = @"服务器返回文件未能被成功解析，请联系技术支持。";
@@ -209,24 +209,24 @@
 #pragma mark - life cycle
 -(void)loadView{
     self.navigationController.navigationBarHidden = YES;
-    UIView *view = [[[UIView alloc]initWithFrame:[UIScreen mainScreen].applicationFrame]autorelease];
+    UIView *view = [[[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds]autorelease];
     self.view = view;
     self.view.backgroundColor = RGBCOLOR(235, 240, 243);
-    _customBackground = [[[UIView alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width*0.98, self.view.frame.size.height*0.98)]autorelease];
+    _customBackground = [[[UIView alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width*0.98, (self.view.frame.size.height-20)*0.98)]autorelease];
     _customBackground.backgroundColor = RGBCOLOR(229, 232, 237);
-    _customBackground.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
+    _customBackground.center = CGPointMake(self.view.frame.size.width/2, (self.view.frame.size.height-20)/2);
     _customBackground.layer.cornerRadius = 8;
     _customBackground.layer.shadowOffset = CGSizeMake(0,0);
     _customBackground.layer.shadowColor =[UIColor blackColor].CGColor;
     _customBackground.layer.shadowOpacity = 1;
     [self.view insertSubview:_customBackground atIndex:0];
     _alertView = [[[UIImageView alloc]initWithImage:TTIMAGE(@"bundle://loadingAlert.png")]autorelease];
-    _alertView.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.2);
+    _alertView.center = CGPointMake(self.view.frame.size.width/2,(self.view.frame.size.height-20)*0.2);
     //    _alertView.hidden = YES;
     [self.view addSubview:_alertView];
     _errorSummury = [[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*0.8, 50)]autorelease];
     //样式
-    _errorSummury.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.4);
+    _errorSummury.center = CGPointMake(self.view.frame.size.width/2,(self.view.frame.size.height-20)*0.4);
     _errorSummury.numberOfLines = 2;
     _errorSummury.backgroundColor = [UIColor clearColor];
     //_errorSummury.backgroundColor = [UIColor  redColor];
@@ -239,7 +239,7 @@
     
     _errorDetail = [[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*0.8, 200)]autorelease];
     //样式
-    _errorDetail.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.6);
+    _errorDetail.center = CGPointMake(self.view.frame.size.width/2,(self.view.frame.size.height-20)*0.6);
     _errorDetail.numberOfLines = 20;
     _errorDetail.font = [UIFont fontWithName:@"Helvetica" size:14];
     _errorDetail.textAlignment = UITextAlignmentCenter;
@@ -252,7 +252,7 @@
     [_retryButton setImage:[UIImage imageNamed:@"reloadButton"] forState:UIControlStateNormal];
     [_retryButton setImage:[UIImage imageNamed:@"reloadButtonActive"] forState:UIControlStateHighlighted];
     [_retryButton addTarget:self action:@selector(retry) forControlEvents:UIControlEventTouchUpInside];
-    _retryButton.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height*0.8);
+    _retryButton.center = CGPointMake(self.view.frame.size.width/2,(self.view.frame.size.height-20)*0.8);
     _retryButton.bounds = CGRectMake(0, 0, 100, 100);
     _retryButton.hidden = YES;
     [_retryButton setUserInteractionEnabled:NO];
@@ -288,9 +288,13 @@
     return UIInterfaceOrientationPortrait == interfaceOrientation;
 }
 
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
 -(NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
 }
-
 @end

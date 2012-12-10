@@ -66,7 +66,7 @@
                                            caption:caption
                                               text:text
                                          timestamp:timestamp
-                                          selector:@selector(openURLForKey:)
+                                          selector:@selector(openURLForItem:)
                                           delegate:self
                                            message:stautMessage
                                              state:[object valueForKey:kRecordStatus]
@@ -122,7 +122,7 @@
             [localStatus isEqualToString:kRecordError]);
 }
 
--(void)openURLForKey:(HDTableStatusMessageItem *)item
+-(void)openURLForItem:(HDTableStatusMessageItem *)item
 {
     if ([item.state isEqualToString:kRecordNormal] ||
         [item.state isEqualToString:kRecordError]) {

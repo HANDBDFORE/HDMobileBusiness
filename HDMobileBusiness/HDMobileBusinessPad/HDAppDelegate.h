@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString * kVersion = @"1.2.0";
+static NSString * kVersion = @"1.2.5";
 
 @interface HDAppDelegate : UIResponder <UIApplicationDelegate>
 

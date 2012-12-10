@@ -78,7 +78,11 @@
         @"sectionFlag" : @"SECTION",
         @"sectionText" : @"${text}",
         @"text":@"${text}",
-        @"URL" : [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"],@"${url}"],
+        @"URL" :
+//        [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"],
+        @"${url}"
+//        ]
+        ,
         @"imageURL" : @"${image_url}"};
     }
     return self;
@@ -105,7 +109,8 @@
             
             NSString * imageURL = [[self.itemDictionary valueForKey:@"imageURL"] stringByReplacingSpaceHodlerWithDictionary:record];
             
-            NSString * URL = [[self.itemDictionary valueForKey:@"URL"] stringByReplacingSpaceHodlerWithDictionary:record];
+            NSString * URL = [[[self.itemDictionary valueForKey:@"URL"] stringByReplacingSpaceHodlerWithDictionary:record] stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"]}];
+            
             
             TTTableImageItem * imageItem =
             [TTTableImageItem itemWithText:text
@@ -131,16 +136,16 @@
                           selector:@selector(openURLForItem:)];
     todoListItem.imageURL = @"bundle://mailclosed.png";
     todoListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-    todoListItem.userInfo = kTodoListControllerIdentifier;
+    todoListItem.userInfo = @"groupedTodoListViewController";
     
-//    ///////////////////////////
+/////////////////////////////
    TTTableImageItem * doneListItem =
     [TTTableImageItem itemWithText:TTLocalizedString(@"Approved List", @"审批完成")
                           delegate:self
                           selector:@selector(openURLForItem:)];
     doneListItem.imageURL = @"bundle://mailopened.png";
     doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-    doneListItem.userInfo = kDoneListControllerIdentifier;
+    doneListItem.userInfo = @"doneListViewControllerNavigator";
     
     ///////////////////////////////
     [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:TTLocalizedString(@"Approve", @"审批") footerTitle:nil] atIndex:0];

@@ -36,6 +36,7 @@
 		B30376A31600890600238923 /* HDFunctionListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A01600890600238923 /* HDFunctionListDataSource.m */; };
 		B30376A41600890600238923 /* HDFunctionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A11600890600238923 /* HDFunctionListViewController.m */; };
 		B30376A51600890600238923 /* HDTableConfirmViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A21600890600238923 /* HDTableConfirmViewCell.m */; };
+		B307C850166EEA5000A03573 /* HDGroupedTodoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */; };
 		B30BF63E15EC95A200DB83E9 /* HDSingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */; };
 		B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */; };
 		B31E2EDF15C65FD400880514 /* HDLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED815C65FD400880514 /* HDLoadingViewController.m */; };
@@ -63,6 +64,8 @@
 		B31E2F3715C66EB400880514 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F3115C66EB400880514 /* FMResultSet.m */; };
 		B31E2F3B15C6714800880514 /* HDDefaultStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F3A15C6714800880514 /* HDDefaultStyleSheet.m */; };
 		B31E2F3D15C6732100880514 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B31E2F3C15C6732100880514 /* Settings.bundle */; };
+		B32E7102166F3648006D768D /* loginHD-padBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = B32E7100166F3648006D768D /* loginHD-padBtn.png */; };
+		B32E7103166F3648006D768D /* loginHZ_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B32E7101166F3648006D768D /* loginHZ_pad.png */; };
 		B336DEF6165E252100057B95 /* HDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B336DEF5165E252100057B95 /* HDNavigationController.m */; };
 		B33A23BA15D9033A0066383C /* HDDataToStringConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B33A23B915D903390066383C /* HDDataToStringConvertor.m */; };
 		B34660BC15C678DD00EFDF24 /* HDLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B715C678DD00EFDF24 /* HDLoginModel.m */; };
@@ -405,6 +408,11 @@
 		B3E60F54165A21D4006C8119 /* HDNavigatorViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60F53165A21D3006C8119 /* HDNavigatorViewGuider.m */; };
 		B3EBF1CA165B327B006E6018 /* HDModalViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF1C9165B327A006E6018 /* HDModalViewGuider.m */; };
 		B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ED3BA21623E71100505988 /* HDWebViewController.m */; };
+		B3FE7AD0166D89CF00CA0B0C /* padIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7ACE166D89CF00CA0B0C /* padIcon.png */; };
+		B3FE7AD1166D89CF00CA0B0C /* padIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */; };
+		B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD2166D8A0400CA0B0C /* padIcon.png */; };
+		B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */; };
+		B3FFC15F1670330600965ECA /* HDGroupedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FFC15E1670330600965ECA /* HDGroupedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -664,6 +672,8 @@
 		B30376A01600890600238923 /* HDFunctionListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDFunctionListDataSource.m; path = Classes/List/HDFunctionListDataSource.m; sourceTree = SOURCE_ROOT; };
 		B30376A11600890600238923 /* HDFunctionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDFunctionListViewController.m; path = Classes/List/HDFunctionListViewController.m; sourceTree = SOURCE_ROOT; };
 		B30376A21600890600238923 /* HDTableConfirmViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTableConfirmViewCell.m; path = Classes/List/HDTableConfirmViewCell.m; sourceTree = SOURCE_ROOT; };
+		B307C84E166EEA5000A03573 /* HDGroupedTodoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDGroupedTodoListDataSource.h; path = Classes/List/HDGroupedTodoListDataSource.h; sourceTree = SOURCE_ROOT; };
+		B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDGroupedTodoListDataSource.m; path = Classes/List/HDGroupedTodoListDataSource.m; sourceTree = SOURCE_ROOT; };
 		B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSingletonObject.m; sourceTree = "<group>"; };
 		B31E2ECF15C65DC900880514 /* HDUserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUserGuideViewController.h; sourceTree = "<group>"; };
 		B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDUserGuideViewController.m; sourceTree = "<group>"; };
@@ -715,6 +725,8 @@
 		B31E2F3915C6714800880514 /* HDDefaultStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDefaultStyleSheet.h; sourceTree = "<group>"; };
 		B31E2F3A15C6714800880514 /* HDDefaultStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDefaultStyleSheet.m; sourceTree = "<group>"; };
 		B31E2F3C15C6732100880514 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		B32E7100166F3648006D768D /* loginHD-padBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loginHD-padBtn.png"; path = "../../../../../../../Downloads/HMBS/loginHD-padBtn.png"; sourceTree = "<group>"; };
+		B32E7101166F3648006D768D /* loginHZ_pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loginHZ_pad.png; path = ../../../../../../../Downloads/HMBS/loginHZ_pad.png; sourceTree = "<group>"; };
 		B336DEF1165E0B8400057B95 /* HDTodoListModelStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListModelStatus.h; path = Classes/List/HDTodoListModelStatus.h; sourceTree = SOURCE_ROOT; };
 		B336DEF4165E252100057B95 /* HDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDNavigationController.h; sourceTree = "<group>"; };
 		B336DEF5165E252100057B95 /* HDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDNavigationController.m; sourceTree = "<group>"; };
@@ -1027,6 +1039,12 @@
 		B3EBF1C9165B327A006E6018 /* HDModalViewGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDModalViewGuider.m; sourceTree = "<group>"; };
 		B3ED3BA11623E71100505988 /* HDWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDWebViewController.h; sourceTree = "<group>"; };
 		B3ED3BA21623E71100505988 /* HDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDWebViewController.m; sourceTree = "<group>"; };
+		B3FE7ACE166D89CF00CA0B0C /* padIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = padIcon.png; sourceTree = "<group>"; };
+		B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "padIcon@2x.png"; sourceTree = "<group>"; };
+		B3FE7AD2166D8A0400CA0B0C /* padIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = padIcon.png; path = ../padIcon.png; sourceTree = "<group>"; };
+		B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "padIcon@2x.png"; path = "../padIcon@2x.png"; sourceTree = "<group>"; };
+		B3FFC15D1670330600965ECA /* HDGroupedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGroupedViewController.h; sourceTree = SOURCE_ROOT; };
+		B3FFC15E1670330600965ECA /* HDGroupedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGroupedViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1156,6 +1174,17 @@
 				B36BDAFF15C64BC7003A4A5D /* UIUnitTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B307C84D166EE9DA00A03573 /* Grouped */ = {
+			isa = PBXGroup;
+			children = (
+				B307C84E166EEA5000A03573 /* HDGroupedTodoListDataSource.h */,
+				B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */,
+				B3FFC15D1670330600965ECA /* HDGroupedViewController.h */,
+				B3FFC15E1670330600965ECA /* HDGroupedViewController.m */,
+			);
+			name = Grouped;
 			sourceTree = "<group>";
 		};
 		B307FDE215FF134700EA5133 /* Compose */ = {
@@ -1316,6 +1345,8 @@
 		B34660B315C678DD00EFDF24 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B32E7100166F3648006D768D /* loginHD-padBtn.png */,
+				B32E7101166F3648006D768D /* loginHZ_pad.png */,
 				B34660B615C678DD00EFDF24 /* HDLoginModel.h */,
 				B34660B715C678DD00EFDF24 /* HDLoginModel.m */,
 				B34660B815C678DD00EFDF24 /* HDLoginViewController.h */,
@@ -1507,6 +1538,7 @@
 		B38DC6E415C6835D00FD0C58 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				B307C84D166EE9DA00A03573 /* Grouped */,
 				B38DC70C15C68B4A00FD0C58 /* Search */,
 				B38DC70B15C68B3800FD0C58 /* Base */,
 				B38DC70A15C68B2900FD0C58 /* Cell */,
@@ -1624,6 +1656,8 @@
 		B38E66FF15C64E6700824CB1 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				B3FE7ACE166D89CF00CA0B0C /* padIcon.png */,
+				B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */,
 				B38E670015C64E6700824CB1 /* mobileIcon.png */,
 				B38E670115C64E6700824CB1 /* mobileIcon@2x.png */,
 			);
@@ -1903,6 +1937,8 @@
 		B398B6F71649F6DC0017FCD6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */,
+				B3FE7AD2166D8A0400CA0B0C /* padIcon.png */,
 				B398B6F81649F6DC0017FCD6 /* HDMobileBusinessPad-Info.plist */,
 				B398B6F91649F6DC0017FCD6 /* InfoPlist.strings */,
 				B398B6FC1649F6DC0017FCD6 /* main.m */,
@@ -2496,6 +2532,12 @@
 				B3E60EFF1659D7C7006C8119 /* page5.jpg in Resources */,
 				B2307432166739AB00DFF2E0 /* backend-config-cola.xml in Resources */,
 				B2524B04166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */,
+				B3FE7AD0166D89CF00CA0B0C /* padIcon.png in Resources */,
+				B3FE7AD1166D89CF00CA0B0C /* padIcon@2x.png in Resources */,
+				B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */,
+				B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */,
+				B32E7102166F3648006D768D /* loginHD-padBtn.png in Resources */,
+				B32E7103166F3648006D768D /* loginHZ_pad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2748,6 +2790,8 @@
 				B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */,
 				B3E60EF01659D768006C8119 /* HDObjectPattern.m in Sources */,
 				B3CD019516635305002321A9 /* HDSplitViewGuider.m in Sources */,
+				B307C850166EEA5000A03573 /* HDGroupedTodoListDataSource.m in Sources */,
+				B3FFC15F1670330600965ECA /* HDGroupedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
