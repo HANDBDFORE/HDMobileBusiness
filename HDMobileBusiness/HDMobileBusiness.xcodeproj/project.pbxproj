@@ -339,23 +339,14 @@
 		B398B894164A088D0017FCD6 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F2E15C66EB400880514 /* FMDatabasePool.m */; };
 		B398B895164A088D0017FCD6 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F2F15C66EB400880514 /* FMDatabaseQueue.m */; };
 		B398B896164A088D0017FCD6 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F3115C66EB400880514 /* FMResultSet.m */; };
-		B398B897164A08A10017FCD6 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0315C6673F00880514 /* CXMLDocument_CreationExtensions.m */; };
-		B398B898164A08A10017FCD6 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0515C6673F00880514 /* CXMLNode_CreationExtensions.m */; };
-		B398B899164A08A10017FCD6 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0815C6673F00880514 /* CTidy.m */; };
-		B398B89A164A08A10017FCD6 /* CXHTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0915C6673F00880514 /* CXHTMLDocument.m */; };
-		B398B89B164A08A10017FCD6 /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0A15C6673F00880514 /* CXMLDocument_PrivateExtensions.m */; };
-		B398B89C164A08A10017FCD6 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0B15C6673F00880514 /* CXMLDocument.m */; };
-		B398B89D164A08A10017FCD6 /* CXMLElement_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0C15C6673F00880514 /* CXMLElement_CreationExtensions.m */; };
-		B398B89E164A08A10017FCD6 /* CXMLElement_ElementTreeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0D15C6673F00880514 /* CXMLElement_ElementTreeExtensions.m */; };
-		B398B89F164A08A10017FCD6 /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0E15C6673F00880514 /* CXMLElement.m */; };
-		B398B8A0164A08A10017FCD6 /* CXMLNamespaceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0F15C6673F00880514 /* CXMLNamespaceNode.m */; };
-		B398B8A1164A08A10017FCD6 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F1015C6673F00880514 /* CXMLNode_PrivateExtensions.m */; };
-		B398B8A2164A08A10017FCD6 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F1115C6673F00880514 /* CXMLNode_XPathExtensions.m */; };
-		B398B8A3164A08A10017FCD6 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F1215C6673F00880514 /* CXMLNode.m */; };
 		B398B8A4164A08B60017FCD6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B36BDA9D15C64777003A4A5D /* main.m */; };
 		B398B8A5164A08E70017FCD6 /* HDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B398B7001649F6DC0017FCD6 /* HDAppDelegate.m */; };
 		B398B8A6164A099E0017FCD6 /* mobileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E670015C64E6700824CB1 /* mobileIcon.png */; };
 		B3B67ED2165CC666003B7D11 /* HDShowInViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */; };
+		B3CB5D921676CEB60062E71B /* HDTimeStampLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB5D911676CEB60062E71B /* HDTimeStampLabel.m */; };
+		B3CB5D941676D18F0062E71B /* HDTimeStampLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB5D911676CEB60062E71B /* HDTimeStampLabel.m */; };
+		B3CB5D971676F0B90062E71B /* HDListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB5D961676F0B90062E71B /* HDListViewController.m */; };
+		B3CB5D981676F0B90062E71B /* HDListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB5D961676F0B90062E71B /* HDListViewController.m */; };
 		B3CD01891662F518002321A9 /* HDApplicationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B850165F4DC30073C9D5 /* HDApplicationContext.m */; };
 		B3CD018A1662F52E002321A9 /* HDImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B849165F33940073C9D5 /* HDImageLoader.m */; };
 		B3CD018B1662F52E002321A9 /* HDResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B84C165F42FD0073C9D5 /* HDResourceLoader.m */; };
@@ -400,8 +391,6 @@
 		B3E60F54165A21D4006C8119 /* HDNavigatorViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60F53165A21D3006C8119 /* HDNavigatorViewGuider.m */; };
 		B3EBF1CA165B327B006E6018 /* HDModalViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF1C9165B327A006E6018 /* HDModalViewGuider.m */; };
 		B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ED3BA21623E71100505988 /* HDWebViewController.m */; };
-		B3FE7AD0166D89CF00CA0B0C /* padIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7ACE166D89CF00CA0B0C /* padIcon.png */; };
-		B3FE7AD1166D89CF00CA0B0C /* padIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */; };
 		B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD2166D8A0400CA0B0C /* padIcon.png */; };
 		B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */; };
 		B3FFC15F1670330600965ECA /* HDGroupedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FFC15E1670330600965ECA /* HDGroupedViewController.m */; };
@@ -967,6 +956,10 @@
 		B39BC5581601765C00551C63 /* HDListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDListModel.h; path = Classes/List/HDListModel.h; sourceTree = "<group>"; };
 		B3B67ED0165CC665003B7D11 /* HDShowInViewGuider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDShowInViewGuider.h; sourceTree = "<group>"; };
 		B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDShowInViewGuider.m; sourceTree = "<group>"; };
+		B3CB5D901676CEB60062E71B /* HDTimeStampLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTimeStampLabel.h; path = HDViews/HDTimeStampLabel.h; sourceTree = "<group>"; };
+		B3CB5D911676CEB60062E71B /* HDTimeStampLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTimeStampLabel.m; path = HDViews/HDTimeStampLabel.m; sourceTree = "<group>"; };
+		B3CB5D951676F0B80062E71B /* HDListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDListViewController.h; path = Classes/List/HDListViewController.h; sourceTree = SOURCE_ROOT; };
+		B3CB5D961676F0B90062E71B /* HDListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDListViewController.m; path = Classes/List/HDListViewController.m; sourceTree = SOURCE_ROOT; };
 		B3CD019316635305002321A9 /* HDSplitViewGuider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSplitViewGuider.h; sourceTree = "<group>"; };
 		B3CD019416635305002321A9 /* HDSplitViewGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSplitViewGuider.m; sourceTree = "<group>"; };
 		B3D0977C15DBA64300C3495D /* HDResponseMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDResponseMap.h; sourceTree = "<group>"; };
@@ -1475,6 +1468,8 @@
 			children = (
 				B33F1D2E1612ABB400E65A1D /* HDTableDataSource.h */,
 				B39BC5581601765C00551C63 /* HDListModel.h */,
+				B3CB5D951676F0B80062E71B /* HDListViewController.h */,
+				B3CB5D961676F0B90062E71B /* HDListViewController.m */,
 				B374675615C76CAE003068CB /* FunctionList */,
 				B38DC6E415C6835D00FD0C58 /* TodoList */,
 				B374675D15C76E36003068CB /* DoneList */,
@@ -1821,6 +1816,7 @@
 		B38E686A15C654DA00824CB1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B3CB5D931676CEBF0062E71B /* HDViews */,
 				B3E60EE81659D766006C8119 /* ApplicationContext */,
 				B356A26815D0A5AE00E88192 /* HDCoreStorage */,
 				B38E687915C655C600824CB1 /* HDDataConvertor */,
@@ -1934,6 +1930,15 @@
 				B398B7161649F6DD0017FCD6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B3CB5D931676CEBF0062E71B /* HDViews */ = {
+			isa = PBXGroup;
+			children = (
+				B3CB5D901676CEB60062E71B /* HDTimeStampLabel.h */,
+				B3CB5D911676CEB60062E71B /* HDTimeStampLabel.m */,
+			);
+			name = HDViews;
 			sourceTree = "<group>";
 		};
 		B3D0977515DB91DF00C3495D /* HDEluneGuider */ = {
@@ -2498,8 +2503,6 @@
 				B3E60EFF1659D7C7006C8119 /* page5.jpg in Resources */,
 				B2307432166739AB00DFF2E0 /* backend-config-cola.xml in Resources */,
 				B2524B04166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */,
-				B3FE7AD0166D89CF00CA0B0C /* padIcon.png in Resources */,
-				B3FE7AD1166D89CF00CA0B0C /* padIcon@2x.png in Resources */,
 				B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */,
 				B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */,
 				B366463E1675BB0300A13F76 /* login_pad.png in Resources */,
@@ -2568,6 +2571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3CB5D941676D18F0062E71B /* HDTimeStampLabel.m in Sources */,
 				B36BDA9E15C64777003A4A5D /* main.m in Sources */,
 				B36BDAA215C64777003A4A5D /* HDAppDelegate.m in Sources */,
 				B38E687415C654DA00824CB1 /* HDRequestGetMap.m in Sources */,
@@ -2648,6 +2652,7 @@
 				B3D5B84A165F33940073C9D5 /* HDImageLoader.m in Sources */,
 				B3D5B84D165F43000073C9D5 /* HDResourceLoader.m in Sources */,
 				B3D5B851165F4DC40073C9D5 /* HDApplicationContext.m in Sources */,
+				B3CB5D971676F0B90062E71B /* HDListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2675,19 +2680,6 @@
 				B3CD01891662F518002321A9 /* HDApplicationContext.m in Sources */,
 				B398B8A5164A08E70017FCD6 /* HDAppDelegate.m in Sources */,
 				B398B8A4164A08B60017FCD6 /* main.m in Sources */,
-				B398B897164A08A10017FCD6 /* CXMLDocument_CreationExtensions.m in Sources */,
-				B398B898164A08A10017FCD6 /* CXMLNode_CreationExtensions.m in Sources */,
-				B398B899164A08A10017FCD6 /* CTidy.m in Sources */,
-				B398B89A164A08A10017FCD6 /* CXHTMLDocument.m in Sources */,
-				B398B89B164A08A10017FCD6 /* CXMLDocument_PrivateExtensions.m in Sources */,
-				B398B89C164A08A10017FCD6 /* CXMLDocument.m in Sources */,
-				B398B89D164A08A10017FCD6 /* CXMLElement_CreationExtensions.m in Sources */,
-				B398B89E164A08A10017FCD6 /* CXMLElement_ElementTreeExtensions.m in Sources */,
-				B398B89F164A08A10017FCD6 /* CXMLElement.m in Sources */,
-				B398B8A0164A08A10017FCD6 /* CXMLNamespaceNode.m in Sources */,
-				B398B8A1164A08A10017FCD6 /* CXMLNode_PrivateExtensions.m in Sources */,
-				B398B8A2164A08A10017FCD6 /* CXMLNode_XPathExtensions.m in Sources */,
-				B398B8A3164A08A10017FCD6 /* CXMLNode.m in Sources */,
 				B398B892164A088D0017FCD6 /* FMDatabase.m in Sources */,
 				B398B893164A088D0017FCD6 /* FMDatabaseAdditions.m in Sources */,
 				B398B894164A088D0017FCD6 /* FMDatabasePool.m in Sources */,
@@ -2750,6 +2742,8 @@
 				B3CD019516635305002321A9 /* HDSplitViewGuider.m in Sources */,
 				B307C850166EEA5000A03573 /* HDGroupedTodoListDataSource.m in Sources */,
 				B3FFC15F1670330600965ECA /* HDGroupedViewController.m in Sources */,
+				B3CB5D921676CEB60062E71B /* HDTimeStampLabel.m in Sources */,
+				B3CB5D981676F0B90062E71B /* HDListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

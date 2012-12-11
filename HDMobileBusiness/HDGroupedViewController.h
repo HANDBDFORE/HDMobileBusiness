@@ -7,12 +7,8 @@
 //
 
 #import <Three20UI/Three20UI.h>
+#import "HDListViewController.h"
 
-@interface HDGroupedViewController : TTTableViewController
-{
-    TTLabel         *  _timeStampLabel;
-    UIBarButtonItem *  _stateLabelItem;
-    UIBarButtonItem *  _space;
+@interface HDGroupedViewController : HDListViewController
 
-}
 @end

@@ -28,12 +28,7 @@
 {
     TT_RELEASE_SAFELY(_refuseButtonItem);
     TT_RELEASE_SAFELY(_acceptButtonItem);
-    TT_RELEASE_SAFELY(_refreshButtonItem);
-    TT_RELEASE_SAFELY(_composeButtonItem);
     TT_RELEASE_SAFELY(_clearButtonItem);
-    TT_RELEASE_SAFELY(_stateLabelItem);
-    TT_RELEASE_SAFELY(_timeStampLabel);
-    TT_RELEASE_SAFELY(_space);
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -61,29 +56,7 @@
     
     _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Clear", @"清理") style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
     ////////////////////////////////////////////////////////////////////////////////
-/////////////////////
-    
-    _space = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    ////////////////////////////////////////////////////////////////////////////////
-/////////////////////
-    
-    _refreshButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
-    ////////////////////////////////////////////////////////////////////////////////
-/////////////////////
-    
-    _composeButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
-    ////////////////////////////////////////////////////////////////////////////////
-/////////////////////
-    _timeStampLabel = [[TTLabel alloc]init];
-    _timeStampLabel.style = TTSTYLE(timeStampLabel);
-    _timeStampLabel.frame = CGRectMake(0, 0, self.view.width, TTToolbarHeight());
-    _timeStampLabel.backgroundColor = [UIColor clearColor];
-    _timeStampLabel.text = @"...";
-    
-    _stateLabelItem =[[UIBarButtonItem alloc]initWithCustomView:_timeStampLabel];
-    ////////////////////////////////////////////////////////////////////////////////
-/////////////////////
-    
+/////////////////////    
     [self resetButtonTitle];
 }
 
@@ -189,16 +162,7 @@
 -(void)modelDidFinishLoad:(id<TTModel>)model
 {
     [super modelDidFinishLoad:model];
-    NSDate * lastUpdatedDate =  [(TTURLRequestModel *)model loadedTime];
-    
-    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:NSDateFormatterShortStyle];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
-    _timeStampLabel.text = [NSString stringWithFormat:
-                              TTLocalizedString(@"Last updated: %@",
-                                                @"The last time the table view was updated."),
-                              [formatter stringFromDate:lastUpdatedDate]];
-    [formatter release];
+    self.timeStampLabel.timeStamp = [(TTURLRequestModel *)model loadedTime];
 }
 
 -(id<UITableViewDelegate>)createDelegate

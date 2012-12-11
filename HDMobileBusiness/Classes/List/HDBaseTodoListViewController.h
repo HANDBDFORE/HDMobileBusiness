@@ -7,21 +7,16 @@
 //
 
 #import "HDListModel.h"
+#import "HDListViewController.h"
 
 static NSString * kEventTodoListSearchViewWillDissappear = @"TodoListSearchViewWillDissappear";
 
-@interface HDBaseTodoListViewController : TTTableViewController<TTPostControllerDelegate>
+@interface HDBaseTodoListViewController : HDListViewController<TTPostControllerDelegate>
 {
     @protected
     UIBarButtonItem *  _acceptButtonItem;
     UIBarButtonItem *  _refuseButtonItem;
-    UIBarButtonItem *  _refreshButtonItem;
-    UIBarButtonItem *  _composeButtonItem;
     UIBarButtonItem *  _clearButtonItem;
-    UIBarButtonItem *  _stateLabelItem;
-    TTLabel         *  _timeStampLabel;
-    UIBarButtonItem *  _space;
-    
     NSString        *  _submitAction;
 }
 
@@ -30,12 +25,15 @@ static NSString * kEventTodoListSearchViewWillDissappear = @"TodoListSearchViewW
 -(void)setToolbarButtonTitleWithCount:(NSNumber *)count;
 
 #pragma -override
+-(void)refreshButtonPressed:(id) sender;
+
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated;
 
 -(void)modelDidFinishLoad:(id<TTModel>)model;
 
 -(id<UITableViewDelegate>)createDelegate;
 
+#pragma -implement TTPostControllerDelegate
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result;
 
 @end

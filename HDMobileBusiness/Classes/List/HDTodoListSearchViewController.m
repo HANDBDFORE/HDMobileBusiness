@@ -63,9 +63,9 @@
 -(NSArray *)createToolbarItems
 {
     if (self.editing) {
-        return [NSArray arrayWithObjects:_acceptButtonItem,_refuseButtonItem,_space,self.editButtonItem, nil];
+        return [NSArray arrayWithObjects:_acceptButtonItem,_refuseButtonItem,self.spaceItem,self.editButtonItem, nil];
     }else {
-        return [NSArray arrayWithObjects:_space,_stateLabelItem,_space,self.editButtonItem, nil];
+        return [NSArray arrayWithObjects:self.spaceItem,self.timeStampLabel,self.spaceItem,self.editButtonItem, nil];
     } 
 }
 

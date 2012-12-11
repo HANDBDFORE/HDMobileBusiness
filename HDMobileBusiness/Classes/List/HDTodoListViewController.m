@@ -90,9 +90,9 @@ static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
 -(NSArray *)createToolbarItems
 {
     if (self.editing) {
-        return [NSArray arrayWithObjects:_acceptButtonItem,_space,_refuseButtonItem, nil];
+        return [NSArray arrayWithObjects:_acceptButtonItem,self.spaceItem,_refuseButtonItem, nil];
     }else {
-        return [NSArray arrayWithObjects:_space,_stateLabelItem,_space,nil];
+        return [NSArray arrayWithObjects:self.spaceItem,self.timeStampLabel,self.spaceItem,nil];
     } 
 }
 
