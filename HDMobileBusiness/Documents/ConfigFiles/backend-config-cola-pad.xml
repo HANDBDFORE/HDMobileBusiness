@@ -77,7 +77,7 @@
     </bean>
        <!--functionListViewController-->
     <bean id="functionListViewController"  create-url="tt://functionListViewController" mode="share">
-        <property name="title" value="function"/>
+        <property name="title" value="功能列表"/>
         <property name="dataSource" ref="functionDataSource"/>
     </bean>
     <!--functionDataSource-->
@@ -99,7 +99,7 @@
     </bean>
     <!--groupedTodoListViewController-->
     <bean id="groupedTodoListViewController" create-url="tt://groupedTodoListViewController" mode="share">
-        <property name="title" value="Grouped"/>
+        <property name="title" value="分组列表"/>
         <property name="dataSource" ref="groupedTodoListDataSource"/>
     </bean>
     <!--groupedTodoListDataSource-->
@@ -109,7 +109,7 @@
     </bean>
     <!--todoListViewController-->
     <bean id="todoListViewController" create-url="tt://todoListViewController" mode="share">
-        <property name="title" value="todo"/>
+        <property name="title" value="待办列表"/>
         <property name="dataSource" ref="todoListDataSource"/>
         <property name="listModel" ref="todoListModel"/>
         <property name="searchViewController" ref="todoListSearchViewController"/>
@@ -145,7 +145,7 @@
     </bean>
     <!--todoListSearchViewController-->
     <bean id="todoListSearchViewController" create-url="tt://todoListSearchViewController" mode="share">
-        <property name="title" value="todoSearch"/>
+        <property name="title" value="待办查询"/>
         <property name="dataSource" ref="todoListSearchDataSource"/>
         <property name="listModel" ref="todoListSearchModel"/>
     </bean>
@@ -176,7 +176,7 @@
     </bean>
     <!--doneListViewController-->
     <bean id="doneListViewController" create-url="tt://doneListViewController" mode="share">
-        <property name="title" value="done list"/>
+        <property name="title" value="审批完成"/>
         <property name="dataSource" ref="doneListDataSource"/>
     </bean>
     <!--doneListDataSource-->
@@ -222,8 +222,8 @@
     </bean>
     <!--deliverController-->
     <bean id="deliverController" create-url="tt://deliverController" mode="create">
-        <property name="title" value="deliver"/>
-        <property name="personPickerTextField.placeholder" value="451116"/>
+        <property name="title" value="转交"/>
+        <!--property name="personPickerTextField.placeholder" value="请输入查询条件"/-->
         <property name="delegate" ref="todoDetailController"/>
         <property name="dataSource" ref="personListDataSource"/>
     </bean>

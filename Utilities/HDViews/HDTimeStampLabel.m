@@ -15,7 +15,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.text  = @"...";
-        TTDPRINT(@"frame");
         self.style = TTSTYLE(timeStampLabel);
         self.backgroundColor = [UIColor clearColor];
     }
@@ -27,7 +26,6 @@
     self = [super init];
     if (self) {
         self.text = @"...";
-        TTDPRINT(@"init");
         self.backgroundColor = [UIColor clearColor];
     }
     return self;
