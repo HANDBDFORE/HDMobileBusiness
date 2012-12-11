@@ -490,6 +490,9 @@ static NSString * kSQLNull = @"null";
 
 -(void)removeRecordAtIndex:(NSUInteger) index
 {
+    if (self.resultList.count == 0) {
+        return;
+    }
     id record = [self.resultList objectAtIndex:index];
     if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordDifferent]) {
         //remove
