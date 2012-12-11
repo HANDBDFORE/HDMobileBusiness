@@ -9,5 +9,10 @@
 #import <Three20UI/Three20UI.h>
 
 @interface HDGroupedViewController : TTTableViewController
+{
+    TTLabel         *  _timeStampLabel;
+    UIBarButtonItem *  _stateLabelItem;
+    UIBarButtonItem *  _space;
 
+}
 @end

@@ -18,15 +18,7 @@
     [super dealloc];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.groupedCodeField = @"employee_name";
-        self.groupedValueField = @"employee_name";
-    }
-    return self;
-}
+
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
     self.items = [NSMutableArray array];
