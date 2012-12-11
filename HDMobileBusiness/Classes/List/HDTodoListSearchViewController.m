@@ -65,7 +65,7 @@
     if (self.editing) {
         return [NSArray arrayWithObjects:_acceptButtonItem,_refuseButtonItem,self.spaceItem,self.editButtonItem, nil];
     }else {
-        return [NSArray arrayWithObjects:self.spaceItem,self.timeStampLabel,self.spaceItem,self.editButtonItem, nil];
+        return [NSArray arrayWithObjects:self.spaceItem,self.timeStampItem,self.spaceItem,self.editButtonItem, nil];
     } 
 }
 
