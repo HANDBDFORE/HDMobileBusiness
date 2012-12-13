@@ -79,7 +79,7 @@ static NSString * kSQLNull = @"null";
         //这里只设置loadedTime表示超时,modelViewController会调用reload方法,之后可以考虑overwrite viewController的shuldreload方法或者model的isOutdated方法
         self.loadedTime = [NSDate dateWithTimeIntervalSinceNow:0];
         self.cacheKey = nil;
-        [self didFinishLoad];
+        [self load:TTURLRequestCachePolicyDefault more:NO];
         return;
     }
     if([self shouldSubmit]){
