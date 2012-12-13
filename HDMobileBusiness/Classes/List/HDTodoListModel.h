@@ -9,24 +9,15 @@
 #import "HDURLRequestModel.h"
 #import "HDListModel.h"
 
-@interface HDTodoListModel : HDURLRequestModel<HDListModelVector,HDListModelSubmit>
+@interface HDTodoListModel : TTURLRequestModel<HDListModelVector,HDListModelSubmit>
 {
-    @private
-    struct {
-        unsigned int shouldLoadingLocalData:1;
-        unsigned int isSubmitingData:1;
-        unsigned int isQueryingData:1;
-    } _flags;
-    
     NSMutableArray * _resultList;
-    NSMutableArray * _submitList;
     NSString * _searchText;
     
     NSRange _vectorRange;
 }
 
 #pragma override ModelQuery 
-@property(nonatomic,copy) NSString * queryURL;
 
 //获取结果列表
 @property(nonatomic,readonly) NSArray * resultList;
@@ -35,8 +26,6 @@
 - (void)search:(NSString*)text;
 
 #pragma override ModelSubmit
-//提交的Url
-@property(nonatomic,copy) NSString * submitURL;
 
 -(void)removeRecordAtIndex:(NSUInteger) index;
 
@@ -50,9 +39,6 @@
 //查询字段
 @property(nonatomic,retain) NSArray * searchFields;
 
-//主键字段
-@property(nonatomic,copy) NSString * primaryField;
-
 //清除无效的数据,未使用
 //-(void)clear;
 
@@ -64,6 +50,29 @@
 @property(nonatomic,copy) NSString * groupedCodeField;
 
 @property(nonatomic,copy) NSString * groupedValueField;
+
+
+#pragma override TTModel
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (BOOL)isLoaded;
+
+- (BOOL)isLoading;
+
+- (BOOL)isLoadingMore;
+
+- (BOOL)isOutdated;
+
+-(NSDate *)loadedTime;
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma Trash
+//主键字段
+@property(nonatomic,copy) NSString * primaryField;
+
+//提交的Url
+@property(nonatomic,copy) NSString * submitURL;
+
+@property(nonatomic,copy) NSString * queryURL;
 
 @end
 

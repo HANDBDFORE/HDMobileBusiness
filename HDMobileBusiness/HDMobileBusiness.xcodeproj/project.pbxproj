@@ -343,6 +343,8 @@
 		B398B8A5164A08E70017FCD6 /* HDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B398B7001649F6DC0017FCD6 /* HDAppDelegate.m */; };
 		B398B8A6164A099E0017FCD6 /* mobileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E670015C64E6700824CB1 /* mobileIcon.png */; };
 		B3B67ED2165CC666003B7D11 /* HDShowInViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */; };
+		B3CB0A4F1679980200BBE7CC /* HDTodoListService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB0A4E1679980100BBE7CC /* HDTodoListService.m */; };
+		B3CB0A501679980200BBE7CC /* HDTodoListService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB0A4E1679980100BBE7CC /* HDTodoListService.m */; };
 		B3CB5D921676CEB60062E71B /* HDTimeStampLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB5D911676CEB60062E71B /* HDTimeStampLabel.m */; };
 		B3CB5D941676D18F0062E71B /* HDTimeStampLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB5D911676CEB60062E71B /* HDTimeStampLabel.m */; };
 		B3CB5D971676F0B90062E71B /* HDListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB5D961676F0B90062E71B /* HDListViewController.m */; };
@@ -956,6 +958,8 @@
 		B39BC5581601765C00551C63 /* HDListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDListModel.h; path = Classes/List/HDListModel.h; sourceTree = "<group>"; };
 		B3B67ED0165CC665003B7D11 /* HDShowInViewGuider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDShowInViewGuider.h; sourceTree = "<group>"; };
 		B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDShowInViewGuider.m; sourceTree = "<group>"; };
+		B3CB0A4D1679980100BBE7CC /* HDTodoListService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListService.h; path = Classes/List/HDTodoListService.h; sourceTree = SOURCE_ROOT; };
+		B3CB0A4E1679980100BBE7CC /* HDTodoListService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTodoListService.m; path = Classes/List/HDTodoListService.m; sourceTree = SOURCE_ROOT; };
 		B3CB5D901676CEB60062E71B /* HDTimeStampLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTimeStampLabel.h; path = HDViews/HDTimeStampLabel.h; sourceTree = "<group>"; };
 		B3CB5D911676CEB60062E71B /* HDTimeStampLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTimeStampLabel.m; path = HDViews/HDTimeStampLabel.m; sourceTree = "<group>"; };
 		B3CB5D951676F0B80062E71B /* HDListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDListViewController.h; path = Classes/List/HDListViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1507,6 +1511,8 @@
 				B30376891600883A00238923 /* HDTodoListModel.m */,
 				B30376831600883000238923 /* HDTodoListViewController.h */,
 				B303768B1600883C00238923 /* HDTodoListViewController.m */,
+				B3CB0A4D1679980100BBE7CC /* HDTodoListService.h */,
+				B3CB0A4E1679980100BBE7CC /* HDTodoListService.m */,
 			);
 			name = TodoList;
 			path = Classes/TodoList;
@@ -2653,6 +2659,7 @@
 				B3D5B84D165F43000073C9D5 /* HDResourceLoader.m in Sources */,
 				B3D5B851165F4DC40073C9D5 /* HDApplicationContext.m in Sources */,
 				B3CB5D971676F0B90062E71B /* HDListViewController.m in Sources */,
+				B3CB0A4F1679980200BBE7CC /* HDTodoListService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2744,6 +2751,7 @@
 				B3FFC15F1670330600965ECA /* HDGroupedViewController.m in Sources */,
 				B3CB5D921676CEB60062E71B /* HDTimeStampLabel.m in Sources */,
 				B3CB5D981676F0B90062E71B /* HDListViewController.m in Sources */,
+				B3CB0A501679980200BBE7CC /* HDTodoListService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

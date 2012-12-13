@@ -130,7 +130,6 @@
     </bean>
     <!--todoListModel-->
     <bean id="todoListModel" create-url="tt://todoListModel" mode="share">
-        <property name="primaryField" value="record_id"/>
         <property name="searchFields">
             <array>
                 <list value="order_type"/>
@@ -140,6 +139,10 @@
         </property>
         <property name="groupedCodeField" value="employee_name"/>
         <property name="groupedValueField" value="employee_name"/>
+    </bean>
+    <!--todoListService-->
+    <bean id="todoListService" create-url="tt://todoListService">
+        <property name="primaryField" value="record_id"/>
         <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false"/>
         <property name="submitURL" value="${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"/>
     </bean>

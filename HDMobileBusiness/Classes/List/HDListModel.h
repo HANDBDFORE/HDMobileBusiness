@@ -40,7 +40,13 @@ static NSString * kEmployeeID = @"employee_id";
 -(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
                       dictionary:(NSDictionary *)dictionary;
 
+@optional
 -(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary;
+
+//////new
+-(void)submitRecords:(NSArray *)records dictionary:(NSDictionary *)dictionary;
+
+-(void)removeRecord:(id)record;
 
 @end
 
