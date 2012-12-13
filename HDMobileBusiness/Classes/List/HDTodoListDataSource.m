@@ -116,7 +116,8 @@
 #pragma mark UITable datasource
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString * localStatus =  [[self.listModel.resultList objectAtIndex:indexPath.row] valueForKeyPath:kRecordStatus];
+    //TODO:这里之后需要统一keyPath
+    NSString * localStatus = [[self.items objectAtIndex:indexPath.row] valueForKeyPath:@"state"];
     
     return ([localStatus isEqualToString:kRecordNormal] ||
             [localStatus isEqualToString:kRecordError]);
@@ -128,10 +129,7 @@
         [item.state isEqualToString:kRecordError]) {
         self.listModel.currentIndex = [self.items indexOfObject:item];
 
-        HDViewGuider  * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
-        if ([guider.destinationController respondsToSelector:@selector(setListModel:)]){
-            [guider.destinationController performSelector:@selector(setListModel:) withObject:self.listModel];
-        }
+        HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
         [guider perform];
     }
 }

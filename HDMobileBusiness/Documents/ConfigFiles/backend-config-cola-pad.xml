@@ -160,12 +160,9 @@
                 <element key="isLate" value="${is_late}"/>
             </map>
         </property>
-        <property name="listModel" ref="todoListSearchModel"/>
-        <property name="model" ref="todoListSearchModel"/>
+        <property name="listModel" ref="todoListModel"/>
+        <property name="model" ref="todoListModel"/>
     </bean>
-    <!--todoListSearchModel-->
-    <bean id="todoListSearchModel" share="todoListModel" />
-    
     <!--doneListViewControllerNavigator-->
     <bean id="doneListNavigator"  create-url="tt://navigator" mode="share">
         <property name="pushedViewControllers" >
@@ -209,6 +206,7 @@
         <property name="queryActionURLTemplate" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}"/>
         <property name="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
         <property name="webPageURLTemplate" value="${base_url}${screen_name}" />
+        <property name="listModel" ref="todoListModel"/>
     </bean>
     <!--postController-->
     <bean id="postController" create-url="tt://postController" mode="create"/>

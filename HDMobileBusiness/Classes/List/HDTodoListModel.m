@@ -435,23 +435,13 @@ static NSString * kSQLNull = @"null";
 {
     [self cancel];
     self.searchText = text;
-    if (self.searchText.length) {
-        [self loadLocalRecords];
-//        NSIndexSet * unmatchedIndexSet = [self.resultList indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-//            BOOL matchFlg = NO;
-//            for (NSString * key in self.searchFields) {
-//                matchFlg = matchFlg || [[obj valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-//            }
-//            return !matchFlg;
-//        }];
-//        
-//        [_resultList removeObjectsAtIndexes:unmatchedIndexSet];
-        [self didFinishLoad];
-    } else {
-        //debug:结束查询状态时，需要清空结果列表，否则再次查询时，查询table和model数据不一致导致crash。
-        [_resultList removeAllObjects];
-        [self didChange];
-    }
+    [self didFinishLoad];
+}
+
+-(void)cancel
+{
+    [super cancel];
+    _flags.isQueryingData = 0;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
