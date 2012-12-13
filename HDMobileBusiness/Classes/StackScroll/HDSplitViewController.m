@@ -7,6 +7,7 @@
 //
 
 #import "HDSplitViewController.h"
+#import "UIViewWithShadow.h"
 
 @implementation HDSplitViewController
 @synthesize leftViewController = _leftViewController;
@@ -16,6 +17,7 @@
 -(void)viewDidUnload
 {
     [super viewDidUnload];
+    TT_RELEASE_SAFELY(_rightShadowView);
     TT_RELEASE_SAFELY(_leftViewController);
     TT_RELEASE_SAFELY(_rightViewController);
 }
@@ -27,6 +29,8 @@
         // Custom initialization
         _leftViewPercentWidth = 0.5;
         _leftViewWidth = 320;
+        
+        
     }
     return self;
 }
@@ -47,12 +51,16 @@
 -(void)setRightViewController:(UIViewController *)rightViewController
 {
     if (_rightViewController != rightViewController) {
+        [_rightShadowView removeFromSuperview];
         [_rightView removeFromSuperview];
         [_rightViewController release];
         
         _rightViewController = [rightViewController retain];
         _rightView = _rightViewController.view;
         _rightView.tag = 201;
+        
+        [_rightShadowView setFrame:CGRectMake(-40, 0, 40 , _rightView.height)];
+        [_rightView addSubview:_rightShadowView];
         [self resizeSubViews:NO];
         
         [self.view insertSubview:_rightView atIndex:1];
@@ -112,10 +120,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _rightShadowView = [[UIViewWithShadow alloc] init];
+    [_rightShadowView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+    [_rightShadowView setClipsToBounds:NO];
+    [_rightShadowView setTag:2011];
     
-    self.view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)] autorelease];
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage: [UIImage imageNamed:@"backgroundImage_repeat.png"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage: [UIImage imageNamed:@"backgroundImage_repeat.png"]]];  
     
     [_leftViewController viewWillAppear:NO];
 	[_leftViewController viewDidAppear:NO];

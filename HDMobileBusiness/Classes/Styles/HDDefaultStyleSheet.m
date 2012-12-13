@@ -108,13 +108,13 @@
 #pragma -mark color
 -(UIColor *)navigationBarTintColor
 {
-//    return RGBACOLOR(102, 102, 102, 0.6);
-    return RGBCOLOR(51, 51, 51);
+    return RGBCOLOR(102, 102, 102);
+//    return RGBCOLOR(51, 51, 51);
 }
 
 -(UIColor *)toolbarTintColor
 {
-    return RGBCOLOR(17, 17, 17);
+    return RGBCOLOR(102, 102, 102);
 }
 
 -(UIColor *)postViewBackground

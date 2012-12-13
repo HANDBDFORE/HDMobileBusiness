@@ -50,6 +50,15 @@
 	return self;
 }
 
+-(id)initWithFrame:(CGRect)frame
+{
+    if ((self = [super initWithFrame:frame])) {
+        self.backgroundColor = [UIColor clearColor];
+        self.opaque = NO;
+    }
+    return self;
+}
+
 -(void) layoutSubviews {
 	CGFloat coloredBoxMargin = 40;
     CGFloat coloredBoxHeight = self.frame.size.height;

@@ -12,6 +12,7 @@
 {
     UIView * _leftView;
     UIView * _rightView;
+    UIView * _rightShadowView;
 }
 
 @property (nonatomic) CGFloat leftViewWidth;
