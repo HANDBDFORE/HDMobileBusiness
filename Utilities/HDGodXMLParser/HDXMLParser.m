@@ -68,7 +68,7 @@
         //复制参数
         propertyRefbeans = (NSMutableDictionary *)[(HDObjectPattern *)[_patternes objectForKey:[attributeDict objectForKey:@"copy"]] beans];
         propertyValues = (NSMutableDictionary *)[(HDObjectPattern *)[_patternes objectForKey:[attributeDict objectForKey:@"copy"]] values];
-        [_patternes setObject:[[(HDObjectPattern *)[_patternes objectForKey:[attributeDict objectForKey:@"copy"]]copy] autorelease] forKey:[attributeDict objectForKey:@"id"]];
+        [_patternes setObject:[(HDObjectPattern *)[_patternes objectForKey:[attributeDict objectForKey:@"copy"]]copy]forKey:[attributeDict objectForKey:@"id"]];
     }else if([attributeDict objectForKey:@"share"]){
         [_patternes setObject:(HDObjectPattern *)[_patternes objectForKey:[attributeDict objectForKey:@"share"]]forKey:[attributeDict objectForKey:@"id"]];
         isContinue = NO;

@@ -22,6 +22,14 @@
     return self;
 }
 
+-(id)copyWithZone:(NSZone *)zone{
+    HDObjectPattern *copy = [[[[self class] allocWithZone: zone] init]autorelease];
+    copy.url = self.url;
+    copy.values = self.values;
+    copy.beans = self.beans;
+    copy.objectMode = self.objectMode;
+    return copy;
+}
 - (void)dealloc
 {
     [_url release];
