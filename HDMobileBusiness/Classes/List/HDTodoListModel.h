@@ -1,80 +1,51 @@
 //
-//  HDWillAproveListModel.h
-//  hrms
+//  HDTodoListService.h
+//  HDMobileBusiness
 //
-//  Created by Rocky Lee on 7/19/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Plato on 12/13/12.
+//  Copyright (c) 2012 hand. All rights reserved.
 //
 
 #import "HDURLRequestModel.h"
 #import "HDListModel.h"
+#import "HDTodoListModelStatus.h"
 
-@interface HDTodoListModel : TTURLRequestModel<HDListModelVector,HDListModelSubmit>
+@interface HDTodoListModel : HDURLRequestModel<HDListModelSubmit>
 {
-    NSMutableArray * _resultList;
-    NSString * _searchText;
+    @private
+    struct {
+        unsigned int shouldLoadingLocalData:1;
+        unsigned int isSubmitingData:1;
+        unsigned int isQueryingData:1;
+    } _flags;
     
-    NSRange _vectorRange;
+    NSMutableArray * _resultList;
+    NSMutableArray * _submitList;
 }
 
-#pragma override ModelQuery 
+//主键字段
+@property(nonatomic,copy) NSString * primaryField;
+
+#pragma override ModelQuery
+@property(nonatomic,copy) NSString * queryURL;
 
 //获取结果列表
 @property(nonatomic,readonly) NSArray * resultList;
 
-//查询
-- (void)search:(NSString*)text;
-
 #pragma override ModelSubmit
+//提交的Url
+@property(nonatomic,copy) NSString * submitURL;
 
--(void)removeRecordAtIndex:(NSUInteger) index;
 
 //提交IndexPath指定的记录，提交参数通过query传递
 -(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
                       dictionary:(NSDictionary *)dictionary;
 
--(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary;
+-(void)removeRecordAtIndex:(NSUInteger) index;
 
+#pragma new
+-(void)removeRecord:(id)record;
 
-//查询字段
-@property(nonatomic,retain) NSArray * searchFields;
-
-//清除无效的数据,未使用
-//-(void)clear;
-
-#pragma override ModelGroup
-@property(nonatomic,readonly) NSArray * groupResultList;
-
-@property(nonatomic,copy) NSString * groupedCode;
-
-@property(nonatomic,copy) NSString * groupedCodeField;
-
-@property(nonatomic,copy) NSString * groupedValueField;
-
-
-#pragma override TTModel
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (BOOL)isLoaded;
-
-- (BOOL)isLoading;
-
-- (BOOL)isLoadingMore;
-
-- (BOOL)isOutdated;
-
--(NSDate *)loadedTime;
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-#pragma Trash
-//主键字段
-@property(nonatomic,copy) NSString * primaryField;
-
-//提交的Url
-@property(nonatomic,copy) NSString * submitURL;
-
-@property(nonatomic,copy) NSString * queryURL;
+-(void)submitRecords:(NSArray *)records dictionary:(NSDictionary *)dictionary;
 
 @end
-
-
-

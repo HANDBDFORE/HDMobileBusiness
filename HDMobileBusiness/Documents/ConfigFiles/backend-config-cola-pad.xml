@@ -104,14 +104,14 @@
     </bean>
     <!--groupedTodoListDataSource-->
     <bean id="groupedTodoListDataSource" create-url="tt://groupedTodoListDataSource">
-        <property name="listModel" ref="todoListModel"/>
-        <property name="model" ref="todoListModel"/>
+        <property name="listModel" ref="todoListService"/>
+        <property name="model" ref="todoListService"/>
     </bean>
     <!--todoListViewController-->
     <bean id="todoListViewController" create-url="tt://todoListViewController" mode="share">
         <property name="title" value="待办列表"/>
         <property name="dataSource" ref="todoListDataSource"/>
-        <property name="listModel" ref="todoListModel"/>
+        <property name="listModel" ref="todoListService"/>
         <property name="searchViewController" ref="todoListSearchViewController"/>
     </bean>
     <!--todoListDataSource-->
@@ -125,11 +125,11 @@
                 <element key="isLate" value="${is_late}"/>
             </map>
         </property>
-        <property name="listModel" ref="todoListModel"/>
-        <property name="model" ref="todoListModel"/>
+        <property name="listModel" ref="todoListService"/>
+        <property name="model" ref="todoListService"/>
     </bean>
-    <!--todoListModel-->
-    <bean id="todoListModel" create-url="tt://todoListModel" mode="share">
+    <!--todoListService-->
+    <bean id="todoListService" create-url="tt://todoListService" mode="share">
         <property name="searchFields">
             <array>
                 <list value="order_type"/>
@@ -140,8 +140,8 @@
         <property name="groupedCodeField" value="employee_name"/>
         <property name="groupedValueField" value="employee_name"/>
     </bean>
-    <!--todoListService-->
-    <bean id="todoListService" create-url="tt://todoListService">
+    <!--todoListModel-->
+    <bean id="todoListModel" create-url="tt://todoListModel">
         <property name="primaryField" value="record_id"/>
         <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false"/>
         <property name="submitURL" value="${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"/>
@@ -163,8 +163,8 @@
                 <element key="isLate" value="${is_late}"/>
             </map>
         </property>
-        <property name="listModel" ref="todoListModel"/>
-        <property name="model" ref="todoListModel"/>
+        <property name="listModel" ref="todoListService"/>
+        <property name="model" ref="todoListService"/>
     </bean>
     <!--doneListViewControllerNavigator-->
     <bean id="doneListNavigator"  create-url="tt://navigator" mode="share">
@@ -209,7 +209,7 @@
         <property name="queryActionURLTemplate" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}"/>
         <property name="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
         <property name="webPageURLTemplate" value="${base_url}${screen_name}" />
-        <property name="listModel" ref="todoListModel"/>
+        <property name="listModel" ref="todoListService"/>
     </bean>
     <!--postController-->
     <bean id="postController" create-url="tt://postController" mode="create"/>
