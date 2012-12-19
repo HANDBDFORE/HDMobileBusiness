@@ -9,8 +9,6 @@
 #import "HDTodoListViewController.h"
 #import "HDTodoListSearchViewController.h"
 
-static NSString * kSearchPathName = @"TODO_LIST_SEARCH";
-
 @implementation HDTodoListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

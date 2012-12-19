@@ -8,8 +8,9 @@
 
 #import "HDURLRequestModel.h"
 #import "HDListModel.h"
+#import "HDBaseService.h"
 
-@interface HDTodoListService : TTURLRequestModel<HDListModelVector,HDListModelSubmit>
+@interface HDTodoListService : HDBaseService <HDTodoListService>
 {
     NSMutableArray * _resultList;
     NSString * _searchText;
@@ -17,32 +18,32 @@
     NSRange _vectorRange;
 }
 
-#pragma override ModelQuery 
+@property(nonatomic,retain) id<TTModel,HDURLRequestModel,HDListModelSubmit,HDListModelQuery> model;
 
 //获取结果列表
 @property(nonatomic,readonly) NSArray * resultList;
 
+//查询字段
+@property(nonatomic,retain) NSArray * searchFields;
+
+#pragma -mark service
 //查询
 - (void)search:(NSString*)text;
-
-#pragma override ModelSubmit
 
 -(void)removeRecordAtIndex:(NSUInteger) index;
 
 //提交IndexPath指定的记录，提交参数通过query传递
+
 -(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
                       dictionary:(NSDictionary *)dictionary;
 
 -(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary;
 
 
-//查询字段
-@property(nonatomic,retain) NSArray * searchFields;
+@property(nonatomic,assign) NSUInteger currentIndex;
 
-//清除无效的数据,未使用
-//-(void)clear;
 
-#pragma override ModelGroup
+#pragma -mark override ModelGroup
 @property(nonatomic,readonly) NSArray * groupResultList;
 
 @property(nonatomic,copy) NSString * groupedCode;
@@ -51,28 +52,8 @@
 
 @property(nonatomic,copy) NSString * groupedValueField;
 
-
-#pragma override TTModel
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (BOOL)isLoaded;
-
-- (BOOL)isLoading;
-
-- (BOOL)isLoadingMore;
-
-- (BOOL)isOutdated;
-
--(NSDate *)loadedTime;
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-#pragma Trash
-//主键字段
-@property(nonatomic,copy) NSString * primaryField;
-
-//提交的Url
-@property(nonatomic,copy) NSString * submitURL;
-
-@property(nonatomic,copy) NSString * queryURL;
+//清除无效的数据,未使用
+//-(void)clear;
 
 @end
 

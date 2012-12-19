@@ -150,7 +150,7 @@
     <bean id="todoListSearchViewController" create-url="tt://todoListSearchViewController" mode="share">
         <property name="title" value="待办查询"/>
         <property name="dataSource" ref="todoListSearchDataSource"/>
-        <property name="listModel" ref="todoListSearchModel"/>
+        <property name="listModel" ref="todoListService"/>
     </bean>
     <!--todoListSearchDataSource-->
     <bean id="todoListSearchDataSource" create-url="tt://todoListDataSource" mode="share">

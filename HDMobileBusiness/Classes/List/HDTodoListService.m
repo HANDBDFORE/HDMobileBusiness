@@ -13,8 +13,6 @@
 
 @property(nonatomic,copy)NSString * searchText;
 
-@property(nonatomic,retain) id<TTModel,HDListModelSubmit> model;
-
 @end
 
 @implementation HDTodoListService
@@ -23,7 +21,11 @@
 @synthesize searchFields = _searchFields;
 @synthesize currentIndex = _currentIndex;
 
-@dynamic  groupResultList;
+@synthesize groupedCode = _groupedCode;
+@synthesize groupedCodeField = _groupedCodeField;
+@synthesize groupedValueField = _groupedValueField;
+
+@dynamic groupResultList;
 
 - (void)dealloc
 {
@@ -35,7 +37,6 @@
     TT_RELEASE_SAFELY(_groupedCodeField);
     TT_RELEASE_SAFELY(_groupedValueField);
     
-    TT_RELEASE_SAFELY(_model);
     [super dealloc];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -58,22 +59,6 @@
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)setModel:(id <TTModel,HDListModelSubmit>)model
-{
-    if (_model != model) {
-        [_model.delegates removeObject:self];
-        [_model release];
-        _model = [model retain];
-        [_model.delegates addObject:self];
-    }
-}
-
-#pragma mark TTModel protocol
--(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
-{
-    [_model load:cachePolicy more:more];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -(NSArray *)resultList
 {
     if (!self.groupedCode || !self.groupedCodeField)
@@ -134,14 +119,20 @@
     for (NSIndexPath * indexPath in indexPaths) {
         [submitRecords addObject: [self.resultList objectAtIndex:indexPath.row]];
     }
-    [self.model submitRecords:submitRecords dictionary:dictionary];
+    for (NSString * key in dictionary) {
+        [submitRecords setValue:[dictionary valueForKey:key] forKey:key];
+    }
+    [self.model submitRecords:submitRecords];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary
 {
-    [self.model submitRecords:@[[self.resultList objectAtIndex:_currentIndex]]
-             dictionary:dictionary];
+    NSArray * submitRecords = @[[self.resultList objectAtIndex:_currentIndex]];
+    for (NSString * key in dictionary) {
+        [submitRecords setValue:[dictionary valueForKey:key] forKey:key];
+    }
+    [self.model submitRecords:submitRecords];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -(void)removeRecordAtIndex:(NSUInteger) index
@@ -252,44 +243,16 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark TTModelDelegate functions
--(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
-{
-    [self didFailLoadWithError:error];
-}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)modelDidFinishLoad:(id<TTModel>)model
+-(void)modelDidFinishLoad:(id<HDListModelQuery>)model
 {
     [_resultList removeAllObjects];
-    [_resultList addObjectsFromArray:self.model.resultList];
+    [_resultList addObjectsFromArray:model.resultList];
     [self didFinishLoad];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)modelDidBeginUpdates:(id<TTModel>)model
-{
-    [self beginUpdates];
-}
-
--(void)modelDidCancelLoad:(id<TTModel>)model
-{
-    [self didCancelLoad];
-}
-
--(void)modelDidChange:(id<TTModel>)model
-{
-    [self didChange];
-}
-
--(void)modelDidEndUpdates:(id<TTModel>)model
-{
-    [self endUpdates];
-}
-
--(void)modelDidStartLoad:(id<TTModel>)model
-{
-    [self didStartLoad];
-}
 
 -(void)model:(id<TTModel>)model didUpdateObject:(id)object atIndexPath:(NSIndexPath *)indexPath
 {
@@ -300,59 +263,5 @@
                                                                 inSection:0]];
 }
 
--(void)model:(id<TTModel>)model didDeleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath
-{
-    NSUInteger index = [self.resultList indexOfObject:object];
-    [self didDeleteObject:object atIndexPath:[NSIndexPath indexPathForRow:index
-                                                                inSection:0]];
-}
-
--(void)model:(id<TTModel>)model didInsertObject:(id)object atIndexPath:(NSIndexPath *)indexPath
-{
-    NSUInteger index = [self.resultList indexOfObject:object];
-    [self didInsertObject:object atIndexPath:[NSIndexPath indexPathForRow:index
-                                                                inSection:0]];
-}
-
-#pragma mark override TTModel
--(BOOL)isLoaded
-{
-    return [self.model isLoaded];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-- (BOOL)isLoading
-{
-    return [self.model isLoading];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-- (BOOL)isLoadingMore
-{
-    return [self.model isLoadingMore];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-- (BOOL)isOutdated
-{
-    return [self.model isOutdated];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)cancel
-{
-    [self.model cancel];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)invalidate:(BOOL)erase
-{
-    [self.model invalidate:erase];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
--(NSDate *)loadedTime
-{
-    return [(TTURLRequestModel *)self.model loadedTime];
-}
 
 @end

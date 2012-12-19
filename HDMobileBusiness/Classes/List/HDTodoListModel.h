@@ -10,7 +10,7 @@
 #import "HDListModel.h"
 #import "HDTodoListModelStatus.h"
 
-@interface HDTodoListModel : HDURLRequestModel<HDListModelSubmit>
+@interface HDTodoListModel : HDURLRequestModel<HDListModelSubmit,HDListModelQuery>
 {
     @private
     struct {
@@ -26,26 +26,17 @@
 //主键字段
 @property(nonatomic,copy) NSString * primaryField;
 
-#pragma override ModelQuery
+//查询路径
 @property(nonatomic,copy) NSString * queryURL;
 
 //获取结果列表
 @property(nonatomic,readonly) NSArray * resultList;
 
-#pragma override ModelSubmit
 //提交的Url
 @property(nonatomic,copy) NSString * submitURL;
 
-
-//提交IndexPath指定的记录，提交参数通过query传递
--(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
-                      dictionary:(NSDictionary *)dictionary;
-
--(void)removeRecordAtIndex:(NSUInteger) index;
-
-#pragma new
 -(void)removeRecord:(id)record;
 
--(void)submitRecords:(NSArray *)records dictionary:(NSDictionary *)dictionary;
+-(void)submitRecords:(NSArray *)records;
 
 @end

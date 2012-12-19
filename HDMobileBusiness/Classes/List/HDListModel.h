@@ -6,19 +6,22 @@
 //  Copyright (c) 2012 hand. All rights reserved.
 //
 
+
 //submit field
 static NSString * kAction = @"action_id";
 static NSString * kComments = @"comments";
 static NSString * kEmployeeID = @"employee_id";
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/*
+ * 多数ListModel会实现这个接口，统一查询的路径属性和查询结果列表
+ */
 @protocol HDListModelQuery <TTModel>
 
-@required
-
+//查询结果
 @property(nonatomic,copy) NSString * queryURL;
 
-//获取结果列表
+//查询结果
 @property(nonatomic,readonly) NSArray * resultList;
 
 @optional
@@ -27,39 +30,28 @@ static NSString * kEmployeeID = @"employee_id";
 
 @end
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@protocol HDListModelSubmit <NSObject,HDListModelQuery>
 
-@required
+/*
+ *todoListModel实现这个接口，用于提交，删除数据。
+ */
+@protocol HDListModelSubmit <NSObject>
 
 @property(nonatomic,copy) NSString * submitURL;
 
-//删除指定位置的记录
--(void)removeRecordAtIndex:(NSUInteger) index;
-
-//提交IndexPath指定的记录，提交参数通过query传递
--(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
-                      dictionary:(NSDictionary *)dictionary;
-
-@optional
--(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary;
-
-//////new
--(void)submitRecords:(NSArray *)records dictionary:(NSDictionary *)dictionary;
+-(void)submitRecords:(NSArray *)records;
 
 -(void)removeRecord:(id)record;
 
 @end
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@protocol HDListModelVector <NSObject,HDListModelQuery>
+
+/*
+ *翻页相关,todoListService 和 DoneListModel实现这个接口，HDTodoListService delegate 扩展了这个delegate，所以todoListService类仅声明实现了todoListService delegate
+ */
+@protocol HDPageTurning <NSObject>
 
 //当前指针位置，表识被点击纪录的行号
 @property(nonatomic,assign) NSUInteger currentIndex;
-
-@required
-
-//获取当前记录的indexPah
-//-(NSIndexPath *) currentIndexPath;
 
 //获取当前selectedIndex对应resultList中的纪录
 -(id)current;
@@ -80,9 +72,25 @@ static NSString * kEmployeeID = @"employee_id";
 -(NSUInteger)effectiveRecordCount;
 
 @end
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@protocol HDListModelGroupe <NSObject>
+/*
+ *TodoListService
+ */
+@protocol HDTodoListService <TTModelDelegate>
 
+@optional
+
+//删除指定位置的记录
+-(void)removeRecordAtIndex:(NSUInteger) index;
+
+//提交IndexPath指定的记录，提交参数通过query传递
+-(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
+                      dictionary:(NSDictionary *)dictionary;
+
+-(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary;
+
+//分组
 @property(nonatomic,readonly) NSArray * groupResultList;
 
 @property(nonatomic,copy) NSString * groupedCode;
@@ -91,4 +99,13 @@ static NSString * kEmployeeID = @"employee_id";
 
 @property(nonatomic,copy) NSString * groupedValueField;
 
+////////////////////
+@property(nonatomic,readonly) NSArray * resultList;
+
+//查询
+- (void)search:(NSString*)text;
+
 @end
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+

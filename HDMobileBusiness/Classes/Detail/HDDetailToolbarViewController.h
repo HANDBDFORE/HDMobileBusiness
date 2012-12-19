@@ -16,11 +16,8 @@
     UIBarButtonItem * _spaceItem;
 }
 
-//-(id)initWithSignature:(NSString *) signature
-//                 query:(NSDictionary *) query;
-
 @property(nonatomic,copy) NSString * queryActionURLTemplate;
 
-@property (nonatomic,retain) id<HDListModelVector,HDListModelSubmit> listModel;
+@property (nonatomic,retain) id<HDTodoListService,HDPageTurning> listModel;
 
 @end

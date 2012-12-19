@@ -338,25 +338,20 @@ static NSString * kSQLNull = @"null";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 #pragma mark ListModel Submit
--(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
-                      dictionary:(NSDictionary *)dictionary
-{
-    NSMutableArray * submitRecords = [NSMutableArray array];
-    for (NSIndexPath * indexPath in indexPaths) {
-        [submitRecords addObject: [self.resultList objectAtIndex:indexPath.row]];
-    }
-    [self submitRecords:submitRecords dictionary:dictionary];
-}
+//-(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
+//                      dictionary:(NSDictionary *)dictionary
+//{
+//    NSMutableArray * submitRecords = [NSMutableArray array];
+//    for (NSIndexPath * indexPath in indexPaths) {
+//        [submitRecords addObject: [self.resultList objectAtIndex:indexPath.row]];
+//    }
+//    [self submitRecords:submitRecords dictionary:dictionary];
+//}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)submitRecords:(NSArray *)records dictionary:(NSDictionary *)dictionary
+-(void)submitRecords:(NSArray *)records
 {
-    for (NSString * key in dictionary) {
-        [records setValue:[dictionary valueForKey:key] forKey:key];
-    }
     [records setValue:kRecordWaiting forKey:kRecordStatus];
     //debug:调用了错误的方法,不应该使用 addObject
     [_submitList addObjectsFromArray:records];
@@ -366,19 +361,19 @@ static NSString * kSQLNull = @"null";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)removeRecordAtIndex:(NSUInteger) index
-{
-    if (self.resultList.count == 0) {
-        return;
-    }
-    id record = [self.resultList objectAtIndex:index];
-    if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordDifferent]) {
-        //remove
-        [self removeRecords:@[record]];
-        [_resultList removeObject:record];
-        [self didDeleteObject:record atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-    }
-}
+//-(void)removeRecordAtIndex:(NSUInteger) index
+//{
+//    if (self.resultList.count == 0) {
+//        return;
+//    }
+//    id record = [self.resultList objectAtIndex:index];
+//    if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordDifferent]) {
+//        //remove
+//        [self removeRecords:@[record]];
+//        [_resultList removeObject:record];
+//        [self didDeleteObject:record atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+//    }
+//}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)removeRecord:(id)record

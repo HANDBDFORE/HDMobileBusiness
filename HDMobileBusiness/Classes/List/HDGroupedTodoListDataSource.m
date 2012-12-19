@@ -59,7 +59,6 @@
     HDViewGuider  * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"groupedTodoListViewGuirder"];
     [self.listModel setGroupedCode:item.userInfo];
     [self.model load:TTURLRequestCachePolicyDefault more:NO];
-    [guider.destinationController setValue:item.userInfo forKeyPath:@"searchViewController.model.groupedCode"];
     [guider perform];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
