@@ -16,7 +16,7 @@
 @end
 
 @implementation HDTodoListService
-@synthesize resultList = _resultList;
+
 @synthesize searchText = _searchText;
 @synthesize searchFields = _searchFields;
 @synthesize currentIndex = _currentIndex;
@@ -29,7 +29,7 @@
 
 - (void)dealloc
 {
-    TT_RELEASE_SAFELY(_resultList);
+//    TT_RELEASE_SAFELY(_resultList);
     TT_RELEASE_SAFELY(_searchText);
     TT_RELEASE_SAFELY(_searchFields);
     
@@ -45,7 +45,7 @@
 {
     self = [super init];
     if (self) {
-        _resultList = [[NSMutableArray alloc] init];
+//        _resultList = [[NSMutableArray alloc] init];
         _vectorRange = NSMakeRange(0, 0);
         _currentIndex = 0;
         
@@ -63,9 +63,9 @@
 {
     if (!self.groupedCode || !self.groupedCodeField)
     {
-        return _resultList;
+        return [self.model resultList];
     }
-    NSIndexSet * matchedIndexSet = [_resultList indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+    NSIndexSet * matchedIndexSet = [[self.model resultList] indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         BOOL matchFlag = [[obj valueForKey:_groupedCodeField] isEqualToString:_groupedCode];
         if (self.searchText) {
             BOOL searchMatchFlag = NO;
@@ -77,7 +77,7 @@
         return matchFlag;
     }];
     
-    return [_resultList objectsAtIndexes:matchedIndexSet];
+    return [[self.model resultList] objectsAtIndexes:matchedIndexSet];
 }
 
 -(NSArray *)groupResultList
@@ -87,7 +87,7 @@
         return nil;
     }
     NSMutableSet * groupSet = [NSMutableSet set];
-    for (NSDictionary * record in _resultList) {
+    for (NSDictionary * record in [self.model resultList]) {
         [groupSet addObject:@{@"codeField":[record valueForKeyPath:_groupedCodeField],
              @"valueField":[record valueForKeyPath:_groupedValueField]}];
     }
@@ -134,6 +134,7 @@
     }
     [self.model submitRecords:submitRecords];
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -(void)removeRecordAtIndex:(NSUInteger) index
 {
@@ -142,10 +143,7 @@
     }
     id record = [self.resultList objectAtIndex:index];
     if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordDifferent]) {
-        //remove
         [self.model removeRecord:record];
-        [_resultList removeObject:record];
-//        [self didDeleteObject:record atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -248,16 +246,12 @@
 
 -(void)modelDidFinishLoad:(id<HDListModelQuery>)model
 {
-    [_resultList removeAllObjects];
-    [_resultList addObjectsFromArray:model.resultList];
     [self didFinishLoad];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)model:(id<TTModel>)model didUpdateObject:(id)object atIndexPath:(NSIndexPath *)indexPath
 {
-    [_resultList removeAllObjects];
-    [_resultList addObjectsFromArray:[self.model resultList]];
     NSUInteger index = [self.resultList indexOfObject:object];
     [self didUpdateObject:object atIndexPath:[NSIndexPath indexPathForRow:index
                                                                 inSection:0]];

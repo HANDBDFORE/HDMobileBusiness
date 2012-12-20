@@ -50,7 +50,9 @@ static NSString * kSQLNull = @"null";
         //这里只设置loadedTime表示超时,modelViewController会调用reload方法,之后可以考虑overwrite viewController的shuldreload方法或者model的isOutdated方法
         self.loadedTime = [NSDate dateWithTimeIntervalSinceNow:0];
         self.cacheKey = nil;
+        //TODO:这里如果使用didFinish，会导致下拉刷新界面出问题，如果直接load会在分组时进入列表出现延迟现象。之后还是用load比较好，重新设计分组的交互。
         [self load:TTURLRequestCachePolicyDefault more:NO];
+//        [self didFinishLoad];
         return;
     }
     if([self shouldSubmit]){
@@ -61,6 +63,13 @@ static NSString * kSQLNull = @"null";
         _flags.isQueryingData = YES;
         [self loadRemoteRecords];
     }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)cancel
+{
+    [super cancel];
+    _flags.isQueryingData = 0;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -98,14 +107,106 @@ static NSString * kSQLNull = @"null";
     _flags.isSubmitingData = NO;
     _flags.shouldLoadingLocalData = YES;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)cancel
+#pragma mark HDListModelSubmit Submit 
+-(void)submitRecords:(NSArray *)records
 {
-    [super cancel];
-    _flags.isQueryingData = 0;
+    [records setValue:kRecordWaiting forKey:kRecordStatus];
+    //debug:调用了错误的方法,不应该使用 addObject
+    [_submitList addObjectsFromArray:records];
+    [self updateRecords:records];
+    self.cacheKey = nil;
+    [self didFinishLoad];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)removeRecord:(id)record
+{
+    NSInteger index = [_resultList indexOfObject:record];
+    [self removeRecords:@[record]];
+    [_resultList removeObject:record];
+    [self didDeleteObject:record atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma -mark CoreStorage
+-(NSArray *)queryRecords
+{
+    return [[HDCoreStorage shareStorage] query:@selector(SQLqueryToDoList:)
+                                    conditions:nil];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)updateRecords:(NSArray *) recordList
+{
+    [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordList:) recordList:recordList];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)insertRecords:(NSArray *) recordList
+{
+    [[HDCoreStorage shareStorage] excute:@selector(SQLDataPoolInsert:recordList:) recordList:recordList];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)removeRecords:(NSArray *) recordList
+{
+    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecords:recordList:) recordList:recordList];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveActions:recordList:) recordList:recordList];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma -mark Flags
+/*
+ *可以加载本地数据
+ */
+-(BOOL)shouldLoadLocalData
+{
+    return _flags.shouldLoadingLocalData;
 }
 
-#pragma -mark Submit record
+/*
+ *可以提交的状态:
+ *1 没有在查询
+ *2 提交列表不为空
+ */
+-(BOOL) shouldSubmit
+{
+    return !_flags.isQueryingData && (_submitList.count > 0);
+}
+
+/*
+ *可以查询远程数据的状态
+ *1 没有在提交状态
+ *2 没有在查询状态
+ *3 本地数据不可加载
+ */
+-(BOOL) shouldQuery
+{
+    return !_flags.isSubmitingData && !_flags.isQueryingData;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma -mark private
+-(void)loadLocalRecords
+{
+    [_resultList removeAllObjects];
+    [_submitList removeAllObjects];
+    //从数据库读取数据(应该放到一个业务逻辑类中)
+    NSArray *_storageList = [self queryRecords];
+    for (NSDictionary *record in _storageList) {
+        [_resultList addObject:record];
+        
+        //如果是等待状态,插入提交列表
+        if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordWaiting]) {
+            [_submitList addObject:record];
+        }
+    }
+    [self setIconBageNumber];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 -(void)submit
 {
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
@@ -135,15 +236,14 @@ static NSString * kSQLNull = @"null";
     }else {
         //debug:删除数据需要包装成数组
         [self removeRecords:@[submitObject]];
-        [_resultList removeObject:submitObject];
         [self setIconBageNumber];
         [self didDeleteObject:submitObject
                   atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+        [_resultList removeObject:submitObject];
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma -mark Load remote records
 -(void)loadRemoteRecords
 {
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
@@ -255,131 +355,9 @@ static NSString * kSQLNull = @"null";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma mark Load local records
--(void)loadLocalRecords
-{
-    [_resultList removeAllObjects];
-    [_submitList removeAllObjects];
-    //从数据库读取数据(应该放到一个业务逻辑类中)
-    NSArray *_storageList = [self queryRecords];
-    for (NSDictionary *record in _storageList) {
-        [_resultList addObject:record];
-        
-        //如果是等待状态,插入提交列表
-        if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordWaiting]) {
-            [_submitList addObject:record];
-        }
-    }
-    [self setIconBageNumber];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#pragma -mark CoreStorage
--(NSArray *)queryRecords
-{
-    return [[HDCoreStorage shareStorage] query:@selector(SQLqueryToDoList:)
-                                    conditions:nil];
-}
-
--(void)updateRecords:(NSArray *) recordList
-{
-    [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordList:) recordList:recordList];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)insertRecords:(NSArray *) recordList
-{
-    [[HDCoreStorage shareStorage] excute:@selector(SQLDataPoolInsert:recordList:) recordList:recordList];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)removeRecords:(NSArray *) recordList
-{
-    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecords:recordList:) recordList:recordList];
-    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveActions:recordList:) recordList:recordList];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#pragma -mark Flags
-/*
- *可以加载本地数据
- */
--(BOOL)shouldLoadLocalData
-{
-    return _flags.shouldLoadingLocalData;
-}
-
-/*
- *可以提交的状态:
- *1 没有在查询
- *2 提交列表不为空
- */
--(BOOL) shouldSubmit
-{
-    return !_flags.isQueryingData && (_submitList.count > 0);
-}
-
-/*
- *可以查询远程数据的状态
- *1 没有在提交状态
- *2 没有在查询状态
- *3 本地数据不可加载
- */
--(BOOL) shouldQuery
-{
-    return !_flags.isSubmitingData && !_flags.isQueryingData;
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#pragma mark Others
 -(void)setIconBageNumber
 {
     [UIApplication sharedApplication].applicationIconBadgeNumber = [_resultList count];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#pragma mark ListModel Submit
-//-(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
-//                      dictionary:(NSDictionary *)dictionary
-//{
-//    NSMutableArray * submitRecords = [NSMutableArray array];
-//    for (NSIndexPath * indexPath in indexPaths) {
-//        [submitRecords addObject: [self.resultList objectAtIndex:indexPath.row]];
-//    }
-//    [self submitRecords:submitRecords dictionary:dictionary];
-//}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)submitRecords:(NSArray *)records
-{
-    [records setValue:kRecordWaiting forKey:kRecordStatus];
-    //debug:调用了错误的方法,不应该使用 addObject
-    [_submitList addObjectsFromArray:records];
-    [self updateRecords:records];
-    self.cacheKey = nil;
-    [self didFinishLoad];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//-(void)removeRecordAtIndex:(NSUInteger) index
-//{
-//    if (self.resultList.count == 0) {
-//        return;
-//    }
-//    id record = [self.resultList objectAtIndex:index];
-//    if ([[record valueForKey:kRecordStatus] isEqualToString:kRecordDifferent]) {
-//        //remove
-//        [self removeRecords:@[record]];
-//        [_resultList removeObject:record];
-//        [self didDeleteObject:record atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-//    }
-//}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)removeRecord:(id)record
-{
-    [self removeRecords:@[record]];
-    [_resultList removeObject:record];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
