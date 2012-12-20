@@ -27,8 +27,7 @@
 //用户信息按钮显示字段
 @property (nonatomic,copy) NSString * userInfoItemTitle;
 
-@property (nonatomic,retain) id<HDPageTurning> listModel;
+@property (nonatomic,retain) id<HDPageTurning> pageTurningService;
 
--(void)expend;
 -(void)reloadAll;
 @end

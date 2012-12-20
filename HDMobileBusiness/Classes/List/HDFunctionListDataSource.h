@@ -24,7 +24,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @interface HDFunctionListDataSource : TTSectionedDataSource <HDTableDataSource>
 
-@property(nonatomic,retain) id<HDListModelQuery> listModel;
+@property(nonatomic,retain) id<HDListModelQuery> model;
 
 #pragma -override
 @property(nonatomic,retain) NSDictionary * itemDictionary;

@@ -60,12 +60,10 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation HDFunctionListDataSource
-@synthesize listModel = _listModel;
 @synthesize itemDictionary = _itemDictionary;
 
 - (void)dealloc
 {
-    TT_RELEASE_SAFELY(_listModel);
     TT_RELEASE_SAFELY(_itemDictionary);
     [super dealloc];
 }
@@ -86,7 +84,7 @@
 
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
-    NSArray * functionList = [self.listModel resultList];
+    NSArray * functionList = [self.model resultList];
     
     NSMutableArray* items = [NSMutableArray array];
     NSMutableArray* sections = [NSMutableArray array];

@@ -11,7 +11,7 @@
 
 @interface HDTodoListDataSource : TTListDataSource <HDTableDataSource>
 
-@property(nonatomic,retain) id<HDTodoListService,HDPageTurning> listModel;
+@property(nonatomic,retain) id<HDTodoListService,HDPageTurning> model;
 
 #pragma -override
 

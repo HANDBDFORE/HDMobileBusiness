@@ -10,7 +10,7 @@
 #import "HDListModel.h"
 #import "HDBaseService.h"
 
-@interface HDTodoListService : HDBaseService <HDTodoListService>
+@interface HDTodoListService : HDBaseService <HDTodoListService,HDPageTurning>
 {
     NSMutableArray * _resultList;
     NSString * _searchText;
@@ -18,7 +18,7 @@
     NSRange _vectorRange;
 }
 
-@property(nonatomic,retain) id<TTModel,HDURLRequestModel,HDListModelSubmit,HDListModelQuery> model;
+@property(nonatomic,retain) id<HDURLRequestModel,HDListModelSubmit,HDListModelQuery> model;
 
 //获取结果列表
 @property(nonatomic,readonly) NSArray * resultList;

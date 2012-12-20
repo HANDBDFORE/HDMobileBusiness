@@ -11,6 +11,6 @@
 
 @interface HDPersonListDataSource : TTListDataSource <HDTableDataSource>
 
-@property(nonatomic,assign) id<HDListModelQuery> listModel;
+@property(nonatomic,assign) id<HDListModelQuery> model;
 
 @end

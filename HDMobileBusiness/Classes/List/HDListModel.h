@@ -71,13 +71,17 @@ static NSString * kEmployeeID = @"employee_id";
 //获取当前有效记录数
 -(NSUInteger)effectiveRecordCount;
 
+@optional
+
+-(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary;
+
 @end
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
  *TodoListService
  */
-@protocol HDTodoListService <TTModelDelegate>
+@protocol HDTodoListService <TTModelDelegate,TTModel>
 
 @optional
 
@@ -87,8 +91,6 @@ static NSString * kEmployeeID = @"employee_id";
 //提交IndexPath指定的记录，提交参数通过query传递
 -(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
                       dictionary:(NSDictionary *)dictionary;
-
--(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary;
 
 //分组
 @property(nonatomic,readonly) NSArray * groupResultList;

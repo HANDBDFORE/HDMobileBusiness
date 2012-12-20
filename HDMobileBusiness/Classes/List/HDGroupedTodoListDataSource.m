@@ -12,7 +12,6 @@
 
 - (void)dealloc
 {
-    TT_RELEASE_SAFELY(_listModel);
     TT_RELEASE_SAFELY(_groupedCodeField);
     TT_RELEASE_SAFELY(_groupedValueField);
     [super dealloc];
@@ -22,7 +21,7 @@
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
     self.items = [NSMutableArray array];
-    for (id record in [self.listModel groupResultList]) {
+    for (id record in [self.model groupResultList]) {
         [self.items addObject:[self createItemWithObject:record]
          ];
     }
@@ -57,7 +56,7 @@
      */
     
     HDViewGuider  * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"groupedTodoListViewGuirder"];
-    [self.listModel setGroupedCode:item.userInfo];
+    [self.model setGroupedCode:item.userInfo];
     [self.model load:TTURLRequestCachePolicyDefault more:NO];
     [guider perform];
 }

@@ -125,8 +125,8 @@ static NSString * kSQLNull = @"null";
 {
     NSInteger index = [_resultList indexOfObject:record];
     [self removeRecords:@[record]];
-    [_resultList removeObject:record];
     [self didDeleteObject:record atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    [_resultList removeObject:record];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

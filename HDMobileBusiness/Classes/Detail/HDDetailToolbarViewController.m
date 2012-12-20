@@ -7,8 +7,13 @@
 //
 
 #import "HDDetailToolbarViewController.h"
-//#import "../List/HDPersonListDataSource.h"
-//#import "../Compose/HDMessageSingleRecipientField.h"
+
+@interface HDDetailToolbarViewController ()
+
+@property(nonatomic,retain) NSString * selectedAction;
+
+@end
+
 @implementation HDDetailToolbarViewController
 
 #pragma mark - life cycle
@@ -16,9 +21,9 @@
 
 - (void)viewDidUnload
 {
-    TT_RELEASE_SAFELY(_toolBarModel);
     TT_RELEASE_SAFELY(_queryActionURLTemplate);
     TT_RELEASE_SAFELY(_spaceItem);
+    TT_RELEASE_SAFELY(_selectedAction)
     [super viewDidUnload];
 }
 
@@ -28,17 +33,11 @@
     _spaceItem  = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
 }
 
-//-(id)initWithSignature:(NSString *) signature
-//                 query:(NSDictionary *) query
-//{ return nil;
-//}
-
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         //创建toolBarmodel
-        _toolBarModel = [[HDDetailToolbarModel alloc]init];
-        self.model = _toolBarModel;
+        self.model = [[[HDDetailToolbarModel alloc]init] autorelease];
     }
     return self;
 }
@@ -48,7 +47,7 @@
 -(void)toolbarButtonPressed: (id)sender
 {
     //设置当前审批动作
-    _toolBarModel.selectedAction = [NSString stringWithFormat:@"%i",[sender tag]];
+    self.selectedAction = [NSString stringWithFormat:@"%i",[sender tag]];
     
     //准备默认审批内容
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
@@ -61,20 +60,20 @@
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    if ([self.listModel respondsToSelector:@selector(submitRecordsAtIndexPaths:dictionary:)]) {
-        [self.listModel submitCurrentRecordWithDictionary:@{kComments:text,kAction:_toolBarModel.selectedAction}];
+    if ([self.pageTurningService respondsToSelector:@selector(submitRecordsAtIndexPaths:dictionary:)]) {
+        [self.pageTurningService submitCurrentRecordWithDictionary:@{kComments:text,kAction:_selectedAction}];
         //删除动作
-        [_toolBarModel removeTheActions];
+        [self.model removeTheActions];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - overWrite -
 -(void)reloadAll{
-    _toolBarModel.detailRecord = [self.listModel current];
-    _toolBarModel.queryURL = [self.queryActionURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]];
+    self.model.detailRecord = [self.pageTurningService current];
+    self.model.queryURL = [self.queryActionURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.pageTurningService current]];
 
-    [_toolBarModel load:TTURLRequestCachePolicyDefault more:NO];
+    [self.model load:TTURLRequestCachePolicyDefault more:NO];
     [super reloadAll];
     
 }
@@ -82,11 +81,11 @@
 #pragma mark - TTModel delegate functions -
 -(void)modelDidFinishLoad:(id <TTModel>)model
 {
-    if ([_toolBarModel.resultList count] > 0) {
+    if ([self.model.resultList count] > 0) {
         self.navigationController.toolbarHidden = NO;
         //
         NSMutableArray * itemButtons = [NSMutableArray array];
-        for (NSDictionary * actionRecord in _toolBarModel.resultList) {
+        for (NSDictionary * actionRecord in self.model.resultList) {
             
             UIBarButtonItem * actionButton =
             [[[UIBarButtonItem alloc]initWithTitle:[actionRecord valueForKey:@"action_title"]
@@ -140,7 +139,7 @@
         }
     }
     [dictionary setValue:@"D" forKeyPath:kAction];
-    [self.listModel submitCurrentRecordWithDictionary:dictionary];
+    [self.pageTurningService submitCurrentRecordWithDictionary:dictionary];
     
     [controller dismissModalViewControllerAnimated:YES];
     //如何pop出去不会crash

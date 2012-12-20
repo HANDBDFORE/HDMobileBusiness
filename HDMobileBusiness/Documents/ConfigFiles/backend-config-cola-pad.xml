@@ -82,7 +82,6 @@
     </bean>
     <!--functionDataSource-->
     <bean id="functionDataSource"  create-url="tt://functionDataSource" mode="share">
-        <property name="listModel" ref="functionModel"/>
         <property name="model" ref="functionModel"/>
     </bean>
     <!--functionModel-->
@@ -104,14 +103,13 @@
     </bean>
     <!--groupedTodoListDataSource-->
     <bean id="groupedTodoListDataSource" create-url="tt://groupedTodoListDataSource">
-        <property name="listModel" ref="todoListService"/>
         <property name="model" ref="todoListService"/>
     </bean>
     <!--todoListViewController-->
     <bean id="todoListViewController" create-url="tt://todoListViewController" mode="share">
         <property name="title" value="待办列表"/>
         <property name="dataSource" ref="todoListDataSource"/>
-        <property name="listModel" ref="todoListService"/>
+        <property name="model" ref="todoListService"/>
         <property name="searchViewController" ref="todoListSearchViewController"/>
     </bean>
     <!--todoListDataSource-->
@@ -125,7 +123,6 @@
                 <element key="isLate" value="${is_late}"/>
             </map>
         </property>
-        <property name="listModel" ref="todoListService"/>
         <property name="model" ref="todoListService"/>
     </bean>
     <!--todoListService-->
@@ -150,7 +147,7 @@
     <bean id="todoListSearchViewController" create-url="tt://todoListSearchViewController" mode="share">
         <property name="title" value="待办查询"/>
         <property name="dataSource" ref="todoListSearchDataSource"/>
-        <property name="listModel" ref="todoListService"/>
+        <property name="model" ref="todoListService"/>
     </bean>
     <!--todoListSearchDataSource-->
     <bean id="todoListSearchDataSource" create-url="tt://todoListDataSource" mode="share">
@@ -163,8 +160,15 @@
                 <element key="isLate" value="${is_late}"/>
             </map>
         </property>
-        <property name="listModel" ref="todoListService"/>
         <property name="model" ref="todoListService"/>
+    </bean>
+    <!--todoDetailController-->
+    <bean id="todoDetailController" create-url="tt://todoDetailViewController" mode="share">
+        <property name="userInfoItemTitle" value="record_id"/>
+        <property name="queryActionURLTemplate" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}"/>
+        <property name="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
+        <property name="webPageURLTemplate" value="${base_url}${screen_name}" />
+        <property name="pageTurningService" ref="todoListService"/>
     </bean>
     <!--doneListViewControllerNavigator-->
     <bean id="doneListNavigator"  create-url="tt://navigator" mode="share">
@@ -189,7 +193,6 @@
                 <element key="timestamp" value="${creation_date}"/>
             </map>
         </property>
-        <property name="listModel" ref="doneListModel"/>
         <property name="model" ref="doneListModel"/>
     </bean>
     <!--doneListModel-->
@@ -201,15 +204,7 @@
         <property name="userInfoItemTitle" value="record_id"/>
         <property name="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
         <property name="webPageURLTemplate" value="${base_url}${screen_name}"/>
-        <property name="listModel" ref="doneListModel"/>
-    </bean>
-    <!--todoDetailController-->
-    <bean id="todoDetailController" create-url="tt://todoDetailViewController" mode="share">
-        <property name="userInfoItemTitle" value="record_id"/>
-        <property name="queryActionURLTemplate" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}"/>
-        <property name="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
-        <property name="webPageURLTemplate" value="${base_url}${screen_name}" />
-        <property name="listModel" ref="todoListService"/>
+        <property name="pageTurningService" ref="doneListModel"/>
     </bean>
     <!--postController-->
     <bean id="postController" create-url="tt://postController" mode="create"/>
@@ -237,7 +232,6 @@
                 <element key="userInfo" value="${employee_id}"/>
             </map>
         </property>
-        <property name="listModel" ref="personListModel"/>
         <property name="model" ref="personListModel"/>
     </bean>
     <!--personListModel-->

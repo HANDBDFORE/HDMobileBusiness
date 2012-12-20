@@ -10,7 +10,6 @@
 #import "HDTodoListDelegate.h"
 
 @implementation HDBaseTodoListViewController
-@synthesize listModel = _listModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -151,7 +150,7 @@
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
     NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
-    [self.listModel submitRecordsAtIndexPaths:indexPaths
+    [self.model submitRecordsAtIndexPaths:indexPaths
                                    dictionary:@{kComments:text,kAction:_submitAction}];
 
     [self setEditing:NO animated:YES];
@@ -174,7 +173,9 @@
 -(void)didSwiped:(UISwipeGestureRecognizer *)recognizer{
     CGPoint swipeLocation = [recognizer locationInView:self.tableView];
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
-    [self.listModel removeRecordAtIndex:swipedIndexPath.row];
+    if (swipedIndexPath) {
+        [self.model removeRecordAtIndex:swipedIndexPath.row];
+    }
 }
 
 @end

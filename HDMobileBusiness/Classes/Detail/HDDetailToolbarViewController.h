@@ -12,12 +12,11 @@
 
 @interface HDDetailToolbarViewController : HDDetailInfoViewController <TTMessageControllerDelegate,TTPostControllerDelegate>
 {
-    HDDetailToolbarModel * _toolBarModel;
     UIBarButtonItem * _spaceItem;
 }
 
-@property(nonatomic,copy) NSString * queryActionURLTemplate;
+@property(nonatomic,retain) HDDetailToolbarModel * model;
 
-@property (nonatomic,retain) id<HDTodoListService,HDPageTurning> listModel;
+@property(nonatomic,copy) NSString * queryActionURLTemplate;
 
 @end

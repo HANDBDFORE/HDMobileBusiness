@@ -12,13 +12,9 @@
 
 @implementation HDTodoListDataSource
 
-@synthesize listModel = _listModel;
-@synthesize itemDictionary = _itemDictionary;
-
 -(void)dealloc
 {
     TT_RELEASE_SAFELY(_itemDictionary);
-    TT_RELEASE_SAFELY(_listModel);
     [super dealloc];
 }
 
@@ -105,7 +101,7 @@
 {
     //tableload完成生成cell item 对象列表
     self.items = [NSMutableArray array];
-    for (id record in self.listModel.resultList) {
+    for (id record in self.model.resultList) {
         [self.items addObject:[self createItemWithObject:record]
          ];
     }
@@ -127,7 +123,7 @@
 {
     if ([item.state isEqualToString:kRecordNormal] ||
         [item.state isEqualToString:kRecordError]) {
-        self.listModel.currentIndex = [self.items indexOfObject:item];
+        self.model.currentIndex = [self.items indexOfObject:item];
 
         HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
         [guider perform];
@@ -135,8 +131,8 @@
 }
 
 - (void)search:(NSString*)text {
-    if ([self.listModel respondsToSelector:@selector(search:)]) {
-        [self.listModel search:text];
+    if ([self.model respondsToSelector:@selector(search:)]) {
+        [self.model search:text];
     }
 }
 
