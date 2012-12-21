@@ -10,7 +10,7 @@
 #import "HDListModel.h"
 #import "HDBaseService.h"
 
-@interface HDTodoListService : HDBaseService <HDTodoListService,HDPageTurning>
+@interface HDTodoListService : HDBaseService <HDPageTurning>
 {
     NSMutableArray * _resultList;
     NSString * _searchText;
