@@ -851,6 +851,10 @@
 		B34660B915C678DD00EFDF24 /* HDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoginViewController.m; sourceTree = "<group>"; };
 		B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDLoginViewController.xib; sourceTree = "<group>"; };
 		B355AF591689821E0076D9A6 /* backend-config-juice-pad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-juice-pad.xml"; sourceTree = "<group>"; };
+		B355AF5C1689849A0076D9A6 /* ApplicationContext.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = ApplicationContext.rtfd; sourceTree = "<group>"; };
+		B355AF5D16898CB40076D9A6 /* VIewGuider.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = VIewGuider.rtfd; sourceTree = "<group>"; };
+		B355AF5E1689918F0076D9A6 /* Model Interface.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = "Model Interface.rtfd"; sourceTree = "<group>"; };
+		B355AF5F1689995B0076D9A6 /* TodoListModel.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = TodoListModel.rtfd; sourceTree = "<group>"; };
 		B356A26915D0A5C900E88192 /* HDCoreStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDCoreStorage.h; sourceTree = "<group>"; };
 		B356A26A15D0A5C900E88192 /* HDCoreStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDCoreStorage.m; sourceTree = "<group>"; };
 		B35BBF7A15E74301008F90E3 /* HDSingletonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSingletonObject.h; sourceTree = "<group>"; };
@@ -1443,6 +1447,17 @@
 			path = Classes/Login;
 			sourceTree = "<group>";
 		};
+		B355AF5B1689845B0076D9A6 /* Detailing */ = {
+			isa = PBXGroup;
+			children = (
+				B355AF5F1689995B0076D9A6 /* TodoListModel.rtfd */,
+				B355AF5E1689918F0076D9A6 /* Model Interface.rtfd */,
+				B355AF5D16898CB40076D9A6 /* VIewGuider.rtfd */,
+				B355AF5C1689849A0076D9A6 /* ApplicationContext.rtfd */,
+			);
+			path = Detailing;
+			sourceTree = "<group>";
+		};
 		B356A26815D0A5AE00E88192 /* HDCoreStorage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1892,6 +1907,7 @@
 		B38E685815C6526A00824CB1 /* Documents */ = {
 			isa = PBXGroup;
 			children = (
+				B355AF5B1689845B0076D9A6 /* Detailing */,
 				B3E06DCD15D4D0D7002A54BE /* Requirement */,
 				B38E686215C6531300824CB1 /* WorkPlan */,
 				B38E685915C6526A00824CB1 /* ConfigFiles */,
