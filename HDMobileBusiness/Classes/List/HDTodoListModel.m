@@ -225,7 +225,7 @@ static NSString * kSQLNull = @"null";
     id submitObject = [resultMap.userInfo objectForKey:@"postObject"];
     NSUInteger index = [self.resultList indexOfObject:submitObject];
     [_submitList removeObject:submitObject];
-    _flags.isSubmitingData = (_submitList.count > 0);
+    _flags.isSubmitingData = NO;
     /////////////////////////////////////////////////////////
     if (!resultMap.result) {
         [submitObject setValue:kRecordError forKey:kRecordStatus];
