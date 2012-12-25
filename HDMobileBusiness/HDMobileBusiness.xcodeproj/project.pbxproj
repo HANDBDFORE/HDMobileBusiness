@@ -372,7 +372,6 @@
 		B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8316030344004E1BFD /* HDPersonListModel.m */; };
 		B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */; };
 		B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12326165486B400C685CB /* HDSplitViewController.m */; };
-		B3E1232A165486B400C685CB /* StackScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12327165486B400C685CB /* StackScrollViewController.m */; };
 		B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12328165486B400C685CB /* UIViewWithShadow.m */; };
 		B3E60EEF1659D768006C8119 /* HDObjectPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60EEC1659D768006C8119 /* HDObjectPattern.m */; };
 		B3E60EF01659D768006C8119 /* HDObjectPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60EEC1659D768006C8119 /* HDObjectPattern.m */; };
@@ -991,10 +990,8 @@
 		B3E06E2C15D4FFC8002A54BE /* TodoListModel.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = TodoListModel.rtf; path = Requirement/TodoList/TodoListModel.rtf; sourceTree = "<group>"; };
 		B3E06E3015D509F1002A54BE /* ErrorMessage.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ErrorMessage.rtf; sourceTree = "<group>"; };
 		B3E12323165486B400C685CB /* HDSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSplitViewController.h; path = Classes/StackScroll/HDSplitViewController.h; sourceTree = "<group>"; };
-		B3E12324165486B400C685CB /* StackScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackScrollViewController.h; path = Classes/StackScroll/StackScrollViewController.h; sourceTree = "<group>"; };
 		B3E12325165486B400C685CB /* UIViewWithShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewWithShadow.h; path = Classes/StackScroll/UIViewWithShadow.h; sourceTree = "<group>"; };
 		B3E12326165486B400C685CB /* HDSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSplitViewController.m; path = Classes/StackScroll/HDSplitViewController.m; sourceTree = "<group>"; };
-		B3E12327165486B400C685CB /* StackScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackScrollViewController.m; path = Classes/StackScroll/StackScrollViewController.m; sourceTree = "<group>"; };
 		B3E12328165486B400C685CB /* UIViewWithShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewWithShadow.m; path = Classes/StackScroll/UIViewWithShadow.m; sourceTree = "<group>"; };
 		B3E60EE91659D768006C8119 /* HDApplicationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDApplicationContext.h; sourceTree = "<group>"; };
 		B3E60EEB1659D768006C8119 /* HDObjectPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDObjectPattern.h; sourceTree = "<group>"; };
@@ -1489,17 +1486,15 @@
 			name = List;
 			sourceTree = "<group>";
 		};
-		B3893CEA164A3FDE004E326A /* Pad */ = {
+		B3893CEA164A3FDE004E326A /* Split */ = {
 			isa = PBXGroup;
 			children = (
 				B3E12323165486B400C685CB /* HDSplitViewController.h */,
-				B3E12324165486B400C685CB /* StackScrollViewController.h */,
 				B3E12325165486B400C685CB /* UIViewWithShadow.h */,
 				B3E12326165486B400C685CB /* HDSplitViewController.m */,
-				B3E12327165486B400C685CB /* StackScrollViewController.m */,
 				B3E12328165486B400C685CB /* UIViewWithShadow.m */,
 			);
-			name = Pad;
+			name = Split;
 			sourceTree = "<group>";
 		};
 		B38DC6E415C6835D00FD0C58 /* TodoList */ = {
@@ -1812,7 +1807,7 @@
 			isa = PBXGroup;
 			children = (
 				B336DEF3165E250500057B95 /* Navigatior */,
-				B3893CEA164A3FDE004E326A /* Pad */,
+				B3893CEA164A3FDE004E326A /* Split */,
 				B307FDE215FF134700EA5133 /* Compose */,
 				B38DC70D15C68C3800FD0C58 /* Detail */,
 				B383112E15F9F195005FD54E /* List */,
@@ -2750,7 +2745,6 @@
 				B398B88E164A08140017FCD6 /* HDSingletonObject.m in Sources */,
 				B398B891164A08140017FCD6 /* NSString+HDAddtions.m in Sources */,
 				B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */,
-				B3E1232A165486B400C685CB /* StackScrollViewController.m in Sources */,
 				B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */,
 				B3E60EF01659D768006C8119 /* HDObjectPattern.m in Sources */,
 				B3CD019516635305002321A9 /* HDSplitViewGuider.m in Sources */,
