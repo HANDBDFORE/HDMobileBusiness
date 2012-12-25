@@ -382,7 +382,7 @@ static NSString * kSQLNull = @"null";
  */
 -(BOOL) shouldSubmit
 {
-    return !_flags.isQueryingData && (_submitList.count > 0);
+    return !_flags.isSubmitingData && !_flags.isQueryingData && (_submitList.count > 0);
 }
 
 /*
