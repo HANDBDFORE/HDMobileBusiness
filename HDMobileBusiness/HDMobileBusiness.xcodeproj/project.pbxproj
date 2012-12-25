@@ -520,8 +520,8 @@
 		B3E60F54165A21D4006C8119 /* HDNavigatorViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60F53165A21D3006C8119 /* HDNavigatorViewGuider.m */; };
 		B3EBF1CA165B327B006E6018 /* HDModalViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF1C9165B327A006E6018 /* HDModalViewGuider.m */; };
 		B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ED3BA21623E71100505988 /* HDWebViewController.m */; };
-		B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD2166D8A0400CA0B0C /* padIcon.png */; };
-		B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */; };
+		B3FE7AD3166D8A0400CA0B0C /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD2166D8A0400CA0B0C /* icon-72.png */; };
+		B3FE7AD5166D8A0F00CA0B0C /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */; };
 		B3FFC15F1670330600965ECA /* HDGroupedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FFC15E1670330600965ECA /* HDGroupedViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -1148,8 +1148,8 @@
 		B3ED3BA21623E71100505988 /* HDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDWebViewController.m; sourceTree = "<group>"; };
 		B3FE7ACE166D89CF00CA0B0C /* padIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = padIcon.png; sourceTree = "<group>"; };
 		B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "padIcon@2x.png"; sourceTree = "<group>"; };
-		B3FE7AD2166D8A0400CA0B0C /* padIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = padIcon.png; path = ../padIcon.png; sourceTree = "<group>"; };
-		B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "padIcon@2x.png"; path = "../padIcon@2x.png"; sourceTree = "<group>"; };
+		B3FE7AD2166D8A0400CA0B0C /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "../icon-72.png"; sourceTree = "<group>"; };
+		B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72@2x.png"; path = "../icon-72@2x.png"; sourceTree = "<group>"; };
 		B3FFC15D1670330600965ECA /* HDGroupedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGroupedViewController.h; sourceTree = SOURCE_ROOT; };
 		B3FFC15E1670330600965ECA /* HDGroupedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGroupedViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -2033,8 +2033,8 @@
 		B398B6F71649F6DC0017FCD6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */,
-				B3FE7AD2166D8A0400CA0B0C /* padIcon.png */,
+				B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */,
+				B3FE7AD2166D8A0400CA0B0C /* icon-72.png */,
 				B398B6F81649F6DC0017FCD6 /* HDMobileBusinessPad-Info.plist */,
 				B398B6F91649F6DC0017FCD6 /* InfoPlist.strings */,
 				B398B6FC1649F6DC0017FCD6 /* main.m */,
@@ -2762,8 +2762,8 @@
 				B3E60EFD1659D7C7006C8119 /* page3.jpg in Resources */,
 				B3E60EFE1659D7C7006C8119 /* page4.jpg in Resources */,
 				B3E60EFF1659D7C7006C8119 /* page5.jpg in Resources */,
-				B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */,
-				B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */,
+				B3FE7AD3166D8A0400CA0B0C /* icon-72.png in Resources */,
+				B3FE7AD5166D8A0F00CA0B0C /* icon-72@2x.png in Resources */,
 				B366463E1675BB0300A13F76 /* login_pad.png in Resources */,
 				B36646431675BE2900A13F76 /* loginButton_pad.png in Resources */,
 				B36646441675BE2900A13F76 /* loginButton_pad@2x.png in Resources */,
