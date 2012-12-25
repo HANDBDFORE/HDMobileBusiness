@@ -16,6 +16,8 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		B2243A0E16841EF900FD32B4 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B2243A0A16841D8600FD32B4 /* Icon-72.png */; };
+		B2243A0F16841EFC00FD32B4 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2243A0C16841D8A00FD32B4 /* Icon-72@2x.png */; };
 		B2307431166739AB00DFF2E0 /* backend-config-cola.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-cola.xml */; };
 		B2307432166739AB00DFF2E0 /* backend-config-cola.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-cola.xml */; };
 		B2524B03166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2524B02166BB1CD00515477 /* backend-config-cola-pad.xml */; };
@@ -519,8 +521,6 @@
 		B3E60F54165A21D4006C8119 /* HDNavigatorViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60F53165A21D3006C8119 /* HDNavigatorViewGuider.m */; };
 		B3EBF1CA165B327B006E6018 /* HDModalViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF1C9165B327A006E6018 /* HDModalViewGuider.m */; };
 		B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ED3BA21623E71100505988 /* HDWebViewController.m */; };
-		B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD2166D8A0400CA0B0C /* padIcon.png */; };
-		B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */; };
 		B3FFC15F1670330600965ECA /* HDGroupedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FFC15E1670330600965ECA /* HDGroupedViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -747,6 +747,8 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../Frameworks/Three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../Frameworks/Three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../Frameworks/Three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		B2243A0A16841D8600FD32B4 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
+		B2243A0C16841D8A00FD32B4 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
 		B2307430166739AB00DFF2E0 /* backend-config-cola.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-cola.xml"; sourceTree = "<group>"; };
 		B2524B02166BB1CD00515477 /* backend-config-cola-pad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-cola-pad.xml"; sourceTree = "<group>"; };
 		B303763C1600303E00238923 /* HDMessageSingleRecipientField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDMessageSingleRecipientField.h; path = Classes/Compose/HDMessageSingleRecipientField.h; sourceTree = "<group>"; };
@@ -1145,8 +1147,6 @@
 		B3ED3BA21623E71100505988 /* HDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDWebViewController.m; sourceTree = "<group>"; };
 		B3FE7ACE166D89CF00CA0B0C /* padIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = padIcon.png; sourceTree = "<group>"; };
 		B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "padIcon@2x.png"; sourceTree = "<group>"; };
-		B3FE7AD2166D8A0400CA0B0C /* padIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = padIcon.png; path = ../padIcon.png; sourceTree = "<group>"; };
-		B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "padIcon@2x.png"; path = "../padIcon@2x.png"; sourceTree = "<group>"; };
 		B3FFC15D1670330600965ECA /* HDGroupedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGroupedViewController.h; sourceTree = SOURCE_ROOT; };
 		B3FFC15E1670330600965ECA /* HDGroupedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGroupedViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -2028,12 +2028,12 @@
 		B398B6F71649F6DC0017FCD6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B3FE7AD4166D8A0F00CA0B0C /* padIcon@2x.png */,
-				B3FE7AD2166D8A0400CA0B0C /* padIcon.png */,
 				B398B6F81649F6DC0017FCD6 /* HDMobileBusinessPad-Info.plist */,
 				B398B6F91649F6DC0017FCD6 /* InfoPlist.strings */,
 				B398B6FC1649F6DC0017FCD6 /* main.m */,
 				B398B6FE1649F6DC0017FCD6 /* HDMobileBusinessPad-Prefix.pch */,
+				B2243A0C16841D8A00FD32B4 /* Icon-72@2x.png */,
+				B2243A0A16841D8600FD32B4 /* Icon-72.png */,
 				B398B7021649F6DC0017FCD6 /* Default.png */,
 				B398B7041649F6DC0017FCD6 /* Default@2x.png */,
 				B398B7061649F6DC0017FCD6 /* Default-568h@2x.png */,
@@ -2759,14 +2759,14 @@
 				B3E60EFF1659D7C7006C8119 /* page5.jpg in Resources */,
 				B2307432166739AB00DFF2E0 /* backend-config-cola.xml in Resources */,
 				B2524B04166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */,
-				B3FE7AD3166D8A0400CA0B0C /* padIcon.png in Resources */,
-				B3FE7AD5166D8A0F00CA0B0C /* padIcon@2x.png in Resources */,
 				B366463E1675BB0300A13F76 /* login_pad.png in Resources */,
 				B36646431675BE2900A13F76 /* loginButton_pad.png in Resources */,
 				B36646441675BE2900A13F76 /* loginButton_pad@2x.png in Resources */,
 				B36646451675BE2900A13F76 /* loginButtonActive_pad.png in Resources */,
 				B36646461675BE2900A13F76 /* loginButtonActive_pad@2x.png in Resources */,
 				B36646481675C81E00A13F76 /* login_pad@2x.png in Resources */,
+				B2243A0E16841EF900FD32B4 /* Icon-72.png in Resources */,
+				B2243A0F16841EFC00FD32B4 /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3292,16 +3292,16 @@
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusinessPad/HDMobileBusinessPad-Prefix.pch";
 				INFOPLIST_FILE = "HDMobileBusinessPad/HDMobileBusinessPad-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "93ADDBE0-9DD3-4ACC-92FC-703F84B11293";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "93ADDBE0-9DD3-4ACC-92FC-703F84B11293";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3312,15 +3312,15 @@
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusinessPad/HDMobileBusinessPad-Prefix.pch";
 				INFOPLIST_FILE = "HDMobileBusinessPad/HDMobileBusinessPad-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "93ADDBE0-9DD3-4ACC-92FC-703F84B11293";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "93ADDBE0-9DD3-4ACC-92FC-703F84B11293";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
