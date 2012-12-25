@@ -28,7 +28,7 @@
         [_retryButton setUserInteractionEnabled:YES];
     }else {
         //开始发请求
-        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-cola-pad.xml",[HDHTTPRequestCenter baseURLPath]];
+        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-juice-pad.xml",[HDHTTPRequestCenter baseURLPath]];
 
         NSURL *url = [NSURL URLWithString:fileUrl];
         NSMutableURLRequest *postRequest = [[[NSMutableURLRequest alloc]initWithURL:url]autorelease];

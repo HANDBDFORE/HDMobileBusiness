@@ -16,8 +16,7 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
-		B2307431166739AB00DFF2E0 /* backend-config-cola.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-cola.xml */; };
-		B2524B03166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2524B02166BB1CD00515477 /* backend-config-cola-pad.xml */; };
+		B2307431166739AB00DFF2E0 /* backend-config-juice.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-juice.xml */; };
 		B303763E1600303E00238923 /* HDMessageSingleRecipientField.m in Sources */ = {isa = PBXBuildFile; fileRef = B303763D1600303E00238923 /* HDMessageSingleRecipientField.m */; };
 		B3037641160049D400238923 /* HDSinglePickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037640160049D400238923 /* HDSinglePickerTextField.m */; };
 		B303768C1600883D00238923 /* HDBaseTodoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376841600883300238923 /* HDBaseTodoListViewController.m */; };
@@ -197,6 +196,7 @@
 		B355AE34168974750076D9A6 /* trend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678015C64E6700824CB1 /* trend@2x.png */; };
 		B355AE35168974750076D9A6 /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678115C64E6700824CB1 /* world.png */; };
 		B355AE36168974750076D9A6 /* world@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678215C64E6700824CB1 /* world@2x.png */; };
+		B355AF5A1689821E0076D9A6 /* backend-config-juice-pad.xml in Resources */ = {isa = PBXBuildFile; fileRef = B355AF591689821E0076D9A6 /* backend-config-juice-pad.xml */; };
 		B356A26B15D0A5C900E88192 /* HDCoreStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B356A26A15D0A5C900E88192 /* HDCoreStorage.m */; };
 		B366463E1675BB0300A13F76 /* login_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B366463D1675BB0300A13F76 /* login_pad.png */; };
 		B36646431675BE2900A13F76 /* loginButton_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B366463F1675BE2900A13F76 /* loginButton_pad.png */; };
@@ -748,8 +748,7 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../Frameworks/Three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../Frameworks/Three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../Frameworks/Three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
-		B2307430166739AB00DFF2E0 /* backend-config-cola.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-cola.xml"; sourceTree = "<group>"; };
-		B2524B02166BB1CD00515477 /* backend-config-cola-pad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-cola-pad.xml"; sourceTree = "<group>"; };
+		B2307430166739AB00DFF2E0 /* backend-config-juice.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-juice.xml"; sourceTree = "<group>"; };
 		B303763C1600303E00238923 /* HDMessageSingleRecipientField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDMessageSingleRecipientField.h; path = Classes/Compose/HDMessageSingleRecipientField.h; sourceTree = "<group>"; };
 		B303763D1600303E00238923 /* HDMessageSingleRecipientField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDMessageSingleRecipientField.m; path = Classes/Compose/HDMessageSingleRecipientField.m; sourceTree = "<group>"; };
 		B303763F160049D300238923 /* HDSinglePickerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSinglePickerTextField.h; path = Classes/Compose/HDSinglePickerTextField.h; sourceTree = "<group>"; };
@@ -851,6 +850,7 @@
 		B34660B815C678DD00EFDF24 /* HDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLoginViewController.h; sourceTree = "<group>"; };
 		B34660B915C678DD00EFDF24 /* HDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoginViewController.m; sourceTree = "<group>"; };
 		B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDLoginViewController.xib; sourceTree = "<group>"; };
+		B355AF591689821E0076D9A6 /* backend-config-juice-pad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-juice-pad.xml"; sourceTree = "<group>"; };
 		B356A26915D0A5C900E88192 /* HDCoreStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDCoreStorage.h; sourceTree = "<group>"; };
 		B356A26A15D0A5C900E88192 /* HDCoreStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDCoreStorage.m; sourceTree = "<group>"; };
 		B35BBF7A15E74301008F90E3 /* HDSingletonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSingletonObject.h; sourceTree = "<group>"; };
@@ -878,8 +878,6 @@
 		B36BDAB315C64777003A4A5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B36BDAB515C64777003A4A5D /* HDMobileBusinessTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDMobileBusinessTests.h; sourceTree = "<group>"; };
 		B36BDAB615C64777003A4A5D /* HDMobileBusinessTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDMobileBusinessTests.m; sourceTree = "<group>"; };
-		B36F7A6F16312EC60090646E /* backend-config-hr-sprite.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "backend-config-hr-sprite.xml"; sourceTree = "<group>"; };
-		B36F7A7016312F780090646E /* backend-config-hr-sprite_for_test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "backend-config-hr-sprite_for_test.xml"; sourceTree = "<group>"; };
 		B36F7A711631440A0090646E /* HDTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTextFieldDelegate.h; sourceTree = "<group>"; };
 		B36F7A721631440B0090646E /* HDTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTextFieldDelegate.m; sourceTree = "<group>"; };
 		B37467E815C78112003068CB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
@@ -1040,9 +1038,6 @@
 		B38E678015C64E6700824CB1 /* trend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trend@2x.png"; sourceTree = "<group>"; };
 		B38E678115C64E6700824CB1 /* world.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world.png; sourceTree = "<group>"; };
 		B38E678215C64E6700824CB1 /* world@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world@2x.png"; sourceTree = "<group>"; };
-		B38E685A15C6526A00824CB1 /* backend-config-hec-sprite.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hec-sprite.xml"; sourceTree = "<group>"; };
-		B38E685B15C6526A00824CB1 /* backend-config-hec.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hec.xml"; sourceTree = "<group>"; };
-		B38E685D15C6526A00824CB1 /* backend-config-hr.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-hr.xml"; sourceTree = "<group>"; };
 		B38E686315C6531300824CB1 /* bugList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = bugList.rtf; sourceTree = "<group>"; };
 		B38E686415C6531300824CB1 /* developList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = developList.rtf; sourceTree = "<group>"; };
 		B38E686515C6531300824CB1 /* functionList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = functionList.rtf; sourceTree = "<group>"; };
@@ -1907,13 +1902,8 @@
 		B38E685915C6526A00824CB1 /* ConfigFiles */ = {
 			isa = PBXGroup;
 			children = (
-				B36F7A7016312F780090646E /* backend-config-hr-sprite_for_test.xml */,
-				B2307430166739AB00DFF2E0 /* backend-config-cola.xml */,
-				B2524B02166BB1CD00515477 /* backend-config-cola-pad.xml */,
-				B36F7A6F16312EC60090646E /* backend-config-hr-sprite.xml */,
-				B38E685A15C6526A00824CB1 /* backend-config-hec-sprite.xml */,
-				B38E685B15C6526A00824CB1 /* backend-config-hec.xml */,
-				B38E685D15C6526A00824CB1 /* backend-config-hr.xml */,
+				B2307430166739AB00DFF2E0 /* backend-config-juice.xml */,
+				B355AF591689821E0076D9A6 /* backend-config-juice-pad.xml */,
 			);
 			path = ConfigFiles;
 			sourceTree = "<group>";
@@ -2595,8 +2585,7 @@
 				B3E60F0C1659D7D4006C8119 /* page3.jpg in Resources */,
 				B3E60F0D1659D7D4006C8119 /* page4.jpg in Resources */,
 				B3E60F0E1659D7D4006C8119 /* page5.jpg in Resources */,
-				B2307431166739AB00DFF2E0 /* backend-config-cola.xml in Resources */,
-				B2524B03166BB1CD00515477 /* backend-config-cola-pad.xml in Resources */,
+				B2307431166739AB00DFF2E0 /* backend-config-juice.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2770,6 +2759,7 @@
 				B36646451675BE2900A13F76 /* loginButtonActive_pad.png in Resources */,
 				B36646461675BE2900A13F76 /* loginButtonActive_pad@2x.png in Resources */,
 				B36646481675C81E00A13F76 /* login_pad@2x.png in Resources */,
+				B355AF5A1689821E0076D9A6 /* backend-config-juice-pad.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
