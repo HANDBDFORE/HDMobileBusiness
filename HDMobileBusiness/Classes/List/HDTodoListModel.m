@@ -146,7 +146,7 @@ static NSString * kSQLNull = @"null";
     id submitObject = [resultMap.userInfo objectForKey:@"postObject"];
     NSUInteger index = [self.resultList indexOfObject:submitObject];
     [_submitList removeObject:submitObject];
-    _flags.isSubmitingData = (_submitList.count > 0);
+    _flags.isSubmitingData = NO;
     /////////////////////////////////////////////////////////
     if (!resultMap.result) {
         [submitObject setValue:kRecordError forKey:kRecordStatus];
@@ -382,7 +382,7 @@ static NSString * kSQLNull = @"null";
  */
 -(BOOL) shouldSubmit
 {
-    return !_flags.isQueryingData && (_submitList.count > 0);
+    return !_flags.isSubmitingData && !_flags.isQueryingData && (_submitList.count > 0);
 }
 
 /*
