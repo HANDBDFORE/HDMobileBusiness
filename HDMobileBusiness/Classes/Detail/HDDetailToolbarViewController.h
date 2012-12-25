@@ -12,15 +12,11 @@
 
 @interface HDDetailToolbarViewController : HDDetailInfoViewController <TTMessageControllerDelegate,TTPostControllerDelegate>
 {
-    HDDetailToolbarModel * _toolBarModel;
     UIBarButtonItem * _spaceItem;
 }
 
-//-(id)initWithSignature:(NSString *) signature
-//                 query:(NSDictionary *) query;
+@property(nonatomic,retain) HDDetailToolbarModel * model;
 
 @property(nonatomic,copy) NSString * queryActionURLTemplate;
-
-@property (nonatomic,retain) id<HDListModelVector,HDListModelSubmit> listModel;
 
 @end

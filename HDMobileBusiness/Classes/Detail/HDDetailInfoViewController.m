@@ -27,7 +27,7 @@
 //用户信息按钮显示字段
 @synthesize userInfoItemTitle = _userInfoItemTitle;
 //model
-@synthesize listModel = _listModel;
+//@synthesize listModel = _listModel;
 @synthesize currentURL = _currentURL;
 
 #pragma mark - life cycle
@@ -36,7 +36,7 @@
     TT_RELEASE_SAFELY(_webPageURLTemplate);
     TT_RELEASE_SAFELY(_userInfoPageURLTemplate);
     TT_RELEASE_SAFELY(_userInfoItemTitle);
-    TT_RELEASE_SAFELY(_listModel);
+    TT_RELEASE_SAFELY(_pageTurningService);
     TT_RELEASE_SAFELY(_currentURL);
     TT_RELEASE_SAFELY(_nextButtonItem);
     TT_RELEASE_SAFELY(_prevButtonItem);
@@ -71,44 +71,30 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self expend];
     [self reloadAll];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView*)webView {
-}
 #pragma mark - 方法
 #pragma mark -
-//-(void)setWebPageURLPath:(NSString *)webPageURLPath
-//{
-//    if (nil != _webPageURLTemplate) {
-//        TT_RELEASE_SAFELY(_webPageURLTemplate);
-//    }
-//    _webPageURLTemplate = [webPageURLPath retain];
-//    [self openURL:[NSURL URLWithString:_webPageURLTemplate]];
-//}
 -(void)refreshWebPage{
     TTDPRINT(@"refresh");
     [self reloadAll];
 }
 
 -(void)forwordWebPage{
-    [self.listModel next];
+    [self.pageTurningService next];
     [self reloadAll];
 }
 
 -(void)backWebPage{
-    [self.listModel prev];
+    [self.pageTurningService prev];
     [self reloadAll];
 }
 
--(void)expend{
-}
-
 -(void)reloadAll{
-    NSString * employeeURLPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]] ;
+    NSString * employeeURLPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.pageTurningService current]] ;
     _userInfoView.employeeUrlPath = [employeeURLPath stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[HDHTTPRequestCenter baseURLPath]}] ;
-    NSString *currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.listModel current]];
+    NSString *currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.pageTurningService current]];
 
     self.currentURL = [currentURL stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[HDHTTPRequestCenter baseURLPath]}];
     
@@ -117,11 +103,11 @@
     if(_employeeInfoItem){
         TT_RELEASE_SAFELY(_employeeInfoItem);
     }
-    _employeeInfoItem = [[UIBarButtonItem alloc]initWithTitle:[[self.listModel current] objectForKey:self.userInfoItemTitle] style:UIBarButtonItemStyleBordered target:_userInfoView action:@selector(show)];
+    _employeeInfoItem = [[UIBarButtonItem alloc]initWithTitle:[[self.pageTurningService current] objectForKey:self.userInfoItemTitle] style:UIBarButtonItemStyleBordered target:_userInfoView action:@selector(show)];
     
     self.navigationItem.rightBarButtonItems =[NSArray arrayWithObjects:_nextButtonItem,_prevButtonItem,_refreshButtonItem,_employeeInfoItem,nil] ;
-    _nextButtonItem.enabled = [self.listModel hasNext];
-    _prevButtonItem.enabled = [self.listModel hasPrev];
+    _nextButtonItem.enabled = [self.pageTurningService hasNext];
+    _prevButtonItem.enabled = [self.pageTurningService hasPrev];
 }
 
 - (void)openURL:(NSURL*)URL {
@@ -130,7 +116,6 @@
 }
 
 - (void)openRequest:(NSURLRequest*)request {
-    //    [self view];
     [_webView loadRequest:request];
 }
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{

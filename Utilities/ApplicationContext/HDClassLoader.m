@@ -37,6 +37,7 @@
 //person choice for deliver
 #import "HDPersonListDataSource.h"
 
+#import "HDTodoListService.h"
 
 //pad
 #import "HDSplitViewController.h"
@@ -97,6 +98,8 @@
     
     
     [map from:@"tt://todoListSearchViewController" toViewController:[HDTodoListSearchViewController class]];
+    
+    [map from:@"tt://todoListService" toViewController:[HDTodoListService class]];
     
     //done list classes
     [map from:@"tt://doneListViewController" toViewController:[HDDoneListViewController class]];

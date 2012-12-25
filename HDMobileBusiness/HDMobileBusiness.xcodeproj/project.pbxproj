@@ -27,7 +27,7 @@
 		B303768E1600883D00238923 /* HDTableStatusMessageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376861600883400238923 /* HDTableStatusMessageItemCell.m */; };
 		B303768F1600883D00238923 /* HDTodoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376871600883700238923 /* HDTodoListDataSource.m */; };
 		B30376901600883D00238923 /* HDTodoListDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376881600883900238923 /* HDTodoListDelegate.m */; };
-		B30376911600883D00238923 /* HDTodoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376891600883A00238923 /* HDTodoListModel.m */; };
+		B30376911600883D00238923 /* HDTodoListService.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376891600883A00238923 /* HDTodoListService.m */; };
 		B30376921600883D00238923 /* HDTodoListSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B303768A1600883B00238923 /* HDTodoListSearchViewController.m */; };
 		B30376931600883D00238923 /* HDTodoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B303768B1600883C00238923 /* HDTodoListViewController.m */; };
 		B303769A160088A200238923 /* HDDoneListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037697160088A000238923 /* HDDoneListDataSource.m */; };
@@ -36,6 +36,8 @@
 		B30376A31600890600238923 /* HDFunctionListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A01600890600238923 /* HDFunctionListDataSource.m */; };
 		B30376A41600890600238923 /* HDFunctionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A11600890600238923 /* HDFunctionListViewController.m */; };
 		B30376A51600890600238923 /* HDTableConfirmViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A21600890600238923 /* HDTableConfirmViewCell.m */; };
+		B3063730168016FD00797963 /* HDBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = B306372F168016FD00797963 /* HDBaseService.m */; };
+		B3063731168016FD00797963 /* HDBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = B306372F168016FD00797963 /* HDBaseService.m */; };
 		B307C850166EEA5000A03573 /* HDGroupedTodoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */; };
 		B30BF63E15EC95A200DB83E9 /* HDSingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */; };
 		B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */; };
@@ -301,7 +303,7 @@
 		B398B835164A08140017FCD6 /* HDTableStatusMessageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376861600883400238923 /* HDTableStatusMessageItemCell.m */; };
 		B398B837164A08140017FCD6 /* HDTodoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376871600883700238923 /* HDTodoListDataSource.m */; };
 		B398B839164A08140017FCD6 /* HDTodoListDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376881600883900238923 /* HDTodoListDelegate.m */; };
-		B398B83B164A08140017FCD6 /* HDTodoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376891600883A00238923 /* HDTodoListModel.m */; };
+		B398B83B164A08140017FCD6 /* HDTodoListService.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376891600883A00238923 /* HDTodoListService.m */; };
 		B398B83D164A08140017FCD6 /* HDTodoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B303768B1600883C00238923 /* HDTodoListViewController.m */; };
 		B398B83F164A08140017FCD6 /* HDDoneListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037697160088A000238923 /* HDDoneListDataSource.m */; };
 		B398B841164A08140017FCD6 /* HDDoneListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037698160088A000238923 /* HDDoneListModel.m */; };
@@ -343,6 +345,8 @@
 		B398B8A5164A08E70017FCD6 /* HDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B398B7001649F6DC0017FCD6 /* HDAppDelegate.m */; };
 		B398B8A6164A099E0017FCD6 /* mobileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E670015C64E6700824CB1 /* mobileIcon.png */; };
 		B3B67ED2165CC666003B7D11 /* HDShowInViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */; };
+		B3CB0A4F1679980200BBE7CC /* HDTodoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB0A4E1679980100BBE7CC /* HDTodoListModel.m */; };
+		B3CB0A501679980200BBE7CC /* HDTodoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB0A4E1679980100BBE7CC /* HDTodoListModel.m */; };
 		B3CB5D921676CEB60062E71B /* HDTimeStampLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB5D911676CEB60062E71B /* HDTimeStampLabel.m */; };
 		B3CB5D941676D18F0062E71B /* HDTimeStampLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB5D911676CEB60062E71B /* HDTimeStampLabel.m */; };
 		B3CB5D971676F0B90062E71B /* HDListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB5D961676F0B90062E71B /* HDListViewController.m */; };
@@ -368,7 +372,6 @@
 		B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8316030344004E1BFD /* HDPersonListModel.m */; };
 		B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */; };
 		B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12326165486B400C685CB /* HDSplitViewController.m */; };
-		B3E1232A165486B400C685CB /* StackScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12327165486B400C685CB /* StackScrollViewController.m */; };
 		B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12328165486B400C685CB /* UIViewWithShadow.m */; };
 		B3E60EEF1659D768006C8119 /* HDObjectPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60EEC1659D768006C8119 /* HDObjectPattern.m */; };
 		B3E60EF01659D768006C8119 /* HDObjectPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60EEC1659D768006C8119 /* HDObjectPattern.m */; };
@@ -630,7 +633,7 @@
 		B303767E1600882B00238923 /* HDTableStatusMessageItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTableStatusMessageItemCell.h; path = Classes/List/HDTableStatusMessageItemCell.h; sourceTree = SOURCE_ROOT; };
 		B303767F1600882C00238923 /* HDTodoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListDataSource.h; path = Classes/List/HDTodoListDataSource.h; sourceTree = SOURCE_ROOT; };
 		B30376801600882E00238923 /* HDTodoListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListDelegate.h; path = Classes/List/HDTodoListDelegate.h; sourceTree = SOURCE_ROOT; };
-		B30376811600882F00238923 /* HDTodoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListModel.h; path = Classes/List/HDTodoListModel.h; sourceTree = SOURCE_ROOT; };
+		B30376811600882F00238923 /* HDTodoListService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListService.h; path = Classes/List/HDTodoListService.h; sourceTree = SOURCE_ROOT; };
 		B30376821600883000238923 /* HDTodoListSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListSearchViewController.h; path = Classes/List/HDTodoListSearchViewController.h; sourceTree = SOURCE_ROOT; };
 		B30376831600883000238923 /* HDTodoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListViewController.h; path = Classes/List/HDTodoListViewController.h; sourceTree = SOURCE_ROOT; };
 		B30376841600883300238923 /* HDBaseTodoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDBaseTodoListViewController.m; path = Classes/List/HDBaseTodoListViewController.m; sourceTree = SOURCE_ROOT; };
@@ -638,7 +641,7 @@
 		B30376861600883400238923 /* HDTableStatusMessageItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTableStatusMessageItemCell.m; path = Classes/List/HDTableStatusMessageItemCell.m; sourceTree = SOURCE_ROOT; };
 		B30376871600883700238923 /* HDTodoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTodoListDataSource.m; path = Classes/List/HDTodoListDataSource.m; sourceTree = SOURCE_ROOT; };
 		B30376881600883900238923 /* HDTodoListDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTodoListDelegate.m; path = Classes/List/HDTodoListDelegate.m; sourceTree = SOURCE_ROOT; };
-		B30376891600883A00238923 /* HDTodoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTodoListModel.m; path = Classes/List/HDTodoListModel.m; sourceTree = SOURCE_ROOT; };
+		B30376891600883A00238923 /* HDTodoListService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTodoListService.m; path = Classes/List/HDTodoListService.m; sourceTree = SOURCE_ROOT; };
 		B303768A1600883B00238923 /* HDTodoListSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTodoListSearchViewController.m; path = Classes/List/HDTodoListSearchViewController.m; sourceTree = SOURCE_ROOT; };
 		B303768B1600883C00238923 /* HDTodoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTodoListViewController.m; path = Classes/List/HDTodoListViewController.m; sourceTree = SOURCE_ROOT; };
 		B30376941600889F00238923 /* HDDoneListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDoneListDataSource.h; path = Classes/List/HDDoneListDataSource.h; sourceTree = SOURCE_ROOT; };
@@ -653,6 +656,8 @@
 		B30376A01600890600238923 /* HDFunctionListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDFunctionListDataSource.m; path = Classes/List/HDFunctionListDataSource.m; sourceTree = SOURCE_ROOT; };
 		B30376A11600890600238923 /* HDFunctionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDFunctionListViewController.m; path = Classes/List/HDFunctionListViewController.m; sourceTree = SOURCE_ROOT; };
 		B30376A21600890600238923 /* HDTableConfirmViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTableConfirmViewCell.m; path = Classes/List/HDTableConfirmViewCell.m; sourceTree = SOURCE_ROOT; };
+		B306372E168016F200797963 /* HDBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDBaseService.h; path = Classes/List/HDBaseService.h; sourceTree = SOURCE_ROOT; };
+		B306372F168016FD00797963 /* HDBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDBaseService.m; path = Classes/List/HDBaseService.m; sourceTree = SOURCE_ROOT; };
 		B307C84E166EEA5000A03573 /* HDGroupedTodoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDGroupedTodoListDataSource.h; path = Classes/List/HDGroupedTodoListDataSource.h; sourceTree = SOURCE_ROOT; };
 		B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDGroupedTodoListDataSource.m; path = Classes/List/HDGroupedTodoListDataSource.m; sourceTree = SOURCE_ROOT; };
 		B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSingletonObject.m; sourceTree = "<group>"; };
@@ -956,6 +961,8 @@
 		B39BC5581601765C00551C63 /* HDListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDListModel.h; path = Classes/List/HDListModel.h; sourceTree = "<group>"; };
 		B3B67ED0165CC665003B7D11 /* HDShowInViewGuider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDShowInViewGuider.h; sourceTree = "<group>"; };
 		B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDShowInViewGuider.m; sourceTree = "<group>"; };
+		B3CB0A4D1679980100BBE7CC /* HDTodoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListModel.h; path = Classes/List/HDTodoListModel.h; sourceTree = SOURCE_ROOT; };
+		B3CB0A4E1679980100BBE7CC /* HDTodoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTodoListModel.m; path = Classes/List/HDTodoListModel.m; sourceTree = SOURCE_ROOT; };
 		B3CB5D901676CEB60062E71B /* HDTimeStampLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTimeStampLabel.h; path = HDViews/HDTimeStampLabel.h; sourceTree = "<group>"; };
 		B3CB5D911676CEB60062E71B /* HDTimeStampLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTimeStampLabel.m; path = HDViews/HDTimeStampLabel.m; sourceTree = "<group>"; };
 		B3CB5D951676F0B80062E71B /* HDListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDListViewController.h; path = Classes/List/HDListViewController.h; sourceTree = SOURCE_ROOT; };
@@ -983,10 +990,8 @@
 		B3E06E2C15D4FFC8002A54BE /* TodoListModel.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = TodoListModel.rtf; path = Requirement/TodoList/TodoListModel.rtf; sourceTree = "<group>"; };
 		B3E06E3015D509F1002A54BE /* ErrorMessage.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ErrorMessage.rtf; sourceTree = "<group>"; };
 		B3E12323165486B400C685CB /* HDSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSplitViewController.h; path = Classes/StackScroll/HDSplitViewController.h; sourceTree = "<group>"; };
-		B3E12324165486B400C685CB /* StackScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackScrollViewController.h; path = Classes/StackScroll/StackScrollViewController.h; sourceTree = "<group>"; };
 		B3E12325165486B400C685CB /* UIViewWithShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewWithShadow.h; path = Classes/StackScroll/UIViewWithShadow.h; sourceTree = "<group>"; };
 		B3E12326165486B400C685CB /* HDSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSplitViewController.m; path = Classes/StackScroll/HDSplitViewController.m; sourceTree = "<group>"; };
-		B3E12327165486B400C685CB /* StackScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StackScrollViewController.m; path = Classes/StackScroll/StackScrollViewController.m; sourceTree = "<group>"; };
 		B3E12328165486B400C685CB /* UIViewWithShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewWithShadow.m; path = Classes/StackScroll/UIViewWithShadow.m; sourceTree = "<group>"; };
 		B3E60EE91659D768006C8119 /* HDApplicationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDApplicationContext.h; sourceTree = "<group>"; };
 		B3E60EEB1659D768006C8119 /* HDObjectPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDObjectPattern.h; sourceTree = "<group>"; };
@@ -1152,15 +1157,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B307C84D166EE9DA00A03573 /* Grouped */ = {
+		B30637281680159800797963 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B307C84E166EEA5000A03573 /* HDGroupedTodoListDataSource.h */,
-				B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */,
-				B3FFC15D1670330600965ECA /* HDGroupedViewController.h */,
-				B3FFC15E1670330600965ECA /* HDGroupedViewController.m */,
+				B3CB0A4D1679980100BBE7CC /* HDTodoListModel.h */,
+				B3CB0A4E1679980100BBE7CC /* HDTodoListModel.m */,
+				B336DEF1165E0B8400057B95 /* HDTodoListModelStatus.h */,
+				B30376811600882F00238923 /* HDTodoListService.h */,
+				B30376891600883A00238923 /* HDTodoListService.m */,
+				B306372E168016F200797963 /* HDBaseService.h */,
+				B306372F168016FD00797963 /* HDBaseService.m */,
 			);
-			name = Grouped;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		B307FDE215FF134700EA5133 /* Compose */ = {
@@ -1478,35 +1486,26 @@
 			name = List;
 			sourceTree = "<group>";
 		};
-		B3893CEA164A3FDE004E326A /* Pad */ = {
+		B3893CEA164A3FDE004E326A /* Split */ = {
 			isa = PBXGroup;
 			children = (
 				B3E12323165486B400C685CB /* HDSplitViewController.h */,
-				B3E12324165486B400C685CB /* StackScrollViewController.h */,
 				B3E12325165486B400C685CB /* UIViewWithShadow.h */,
 				B3E12326165486B400C685CB /* HDSplitViewController.m */,
-				B3E12327165486B400C685CB /* StackScrollViewController.m */,
 				B3E12328165486B400C685CB /* UIViewWithShadow.m */,
 			);
-			name = Pad;
+			name = Split;
 			sourceTree = "<group>";
 		};
 		B38DC6E415C6835D00FD0C58 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
-				B307C84D166EE9DA00A03573 /* Grouped */,
-				B38DC70C15C68B4A00FD0C58 /* Search */,
-				B38DC70B15C68B3800FD0C58 /* Base */,
+				B30637281680159800797963 /* Model */,
+				B38DC70C15C68B4A00FD0C58 /* DataSource */,
+				B38DC70B15C68B3800FD0C58 /* ViewController */,
 				B38DC70A15C68B2900FD0C58 /* Cell */,
-				B303767F1600882C00238923 /* HDTodoListDataSource.h */,
-				B30376871600883700238923 /* HDTodoListDataSource.m */,
 				B30376801600882E00238923 /* HDTodoListDelegate.h */,
 				B30376881600883900238923 /* HDTodoListDelegate.m */,
-				B336DEF1165E0B8400057B95 /* HDTodoListModelStatus.h */,
-				B30376811600882F00238923 /* HDTodoListModel.h */,
-				B30376891600883A00238923 /* HDTodoListModel.m */,
-				B30376831600883000238923 /* HDTodoListViewController.h */,
-				B303768B1600883C00238923 /* HDTodoListViewController.m */,
 			);
 			name = TodoList;
 			path = Classes/TodoList;
@@ -1523,22 +1522,30 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
-		B38DC70B15C68B3800FD0C58 /* Base */ = {
+		B38DC70B15C68B3800FD0C58 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				B303767C1600882A00238923 /* HDBaseTodoListViewController.h */,
 				B30376841600883300238923 /* HDBaseTodoListViewController.m */,
-			);
-			name = Base;
-			sourceTree = "<group>";
-		};
-		B38DC70C15C68B4A00FD0C58 /* Search */ = {
-			isa = PBXGroup;
-			children = (
+				B3FFC15D1670330600965ECA /* HDGroupedViewController.h */,
+				B3FFC15E1670330600965ECA /* HDGroupedViewController.m */,
 				B30376821600883000238923 /* HDTodoListSearchViewController.h */,
 				B303768A1600883B00238923 /* HDTodoListSearchViewController.m */,
+				B30376831600883000238923 /* HDTodoListViewController.h */,
+				B303768B1600883C00238923 /* HDTodoListViewController.m */,
 			);
-			name = Search;
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		B38DC70C15C68B4A00FD0C58 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				B307C84E166EEA5000A03573 /* HDGroupedTodoListDataSource.h */,
+				B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */,
+				B303767F1600882C00238923 /* HDTodoListDataSource.h */,
+				B30376871600883700238923 /* HDTodoListDataSource.m */,
+			);
+			name = DataSource;
 			sourceTree = "<group>";
 		};
 		B38DC70D15C68C3800FD0C58 /* Detail */ = {
@@ -1800,7 +1807,7 @@
 			isa = PBXGroup;
 			children = (
 				B336DEF3165E250500057B95 /* Navigatior */,
-				B3893CEA164A3FDE004E326A /* Pad */,
+				B3893CEA164A3FDE004E326A /* Split */,
 				B307FDE215FF134700EA5133 /* Compose */,
 				B38DC70D15C68C3800FD0C58 /* Detail */,
 				B383112E15F9F195005FD54E /* List */,
@@ -2626,7 +2633,7 @@
 				B303768E1600883D00238923 /* HDTableStatusMessageItemCell.m in Sources */,
 				B303768F1600883D00238923 /* HDTodoListDataSource.m in Sources */,
 				B30376901600883D00238923 /* HDTodoListDelegate.m in Sources */,
-				B30376911600883D00238923 /* HDTodoListModel.m in Sources */,
+				B30376911600883D00238923 /* HDTodoListService.m in Sources */,
 				B30376921600883D00238923 /* HDTodoListSearchViewController.m in Sources */,
 				B30376931600883D00238923 /* HDTodoListViewController.m in Sources */,
 				B303769A160088A200238923 /* HDDoneListDataSource.m in Sources */,
@@ -2653,6 +2660,8 @@
 				B3D5B84D165F43000073C9D5 /* HDResourceLoader.m in Sources */,
 				B3D5B851165F4DC40073C9D5 /* HDApplicationContext.m in Sources */,
 				B3CB5D971676F0B90062E71B /* HDListViewController.m in Sources */,
+				B3CB0A4F1679980200BBE7CC /* HDTodoListModel.m in Sources */,
+				B3063730168016FD00797963 /* HDBaseService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2702,7 +2711,7 @@
 				B398B835164A08140017FCD6 /* HDTableStatusMessageItemCell.m in Sources */,
 				B398B837164A08140017FCD6 /* HDTodoListDataSource.m in Sources */,
 				B398B839164A08140017FCD6 /* HDTodoListDelegate.m in Sources */,
-				B398B83B164A08140017FCD6 /* HDTodoListModel.m in Sources */,
+				B398B83B164A08140017FCD6 /* HDTodoListService.m in Sources */,
 				B398B83D164A08140017FCD6 /* HDTodoListViewController.m in Sources */,
 				B398B83F164A08140017FCD6 /* HDDoneListDataSource.m in Sources */,
 				B398B841164A08140017FCD6 /* HDDoneListModel.m in Sources */,
@@ -2736,7 +2745,6 @@
 				B398B88E164A08140017FCD6 /* HDSingletonObject.m in Sources */,
 				B398B891164A08140017FCD6 /* NSString+HDAddtions.m in Sources */,
 				B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */,
-				B3E1232A165486B400C685CB /* StackScrollViewController.m in Sources */,
 				B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */,
 				B3E60EF01659D768006C8119 /* HDObjectPattern.m in Sources */,
 				B3CD019516635305002321A9 /* HDSplitViewGuider.m in Sources */,
@@ -2744,6 +2752,8 @@
 				B3FFC15F1670330600965ECA /* HDGroupedViewController.m in Sources */,
 				B3CB5D921676CEB60062E71B /* HDTimeStampLabel.m in Sources */,
 				B3CB5D981676F0B90062E71B /* HDListViewController.m in Sources */,
+				B3CB0A501679980200BBE7CC /* HDTodoListModel.m in Sources */,
+				B3063731168016FD00797963 /* HDBaseService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

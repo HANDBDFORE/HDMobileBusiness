@@ -12,13 +12,9 @@
 
 @implementation HDTodoListDataSource
 
-@synthesize listModel = _listModel;
-@synthesize itemDictionary = _itemDictionary;
-
 -(void)dealloc
 {
     TT_RELEASE_SAFELY(_itemDictionary);
-    TT_RELEASE_SAFELY(_listModel);
     [super dealloc];
 }
 
@@ -105,7 +101,7 @@
 {
     //tableload完成生成cell item 对象列表
     self.items = [NSMutableArray array];
-    for (id record in self.listModel.resultList) {
+    for (id record in self.model.resultList) {
         [self.items addObject:[self createItemWithObject:record]
          ];
     }
@@ -116,7 +112,8 @@
 #pragma mark UITable datasource
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString * localStatus =  [[self.listModel.resultList objectAtIndex:indexPath.row] valueForKeyPath:kRecordStatus];
+    //TODO:这里之后需要统一keyPath
+    NSString * localStatus = [[self.items objectAtIndex:indexPath.row] valueForKeyPath:@"state"];
     
     return ([localStatus isEqualToString:kRecordNormal] ||
             [localStatus isEqualToString:kRecordError]);
@@ -126,19 +123,16 @@
 {
     if ([item.state isEqualToString:kRecordNormal] ||
         [item.state isEqualToString:kRecordError]) {
-        self.listModel.currentIndex = [self.items indexOfObject:item];
+        self.model.currentIndex = [self.items indexOfObject:item];
 
-        HDViewGuider  * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
-        if ([guider.destinationController respondsToSelector:@selector(setListModel:)]){
-            [guider.destinationController performSelector:@selector(setListModel:) withObject:self.listModel];
-        }
+        HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
         [guider perform];
     }
 }
 
 - (void)search:(NSString*)text {
-    if ([self.listModel respondsToSelector:@selector(search:)]) {
-        [self.listModel search:text];
+    if ([self.model respondsToSelector:@selector(search:)]) {
+        [self.model search:text];
     }
 }
 

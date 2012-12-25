@@ -14,8 +14,6 @@
 @synthesize password = _password;
 @synthesize loginBtn = _loginBtn;
 
-@dynamic loginModel;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,7 +25,7 @@
 
 -(void)setLoginModel:(id<HDLoginModel>)loginModel
 {
-    _loginModel = loginModel;
+    _loginModel = [loginModel retain];
     self.model = loginModel;
     
     //注册模型键值观察
@@ -35,15 +33,13 @@
     [self addObserver:_loginModel forKeyPath:@"password.text" options:NSKeyValueObservingOptionNew context:@"password"];
 }
 
--(id<HDLoginModel>)loginModel
-{
-    return _loginModel;
-}
-
 -(void)viewDidUnload
 {
-    [self removeObserver:_loginModel forKeyPath:@"username.text"];
-    [self removeObserver:_loginModel forKeyPath:@"password.text"];
+    [self removeObserver:self.loginModel forKeyPath:@"username.text"];
+    [self removeObserver:self.loginModel forKeyPath:@"password.text"];
+    
+    TT_RELEASE_SAFELY(_loginModel);
+    
     TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_password);
     TT_RELEASE_SAFELY(_loginBtn);
@@ -117,11 +113,11 @@
     }
     
     if ([self.loginBtn tag] == 20) {
-        [_loginModel login];
+        [self.loginModel login];
         [self.loginBtn setTitle:@"取消" forState:UIControlStateNormal];
         [self.loginBtn setTag:21];
     }else{
-        [_loginModel cancel];
+        [self.loginModel cancel];
         [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
         [self.loginBtn setTag:20];
     }

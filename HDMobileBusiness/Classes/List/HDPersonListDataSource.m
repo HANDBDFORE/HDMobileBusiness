@@ -9,7 +9,6 @@
 #import "HDPersonListDataSource.h"
 
 @implementation HDPersonListDataSource
-@synthesize listModel = _listModel;
 @synthesize itemDictionary = _itemDictionary;
 
 - (void)dealloc
@@ -22,9 +21,6 @@
 {
     self = [super init];
     if (self) {
-        HDPersonListModel * model = [[[HDPersonListModel alloc]init] autorelease];
-        self.model = model;
-        self.listModel = model;
         self.itemDictionary =
         @{ @"text" : @"text",
         @"subtitle":@"subtitle",
@@ -36,7 +32,7 @@
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
     self.items = [NSMutableArray array];
-    for (NSDictionary * record in self.listModel.resultList) {
+    for (NSDictionary * record in self.model.resultList) {
         NSString * text = [[self.itemDictionary valueForKey: @"text"] stringByReplacingSpaceHodlerWithDictionary:record];
         NSString * subtitle = [[self.itemDictionary valueForKey:@"subtitle"] stringByReplacingSpaceHodlerWithDictionary:record];
         NSString * userInfo = [[self.itemDictionary valueForKey:@"userInfo"] stringByReplacingSpaceHodlerWithDictionary:record];
@@ -49,8 +45,8 @@
 
 -(void)search:(NSString *)text
 {
-    if ([self.listModel respondsToSelector:@selector(search:)]){
-        [self.listModel search:text];
+    if ([self.model respondsToSelector:@selector(search:)]){
+        [self.model search:text];
     }
 }
 @end

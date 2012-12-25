@@ -14,14 +14,12 @@
 @synthesize resultList = _resultList;
 @synthesize queryURL = _queryURL;
 @synthesize detailRecord = _detailRecord;
-@synthesize selectedAction = _selectedAction;
 
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_resultList);
     TT_RELEASE_SAFELY(_queryURL);
     TT_RELEASE_SAFELY(_detailRecord);
-    TT_RELEASE_SAFELY(_selectedAction);
     [super dealloc];
 }
 

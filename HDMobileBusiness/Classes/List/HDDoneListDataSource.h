@@ -11,7 +11,7 @@
 
 @interface HDDoneListDataSource : TTListDataSource <HDTableDataSource>
 
-@property(nonatomic,retain) id<HDListModelVector> listModel;
+@property(nonatomic,retain) id<HDListModelQuery,HDPageTurning> model;
 
 #pragma -override
 @property(nonatomic,retain) NSDictionary * itemDictionary;

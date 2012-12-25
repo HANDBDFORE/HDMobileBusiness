@@ -9,7 +9,7 @@
 #import "HDURLRequestModel.h"
 #import "HDListModel.h"
 
-@interface HDDoneListModel : HDURLRequestModel<HDListModelVector>
+@interface HDDoneListModel : HDURLRequestModel<HDListModelQuery,HDPageTurning>
 {
     @private
     NSMutableArray * _resultList;

@@ -10,12 +10,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation HDDoneListDataSource
-@synthesize listModel = _listModel;
 @synthesize itemDictionary = _itemDictionary;
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_listModel);
     TT_RELEASE_SAFELY(_itemDictionary);
     [super dealloc];
 }
@@ -36,7 +34,7 @@
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
     self.items = [NSMutableArray array];
-    for (NSDictionary * record in self.listModel.resultList) {
+    for (NSDictionary * record in self.model.resultList) {
         
         NSString * title = [[_itemDictionary valueForKey: @"title"] stringByReplacingSpaceHodlerWithDictionary:record];
         NSString * caption = [[_itemDictionary valueForKey:@"caption"] stringByReplacingSpaceHodlerWithDictionary:record];
@@ -66,7 +64,7 @@
 -(void)openURLForKey:(TTTableItem *)item
 {
     NSUInteger index = [self.items indexOfObject:item];
-    [self.listModel setCurrentIndex:index];
+    [self.model setCurrentIndex:index];
     
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"doneListTableGuider"];
     [guider perform];
