@@ -51,8 +51,8 @@ static NSString * kSQLNull = @"null";
         self.loadedTime = [NSDate dateWithTimeIntervalSinceNow:0];
         self.cacheKey = nil;
         //TODO:这里如果使用didFinish，会导致下拉刷新界面出问题，如果直接load会在分组时进入列表出现延迟现象。之后还是用load比较好，重新设计分组的交互。
-        [self load:TTURLRequestCachePolicyDefault more:NO];
-//        [self didFinishLoad];
+//        [self load:TTURLRequestCachePolicyDefault more:NO];
+        [self didFinishLoad];
         return;
     }
     if([self shouldSubmit]){
