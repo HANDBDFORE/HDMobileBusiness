@@ -41,6 +41,17 @@
     }
     return self;
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)reloadAll{
+    self.model.detailRecord = [self.pageTurningService current];
+    self.model.queryURL = [self.queryActionURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.pageTurningService current]];
+    
+    [self.model load:TTURLRequestCachePolicyDefault more:NO];
+    [super reloadAll];
+    
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark - submit record
 #pragma mark -
@@ -60,23 +71,60 @@
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
+    [self submitWithDictionary:@{kComments:text,kAction:_selectedAction}];
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma -mark deliver
+-(void)deliver:(id)sender
+{
+    HDViewGuider * guider = [[HDApplicationContext shareContext] objectForIdentifier:@"todoDetailDeliverGuider"];
+    [guider perform];
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void)composeController:(TTMessageController*)controller didSendFields:(NSArray*)fields {
+    NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
+    
+    for (id field in fields) {
+        //获取第一个单元格的第一个cell
+        if ([field isKindOfClass:[TTMessageRecipientField class]]) {
+            for (TTTableTextItem * item in [field recipients]) {
+                [dictionary setValue:item.userInfo forKeyPath:kEmployeeID];
+            }
+            //获取第二个单元格的内容
+        } else if ([field isKindOfClass:[TTMessageTextField class]]) {
+            [dictionary  setValue:[(TTMessageTextField *)field text] forKeyPath:kComments];
+        }
+    }
+    [dictionary setValue:@"D" forKeyPath:kAction];
+    
+    [controller dismissModalViewControllerAnimated:YES];
+    [self submitWithDictionary:dictionary];
+}
+
+-(void)submitWithDictionary:(NSDictionary *) dictionary
+{
     if ([self.pageTurningService respondsToSelector:@selector(submitRecordsAtIndexPaths:dictionary:)]) {
-        [self.pageTurningService submitCurrentRecordWithDictionary:@{kComments:text,kAction:_selectedAction}];
+        [self.pageTurningService submitCurrentRecordWithDictionary:dictionary];
         //删除动作
         [self.model removeTheActions];
     }
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark - overWrite -
--(void)reloadAll{
-    self.model.detailRecord = [self.pageTurningService current];
-    self.model.queryURL = [self.queryActionURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.pageTurningService current]];
-
-    [self.model load:TTURLRequestCachePolicyDefault more:NO];
-    [super reloadAll];
     
+    if ([self.pageTurningService hasNext]) {
+        [self nextRecord];
+    }else if ([self.pageTurningService hasPrev]){
+        [self prevRecord];
+    }else{
+        [self.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@"YES" afterDelay:0.5];
+    }
 }
+
+- (void)composeControllerShowRecipientPicker:(TTMessageController*)controller {
+    TTDPRINT(@"show picker");
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark - TTModel delegate functions -
 -(void)modelDidFinishLoad:(id <TTModel>)model
@@ -113,52 +161,6 @@
         self.toolbarItems = itemButtons;
     }
 }
-
-#pragma -mark deliver
--(void)deliver:(id)sender
-{
-    HDViewGuider * guider = [[HDApplicationContext shareContext] objectForIdentifier:@"todoDetailDeliverGuider"];
-    [guider perform];
-}
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// TTMessageControllerDelegate
-
-- (void)composeController:(TTMessageController*)controller didSendFields:(NSArray*)fields {
-    NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
-    
-    for (id field in fields) {
-        //获取第一个单元格的第一个cell
-        if ([field isKindOfClass:[TTMessageRecipientField class]]) {
-            for (TTTableTextItem * item in [field recipients]) {
-                [dictionary setValue:item.userInfo forKeyPath:kEmployeeID];
-            }
-            //获取第二个单元格的内容
-        } else if ([field isKindOfClass:[TTMessageTextField class]]) {
-            [dictionary  setValue:[(TTMessageTextField *)field text] forKeyPath:kComments];
-        }
-    }
-    [dictionary setValue:@"D" forKeyPath:kAction];
-    [self.pageTurningService submitCurrentRecordWithDictionary:dictionary];
-    
-    [controller dismissModalViewControllerAnimated:YES];
-    //如何pop出去不会crash
-    [self.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@"YES" afterDelay:0.5];
-}
-
-//- (void)composeControllerDidCancel:(TTMessageController*)controller {
-//    TTDPRINT(@"did cancel");
-//}
-
-- (void)composeControllerShowRecipientPicker:(TTMessageController*)controller {
-    TTDPRINT(@"show picker");
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-//-(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
-//{
-//    TTAlert([error localizedDescription]);
-//}
 
 @end

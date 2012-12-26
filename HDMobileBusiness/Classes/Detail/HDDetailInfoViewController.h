@@ -30,4 +30,9 @@
 @property (nonatomic,retain) id<HDPageTurning> pageTurningService;
 
 -(void)reloadAll;
+
+-(void)nextRecord;
+
+-(void)prevRecord;
+
 @end

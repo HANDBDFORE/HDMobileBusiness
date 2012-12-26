@@ -59,13 +59,13 @@
     [self.view addSubview:_userInfoView];
     
     //next button
-    _nextButtonItem = [[UIBarButtonItem alloc]initWithImage:TTIMAGE(@"bundle://Three20.bundle/images/forwardIcon.png") style:UIBarButtonItemStyleBordered target:self action:@selector(forwordWebPage)];
+    _nextButtonItem = [[UIBarButtonItem alloc]initWithImage:TTIMAGE(@"bundle://Three20.bundle/images/forwardIcon.png") style:UIBarButtonItemStyleBordered target:self action:@selector(nextRecord)];
     
     //prev button
-    _prevButtonItem = [[UIBarButtonItem alloc]initWithImage:TTIMAGE(@"bundle://Three20.bundle/images/backIcon.png") style:UIBarButtonItemStyleBordered target:self action:@selector(backWebPage)];
+    _prevButtonItem = [[UIBarButtonItem alloc]initWithImage:TTIMAGE(@"bundle://Three20.bundle/images/backIcon.png") style:UIBarButtonItemStyleBordered target:self action:@selector(prevRecord)];
     
     //refresh button
-    _refreshButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshWebPage)];
+    _refreshButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadAll)];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -75,18 +75,12 @@
 }
 
 #pragma mark - 方法
-#pragma mark -
--(void)refreshWebPage{
-    TTDPRINT(@"refresh");
-    [self reloadAll];
-}
-
--(void)forwordWebPage{
+-(void)nextRecord{
     [self.pageTurningService next];
     [self reloadAll];
 }
 
--(void)backWebPage{
+-(void)prevRecord{
     [self.pageTurningService prev];
     [self reloadAll];
 }
