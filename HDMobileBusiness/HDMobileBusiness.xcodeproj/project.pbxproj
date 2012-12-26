@@ -850,6 +850,7 @@
 		B34660B815C678DD00EFDF24 /* HDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLoginViewController.h; sourceTree = "<group>"; };
 		B34660B915C678DD00EFDF24 /* HDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoginViewController.m; sourceTree = "<group>"; };
 		B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDLoginViewController.xib; sourceTree = "<group>"; };
+		B34C0B5E168AD55F00EAD1CF /* versions.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = versions.rtf; path = Documents/WorkPlan/versions.rtf; sourceTree = SOURCE_ROOT; };
 		B355AF591689821E0076D9A6 /* backend-config-juice-pad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-juice-pad.xml"; sourceTree = "<group>"; };
 		B355AF5C1689849A0076D9A6 /* ApplicationContext.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = ApplicationContext.rtfd; sourceTree = "<group>"; };
 		B355AF5D16898CB40076D9A6 /* VIewGuider.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = VIewGuider.rtfd; sourceTree = "<group>"; };
@@ -1042,7 +1043,6 @@
 		B38E678015C64E6700824CB1 /* trend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trend@2x.png"; sourceTree = "<group>"; };
 		B38E678115C64E6700824CB1 /* world.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world.png; sourceTree = "<group>"; };
 		B38E678215C64E6700824CB1 /* world@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world@2x.png"; sourceTree = "<group>"; };
-		B38E686315C6531300824CB1 /* bugList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = bugList.rtf; sourceTree = "<group>"; };
 		B38E686415C6531300824CB1 /* developList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = developList.rtf; sourceTree = "<group>"; };
 		B38E686515C6531300824CB1 /* functionList.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = functionList.rtf; sourceTree = "<group>"; };
 		B38E686C15C654DA00824CB1 /* HDRequestGetMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDRequestGetMap.h; sourceTree = "<group>"; };
@@ -1927,9 +1927,9 @@
 		B38E686215C6531300824CB1 /* WorkPlan */ = {
 			isa = PBXGroup;
 			children = (
-				B38E686315C6531300824CB1 /* bugList.rtf */,
 				B38E686415C6531300824CB1 /* developList.rtf */,
 				B38E686515C6531300824CB1 /* functionList.rtf */,
+				B34C0B5E168AD55F00EAD1CF /* versions.rtf */,
 			);
 			name = WorkPlan;
 			path = workPlan;
