@@ -82,7 +82,7 @@
         if(recognizer.direction == UISwipeGestureRecognizerDirectionRight){
             [UIView beginAnimations:@"moveright" context:nil];
             //动画持续时间
-            [UIView setAnimationDuration:0.5];
+            [UIView setAnimationDuration:0.2];
             //设置动画的回调函数，设置后可以使用回调方法
             [UIView setAnimationDelegate:self];
             //设置动画曲线，控制动画速度
@@ -96,7 +96,7 @@
         }else if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft){
             [UIView beginAnimations:@"moveleft" context:nil];
             //动画持续时间
-            [UIView setAnimationDuration:0.5];
+            [UIView setAnimationDuration:0.2];
             //设置动画的回调函数，设置后可以使用回调方法
             [UIView setAnimationDelegate:self];
             //设置动画曲线，控制动画速度
@@ -143,7 +143,7 @@
     if (animated) {
         [UIView beginAnimations:@"move" context:nil];
         //动画持续时间
-        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDuration:0.3];
         //设置动画的回调函数，设置后可以使用回调方法
         [UIView setAnimationDelegate:self];
         //设置动画曲线，控制动画速度

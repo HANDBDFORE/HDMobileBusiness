@@ -138,7 +138,7 @@
 -(UIColor *)tableHeaderTintColor
 {
     
-    return RGBCOLOR(248, 248, 248);
+    return RGBCOLOR(245, 245, 245);
 }
 
 -(UIColor *)tableHeaderShadowColor
@@ -152,7 +152,7 @@
     UIColor* highlight = TTSTYLEVAR(tableHeaderTintColor);
     return
     [TTLinearGradientFillStyle styleWithColor1:highlight color2:color next:
-     [TTInsetStyle styleWithInset:UIEdgeInsetsMake(0, 0, 0, 0) next:
+     [TTInsetStyle styleWithInset:UIEdgeInsetsMake(-1, 0, 0, 0) next:
       [TTFourBorderStyle styleWithTop:RGBCOLOR(158,158,158) right:nil bottom:RGBCOLOR(128,128,128)
                                  left:nil width:1 next:nil]]];
 }
