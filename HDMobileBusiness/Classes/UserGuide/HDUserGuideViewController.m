@@ -111,7 +111,7 @@
 }
 
 - (CGSize)scrollView:(TTScrollView*)scrollView sizeOfPageAtIndex:(NSInteger)pageIndex {
-    return (TTScreenBounds()).size;
+    return [UIScreen mainScreen].bounds.size;
 }
 
 #pragma mark -

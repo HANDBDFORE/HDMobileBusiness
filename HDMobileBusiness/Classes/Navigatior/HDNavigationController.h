@@ -13,4 +13,7 @@
 
 @property(nonatomic,retain)  NSArray * pushedViewControllers;
 
+-(instancetype)initWithNavigationBarClassName:(NSString *)navigationBarClassName
+                             toolbarClassName:(NSString *)toolbarClassName;
+
 @end

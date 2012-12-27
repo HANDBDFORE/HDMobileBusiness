@@ -7,3 +7,6 @@
 [submodule "Frameworks/FMDB"]
 	path = Frameworks/FMDB
 	url = git://github.com/ccgus/fmdb.git
+[submodule "Frameworks/prettyKit"]
+	path = Frameworks/prettyKit
+	url = git@github.com:HAND-MAS/PrettyKit.git

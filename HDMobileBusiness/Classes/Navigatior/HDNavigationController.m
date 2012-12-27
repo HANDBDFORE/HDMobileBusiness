@@ -20,6 +20,18 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+    }
+    return self;
+}
+
+-(instancetype)initWithNavigationBarClassName:(NSString *)navigationBarClassName
+                             toolbarClassName:(NSString *)toolbarClassName
+{
+    self = [self initWithNavigationBarClass:NSClassFromString(navigationBarClassName)
+                               toolbarClass:NSClassFromString(toolbarClassName)];
+    if (self) {
+        
     }
     return self;
 }

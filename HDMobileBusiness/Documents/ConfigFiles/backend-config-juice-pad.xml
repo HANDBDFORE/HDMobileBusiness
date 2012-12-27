@@ -68,7 +68,7 @@
         <property name="rightViewController" ref="todoListNavigator"/>
     </bean>
     <!--leftNavigator-->
-    <bean id="leftNavigator"  create-url="tt://navigator" mode="create">
+    <bean id="leftNavigator"  create-url="tt://navigator/PrettyNavigationBar/nil" mode="create">
         <property name="pushedViewControllers" >
             <array>
                 <list value="functionListViewController"/>
@@ -89,7 +89,7 @@
         <property name="queryURL" value="${base_url}autocrud/ios.ios_function_center.ios_function_center_list/query"/>
     </bean>
     <!--rightNavigator-->
-    <bean id="todoListNavigator"  create-url="tt://navigator" mode="share">
+    <bean id="todoListNavigator"  create-url="tt://navigator/PrettyNavigationBar/PrettyToolbar" mode="share">
         <property name="pushedViewControllers" >
             <array>
                 <list value="groupedTodoListViewController"/>

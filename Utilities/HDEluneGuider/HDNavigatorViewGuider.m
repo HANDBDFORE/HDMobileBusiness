@@ -7,7 +7,6 @@
 //
 
 #import "HDNavigatorViewGuider.h"
-#import "HDNavigationController.h"
 
 @implementation HDNavigatorViewGuider
 

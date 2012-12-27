@@ -22,7 +22,6 @@
 -(void)loadView
 {
     [super loadView];
-    self.navigationBarTintColor = RGBACOLOR(51, 51, 51,1.0);
 }
 
 -(void)viewWillAppear:(BOOL)animated

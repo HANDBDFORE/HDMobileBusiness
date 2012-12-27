@@ -82,6 +82,8 @@
     //navigationcontroller
     [map from:@"tt://navigator" toViewController:[HDNavigationController class]];
     
+    [map from:@"tt://navigator/(initWithNavigationBarClassName:)/(toolbarClassName:)" toViewController:[HDNavigationController class]];
+    
     //function list classes
     [map from:@"tt://functionListViewController" toViewController:[HDFunctionListViewController class]];
     

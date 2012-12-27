@@ -128,7 +128,7 @@
     [TTTableImageItem itemWithText:TTLocalizedString(@"Todo List", @"待办事项")
                           delegate:self
                           selector:@selector(openURLForItem:)];
-    todoListItem.imageURL = @"bundle://mailclosed.png";
+    todoListItem.imageURL = @"bundle://mail-5.png";
     todoListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
     todoListItem.userInfo = @"todoListNavigator";
     
@@ -137,7 +137,7 @@
     [TTTableImageItem itemWithText:TTLocalizedString(@"Approved List", @"审批完成")
                           delegate:self
                           selector:@selector(openURLForItem:)];
-    doneListItem.imageURL = @"bundle://mailopened.png";
+    doneListItem.imageURL = @"bundle://mail-14.png";
     doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
     doneListItem.userInfo = @"doneListNavigator";
     

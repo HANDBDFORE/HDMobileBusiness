@@ -108,8 +108,8 @@
 #pragma -mark color
 -(UIColor *)navigationBarTintColor
 {
-    return RGBCOLOR(102, 102, 102);
-//    return RGBCOLOR(51, 51, 51);
+//    return RGBCOLOR(204, 204, 204);
+    return RGBCOLOR(64, 137, 190);
 }
 
 -(UIColor *)toolbarTintColor
@@ -120,33 +120,47 @@
 -(UIColor *)postViewBackground
 {
 //    return RGBACOLOR(51, 51, 51,0.9);
-    return RGBCOLOR(146, 176, 216);
+//    return RGBCOLOR(146, 176, 216);
+    return  RGBCOLOR(64, 137, 190);
 }
 
 -(UIColor *)searchBarTintColor
 {
-    return RGBACOLOR(102, 102, 102, 0.6);
+    return RGBACOLOR(64, 137, 190,0.6);
+//    return RGBACOLOR(102, 102, 102, 0.6);
 }
 
 -(UIColor *)tablePlainBackgroundColor
 {
-    return RGBCOLOR(245, 245, 245);
+    return RGBCOLOR(235, 235, 235);
 }
 
 -(UIColor *)tableHeaderTintColor
 {
-//    return RGBCOLOR(51, 51, 51);
-    return RGBACOLOR(0, 0, 0, 0.35);
+    
+    return RGBCOLOR(248, 248, 248);
+}
+
+-(UIColor *)tableHeaderShadowColor
+{
+    return RGBCOLOR(222, 222, 222);
+//    return RGBACOLOR(51, 53, 53, 1.0);
+}
+
+- (TTStyle*)tableHeader {
+    UIColor* color = TTSTYLEVAR(tableHeaderShadowColor);
+    UIColor* highlight = TTSTYLEVAR(tableHeaderTintColor);
+    return
+    [TTLinearGradientFillStyle styleWithColor1:highlight color2:color next:
+     [TTInsetStyle styleWithInset:UIEdgeInsetsMake(0, 0, 0, 0) next:
+      [TTFourBorderStyle styleWithTop:RGBCOLOR(158,158,158) right:nil bottom:RGBCOLOR(128,128,128)
+                                 left:nil width:1 next:nil]]];
 }
 
 -(UIColor *)tableHeaderTextColor
 {
 //    return RGBCOLOR(204, 204, 204);
-    return RGBCOLOR(255, 255, 255);
+    return RGBCOLOR(53, 53, 53);
 }
 
--(UIColor *)splitBorderColor
-{
-    return RGBCOLOR(204, 204, 204);
-}
 @end
