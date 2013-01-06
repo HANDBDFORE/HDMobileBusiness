@@ -36,7 +36,6 @@
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         //创建toolBarmodel
-        _shouldLoadAction = YES;
     }
     return self;
 }

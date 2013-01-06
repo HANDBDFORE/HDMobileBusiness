@@ -31,7 +31,7 @@
         self.loadedTime = [NSDate dateWithTimeIntervalSinceNow:0];
         self.cacheKey = @"local action";
         [self didFinishLoad];
-    }else {
+    }else if (self.detailRecord && self.queryURL) {
         HDRequestMap * requestMap = [HDRequestMap mapWithDelegate:self];
         requestMap.urlPath = [self.queryURL stringByReplacingSpaceHodlerWithDictionary:self.detailRecord];
         [self requestWithMap:requestMap];
