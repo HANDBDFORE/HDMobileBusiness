@@ -72,4 +72,10 @@
     return _destinationController;
 }
 
+-(void)prepareForGuider
+{
+    if ([self.sourceController respondsToSelector:@selector(prepareForGuider:targetViewController:)]) {
+        [self.sourceController performSelector:@selector(prepareForGuider:targetViewController:) withObject:self withObject:self.destinationController];
+    }
+}
 @end

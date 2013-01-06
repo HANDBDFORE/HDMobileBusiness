@@ -10,24 +10,35 @@
         <property name="sourceController" ref="rootWindow"/>
         <property name="destinationController" ref="splitViewController"/>
     </bean>
-    <!--functionListViewTableGuider-->
-    <bean id="functionListTableGuider"  create-url="tt://splitViewGuider/functionListTableGuider" mode="create">
+    <!--functionTodoItemGuider-->
+    <bean id="functionTodoItemGuider"  create-url="tt://navigatorGuider/functionTodoItemGuider" mode="create">
         <property name="animated" value="true"/>
-        <property name="shouldGuideToRight" value="true"/>
-        <property name="sourceController" ref="splitViewController"/>
-    </bean>
-    <!--groupedTodoListViewGuirder-->
-    <bean id="groupedTodoListViewGuirder"  create-url="tt://navigatorGuider/groupedTodoListViewGuirder" mode="create">
-        <property name="animated" value="true"/>
-        <property name="sourceController" ref="groupedTodoListViewController"/>
+        <property name="sourceController" ref="functionListViewController"/>
         <property name="destinationController" ref="todoListViewController"/>
     </bean>
-    <!--todolistTableGuider-->
-    <bean id="todolistTableGuider" create-url="tt://navigatorGuider/todolistTableGuider" mode="create">
+    <!--functionDoneItemGuider-->
+    <bean id="functionDoneItemGuider"  create-url="tt://navigatorGuider/functionDoneItemGuider" mode="create">
         <property name="animated" value="true"/>
-        <property name="sourceController" ref="todoListViewController"/>
-        <property name="destinationController" ref="todoDetailController"/>
+        <property name="sourceController" ref="functionListViewController"/>
+        <property name="destinationController" ref="doneListViewController"/>
     </bean>
+    <!--functionWebItemGuider-->
+    <bean id="functionWebItemGuider"  create-url="tt://splitViewGuider/functionWebItemGuider" mode="create">
+        <property name="destinationController" ref="detailController"/>
+    </bean>
+    <!--todolistTableGuider-->
+    <bean id="todolistTableGuider" create-url="tt://splitViewGuider/todolistTableGuider" mode="create">
+        <property name="destinationController" ref="detailController"/>
+        <property name="configureParameters">
+            <map>
+                <element key="userInfoField" value="record_id"/>
+                <element key="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
+                <element key="webPageURLTemplate" value="${base_url}${screen_name}"/>
+            </map>
+        </property>
+    </bean>
+    <!--doneListTableGuider-->
+    <bean id="doneListTableGuider" share="todolistTableGuider"/>
     <!--todoListPostGuider-->
     <bean id="todoListPostGuider"  create-url="tt://showInViewGuider/todoListPostGuider" mode="create">
         <property name="animated" value="true"/>
@@ -37,19 +48,13 @@
     <bean id="todoDetailPostGuider"  create-url="tt://showInViewGuider/todoDetailPostGuider" mode="create">
         <property name="animated" value="true"/>
         <property name="destinationController" value="postController"/>
-        <property name="sourceController" ref="todoDetailController"/>
+        <property name="sourceController" ref="detailController"/>
     </bean>
     <!--todoDetailDeliverGuider-->
     <bean id="todoDetailDeliverGuider"  create-url="tt://modalGuider/todoDetailDeliverGuider" mode="create">
         <property name="animated" value="true"/>
         <property name="destinationController" value="deliverNavigator"/>
         <property name="sourceController" ref="splitViewController"/>
-    </bean>
-    <!--doneListTableGuider-->
-    <bean id="doneListTableGuider"  create-url="tt://navigatorGuider/doneListTableGuider" mode="create">
-        <property name="animated" value="true"/>
-        <property name="destinationController" ref="doneDetailController"/>
-        <property name="sourceController" ref="doneListViewController"/>
     </bean>
     <!--loginViewController-->
     <bean id="loginViewController"  create-url="tt://nib/HDPadLoginViewController/HDLoginViewController" mode="create">
@@ -64,14 +69,20 @@
     </bean>
     <!--splitViewController-->
     <bean id="splitViewController" create-url="tt://splitViewController" mode="share">
-        <property name="leftViewController" ref="leftNavigator"/>
-        <property name="rightViewController" ref="todoListNavigator"/>
+        <property name="viewControllerKeys">
+            <array>
+                <list value="leftNavigator"/>
+                <list value="rightNavigator"/>
+            </array>
+        </property>
+        <property name="delegate" ref="detailController"/>
     </bean>
     <!--leftNavigator-->
-    <bean id="leftNavigator"  create-url="tt://navigator/PrettyNavigationBar/nil" mode="create">
+    <bean id="leftNavigator"  create-url="tt://navigator/PrettyNavigationBar/PrettyToolbar" mode="create">
         <property name="pushedViewControllers" >
             <array>
                 <list value="functionListViewController"/>
+                <list value="todoListViewController"/>
             </array>
         </property>
     </bean>
@@ -89,21 +100,12 @@
         <property name="queryURL" value="${base_url}autocrud/ios.ios_function_center.ios_function_center_list/query"/>
     </bean>
     <!--rightNavigator-->
-    <bean id="todoListNavigator"  create-url="tt://navigator/PrettyNavigationBar/PrettyToolbar" mode="share">
+    <bean id="rightNavigator"  create-url="tt://navigator/PrettyNavigationBar/PrettyToolbar" mode="create">
         <property name="pushedViewControllers" >
             <array>
-                <list value="groupedTodoListViewController"/>
+                <list value="detailController"/>
             </array>
         </property>
-    </bean>
-    <!--groupedTodoListViewController-->
-    <bean id="groupedTodoListViewController" create-url="tt://groupedTodoListViewController" mode="share">
-        <property name="title" value="分组列表"/>
-        <property name="dataSource" ref="groupedTodoListDataSource"/>
-    </bean>
-    <!--groupedTodoListDataSource-->
-    <bean id="groupedTodoListDataSource" create-url="tt://groupedTodoListDataSource">
-        <property name="model" ref="todoListService"/>
     </bean>
     <!--todoListViewController-->
     <bean id="todoListViewController" create-url="tt://todoListViewController" mode="share">
@@ -112,6 +114,7 @@
         <property name="model" ref="todoListService"/>
         <property name="searchViewController" ref="todoListSearchViewController"/>
     </bean>
+    <bean id="todoListNavigator" share="todoListViewController"/>
     <!--todoListDataSource-->
     <bean id="todoListDataSource" create-url="tt://todoListDataSource" mode="share">
         <property name="itemDictionary">
@@ -136,6 +139,7 @@
         </property>
         <property name="groupedCodeField" value="employee_name"/>
         <property name="groupedValueField" value="employee_name"/>
+        <property name="model" ref="todoListModel"/>
     </bean>
     <!--todoListModel-->
     <bean id="todoListModel" create-url="tt://todoListModel">
@@ -163,26 +167,23 @@
         <property name="model" ref="todoListService"/>
     </bean>
     <!--todoDetailController-->
-    <bean id="todoDetailController" create-url="tt://todoDetailViewController" mode="share">
-        <property name="userInfoItemTitle" value="record_id"/>
-        <property name="queryActionURLTemplate" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}"/>
+    <bean id="detailController" create-url="tt://todoDetailViewController" mode="share">
+        <property name="userInfoField" value="record_id"/>
         <property name="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
-        <property name="webPageURLTemplate" value="${base_url}${screen_name}" />
+        <property name="webPageURLTemplate" value="${base_url}${screen_name}"/>
         <property name="pageTurningService" ref="todoListService"/>
+        <property name="model" ref="detailToolbarModel"/>
+        <property name="shouldLoadAction" value="true"/>
     </bean>
-    <!--doneListViewControllerNavigator-->
-    <bean id="doneListNavigator"  create-url="tt://navigator" mode="share">
-        <property name="pushedViewControllers" >
-            <array>
-                <list value="doneListViewController"/>
-            </array>
-        </property>
+    <bean id="detailToolbarModel" create-url="tt://detailToolbarModel">
+        <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}"/>
     </bean>
     <!--doneListViewController-->
     <bean id="doneListViewController" create-url="tt://doneListViewController" mode="share">
         <property name="title" value="审批完成"/>
         <property name="dataSource" ref="doneListDataSource"/>
     </bean>
+    <bean id="doneListNavigator" share="doneListViewController"/>
     <!--doneListDataSource-->
     <bean id="doneListDataSource" create-url="tt://doneListDataSource" mode="share">
         <property name="itemDictionary">
@@ -199,13 +200,6 @@
     <bean id="doneListModel" create-url="tt://doneListModel" mode="share">
         <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_done_list_test/query"/>
     </bean>
-    <!--doneDetailController-->
-    <bean id="doneDetailController" create-url="tt://doneDetailViewController" mode="share">
-        <property name="userInfoItemTitle" value="record_id"/>
-        <property name="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
-        <property name="webPageURLTemplate" value="${base_url}${screen_name}"/>
-        <property name="pageTurningService" ref="doneListModel"/>
-    </bean>
     <!--postController-->
     <bean id="postController" create-url="tt://postController" mode="create"/>
     <!--deliverNavigator-->
@@ -220,7 +214,7 @@
     <bean id="deliverController" create-url="tt://deliverController" mode="create">
         <property name="title" value="转交"/>
         <!--property name="personPickerTextField.placeholder" value="请输入查询条件"/-->
-        <property name="delegate" ref="todoDetailController"/>
+        <property name="delegate" ref="detailController"/>
         <property name="dataSource" ref="personListDataSource"/>
     </bean>
     <!--personListDataSource-->

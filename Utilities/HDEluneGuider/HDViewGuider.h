@@ -31,4 +31,6 @@
 
 - (void)perform;
 
+-(void)prepareForGuider;
+
 @end

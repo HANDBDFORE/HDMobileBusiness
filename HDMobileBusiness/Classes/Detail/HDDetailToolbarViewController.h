@@ -17,6 +17,6 @@
 
 @property(nonatomic,retain) HDDetailToolbarModel * model;
 
-@property(nonatomic,copy) NSString * queryActionURLTemplate;
+@property(nonatomic,assign) BOOL shouldLoadAction;
 
 @end

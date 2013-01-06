@@ -13,7 +13,9 @@
 
 - (void)dealloc {
     TT_RELEASE_SAFELY(_loadingURL);
-    TT_RELEASE_SAFELY(_headerView);    
+    TT_RELEASE_SAFELY(_headerView);
+    TT_RELEASE_SAFELY(_activityLabel);
+    TT_RELEASE_SAFELY(_activityItem);
     [super dealloc];
 }
 
@@ -51,21 +53,20 @@
     _webView.scalesPageToFit = YES;
     [self.view addSubview:_webView];
     
-    UIActivityIndicatorView* spinner =
-    [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
-      UIActivityIndicatorViewStyleWhite] autorelease];
-    [spinner startAnimating];
-    _activityItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-    
+    _activityLabel =
+    [[TTActivityLabel alloc]initWithFrame:CGRectZero
+                                    style:TTActivityLabelStyleBlackBezel
+                                     text:TTLocalizedString(@"Loading...", @"")];
+    _activityLabel.center =self.view.center;
+    _activityItem = [[UIBarButtonItem alloc]initWithCustomView:_activityLabel];
 }
-
 
 - (void)viewDidUnload {
     [super viewDidUnload];
     _webView.delegate = nil;
     
     TT_RELEASE_SAFELY(_webView);
-    TT_RELEASE_SAFELY(_activityItem);
+    TT_RELEASE_SAFELY(_activityLabel);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -108,25 +109,28 @@
     return YES;
 }
 
+-(void)showLoading:(BOOL)show
+{
+    if (show) {
+        [self.view addSubview:_activityLabel];
+    }else{
+        [_activityLabel removeFromSuperview];
+    }
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)webViewDidStartLoad:(UIWebView*)webView {
-    
-    self.title = TTLocalizedString(@"Loading...", @"");
-    if (!self.navigationItem.rightBarButtonItem) {
-        [self.navigationItem setRightBarButtonItem:_activityItem animated:YES];
-    }
+    [self showLoading:YES];
+//    self.navigationItem.titleView  = _activityLabel;
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)webViewDidFinishLoad:(UIWebView*)webView {
-
+    [self showLoading:NO];
+//    self.navigationItem.titleView = nil;    
     TT_RELEASE_SAFELY(_loadingURL);
-    self.title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    if (self.navigationItem.rightBarButtonItem == _activityItem) {
-        [self.navigationItem setRightBarButtonItem:nil animated:YES];
-    }
+//    self.title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
 
 

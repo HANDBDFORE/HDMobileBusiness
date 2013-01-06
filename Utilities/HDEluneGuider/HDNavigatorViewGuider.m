@@ -17,9 +17,7 @@
 
 -(void)perform
 {    
-    if ([self.sourceController respondsToSelector:@selector(prepareForGuider:targetViewController:)]) {
-        [self.sourceController performSelector:@selector(prepareForGuider:targetViewController:) withObject:self withObject:self.destinationController];
-    }
+    [self prepareForGuider];
     
     TTDASSERT([self.destinationController isKindOfClass:[UIViewController class]]);
     

@@ -45,15 +45,8 @@
 {
     self = [super init];
     if (self) {
-//        _resultList = [[NSMutableArray alloc] init];
         _vectorRange = NSMakeRange(0, 0);
         _currentIndex = 0;
-        
-        self.groupedCodeField = @"employee_name";
-        self.groupedValueField = @"employee_name";
-        self.groupedCode = @"9999";
-        
-        self.model = [[HDApplicationContext shareContext]objectForIdentifier:@"todoListModel"];
     }
     return self;
 }
@@ -61,12 +54,8 @@
 
 -(NSArray *)resultList
 {
-    if (!self.groupedCode || !self.groupedCodeField)
-    {
-        return [self.model resultList];
-    }
     NSIndexSet * matchedIndexSet = [[self.model resultList] indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-        BOOL matchFlag = [[obj valueForKey:_groupedCodeField] isEqualToString:_groupedCode];
+        BOOL matchFlag = YES;
         if (self.searchText) {
             BOOL searchMatchFlag = NO;
             for (NSString * key in self.searchFields) {
@@ -80,19 +69,6 @@
     return [[self.model resultList] objectsAtIndexes:matchedIndexSet];
 }
 
--(NSArray *)groupResultList
-{
-    if (!self.groupedValueField || !self.groupedCodeField)
-    {
-        return nil;
-    }
-    NSMutableSet * groupSet = [NSMutableSet set];
-    for (NSDictionary * record in [self.model resultList]) {
-        [groupSet addObject:@{@"codeField":[record valueForKeyPath:_groupedCodeField],
-             @"valueField":[record valueForKeyPath:_groupedValueField]}];
-    }
-    return [groupSet sortedArrayUsingDescriptors:nil];
-}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(BOOL)isEffectiveRecord:(NSDictionary *)record
@@ -133,6 +109,12 @@
         [submitRecords setValue:[dictionary valueForKey:key] forKey:key];
     }
     [self.model submitRecords:submitRecords];
+    
+    if ([self hasNext]) {
+        [self next];
+    }else if ([self hasPrev]){
+        [self prev];
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -167,18 +149,20 @@
 
 -(id)current
 {
-    if ( _currentIndex < [self.resultList count] && [self effectiveRecordCount] > 0) {
+    if ( [self effectiveRecordCount] > 0 && _currentIndex < [self.resultList count]) {
         return [self.resultList objectAtIndex:_currentIndex];
     }
     return nil;
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)next
+-(id)next
 {
     if ([self hasNext]) {
         _currentIndex += _vectorRange.length;
     }
+    return [self current];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -207,12 +191,13 @@
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)prev
+-(id)prev
 {
     if ([self hasPrev]) {
         _currentIndex -= _vectorRange.length;
         _vectorRange.length = 0;
     }
+    return [self current];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

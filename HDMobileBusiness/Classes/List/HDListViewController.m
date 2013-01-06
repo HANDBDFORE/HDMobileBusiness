@@ -61,4 +61,18 @@
 -(void)refreshButtonPressed:(id) sender
 {}
 
+#pragma mark viewController life circle
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma mark viewController life circle
+-(void)modelDidFinishLoad:(id<TTModel>)model
+{
+    [super modelDidFinishLoad:model];
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 @end

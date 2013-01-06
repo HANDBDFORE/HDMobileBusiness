@@ -35,7 +35,6 @@
 		B30376A51600890600238923 /* HDTableConfirmViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376A21600890600238923 /* HDTableConfirmViewCell.m */; };
 		B3063730168016FD00797963 /* HDBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = B306372F168016FD00797963 /* HDBaseService.m */; };
 		B3063731168016FD00797963 /* HDBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = B306372F168016FD00797963 /* HDBaseService.m */; };
-		B307C850166EEA5000A03573 /* HDGroupedTodoListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */; };
 		B30BF63E15EC95A200DB83E9 /* HDSingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */; };
 		B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */; };
 		B31E2EDF15C65FD400880514 /* HDLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED815C65FD400880514 /* HDLoadingViewController.m */; };
@@ -196,7 +195,7 @@
 		B355AE34168974750076D9A6 /* trend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678015C64E6700824CB1 /* trend@2x.png */; };
 		B355AE35168974750076D9A6 /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678115C64E6700824CB1 /* world.png */; };
 		B355AE36168974750076D9A6 /* world@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678215C64E6700824CB1 /* world@2x.png */; };
-		B355AF5A1689821E0076D9A6 /* backend-config-juice-pad.xml in Resources */ = {isa = PBXBuildFile; fileRef = B355AF591689821E0076D9A6 /* backend-config-juice-pad.xml */; };
+		B355AF5A1689821E0076D9A6 /* backend-config-mocha-pad.xml in Resources */ = {isa = PBXBuildFile; fileRef = B355AF591689821E0076D9A6 /* backend-config-mocha-pad.xml */; };
 		B356A26B15D0A5C900E88192 /* HDCoreStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B356A26A15D0A5C900E88192 /* HDCoreStorage.m */; };
 		B366463E1675BB0300A13F76 /* login_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B366463D1675BB0300A13F76 /* login_pad.png */; };
 		B36646431675BE2900A13F76 /* loginButton_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B366463F1675BE2900A13F76 /* loginButton_pad.png */; };
@@ -498,7 +497,6 @@
 		B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8316030344004E1BFD /* HDPersonListModel.m */; };
 		B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */; };
 		B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12326165486B400C685CB /* HDSplitViewController.m */; };
-		B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12328165486B400C685CB /* UIViewWithShadow.m */; };
 		B3E4197B168C1C1600CA1533 /* PrettyCustomViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E41969168C1C1600CA1533 /* PrettyCustomViewTableViewCell.m */; };
 		B3E4197C168C1C1600CA1533 /* PrettyGridTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E4196B168C1C1600CA1533 /* PrettyGridTableViewCell.m */; };
 		B3E4197D168C1C1600CA1533 /* PrettySegmentedControlTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E4196D168C1C1600CA1533 /* PrettySegmentedControlTableViewCell.m */; };
@@ -540,7 +538,6 @@
 		B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ED3BA21623E71100505988 /* HDWebViewController.m */; };
 		B3FE7AD3166D8A0400CA0B0C /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD2166D8A0400CA0B0C /* icon-72.png */; };
 		B3FE7AD5166D8A0F00CA0B0C /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */; };
-		B3FFC15F1670330600965ECA /* HDGroupedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FFC15E1670330600965ECA /* HDGroupedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -801,8 +798,6 @@
 		B30376A21600890600238923 /* HDTableConfirmViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTableConfirmViewCell.m; path = Classes/List/HDTableConfirmViewCell.m; sourceTree = SOURCE_ROOT; };
 		B306372E168016F200797963 /* HDBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDBaseService.h; path = Classes/List/HDBaseService.h; sourceTree = SOURCE_ROOT; };
 		B306372F168016FD00797963 /* HDBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDBaseService.m; path = Classes/List/HDBaseService.m; sourceTree = SOURCE_ROOT; };
-		B307C84E166EEA5000A03573 /* HDGroupedTodoListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDGroupedTodoListDataSource.h; path = Classes/List/HDGroupedTodoListDataSource.h; sourceTree = SOURCE_ROOT; };
-		B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDGroupedTodoListDataSource.m; path = Classes/List/HDGroupedTodoListDataSource.m; sourceTree = SOURCE_ROOT; };
 		B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSingletonObject.m; sourceTree = "<group>"; };
 		B31E2ECF15C65DC900880514 /* HDUserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUserGuideViewController.h; sourceTree = "<group>"; };
 		B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDUserGuideViewController.m; sourceTree = "<group>"; };
@@ -869,7 +864,7 @@
 		B34660B915C678DD00EFDF24 /* HDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoginViewController.m; sourceTree = "<group>"; };
 		B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDLoginViewController.xib; sourceTree = "<group>"; };
 		B34C0B5E168AD55F00EAD1CF /* versions.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = versions.rtf; path = Documents/WorkPlan/versions.rtf; sourceTree = SOURCE_ROOT; };
-		B355AF591689821E0076D9A6 /* backend-config-juice-pad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-juice-pad.xml"; sourceTree = "<group>"; };
+		B355AF591689821E0076D9A6 /* backend-config-mocha-pad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-mocha-pad.xml"; sourceTree = "<group>"; };
 		B355AF5C1689849A0076D9A6 /* ApplicationContext.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = ApplicationContext.rtfd; sourceTree = "<group>"; };
 		B355AF5D16898CB40076D9A6 /* VIewGuider.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = VIewGuider.rtfd; sourceTree = "<group>"; };
 		B355AF5E1689918F0076D9A6 /* Model Interface.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = "Model Interface.rtfd"; sourceTree = "<group>"; };
@@ -1209,8 +1204,6 @@
 		B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "padIcon@2x.png"; sourceTree = "<group>"; };
 		B3FE7AD2166D8A0400CA0B0C /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "../icon-72.png"; sourceTree = "<group>"; };
 		B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72@2x.png"; path = "../icon-72@2x.png"; sourceTree = "<group>"; };
-		B3FFC15D1670330600965ECA /* HDGroupedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDGroupedViewController.h; sourceTree = SOURCE_ROOT; };
-		B3FFC15E1670330600965ECA /* HDGroupedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDGroupedViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1671,8 +1664,8 @@
 		B383112E15F9F195005FD54E /* List */ = {
 			isa = PBXGroup;
 			children = (
-				B33F1D2E1612ABB400E65A1D /* HDTableDataSource.h */,
 				B39BC5581601765C00551C63 /* HDListModel.h */,
+				B33F1D2E1612ABB400E65A1D /* HDTableDataSource.h */,
 				B3CB5D951676F0B80062E71B /* HDListViewController.h */,
 				B3CB5D961676F0B90062E71B /* HDListViewController.m */,
 				B374675615C76CAE003068CB /* FunctionList */,
@@ -1687,8 +1680,8 @@
 			isa = PBXGroup;
 			children = (
 				B3E12323165486B400C685CB /* HDSplitViewController.h */,
-				B3E12325165486B400C685CB /* UIViewWithShadow.h */,
 				B3E12326165486B400C685CB /* HDSplitViewController.m */,
+				B3E12325165486B400C685CB /* UIViewWithShadow.h */,
 				B3E12328165486B400C685CB /* UIViewWithShadow.m */,
 			);
 			name = Split;
@@ -1724,8 +1717,6 @@
 			children = (
 				B303767C1600882A00238923 /* HDBaseTodoListViewController.h */,
 				B30376841600883300238923 /* HDBaseTodoListViewController.m */,
-				B3FFC15D1670330600965ECA /* HDGroupedViewController.h */,
-				B3FFC15E1670330600965ECA /* HDGroupedViewController.m */,
 				B30376821600883000238923 /* HDTodoListSearchViewController.h */,
 				B303768A1600883B00238923 /* HDTodoListSearchViewController.m */,
 				B30376831600883000238923 /* HDTodoListViewController.h */,
@@ -1737,8 +1728,6 @@
 		B38DC70C15C68B4A00FD0C58 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				B307C84E166EEA5000A03573 /* HDGroupedTodoListDataSource.h */,
-				B307C84F166EEA5000A03573 /* HDGroupedTodoListDataSource.m */,
 				B303767F1600882C00238923 /* HDTodoListDataSource.h */,
 				B30376871600883700238923 /* HDTodoListDataSource.m */,
 			);
@@ -1982,7 +1971,7 @@
 			isa = PBXGroup;
 			children = (
 				B2307430166739AB00DFF2E0 /* backend-config-juice.xml */,
-				B355AF591689821E0076D9A6 /* backend-config-juice-pad.xml */,
+				B355AF591689821E0076D9A6 /* backend-config-mocha-pad.xml */,
 			);
 			path = ConfigFiles;
 			sourceTree = "<group>";
@@ -2377,6 +2366,7 @@
 				B398B6ED1649F6DC0017FCD6 /* Sources */,
 				B398B6EE1649F6DC0017FCD6 /* Frameworks */,
 				B398B6EF1649F6DC0017FCD6 /* Resources */,
+				B3FD939816913BFD005A7467 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2912,7 +2902,7 @@
 				B36646451675BE2900A13F76 /* loginButtonActive_pad.png in Resources */,
 				B36646461675BE2900A13F76 /* loginButtonActive_pad@2x.png in Resources */,
 				B36646481675C81E00A13F76 /* login_pad@2x.png in Resources */,
-				B355AF5A1689821E0076D9A6 /* backend-config-juice-pad.xml in Resources */,
+				B355AF5A1689821E0076D9A6 /* backend-config-mocha-pad.xml in Resources */,
 				B3E419AF168C243600CA1533 /* order-history256.png in Resources */,
 				B3E419B1168C245700CA1533 /* Rank-History128.png in Resources */,
 				B3E419B3168C246B00CA1533 /* Search-Male-User128.png in Resources */,
@@ -2972,6 +2962,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		B3FD939816913BFD005A7467 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3147,11 +3150,8 @@
 				B398B88E164A08140017FCD6 /* HDSingletonObject.m in Sources */,
 				B398B891164A08140017FCD6 /* NSString+HDAddtions.m in Sources */,
 				B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */,
-				B3E1232B165486B400C685CB /* UIViewWithShadow.m in Sources */,
 				B3E60EF01659D768006C8119 /* HDObjectPattern.m in Sources */,
 				B3CD019516635305002321A9 /* HDSplitViewGuider.m in Sources */,
-				B307C850166EEA5000A03573 /* HDGroupedTodoListDataSource.m in Sources */,
-				B3FFC15F1670330600965ECA /* HDGroupedViewController.m in Sources */,
 				B3CB5D921676CEB60062E71B /* HDTimeStampLabel.m in Sources */,
 				B3CB5D981676F0B90062E71B /* HDListViewController.m in Sources */,
 				B3CB0A501679980200BBE7CC /* HDTodoListModel.m in Sources */,

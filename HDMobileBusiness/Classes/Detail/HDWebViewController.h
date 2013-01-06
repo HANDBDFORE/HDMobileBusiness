@@ -13,8 +13,9 @@
     UIWebView*        _webView;
     UIView*           _headerView;
     NSURL*            _loadingURL;
-    UIBarButtonItem*  _activityItem;
-
+    @protected
+    TTActivityLabel*  _activityLabel;
+    UIBarButtonItem* _activityItem;
 }
 
 /**

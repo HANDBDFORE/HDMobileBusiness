@@ -58,15 +58,18 @@
         stautMessage = [object valueForKey:kRecordServerMessage];
     }
         
-    return [HDTableStatusMessageItem itemWithTitle:title
-                                           caption:caption
-                                              text:text
-                                         timestamp:timestamp
-                                          selector:@selector(openURLForItem:)
-                                          delegate:self
-                                           message:stautMessage
-                                             state:[object valueForKey:kRecordStatus]
-                                           warning:warning];
+    HDTableStatusMessageItem * item =
+    [HDTableStatusMessageItem itemWithTitle:title
+                                    caption:caption
+                                       text:text
+                                  timestamp:timestamp
+                                   selector:@selector(openURLForItem:)
+                                   delegate:self
+                                    message:stautMessage
+                                      state:[object valueForKey:kRecordStatus]
+                                    warning:warning];
+    item.userInfo = [object valueForKey:kRecordStatus];
+    return item;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -94,7 +97,6 @@
         return [super tableView:tableView cellClassForObject:object];
     }
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)tableViewDidLoadModel:(UITableView *)tableView
@@ -126,6 +128,9 @@
         self.model.currentIndex = [self.items indexOfObject:item];
 
         HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
+        
+        [guider.destinationController setValue:self.model forKeyPath:@"pageTurningService"];
+        [guider.destinationController setValue:@1 forKeyPath:@"shouldLoadAction"];
         [guider perform];
     }
 }

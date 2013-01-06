@@ -14,27 +14,16 @@
 {
     self = [super init];
     if (self) {
-        _shouldGuideToRight = YES;
     }
     return self;
 }
 
 -(void)perform
 {
-    HDSplitViewController * source = self.sourceController;
-    if (nil != [(UIViewController *)self.destinationController navigationController] )
-    {
-        self.destinationController = [self.destinationController navigationController];
-    }
-    
-    if(![self.destinationController isKindOfClass:[UINavigationController class]]) {
-        self.destinationController = [[[UINavigationController alloc] initWithRootViewController:self.destinationController] autorelease];
-    }
-    
-    if (self.shouldGuideToRight) {
-        [source setRightViewController:self.destinationController];
-    }else{
-        [source setLeftViewController:self.destinationController];
-    }
+    [self prepareForGuider];
+    for (NSString * key in _configureParameters) {
+        [self.destinationController setValue:[_configureParameters valueForKey:key] forKeyPath:key];
+    }   
+    [self.destinationController viewWillAppear:NO];
 }
 @end

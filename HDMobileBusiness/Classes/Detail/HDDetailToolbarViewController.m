@@ -21,7 +21,6 @@
 
 - (void)viewDidUnload
 {
-    TT_RELEASE_SAFELY(_queryActionURLTemplate);
     TT_RELEASE_SAFELY(_spaceItem);
     TT_RELEASE_SAFELY(_selectedAction)
     [super viewDidUnload];
@@ -37,19 +36,18 @@
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         //创建toolBarmodel
-        self.model = [[[HDDetailToolbarModel alloc]init] autorelease];
+        _shouldLoadAction = YES;
     }
     return self;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)reloadAll{
-    self.model.detailRecord = [self.pageTurningService current];
-    self.model.queryURL = [self.queryActionURLTemplate stringByReplacingSpaceHodlerWithDictionary:[self.pageTurningService current]];
-    
-    [self.model load:TTURLRequestCachePolicyDefault more:NO];
-    [super reloadAll];
-    
+-(void)setPropertiesWithRecord:(NSDictionary *) record{
+    [super setPropertiesWithRecord:record];
+    if (_shouldLoadAction) {
+        self.model.detailRecord = [self.pageTurningService current];        
+        [self.model load:TTURLRequestCachePolicyDefault more:NO];
+    }    
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -111,13 +109,11 @@
         [self.model removeTheActions];
     }
     
-    if ([self.pageTurningService hasNext]) {
-        [self nextRecord];
-    }else if ([self.pageTurningService hasPrev]){
-        [self prevRecord];
-    }else{
-        [self.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@"YES" afterDelay:0.5];
-    }
+    [self loadCurrentRecord];
+    
+    [self.navigationController performSelector:@selector(popViewControllerAnimated:)
+                                    withObject:@"YES"
+                                    afterDelay:0.5];
 }
 
 - (void)composeControllerShowRecipientPicker:(TTMessageController*)controller {
@@ -130,8 +126,6 @@
 -(void)modelDidFinishLoad:(id <TTModel>)model
 {
     if ([self.model.resultList count] > 0) {
-        self.navigationController.toolbarHidden = NO;
-        //
         NSMutableArray * itemButtons = [NSMutableArray array];
         for (NSDictionary * actionRecord in self.model.resultList) {
             
@@ -152,13 +146,10 @@
                 actionButton.tintColor = RGBCOLOR(0, 0, 153);
                 actionButton.action = @selector(deliver:);
             }
-            
             [itemButtons addObject:actionButton];
-            [itemButtons addObject:_spaceItem];
         }
         
-        [itemButtons removeLastObject];
-        self.toolbarItems = itemButtons;
+        self.navigationItem.rightBarButtonItems = [self createRightNavigationItems:itemButtons];
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////

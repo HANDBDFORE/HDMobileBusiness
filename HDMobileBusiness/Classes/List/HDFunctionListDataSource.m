@@ -21,6 +21,7 @@
     TT_RELEASE_SAFELY(_queryURL);
     [super dealloc];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (id)init
 {
@@ -31,6 +32,7 @@
     }
     return self;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
@@ -44,17 +46,20 @@
         [super requestWithMap:map];
     }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)requestResultMap:(HDResponseMap *)map
 {
     [_resultList removeAllObjects];
     [_resultList addObjectsFromArray:map.result];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)request:(TTURLRequest *)request didFailLoadWithError:(NSError *)error
 {
     TTAlert(@"更多功能加载失败");
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @end
 
@@ -67,6 +72,7 @@
     TT_RELEASE_SAFELY(_itemDictionary);
     [super dealloc];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(id)init
 {
@@ -81,6 +87,7 @@
     }
     return self;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
@@ -122,6 +129,7 @@
     [self addBasicItems];
     [self addLogoutItem];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)addBasicItems{
     TTTableImageItem * todoListItem =
@@ -130,28 +138,42 @@
                           selector:@selector(openURLForItem:)];
     todoListItem.imageURL = @"bundle://mail-5.png";
     todoListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-    todoListItem.userInfo = @"todoListNavigator";
+    todoListItem.userInfo = @"functionTodoItemGuider";
     
-/////////////////////////////
+    /////////////////////////////
    TTTableImageItem * doneListItem =
     [TTTableImageItem itemWithText:TTLocalizedString(@"Approved List", @"审批完成")
                           delegate:self
                           selector:@selector(openURLForItem:)];
     doneListItem.imageURL = @"bundle://mail-14.png";
     doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-    doneListItem.userInfo = @"doneListNavigator";
+    doneListItem.userInfo = @"functionDoneItemGuider";
     
     ///////////////////////////////
     [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:TTLocalizedString(@"Approve", @"审批") footerTitle:nil] atIndex:0];
     [self.items insertObject:@[todoListItem,doneListItem] atIndex:0];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)openURLForItem:(TTTableItem *) item
 {
-    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"functionListTableGuider"];
-    [guider setDestinationController:item.userInfo];
+    HDViewGuider * guider = [self createGuiderWithItem:item];
     [guider perform];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(HDViewGuider *)createGuiderWithItem:(TTTableItem *)item
+{
+    id object = [[HDApplicationContext shareContext]objectForIdentifier:item.userInfo];
+    if ([item.userInfo hasPrefix:@"http://"]) {
+        HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"functionWebItemGuider"];
+        [guider.destinationController setValue:item.userInfo forKeyPath:@"webPageURLTemplate"];
+        [guider.destinationController setValue:nil forKeyPath:@"pageTurningService"];
+        return guider;
+    }
+    return object;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)addLogoutItem
 {
@@ -162,6 +184,7 @@
     [self.sections addObject:[TTTableSection sectionWithHeaderTitle:@" " footerTitle:nil]];
     [self.items addObject:@[logoutCell]];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void) logout:(id) sender
 {
@@ -170,6 +193,7 @@
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"rootGuider"];
     [guider perform];
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)clearDatas{
     //删除保存账户名密码
@@ -184,6 +208,6 @@
     
     [[HDApplicationContext shareContext] clearObjects];
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @end

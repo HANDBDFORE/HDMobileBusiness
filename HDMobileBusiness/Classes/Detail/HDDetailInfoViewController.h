@@ -6,17 +6,18 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "HDWebViewController.h"
 #import "HDUserInfoView.h"
 #import "HDListModel.h"
 
-@interface HDDetailInfoViewController : TTModelViewController<UIWebViewDelegate,UIActionSheetDelegate>
+@interface HDDetailInfoViewController : HDWebViewController<UISplitViewControllerDelegate>
 {
     UIBarButtonItem * _nextButtonItem;
     UIBarButtonItem * _prevButtonItem;
     UIBarButtonItem * _refreshButtonItem;
-    
+    UIBarButtonItem * _employeeInfoItem;
+
     HDUserInfoView *_userInfoView;
-    UIWebView *_webView;
     NSInteger index;
 }
 
@@ -25,14 +26,20 @@
 //用户信息页面URL模板
 @property (nonatomic,copy) NSString * userInfoPageURLTemplate;
 //用户信息按钮显示字段
-@property (nonatomic,copy) NSString * userInfoItemTitle;
+@property (nonatomic,copy) NSString * userInfoField;
 
 @property (nonatomic,retain) id<HDPageTurning> pageTurningService;
 
--(void)reloadAll;
+-(void)setPropertiesWithRecord:(NSDictionary *) record;
+
+-(void)loadCurrentRecord;
 
 -(void)nextRecord;
 
 -(void)prevRecord;
+
+-(NSArray *)createRightNavigationItems:(NSArray *) others;
+
+-(NSArray *)createLeftNavigationItems:(NSArray *) others;
 
 @end

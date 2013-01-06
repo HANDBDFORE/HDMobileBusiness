@@ -8,6 +8,7 @@
 
 #import "HDBaseTodoListViewController.h"
 #import "HDTodoListDelegate.h"
+#import "HDTodoListModelStatus.h"
 
 @implementation HDBaseTodoListViewController
 
@@ -35,27 +36,27 @@
 -(void)loadView
 {
     [super loadView];
-     self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
+    self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
     self.editButtonItem.width = 60;
     //////////////////////
     
-    _acceptButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Accept", @"同意") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)]; 
+    _acceptButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Accept", @"同意") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
     _acceptButtonItem.width = 110;
     _acceptButtonItem.tintColor = RGBCOLOR(0, 153, 0);
     _acceptButtonItem.tag = 1;
     ////////////////////////////////////////////////////////////////////////////////
-/////////////////////
+    /////////////////////
     
     _refuseButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Refuse", @"拒绝") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
     _refuseButtonItem.width = 110;
     _refuseButtonItem.tintColor = RGBCOLOR(153, 0, 0);
     _refuseButtonItem.tag = 0;
     ////////////////////////////////////////////////////////////////////////////////
-/////////////////////
+    /////////////////////
     
     _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Clear", @"清理") style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
     ////////////////////////////////////////////////////////////////////////////////
-/////////////////////    
+    /////////////////////
     [self resetButtonTitle];
 }
 
@@ -67,6 +68,7 @@
     removeRecordRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     removeRecordRecognizer.numberOfTouchesRequired = 1;
     [self.tableView addGestureRecognizer:removeRecordRecognizer];
+//    [self.tableView.delegate tableView:self.tableView didSelectRowAtIndexPath:[self.model  currentIndexPath]];
 }
 
 #pragma  -mark toolbar Buttons
@@ -88,7 +90,7 @@
         _refuseButtonItem.enabled = YES;
     }
     else {
-        [self resetButtonTitle]; 
+        [self resetButtonTitle];
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -140,7 +142,7 @@
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     
     guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")};
-
+    
     [guider setSourceController:self];
     [guider perform];
 }
@@ -151,8 +153,8 @@
 {
     NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
     [self.model submitRecordsAtIndexPaths:indexPaths
-                                   dictionary:@{kComments:text,kAction:_submitAction}];
-
+                               dictionary:@{kComments:text,kAction:_submitAction}];
+    
     [self setEditing:NO animated:YES];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

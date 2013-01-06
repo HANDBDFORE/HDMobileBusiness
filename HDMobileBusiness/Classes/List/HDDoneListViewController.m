@@ -16,22 +16,9 @@
     if (self) {
         self.title = @"审批完成";
         self.variableHeightRows = YES;
+        self.clearsSelectionOnViewWillAppear = NO;
     }
     return self;
-}
-
-- (void)viewDidUnload
-{
-    TT_RELEASE_SAFELY(_refreshButton);
-    [super viewDidUnload];
-}
-
--(void)loadView
-{
-    [super loadView];
-//     _refreshButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonPressed:)];
-//    
-//    self.navigationItem.rightBarButtonItem = _refreshButton;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -39,11 +26,6 @@
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
-
-//-(void)refreshButtonPressed:(id)sender
-//{
-//    [self.model load:TTURLRequestCachePolicyDefault more:NO];
-//}
 
 -(id<UITableViewDelegate>)createDelegate
 {

@@ -33,7 +33,7 @@
         [self didFinishLoad];
     }else {
         HDRequestMap * requestMap = [HDRequestMap mapWithDelegate:self];
-        requestMap.urlPath = self.queryURL;
+        requestMap.urlPath = [self.queryURL stringByReplacingSpaceHodlerWithDictionary:self.detailRecord];
         [self requestWithMap:requestMap];
     }
 }

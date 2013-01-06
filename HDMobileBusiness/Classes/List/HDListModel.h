@@ -53,17 +53,19 @@ static NSString * kEmployeeID = @"employee_id";
 //当前指针位置，表识被点击纪录的行号
 @property(nonatomic,assign) NSUInteger currentIndex;
 
+@property(nonatomic,readonly) NSIndexPath * currentIndexPath;
+
 //获取当前selectedIndex对应resultList中的纪录
 -(id)current;
 
 //跳转到下一条有效记录
--(void)next;
+-(id)next;
 
 //是否有下一条记录
 -(BOOL)hasNext;
 
 //跳转到上一条有效记录
--(void)prev;
+-(id)prev;
 
 //是否有上一条记录
 -(BOOL)hasPrev;

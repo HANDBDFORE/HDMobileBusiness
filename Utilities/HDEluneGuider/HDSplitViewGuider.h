@@ -10,6 +10,6 @@
 
 @interface HDSplitViewGuider : HDViewGuider
 
-@property (nonatomic,assign) BOOL  shouldGuideToRight;
+@property (nonatomic,retain) NSDictionary * configureParameters;
 
 @end

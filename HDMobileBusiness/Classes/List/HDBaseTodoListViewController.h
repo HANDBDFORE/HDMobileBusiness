@@ -20,7 +20,7 @@ static NSString * kEventTodoListSearchViewWillDissappear = @"TodoListSearchViewW
     NSString        *  _submitAction;
 }
 
-@property(nonatomic,assign) id <HDTodoListService> model;
+@property(nonatomic,assign) id <HDTodoListService,HDPageTurning> model;
 
 -(void)setToolbarButtonTitleWithCount:(NSNumber *)count;
 

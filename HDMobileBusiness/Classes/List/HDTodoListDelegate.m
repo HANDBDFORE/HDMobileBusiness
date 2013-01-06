@@ -26,7 +26,7 @@
         
     }else {
         [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 

@@ -42,15 +42,7 @@
 
 @property(nonatomic,assign) NSUInteger currentIndex;
 
-
-#pragma -mark override ModelGroup
-@property(nonatomic,readonly) NSArray * groupResultList;
-
-@property(nonatomic,copy) NSString * groupedCode;
-
-@property(nonatomic,copy) NSString * groupedCodeField;
-
-@property(nonatomic,copy) NSString * groupedValueField;
+@property(nonatomic,readonly) NSIndexPath * currentIndexPath;
 
 //清除无效的数据,未使用
 //-(void)clear;

@@ -28,6 +28,7 @@
 #import "HDDetailInfoViewController.h"
 //todo detail
 #import "HDDetailToolbarViewController.h"
+#import "HDDetailToolbarModel.h"
 //navigation
 #import "HDNavigationController.h"
 //web view
@@ -41,10 +42,6 @@
 
 //pad
 #import "HDSplitViewController.h"
-
-#import "HDGroupedViewController.h"
-
-#import "HDGroupedTodoListDataSource.h"
 
 //gloable
 #import "HDResourceLoader.h"
@@ -115,6 +112,8 @@
     
     [map from:@"tt://todoDetailViewController" toViewController:[HDDetailToolbarViewController class]];
     
+    [map from:@"tt://detailToolbarModel" toViewController:[HDDetailToolbarModel class]];
+    
     //post controller
     [map from:@"tt://postController" toViewController:[TTPostController class]];
     
@@ -133,10 +132,6 @@
     
     if (TTIsPad()) {
         [map from:@"tt://splitViewController" toViewController:[HDSplitViewController class]];
-                
-        [map from:@"tt://groupedTodoListViewController" toModalViewController:[HDGroupedViewController class]];
-        
-        [map from:@"tt://groupedTodoListDataSource" toViewController:[HDGroupedTodoListDataSource class]];
     }
 }
 

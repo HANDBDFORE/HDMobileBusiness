@@ -52,7 +52,7 @@
         TTTableMessageItem * item =
         [TTTableMessageItem itemWithText:text
                                 delegate:self
-                                selector:@selector(openURLForKey:)];
+                                selector:@selector(openURLForItem:)];
         item.title = title;
         item.caption = caption;
         item.timestamp = timestamp;
@@ -61,12 +61,15 @@
     [self.items addObject:[TTTableMoreButton itemWithText:@"更多..."]];
 }
 
--(void)openURLForKey:(TTTableItem *)item
+-(void)openURLForItem:(TTTableItem *)item
 {
     NSUInteger index = [self.items indexOfObject:item];
     [self.model setCurrentIndex:index];
     
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"doneListTableGuider"];
+    
+    [guider.destinationController setValue:self.model forKeyPath:@"pageTurningService"];
+    [guider.destinationController setValue:@0 forKeyPath:@"shouldLoadAction"];
     [guider perform];
 }
 

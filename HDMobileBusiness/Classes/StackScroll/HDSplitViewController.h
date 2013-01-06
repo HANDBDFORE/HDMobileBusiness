@@ -8,17 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HDSplitViewController : TTViewController
-{
-    UIView * _leftView;
-    UIView * _rightView;
-    UIView * _rightShadowView;
-}
+@interface HDSplitViewController : UISplitViewController
 
-@property (nonatomic) CGFloat leftViewWidth;
-@property (nonatomic) CGFloat leftViewPercentWidth;
-
-@property (nonatomic,retain) UIViewController * leftViewController;
-@property (nonatomic,retain) UIViewController * rightViewController;
+@property (nonatomic,assign) NSArray * viewControllerKeys;
 
 @end
