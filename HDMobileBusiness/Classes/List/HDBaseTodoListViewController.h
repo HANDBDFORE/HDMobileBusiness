@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "HDListModel.h"
 #import "HDListViewController.h"
 
 static NSString * kEventTodoListSearchViewWillDissappear = @"TodoListSearchViewWillDissappear";

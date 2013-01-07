@@ -128,9 +128,6 @@
         self.model.currentIndex = [self.items indexOfObject:item];
 
         HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
-        
-        [guider.destinationController setValue:self.model forKeyPath:@"pageTurningService"];
-        [guider.destinationController setValue:@1 forKeyPath:@"shouldLoadAction"];
         [guider perform];
     }
 }

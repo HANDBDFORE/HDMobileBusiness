@@ -25,6 +25,7 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
+    [self selectedTableCellForCurrentRecord];    
 }
 
 -(id<UITableViewDelegate>)createDelegate
@@ -41,4 +42,16 @@
     TTAlert(error.localizedDescription);
 }
 
+-(void)modelDidFinishLoad:(id<TTModel>)model
+{
+    [super modelDidFinishLoad:model];
+    [self selectedTableCellForCurrentRecord];
+}
+
+-(void)selectedTableCellForCurrentRecord
+{
+    [super selectedTableCellForCurrentRecord];
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"doneListTableGuider"];
+    [guider perform];
+}
 @end

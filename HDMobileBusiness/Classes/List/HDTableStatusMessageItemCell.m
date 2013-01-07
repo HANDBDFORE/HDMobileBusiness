@@ -160,6 +160,7 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
         }
         if ([item.state isEqualToString: kRecordDifferent]) {
             self.stateLabel.style = TTSTYLE(tableStatusLabelDifferent);
+            self.accessoryType = UITableViewCellAccessoryNone;
             self.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         if ([item.state isEqualToString: kRecordWaiting]) {

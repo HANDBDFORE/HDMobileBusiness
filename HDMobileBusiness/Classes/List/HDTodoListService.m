@@ -29,7 +29,6 @@
 
 - (void)dealloc
 {
-//    TT_RELEASE_SAFELY(_resultList);
     TT_RELEASE_SAFELY(_searchText);
     TT_RELEASE_SAFELY(_searchFields);
     
@@ -46,7 +45,7 @@
     self = [super init];
     if (self) {
         _vectorRange = NSMakeRange(0, 0);
-        _currentIndex = 0;
+        _currentIndex = kHDPageTurningInitialIndex;
     }
     return self;
 }
@@ -84,6 +83,7 @@
 {
     [self cancel];
     self.searchText = text;
+    self.currentIndex = kHDPageTurningInitialIndex;
     [self didFinishLoad];
 }
 
@@ -104,16 +104,12 @@
 
 -(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary
 {
-    NSArray * submitRecords = @[[self.resultList objectAtIndex:_currentIndex]];
-    for (NSString * key in dictionary) {
-        [submitRecords setValue:[dictionary valueForKey:key] forKey:key];
-    }
-    [self.model submitRecords:submitRecords];
-    
-    if ([self hasNext]) {
-        [self next];
-    }else if ([self hasPrev]){
-        [self prev];
+    if (self.currentIndex < self.resultList.count) {
+        NSArray * submitRecords = @[[self.resultList objectAtIndex:self.currentIndex]];
+        for (NSString * key in dictionary) {
+            [submitRecords setValue:[dictionary valueForKey:key] forKey:key];
+        }
+        [self.model submitRecords:submitRecords];
     }
 }
 
@@ -143,20 +139,47 @@
 
 -(NSIndexPath *) currentIndexPath
 {
-    return [NSIndexPath indexPathForRow:_currentIndex inSection:0];
+    if ([self effectiveRecordCount] > 0) {
+        return [NSIndexPath indexPathForRow:self.currentIndex inSection:0];
+    }
+    return nil;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(id)current
 {
-    if ( [self effectiveRecordCount] > 0 && _currentIndex < [self.resultList count]) {
-        return [self.resultList objectAtIndex:_currentIndex];
+    if ( [self effectiveRecordCount] > 0) {
+        return [self.resultList objectAtIndex:self.currentIndex];
     }
     return nil;
 }
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+-(NSUInteger)currentIndex
+{
+    if (self.resultList.count > _currentIndex) {
+        if(![self isEffectiveRecord:[self.resultList objectAtIndex:_currentIndex]])
+        {
+//            if ([self hasNext]) {
+//                TTDPRINT(@"turn next");
+//                [self next];
+//            }else{
+//                [self prev];
+//                TTDPRINT(@"turn prev");
+            }
+//        };
+    }else{
+        _currentIndex = self.resultList.count - 1;
+    }
+    return _currentIndex;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)setCurrentIndex:(NSUInteger)currentIndex
+{
+    _currentIndex = currentIndex;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -(id)next
 {
     if ([self hasNext]) {
@@ -217,7 +240,6 @@
     _vectorRange.length ++ ;
     BOOL hasPrevRecord = YES;
     id record = [self.resultList objectAtIndex:prevIndex];
-    
     if (![self isEffectiveRecord:record]) {
         hasPrevRecord = [self hasPrevRecordAtIndex:prevIndex];
     }
@@ -232,6 +254,7 @@
 -(void)modelDidFinishLoad:(id<HDListModelQuery>)model
 {
     [self didFinishLoad];
+    //TODO: 在这里处理提交后数据翻页问题才对哦
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -34,7 +34,7 @@
 
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
-    if (more) {
+    if (more && self.resultList.count >10) {
         _pageNum ++;
     }else {
         _pageNum = 1;
@@ -53,6 +53,7 @@
 {
     if(_pageNum==1){
         [_resultList removeAllObjects];
+        _currentIndex = kHDPageTurningInitialIndex;
     }
     [_resultList addObjectsFromArray:map.result];
     

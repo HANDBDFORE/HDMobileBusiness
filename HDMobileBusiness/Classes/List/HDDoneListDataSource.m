@@ -67,9 +67,6 @@
     [self.model setCurrentIndex:index];
     
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"doneListTableGuider"];
-    
-    [guider.destinationController setValue:self.model forKeyPath:@"pageTurningService"];
-    [guider.destinationController setValue:@0 forKeyPath:@"shouldLoadAction"];
     [guider perform];
 }
 

@@ -17,7 +17,7 @@
 {
     self = [super init];
     if (self) {
-        _objectMode =HDObjectModeShare;
+        _objectMode = HDObjectModeShare;
     }
     return self;
 }
@@ -44,9 +44,15 @@
     }
     return self;
 }
+
 -(NSString *)description{
     NSString * str = [NSString stringWithFormat:@"[url:%@$$values:%@$$beans:%@]$$",_url,_values,_beans];
     
     return str;
+}
+
+-(id)copyWithZone:(NSZone *)zone
+{
+    return [[HDObjectPattern alloc] initWithURL:self.url propertyValues:self.values propertyRefBeans:self.beans objectMode:self.objectMode];
 }
 @end

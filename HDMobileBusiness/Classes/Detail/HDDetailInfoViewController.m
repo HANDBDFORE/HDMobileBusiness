@@ -89,7 +89,9 @@
 //    if (self.masterPopoverController != nil) {
 //        [self.masterPopoverController dismissPopoverAnimated:YES];
 //    }
-  
+    if (nil == record) {
+        [self showEmpty:YES];
+    }
     NSMutableDictionary * recordDictionary = [NSMutableDictionary dictionaryWithDictionary:record];
     [recordDictionary setValue:[HDHTTPRequestCenter baseURLPath] forKey:@"base_url"];
     [self setPropertiesWithRecord:recordDictionary];
@@ -128,7 +130,7 @@
     if (self.popoverItem) {
         [items addObject:self.popoverItem];
     }
-    if (self.pageTurningService) {
+    if ([self.pageTurningService currentIndexPath] && self.masterPopoverController) {
         [items addObjectsFromArray:@[_prevButtonItem,_nextButtonItem]];
     }
     if (others) {
@@ -143,7 +145,7 @@
     if (_refreshButtonItem) {
         [items addObject:_refreshButtonItem];
     }
-    if (self.pageTurningService) {
+    if ([self.pageTurningService currentIndexPath]) {
         [items addObject:_employeeInfoItem];
     }
     if (others) {
@@ -156,7 +158,14 @@
 {
     _nextButtonItem.enabled = NO;
     _prevButtonItem.enabled = NO;
-    [_webView loadHTMLString:@"<h1>error</h1>" baseURL:nil];
+    [_webView loadHTMLString:@"<h1>Error</h1>" baseURL:nil];
+}
+
+-(void)showEmpty:(BOOL)show
+{
+    self.navigationItem.rightBarButtonItems = [self createRightNavigationItems:nil];
+    self.navigationItem.leftBarButtonItems= [self createLeftNavigationItems:nil];
+    [_webView loadHTMLString:@"<h1>Empty</h1>" baseURL:nil];
 }
 
 #pragma mark - Split view
@@ -173,7 +182,7 @@
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
-    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+    [self.navigationItem setLeftBarButtonItems:@[] animated:YES];
     self.masterPopoverController = nil;
     self.popoverItem = nil;
 }

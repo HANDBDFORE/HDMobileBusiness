@@ -29,6 +29,8 @@
     <!--todolistTableGuider-->
     <bean id="todolistTableGuider" create-url="tt://splitViewGuider/todolistTableGuider" mode="create">
         <property name="destinationController" ref="detailController"/>
+        <property name="shouldLoadAction" value="true"/>
+        <property name="pageTurningService" ref="todoListService"/>
         <property name="configureParameters">
             <map>
                 <element key="userInfoField" value="record_id"/>
@@ -38,7 +40,18 @@
         </property>
     </bean>
     <!--doneListTableGuider-->
-    <bean id="doneListTableGuider" share="todolistTableGuider"/>
+    <bean id="doneListTableGuider" create-url="tt://splitViewGuider/doneListTableGuider" mode="create">
+        <property name="destinationController" ref="detailController"/>
+        <property name="shouldLoadAction" value="false"/>
+        <property name="pageTurningService" ref="doneListModel"/>
+        <property name="configureParameters">
+            <map>
+                <element key="userInfoField" value="record_id"/>
+                <element key="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
+                <element key="webPageURLTemplate" value="${base_url}${screen_name}"/>
+            </map>
+        </property>
+    </bean>
     <!--todoListPostGuider-->
     <bean id="todoListPostGuider"  create-url="tt://showInViewGuider/todoListPostGuider" mode="create">
         <property name="animated" value="true"/>
@@ -112,6 +125,7 @@
         <property name="title" value="待办列表"/>
         <property name="dataSource" ref="todoListDataSource"/>
         <property name="model" ref="todoListService"/>
+        <property name="detailController" ref="detailController"/>
         <property name="searchViewController" ref="todoListSearchViewController"/>
     </bean>
     <bean id="todoListNavigator" share="todoListViewController"/>
@@ -152,6 +166,7 @@
         <property name="title" value="待办查询"/>
         <property name="dataSource" ref="todoListSearchDataSource"/>
         <property name="model" ref="todoListService"/>
+        <property name="detailController" ref="detailController"/>
     </bean>
     <!--todoListSearchDataSource-->
     <bean id="todoListSearchDataSource" create-url="tt://todoListDataSource" mode="share">
@@ -182,6 +197,7 @@
     <bean id="doneListViewController" create-url="tt://doneListViewController" mode="share">
         <property name="title" value="审批完成"/>
         <property name="dataSource" ref="doneListDataSource"/>
+        <property name="detailController" ref="detailController"/>
     </bean>
     <bean id="doneListNavigator" share="doneListViewController"/>
     <!--doneListDataSource-->

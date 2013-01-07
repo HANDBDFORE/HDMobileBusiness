@@ -13,7 +13,7 @@ typedef enum {
     HDObjectModeShare,             // a new view controller is created, cached and re-used
 } HDObjectMode;
 
-@interface HDObjectPattern : NSObject
+@interface HDObjectPattern : NSObject<NSCopying>
 
 //-(id)createObject;
 
@@ -23,6 +23,5 @@ typedef enum {
 @property(nonatomic,retain) NSDictionary * beans;
 @property(nonatomic,retain) NSString * url;
 @property(nonatomic,assign) NSInteger objectMode;
-
 
 @end

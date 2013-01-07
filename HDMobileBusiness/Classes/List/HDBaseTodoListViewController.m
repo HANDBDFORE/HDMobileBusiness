@@ -68,7 +68,7 @@
     removeRecordRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     removeRecordRecognizer.numberOfTouchesRequired = 1;
     [self.tableView addGestureRecognizer:removeRecordRecognizer];
-//    [self.tableView.delegate tableView:self.tableView didSelectRowAtIndexPath:[self.model  currentIndexPath]];
+    [self selectedTableCellForCurrentRecord];
 }
 
 #pragma  -mark toolbar Buttons
@@ -102,6 +102,7 @@
         self.editButtonItem.title = TTLocalizedString(@"Cancel", @"取消");
     }else {
         self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
+        [self selectedTableCellForCurrentRecord];
     }
 }
 
@@ -164,6 +165,9 @@
 {
     [super modelDidFinishLoad:model];
     self.timeStampLabel.timeStamp = [(TTURLRequestModel *)model loadedTime];
+    if (!self.isEditing) {
+        [self selectedTableCellForCurrentRecord];
+    }
 }
 
 -(id<UITableViewDelegate>)createDelegate
@@ -171,7 +175,7 @@
     return  [[[HDTodoListDelegate alloc] initWithController:self] autorelease];
 }
 
-#pragma -mark swipe
+#pragma -mark private
 -(void)didSwiped:(UISwipeGestureRecognizer *)recognizer{
     CGPoint swipeLocation = [recognizer locationInView:self.tableView];
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
@@ -180,4 +184,11 @@
     }
 }
 
+-(void)selectedTableCellForCurrentRecord
+{    
+//    [self.detailController setValue:@1 forKeyPath:@"shouldLoadAction"];
+    [super selectedTableCellForCurrentRecord];
+    HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
+    [guider perform];
+}
 @end

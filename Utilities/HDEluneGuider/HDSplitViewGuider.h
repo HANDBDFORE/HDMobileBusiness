@@ -12,4 +12,8 @@
 
 @property (nonatomic,retain) NSDictionary * configureParameters;
 
+@property (nonatomic,assign) BOOL shouldLoadAction;
+
+@property (nonatomic,retain) id pageTurningService;
+
 @end

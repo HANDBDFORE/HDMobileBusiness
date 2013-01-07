@@ -8,6 +8,7 @@
 
 #import <Three20UI/Three20UI.h>
 #import "HDTimeStampLabel.h"
+#import "HDListModel.h"
 
 @interface HDListViewController : TTTableViewController
 
@@ -16,7 +17,12 @@
 @property(nonatomic,readonly) HDTimeStampLabel * timeStampLabel;
 @property(nonatomic,readonly) UIBarButtonItem * refreshItem;
 
+@property(nonatomic,assign) id <HDPageTurning> model;
+
+@property(nonatomic,retain) TTModelViewController * detailController;
+
 -(void)refreshButtonPressed:(id) sender;
 
+-(void)selectedTableCellForCurrentRecord;
 
 @end
