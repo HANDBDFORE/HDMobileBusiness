@@ -137,14 +137,12 @@
 
 -(UIColor *)tableHeaderTintColor
 {
-    
-    return RGBCOLOR(245, 245, 245);
+    return RGBCOLOR(133, 133, 133);
 }
 
 -(UIColor *)tableHeaderShadowColor
 {
-    return RGBCOLOR(222, 222, 222);
-//    return RGBACOLOR(51, 53, 53, 1.0);
+    return RGBCOLOR(102, 102, 102);
 }
 
 - (TTStyle*)tableHeader {
@@ -153,14 +151,13 @@
     return
     [TTLinearGradientFillStyle styleWithColor1:highlight color2:color next:
      [TTInsetStyle styleWithInset:UIEdgeInsetsMake(-1, 0, 0, 0) next:
-      [TTFourBorderStyle styleWithTop:RGBCOLOR(158,158,158) right:nil bottom:RGBCOLOR(128,128,128)
+      [TTFourBorderStyle styleWithTop:RGBCOLOR(102,102,102) right:nil bottom:RGBCOLOR(98,99,98)
                                  left:nil width:1 next:nil]]];
 }
 
 -(UIColor *)tableHeaderTextColor
 {
-//    return RGBCOLOR(204, 204, 204);
-    return RGBCOLOR(53, 53, 53);
+    return RGBCOLOR(249, 249, 249);
 }
 
 @end

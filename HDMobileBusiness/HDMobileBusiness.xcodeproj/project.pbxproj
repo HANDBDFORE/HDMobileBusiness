@@ -36,6 +36,7 @@
 		B3063730168016FD00797963 /* HDBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = B306372F168016FD00797963 /* HDBaseService.m */; };
 		B3063731168016FD00797963 /* HDBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = B306372F168016FD00797963 /* HDBaseService.m */; };
 		B30BF63E15EC95A200DB83E9 /* HDSingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */; };
+		B310E070169BE4AA009B0208 /* logout256.png in Resources */ = {isa = PBXBuildFile; fileRef = B310E06F169BE4AA009B0208 /* logout256.png */; };
 		B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */; };
 		B31E2EDF15C65FD400880514 /* HDLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED815C65FD400880514 /* HDLoadingViewController.m */; };
 		B31E2EE115C65FD400880514 /* HDResourceMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2EDC15C65FD400880514 /* HDResourceMap.m */; };
@@ -799,6 +800,7 @@
 		B306372E168016F200797963 /* HDBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDBaseService.h; path = Classes/List/HDBaseService.h; sourceTree = SOURCE_ROOT; };
 		B306372F168016FD00797963 /* HDBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDBaseService.m; path = Classes/List/HDBaseService.m; sourceTree = SOURCE_ROOT; };
 		B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSingletonObject.m; sourceTree = "<group>"; };
+		B310E06F169BE4AA009B0208 /* logout256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout256.png; sourceTree = "<group>"; };
 		B31E2ECF15C65DC900880514 /* HDUserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUserGuideViewController.h; sourceTree = "<group>"; };
 		B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDUserGuideViewController.m; sourceTree = "<group>"; };
 		B31E2ED715C65FD400880514 /* HDLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLoadingViewController.h; sourceTree = "<group>"; };
@@ -2260,6 +2262,7 @@
 		B3E419A7168C23DC00CA1533 /* tableImage */ = {
 			isa = PBXGroup;
 			children = (
+				B310E06F169BE4AA009B0208 /* logout256.png */,
 				B3E419B6168C249D00CA1533 /* business-info128.png */,
 				B3E419BA168C24D800CA1533 /* Male-User-Help128.png */,
 				B3E419B4168C247C00CA1533 /* sign-up128.png */,
@@ -2910,6 +2913,7 @@
 				B3E419B7168C249D00CA1533 /* business-info128.png in Resources */,
 				B3E419B9168C24BD00CA1533 /* distributor-report128.png in Resources */,
 				B3E419BB168C24D800CA1533 /* Male-User-Help128.png in Resources */,
+				B310E070169BE4AA009B0208 /* logout256.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

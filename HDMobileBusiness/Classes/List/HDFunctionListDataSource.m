@@ -176,13 +176,17 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)addLogoutItem
-{
-    NSString * userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
-    HDTableConfirmViewCell * logoutCell = [[[HDTableConfirmViewCell alloc]initWithlableText:userName buttonTitle:TTLocalizedString(@"Logout", @"注销")] autorelease];
-    [logoutCell addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
+{    
+    TTTableImageItem * logoutItem =
+    [TTTableImageItem itemWithText:TTLocalizedString(@"Logout", @"注销")
+                          delegate:self
+                          selector:@selector(logout:)];
     
+    logoutItem.imageURL = @"bundle://logout256.png";
+    logoutItem.imageStyle = TTSTYLE(functionListCellImageStyle);
+
     [self.sections addObject:[TTTableSection sectionWithHeaderTitle:@" " footerTitle:nil]];
-    [self.items addObject:@[logoutCell]];
+    [self.items addObject:@[logoutItem]];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
