@@ -13,8 +13,6 @@
 
 @property(nonatomic,copy) NSString * currentURL;
 
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
-
 @property(nonatomic,retain) UIBarButtonItem * popoverItem;
 
 @end
@@ -42,7 +40,6 @@
     TT_RELEASE_SAFELY(_prevButtonItem);
     TT_RELEASE_SAFELY(_refreshButtonItem);
     TT_RELEASE_SAFELY(_employeeInfoItem);
-    TT_RELEASE_SAFELY(_masterPopoverController);
     [super viewDidUnload];
 }
 
@@ -53,7 +50,7 @@
     _userInfoView = [[HDUserInfoView alloc]initWithFrame:TTNavigationFrame()];
     [self.view addSubview:_userInfoView];
     
-    _employeeInfoItem = [[UIBarButtonItem alloc]initWithTitle:nil style:UIBarButtonItemStyleBordered target:_userInfoView action:@selector(show)];
+    _employeeInfoItem = [[UIBarButtonItem alloc]initWithImage:TTIMAGE(@"bundle://HDUser.png") style:UIBarButtonItemStylePlain target:_userInfoView action:@selector(show)];
     
     //next button
     _nextButtonItem = [[UIBarButtonItem alloc]initWithImage:TTIMAGE(@"bundle://Three20.bundle/images/forwardIcon.png") style:UIBarButtonItemStyleBordered target:self action:@selector(nextRecord)];
@@ -86,16 +83,23 @@
 }
 
 -(void)loadRecord:(NSDictionary *)record{
-//    if (self.masterPopoverController != nil) {
-//        [self.masterPopoverController dismissPopoverAnimated:YES];
-//    }
+    //TODO:  here 应该只处理record，showEmoty什么的交给update来做比较好
     if (nil == record) {
         [self showEmpty:YES];
     }
+    self.title = nil;
+
     NSMutableDictionary * recordDictionary = [NSMutableDictionary dictionaryWithDictionary:record];
     [recordDictionary setValue:[HDHTTPRequestCenter baseURLPath] forKey:@"base_url"];
-    [self setPropertiesWithRecord:recordDictionary];
     
+    _userInfoView.employeeUrlPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
+    
+    self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
+    
+//    _employeeInfoItem.title = [record valueForKey:self.userInfoField];
+    
+    [self updateNavigationItems];
+
     if(self.currentURL){
         [self openURL:[NSURL URLWithString:self.currentURL]];
     }else{
@@ -103,43 +107,29 @@
     }
 }
 
--(void)clearProperties
+-(void)updateNavigationItems
 {
-    self.currentURL = nil;
-    self.navigationItem.rightBarButtonItem = nil;
-}
-
--(void)setPropertiesWithRecord:(NSDictionary *) record
-{
-    _userInfoView.employeeUrlPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:record];
-    
-    self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:record];
-    
-    _employeeInfoItem.title = [record valueForKey:self.userInfoField];
-    
     _nextButtonItem.enabled = [self.pageTurningService hasNext];
     _prevButtonItem.enabled = [self.pageTurningService hasPrev];
     
-    self.navigationItem.leftBarButtonItems = [self createLeftNavigationItems:nil];
-    self.navigationItem.rightBarButtonItems =[self createRightNavigationItems:nil];
+    self.navigationItem.leftBarButtonItems = [self createLeftNavigationItems];
+    self.navigationItem.rightBarButtonItems = [self createRightNavigationItems];
 }
 
--(NSArray *)createLeftNavigationItems:(NSArray *) others
+-(NSMutableArray *)createLeftNavigationItems
 {
     NSMutableArray * items = [NSMutableArray array];
     if (self.popoverItem) {
         [items addObject:self.popoverItem];
     }
-    if ([self.pageTurningService currentIndexPath] && self.masterPopoverController) {
+    
+    if ([self.pageTurningService currentIndexPath] && self.popoverItem) {
         [items addObjectsFromArray:@[_prevButtonItem,_nextButtonItem]];
-    }
-    if (others) {
-        [items addObjectsFromArray:others];
     }
     return items;
 }
 
--(NSArray *)createRightNavigationItems:(NSArray *) others
+-(NSMutableArray *)createRightNavigationItems
 {
     NSMutableArray * items = [NSMutableArray array];
     if (_refreshButtonItem) {
@@ -148,46 +138,37 @@
     if ([self.pageTurningService currentIndexPath]) {
         [items addObject:_employeeInfoItem];
     }
-    if (others) {
-        [items addObjectsFromArray:others];
-    }
     return items;
 }
 
 -(void)showError:(BOOL)show
 {
-    _nextButtonItem.enabled = NO;
-    _prevButtonItem.enabled = NO;
+    [self updateNavigationItems];
     [_webView loadHTMLString:@"<h1>Error</h1>" baseURL:nil];
 }
 
 -(void)showEmpty:(BOOL)show
 {
-    self.navigationItem.rightBarButtonItems = [self createRightNavigationItems:nil];
-    self.navigationItem.leftBarButtonItems= [self createLeftNavigationItems:nil];
+    [self updateNavigationItems];
     [_webView loadHTMLString:@"<h1>Empty</h1>" baseURL:nil];
 }
 
 #pragma mark - Split view
-
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
-    barButtonItem.title = @"=";
-    self.masterPopoverController = popoverController;
     self.popoverItem = barButtonItem;
-    
-    self.navigationItem.leftBarButtonItems = [self createLeftNavigationItems:nil];
+    [self updateNavigationItems];
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
-    [self.navigationItem setLeftBarButtonItems:@[] animated:YES];
-    self.masterPopoverController = nil;
     self.popoverItem = nil;
+    [self updateNavigationItems];
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-    return toInterfaceOrientation!=UIInterfaceOrientationPortraitUpsideDown;
+    return TTIsSupportedOrientation(toInterfaceOrientation);
 }
+
 @end

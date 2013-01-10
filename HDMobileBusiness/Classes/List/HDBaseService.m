@@ -73,6 +73,11 @@
 }
 
 #pragma mark TTModelDelegate functions
+-(void)modelDidFinishLoad:(id<HDListModelQuery>)model
+{
+    [self didFinishLoad];
+}
+
 -(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
 {
     [self didFailLoadWithError:error];

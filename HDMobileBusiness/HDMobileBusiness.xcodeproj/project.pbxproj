@@ -471,6 +471,10 @@
 		B398B8A5164A08E70017FCD6 /* HDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B398B7001649F6DC0017FCD6 /* HDAppDelegate.m */; };
 		B398B8A6164A099E0017FCD6 /* mobileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E670015C64E6700824CB1 /* mobileIcon.png */; };
 		B3B67ED2165CC666003B7D11 /* HDShowInViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */; };
+		B3C39B15169D5CBC004B8087 /* HDDeliver.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C39B12169D5CBC004B8087 /* HDDeliver.png */; };
+		B3C39B18169D6829004B8087 /* HDUser.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C39B17169D6829004B8087 /* HDUser.png */; };
+		B3C39B1A169D6AB9004B8087 /* HDReject.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C39B19169D6AB8004B8087 /* HDReject.png */; };
+		B3C39B1B169D7148004B8087 /* HDApprove.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C39B11169D5CBC004B8087 /* HDApprove.png */; };
 		B3CB0A4F1679980200BBE7CC /* HDTodoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB0A4E1679980100BBE7CC /* HDTodoListModel.m */; };
 		B3CB0A501679980200BBE7CC /* HDTodoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB0A4E1679980100BBE7CC /* HDTodoListModel.m */; };
 		B3CB5D921676CEB60062E71B /* HDTimeStampLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CB5D911676CEB60062E71B /* HDTimeStampLabel.m */; };
@@ -1101,6 +1105,11 @@
 		B39BC5581601765C00551C63 /* HDListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDListModel.h; path = Classes/List/HDListModel.h; sourceTree = "<group>"; };
 		B3B67ED0165CC665003B7D11 /* HDShowInViewGuider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDShowInViewGuider.h; sourceTree = "<group>"; };
 		B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDShowInViewGuider.m; sourceTree = "<group>"; };
+		B3B907B5169C04C6000DAF16 /* Pad列表和明细交互.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Pad列表和明细交互.rtf"; sourceTree = "<group>"; };
+		B3C39B11169D5CBC004B8087 /* HDApprove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDApprove.png; sourceTree = "<group>"; };
+		B3C39B12169D5CBC004B8087 /* HDDeliver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDDeliver.png; sourceTree = "<group>"; };
+		B3C39B17169D6829004B8087 /* HDUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDUser.png; sourceTree = "<group>"; };
+		B3C39B19169D6AB8004B8087 /* HDReject.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDReject.png; sourceTree = "<group>"; };
 		B3CB0A4D1679980100BBE7CC /* HDTodoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListModel.h; path = Classes/List/HDTodoListModel.h; sourceTree = SOURCE_ROOT; };
 		B3CB0A4E1679980100BBE7CC /* HDTodoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTodoListModel.m; path = Classes/List/HDTodoListModel.m; sourceTree = SOURCE_ROOT; };
 		B3CB5D901676CEB60062E71B /* HDTimeStampLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTimeStampLabel.h; path = HDViews/HDTimeStampLabel.h; sourceTree = "<group>"; };
@@ -1509,6 +1518,7 @@
 				B355AF5E1689918F0076D9A6 /* Model Interface.rtfd */,
 				B355AF5D16898CB40076D9A6 /* VIewGuider.rtfd */,
 				B355AF5C1689849A0076D9A6 /* ApplicationContext.rtfd */,
+				B3B907B5169C04C6000DAF16 /* Pad列表和明细交互.rtf */,
 			);
 			path = Detailing;
 			sourceTree = "<group>";
@@ -1757,6 +1767,7 @@
 		B38E66EA15C64E6700824CB1 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				B3C39B10169D5CAA004B8087 /* ButtonBar */,
 				B3E419A7168C23DC00CA1533 /* tableImage */,
 				B3E41984168C1F6700CA1533 /* DailyOverViewMail */,
 				B38E66EB15C64E6700824CB1 /* Background */,
@@ -2123,6 +2134,17 @@
 				B398B7161649F6DD0017FCD6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B3C39B10169D5CAA004B8087 /* ButtonBar */ = {
+			isa = PBXGroup;
+			children = (
+				B3C39B17169D6829004B8087 /* HDUser.png */,
+				B3C39B11169D5CBC004B8087 /* HDApprove.png */,
+				B3C39B12169D5CBC004B8087 /* HDDeliver.png */,
+				B3C39B19169D6AB8004B8087 /* HDReject.png */,
+			);
+			path = ButtonBar;
 			sourceTree = "<group>";
 		};
 		B3CB5D931676CEBF0062E71B /* HDViews */ = {
@@ -2745,6 +2767,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C39B1B169D7148004B8087 /* HDApprove.png in Resources */,
 				B3E419A6168C206D00CA1533 /* mail-14.png in Resources */,
 				B3E419A5168C204600CA1533 /* mail-5.png in Resources */,
 				B355ADB7168974750076D9A6 /* alarm.png in Resources */,
@@ -2914,6 +2937,9 @@
 				B3E419B9168C24BD00CA1533 /* distributor-report128.png in Resources */,
 				B3E419BB168C24D800CA1533 /* Male-User-Help128.png in Resources */,
 				B310E070169BE4AA009B0208 /* logout256.png in Resources */,
+				B3C39B15169D5CBC004B8087 /* HDDeliver.png in Resources */,
+				B3C39B18169D6829004B8087 /* HDUser.png in Resources */,
+				B3C39B1A169D6AB9004B8087 /* HDReject.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3457,7 +3483,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusinessPad/HDMobileBusinessPad-Prefix.pch";
 				INFOPLIST_FILE = "HDMobileBusinessPad/HDMobileBusinessPad-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -3474,7 +3500,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusinessPad/HDMobileBusinessPad-Prefix.pch";
 				INFOPLIST_FILE = "HDMobileBusinessPad/HDMobileBusinessPad-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;

@@ -25,6 +25,7 @@
     <!--functionWebItemGuider-->
     <bean id="functionWebItemGuider"  create-url="tt://splitViewGuider/functionWebItemGuider" mode="create">
         <property name="destinationController" ref="detailController"/>
+        <property name="pageTurningService" ref="nil"/>
     </bean>
     <!--todolistTableGuider-->
     <bean id="todolistTableGuider" create-url="tt://splitViewGuider/todolistTableGuider" mode="create">
@@ -125,8 +126,8 @@
         <property name="title" value="待办列表"/>
         <property name="dataSource" ref="todoListDataSource"/>
         <property name="model" ref="todoListService"/>
-        <property name="detailController" ref="detailController"/>
         <property name="searchViewController" ref="todoListSearchViewController"/>
+        <property name="detailViewController" ref="detailController"/>
     </bean>
     <bean id="todoListNavigator" share="todoListViewController"/>
     <!--todoListDataSource-->
@@ -166,7 +167,7 @@
         <property name="title" value="待办查询"/>
         <property name="dataSource" ref="todoListSearchDataSource"/>
         <property name="model" ref="todoListService"/>
-        <property name="detailController" ref="detailController"/>
+        <property name="detailViewController" ref="detailController"/>
     </bean>
     <!--todoListSearchDataSource-->
     <bean id="todoListSearchDataSource" create-url="tt://todoListDataSource" mode="share">
@@ -191,13 +192,12 @@
         <property name="shouldLoadAction" value="true"/>
     </bean>
     <bean id="detailToolbarModel" create-url="tt://detailToolbarModel">
-        <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query/query?record_id=${record_id}"/>
+        <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query_5/query?record_id=${record_id}"/>
     </bean>
     <!--doneListViewController-->
     <bean id="doneListViewController" create-url="tt://doneListViewController" mode="share">
         <property name="title" value="审批完成"/>
         <property name="dataSource" ref="doneListDataSource"/>
-        <property name="detailController" ref="detailController"/>
     </bean>
     <bean id="doneListNavigator" share="doneListViewController"/>
     <!--doneListDataSource-->

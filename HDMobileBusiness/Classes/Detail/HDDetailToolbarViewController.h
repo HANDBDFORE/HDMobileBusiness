@@ -12,11 +12,18 @@
 
 @interface HDDetailToolbarViewController : HDDetailInfoViewController <TTMessageControllerDelegate,TTPostControllerDelegate>
 {
-    UIBarButtonItem * _spaceItem;
 }
 
 @property(nonatomic,retain) HDDetailToolbarModel * model;
 
 @property(nonatomic,assign) BOOL shouldLoadAction;
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated;
+
+-(NSMutableArray *)createRightNavigationItems;
+
+-(NSMutableArray *)createLeftNavigationItems;
+
+-(void)updateNavigationItems;
 
 @end

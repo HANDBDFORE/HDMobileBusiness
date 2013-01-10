@@ -19,8 +19,6 @@
 
 @property(nonatomic,assign) id <HDPageTurning> model;
 
-@property(nonatomic,retain) TTModelViewController * detailController;
-
 -(void)refreshButtonPressed:(id) sender;
 
 -(void)selectedTableCellForCurrentRecord;

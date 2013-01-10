@@ -12,6 +12,8 @@
 
 @property(nonatomic,retain) NSString * selectedAction;
 
+@property(nonatomic,retain) NSArray * submitActionItems;
+
 @end
 
 @implementation HDDetailToolbarViewController
@@ -21,37 +23,21 @@
 
 - (void)viewDidUnload
 {
-    TT_RELEASE_SAFELY(_spaceItem);
     TT_RELEASE_SAFELY(_selectedAction)
+    TT_RELEASE_SAFELY(_submitActionItems);
     [super viewDidUnload];
 }
-
--(void)loadView
-{
-    [super loadView];
-    _spaceItem  = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-}
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        //创建toolBarmodel
     }
     return self;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)setPropertiesWithRecord:(NSDictionary *) record{
-    [super setPropertiesWithRecord:record];
-    if (_shouldLoadAction) {
-        self.model.detailRecord = [self.pageTurningService current];        
-        [self.model load:TTURLRequestCachePolicyDefault more:NO];
-    }    
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
 #pragma mark - submit record
-#pragma mark -
 -(void)toolbarButtonPressed: (id)sender
 {
     //设置当前审批动作
@@ -65,6 +51,7 @@
     guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")};
     [guider perform];
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
@@ -99,6 +86,7 @@
     [controller dismissModalViewControllerAnimated:YES];
     [self submitWithDictionary:dictionary];
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)submitWithDictionary:(NSDictionary *) dictionary
 {
@@ -114,14 +102,14 @@
                                     withObject:@"YES"
                                     afterDelay:0.5];
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)composeControllerShowRecipientPicker:(TTMessageController*)controller {
     TTDPRINT(@"show picker");
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-#pragma mark - TTModel delegate functions -
+#pragma -mark TTModel delegate functions
 -(void)modelDidFinishLoad:(id <TTModel>)model
 {
     if ([self.model.resultList count] > 0) {
@@ -130,27 +118,93 @@
             
             UIBarButtonItem * actionButton =
             [[[UIBarButtonItem alloc]initWithTitle:[actionRecord valueForKey:@"action_title"]
-                                             style:UIBarButtonItemStyleBordered
+                                             style:UIBarButtonItemStylePlain
                                             target:self
                                             action:@selector(toolbarButtonPressed:)] autorelease];
             actionButton.tag = [[actionRecord valueForKey:@"action_id"] intValue];
-            //button color
-            if ([[actionRecord valueForKey:@"action_type"] isEqualToString:kActionTypeApprove]) {
-                actionButton.tintColor = RGBCOLOR(0, 153, 0);
-            }
-            if ([[actionRecord valueForKey:@"action_type"] isEqualToString:kActionTypeReject]) {
-                actionButton.tintColor = RGBCOLOR(153, 0, 0);
-            }
+            actionButton.image = TTIMAGE([actionRecord valueForKey:@"action_image"]);
             if ([[actionRecord valueForKey:@"action_type"] isEqualToString:kActionTypeDeliver]) {
-                actionButton.tintColor = RGBCOLOR(0, 0, 153);
                 actionButton.action = @selector(deliver:);
             }
+            
             [itemButtons addObject:actionButton];
         }
-        
-        self.navigationItem.rightBarButtonItems = [self createRightNavigationItems:itemButtons];
+        self.submitActionItems = itemButtons;
+        [self updateNavigationItems];
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
+-(void)loadRecord:(NSDictionary *) record{
+    if (self.editing) {
+        return;
+    }else{
+        [super loadRecord:record];
+        self.title = nil;
+        [[self.view viewWithTag:998] removeFromSuperview];
+        if (self.shouldLoadAction) {
+            self.model.detailRecord = [self.pageTurningService current];
+            [self.model load:TTURLRequestCachePolicyDefault more:NO];
+        }
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    if (editing) {
+        [self updateNavigationItems];
+        
+        if ([self.splitViewController respondsToSelector:@selector(setPresentsWithGesture:)]) {
+            [self.splitViewController setPresentsWithGesture:NO];
+        }
+        
+        UIControl * __view = [[UIControl alloc]initWithFrame:self.view.frame];
+        __view.backgroundColor = RGBACOLOR(0, 0, 0, 0.3);
+        __view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        __view.tag = 998;
+        [self.view addSubview:__view];
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)updateNavigationItems
+{
+    [super updateNavigationItems];
+    if (!self.isEditing) {
+        return;
+    }
+    if (_popoverItem) {
+        self.title = @"                       请选择需要审批的记录";
+    }else{
+        self.title = @"请选择需要审批的记录";
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(NSArray *)createLeftNavigationItems
+{
+    if(self.isEditing && _popoverItem){
+        return @[_popoverItem];
+    }else{
+        return [super createLeftNavigationItems];
+    }
+    return nil;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(NSArray *)createRightNavigationItems
+{
+    if (self.isEditing) {
+        return nil;
+    }
+    if(self.shouldLoadAction){
+        NSMutableArray * items = [super createRightNavigationItems];
+        [items addObjectsFromArray:self.submitActionItems];
+        return items;
+    }
+    return [super createRightNavigationItems];
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
 @end

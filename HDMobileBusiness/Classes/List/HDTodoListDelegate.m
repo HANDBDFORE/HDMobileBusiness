@@ -19,9 +19,9 @@
 {
     if (tableView.editing) {
         NSNumber * count =  [NSNumber numberWithInt:tableView.indexPathsForSelectedRows.count];
-        if ([self.controller respondsToSelector:@selector(setToolbarButtonTitleWithCount:)])
+        if ([self.controller respondsToSelector:@selector(setToolbarButtonWithCount:)])
         {
-            [self.controller performSelector:@selector(setToolbarButtonTitleWithCount:) withObject:count];
+            [self.controller performSelector:@selector(setToolbarButtonWithCount:) withObject:count];
         }
         
     }else {

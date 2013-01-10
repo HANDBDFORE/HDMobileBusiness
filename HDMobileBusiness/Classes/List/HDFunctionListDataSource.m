@@ -168,7 +168,6 @@
     if ([item.userInfo hasPrefix:@"http://"]) {
         HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"functionWebItemGuider"];
         [guider.destinationController setValue:item.userInfo forKeyPath:@"webPageURLTemplate"];
-        [guider.destinationController setValue:nil forKeyPath:@"pageTurningService"];
         return guider;
     }
     return object;

@@ -29,6 +29,7 @@
     TT_RELEASE_SAFELY(_refuseButtonItem);
     TT_RELEASE_SAFELY(_acceptButtonItem);
     TT_RELEASE_SAFELY(_clearButtonItem);
+    TT_RELEASE_SAFELY(_detailViewController);
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -57,7 +58,7 @@
     _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Clear", @"清理") style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
     ////////////////////////////////////////////////////////////////////////////////
     /////////////////////
-    [self resetButtonTitle];
+    [self resetToolBarButton];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -66,13 +67,12 @@
     //swipe
     UISwipeGestureRecognizer *removeRecordRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwiped:)]autorelease];
     removeRecordRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    removeRecordRecognizer.numberOfTouchesRequired = 1;
     [self.tableView addGestureRecognizer:removeRecordRecognizer];
     [self selectedTableCellForCurrentRecord];
 }
 
 #pragma  -mark toolbar Buttons
--(void)resetButtonTitle
+-(void)resetToolBarButton
 {
     _acceptButtonItem.title = TTLocalizedString(@"Accept", @"同意");
     _acceptButtonItem.enabled = NO;
@@ -81,7 +81,7 @@
     _refuseButtonItem.enabled = NO;
 }
 
--(void)setToolbarButtonTitleWithCount:(NSNumber *)count
+-(void)setToolbarButtonWithCount:(NSNumber *)count
 {
     if (count.intValue >0) {
         _acceptButtonItem.title = [NSString stringWithFormat:@"%@(%@)",TTLocalizedString(@"Accept", @"同意"),count];
@@ -90,19 +90,20 @@
         _refuseButtonItem.enabled = YES;
     }
     else {
-        [self resetButtonTitle];
+        [self resetToolBarButton];
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
-    [self resetButtonTitle];
+    [self.detailViewController setEditing:editing animated:animated];
+    [self resetToolBarButton];
+    [self selectedTableCellForCurrentRecord];
     if(editing){
         self.editButtonItem.title = TTLocalizedString(@"Cancel", @"取消");
     }else {
         self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
-        [self selectedTableCellForCurrentRecord];
     }
 }
 
@@ -110,7 +111,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation!=UIInterfaceOrientationPortraitUpsideDown);
+    return TTIsSupportedOrientation(interfaceOrientation);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -155,8 +156,6 @@
     NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
     [self.model submitRecordsAtIndexPaths:indexPaths
                                dictionary:@{kComments:text,kAction:_submitAction}];
-    
-    [self setEditing:NO animated:YES];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -165,9 +164,8 @@
 {
     [super modelDidFinishLoad:model];
     self.timeStampLabel.timeStamp = [(TTURLRequestModel *)model loadedTime];
-    if (!self.isEditing) {
-        [self selectedTableCellForCurrentRecord];
-    }
+    [self resetToolBarButton];
+    [self selectedTableCellForCurrentRecord];
 }
 
 -(id<UITableViewDelegate>)createDelegate
@@ -185,8 +183,10 @@
 }
 
 -(void)selectedTableCellForCurrentRecord
-{    
-//    [self.detailController setValue:@1 forKeyPath:@"shouldLoadAction"];
+{
+    if (self.isEditing) {
+        return;
+    }
     [super selectedTableCellForCurrentRecord];
     HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
     [guider perform];

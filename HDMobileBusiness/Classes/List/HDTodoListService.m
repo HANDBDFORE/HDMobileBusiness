@@ -157,18 +157,10 @@
 
 -(NSUInteger)currentIndex
 {
-    if (self.resultList.count > _currentIndex) {
-        if(![self isEffectiveRecord:[self.resultList objectAtIndex:_currentIndex]])
-        {
-//            if ([self hasNext]) {
-//                TTDPRINT(@"turn next");
-//                [self next];
-//            }else{
-//                [self prev];
-//                TTDPRINT(@"turn prev");
-            }
-//        };
-    }else{
+    if (![self isEffectiveRecord:[self.resultList objectAtIndex:_currentIndex]]) {
+        [self next];
+    }
+    if (self.resultList.count < _currentIndex) {
         _currentIndex = self.resultList.count - 1;
     }
     return _currentIndex;
@@ -248,22 +240,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark TTModelDelegate functions
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)modelDidFinishLoad:(id<HDListModelQuery>)model
-{
-    [self didFinishLoad];
-    //TODO: 在这里处理提交后数据翻页问题才对哦
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 -(void)model:(id<TTModel>)model didUpdateObject:(id)object atIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger index = [self.resultList indexOfObject:object];
     [self didUpdateObject:object atIndexPath:[NSIndexPath indexPathForRow:index
                                                                 inSection:0]];
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @end
