@@ -128,15 +128,6 @@ static NSInteger kHDPageTurningInitialIndex = 0;
 -(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
                       dictionary:(NSDictionary *)dictionary;
 
-//分组
-@property(nonatomic,readonly) NSArray * groupResultList;
-
-@property(nonatomic,copy) NSString * groupedCode;
-
-@property(nonatomic,copy) NSString * groupedCodeField;
-
-@property(nonatomic,copy) NSString * groupedValueField;
-
 ////////////////////
 @property(nonatomic,readonly) NSArray * resultList;
 

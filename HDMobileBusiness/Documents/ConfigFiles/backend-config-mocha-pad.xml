@@ -152,8 +152,6 @@
                 <list value="employee_name"/>
             </array>
         </property>
-        <property name="groupedCodeField" value="employee_name"/>
-        <property name="groupedValueField" value="employee_name"/>
         <property name="model" ref="todoListModel"/>
     </bean>
     <!--todoListModel-->

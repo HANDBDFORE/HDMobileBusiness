@@ -21,21 +21,10 @@
 @synthesize searchFields = _searchFields;
 @synthesize currentIndex = _currentIndex;
 
-@synthesize groupedCode = _groupedCode;
-@synthesize groupedCodeField = _groupedCodeField;
-@synthesize groupedValueField = _groupedValueField;
-
-@dynamic groupResultList;
-
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_searchText);
     TT_RELEASE_SAFELY(_searchFields);
-    
-    TT_RELEASE_SAFELY(_groupedCode);
-    TT_RELEASE_SAFELY(_groupedCodeField);
-    TT_RELEASE_SAFELY(_groupedValueField);
-    
     [super dealloc];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
