@@ -188,7 +188,10 @@
         return;
     }
     [super selectedTableCellForCurrentRecord];
-    HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
+    HDSplitViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
+    
+    guider.pageTurningService = self.model;
+    
     [guider perform];
 }
 @end

@@ -39,7 +39,7 @@
 #import "HDPersonListDataSource.h"
 
 #import "HDTodoListService.h"
-
+#import "HDTodoListSearchService.h"
 //pad
 #import "HDSplitViewController.h"
 
@@ -100,6 +100,7 @@
     
     [map from:@"tt://todoListService" toViewController:[HDTodoListService class]];
     
+    [map from:@"tt://todoListSearchService" toViewController:[HDTodoListSearchService class]];
     //done list classes
     [map from:@"tt://doneListViewController" toViewController:[HDDoneListViewController class]];
     

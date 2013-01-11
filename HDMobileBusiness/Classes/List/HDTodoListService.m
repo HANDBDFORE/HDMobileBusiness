@@ -9,24 +9,22 @@
 #import "HDTodoListModel.h"
 #import "HDTodoListService.h"
 
-@interface HDTodoListService()
-
-@property(nonatomic,copy)NSString * searchText;
-
-@end
+//@interface HDTodoListService()
+//
+//
+//@end
 
 @implementation HDTodoListService
 
-@synthesize searchText = _searchText;
-@synthesize searchFields = _searchFields;
+//@synthesize searchText = _searchText;
+//@synthesize searchFields = _searchFields;
 @synthesize currentIndex = _currentIndex;
 
-- (void)dealloc
-{
-    TT_RELEASE_SAFELY(_searchText);
-    TT_RELEASE_SAFELY(_searchFields);
-    [super dealloc];
-}
+//- (void)dealloc
+//{
+//
+//    [super dealloc];
+//}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (id)init
@@ -34,7 +32,7 @@
     self = [super init];
     if (self) {
         _vectorRange = NSMakeRange(0, 0);
-        _currentIndex = kHDPageTurningInitialIndex;
+        _currentIndex = 0;
     }
     return self;
 }
@@ -42,19 +40,20 @@
 
 -(NSArray *)resultList
 {
-    NSIndexSet * matchedIndexSet = [[self.model resultList] indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-        BOOL matchFlag = YES;
-        if (self.searchText) {
-            BOOL searchMatchFlag = NO;
-            for (NSString * key in self.searchFields) {
-                searchMatchFlag = searchMatchFlag || [[obj valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-            }
-            matchFlag = matchFlag && searchMatchFlag;
-        }
-        return matchFlag;
-    }];
-    
-    return [[self.model resultList] objectsAtIndexes:matchedIndexSet];
+    return [self.model resultList];
+    //    NSIndexSet * matchedIndexSet = [[self.model resultList] indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+    //        BOOL matchFlag = YES;
+    //        if (self.searchText) {
+    //            BOOL searchMatchFlag = NO;
+    //            for (NSString * key in self.searchFields) {
+    //                searchMatchFlag = searchMatchFlag || [[obj valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
+    //            }
+    //            matchFlag = matchFlag && searchMatchFlag;
+    //        }
+    //        return matchFlag;
+    //    }];
+    //
+    //    return [[self.model resultList] objectsAtIndexes:matchedIndexSet];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -66,15 +65,6 @@
     [status isEqualToString:kRecordError];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-#pragma mark ListModel Query
-- (void)search:(NSString*)text
-{
-    [self cancel];
-    self.searchText = text;
-    self.currentIndex = kHDPageTurningInitialIndex;
-    [self didFinishLoad];
-}
 
 #pragma mark ListModel Submit
 -(void)submitRecordsAtIndexPaths:(NSArray *)indexPaths
@@ -138,7 +128,10 @@
 -(id)current
 {
     if ( [self effectiveRecordCount] > 0) {
-        return [self.resultList objectAtIndex:self.currentIndex];
+        NSDictionary * record = [self.resultList objectAtIndex:self.currentIndex];
+        if([self isEffectiveRecord:record]){
+            return record;
+        }
     }
     return nil;
 }
@@ -146,9 +139,6 @@
 
 -(NSUInteger)currentIndex
 {
-    if (![self isEffectiveRecord:[self.resultList objectAtIndex:_currentIndex]]) {
-        [self next];
-    }
     if (self.resultList.count < _currentIndex) {
         _currentIndex = self.resultList.count - 1;
     }
@@ -161,6 +151,7 @@
     _currentIndex = currentIndex;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 -(id)next
 {
     if ([self hasNext]) {
@@ -229,12 +220,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark TTModelDelegate functions
--(void)model:(id<TTModel>)model didUpdateObject:(id)object atIndexPath:(NSIndexPath *)indexPath
+-(void)model:(id<TTModel>)model didDeleteObject:(id)object atIndexPath:(NSIndexPath *)indexPath
 {
-    NSUInteger index = [self.resultList indexOfObject:object];
-    [self didUpdateObject:object atIndexPath:[NSIndexPath indexPathForRow:index
-                                                                inSection:0]];
+    if (indexPath.row < _currentIndex) {
+        _currentIndex --;
+    }
+    [super model:model didDeleteObject:object atIndexPath:indexPath];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "HDMobileBusinessPadTests.h"
+#import "HDTodoListSearchService.h"
+#import "HDTodoListModel.h"
 
 @implementation HDMobileBusinessPadTests
 
@@ -26,7 +28,15 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in HDMobileBusinessPadTests");
+    HDTodoListSearchService * service = [[HDTodoListSearchService alloc]init];
+    id<HDListModelSubmit,HDListModelQuery>  model = [[[HDTodoListModel alloc] init] autorelease];
+    service.model = model;
+
+    [service search:@"999"];
+    STAssertTrue([[service resultList] count] > 0, @"can't find result with 999");
+    [service search:nil];
+    STAssertNil([service resultList], @"result is not nil");
+    
 }
 
 @end

@@ -122,6 +122,12 @@
                                                                 inSection:0]];
 }
 
+-(void)model:(id<TTModel>)model didUpdateObject:(id)object atIndexPath:(NSIndexPath *)indexPath
+{
+    NSUInteger index = [self.resultList indexOfObject:object];
+    [self didUpdateObject:object atIndexPath:[NSIndexPath indexPathForRow:index
+                                                                inSection:0]];
+}
 #pragma -mark TTModel protocol
 -(BOOL)isLoaded
 {

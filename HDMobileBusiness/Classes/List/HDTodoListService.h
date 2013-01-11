@@ -12,10 +12,7 @@
 
 @interface HDTodoListService : HDBaseService <HDPageTurning>
 {
-    NSMutableArray * _resultList;
-    NSString * _searchText;
-    
-    NSRange _vectorRange;
+    NSRange _vectorRange;    
 }
 
 @property(nonatomic,retain) id<HDURLRequestModel,HDListModelSubmit,HDListModelQuery> model;
@@ -23,12 +20,7 @@
 //获取结果列表
 @property(nonatomic,readonly) NSArray * resultList;
 
-//查询字段
-@property(nonatomic,retain) NSArray * searchFields;
-
 #pragma -mark service
-//查询
-- (void)search:(NSString*)text;
 
 -(void)removeRecordAtIndex:(NSUInteger) index;
 

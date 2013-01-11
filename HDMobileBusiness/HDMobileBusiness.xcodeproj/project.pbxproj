@@ -36,6 +36,7 @@
 		B3063730168016FD00797963 /* HDBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = B306372F168016FD00797963 /* HDBaseService.m */; };
 		B3063731168016FD00797963 /* HDBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = B306372F168016FD00797963 /* HDBaseService.m */; };
 		B30BF63E15EC95A200DB83E9 /* HDSingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */; };
+		B30C9E1C169EAF0500E9A0FA /* HDTodoListSearchService.m in Sources */ = {isa = PBXBuildFile; fileRef = B30C9E1B169EAF0500E9A0FA /* HDTodoListSearchService.m */; };
 		B310E070169BE4AA009B0208 /* logout256.png in Resources */ = {isa = PBXBuildFile; fileRef = B310E06F169BE4AA009B0208 /* logout256.png */; };
 		B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */; };
 		B31E2EDF15C65FD400880514 /* HDLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED815C65FD400880514 /* HDLoadingViewController.m */; };
@@ -804,6 +805,8 @@
 		B306372E168016F200797963 /* HDBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDBaseService.h; path = Classes/List/HDBaseService.h; sourceTree = SOURCE_ROOT; };
 		B306372F168016FD00797963 /* HDBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDBaseService.m; path = Classes/List/HDBaseService.m; sourceTree = SOURCE_ROOT; };
 		B30BF63D15EC95A200DB83E9 /* HDSingletonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSingletonObject.m; sourceTree = "<group>"; };
+		B30C9E1A169EAF0400E9A0FA /* HDTodoListSearchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListSearchService.h; path = Classes/List/HDTodoListSearchService.h; sourceTree = SOURCE_ROOT; };
+		B30C9E1B169EAF0500E9A0FA /* HDTodoListSearchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTodoListSearchService.m; path = Classes/List/HDTodoListSearchService.m; sourceTree = SOURCE_ROOT; };
 		B310E06F169BE4AA009B0208 /* logout256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout256.png; sourceTree = "<group>"; };
 		B31E2ECF15C65DC900880514 /* HDUserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUserGuideViewController.h; sourceTree = "<group>"; };
 		B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDUserGuideViewController.m; sourceTree = "<group>"; };
@@ -1349,13 +1352,15 @@
 		B30637281680159800797963 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B306372E168016F200797963 /* HDBaseService.h */,
+				B306372F168016FD00797963 /* HDBaseService.m */,
 				B3CB0A4D1679980100BBE7CC /* HDTodoListModel.h */,
 				B3CB0A4E1679980100BBE7CC /* HDTodoListModel.m */,
 				B336DEF1165E0B8400057B95 /* HDTodoListModelStatus.h */,
+				B30C9E1A169EAF0400E9A0FA /* HDTodoListSearchService.h */,
+				B30C9E1B169EAF0500E9A0FA /* HDTodoListSearchService.m */,
 				B30376811600882F00238923 /* HDTodoListService.h */,
 				B30376891600883A00238923 /* HDTodoListService.m */,
-				B306372E168016F200797963 /* HDBaseService.h */,
-				B306372F168016FD00797963 /* HDBaseService.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -3195,6 +3200,7 @@
 				B3E41981168C1C1600CA1533 /* PrettyShadowPlainTableview.m in Sources */,
 				B3E41982168C1C1600CA1533 /* PrettyTabBar.m in Sources */,
 				B3E41983168C1C1600CA1533 /* PrettyToolbar.m in Sources */,
+				B30C9E1C169EAF0500E9A0FA /* HDTodoListSearchService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

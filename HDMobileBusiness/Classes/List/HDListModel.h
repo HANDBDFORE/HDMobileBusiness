@@ -42,13 +42,16 @@ static NSString * kEmployeeID = @"employee_id";
 
 -(void)removeRecord:(id)record;
 
+@optional
+
+-(BOOL)isSubmiting;
+
 @end
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
  *翻页相关,todoListService 和 DoneListModel实现这个接口，HDTodoListService delegate 扩展了这个delegate，所以todoListService类仅声明实现了todoListService delegate
  */
-static NSInteger kHDPageTurningInitialIndex = 0;
 
 @protocol HDPageTurning <NSObject>
 

@@ -31,7 +31,7 @@
     <bean id="todolistTableGuider" create-url="tt://splitViewGuider/todolistTableGuider" mode="create">
         <property name="destinationController" ref="detailController"/>
         <property name="shouldLoadAction" value="true"/>
-        <property name="pageTurningService" ref="todoListService"/>
+        <!--property name="pageTurningService" ref="todoListService"/-->
         <property name="configureParameters">
             <map>
                 <element key="userInfoField" value="record_id"/>
@@ -129,7 +129,14 @@
         <property name="searchViewController" ref="todoListSearchViewController"/>
         <property name="detailViewController" ref="detailController"/>
     </bean>
-    <bean id="todoListNavigator" share="todoListViewController"/>
+    <!--todoListSearchViewController-->
+    <bean id="todoListSearchViewController" create-url="tt://todoListSearchViewController" mode="share">
+        <property name="title" value="待办查询"/>
+        <property name="dataSource" ref="todoListSearchDataSource"/>
+        <property name="model" ref="todoListSearchService"/>
+        <property name="detailViewController" ref="detailController"/>
+    </bean>
+    <!--bean id="todoListNavigator" share="todoListViewController"/-->
     <!--todoListDataSource-->
     <bean id="todoListDataSource" create-url="tt://todoListDataSource" mode="share">
         <property name="itemDictionary">
@@ -143,8 +150,31 @@
         </property>
         <property name="model" ref="todoListService"/>
     </bean>
+    <!--todoListSearchDataSource-->
+    <bean id="todoListSearchDataSource" create-url="tt://todoListDataSource" mode="share">
+        <property name="itemDictionary">
+            <map>
+                <element key="title" value="${workflow_name}:${employee_name}"/>
+                <element key="caption" value="当前节点: ${node_name}"/>
+                <element key="text" value="${workflow_desc}"/>
+                <element key="timestamp" value="${creation_date}"/>
+                <element key="isLate" value="${is_late}"/>
+            </map>
+        </property>
+        <property name="model" ref="todoListSearchService"/>
+    </bean>
     <!--todoListService-->
     <bean id="todoListService" create-url="tt://todoListService" mode="share">
+        <!--property name="searchFields">
+            <array>
+                <list value="order_type"/>
+                <list value="node_name"/>
+                <list value="employee_name"/>
+            </array>
+        </property-->
+        <property name="model" ref="todoListModel"/>
+    </bean>
+    <bean id="todoListSearchService" create-url="tt://todoListSearchService" mode="share">
         <property name="searchFields">
             <array>
                 <list value="order_type"/>
@@ -159,26 +189,6 @@
         <property name="primaryField" value="record_id"/>
         <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false"/>
         <property name="submitURL" value="${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"/>
-    </bean>
-    <!--todoListSearchViewController-->
-    <bean id="todoListSearchViewController" create-url="tt://todoListSearchViewController" mode="share">
-        <property name="title" value="待办查询"/>
-        <property name="dataSource" ref="todoListSearchDataSource"/>
-        <property name="model" ref="todoListService"/>
-        <property name="detailViewController" ref="detailController"/>
-    </bean>
-    <!--todoListSearchDataSource-->
-    <bean id="todoListSearchDataSource" create-url="tt://todoListDataSource" mode="share">
-        <property name="itemDictionary">
-            <map>
-                <element key="title" value="${workflow_name}:${employee_name}"/>
-                <element key="caption" value="当前节点: ${node_name}"/>
-                <element key="text" value="${workflow_desc}"/>
-                <element key="timestamp" value="${creation_date}"/>
-                <element key="isLate" value="${is_late}"/>
-            </map>
-        </property>
-        <property name="model" ref="todoListService"/>
     </bean>
     <!--todoDetailController-->
     <bean id="detailController" create-url="tt://todoDetailViewController" mode="share">

@@ -127,7 +127,8 @@
         [item.state isEqualToString:kRecordError]) {
         self.model.currentIndex = [self.items indexOfObject:item];
 
-        HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
+        HDSplitViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
+        guider.pageTurningService = self.model;
         [guider perform];
     }
 }

@@ -51,9 +51,9 @@
 
 -(void)requestResultMap:(HDResponseMap *)map
 {
-    if(_pageNum==1){
+    if(_pageNum == 1){
         [_resultList removeAllObjects];
-        _currentIndex = kHDPageTurningInitialIndex;
+        _currentIndex = 0;
     }
     [_resultList addObjectsFromArray:map.result];
     
