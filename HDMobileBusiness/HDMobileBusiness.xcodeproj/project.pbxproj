@@ -1588,7 +1588,6 @@
 				B36BDAA115C64777003A4A5D /* HDAppDelegate.m */,
 				B37467EA15C78118003068CB /* Default@2x.png */,
 				B37467E815C78112003068CB /* Default.png */,
-				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				B36BDA9915C64777003A4A5D /* HDMobileBusiness-Info.plist */,
 				B36BDA9A15C64777003A4A5D /* InfoPlist.strings */,
 				B36BDA9D15C64777003A4A5D /* main.m */,
@@ -1645,6 +1644,7 @@
 		B36BDB2B15C64C86003A4A5D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				B38E66EA15C64E6700824CB1 /* Image */,
 			);
 			name = Resources;
