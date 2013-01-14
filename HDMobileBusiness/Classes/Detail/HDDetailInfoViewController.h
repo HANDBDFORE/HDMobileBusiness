@@ -33,6 +33,8 @@
 
 @property (nonatomic,retain) id<HDPageTurning> pageTurningService;
 
+@property (nonatomic, retain) UIView* emptyView;
+
 //调用viewWillAppear，nextRecord，prevRecord时会调用该方法刷新页面
 -(void)loadRecord:(NSDictionary *)record;
 
@@ -47,5 +49,6 @@
 -(NSMutableArray *)createLeftNavigationItems;
 
 -(void)updateNavigationItems;
+
 
 @end

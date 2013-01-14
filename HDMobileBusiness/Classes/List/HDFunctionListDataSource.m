@@ -179,7 +179,7 @@
     TTTableImageItem * logoutItem =
     [TTTableImageItem itemWithText:TTLocalizedString(@"Logout", @"注销")
                           delegate:self
-                          selector:@selector(logout:)];
+                          selector:@selector(logout)];
     
     logoutItem.imageURL = @"bundle://logout256.png";
     logoutItem.imageStyle = TTSTYLE(functionListCellImageStyle);
@@ -189,12 +189,15 @@
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void) logout:(id) sender
+-(void) logout
 {
-    [self clearDatas];
-
-    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"rootGuider"];
-    [guider perform];
+    UIAlertView* cancelAlertView =
+    [[[UIAlertView alloc] initWithTitle:TTLocalizedString(@"Logout", @"注销")
+                                message:TTLocalizedString(@"Are you sure you want to logout?", @"注销")
+                               delegate:self
+                      cancelButtonTitle:TTLocalizedString(@"Yes", @"是")
+                      otherButtonTitles:TTLocalizedString(@"No", @"否"), nil] autorelease];
+    [cancelAlertView show];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -212,5 +215,15 @@
     [[HDApplicationContext shareContext] clearObjects];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark UIAlertViewDelegate
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self clearDatas];
+        HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"rootGuider"];
+        [guider perform];
+    }
+}
 
 @end

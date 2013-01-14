@@ -22,7 +22,7 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@interface HDFunctionListDataSource : TTSectionedDataSource <HDTableDataSource>
+@interface HDFunctionListDataSource : TTSectionedDataSource <HDTableDataSource,UIAlertViewDelegate>
 
 @property(nonatomic,retain) id<HDListModelQuery> model;
 

@@ -36,16 +36,20 @@
     TT_RELEASE_SAFELY(_userInfoField);
     TT_RELEASE_SAFELY(_pageTurningService);
     TT_RELEASE_SAFELY(_currentURL);
+    TT_RELEASE_SAFELY(_popoverItem);
+    
     TT_RELEASE_SAFELY(_nextButtonItem);
     TT_RELEASE_SAFELY(_prevButtonItem);
     TT_RELEASE_SAFELY(_refreshButtonItem);
     TT_RELEASE_SAFELY(_employeeInfoItem);
+    
+    TT_RELEASE_SAFELY(_emptyView);
     [super viewDidUnload];
 }
 
 - (void)loadView{
     [super loadView];
-        
+    
     //user info view
     _userInfoView = [[HDUserInfoView alloc]initWithFrame:TTNavigationFrame()];
     [self.view addSubview:_userInfoView];
@@ -65,10 +69,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self loadCurrentRecord];
+    if (nil == [self.pageTurningService current]) {
+        [self turnToEffectiveRecord];
+    }else{
+        [self loadCurrentRecord];
+    }
 }
 
-#pragma mark - 方法
+#pragma mark -
+#pragma mark page turnning
 -(void)nextRecord{
     [self loadRecord:[self.pageTurningService next]];
 }
@@ -82,33 +91,81 @@
     [self loadRecord:[self.pageTurningService current]];
 }
 
+-(void)turnToEffectiveRecord
+{
+    if ([self.pageTurningService hasNext]) {
+        [self nextRecord];
+    }else{
+        [self prevRecord];
+    }
+}
+
 -(void)loadRecord:(NSDictionary *)record{
     //TODO:  here 应该只处理record，showEmoty什么的交给update来做比较好
     if (nil == record) {
         [self showEmpty:YES];
-    }
-    self.title = nil;
-
-    NSMutableDictionary * recordDictionary = [NSMutableDictionary dictionaryWithDictionary:record];
-    [recordDictionary setValue:[HDHTTPRequestCenter baseURLPath] forKey:@"base_url"];
-    
-    _userInfoView.employeeUrlPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
-    
-    self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
-    
-//    _employeeInfoItem.title = [record valueForKey:self.userInfoField];
-    
-    [self updateNavigationItems];
-
-    if(self.currentURL){
-        [self openURL:[NSURL URLWithString:self.currentURL]];
     }else{
-        [self showError:YES];
+        [self showEmpty:NO];
+        self.title = nil;
+        
+        NSMutableDictionary * recordDictionary = [NSMutableDictionary dictionaryWithDictionary:record];
+        [recordDictionary setValue:[HDHTTPRequestCenter baseURLPath] forKey:@"base_url"];
+        
+        _userInfoView.employeeUrlPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
+        
+        self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
+        
+        //    _employeeInfoItem.title = [record valueForKey:self.userInfoField];
+        [self openURL:[NSURL URLWithString:self.currentURL]];
+        [self updateNavigationItems];
+    }
+}
+
+-(void)showError:(BOOL)show
+{
+    [self updateNavigationItems];
+    [_webView loadHTMLString:@"<h1>Error</h1>" baseURL:nil];
+}
+
+-(void)showEmpty:(BOOL)show
+{
+    [self updateNavigationItems];
+    self.currentURL = nil;
+    self.title = @"没有记录";
+    if (show) {
+        UIImage* image = TTIMAGE(@"bundle://Three20.bundle/images/empty.png");
+        if (image) {
+            TTErrorView* emptyView = [[[TTErrorView alloc] initWithTitle:self.title
+                                                                subtitle:nil
+                                                                   image:image] autorelease];
+            emptyView.backgroundColor = TTSTYLEVAR(tablePlainBackgroundColor);
+            self.emptyView = emptyView;
+        } else {
+            self.emptyView = nil;
+        }
+    } else {
+        self.emptyView = nil;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)setEmptyView:(UIView*)view {
+    if (view != _emptyView) {
+        if (_emptyView) {
+            [_emptyView removeFromSuperview];
+            TT_RELEASE_SAFELY(_emptyView);
+        }
+        _emptyView = [view retain];
+        if (_emptyView) {
+            _emptyView.frame = self.view.frame;
+            _emptyView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+            [self.view addSubview:_emptyView];
+        }
     }
 }
 
 -(void)updateNavigationItems
-{
+{    
     _nextButtonItem.enabled = [self.pageTurningService hasNext];
     _prevButtonItem.enabled = [self.pageTurningService hasPrev];
     
@@ -139,18 +196,6 @@
         [items addObject:_employeeInfoItem];
     }
     return items;
-}
-
--(void)showError:(BOOL)show
-{
-    [self updateNavigationItems];
-    [_webView loadHTMLString:@"<h1>Error</h1>" baseURL:nil];
-}
-
--(void)showEmpty:(BOOL)show
-{
-    [self updateNavigationItems];
-    [_webView loadHTMLString:@"<h1>Empty</h1>" baseURL:nil];
 }
 
 #pragma mark - Split view

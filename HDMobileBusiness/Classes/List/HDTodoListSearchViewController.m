@@ -51,7 +51,7 @@
 {
     [super viewWillDisappear:animated];
     [self revertToolbar];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kEventTodoListSearchViewWillDissappear object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kEventTodoListSearchViewWillDissappear object:nil];
 }
 
 #pragma mark toolbar setting

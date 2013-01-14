@@ -9,23 +9,9 @@
 #import "HDTodoListModel.h"
 #import "HDTodoListService.h"
 
-//@interface HDTodoListService()
-//
-//
-//@end
-
 @implementation HDTodoListService
 
-//@synthesize searchText = _searchText;
-//@synthesize searchFields = _searchFields;
 @synthesize currentIndex = _currentIndex;
-
-//- (void)dealloc
-//{
-//
-//    [super dealloc];
-//}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (id)init
 {
@@ -41,19 +27,6 @@
 -(NSArray *)resultList
 {
     return [self.model resultList];
-    //    NSIndexSet * matchedIndexSet = [[self.model resultList] indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-    //        BOOL matchFlag = YES;
-    //        if (self.searchText) {
-    //            BOOL searchMatchFlag = NO;
-    //            for (NSString * key in self.searchFields) {
-    //                searchMatchFlag = searchMatchFlag || [[obj valueForKey:key] rangeOfString:self.searchText options:NSLiteralSearch|NSCaseInsensitiveSearch|NSNumericSearch].length;
-    //            }
-    //            matchFlag = matchFlag && searchMatchFlag;
-    //        }
-    //        return matchFlag;
-    //    }];
-    //
-    //    return [[self.model resultList] objectsAtIndexes:matchedIndexSet];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -139,7 +112,7 @@
 
 -(NSUInteger)currentIndex
 {
-    if (self.resultList.count < _currentIndex) {
+    if (self.resultList.count <= _currentIndex) {
         _currentIndex = self.resultList.count - 1;
     }
     return _currentIndex;

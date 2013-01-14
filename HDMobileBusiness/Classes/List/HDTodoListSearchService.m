@@ -53,6 +53,13 @@
     return [[self.model resultList] objectsAtIndexes:matchedIndexSet];
 }
 
+-(void)modelDidFinishLoad:(id<HDListModelQuery>)model
+{
+    if (self.searchText) {
+        [super modelDidFinishLoad:model];
+    }
+}
+
 - (void)search:(NSString*)text
 {
     [self cancel];

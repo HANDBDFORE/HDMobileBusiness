@@ -96,12 +96,13 @@
         [self.model removeTheActions];
     }
     
-    [self loadCurrentRecord];
+//    [self turnToEffectiveRecord];
     
     [self.navigationController performSelector:@selector(popViewControllerAnimated:)
                                     withObject:@"YES"
                                     afterDelay:0.5];
 }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)composeControllerShowRecipientPicker:(TTMessageController*)controller {
@@ -134,13 +135,17 @@
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+-(void)showEmpty:(BOOL)show
+{
+    self.submitActionItems = nil;
+    [super showEmpty:show];
+}
 
 -(void)loadRecord:(NSDictionary *) record{
     if (self.editing) {
         return;
     }else{
         [super loadRecord:record];
-        self.title = nil;
         [[self.view viewWithTag:998] removeFromSuperview];
         if (self.shouldLoadAction) {
             self.model.detailRecord = [self.pageTurningService current];
@@ -155,10 +160,6 @@
     [super setEditing:editing animated:animated];
     if (editing) {
         [self updateNavigationItems];
-        
-        if ([self.splitViewController respondsToSelector:@selector(setPresentsWithGesture:)]) {
-            [self.splitViewController setPresentsWithGesture:NO];
-        }
         
         UIControl * __view = [[UIControl alloc]initWithFrame:self.view.frame];
         __view.backgroundColor = RGBACOLOR(0, 0, 0, 0.3);

@@ -16,11 +16,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"待办事项";
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(reload)
-         name:kEventTodoListSearchViewWillDissappear
-         object:nil];
+        //        [[NSNotificationCenter defaultCenter]
+        //         addObserver:self
+        //         selector:@selector(reload)
+        //         name:kEventTodoListSearchViewWillDissappear
+        //         object:nil];
     }
     return self;
 }
@@ -39,7 +39,7 @@
     //tool bar
     [self.navigationController setToolbarHidden:NO animated:YES];
     [self setEditingToolbarItemButtons:NO animated:YES];
-        
+    
     _searchController.searchBar.tintColor = TTSTYLEVAR(searchBarTintColor);
     self.tableView.tableHeaderView = _searchController.searchBar;
     self.tableView.contentOffset = CGPointMake(0, TTToolbarHeight());
@@ -47,15 +47,19 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    [self.navigationController.toolbar setTintColor:TTSTYLEVAR(toolbarTintColor)];
-    [self.navigationController setToolbarHidden:NO animated:YES];
+    if ([_searchController isActive]) {
+        [self.searchViewController viewWillAppear:animated];
+    }else{
+        [super viewWillAppear:animated];
+        [self.navigationController.toolbar setTintColor:TTSTYLEVAR(toolbarTintColor)];
+        [self.navigationController setToolbarHidden:NO animated:YES];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-//    [self.navigationController setToolbarHidden:YES animated:YES];
+    //    [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
