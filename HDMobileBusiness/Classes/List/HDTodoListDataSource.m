@@ -63,11 +63,19 @@
                                     caption:caption
                                        text:text
                                   timestamp:timestamp
-                                   selector:@selector(openURLForItem:)
-                                   delegate:self
                                     message:stautMessage
                                       state:[object valueForKey:kRecordStatus]
                                     warning:warning];
+     
+//                                           :title
+//                                    caption:caption
+//                                       text:text
+//                                  timestamp:timestamp
+//                                   selector:@selector(openURLForItem:)
+//                                   delegate:self
+//                                    message:stautMessage
+//                                      state:[object valueForKey:kRecordStatus]
+//                                    warning:warning];
     item.userInfo = [object valueForKey:kRecordStatus];
     return item;
 }

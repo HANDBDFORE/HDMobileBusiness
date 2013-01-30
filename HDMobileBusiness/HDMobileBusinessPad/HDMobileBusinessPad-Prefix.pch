@@ -11,7 +11,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-
+    #import <QuartzCore/QuartzCore.h>
     #import "Three20/Three20.h"
     #import "Three20/Three20+Additions.h"
 

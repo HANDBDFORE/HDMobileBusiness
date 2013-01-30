@@ -7,6 +7,8 @@
 //
 
 #import "HDListViewController.h"
+#import "TTTableViewController+Select.h"
+#import "HDDetailToolbarViewController.h"
 
 static NSString * kEventTodoListSearchViewWillDissappear = @"TodoListSearchViewWillDissappear";
 
@@ -21,9 +23,9 @@ static NSString * kEventTodoListSearchViewWillDissappear = @"TodoListSearchViewW
 
 @property(nonatomic,assign) id <HDTodoListService,HDPageTurning> model;
 
-@property(nonatomic,retain) TTModelViewController * detailViewController;
+@property(nonatomic,retain) HDDetailToolbarViewController * detailViewController;
 
--(void)setToolbarButtonWithCount:(NSNumber *)count;
+//-(void)setToolbarButtonWithCount:(NSNumber *)count;
 
 #pragma -override
 -(void)refreshButtonPressed:(id) sender;

@@ -26,4 +26,10 @@
 
 -(void)updateNavigationItems;
 
+-(void)resetEditViewAnimated:(BOOL) animated;
+
+-(void)selectedObject:(id)object atIndex:(NSInteger)index;
+
+-(void)deselectedObject:(id)object atIndex:(NSInteger)index;
+
 @end

@@ -9,6 +9,7 @@
 #import "HDBaseTodoListViewController.h"
 #import "HDTodoListDelegate.h"
 #import "HDTodoListModelStatus.h"
+#import "HDTableStatusMessageItem.h"
 
 @implementation HDBaseTodoListViewController
 
@@ -81,8 +82,9 @@
     _refuseButtonItem.enabled = NO;
 }
 
--(void)setToolbarButtonWithCount:(NSNumber *)count
+-(void)setToolbarButtonWithCount
 {
+    NSNumber * count =  [NSNumber numberWithInt:self.tableView.indexPathsForSelectedRows.count];
     if (count.intValue >0) {
         _acceptButtonItem.title = [NSString stringWithFormat:@"%@(%@)",TTLocalizedString(@"Accept", @"同意"),count];
         _acceptButtonItem.enabled = YES;
@@ -99,10 +101,10 @@
     [super setEditing:editing animated:animated];
     [self.detailViewController setEditing:editing animated:animated];
     [self resetToolBarButton];
-    [self selectedTableCellForCurrentRecord];
     if(editing){
         self.editButtonItem.title = TTLocalizedString(@"Cancel", @"取消");
     }else {
+        [self selectedTableCellForCurrentRecord];
         self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
     }
 }
@@ -153,6 +155,7 @@
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
+    [self.detailViewController resetEditViewAnimated:YES];
     NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
     [self.model submitRecordsAtIndexPaths:indexPaths
                                dictionary:@{kComments:text,kAction:_submitAction}];
@@ -165,7 +168,11 @@
     [super modelDidFinishLoad:model];
     self.timeStampLabel.timeStamp = [(TTURLRequestModel *)model loadedTime];
     [self resetToolBarButton];
-    [self selectedTableCellForCurrentRecord];
+    if (self.editing) {
+        [self.detailViewController resetEditViewAnimated:YES];
+    }else{
+        [self selectedTableCellForCurrentRecord];
+    }
 }
 
 -(id<UITableViewDelegate>)createDelegate
@@ -182,16 +189,34 @@
     }
 }
 
+-(void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath
+{
+    HDTableStatusMessageItem * item = object;
+    if (self.editing) {
+        [self setToolbarButtonWithCount];
+        [self.detailViewController selectedObject:object atIndex:indexPath.row];
+    }else{
+        if ([item.state isEqualToString:kRecordNormal] ||
+            [item.state isEqualToString:kRecordError]) {
+            self.model.currentIndex = indexPath.row;
+            [self selectedTableCellForCurrentRecord];
+        }
+    }
+}
+
+-(void)didDeselectObject:(id)object atIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.editing) {
+        [self setToolbarButtonWithCount];
+        [self.detailViewController deselectedObject:object atIndex:indexPath.row];
+    }
+}
+
 -(void)selectedTableCellForCurrentRecord
 {
-    if (self.isEditing) {
-        return;
-    }
     [super selectedTableCellForCurrentRecord];
     HDSplitViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
-    
     guider.pageTurningService = self.model;
-    
     [guider perform];
 }
 @end

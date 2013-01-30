@@ -501,6 +501,7 @@
 		B3D5B851165F4DC40073C9D5 /* HDApplicationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D5B850165F4DC30073C9D5 /* HDApplicationContext.m */; };
 		B3D71B8416030344004E1BFD /* HDPersonListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */; };
 		B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8316030344004E1BFD /* HDPersonListModel.m */; };
+		B3D9D49816B8EFF000C1C644 /* TTTableViewController+Select.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D9D49716B8EFF000C1C644 /* TTTableViewController+Select.m */; };
 		B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */; };
 		B3E12329165486B400C685CB /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12326165486B400C685CB /* HDSplitViewController.m */; };
 		B3E4197B168C1C1600CA1533 /* PrettyCustomViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E41969168C1C1600CA1533 /* PrettyCustomViewTableViewCell.m */; };
@@ -1136,6 +1137,8 @@
 		B3D71B8116030343004E1BFD /* HDPersonListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDPersonListModel.h; path = Classes/List/HDPersonListModel.h; sourceTree = "<group>"; };
 		B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDPersonListDataSource.m; path = Classes/List/HDPersonListDataSource.m; sourceTree = "<group>"; };
 		B3D71B8316030344004E1BFD /* HDPersonListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDPersonListModel.m; path = Classes/List/HDPersonListModel.m; sourceTree = "<group>"; };
+		B3D9D49616B8EFF000C1C644 /* TTTableViewController+Select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TTTableViewController+Select.h"; path = "Classes/List/TTTableViewController+Select.h"; sourceTree = SOURCE_ROOT; };
+		B3D9D49716B8EFF000C1C644 /* TTTableViewController+Select.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TTTableViewController+Select.m"; path = "Classes/List/TTTableViewController+Select.m"; sourceTree = SOURCE_ROOT; };
 		B3D9EFE51608594D00454A5E /* HDDeliverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeliverViewController.h; path = Classes/Compose/HDDeliverViewController.h; sourceTree = "<group>"; };
 		B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDDeliverViewController.m; path = Classes/Compose/HDDeliverViewController.m; sourceTree = "<group>"; };
 		B3E06E2B15D4F388002A54BE /* TodoListUI.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = TodoListUI.rtfd; path = Requirement/TodoList/TodoListUI.rtfd; sourceTree = "<group>"; };
@@ -1738,6 +1741,8 @@
 				B303768A1600883B00238923 /* HDTodoListSearchViewController.m */,
 				B30376831600883000238923 /* HDTodoListViewController.h */,
 				B303768B1600883C00238923 /* HDTodoListViewController.m */,
+				B3D9D49616B8EFF000C1C644 /* TTTableViewController+Select.h */,
+				B3D9D49716B8EFF000C1C644 /* TTTableViewController+Select.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -2440,7 +2445,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HD;
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = hand;
 			};
 			buildConfigurationList = B36BDA8715C64777003A4A5D /* Build configuration list for PBXProject "HDMobileBusiness" */;
@@ -3201,6 +3206,7 @@
 				B3E41982168C1C1600CA1533 /* PrettyTabBar.m in Sources */,
 				B3E41983168C1C1600CA1533 /* PrettyToolbar.m in Sources */,
 				B30C9E1C169EAF0500E9A0FA /* HDTodoListSearchService.m in Sources */,
+				B3D9D49816B8EFF000C1C644 /* TTTableViewController+Select.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3340,6 +3346,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=*]" = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3377,6 +3386,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=*]" = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

@@ -15,29 +15,33 @@
     return UITableViewCellEditingStyleDelete|UITableViewCellEditingStyleInsert;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (tableView.editing) {
-        NSNumber * count =  [NSNumber numberWithInt:tableView.indexPathsForSelectedRows.count];
-        if ([self.controller respondsToSelector:@selector(setToolbarButtonWithCount:)])
-        {
-            [self.controller performSelector:@selector(setToolbarButtonWithCount:) withObject:count];
-        }
-        
-    }else {
-        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    }
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (tableView.editing) {
+//        NSNumber * count =  [NSNumber numberWithInt:tableView.indexPathsForSelectedRows.count];
+//        if ([self.controller respondsToSelector:@selector(setToolbarButtonWithCount:)])
+//        {
+//            [self.controller performSelector:@selector(setToolbarButtonWithCount:) withObject:count];
+//        }
+//        
+//    }else {
+//        [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+//    }
+//}
 
 -(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView.editing) {
-        NSNumber * count =  [NSNumber numberWithInt:tableView.indexPathsForSelectedRows.count];
-        if ([self.controller respondsToSelector:@selector(setToolbarButtonWithCount:)])
-        {
-            [self.controller performSelector:@selector(setToolbarButtonWithCount:) withObject:count];
-        }
-    }
+    id<TTTableViewDataSource> dataSource = (id<TTTableViewDataSource>)tableView.dataSource;
+    id object = [dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
+    
+//    if (tableView.editing) {
+//        NSNumber * count =  [NSNumber numberWithInt:tableView.indexPathsForSelectedRows.count];
+//        if ([self.controller respondsToSelector:@selector(setToolbarButtonWithCount:)])
+//        {
+//            [self.controller performSelector:@selector(setToolbarButtonWithCount:) withObject:count];
+//        }
+//    }
+    [_controller didDeselectObject:object atIndexPath:indexPath];
 }
 
 @end

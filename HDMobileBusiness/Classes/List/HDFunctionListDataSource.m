@@ -164,13 +164,14 @@
 
 -(HDViewGuider *)createGuiderWithItem:(TTTableItem *)item
 {
-    id object = [[HDApplicationContext shareContext]objectForIdentifier:item.userInfo];
     if ([item.userInfo hasPrefix:@"http://"]) {
         HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"functionWebItemGuider"];
         [guider.destinationController setValue:item.userInfo forKeyPath:@"webPageURLTemplate"];
         return guider;
     }
-    return object;
+//    id object =
+    return [[HDApplicationContext shareContext]objectForIdentifier:item.userInfo];
+//    return object;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
