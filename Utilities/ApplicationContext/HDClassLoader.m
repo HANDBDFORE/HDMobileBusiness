@@ -43,6 +43,7 @@
 //pad
 #import "HDSplitViewController.h"
 
+#import "HDDoneListViewController_Pad.h"
 //gloable
 #import "HDResourceLoader.h"
 
@@ -63,9 +64,7 @@
     
     [map from:@"tt://modalGuider/(initWithKeyIdentifier:)" toViewController:[HDModalViewGuider class]];
     
-    [map from:@"tt://showInViewGuider/(initWithKeyIdentifier:)" toViewController:[HDShowInViewGuider class]];
-    
-    [map from:@"tt://splitViewGuider/(initWithKeyIdentifier:)" toViewController:[HDSplitViewGuider class]];
+    [map from:@"tt://showInViewGuider/(initWithKeyIdentifier:)" toViewController:[HDShowInViewGuider class]];   
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////    
     //view Controllers
@@ -132,6 +131,10 @@
     [map from:@"tt://imageLoader" toViewController:[HDImageLoader class]];
     
     if (TTIsPad()) {
+        [map from:@"tt://splitViewGuider/(initWithKeyIdentifier:)" toViewController:[HDSplitViewGuider class]];
+        
+        [map from:@"tt://doneListViewController" toViewController:[HDDoneListViewController_Pad class]];
+        
         [map from:@"tt://splitViewController" toViewController:[HDSplitViewController class]];
     }
 }

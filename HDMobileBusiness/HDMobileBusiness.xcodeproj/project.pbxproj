@@ -69,6 +69,9 @@
 		B34660BC15C678DD00EFDF24 /* HDLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B715C678DD00EFDF24 /* HDLoginModel.m */; };
 		B34660BD15C678DD00EFDF24 /* HDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B915C678DD00EFDF24 /* HDLoginViewController.m */; };
 		B34660BE15C678DD00EFDF24 /* HDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */; };
+		B34C5CA816D092FD009842F7 /* PrettyToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E4197A168C1C1600CA1533 /* PrettyToolbar.m */; };
+		B34C5CB016D09312009842F7 /* PrettyNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E41974168C1C1600CA1533 /* PrettyNavigationBar.m */; };
+		B34C5CB116D0938D009842F7 /* PrettyDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E41971168C1C1600CA1533 /* PrettyDrawing.m */; };
 		B355ADB7168974750076D9A6 /* alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E670315C64E6700824CB1 /* alarm.png */; };
 		B355ADB8168974750076D9A6 /* alarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E670415C64E6700824CB1 /* alarm@2x.png */; };
 		B355ADB9168974750076D9A6 /* arrowdown.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E670515C64E6700824CB1 /* arrowdown.png */; };
@@ -197,7 +200,6 @@
 		B355AE34168974750076D9A6 /* trend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678015C64E6700824CB1 /* trend@2x.png */; };
 		B355AE35168974750076D9A6 /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678115C64E6700824CB1 /* world.png */; };
 		B355AE36168974750076D9A6 /* world@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E678215C64E6700824CB1 /* world@2x.png */; };
-		B355AF5A1689821E0076D9A6 /* backend-config-mocha-pad.xml in Resources */ = {isa = PBXBuildFile; fileRef = B355AF591689821E0076D9A6 /* backend-config-mocha-pad.xml */; };
 		B356A26B15D0A5C900E88192 /* HDCoreStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B356A26A15D0A5C900E88192 /* HDCoreStorage.m */; };
 		B366463E1675BB0300A13F76 /* login_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B366463D1675BB0300A13F76 /* login_pad.png */; };
 		B36646431675BE2900A13F76 /* loginButton_pad.png in Resources */ = {isa = PBXBuildFile; fileRef = B366463F1675BE2900A13F76 /* loginButton_pad.png */; };
@@ -239,8 +241,6 @@
 		B38DC71E15C68C3800FD0C58 /* HDUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71715C68C3800FD0C58 /* HDUserInfoView.m */; };
 		B38E678315C64E6700824CB1 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66EC15C64E6700824CB1 /* launch.png */; };
 		B38E678415C64E6700824CB1 /* launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66ED15C64E6700824CB1 /* launch@2x.png */; };
-		B38E678515C64E6700824CB1 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66EE15C64E6700824CB1 /* login.png */; };
-		B38E678615C64E6700824CB1 /* login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66EF15C64E6700824CB1 /* login@2x.png */; };
 		B38E678715C64E6700824CB1 /* loginButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66F115C64E6700824CB1 /* loginButton.png */; };
 		B38E678815C64E6700824CB1 /* loginButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66F215C64E6700824CB1 /* loginButton@2x.png */; };
 		B38E678915C64E6700824CB1 /* loginButtonActive.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66F315C64E6700824CB1 /* loginButtonActive.png */; };
@@ -471,7 +471,12 @@
 		B398B8A4164A08B60017FCD6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B36BDA9D15C64777003A4A5D /* main.m */; };
 		B398B8A5164A08E70017FCD6 /* HDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B398B7001649F6DC0017FCD6 /* HDAppDelegate.m */; };
 		B398B8A6164A099E0017FCD6 /* mobileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E670015C64E6700824CB1 /* mobileIcon.png */; };
+		B39B41F216CF4A150083DD25 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66EE15C64E6700824CB1 /* login.png */; };
+		B39B41F316CF4A150083DD25 /* login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66EF15C64E6700824CB1 /* login@2x.png */; };
 		B3B67ED2165CC666003B7D11 /* HDShowInViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B67ED1165CC666003B7D11 /* HDShowInViewGuider.m */; };
+		B3C0B68816CF525D00C37A51 /* logout256.png in Resources */ = {isa = PBXBuildFile; fileRef = B310E06F169BE4AA009B0208 /* logout256.png */; };
+		B3C0B69016CF52AB00C37A51 /* mail-5.png in Resources */ = {isa = PBXBuildFile; fileRef = B3E41999168C202000CA1533 /* mail-5.png */; };
+		B3C0B69116CF52AB00C37A51 /* mail-14.png in Resources */ = {isa = PBXBuildFile; fileRef = B3E419A2168C202000CA1533 /* mail-14.png */; };
 		B3C39B15169D5CBC004B8087 /* HDDeliver.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C39B12169D5CBC004B8087 /* HDDeliver.png */; };
 		B3C39B18169D6829004B8087 /* HDUser.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C39B17169D6829004B8087 /* HDUser.png */; };
 		B3C39B1A169D6AB9004B8087 /* HDReject.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C39B19169D6AB8004B8087 /* HDReject.png */; };
@@ -543,6 +548,11 @@
 		B3E60F54165A21D4006C8119 /* HDNavigatorViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60F53165A21D3006C8119 /* HDNavigatorViewGuider.m */; };
 		B3EBF1CA165B327B006E6018 /* HDModalViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF1C9165B327A006E6018 /* HDModalViewGuider.m */; };
 		B3ED3BA31623E71100505988 /* HDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ED3BA21623E71100505988 /* HDWebViewController.m */; };
+		B3F1358F16CF76FA00488FE3 /* HDDoneListViewController_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F1358E16CF76FA00488FE3 /* HDDoneListViewController_Pad.m */; };
+		B3F1359716CF788400488FE3 /* HDDoneListViewController_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F1358E16CF76FA00488FE3 /* HDDoneListViewController_Pad.m */; };
+		B3F51AFE16CF23400098BB06 /* HDTodoListSearchService.m in Sources */ = {isa = PBXBuildFile; fileRef = B30C9E1B169EAF0500E9A0FA /* HDTodoListSearchService.m */; };
+		B3F51B5616CF27700098BB06 /* HDSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E12326165486B400C685CB /* HDSplitViewController.m */; };
+		B3F51B5716CF27D80098BB06 /* HDSplitViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD019416635305002321A9 /* HDSplitViewGuider.m */; };
 		B3FE7AD3166D8A0400CA0B0C /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD2166D8A0400CA0B0C /* icon-72.png */; };
 		B3FE7AD5166D8A0F00CA0B0C /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */; };
 /* End PBXBuildFile section */
@@ -874,7 +884,6 @@
 		B34660B915C678DD00EFDF24 /* HDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoginViewController.m; sourceTree = "<group>"; };
 		B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDLoginViewController.xib; sourceTree = "<group>"; };
 		B34C0B5E168AD55F00EAD1CF /* versions.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = versions.rtf; path = Documents/WorkPlan/versions.rtf; sourceTree = SOURCE_ROOT; };
-		B355AF591689821E0076D9A6 /* backend-config-mocha-pad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-mocha-pad.xml"; sourceTree = "<group>"; };
 		B355AF5C1689849A0076D9A6 /* ApplicationContext.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = ApplicationContext.rtfd; sourceTree = "<group>"; };
 		B355AF5D16898CB40076D9A6 /* VIewGuider.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = VIewGuider.rtfd; sourceTree = "<group>"; };
 		B355AF5E1689918F0076D9A6 /* Model Interface.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = "Model Interface.rtfd"; sourceTree = "<group>"; };
@@ -1114,6 +1123,8 @@
 		B3C39B12169D5CBC004B8087 /* HDDeliver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDDeliver.png; sourceTree = "<group>"; };
 		B3C39B17169D6829004B8087 /* HDUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDUser.png; sourceTree = "<group>"; };
 		B3C39B19169D6AB8004B8087 /* HDReject.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HDReject.png; sourceTree = "<group>"; };
+		B3C6811E16CF2D5A000587B9 /* backend-config-mocha-pad.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "backend-config-mocha-pad.xml"; sourceTree = "<group>"; };
+		B3C6812616CF2D6E000587B9 /* backend-config-mocha.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "backend-config-mocha.xml"; sourceTree = "<group>"; };
 		B3CB0A4D1679980100BBE7CC /* HDTodoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTodoListModel.h; path = Classes/List/HDTodoListModel.h; sourceTree = SOURCE_ROOT; };
 		B3CB0A4E1679980100BBE7CC /* HDTodoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTodoListModel.m; path = Classes/List/HDTodoListModel.m; sourceTree = SOURCE_ROOT; };
 		B3CB5D901676CEB60062E71B /* HDTimeStampLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTimeStampLabel.h; path = HDViews/HDTimeStampLabel.h; sourceTree = "<group>"; };
@@ -1217,6 +1228,8 @@
 		B3EBF1C9165B327A006E6018 /* HDModalViewGuider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDModalViewGuider.m; sourceTree = "<group>"; };
 		B3ED3BA11623E71100505988 /* HDWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDWebViewController.h; sourceTree = "<group>"; };
 		B3ED3BA21623E71100505988 /* HDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDWebViewController.m; sourceTree = "<group>"; };
+		B3F1358D16CF76FA00488FE3 /* HDDoneListViewController_Pad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDoneListViewController_Pad.h; path = Classes/List/HDDoneListViewController_Pad.h; sourceTree = SOURCE_ROOT; };
+		B3F1358E16CF76FA00488FE3 /* HDDoneListViewController_Pad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDDoneListViewController_Pad.m; path = Classes/List/HDDoneListViewController_Pad.m; sourceTree = SOURCE_ROOT; };
 		B3FE7ACE166D89CF00CA0B0C /* padIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = padIcon.png; sourceTree = "<group>"; };
 		B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "padIcon@2x.png"; sourceTree = "<group>"; };
 		B3FE7AD2166D8A0400CA0B0C /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "../icon-72.png"; sourceTree = "<group>"; };
@@ -1676,6 +1689,8 @@
 				B3037698160088A000238923 /* HDDoneListModel.m */,
 				B3037696160088A000238923 /* HDDoneListViewController.h */,
 				B3037699160088A100238923 /* HDDoneListViewController.m */,
+				B3F1358D16CF76FA00488FE3 /* HDDoneListViewController_Pad.h */,
+				B3F1358E16CF76FA00488FE3 /* HDDoneListViewController_Pad.m */,
 			);
 			name = DoneList;
 			path = Classes/DoneList;
@@ -1993,8 +2008,9 @@
 		B38E685915C6526A00824CB1 /* ConfigFiles */ = {
 			isa = PBXGroup;
 			children = (
+				B3C6811E16CF2D5A000587B9 /* backend-config-mocha-pad.xml */,
+				B3C6812616CF2D6E000587B9 /* backend-config-mocha.xml */,
 				B2307430166739AB00DFF2E0 /* backend-config-juice.xml */,
-				B355AF591689821E0076D9A6 /* backend-config-mocha-pad.xml */,
 			);
 			path = ConfigFiles;
 			sourceTree = "<group>";
@@ -2604,12 +2620,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C0B69016CF52AB00C37A51 /* mail-5.png in Resources */,
+				B3C0B69116CF52AB00C37A51 /* mail-14.png in Resources */,
+				B3C0B68816CF525D00C37A51 /* logout256.png in Resources */,
+				B39B41F216CF4A150083DD25 /* login.png in Resources */,
+				B39B41F316CF4A150083DD25 /* login@2x.png in Resources */,
 				320B6C86F11D9990244A9731 /* Three20.bundle in Resources */,
 				B36BDA9C15C64777003A4A5D /* InfoPlist.strings in Resources */,
 				B38E678315C64E6700824CB1 /* launch.png in Resources */,
 				B38E678415C64E6700824CB1 /* launch@2x.png in Resources */,
-				B38E678515C64E6700824CB1 /* login.png in Resources */,
-				B38E678615C64E6700824CB1 /* login@2x.png in Resources */,
 				B38E678715C64E6700824CB1 /* loginButton.png in Resources */,
 				B38E678815C64E6700824CB1 /* loginButton@2x.png in Resources */,
 				B38E678915C64E6700824CB1 /* loginButtonActive.png in Resources */,
@@ -2938,7 +2957,6 @@
 				B36646451675BE2900A13F76 /* loginButtonActive_pad.png in Resources */,
 				B36646461675BE2900A13F76 /* loginButtonActive_pad@2x.png in Resources */,
 				B36646481675C81E00A13F76 /* login_pad@2x.png in Resources */,
-				B355AF5A1689821E0076D9A6 /* backend-config-mocha-pad.xml in Resources */,
 				B3E419AF168C243600CA1533 /* order-history256.png in Resources */,
 				B3E419B1168C245700CA1533 /* Rank-History128.png in Resources */,
 				B3E419B3168C246B00CA1533 /* Search-Male-User128.png in Resources */,
@@ -3023,6 +3041,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B34C5CB116D0938D009842F7 /* PrettyDrawing.m in Sources */,
+				B34C5CB016D09312009842F7 /* PrettyNavigationBar.m in Sources */,
+				B34C5CA816D092FD009842F7 /* PrettyToolbar.m in Sources */,
+				B3F1359716CF788400488FE3 /* HDDoneListViewController_Pad.m in Sources */,
+				B3F51B5716CF27D80098BB06 /* HDSplitViewGuider.m in Sources */,
+				B3F51B5616CF27700098BB06 /* HDSplitViewController.m in Sources */,
+				B3F51AFE16CF23400098BB06 /* HDTodoListSearchService.m in Sources */,
 				B3CB5D941676D18F0062E71B /* HDTimeStampLabel.m in Sources */,
 				B36BDA9E15C64777003A4A5D /* main.m in Sources */,
 				B36BDAA215C64777003A4A5D /* HDAppDelegate.m in Sources */,
@@ -3207,6 +3232,7 @@
 				B3E41983168C1C1600CA1533 /* PrettyToolbar.m in Sources */,
 				B30C9E1C169EAF0500E9A0FA /* HDTodoListSearchService.m in Sources */,
 				B3D9D49816B8EFF000C1C644 /* TTTableViewController+Select.m in Sources */,
+				B3F1358F16CF76FA00488FE3 /* HDDoneListViewController_Pad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

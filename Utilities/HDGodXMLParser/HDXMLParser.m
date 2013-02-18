@@ -48,8 +48,8 @@
 }
 
 -(BOOL)parse{
-    NSData * data = [NSData dataWithContentsOfFile:@"Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-mocha-pad.xml"];
-//    NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(xmlPath)];
+//    NSData * data = [NSData dataWithContentsOfFile:@"Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-mocha.xml"];
+    NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(xmlPath)];
     NSXMLParser *parser = [[NSXMLParser alloc]initWithData:data]; //设置XML数据
     [parser setShouldProcessNamespaces:NO];
     [parser setShouldReportNamespacePrefixes:NO];

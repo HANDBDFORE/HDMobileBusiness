@@ -56,12 +56,6 @@
     }
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    //    [self.navigationController setToolbarHidden:YES animated:YES];
-}
-
 //////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark edit status
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated
@@ -70,7 +64,6 @@
     [self setEditingToolbarItemButtons:editing animated:animated];
     [self setEnableSearchBar:!editing animated:animated];
     [self.navigationItem setHidesBackButton:editing animated:animated];
-    
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////

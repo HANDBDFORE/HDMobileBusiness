@@ -14,7 +14,6 @@
 {
     UIBarButtonItem * _nextButtonItem;
     UIBarButtonItem * _prevButtonItem;
-    UIBarButtonItem * _refreshButtonItem;
     UIBarButtonItem * _employeeInfoItem;
 
     HDUserInfoView *_userInfoView;

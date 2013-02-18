@@ -14,7 +14,7 @@
 #import "HDLoadingViewController.h"
 #import "HDUserGuideViewController.h"
 
-#import "HDSplitViewController.h"
+//#import "HDSplitViewController.h"
 
 @class HDDefaultStyleSheet;
 

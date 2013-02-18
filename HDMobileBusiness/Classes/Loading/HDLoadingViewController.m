@@ -9,6 +9,9 @@
 #import "HDLoadingViewController.h"
 #import "HDResourceLoader.h"
 #import "HDLoginViewController.h"
+
+static  NSString* configFileName = @"ios-backend-config-mocha";
+
 @interface HDLoadingViewController ()
 
 @end
@@ -28,9 +31,8 @@
         [_retryButton setUserInteractionEnabled:YES];
     }else {
         //开始发请求
-        NSString *fileUrl = [NSString stringWithFormat:@"%@ios-backend-config-mocha-pad.xml",[HDHTTPRequestCenter baseURLPath]];
-
-        NSURL *url = [NSURL URLWithString:fileUrl];
+        NSString *fileURL = [self configFileURL];
+        NSURL *url = [NSURL URLWithString:fileURL];
         NSMutableURLRequest *postRequest = [[[NSMutableURLRequest alloc]initWithURL:url]autorelease];
         [postRequest setHTTPMethod:@"GET"];
         [postRequest setTimeoutInterval:30];
@@ -115,26 +117,27 @@
                         }else {
                             //最终状态
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                //                            [self loadClass];
-                                //                            [self loadResource];
                                 [self dismissModalViewControllerAnimated:NO];
                                 [self showLoginView];
                             });
-                            
-                            
                         }
                     }
                 }
             }
         };
-        
         [NSURLConnection sendAsynchronousRequest:postRequest
                                            queue:queue
                                completionHandler:completionHandler];
-        
-        
     }
-    
+}
+
+-(NSString *)configFileURL
+{
+    if (TTIsPad()) {
+        return [NSString stringWithFormat:@"%@%@-pad.xml",[HDHTTPRequestCenter baseURLPath],configFileName];
+    }else{
+        return [NSString stringWithFormat:@"%@%@.xml",[HDHTTPRequestCenter baseURLPath],configFileName];
+    }
 }
 
 -(BOOL)pingStage1{

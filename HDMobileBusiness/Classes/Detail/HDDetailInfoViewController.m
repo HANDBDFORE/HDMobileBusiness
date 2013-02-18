@@ -40,7 +40,6 @@
     
     TT_RELEASE_SAFELY(_nextButtonItem);
     TT_RELEASE_SAFELY(_prevButtonItem);
-    TT_RELEASE_SAFELY(_refreshButtonItem);
     TT_RELEASE_SAFELY(_employeeInfoItem);
     
     TT_RELEASE_SAFELY(_emptyView);
@@ -62,8 +61,6 @@
     //prev button
     _prevButtonItem = [[UIBarButtonItem alloc]initWithImage:TTIMAGE(@"bundle://Three20.bundle/images/backIcon.png") style:UIBarButtonItemStyleBordered target:self action:@selector(prevRecord)];
     
-    //refresh button
-    _refreshButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadCurrentRecord)];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -101,7 +98,6 @@
 }
 
 -(void)loadRecord:(NSDictionary *)record{
-    //TODO:  here 应该只处理record，showEmoty什么的交给update来做比较好
     if (nil == record) {
         [self showEmpty:YES];
     }else{
@@ -115,7 +111,7 @@
         
         self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
         
-        //    _employeeInfoItem.title = [record valueForKey:self.userInfoField];
+        _employeeInfoItem.title = [record valueForKey:self.userInfoField];
         [self openURL:[NSURL URLWithString:self.currentURL]];
         [self updateNavigationItems];
     }
@@ -131,8 +127,8 @@
 {
     [self updateNavigationItems];
     self.currentURL = nil;
-    self.title = @"没有记录";
     if (show) {
+        self.title = @"没有记录";
         UIImage* image = TTIMAGE(@"bundle://Three20.bundle/images/empty.png");
         if (image) {
             TTErrorView* emptyView = [[[TTErrorView alloc] initWithTitle:self.title
@@ -165,7 +161,7 @@
 }
 
 -(void)updateNavigationItems
-{    
+{
     _nextButtonItem.enabled = [self.pageTurningService hasNext];
     _prevButtonItem.enabled = [self.pageTurningService hasPrev];
     
@@ -189,9 +185,14 @@
 -(NSMutableArray *)createRightNavigationItems
 {
     NSMutableArray * items = [NSMutableArray array];
+    if (!TTIsPad()) {
+        [items addObjectsFromArray: @[_nextButtonItem,_prevButtonItem]];
+    }
+    
     if (_refreshButtonItem) {
         [items addObject:_refreshButtonItem];
     }
+    
     if ([self.pageTurningService currentIndexPath]) {
         [items addObject:_employeeInfoItem];
     }

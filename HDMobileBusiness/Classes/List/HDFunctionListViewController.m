@@ -15,7 +15,7 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.title = @"功能列表";
         self.variableHeightRows = YES;
-        self.clearsSelectionOnViewWillAppear = NO;
+        self.clearsSelectionOnViewWillAppear = !TTIsPad();
     }
     return self;
 }

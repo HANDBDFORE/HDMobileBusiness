@@ -16,6 +16,8 @@
     TT_RELEASE_SAFELY(_headerView);
     TT_RELEASE_SAFELY(_activityLabel);
     TT_RELEASE_SAFELY(_activityItem);
+    TT_RELEASE_SAFELY(_refreshButtonItem);
+
     [super dealloc];
 }
 
@@ -57,8 +59,12 @@
     [[TTActivityLabel alloc]initWithFrame:CGRectZero
                                     style:TTActivityLabelStyleBlackBezel
                                      text:TTLocalizedString(@"Loading...", @"")];
-    _activityLabel.center =self.view.center;
-    _activityItem = [[UIBarButtonItem alloc]initWithCustomView:_activityLabel];
+    _activityItem = [[UIBarButtonItem alloc]initWithCustomView:_activityLabel];    
+    
+    //refresh button
+    _refreshButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadCurrentRecord)];
+
+    self.navigationItem.rightBarButtonItem = _refreshButtonItem;
 }
 
 - (void)viewDidUnload {
@@ -112,6 +118,7 @@
 -(void)showLoading:(BOOL)show
 {
     if (show) {
+        _activityLabel.frame = self.view.frame;
         [self.view addSubview:_activityLabel];
     }else{
         [_activityLabel removeFromSuperview];
@@ -121,7 +128,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)webViewDidStartLoad:(UIWebView*)webView {
     [self showLoading:YES];
-//    self.navigationItem.titleView  = _activityLabel;
 }
 
 
@@ -172,7 +178,6 @@
     }
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)openURL:(NSURL*)URL {
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
@@ -186,5 +191,8 @@
     [_webView loadRequest:request];
 }
 
+-(void)loadCurrentRecord{
+    [self reload];
+}
 
 @end

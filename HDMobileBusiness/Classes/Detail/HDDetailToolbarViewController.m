@@ -25,6 +25,7 @@
 
 @implementation HDDetailToolbarViewController
 
+@synthesize spaceItem = _spaceItem;
 #pragma mark - life cycle
 #pragma mark -
 
@@ -34,17 +35,24 @@
     TT_RELEASE_SAFELY(_submitActionItems);
     TT_RELEASE_SAFELY(_editBackgroundView);
     TT_RELEASE_SAFELY(_editRecordsView);
+    TT_RELEASE_SAFELY(_spaceItem);
     [super viewDidUnload];
 }
 
--(void)viewDidLoad
+-(void)loadView
 {
-    [super viewDidLoad];
+    [super loadView];
     _editBackgroundView = [[UIControl alloc]initWithFrame:self.view.frame];
     _editBackgroundView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     _editBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    [self.navigationController setToolbarHidden:NO animated:YES];
+}
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,6 +61,27 @@
     return self;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - iphone
+-(UIBarButtonItem *)spaceItem
+{
+    if (!_spaceItem) {
+        _spaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    }
+    return _spaceItem;
+}
+
+-(void)updateToolbarItems
+{
+    if (!TTIsPad()) {
+        NSMutableArray * items = [NSMutableArray arrayWithCapacity:5];
+        for (id item in self.submitActionItems) {
+            [items addObject:item];
+            [items addObject:self.spaceItem];
+        }
+        [items removeLastObject];
+        self.toolbarItems = items;
+    }
+}
 
 #pragma mark - submit record
 -(void)toolbarButtonPressed: (id)sender
@@ -112,9 +141,7 @@
         //删除动作
         [self.model removeTheActions];
     }
-    
-//    [self turnToEffectiveRecord];
-    
+        
     [self.navigationController performSelector:@selector(popViewControllerAnimated:)
                                     withObject:@"YES"
                                     afterDelay:0.5];
@@ -136,7 +163,7 @@
             
             UIBarButtonItem * actionButton =
             [[[UIBarButtonItem alloc]initWithTitle:[actionRecord valueForKey:@"action_title"]
-                                             style:UIBarButtonItemStylePlain
+                                             style:UIBarButtonItemStyleBordered
                                             target:self
                                             action:@selector(toolbarButtonPressed:)] autorelease];
             actionButton.tag = [[actionRecord valueForKey:@"action_id"] intValue];
@@ -149,6 +176,7 @@
         }
         self.submitActionItems = itemButtons;
         [self updateNavigationItems];
+        [self updateToolbarItems];
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -199,9 +227,8 @@
     }else{
         self.title = @"请选择需要审批的记录";
     }
-    
-    
 }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(NSArray *)createLeftNavigationItems
@@ -220,7 +247,7 @@
     if (self.isEditing) {
         return nil;
     }
-    if(self.shouldLoadAction){
+    if(self.shouldLoadAction&&TTIsPad()){
         NSMutableArray * items = [super createRightNavigationItems];
         [items addObjectsFromArray:self.submitActionItems];
         return items;

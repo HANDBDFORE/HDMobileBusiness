@@ -19,7 +19,7 @@
     if (self) {
         // Custom initialization
         self.variableHeightRows = YES;
-        self.clearsSelectionOnViewWillAppear = NO;
+        self.clearsSelectionOnViewWillAppear = !TTIsPad();
     }
     return self;
 }
@@ -69,7 +69,9 @@
     UISwipeGestureRecognizer *removeRecordRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwiped:)]autorelease];
     removeRecordRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.tableView addGestureRecognizer:removeRecordRecognizer];
-    [self selectedTableCellForCurrentRecord];
+    if (TTIsPad()) {
+        [self selectedTableCellForCurrentRecord];
+    }
 }
 
 #pragma  -mark toolbar Buttons
@@ -104,7 +106,9 @@
     if(editing){
         self.editButtonItem.title = TTLocalizedString(@"Cancel", @"取消");
     }else {
-        [self selectedTableCellForCurrentRecord];
+        if (TTIsPad()) {
+            [self selectedTableCellForCurrentRecord];
+        }
         self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
     }
 }
@@ -170,7 +174,7 @@
     [self resetToolBarButton];
     if (self.editing) {
         [self.detailViewController resetEditViewAnimated:YES];
-    }else{
+    }else if (TTIsPad()) {
         [self selectedTableCellForCurrentRecord];
     }
 }
@@ -215,8 +219,10 @@
 -(void)selectedTableCellForCurrentRecord
 {
     [super selectedTableCellForCurrentRecord];
-    HDSplitViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
-    guider.pageTurningService = self.model;
+    HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
+    if ([guider respondsToSelector:@selector(setPageTurningService:)]) {
+        [guider performSelector:@selector(setPageTurningService:) withObject:self.model];
+    }
     [guider perform];
 }
 @end

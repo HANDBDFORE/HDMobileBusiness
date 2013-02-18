@@ -166,12 +166,15 @@
 {
     if ([item.userInfo hasPrefix:@"http://"]) {
         HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"functionWebItemGuider"];
-        [guider.destinationController setValue:item.userInfo forKeyPath:@"webPageURLTemplate"];
+        if (TTIsPad()) {
+            [guider.destinationController setValue:item.userInfo forKeyPath:@"webPageURLTemplate"];
+        }else{
+            guider.destinationController = item.userInfo;
+        }
+        
         return guider;
     }
-//    id object =
     return [[HDApplicationContext shareContext]objectForIdentifier:item.userInfo];
-//    return object;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
