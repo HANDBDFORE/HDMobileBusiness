@@ -62,7 +62,7 @@
     _activityItem = [[UIBarButtonItem alloc]initWithCustomView:_activityLabel];    
     
     //refresh button
-    _refreshButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadCurrentRecord)];
+    _refreshButtonItem = [[UIBarButtonItem alloc]initWithImage:TTIMAGE(@"bundle://HDRefresh.png") style:UIBarButtonItemStylePlain target:self action:@selector(loadCurrentRecord)];
 
     self.navigationItem.rightBarButtonItem = _refreshButtonItem;
 }

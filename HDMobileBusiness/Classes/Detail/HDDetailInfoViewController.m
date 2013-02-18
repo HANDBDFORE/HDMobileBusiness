@@ -111,7 +111,7 @@
         
         self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
         
-        _employeeInfoItem.title = [record valueForKey:self.userInfoField];
+//        _employeeInfoItem.title = [record valueForKey:self.userInfoField];
         [self openURL:[NSURL URLWithString:self.currentURL]];
         [self updateNavigationItems];
     }

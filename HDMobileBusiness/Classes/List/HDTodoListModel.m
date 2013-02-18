@@ -52,7 +52,6 @@ static NSString * kSQLNull = @"null";
         self.cacheKey = nil;
         //TODO:这里如果使用didFinish，会导致下拉刷新界面出问题，如果直接load会在分组时进入列表出现延迟现象。之后还是用load比较好，重新设计分组的交互。
         [self load:TTURLRequestCachePolicyDefault more:NO];
-//        [self didFinishLoad];
         return;
     }
     if([self shouldSubmit]){
@@ -270,7 +269,6 @@ static NSString * kSQLNull = @"null";
 -(void) refreshResultList:(NSArray *) responseList
 {
     if(0 < [[[responseList lastObject] allKeys]count]){
-        //TODO:需要确定action,comments字段是服务端传递还是这里强制写死
         //服务端传递:服务端可以自由使用变量名,提交参数意义明确,缺点是需要强制传递空参数,增加数据传输量.
         //客户端指定:不需要服务端传递空参数,缺点是提交参数被写死了.
         [responseList setValue:kRecordNormal forKey:kRecordStatus];

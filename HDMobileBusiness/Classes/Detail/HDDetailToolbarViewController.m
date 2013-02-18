@@ -159,20 +159,8 @@
 {
     if ([self.model.resultList count] > 0) {
         NSMutableArray * itemButtons = [NSMutableArray array];
-        for (NSDictionary * actionRecord in self.model.resultList) {
-            
-            UIBarButtonItem * actionButton =
-            [[[UIBarButtonItem alloc]initWithTitle:[actionRecord valueForKey:@"action_title"]
-                                             style:UIBarButtonItemStyleBordered
-                                            target:self
-                                            action:@selector(toolbarButtonPressed:)] autorelease];
-            actionButton.tag = [[actionRecord valueForKey:@"action_id"] intValue];
-            actionButton.image = TTIMAGE([actionRecord valueForKey:@"action_image"]);
-            if ([[actionRecord valueForKey:@"action_type"] isEqualToString:kActionTypeDeliver]) {
-                actionButton.action = @selector(deliver:);
-            }
-            
-            [itemButtons addObject:actionButton];
+        for (NSDictionary * record in self.model.resultList) {
+            [itemButtons addObject:[self createToolbarButtonWithRecord:record]];
         }
         self.submitActionItems = itemButtons;
         [self updateNavigationItems];
@@ -180,11 +168,36 @@
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(UIBarButtonItem *)createToolbarButtonWithRecord:(NSDictionary *)record
+{
+    UIBarButtonItem * actionButton =
+    [[[UIBarButtonItem alloc]initWithTitle:[record valueForKey:@"action_title"]
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(toolbarButtonPressed:)] autorelease];
+    actionButton.tag = [[record valueForKey:@"action_id"] intValue];
+    actionButton.image = TTIMAGE([record valueForKey:@"action_image"]);
+    
+    if (actionButton.image) {
+        actionButton.title = nil;
+        actionButton.style = UIBarButtonItemStylePlain;
+    }
+    
+    if ([[record valueForKey:@"action_type"] isEqualToString:kActionTypeDeliver]) {
+        actionButton.action = @selector(deliver:);
+    }
+
+    return actionButton;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 -(void)showEmpty:(BOOL)show
 {
     self.submitActionItems = nil;
     [super showEmpty:show];
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)loadRecord:(NSDictionary *) record{
     if (self.editing) {

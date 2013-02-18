@@ -66,16 +66,7 @@
                                     message:stautMessage
                                       state:[object valueForKey:kRecordStatus]
                                     warning:warning];
-     
-//                                           :title
-//                                    caption:caption
-//                                       text:text
-//                                  timestamp:timestamp
-//                                   selector:@selector(openURLForItem:)
-//                                   delegate:self
-//                                    message:stautMessage
-//                                      state:[object valueForKey:kRecordStatus]
-//                                    warning:warning];
+
     item.userInfo = [object valueForKey:kRecordStatus];
     return item;
 }
@@ -122,8 +113,7 @@
 #pragma mark UITable datasource
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TODO:这里之后需要统一keyPath
-    NSString * localStatus = [[self.items objectAtIndex:indexPath.row] valueForKeyPath:@"state"];
+    NSString * localStatus = [(HDTableStatusMessageItem *)[self.items objectAtIndex:indexPath.row] state];
     
     return ([localStatus isEqualToString:kRecordNormal] ||
             [localStatus isEqualToString:kRecordError]);
