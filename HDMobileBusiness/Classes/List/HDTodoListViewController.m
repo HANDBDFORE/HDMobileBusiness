@@ -16,11 +16,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"待办事项";
-        //        [[NSNotificationCenter defaultCenter]
-        //         addObserver:self
-        //         selector:@selector(reload)
-        //         name:kEventTodoListSearchViewWillDissappear
-        //         object:nil];
     }
     return self;
 }

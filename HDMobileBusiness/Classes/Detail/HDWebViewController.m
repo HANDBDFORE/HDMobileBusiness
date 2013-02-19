@@ -109,7 +109,10 @@
         [[UIApplication sharedApplication] openURL:request.URL];
         return NO;
     }
-    
+    if ([[TTNavigator navigator].URLMap objectForURL:[request.URL absoluteString]]) {
+        [[TTNavigator navigator]openURLs:[request.URL absoluteString],nil];
+        return NO;
+    }
     [_loadingURL release];
     _loadingURL = [request.URL retain];
     return YES;
@@ -124,12 +127,11 @@
         [_activityLabel removeFromSuperview];
     }
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+
 - (void)webViewDidStartLoad:(UIWebView*)webView {
     [self showLoading:YES];
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)webViewDidFinishLoad:(UIWebView*)webView {
@@ -146,6 +148,7 @@
     TT_RELEASE_SAFELY(_loadingURL);
     [self webViewDidFinishLoad:webView];
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSURL*)URL {

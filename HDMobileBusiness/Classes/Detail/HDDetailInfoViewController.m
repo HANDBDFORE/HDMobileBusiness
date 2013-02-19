@@ -110,7 +110,8 @@
         _userInfoView.employeeUrlPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
         
         self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
-        
+        //TODO:使用测试地址测试js提交
+//        [self openURL:[NSURL URLWithString:@"http://172.20.0.72:8180/hr_new/callJSTest.html"]];
 //        _employeeInfoItem.title = [record valueForKey:self.userInfoField];
         [self openURL:[NSURL URLWithString:self.currentURL]];
         [self updateNavigationItems];

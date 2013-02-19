@@ -33,6 +33,8 @@ static NSString * kActionTypeDeliver = @"DELIVER";
 
 - (void)viewDidUnload
 {
+    [[TTNavigator navigator].URLMap removeURL:@"jscall://post/(postWithTag:)"];
+    [[TTNavigator navigator].URLMap removeURL:@"jscall://deliver"];
     TT_RELEASE_SAFELY(_selectedAction)
     TT_RELEASE_SAFELY(_submitActionItems);
     TT_RELEASE_SAFELY(_editBackgroundView);
@@ -47,18 +49,24 @@ static NSString * kActionTypeDeliver = @"DELIVER";
     _editBackgroundView = [[UIControl alloc]initWithFrame:self.view.frame];
     _editBackgroundView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     _editBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    
+    TTURLMap *map = [TTNavigator navigator].URLMap;
+    [map from:@"jscall://post/(postWithTag:)" toObject:self selector:@selector(postWithTag:)];
+    [map from:@"jscall://deliver" toObject:self selector:@selector(deliver)];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-    [self.navigationController setToolbarHidden:NO animated:YES];
+    [self.navigationController setToolbarHidden:!self.shouldLoadAction animated:YES];
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        _shouldLoadAction = YES;
     }
     return self;
 }
@@ -86,11 +94,15 @@ static NSString * kActionTypeDeliver = @"DELIVER";
 }
 
 #pragma mark - submit record
+-(void)postWithTag:(NSString *)tag
+{
+    [self toolbarButtonPressed:@{@"tag":tag}];
+}
+
 -(void)toolbarButtonPressed: (id)sender
 {
     //设置当前审批动作
-    self.selectedAction = [NSString stringWithFormat:@"%i",[sender tag]];
-    
+    self.selectedAction = [sender valueForKey:@"tag"];    
     //准备默认审批内容
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     
@@ -108,7 +120,7 @@ static NSString * kActionTypeDeliver = @"DELIVER";
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark deliver
--(void)deliver:(id)sender
+-(void)deliver
 {
     HDViewGuider * guider = [[HDApplicationContext shareContext] objectForIdentifier:@"todoDetailDeliverGuider"];
     [guider perform];
@@ -141,10 +153,14 @@ static NSString * kActionTypeDeliver = @"DELIVER";
     if ([self.pageTurningService respondsToSelector:@selector(submitRecordsAtIndexPaths:dictionary:)]) {
         [self.pageTurningService submitCurrentRecordWithDictionary:dictionary];
     }
-        
+    //TODO:这里需要确认交互设计，直接弹出需要反复进入明细不方便，如果直接在明细页面自动翻页，记录过多的情况下会有较长时间的列表提交动画。目前暂时使用原来的直接弹出到列表的方式
+//    if ([self.pageTurningService next]) {
+//        [self loadCurrentRecord];
+//    }else{
     [self.navigationController performSelector:@selector(popViewControllerAnimated:)
                                     withObject:@"YES"
                                     afterDelay:0.5];
+//    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -176,7 +192,7 @@ static NSString * kActionTypeDeliver = @"DELIVER";
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void) loadActions:(NSDictionary *) record
+-(void)loadActions:(NSDictionary *) record
 {  
     NSData * actionsData = [[record valueForKey:@"actions"]dataUsingEncoding:NSUTF8StringEncoding];
     HDDataToJSONConvertor * convertor = [[[HDDataToJSONConvertor alloc]init]autorelease];
@@ -207,7 +223,7 @@ static NSString * kActionTypeDeliver = @"DELIVER";
     }
     
     if ([[record valueForKey:@"action_type"] isEqualToString:kActionTypeDeliver]) {
-        actionButton.action = @selector(deliver:);
+        actionButton.action = @selector(deliver);
     }
     
     return actionButton;

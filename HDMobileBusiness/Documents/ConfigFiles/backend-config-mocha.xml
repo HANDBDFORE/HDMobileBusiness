@@ -157,6 +157,7 @@
         <property name="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
         <property name="webPageURLTemplate" value="${base_url}${screen_name}"/>
         <property name="pageTurningService" ref="todoListService"/>
+        <property name="shouldLoadAction" value="true"/>
     </bean>
     <!--doneListViewController-->
     <bean id="doneListViewController" create-url="tt://doneListViewController" mode="share">

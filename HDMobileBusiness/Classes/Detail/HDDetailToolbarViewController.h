@@ -15,6 +15,8 @@
 
 @property(nonatomic,readonly) UIBarButtonItem * spaceItem;
 
+@property(nonatomic,assign) BOOL shouldLoadAction;
+
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated;
 
 -(NSMutableArray *)createRightNavigationItems;
