@@ -9,6 +9,8 @@
 #import "HDDetailToolbarViewController.h"
 #import "HDTableStatusMessageItemCell.h"
 
+static NSString * kActionTypeDeliver = @"DELIVER";
+
 @interface HDDetailToolbarViewController ()
 
 @property(nonatomic,retain) NSString * selectedAction;
@@ -138,8 +140,6 @@
 {
     if ([self.pageTurningService respondsToSelector:@selector(submitRecordsAtIndexPaths:dictionary:)]) {
         [self.pageTurningService submitCurrentRecordWithDictionary:dictionary];
-        //删除动作
-        [self.model removeTheActions];
     }
         
     [self.navigationController performSelector:@selector(popViewControllerAnimated:)
@@ -155,17 +155,39 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark TTModel delegate functions
--(void)modelDidFinishLoad:(id <TTModel>)model
+
+-(void)showEmpty:(BOOL)show
 {
-    if ([self.model.resultList count] > 0) {
-        NSMutableArray * itemButtons = [NSMutableArray array];
-        for (NSDictionary * record in self.model.resultList) {
-            [itemButtons addObject:[self createToolbarButtonWithRecord:record]];
-        }
-        self.submitActionItems = itemButtons;
+    self.submitActionItems = nil;
+    [super showEmpty:show];
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)loadRecord:(NSDictionary *) record{
+    if (self.editing) {
+        return;
+    }else if (nil == self.pageTurningService) {
         [self updateNavigationItems];
-        [self updateToolbarItems];
+        [self openURL:[NSURL URLWithString:self.webPageURLTemplate]];
+    }else{
+        [super loadRecord:record];
+        [self loadActions:record];
     }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void) loadActions:(NSDictionary *) record
+{  
+    NSData * actionsData = [[record valueForKey:@"actions"]dataUsingEncoding:NSUTF8StringEncoding];
+    HDDataToJSONConvertor * convertor = [[[HDDataToJSONConvertor alloc]init]autorelease];
+    
+    NSMutableArray * itemButtons = [NSMutableArray array];
+    for (NSDictionary * actionRecord in [convertor convert:actionsData error:nil]) {
+        [itemButtons addObject:[self createToolbarButtonWithRecord:actionRecord]];
+    }
+    self.submitActionItems = itemButtons;
+    [self updateNavigationItems];
+    [self updateToolbarItems];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -187,31 +209,8 @@
     if ([[record valueForKey:@"action_type"] isEqualToString:kActionTypeDeliver]) {
         actionButton.action = @selector(deliver:);
     }
-
+    
     return actionButton;
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)showEmpty:(BOOL)show
-{
-    self.submitActionItems = nil;
-    [super showEmpty:show];
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)loadRecord:(NSDictionary *) record{
-    if (self.editing) {
-        return;
-    }else if (nil == self.pageTurningService) {
-        [self updateNavigationItems];
-        [self openURL:[NSURL URLWithString:self.webPageURLTemplate]];
-    }else{
-        [super loadRecord:record];
-        if (self.shouldLoadAction) {
-            self.model.detailRecord = [self.pageTurningService current];
-            [self.model load:TTURLRequestCachePolicyDefault more:NO];
-        }
-    }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -223,8 +222,7 @@
         [self updateNavigationItems];
         [self.view addSubview:self.editBackgroundView];
     }else{
-        [self.editBackgroundView removeFromSuperview];
-        
+        [self.editBackgroundView removeFromSuperview];   
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -260,7 +258,7 @@
     if (self.isEditing) {
         return nil;
     }
-    if(self.shouldLoadAction&&TTIsPad()){
+    if(self.submitActionItems&&TTIsPad()){
         NSMutableArray * items = [super createRightNavigationItems];
         [items addObjectsFromArray:self.submitActionItems];
         return items;

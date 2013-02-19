@@ -252,7 +252,6 @@
 		B3893CE9164A3810004E326A /* loadingAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = B3893CE7164A3810004E326A /* loadingAlert.png */; };
 		B3893CEC164A404E004E326A /* HDPadLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3893CEB164A404E004E326A /* HDPadLoginViewController.xib */; };
 		B38DC71A15C68C3800FD0C58 /* HDDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */; };
-		B38DC71C15C68C3800FD0C58 /* HDDetailToolbarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */; };
 		B38DC71D15C68C3800FD0C58 /* HDDetailToolbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71515C68C3800FD0C58 /* HDDetailToolbarViewController.m */; };
 		B38DC71E15C68C3800FD0C58 /* HDUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71715C68C3800FD0C58 /* HDUserInfoView.m */; };
 		B38E678315C64E6700824CB1 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = B38E66EC15C64E6700824CB1 /* launch.png */; };
@@ -433,7 +432,6 @@
 		B398B819164A08140017FCD6 /* HDSinglePickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037640160049D400238923 /* HDSinglePickerTextField.m */; };
 		B398B81B164A08140017FCD6 /* HDDeliverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */; };
 		B398B81D164A08140017FCD6 /* HDDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */; };
-		B398B81F164A08140017FCD6 /* HDDetailToolbarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */; };
 		B398B821164A08140017FCD6 /* HDDetailToolbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71515C68C3800FD0C58 /* HDDetailToolbarViewController.m */; };
 		B398B823164A08140017FCD6 /* HDUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B38DC71715C68C3800FD0C58 /* HDUserInfoView.m */; };
 		B398B825164A08140017FCD6 /* HDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3ED3BA21623E71100505988 /* HDWebViewController.m */; };
@@ -949,8 +947,6 @@
 		B3893CEB164A404E004E326A /* HDPadLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDPadLoginViewController.xib; sourceTree = "<group>"; };
 		B38DC70E15C68C3800FD0C58 /* HDDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailInfoViewController.h; sourceTree = "<group>"; };
 		B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailInfoViewController.m; sourceTree = "<group>"; };
-		B38DC71215C68C3800FD0C58 /* HDDetailToolbarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailToolbarModel.h; sourceTree = "<group>"; };
-		B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailToolbarModel.m; sourceTree = "<group>"; };
 		B38DC71415C68C3800FD0C58 /* HDDetailToolbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailToolbarViewController.h; sourceTree = "<group>"; };
 		B38DC71515C68C3800FD0C58 /* HDDetailToolbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailToolbarViewController.m; sourceTree = "<group>"; };
 		B38DC71615C68C3800FD0C58 /* HDUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUserInfoView.h; sourceTree = "<group>"; };
@@ -1798,8 +1794,6 @@
 			children = (
 				B38DC70E15C68C3800FD0C58 /* HDDetailInfoViewController.h */,
 				B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */,
-				B38DC71215C68C3800FD0C58 /* HDDetailToolbarModel.h */,
-				B38DC71315C68C3800FD0C58 /* HDDetailToolbarModel.m */,
 				B38DC71415C68C3800FD0C58 /* HDDetailToolbarViewController.h */,
 				B38DC71515C68C3800FD0C58 /* HDDetailToolbarViewController.m */,
 				B38DC71615C68C3800FD0C58 /* HDUserInfoView.h */,
@@ -3131,7 +3125,6 @@
 				B34660BC15C678DD00EFDF24 /* HDLoginModel.m in Sources */,
 				B34660BD15C678DD00EFDF24 /* HDLoginViewController.m in Sources */,
 				B38DC71A15C68C3800FD0C58 /* HDDetailInfoViewController.m in Sources */,
-				B38DC71C15C68C3800FD0C58 /* HDDetailToolbarModel.m in Sources */,
 				B38DC71D15C68C3800FD0C58 /* HDDetailToolbarViewController.m in Sources */,
 				B38DC71E15C68C3800FD0C58 /* HDUserInfoView.m in Sources */,
 				B356A26B15D0A5C900E88192 /* HDCoreStorage.m in Sources */,
@@ -3212,7 +3205,6 @@
 				B398B819164A08140017FCD6 /* HDSinglePickerTextField.m in Sources */,
 				B398B81B164A08140017FCD6 /* HDDeliverViewController.m in Sources */,
 				B398B81D164A08140017FCD6 /* HDDetailInfoViewController.m in Sources */,
-				B398B81F164A08140017FCD6 /* HDDetailToolbarModel.m in Sources */,
 				B398B821164A08140017FCD6 /* HDDetailToolbarViewController.m in Sources */,
 				B398B823164A08140017FCD6 /* HDUserInfoView.m in Sources */,
 				B398B825164A08140017FCD6 /* HDWebViewController.m in Sources */,

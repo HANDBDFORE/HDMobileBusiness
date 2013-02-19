@@ -28,7 +28,6 @@
 #import "HDDetailInfoViewController.h"
 //todo detail
 #import "HDDetailToolbarViewController.h"
-#import "HDDetailToolbarModel.h"
 //navigation
 #import "HDNavigationController.h"
 //web view
@@ -111,8 +110,6 @@
     [map from:@"tt://doneDetailViewController" toViewController:[HDDetailInfoViewController class]];
     
     [map from:@"tt://todoDetailViewController" toViewController:[HDDetailToolbarViewController class]];
-    
-    [map from:@"tt://detailToolbarModel" toViewController:[HDDetailToolbarModel class]];
     
     //post controller
     [map from:@"tt://postController" toViewController:[TTPostController class]];

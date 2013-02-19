@@ -24,10 +24,5 @@
 -(BOOL)SQLinsertNewRecords:(FMDatabase *)db recordList:(NSArray *) recordList;
 -(BOOL)SQLColumnMapInsert:(FMDatabase *)db recordList:(NSArray *) recordList;
 -(BOOL)SQLDataPoolInsert:(FMDatabase *)db recordList:(NSArray *) recordList;
-//插入Action记录
--(BOOL)SQLinsertActions:(FMDatabase *)db recordList:(NSArray *) recordList;
-//删除Action记录操作
--(BOOL)SQLremoveActions:(FMDatabase *)db recordList:(NSArray *) recordList;
-//查询Action操作
--(FMResultSet *)SQLqueryAction:(FMDatabase *)db conditions:(NSDictionary *) conditions;
+
 @end

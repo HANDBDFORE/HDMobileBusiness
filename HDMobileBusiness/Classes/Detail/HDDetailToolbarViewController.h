@@ -7,16 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HDDetailToolbarModel.h"
 #import "HDDetailInfoViewController.h"
 
 @interface HDDetailToolbarViewController : HDDetailInfoViewController <TTMessageControllerDelegate,TTPostControllerDelegate>
 {
 }
-
-@property(nonatomic,retain) HDDetailToolbarModel * model;
-
-@property(nonatomic,assign) BOOL shouldLoadAction;
 
 @property(nonatomic,readonly) UIBarButtonItem * spaceItem;
 

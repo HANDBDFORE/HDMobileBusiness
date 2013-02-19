@@ -116,41 +116,6 @@
     state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
     return state;
 }
-//查询Action操作
--(FMResultSet *)SQLqueryAction:(FMDatabase *)db conditions:(NSDictionary *) conditions{
-    //不传参会挂掉
-    if (!conditions) return nil;
-    NSDictionary *mapDic = [self mapDicL2R:db];
-    NSString *PK = [mapDic objectForKey:@"column0"];
-    NSString *currentSql = [NSString stringWithFormat:@"select recordkey %@,actionid action_id ,actiontitle action_title,actiontype action_type from Action where recordkey = :%@ order by actionid",PK,PK];
-    NSDictionary *PKDic = [NSDictionary dictionaryWithObject:[conditions objectForKey:PK] forKey:PK];
-    FMResultSet * rs=[db executeQuery:currentSql withParameterDictionary:PKDic];
-    return  rs;
-}
-//插入Action操作
--(BOOL)SQLinsertActions:(FMDatabase *)db recordList:(NSArray *) recordList{
-    //不传参会挂掉
-    if (!recordList) return NO;
-    NSDictionary *mapDic = [self mapDicL2R:db];
-    NSString *PK = [mapDic objectForKey:@"column0"];
-    NSString *currentSql = [NSString stringWithFormat:@"insert into Action (recordkey,actionid,actiontitle,actiontype) values(:%@,:action_id,:action_title,:action_type)",PK];
-    BOOL state = YES;
-    state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
-    return state;
-}
-//删除Action记录操作
--(BOOL)SQLremoveActions:(FMDatabase *)db recordList:(NSArray *) recordList{
-    //不传参会挂掉
-    if (!recordList) return NO;
-    //组装新List
-    NSDictionary *mapDic = [self mapDicL2R:db];
-    NSString *PK = [mapDic objectForKey:@"column0"];
-    NSArray *newrecordList = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:[[recordList objectAtIndex:0] objectForKey:PK] forKey:PK]];
-    NSString *currentSql = [NSString stringWithFormat:@"delete from Action where recordkey =:%@",PK];
-    BOOL state = YES;
-    state = [self execLineInTransaction:db recordList:newrecordList currentSql:currentSql];
-    return state;
-}
 #pragma mark- 私有方法 -
 
 //当行SQL执行，传入 数据库，记录集参数，SQL语句

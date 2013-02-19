@@ -133,13 +133,6 @@
     </bean>
     <!--todoListService-->
     <bean id="todoListService" create-url="tt://todoListService" mode="share">
-        <!--property name="searchFields">
-            <array>
-                <list value="order_type"/>
-                <list value="node_name"/>
-                <list value="employee_name"/>
-            </array>
-        </property-->
         <property name="model" ref="todoListModel"/>
     </bean>
     <bean id="todoListSearchService" create-url="tt://todoListSearchService" mode="share">
@@ -155,7 +148,7 @@
     <!--todoListModel-->
     <bean id="todoListModel" create-url="tt://todoListModel">
         <property name="primaryField" value="record_id"/>
-        <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_todo_list_test/query?_fetchall=true&amp;_autocount=false"/>
+        <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_todo_list_test_5/query?_fetchall=true&amp;_autocount=false"/>
         <property name="submitURL" value="${base_url}modules/ios/ios_test/ios_todo_list_commit.svc"/>
     </bean>
     <!--todoDetailController-->
@@ -164,11 +157,6 @@
         <property name="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
         <property name="webPageURLTemplate" value="${base_url}${screen_name}"/>
         <property name="pageTurningService" ref="todoListService"/>
-        <property name="model" ref="detailToolbarModel"/>
-        <property name="shouldLoadAction" value="true"/>
-    </bean>
-    <bean id="detailToolbarModel" create-url="tt://detailToolbarModel">
-        <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query_5/query?record_id=${record_id}"/>
     </bean>
     <!--doneListViewController-->
     <bean id="doneListViewController" create-url="tt://doneListViewController" mode="share">
@@ -197,9 +185,6 @@
         <property name="userInfoPageURLTemplate" value="${base_url}modules/mobile/hr_lbr_employee.screen?employee_id=${user_id}"/>
         <property name="webPageURLTemplate" value="${base_url}${screen_name}"/>
         <property name="pageTurningService" ref="doneListModel"/>
-    </bean>
-    <bean id="detailToolbarModel" create-url="tt://detailToolbarModel">
-        <property name="queryURL" value="${base_url}autocrud/ios.ios_test.ios_detail_action_query_5/query?record_id=${record_id}"/>
     </bean>
     <!--postController-->
     <bean id="postController" create-url="tt://postController" mode="create"/>

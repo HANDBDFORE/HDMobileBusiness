@@ -38,8 +38,6 @@
     //使用宏释放内存，防止野指针造成crash
     TT_RELEASE_SAFELY(DatabasePool);
     TT_RELEASE_SAFELY(sqlCenter);
-//    [DatabasePool release];
-//    [sqlCenter release];
     [super dealloc];
 }
 #pragma mark-
