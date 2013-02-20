@@ -8,6 +8,11 @@
 
 #import "HDGlobalMetrics.h"
 
+BOOL HDIsInch4()
+{
+    return (568 == (int)[UIScreen mainScreen].bounds.size.height);
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 CGRect HDNavigationFrame() {
     CGRect frame = TTScreenBounds();

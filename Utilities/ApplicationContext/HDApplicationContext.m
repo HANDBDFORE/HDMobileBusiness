@@ -194,6 +194,9 @@
  * Loads the given viewcontroller from the nib
  */
 - (UIViewController*)loadFromNib:(NSString *)nibName withClass:className {
+    if (HDIsInch4()) {
+        nibName = [NSString stringWithFormat:@"%@-568",nibName];
+    }
     UIViewController* newController = [[NSClassFromString(className) alloc]
                                        initWithNibName:nibName bundle:nil];
     

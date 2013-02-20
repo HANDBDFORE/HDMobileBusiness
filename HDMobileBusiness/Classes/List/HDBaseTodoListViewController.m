@@ -220,8 +220,12 @@
 {
     [super selectedTableCellForCurrentRecord];
     HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
+    //TODO:Pad版本考虑直接向目标视图控制器设置model而不是通过guider间接设置
     if ([guider respondsToSelector:@selector(setPageTurningService:)]) {
         [guider performSelector:@selector(setPageTurningService:) withObject:self.model];
+    }
+    if ([guider.destinationController respondsToSelector:@selector(setPageTurningService:)]) {
+        [guider.destinationController performSelector:@selector(setPageTurningService:) withObject:self.model];
     }
     [guider perform];
 }

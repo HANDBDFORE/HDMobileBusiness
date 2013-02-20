@@ -53,7 +53,6 @@
                    self.password,@"user_password",
                    @"简体中文",@"langugae",
                    @"ZHS",@"user_language",
-                   @"N",@"is_ipad", 
                    [self deviceType],@"device_type",
                    @"1",@"company_id",
                    @"41",@"role_id",
@@ -69,7 +68,13 @@
 
 -(NSString *) deviceType
 {
-    return TTIsPad()? @"PAD":@"PHONE";
+    if (TTIsPad()) {
+        return @"iPad";
+    }
+    if (HDIsInch4()) {
+        return @"iPhone5";
+    }
+    return @"iPhone";
 }
 
 //binding

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+BOOL HDIsInch4();
 /**
  * @return the frame below the navigation bar with device orientation factored in.
  */
