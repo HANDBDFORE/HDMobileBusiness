@@ -16,6 +16,9 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		63EF84AE174F0AE500D882F2 /* HDXMLParserCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF84AD174F0AE500D882F2 /* HDXMLParserCenter.m */; };
+		63EF84B1174F377800D882F2 /* HDOriginalXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF84B0174F377800D882F2 /* HDOriginalXMLParser.m */; };
+		63EF84B4174F393800D882F2 /* HDSpringLikeXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF84B3174F393800D882F2 /* HDSpringLikeXMLParser.m */; };
 		B2307431166739AB00DFF2E0 /* backend-config-juice.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-juice.xml */; };
 		B303763E1600303E00238923 /* HDMessageSingleRecipientField.m in Sources */ = {isa = PBXBuildFile; fileRef = B303763D1600303E00238923 /* HDMessageSingleRecipientField.m */; };
 		B3037641160049D400238923 /* HDSinglePickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037640160049D400238923 /* HDSinglePickerTextField.m */; };
@@ -794,6 +797,13 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../Frameworks/Three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../Frameworks/Three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../Frameworks/Three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		6353CFF0174E109B007866DE /* HDParserProtocal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDParserProtocal.h; sourceTree = "<group>"; };
+		63EF84AC174F0AE500D882F2 /* HDXMLParserCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDXMLParserCenter.h; sourceTree = "<group>"; };
+		63EF84AD174F0AE500D882F2 /* HDXMLParserCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDXMLParserCenter.m; sourceTree = "<group>"; };
+		63EF84AF174F377800D882F2 /* HDOriginalXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDOriginalXMLParser.h; sourceTree = "<group>"; };
+		63EF84B0174F377800D882F2 /* HDOriginalXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDOriginalXMLParser.m; sourceTree = "<group>"; };
+		63EF84B2174F393800D882F2 /* HDSpringLikeXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSpringLikeXMLParser.h; sourceTree = "<group>"; };
+		63EF84B3174F393800D882F2 /* HDSpringLikeXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSpringLikeXMLParser.m; sourceTree = "<group>"; };
 		B2307430166739AB00DFF2E0 /* backend-config-juice.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-juice.xml"; sourceTree = "<group>"; };
 		B303763C1600303E00238923 /* HDMessageSingleRecipientField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDMessageSingleRecipientField.h; path = Classes/Compose/HDMessageSingleRecipientField.h; sourceTree = "<group>"; };
 		B303763D1600303E00238923 /* HDMessageSingleRecipientField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDMessageSingleRecipientField.m; path = Classes/Compose/HDMessageSingleRecipientField.m; sourceTree = "<group>"; };
@@ -2229,8 +2239,15 @@
 		B3D4E20015E60ABB0061ED4D /* HDGodXMLParser */ = {
 			isa = PBXGroup;
 			children = (
+				63EF84AC174F0AE500D882F2 /* HDXMLParserCenter.h */,
+				63EF84AD174F0AE500D882F2 /* HDXMLParserCenter.m */,
+				6353CFF0174E109B007866DE /* HDParserProtocal.h */,
 				B3D4E20115E60AD80061ED4D /* HDXMLParser.h */,
 				B3D4E20215E60AD80061ED4D /* HDXMLParser.m */,
+				63EF84AF174F377800D882F2 /* HDOriginalXMLParser.h */,
+				63EF84B0174F377800D882F2 /* HDOriginalXMLParser.m */,
+				63EF84B2174F393800D882F2 /* HDSpringLikeXMLParser.h */,
+				63EF84B3174F393800D882F2 /* HDSpringLikeXMLParser.m */,
 			);
 			path = HDGodXMLParser;
 			sourceTree = "<group>";
@@ -3171,6 +3188,9 @@
 				B3CB5D971676F0B90062E71B /* HDListViewController.m in Sources */,
 				B3CB0A4F1679980200BBE7CC /* HDTodoListModel.m in Sources */,
 				B3063730168016FD00797963 /* HDBaseService.m in Sources */,
+				63EF84AE174F0AE500D882F2 /* HDXMLParserCenter.m in Sources */,
+				63EF84B1174F377800D882F2 /* HDOriginalXMLParser.m in Sources */,
+				63EF84B4174F393800D882F2 /* HDSpringLikeXMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

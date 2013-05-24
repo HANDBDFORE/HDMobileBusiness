@@ -63,7 +63,7 @@
     }
 }
 #pragma mark - bean
--(void)parserattribute:attributeDict{
+-(void)parserattribute:(NSDictionary *)attributeDict{
     if ([attributeDict objectForKey:@"copy"]) {
         //复制参数
         propertyRefbeans = (NSMutableDictionary *)[(HDObjectPattern *)[_patternes objectForKey:[attributeDict objectForKey:@"copy"]] beans];
