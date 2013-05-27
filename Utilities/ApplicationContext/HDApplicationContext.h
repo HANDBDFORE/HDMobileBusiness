@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "HDSingletonObject.h"
 #import "HDXMLParser.h"
+#import "HDXMLParserCenter.h"
+
 
 //附加到guider里面
 @interface HDApplicationContext : HDSingletonObject

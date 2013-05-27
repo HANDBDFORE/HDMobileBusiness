@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HDParserProtocal.h"
+#import "HDObjectPattern.h"
 
 @interface HDSpringLikeXMLParser : NSObject<HDParserProtocal>
 

@@ -10,8 +10,6 @@
 #import "HDApplicationContext.h"
 #import "HDHTTPRequestCenter.h"
 #import "HDViewGuider.h"
-#import "HDXMLParserCenter.h"
-
 @interface HDLoadingViewController : UIViewController{
     UILabel *_errorSummury;
     UILabel *_errorDetail;

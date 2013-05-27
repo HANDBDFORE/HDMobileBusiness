@@ -46,17 +46,27 @@
     return self;
 }
 
--(BOOL)configWithXmlPath:(NSString *) xmlPath
-{
-    HDXMLParser *parser = [[HDXMLParser alloc]initWithXmlPath:xmlPath];
-    BOOL hasParsedSuccess = [parser parse];
-    if (hasParsedSuccess){
-        for (NSString*key in parser.patternes) {
-            [self setPattern:[parser.patternes objectForKey:key] forIdentifier:key];
-        }
+//Ma's edition
+//-(BOOL)configWithXmlPath:(NSString *) xmlPath
+//{
+//    HDXMLParser *parser = [[HDXMLParser alloc]initWithXmlPath:xmlPath];
+//    BOOL hasParsedSuccess = [parser parse];
+//    if (hasParsedSuccess){
+//        for (NSString*key in parser.patternes) {
+//            [self setPattern:[parser.patternes objectForKey:key] forIdentifier:key];
+//        }
+//    }
+//    [parser release];
+//    return  hasParsedSuccess;
+//}
+
+//Emerson's parsing edition
+-(BOOL)configWithXmlPath:(NSString *) xmlPath{
+    NSDictionary *patternes= [HDXMLParserCenter getParsedPattensWithXMLPath:xmlPath];
+    for (NSString*key in patternes) {
+        [self setPattern:[patternes objectForKey:key] forIdentifier:key];
     }
-    [parser release];
-    return  hasParsedSuccess;
+    return  true;
 }
 
 -(id)objectForIdentifier:(NSString *)identifier

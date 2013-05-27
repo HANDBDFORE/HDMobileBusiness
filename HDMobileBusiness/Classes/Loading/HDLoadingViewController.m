@@ -105,9 +105,6 @@ static  NSString* configFileName = @"ios-backend-config-mocha";
                 }else {
                     BOOL writeSuccess = [data writeToFile:TTPathForDocumentsResource(@"ios-backend-config.xml") atomically:YES];
                     if (writeSuccess) {
-                        //emerson test
-                        [HDXMLParserCenter getParsedPattensWithXMLPath:@"ios-backend-config.xml"];
-                        
                         
                         //在这里解析
                         if (![HDApplicationContext configApplicationContextForXmlPath:@"ios-backend-config.xml"]) {

@@ -27,6 +27,7 @@ static HDXMLParserCenter *instance;
 
 @implementation HDXMLParserCenter
 
+
 -(id)initWithXMLPath:(NSString*)path{
     self = [super init];
     if (self) {
@@ -47,6 +48,8 @@ static HDXMLParserCenter *instance;
     
     if ([instance parse]) {
         id<HDParserProtocal> configParser = [self getParserInstanceWithXMLPath:path ByVersion:[instance getConfigFileVersion]];
+        
+        [configParser parse];
         return [configParser patternes];
     }
     
@@ -69,7 +72,7 @@ static HDXMLParserCenter *instance;
     
 }
 
-//开始解析xml
+//开始解析xml，为了解析出版本号
 -(BOOL)parse{
     //    NSData * data = [NSData dataWithContentsOfFile:@"Users/Leo/Projects/xcode/Hand/HDMobileBusiness/HDMobileBusiness/Documents/ConfigFiles/backend-config-mocha.xml"];
     NSData * data = [NSData dataWithContentsOfFile:TTPathForDocumentsResource(xmlpath)];
