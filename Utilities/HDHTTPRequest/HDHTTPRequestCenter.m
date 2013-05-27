@@ -55,7 +55,7 @@
 #pragma -mark create request use ttRequest
 -(TTURLRequest *)requestWithRequestMap:(HDRequestMap *) map
                                  error:(NSError **) error
-{
+{                 
     //setting url
     if (!map.urlPath) {
         return nil;
@@ -74,6 +74,7 @@
     if (nil == *(error)) {
         //create request
         TTURLRequest * request = [TTURLRequest request];
+        request.shouldHandleCookies=YES;
         request.urlPath = [map.urlPath stringByReplacingSpaceHodlerWithDictionary:@{@"base_url" : [HDHTTPRequestCenter baseURLPath]}];
         [request.parameters setObject:postParameter forKey:@"_request_data"];
         request.cachePolicy = map.cachePolicy;
@@ -84,6 +85,10 @@
         for (id delegate in map.delegates) {
             [request.delegates addObject:delegate];
         }
+        NSLog(@"=============request=============");
+        NSLog(@"URL:%@",[request urlPath]);
+        NSLog(@"DATA:%@",[[NSString alloc] initWithData:[request httpBody] encoding:NSUTF8StringEncoding]);
+        NSLog(@"=============-------=============");
         return request;
     }
     return nil;
@@ -99,7 +104,9 @@
     [[[HDDataToJSONConvertor alloc]initWithNextConvertor:
       [[[HDAuroraResponseConvertor alloc]init]autorelease]
       ]autorelease];
-    
+    NSLog(@"=============response=============");
+    NSLog(@"DATA:%@",[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding]);
+    NSLog(@"=============-------=============");
     id result = [convertor doConvertor:response.data error:error];
     
     HDResponseMap * responseMap = [HDResponseMap map];

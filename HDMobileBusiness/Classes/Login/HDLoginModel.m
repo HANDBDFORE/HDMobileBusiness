@@ -54,8 +54,6 @@
                    @"简体中文",@"langugae",
                    @"ZHS",@"user_language",
                    [self deviceType],@"device_type",
-                   @"1",@"company_id",
-                   @"41",@"role_id",
                    [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"device_token",
                    nil];
 
