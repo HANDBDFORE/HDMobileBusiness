@@ -65,7 +65,8 @@
     </bean>
     <!--loginModel-->
     <bean id="loginModel"  create-url="tt://loginModel" mode="create">
-        <property name="submitURL" value="${base_url}modules/ios/public/login_iphone.svc"/>
+        <!--<property name="submitURL" value="${base_url}modules/ios/public/login_iphone.svc"/>-->
+        <property name="submitURL" value="${base_url}/HMBS/webRoot/modules/mobile/client/ios/login_iphone.svc"/>
     </bean>
     <!--navigationViewController-->
     <bean id="navigationViewController"  create-url="tt://navigator/PrettyNavigationBar/PrettyToolbar" mode="create">
@@ -87,7 +88,8 @@
     </bean>
     <!--functionModel-->
     <bean id="functionModel" create-url="tt://functionModel" mode="share">
-        <property name="queryURL" value="${base_url}autocrud/ios.ios_function_center.ios_function_center_list/query"/>
+        <property name="queryURL" value="
+            autocrud/ios.ios_function_center.ios_function_center_list/query"/>
     </bean>
    
     <!--todoListViewController-->
