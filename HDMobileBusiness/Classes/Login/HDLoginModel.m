@@ -49,12 +49,11 @@
     [self initUsers];
 
     id postdata = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                   self.username,@"user_name",
-                   self.password,@"user_password",
-                   @"简体中文",@"langugae",
-                   @"ZHS",@"user_language",
+                   self.username,@"username",
+                   self.password,@"password",
                    [self deviceType],@"device_type",
-                   [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"device_token",
+                   [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"push_token",
+                   [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"device_Id",
                    nil];
 
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];

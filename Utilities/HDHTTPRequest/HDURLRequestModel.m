@@ -37,11 +37,12 @@
 //        }
         [super request:request didFailLoadWithError:error];
     }
-    if (!error && 0 < [[[responseMap.result lastObject] allKeys]count]) {
+    
+    if (!error && 0 <  [[responseMap.result allKeys]count]) {
         [self requestResultMap:responseMap];
         [super requestDidFinishLoad:request];
     }
-    if (!error && 0 == [[[responseMap.result lastObject] allKeys]count]) {
+    if (!error && 0 == [[responseMap.result allKeys]count]) {
         [self emptyResponse:request];
     }
 }

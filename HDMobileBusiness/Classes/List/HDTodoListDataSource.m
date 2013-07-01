@@ -25,10 +25,10 @@
     self = [super init];
     if (self) {
         self.itemDictionary =
-        @{@"title":@"title",
-        @"caption":@"caption",
-        @"text":@"text",
-        @"timestamp":@"timestamp"};
+        @{@"title":@"item1",
+        @"caption":@"item2",
+        @"text":@"item3",
+        @"timestamp":@"item4"};
     }
     return self;
 }
@@ -47,7 +47,7 @@
     NSString * text = [[_itemDictionary valueForKey:@"text"] stringByReplacingSpaceHodlerWithDictionary:object];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];// HH:mm
     NSDate * timestamp = [dateFormatter dateFromString:[[_itemDictionary valueForKey:@"timestamp"] stringByReplacingSpaceHodlerWithDictionary:object]];
     TT_RELEASE_SAFELY(dateFormatter);
     

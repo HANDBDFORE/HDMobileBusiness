@@ -51,7 +51,7 @@
 -(void)requestResultMap:(HDResponseMap *)map
 {
     [_resultList removeAllObjects];
-    [_resultList addObjectsFromArray:map.result];
+    [_resultList addObjectsFromArray:[[map result] valueForKey:@"list"]];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -91,27 +91,23 @@
 
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
-    NSArray * functionList = [self.model resultList];
+    NSArray * sectionList = [self.model resultList];
     
     NSMutableArray* items = [NSMutableArray array];
     NSMutableArray* sections = [NSMutableArray array];
     NSMutableArray* section = nil;
    
-    for (NSDictionary * record in functionList) {
-        NSString * recordType = [[self.itemDictionary valueForKey:@"typeField"] stringByReplacingSpaceHodlerWithDictionary:record];
+    for (NSDictionary * sectiondata in sectionList) {
         
-        if ([recordType isEqualToString:[self.itemDictionary valueForKey:@"sectionFlag"]]) {
-            NSString * sectionText = [[self.itemDictionary valueForKey:@"sectionText"] stringByReplacingSpaceHodlerWithDictionary:record];
+        NSString * sectionText =  [sectiondata valueForKey:@"title"];
             [sections addObject:sectionText];
             section = [NSMutableArray array];
             [items addObject:section];
-        } else {
-            NSString * text = [[self.itemDictionary valueForKey:@"text"] stringByReplacingSpaceHodlerWithDictionary:record];
-            
-            NSString * imageURL = [[self.itemDictionary valueForKey:@"imageURL"] stringByReplacingSpaceHodlerWithDictionary:record];
-            
-            NSString * URL = [[[self.itemDictionary valueForKey:@"URL"] stringByReplacingSpaceHodlerWithDictionary:record] stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"]}];
-            
+        NSArray * items = [sectiondata valueForKey:@"items"];
+        for (NSDictionary * item in items) {
+            NSString * text = [item valueForKey:@"title"];
+            NSString * imageURL = [item valueForKey:@"image_url"];
+            NSString * URL = [[item valueForKey:@"url"] stringByReplacingSpaceHodlerWithDictionary:@{@"base_url":[[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"]}];
             
             TTTableImageItem * imageItem =
             [TTTableImageItem itemWithText:text
@@ -122,6 +118,7 @@
             imageItem.userInfo = URL;
             [section addObject:imageItem];
         }
+
     }
     
     self.items = items;

@@ -16,3 +16,5 @@
 
 #import "HDDataToStringConvertor.h"
 #import "HDFieldMapConvertor.h"
+
+#import "HDMBSResponseConvertor.h"

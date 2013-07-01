@@ -10,7 +10,7 @@
 
 @interface HDResponseMap : NSObject
 
-@property(nonatomic,retain) id result;
+@property(nonatomic,retain) NSDictionary * result;
 
 @property(nonatomic,retain) NSError * error;
 

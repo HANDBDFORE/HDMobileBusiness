@@ -102,12 +102,12 @@
     // get convertor
     id<HDDataConvertor> convertor =
     [[[HDDataToJSONConvertor alloc]initWithNextConvertor:
-      [[[HDAuroraResponseConvertor alloc]init]autorelease]
+      [[[HDMBSResponseConvertor alloc]init]autorelease]
       ]autorelease];
     NSLog(@"=============response=============");
     NSLog(@"DATA:%@",[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding]);
     NSLog(@"=============-------=============");
-    id result = [convertor doConvertor:response.data error:error];
+    NSDictionary * result = [convertor doConvertor:response.data error:error];
     
     HDResponseMap * responseMap = [HDResponseMap map];
     responseMap.userInfo = request.userInfo;

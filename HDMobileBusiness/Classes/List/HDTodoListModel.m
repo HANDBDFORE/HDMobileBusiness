@@ -10,9 +10,6 @@
 #import "HDCoreStorage.h"
 
 static NSString * kColumnMapKey = @"column1";
-static NSString * kColumnMapColumn = @"column0";
-
-static NSString * kSQLNull = @"null";
 
 @implementation HDTodoListModel
 
@@ -130,28 +127,33 @@ static NSString * kSQLNull = @"null";
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark CoreStorage
+-(void)cleanTable
+{
+    [[HDCoreStorage shareStorage] excute:@selector(SQLCleanTable:) recordList:nil];
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -(NSArray *)queryRecords
 {
-    return [[HDCoreStorage shareStorage] query:@selector(SQLqueryToDoList:)
+    return [[HDCoreStorage shareStorage] query:@selector(SQLQueryToDoList:)
                                     conditions:nil];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)updateRecords:(NSArray *) recordList
 {
-    [[HDCoreStorage shareStorage] excute:@selector(SQLupdateRecords:recordList:) recordList:recordList];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLUpdateRecords:recordList:) recordList:recordList];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)insertRecords:(NSArray *) recordList
 {
-    [[HDCoreStorage shareStorage] excute:@selector(SQLDataPoolInsert:recordList:) recordList:recordList];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLInsertRecords:recordList:) recordList:recordList];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)removeRecords:(NSArray *) recordList
 {
-    [[HDCoreStorage shareStorage] excute:@selector(SQLremoveRecords:recordList:) recordList:recordList];
+    [[HDCoreStorage shareStorage] excute:@selector(SQLRemoveRecords:recordList:) recordList:recordList];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -207,7 +209,7 @@ static NSString * kSQLNull = @"null";
             [_submitList addObject:record];
         }
     }
-    [self setIconBageNumber];
+    [self setIconBadgeNumber];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -240,7 +242,7 @@ static NSString * kSQLNull = @"null";
     }else {
         //debug:删除数据需要包装成数组
         [self removeRecords:@[submitObject]];
-        [self setIconBageNumber];
+        [self setIconBadgeNumber];
         [self didDeleteObject:submitObject
                   atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
         [_resultList removeObject:submitObject];
@@ -258,7 +260,7 @@ static NSString * kSQLNull = @"null";
 
 -(void)queryResponse:(HDResponseMap*) resultMap
 {
-    [self refreshResultList:resultMap.result];
+    [self refreshResultList:[resultMap.result objectForKey:@"list"]];
     TT_RELEASE_SAFELY(_loadingRequest);
     [self didFinishLoad];
 }
@@ -267,43 +269,8 @@ static NSString * kSQLNull = @"null";
 //对比传入的 result 和当前的 _resultList 生成新的结果列表
 -(void) refreshResultList:(NSArray *) responseList
 {
-    if(0 < [[[responseList lastObject] allKeys]count]){
-        //服务端传递:服务端可以自由使用变量名,提交参数意义明确,缺点是需要强制传递空参数,增加数据传输量.
-        //客户端指定:不需要服务端传递空参数,缺点是提交参数被写死了.
-        [responseList setValue:kRecordNormal forKey:kRecordStatus];
-        [responseList setValue:kSQLNull forKey:kRecordServerMessage];
-        [responseList setValue:kSQLNull forKey:kAction];
-        [responseList setValue:kSQLNull forKey:kComments];
-        [responseList setValue:kSQLNull forKey:kEmployeeID];
-        
-        [self refreshColumnMap:[responseList lastObject]];
-        [self refreshDataBaseWithList:responseList];
-        [self loadLocalRecords];
-    }
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)refreshColumnMap:(NSDictionary *) record
-{
-    if (![self isMatchColumnMapWithDictionary:record]) {
-        [[HDCoreStorage shareStorage]excute:@selector(SQLCleanTable:) recordList:nil];
-        [self loadLocalRecords];
-        
-        NSMutableArray * columnKeyList = [NSMutableArray array];
-        //set locked field
-        [columnKeyList addObject:@{kColumnMapKey:_primaryField,kColumnMapColumn:@"column0"}];
-        //set dinymic field from Column5
-        int i =5;
-        
-        NSMutableDictionary * mutableRecord =  [[record mutableCopy] autorelease];
-        [mutableRecord removeObjectForKey:_primaryField];
-        NSArray * keys = [mutableRecord allKeys];
-        for (NSString * key in keys) {
-            [columnKeyList addObject:@{kColumnMapKey : key,kColumnMapColumn:[NSString stringWithFormat:@"column%i",i]}];
-            i++;
-        }
-        [[HDCoreStorage shareStorage] excute:@selector(SQLColumnMapInsert:recordList:) recordList:columnKeyList];
-    }
+    [self refreshDataBaseWithList:responseList];
+    [self loadLocalRecords];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -326,39 +293,12 @@ static NSString * kSQLNull = @"null";
 
 -(void)refreshDataBaseWithList:(NSArray *) remoteRecords
 {
-    NSArray * localRecords = [self queryRecords];
-    if (localRecords.count == 0) {
-        [self insertRecords:remoteRecords];
-        return;
-    }
-    
-    NSMutableArray * diffArray = [[localRecords mutableCopy] autorelease];
-    NSMutableArray * newArray = [[remoteRecords mutableCopy] autorelease];
-    NSMutableArray * localSameArray = [NSMutableArray array];
-    NSMutableArray * remoteSameArray = [NSMutableArray array];
-    
-    //比较数据
-    //find same records
-    for (NSMutableDictionary * localApprove in localRecords) {
-        for (NSMutableDictionary * remoteRecord in remoteRecords) {
-            if ([[localApprove valueForKey:_primaryField] isEqual:[remoteRecord valueForKey:_primaryField]]) {
-                [localSameArray addObject:localApprove];
-                [remoteSameArray addObject:remoteRecord];
-            }
-        }
-    }
-    
-    [diffArray removeObjectsInArray:localSameArray];
-    [diffArray setValue:kRecordDifferent forKey:kRecordStatus];
-    [diffArray setValue:@"已在其他地方处理" forKey:kRecordServerMessage];
-    [self updateRecords:diffArray];
-    
-    [newArray removeObjectsInArray:remoteSameArray];
-    [self insertRecords:newArray];
+    [self cleanTable];
+    [self insertRecords:remoteRecords];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)setIconBageNumber
+-(void)setIconBadgeNumber
 {
     [UIApplication sharedApplication].applicationIconBadgeNumber = [_resultList count];
 }

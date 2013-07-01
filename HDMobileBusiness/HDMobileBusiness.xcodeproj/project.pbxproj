@@ -572,6 +572,8 @@
 		B3F51B5716CF27D80098BB06 /* HDSplitViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD019416635305002321A9 /* HDSplitViewGuider.m */; };
 		B3FE7AD3166D8A0400CA0B0C /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD2166D8A0400CA0B0C /* icon-72.png */; };
 		B3FE7AD5166D8A0F00CA0B0C /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */; };
+		C0634BAD177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = C0634BAC177D580F003F37D2 /* HDMBSResponseConvertor.m */; };
+		C0634BAE177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = C0634BAC177D580F003F37D2 /* HDMBSResponseConvertor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1263,6 +1265,8 @@
 		B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "padIcon@2x.png"; sourceTree = "<group>"; };
 		B3FE7AD2166D8A0400CA0B0C /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "../icon-72.png"; sourceTree = "<group>"; };
 		B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72@2x.png"; path = "../icon-72@2x.png"; sourceTree = "<group>"; };
+		C0634BAB177D580F003F37D2 /* HDMBSResponseConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMBSResponseConvertor.h; sourceTree = "<group>"; };
+		C0634BAC177D580F003F37D2 /* HDMBSResponseConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMBSResponseConvertor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2116,6 +2120,8 @@
 		B38E687915C655C600824CB1 /* HDDataConvertor */ = {
 			isa = PBXGroup;
 			children = (
+				C0634BAB177D580F003F37D2 /* HDMBSResponseConvertor.h */,
+				C0634BAC177D580F003F37D2 /* HDMBSResponseConvertor.m */,
 				B38E687A15C655C600824CB1 /* HDAuroraRequestConvertor.h */,
 				B38E687B15C655C600824CB1 /* HDAuroraRequestConvertor.m */,
 				B38E687C15C655C600824CB1 /* HDAuroraResponseConvertor.h */,
@@ -3191,6 +3197,7 @@
 				63EF84AE174F0AE500D882F2 /* HDXMLParserCenter.m in Sources */,
 				63EF84B1174F377800D882F2 /* HDOriginalXMLParser.m in Sources */,
 				63EF84B4174F393800D882F2 /* HDSpringLikeXMLParser.m in Sources */,
+				C0634BAD177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3291,6 +3298,7 @@
 				B30C9E1C169EAF0500E9A0FA /* HDTodoListSearchService.m in Sources */,
 				B3D9D49816B8EFF000C1C644 /* TTTableViewController+Select.m in Sources */,
 				B3F1358F16CF76FA00488FE3 /* HDDoneListViewController_Pad.m in Sources */,
+				C0634BAE177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
