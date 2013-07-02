@@ -81,4 +81,9 @@
         [self setValue:[change valueForKey:@"new"] forKeyPath:context];
     }
 }
+-(void)requestResultMap:(HDResponseMap *)map{
+    NSString * SID = [[map result] objectForKey:@"token"];
+    [[NSUserDefaults standardUserDefaults]setValue:SID forKey:@"Token"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
 @end
