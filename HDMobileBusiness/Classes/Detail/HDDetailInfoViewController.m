@@ -21,10 +21,8 @@
 
 //单据明细页面URL模板
 @synthesize webPageURLTemplate = _webPageURLTemplate;
-//用户信息页面URL模板
-@synthesize userInfoPageURLTemplate = _userInfoPageURLTemplate;
-//用户信息按钮显示字段
-@synthesize userInfoField = _userInfoField;
+
+@synthesize todoActionQuery =_todoActionQuery;
 //model
 @synthesize currentURL = _currentURL;
 
@@ -32,8 +30,7 @@
 #pragma mark -
 -(void)viewDidUnload{
     TT_RELEASE_SAFELY(_webPageURLTemplate);
-    TT_RELEASE_SAFELY(_userInfoPageURLTemplate);
-    TT_RELEASE_SAFELY(_userInfoField);
+    TT_RELEASE_SAFELY(_todoActionQuery);
     TT_RELEASE_SAFELY(_pageTurningService);
     TT_RELEASE_SAFELY(_currentURL);
     TT_RELEASE_SAFELY(_popoverItem);
@@ -107,12 +104,7 @@
         NSMutableDictionary * recordDictionary = [NSMutableDictionary dictionaryWithDictionary:record];
         [recordDictionary setValue:[HDHTTPRequestCenter baseURLPath] forKey:@"base_url"];
         
-        _userInfoView.employeeUrlPath = [self.userInfoPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
-        
         self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
-        //TODO:使用测试地址测试js提交
-//        [self openURL:[NSURL URLWithString:@"http://172.20.0.72:8180/hr_new/callJSTest.html"]];
-//        _employeeInfoItem.title = [record valueForKey:self.userInfoField];
         [self openURL:[NSURL URLWithString:self.currentURL]];
         [self updateNavigationItems];
     }

@@ -187,7 +187,8 @@ static NSString * kActionTypeDeliver = @"DELIVER";
         [self openURL:[NSURL URLWithString:self.webPageURLTemplate]];
     }else{
         [super loadRecord:record];
-        [self loadActions:record];
+//TODO:取动作不由todolist带来
+//        [self loadActions:record];
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////

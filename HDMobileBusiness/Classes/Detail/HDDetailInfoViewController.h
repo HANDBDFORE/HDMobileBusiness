@@ -25,10 +25,8 @@
 
 //单据明细页面URL模板
 @property (nonatomic,copy) NSString * webPageURLTemplate;
-//用户信息页面URL模板
-@property (nonatomic,copy) NSString * userInfoPageURLTemplate;
-//用户信息按钮显示字段
-@property (nonatomic,copy) NSString * userInfoField;
+
+@property (nonatomic,copy) NSString * todoActionQuery;
 
 @property (nonatomic,retain) id<HDPageTurning> pageTurningService;
 

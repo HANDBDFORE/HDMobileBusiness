@@ -34,7 +34,7 @@
 -(BOOL)isEffectiveRecord:(NSDictionary *)record
 {
     NSString * status = [record valueForKey:kRecordStatus];
-    return [status isEqualToString:kRecordNormal] ||
+    return [status isEqualToString:kRecordNew] ||
     [status isEqualToString:kRecordError];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
