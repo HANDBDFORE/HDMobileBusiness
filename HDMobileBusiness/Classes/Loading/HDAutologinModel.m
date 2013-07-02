@@ -27,7 +27,7 @@
 -(void)autologin
 {
     id postdata = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                   self.token,@"sid",nil];
+                   self.token,@"token",nil];
     
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     map.urlPath = self.submitURL;

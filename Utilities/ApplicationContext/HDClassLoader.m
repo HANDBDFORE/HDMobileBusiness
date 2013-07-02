@@ -73,7 +73,8 @@
     
     //login
     [map from:@"tt://loginModel" toViewController:[HDLoginModel class]];
-    
+    //autologin
+    [map from:@"tt://autologinModel" toViewController:[HDAutologinModel class]];
     //navigationcontroller
     [map from:@"tt://navigator" toViewController:[HDNavigationController class]];
     

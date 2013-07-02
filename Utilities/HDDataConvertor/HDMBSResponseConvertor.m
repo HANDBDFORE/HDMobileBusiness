@@ -23,8 +23,11 @@
 
 -(id)convert:(id)data error:(NSError **)error
 {
-    id result = [data valueForKeyPath:@"body"];
-    return[NSDictionary dictionaryWithDictionary:result];
+    
+    if ([[data valueForKeyPath:@"body"] isKindOfClass:[NSDictionary class]]) {
+        return[NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"body"]];
+    }
+    return nil;
 }
 
 @end
