@@ -62,21 +62,15 @@
     }
     
     //setting post data
-    id<HDDataConvertor> convertor =
-    [[[HDAuroraRequestConvertor alloc]initWithNextConvertor:
-      [[[HDJSONToDataConvertor alloc]initWithNextConvertor:
-        [[[HDDataToStringConvertor alloc]init]autorelease]
-        ]autorelease]
-      ]autorelease];
-    
-    id postParameter = [convertor doConvertor:map.postData error:error];
     
     if (nil == *(error)) {
         //create request
         TTURLRequest * request = [TTURLRequest request];
         request.shouldHandleCookies=YES;
         request.urlPath = [map.urlPath stringByReplacingSpaceHodlerWithDictionary:@{@"base_url" : [HDHTTPRequestCenter baseURLPath]}];
-        [request.parameters setObject:postParameter forKey:@"_request_data"];
+        for ( NSString * key in map.postData) {
+            [request.parameters setObject:[map.postData valueForKey:key] forKey:key];
+        };
         request.cachePolicy = map.cachePolicy;
         request.httpMethod = map.httpMethod;
         request.multiPartForm = map.multiPartForm;

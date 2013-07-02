@@ -13,12 +13,13 @@
 /*
  *记录状态,不同的状态cell样式不同
  */
+static NSString * kRecordNew = @"NEW";
 static NSString * kRecordNormal = @"NORMAL";
 static NSString * kRecordWaiting = @"WAITING";
 static NSString * kRecordError = @"ERROR";
 static NSString * kRecordDifferent = @"DIFFERENT";
 
-static NSString * kRecordStatus = @"kLocalStatus";
-static NSString * kRecordServerMessage = @"kServerMessage";
+static NSString * kRecordStatus = @"status";
+static NSString * kRecordServerMessage = @"serverMessage";
 
 #endif

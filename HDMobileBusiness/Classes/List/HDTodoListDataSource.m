@@ -47,7 +47,7 @@
     NSString * text = [[_itemDictionary valueForKey:@"text"] stringByReplacingSpaceHodlerWithDictionary:object];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];// HH:mm
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"]; 
     NSDate * timestamp = [dateFormatter dateFromString:[[_itemDictionary valueForKey:@"timestamp"] stringByReplacingSpaceHodlerWithDictionary:object]];
     TT_RELEASE_SAFELY(dateFormatter);
     
@@ -103,8 +103,7 @@
     //tableload完成生成cell item 对象列表
     self.items = [NSMutableArray array];
     for (id record in self.model.resultList) {
-        [self.items addObject:[self createItemWithObject:record]
-         ];
+        [self.items addObject:[self createItemWithObject:record]];
     }
 }
 
@@ -115,7 +114,7 @@
 {
     NSString * localStatus = [(HDTableStatusMessageItem *)[self.items objectAtIndex:indexPath.row] state];
     
-    return ([localStatus isEqualToString:kRecordNormal] ||
+    return ([localStatus isEqualToString:kRecordNew] ||
             [localStatus isEqualToString:kRecordError]);
 }
 

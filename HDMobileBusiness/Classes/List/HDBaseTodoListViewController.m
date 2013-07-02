@@ -200,8 +200,7 @@
         [self setToolbarButtonWithCount];
         [self.detailViewController selectedObject:object atIndex:indexPath.row];
     }else{
-        if ([item.state isEqualToString:kRecordNormal] ||
-            [item.state isEqualToString:kRecordError]) {
+        if ([item.state isEqualToString:kRecordNew] || [item.state isEqualToString:kRecordError]) {
             self.model.currentIndex = indexPath.row;
             [self selectedTableCellForCurrentRecord];
         }

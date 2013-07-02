@@ -13,7 +13,7 @@
 @implementation HDSQLCenter
 //数据库初始化
 -(BOOL)SQLCreatTable:(FMDatabase *)db{
-    NSArray *sqlAry= [NSArray arrayWithObjects:@"CREATE TABLE IF NOT EXISTS DataPool ( id INTEGER PRIMARY KEY AUTOINCREMENT, localId INTEGER, sourceSystemName TEXT, item1 TEXT, item2 TEXT, item3 TEXT, item4 TEXT,	status TEXT, comment TEXT, submitAction TEXT);",@"create table if not exists Action( id INTEGER primary key ,recordkey TEXT,actionid TEXT,actiontitle TEXT,actiontype TEXT );",nil];
+    NSArray *sqlAry= [NSArray arrayWithObjects:@"CREATE TABLE IF NOT EXISTS DataPool ( id INTEGER PRIMARY KEY AUTOINCREMENT, localId INTEGER, sourceSystemName TEXT, item1 TEXT, item2 TEXT, item3 TEXT, item4 TEXT,	status TEXT, comment TEXT, submitAction TEXT,serverMessage TEXT);",@"create table if not exists Action( id INTEGER primary key ,recordkey TEXT,actionid TEXT,actiontitle TEXT,actiontype TEXT );",nil];
     BOOL state = YES;
     state = [self execBatchInTransaction:db sqlArray:sqlAry];
     return state;
