@@ -207,6 +207,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:@"username"];
     [defaults removeObjectForKey:@"password"];
+    [defaults removeObjectForKey:@"Token"];
     [defaults synchronize];
     
     //删除本地数据库
