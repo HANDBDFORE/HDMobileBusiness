@@ -10,12 +10,14 @@
 #import "HDApplicationContext.h"
 #import "HDHTTPRequestCenter.h"
 #import "HDViewGuider.h"
-@interface HDLoadingViewController : UIViewController{
+#import "HDAutologinModel.h"
+
+@interface HDLoadingViewController : TTModelViewController{
     UILabel *_errorSummury;
     UILabel *_errorDetail;
     UIButton *_retryButton;
     UIImageView *_alertView;
     UIView *_customBackground;
 }
-
+@property(nonatomic,retain) id<HDAutologinModel> autologinModel;
 @end

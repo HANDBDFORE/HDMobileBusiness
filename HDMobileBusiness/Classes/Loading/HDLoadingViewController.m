@@ -119,7 +119,7 @@ static  NSString* configFileName = @"ios-backend-config-mocha";
                             //最终状态
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [self dismissModalViewControllerAnimated:NO];
-                                [self showLoginView];
+                                [self autologin];
                             });
                         }
                     }
@@ -203,13 +203,42 @@ static  NSString* configFileName = @"ios-backend-config-mocha";
         [[NSUserDefaults standardUserDefaults] synchronize];
 	}
 }
-
+-(void)setAutologinModel:(id<HDAutologinModel>)autologinModel
+{
+    _autologinModel = [autologinModel retain];
+    self.model = autologinModel;
+}
+-(void)autologin
+{
+    NSString *token = [[NSUserDefaults standardUserDefaults]stringForKey:@"Token"];
+    if (token) {
+        self.autologinModel = [[HDApplicationContext shareContext]objectForIdentifier:@"autologinModel"];
+        self.autologinModel.token = token;
+        [self.autologinModel autologin];
+    }else{
+    [self showLoginView];
+    };
+}
 -(void)showLoginView
 {
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"loadingGuider"] ;
     [guider perform];
 }
+-(void)showNavView
+{
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"loginGuider"] ;
+    [guider perform];
+}
+//模型delegate方法
+- (void)modelDidFinishLoad:(HDAutologinModel *)model
+{
+        [self showNavView];
+}
 
+- (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error
+{
+    [self showLoginView];
+}
 #pragma mark - life cycle
 -(void)loadView{
     self.navigationController.navigationBarHidden = YES;

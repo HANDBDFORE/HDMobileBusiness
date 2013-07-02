@@ -572,6 +572,8 @@
 		B3F51B5716CF27D80098BB06 /* HDSplitViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD019416635305002321A9 /* HDSplitViewGuider.m */; };
 		B3FE7AD3166D8A0400CA0B0C /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD2166D8A0400CA0B0C /* icon-72.png */; };
 		B3FE7AD5166D8A0F00CA0B0C /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */; };
+		C0365CB71782805300DC1F20 /* HDAutologinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0365CB61782805300DC1F20 /* HDAutologinModel.m */; };
+		C0365CB81782805300DC1F20 /* HDAutologinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0365CB61782805300DC1F20 /* HDAutologinModel.m */; };
 		C0634BAD177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = C0634BAC177D580F003F37D2 /* HDMBSResponseConvertor.m */; };
 		C0634BAE177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = C0634BAC177D580F003F37D2 /* HDMBSResponseConvertor.m */; };
 /* End PBXBuildFile section */
@@ -1265,6 +1267,8 @@
 		B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "padIcon@2x.png"; sourceTree = "<group>"; };
 		B3FE7AD2166D8A0400CA0B0C /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "../icon-72.png"; sourceTree = "<group>"; };
 		B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72@2x.png"; path = "../icon-72@2x.png"; sourceTree = "<group>"; };
+		C0365CAD1782803B00DC1F20 /* HDAutologinModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDAutologinModel.h; sourceTree = "<group>"; };
+		C0365CB61782805300DC1F20 /* HDAutologinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDAutologinModel.m; sourceTree = "<group>"; };
 		C0634BAB177D580F003F37D2 /* HDMBSResponseConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMBSResponseConvertor.h; sourceTree = "<group>"; };
 		C0634BAC177D580F003F37D2 /* HDMBSResponseConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMBSResponseConvertor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1455,6 +1459,8 @@
 				B31E2ED815C65FD400880514 /* HDLoadingViewController.m */,
 				B31E2EDB15C65FD400880514 /* HDResourceMap.h */,
 				B31E2EDC15C65FD400880514 /* HDResourceMap.m */,
+				C0365CAD1782803B00DC1F20 /* HDAutologinModel.h */,
+				C0365CB61782805300DC1F20 /* HDAutologinModel.m */,
 			);
 			name = Loading;
 			path = Classes/Loading;
@@ -3198,6 +3204,7 @@
 				63EF84B1174F377800D882F2 /* HDOriginalXMLParser.m in Sources */,
 				63EF84B4174F393800D882F2 /* HDSpringLikeXMLParser.m in Sources */,
 				C0634BAD177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */,
+				C0365CB71782805300DC1F20 /* HDAutologinModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3299,6 +3306,7 @@
 				B3D9D49816B8EFF000C1C644 /* TTTableViewController+Select.m in Sources */,
 				B3F1358F16CF76FA00488FE3 /* HDDoneListViewController_Pad.m in Sources */,
 				C0634BAE177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */,
+				C0365CB81782805300DC1F20 /* HDAutologinModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
