@@ -572,6 +572,8 @@
 		B3F51B5716CF27D80098BB06 /* HDSplitViewGuider.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CD019416635305002321A9 /* HDSplitViewGuider.m */; };
 		B3FE7AD3166D8A0400CA0B0C /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD2166D8A0400CA0B0C /* icon-72.png */; };
 		B3FE7AD5166D8A0F00CA0B0C /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */; };
+		C00B92E51783BC28003F3685 /* HDActionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C00B92E41783BC28003F3685 /* HDActionModel.m */; };
+		C00B92E61783BC28003F3685 /* HDActionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C00B92E41783BC28003F3685 /* HDActionModel.m */; };
 		C0365CB71782805300DC1F20 /* HDAutologinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0365CB61782805300DC1F20 /* HDAutologinModel.m */; };
 		C0365CB81782805300DC1F20 /* HDAutologinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0365CB61782805300DC1F20 /* HDAutologinModel.m */; };
 		C0634BAD177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = C0634BAC177D580F003F37D2 /* HDMBSResponseConvertor.m */; };
@@ -1267,6 +1269,8 @@
 		B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "padIcon@2x.png"; sourceTree = "<group>"; };
 		B3FE7AD2166D8A0400CA0B0C /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "../icon-72.png"; sourceTree = "<group>"; };
 		B3FE7AD4166D8A0F00CA0B0C /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72@2x.png"; path = "../icon-72@2x.png"; sourceTree = "<group>"; };
+		C00B92E31783BC28003F3685 /* HDActionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDActionModel.h; sourceTree = "<group>"; };
+		C00B92E41783BC28003F3685 /* HDActionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDActionModel.m; sourceTree = "<group>"; };
 		C0365CAD1782803B00DC1F20 /* HDAutologinModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDAutologinModel.h; sourceTree = "<group>"; };
 		C0365CB61782805300DC1F20 /* HDAutologinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDAutologinModel.m; sourceTree = "<group>"; };
 		C0634BAB177D580F003F37D2 /* HDMBSResponseConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMBSResponseConvertor.h; sourceTree = "<group>"; };
@@ -1824,6 +1828,8 @@
 				B38DC71715C68C3800FD0C58 /* HDUserInfoView.m */,
 				B3ED3BA11623E71100505988 /* HDWebViewController.h */,
 				B3ED3BA21623E71100505988 /* HDWebViewController.m */,
+				C00B92E31783BC28003F3685 /* HDActionModel.h */,
+				C00B92E41783BC28003F3685 /* HDActionModel.m */,
 			);
 			name = Detail;
 			path = Classes/Detail;
@@ -3205,6 +3211,7 @@
 				63EF84B4174F393800D882F2 /* HDSpringLikeXMLParser.m in Sources */,
 				C0634BAD177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */,
 				C0365CB71782805300DC1F20 /* HDAutologinModel.m in Sources */,
+				C00B92E51783BC28003F3685 /* HDActionModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3307,6 +3314,7 @@
 				B3F1358F16CF76FA00488FE3 /* HDDoneListViewController_Pad.m in Sources */,
 				C0634BAE177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */,
 				C0365CB81782805300DC1F20 /* HDAutologinModel.m in Sources */,
+				C00B92E61783BC28003F3685 /* HDActionModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

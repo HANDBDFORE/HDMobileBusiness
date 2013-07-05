@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HDDetailInfoViewController.h"
-
+#import "HDActionModel.h"
 @interface HDDetailToolbarViewController : HDDetailInfoViewController <TTMessageControllerDelegate,TTPostControllerDelegate>
 {
 }
@@ -16,6 +16,8 @@
 @property(nonatomic,readonly) UIBarButtonItem * spaceItem;
 
 @property(nonatomic,assign) BOOL shouldLoadAction;
+
+@property(nonatomic,retain) HDActionModel * actionModel;
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated;
 

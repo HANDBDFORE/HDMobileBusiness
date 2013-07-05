@@ -81,11 +81,12 @@
 #pragma mark ListModel Vector
 -(NSUInteger)effectiveRecordCount
 {
-    NSSet * resultSet = [NSSet setWithArray:self.resultList];
-    return [[resultSet objectsWithOptions:NSEndsWithPredicateOperatorType
-                              passingTest:^BOOL(id obj, BOOL *stop) {
-                                  return [self isEffectiveRecord:obj];
-                              }] count];
+    return [self.resultList count];
+//    NSSet * resultSet = [NSSet setWithArray:self.resultList];
+//    return [[resultSet objectsWithOptions:NSEndsWithPredicateOperatorType
+//                              passingTest:^BOOL(id obj, BOOL *stop) {
+//                                  return [self isEffectiveRecord:obj];
+//                              }] count];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

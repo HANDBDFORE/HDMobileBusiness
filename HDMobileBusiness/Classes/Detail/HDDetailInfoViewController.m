@@ -22,7 +22,6 @@
 //单据明细页面URL模板
 @synthesize webPageURLTemplate = _webPageURLTemplate;
 
-@synthesize todoActionQuery =_todoActionQuery;
 //model
 @synthesize currentURL = _currentURL;
 
@@ -30,14 +29,12 @@
 #pragma mark -
 -(void)viewDidUnload{
     TT_RELEASE_SAFELY(_webPageURLTemplate);
-    TT_RELEASE_SAFELY(_todoActionQuery);
     TT_RELEASE_SAFELY(_pageTurningService);
     TT_RELEASE_SAFELY(_currentURL);
     TT_RELEASE_SAFELY(_popoverItem);
     
     TT_RELEASE_SAFELY(_nextButtonItem);
     TT_RELEASE_SAFELY(_prevButtonItem);
-    TT_RELEASE_SAFELY(_employeeInfoItem);
     
     TT_RELEASE_SAFELY(_emptyView);
     [super viewDidUnload];
@@ -45,12 +42,6 @@
 
 - (void)loadView{
     [super loadView];
-    
-    //user info view
-    _userInfoView = [[HDUserInfoView alloc]initWithFrame:TTNavigationFrame()];
-    [self.view addSubview:_userInfoView];
-    
-    _employeeInfoItem = [[UIBarButtonItem alloc]initWithImage:TTIMAGE(@"bundle://HDUser.png") style:UIBarButtonItemStylePlain target:_userInfoView action:@selector(show)];
     
     //next button
     _nextButtonItem = [[UIBarButtonItem alloc]initWithImage:TTIMAGE(@"bundle://Three20.bundle/images/forwardIcon.png") style:UIBarButtonItemStyleBordered target:self action:@selector(nextRecord)];
@@ -103,6 +94,7 @@
         
         NSMutableDictionary * recordDictionary = [NSMutableDictionary dictionaryWithDictionary:record];
         [recordDictionary setValue:[HDHTTPRequestCenter baseURLPath] forKey:@"base_url"];
+        [recordDictionary setValue:[[NSUserDefaults standardUserDefaults]stringForKey:@"Token"] forKey:@"token"];
         
         self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
         [self openURL:[NSURL URLWithString:self.currentURL]];
@@ -184,10 +176,6 @@
     
     if (_refreshButtonItem) {
         [items addObject:_refreshButtonItem];
-    }
-    
-    if ([self.pageTurningService currentIndexPath]) {
-        [items addObject:_employeeInfoItem];
     }
     return items;
 }

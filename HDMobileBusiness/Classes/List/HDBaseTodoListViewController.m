@@ -162,7 +162,7 @@
     [self.detailViewController resetEditViewAnimated:YES];
     NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
     [self.model submitRecordsAtIndexPaths:indexPaths
-                               dictionary:@{kComments:text,kAction:_submitAction}];
+                               dictionary:@{@"11":text,@"2":_submitAction}];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

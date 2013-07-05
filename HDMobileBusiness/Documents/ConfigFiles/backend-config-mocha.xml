@@ -172,13 +172,13 @@
 		<!--todoListModel -->
 		<bean id="todoListModel" create-url="tt://todoListModel">
 			<property name="primaryField" value="receipt_no" />
-			<property name="queryURL" value="${base_url}queryTodo.do?userid=2652" />
+			<property name="queryURL" value="${base_url}queryTodo.do" />
 			<property name="submitURL" value="${base_url}todoActionSubmit.do" />
 		</bean>
 		<!--todoDetailController -->
 		<bean id="todoDetailController" create-url="tt://todoDetailViewController"
 			mode="share">
-			<property name="webPageURLTemplate" value="${base_url}todoDetail.do" />
+			<property name="webPageURLTemplate" value="${base_url}todoDetail.do?localId=${localId}&sourceSystemName=${sourceSystemName}&token=${token}" />
 			<property name="todoActionQuery" value="${base_url}todoActionQuery.do" />
 			<property name="pageTurningService" ref="todoListService" />
 			<property name="shouldLoadAction" value="true" />

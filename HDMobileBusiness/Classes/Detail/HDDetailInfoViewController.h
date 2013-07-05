@@ -14,9 +14,7 @@
 {
     UIBarButtonItem * _nextButtonItem;
     UIBarButtonItem * _prevButtonItem;
-    UIBarButtonItem * _employeeInfoItem;
-
-    HDUserInfoView *_userInfoView;
+    
     NSInteger index;
     
     @protected
@@ -25,8 +23,6 @@
 
 //单据明细页面URL模板
 @property (nonatomic,copy) NSString * webPageURLTemplate;
-
-@property (nonatomic,copy) NSString * todoActionQuery;
 
 @property (nonatomic,retain) id<HDPageTurning> pageTurningService;
 

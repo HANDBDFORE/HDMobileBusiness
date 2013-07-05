@@ -8,7 +8,7 @@
 
 #import "HDDetailToolbarViewController.h"
 #import "HDTableStatusMessageItemCell.h"
-
+#import "HDActionModel.h"
 static NSString * kActionTypeDeliver = @"DELIVER";
 
 @interface HDDetailToolbarViewController ()
@@ -28,6 +28,13 @@ static NSString * kActionTypeDeliver = @"DELIVER";
 @implementation HDDetailToolbarViewController
 
 @synthesize spaceItem = _spaceItem;
+@synthesize actionModel = _actionModel;
+///////////////////////////////////////////////////////////////////////////////////////
+-(void)setActionModel:(HDActionModel *)actionModel
+{
+    _actionModel = [actionModel retain];
+    self.model = actionModel;
+}
 #pragma mark - life cycle
 #pragma mark -
 
@@ -53,6 +60,7 @@ static NSString * kActionTypeDeliver = @"DELIVER";
     TTURLMap *map = [TTNavigator navigator].URLMap;
     [map from:@"jscall://post/(postWithTag:)" toObject:self selector:@selector(postWithTag:)];
     [map from:@"jscall://deliver" toObject:self selector:@selector(deliver)];
+    
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -61,13 +69,17 @@ static NSString * kActionTypeDeliver = @"DELIVER";
     [super viewWillAppear: animated];
     [self.navigationController setToolbarHidden:!self.shouldLoadAction animated:YES];
 }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         _shouldLoadAction = YES;
+        self.actionModel = [[[HDActionModel alloc]init]retain];
+        self.actionModel.queryURL = @"http://localhost:8080/unified-mobile/todoActionQuery.do";
     }
+    //10.213.212.58
     return self;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,7 +114,7 @@ static NSString * kActionTypeDeliver = @"DELIVER";
 -(void)toolbarButtonPressed: (id)sender
 {
     //设置当前审批动作
-    self.selectedAction = [sender valueForKey:@"tag"];    
+    self.selectedAction = [sender valueForKey:@"tag"];
     //准备默认审批内容
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     
@@ -115,7 +127,7 @@ static NSString * kActionTypeDeliver = @"DELIVER";
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    [self submitWithDictionary:@{kComments:text,kAction:_selectedAction}];
+    [self submitWithDictionary:@{@"a":text,@"a":_selectedAction}];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -134,14 +146,14 @@ static NSString * kActionTypeDeliver = @"DELIVER";
         //获取第一个单元格的第一个cell
         if ([field isKindOfClass:[TTMessageRecipientField class]]) {
             for (TTTableTextItem * item in [field recipients]) {
-                [dictionary setValue:item.userInfo forKeyPath:kEmployeeID];
+                [dictionary setValue:item.userInfo forKeyPath:@"1"];
             }
             //获取第二个单元格的内容
         } else if ([field isKindOfClass:[TTMessageTextField class]]) {
-            [dictionary  setValue:[(TTMessageTextField *)field text] forKeyPath:kComments];
+            [dictionary  setValue:[(TTMessageTextField *)field text] forKeyPath:@"2"];
         }
     }
-    [dictionary setValue:@"D" forKeyPath:kAction];
+    [dictionary setValue:@"D" forKeyPath:@"3"];
     
     [controller dismissModalViewControllerAnimated:YES];
     [self submitWithDictionary:dictionary];
@@ -160,7 +172,7 @@ static NSString * kActionTypeDeliver = @"DELIVER";
     [self.navigationController performSelector:@selector(popViewControllerAnimated:)
                                     withObject:@"YES"
                                     afterDelay:0.5];
-//    }
+//  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -171,7 +183,16 @@ static NSString * kActionTypeDeliver = @"DELIVER";
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark TTModel delegate functions
-
+-(void)modelDidFinishLoad:(id<TTModel>)model{
+    
+    NSMutableArray * itemButtons = [NSMutableArray array];
+    for (NSDictionary * actionRecord in [[self actionModel] actionList]) {
+        [itemButtons addObject:[self createToolbarButtonWithRecord:actionRecord]];
+    }
+    self.submitActionItems = itemButtons;
+    [self updateNavigationItems];
+    [self updateToolbarItems];
+}
 -(void)showEmpty:(BOOL)show
 {
     self.submitActionItems = nil;
@@ -187,43 +208,34 @@ static NSString * kActionTypeDeliver = @"DELIVER";
         [self openURL:[NSURL URLWithString:self.webPageURLTemplate]];
     }else{
         [super loadRecord:record];
-//TODO:取动作不由todolist带来
-//        [self loadActions:record];
+        [self loadActions:record];
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)loadActions:(NSDictionary *) record
 {  
-    NSData * actionsData = [[record valueForKey:@"actions"]dataUsingEncoding:NSUTF8StringEncoding];
-    HDDataToJSONConvertor * convertor = [[[HDDataToJSONConvertor alloc]init]autorelease];
-    
-    NSMutableArray * itemButtons = [NSMutableArray array];
-    for (NSDictionary * actionRecord in [convertor convert:actionsData error:nil]) {
-        [itemButtons addObject:[self createToolbarButtonWithRecord:actionRecord]];
-    }
-    self.submitActionItems = itemButtons;
-    [self updateNavigationItems];
-    [self updateToolbarItems];
+    self.actionModel.record = record;
+    [self.actionModel query];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(UIBarButtonItem *)createToolbarButtonWithRecord:(NSDictionary *)record
 {
     UIBarButtonItem * actionButton =
-    [[[UIBarButtonItem alloc]initWithTitle:[record valueForKey:@"action_title"]
+    [[[UIBarButtonItem alloc]initWithTitle:[record valueForKey:@"actionTitle"]
                                      style:UIBarButtonItemStyleBordered
                                     target:self
                                     action:@selector(toolbarButtonPressed:)] autorelease];
-    actionButton.tag = [[record valueForKey:@"action_id"] intValue];
-    actionButton.image = TTIMAGE([record valueForKey:@"action_image"]);
+    actionButton.tag = [[record valueForKey:@"action"] intValue];
+//    actionButton.image = TTIMAGE([record valueForKey:@"action_image"]);
     
     if (actionButton.image) {
         actionButton.title = nil;
         actionButton.style = UIBarButtonItemStylePlain;
     }
     
-    if ([[record valueForKey:@"action_type"] isEqualToString:kActionTypeDeliver]) {
+    if ([[record valueForKey:@"actionType"] isEqualToString:kActionTypeDeliver]) {
         actionButton.action = @selector(deliver);
     }
     
