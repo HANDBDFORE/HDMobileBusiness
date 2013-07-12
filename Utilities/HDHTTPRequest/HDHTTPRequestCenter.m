@@ -79,6 +79,8 @@
         for (id delegate in map.delegates) {
             [request.delegates addObject:delegate];
         }
+        NSString * token =  [[NSUserDefaults standardUserDefaults]stringForKey:@"Token"];
+        token==nil?nil:[request.headers setObject:token forKey:@"token"];
         NSLog(@"=============request=============");
         NSLog(@"URL:%@",[request urlPath]);
         NSLog(@"DATA:%@",[[NSString alloc] initWithData:[request httpBody] encoding:NSUTF8StringEncoding]);

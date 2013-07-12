@@ -310,6 +310,7 @@ static  NSString* configFileName = @"ios-backend-config-mocha";
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    TT_RELEASE_SAFELY(_autologinModel);
     // Release any retained subviews of the main view.
 }
 -(void)viewDidAppear:(BOOL)animated{

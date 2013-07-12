@@ -76,8 +76,8 @@ static NSString * kActionTypeDeliver = @"DELIVER";
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         _shouldLoadAction = YES;
-        self.actionModel = [[[HDActionModel alloc]init]retain];
-        self.actionModel.queryURL = @"http://localhost:8080/unified-mobile/todoActionQuery.do";
+        self.actionModel = [[HDApplicationContext shareContext]objectForIdentifier:@"actionModel"];
+//        self.actionModel = [[[HDActionModel alloc]init]retain];
     }
     //10.213.212.58
     return self;
@@ -127,7 +127,7 @@ static NSString * kActionTypeDeliver = @"DELIVER";
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    [self submitWithDictionary:@{@"a":text,@"a":_selectedAction}];
+    [self submitWithDictionary:@{@"comment":text,@"submitAction":_selectedAction}];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 

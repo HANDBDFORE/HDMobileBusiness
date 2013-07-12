@@ -63,9 +63,10 @@
 //更新操作
 -(BOOL)SQLUpdateRecords:(FMDatabase *)db recordList:(NSArray *) recordList{
     if (!recordList) return NO;
-    NSString *currentSql = @"UPDATE DataPool SET %@ WHERE localId =:localId";
+    NSString *currentSql = @"UPDATE DataPool SET status=:status,submitAction=:submitAction,comment=:comment WHERE localId =:localId AND sourceSystemName=:sourceSystemName";
+    NSArray * invalidParams = [NSArray arrayWithObjects:@"id",@"item1",@"item2",@"item3",@"item4",nil];
     BOOL state = YES;
-    state = [self execLineInTransaction:db recordList:recordList currentSql:currentSql];
+    state = [self execLineInTransaction:db invalidParams:invalidParams recordList:recordList currentSql:currentSql];
     return state;
 }
 //DataPool表插入

@@ -216,7 +216,8 @@ static NSString * kColumnMapKey = @"column1";
 -(void)submit
 {
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    map.postData = @[[_submitList objectAtIndex:0]];
+    NSDictionary * postdata = [NSDictionary dictionaryWithObjectsAndKeys:[[[_submitList objectAtIndex:0] objectForKey:@"localId"] stringValue],@"localId",[[_submitList objectAtIndex:0] objectForKey:@"sourceSystemName"],@"sourceSystemName",[[_submitList objectAtIndex:0] objectForKey:@"submitAction"],@"action",[[_submitList objectAtIndex:0] objectForKey:@"comment"],@"comments", nil];
+    map.postData = postdata;
     [map.userInfo setObject:[_submitList objectAtIndex:0] forKey:@"postObject"];
     map.urlPath = self.submitURL;
     map.cachePolicy = TTURLRequestCachePolicyNoCache;

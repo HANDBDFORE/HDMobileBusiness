@@ -94,12 +94,13 @@
     
     [map from:@"tt://todoListModel" toViewController:[HDTodoListModel class]];
     
-    
     [map from:@"tt://todoListSearchViewController" toViewController:[HDTodoListSearchViewController class]];
     
     [map from:@"tt://todoListService" toViewController:[HDTodoListService class]];
     
     [map from:@"tt://todoListSearchService" toViewController:[HDTodoListSearchService class]];
+    //todo action
+    [map from:@"tt://actionModel" toViewController:[HDActionModel class]];
     //done list classes
     [map from:@"tt://doneListViewController" toViewController:[HDDoneListViewController class]];
     
