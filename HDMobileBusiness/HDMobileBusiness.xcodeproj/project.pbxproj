@@ -578,6 +578,9 @@
 		C0365CB81782805300DC1F20 /* HDAutologinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0365CB61782805300DC1F20 /* HDAutologinModel.m */; };
 		C0634BAD177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = C0634BAC177D580F003F37D2 /* HDMBSResponseConvertor.m */; };
 		C0634BAE177D5810003F37D2 /* HDMBSResponseConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = C0634BAC177D580F003F37D2 /* HDMBSResponseConvertor.m */; };
+		C09F35261794E19D0046F809 /* 1024.PNG in Resources */ = {isa = PBXBuildFile; fileRef = C09F35231794E19D0046F809 /* 1024.PNG */; };
+		C09F352F1794E1F00046F809 /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = C09F352E1794E1F00046F809 /* 57.png */; };
+		C09F35311794E1F90046F809 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = C09F35301794E1F90046F809 /* 114.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1275,6 +1278,9 @@
 		C0365CB61782805300DC1F20 /* HDAutologinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDAutologinModel.m; sourceTree = "<group>"; };
 		C0634BAB177D580F003F37D2 /* HDMBSResponseConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMBSResponseConvertor.h; sourceTree = "<group>"; };
 		C0634BAC177D580F003F37D2 /* HDMBSResponseConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMBSResponseConvertor.m; sourceTree = "<group>"; };
+		C09F35231794E19D0046F809 /* 1024.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1024.PNG; sourceTree = "<group>"; };
+		C09F352E1794E1F00046F809 /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57.png; path = ../../../HDMobileBusiness/57.png; sourceTree = "<group>"; };
+		C09F35301794E1F90046F809 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114.png; path = ../../../HDMobileBusiness/114.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1895,6 +1901,9 @@
 		B38E66FF15C64E6700824CB1 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				C09F35301794E1F90046F809 /* 114.png */,
+				C09F352E1794E1F00046F809 /* 57.png */,
+				C09F35231794E19D0046F809 /* 1024.PNG */,
 				B3FE7ACE166D89CF00CA0B0C /* padIcon.png */,
 				B3FE7ACF166D89CF00CA0B0C /* padIcon@2x.png */,
 				B38E670015C64E6700824CB1 /* mobileIcon.png */,
@@ -2850,6 +2859,9 @@
 				B32B2E9716D3744600B6B3A9 /* Default.png in Resources */,
 				B32B2E9816D3744600B6B3A9 /* Default@2x.png in Resources */,
 				B3E0AA1B16D3B365008DC982 /* HDLoginViewController-568.xib in Resources */,
+				C09F35261794E19D0046F809 /* 1024.PNG in Resources */,
+				C09F352F1794E1F00046F809 /* 57.png in Resources */,
+				C09F35311794E1F90046F809 /* 114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3458,8 +3470,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3479,7 +3491,7 @@
 					../Frameworks/Three20/Build/Products/three20,
 					"${SDK_DIR}/usr/include/libxml2",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -3498,8 +3510,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3512,7 +3524,7 @@
 					../Frameworks/Three20/Build/Products/three20,
 					"${SDK_DIR}/usr/include/libxml2",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";

@@ -162,9 +162,9 @@
 			mode="share">
 			<property name="searchFields">
 				<array>
-					<list value="order_type" />
-					<list value="node_name" />
-					<list value="employee_name" />
+					<list value="item1" />
+					<list value="item2" />
+					<list value="item3" />
 				</array>
 			</property>
 			<property name="model" ref="todoListModel" />
