@@ -6,7 +6,9 @@
 //  Copyright (c) 2012 hand. All rights reserved.
 //
 #import "HDObjectPattern.h"
-@interface HDXMLParser : NSObject<NSXMLParserDelegate>
+#import "HDParserProtocal.h"
+
+@interface HDXMLParser : NSObject<HDParserProtocal>
 
 @property (retain, nonatomic) NSMutableDictionary *patternes;
 @property (retain, nonatomic) NSError *parseError;

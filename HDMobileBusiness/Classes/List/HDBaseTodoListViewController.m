@@ -138,7 +138,7 @@
 //toolBar button pressed
 -(void)toolBarButtonPressed: (id)sender
 {
-    _submitAction = ([sender tag] == 1)?@"Y":@"N";
+    _submitActionType = ([sender tag] == 1)?@"approve":@"reject";
     [self showPostView:sender];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -162,7 +162,7 @@
     [self.detailViewController resetEditViewAnimated:YES];
     NSArray * indexPaths = [self.tableView indexPathsForSelectedRows];
     [self.model submitRecordsAtIndexPaths:indexPaths
-                               dictionary:@{@"comment":text,@"submitAction":_submitAction}];
+                               dictionary:@{@"comment":text,@"submitActionType":_submitActionType}];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

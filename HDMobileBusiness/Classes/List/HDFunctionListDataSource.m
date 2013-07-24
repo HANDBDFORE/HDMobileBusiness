@@ -43,7 +43,8 @@
     }else{
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
         map.urlPath = self.queryURL;
-        [super requestWithMap:map];
+//        [super requestWithMap:map];
+        [self requestWithMap:map];
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

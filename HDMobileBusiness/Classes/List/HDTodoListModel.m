@@ -69,6 +69,7 @@ static NSString * kColumnMapKey = @"column1";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 #pragma mark TTURLRequestDelegate
 //因为服务端返回错误状态状态时,需要额外的流程,不能使用 requestResultMap
 -(void)requestDidFinishLoad:(TTURLRequest *)request
@@ -104,7 +105,6 @@ static NSString * kColumnMapKey = @"column1";
     _flags.shouldLoadingLocalData = YES;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 #pragma mark HDListModelSubmit Submit 
 -(void)submitRecords:(NSArray *)records
 {
@@ -143,6 +143,7 @@ static NSString * kColumnMapKey = @"column1";
 {
     [[HDCoreStorage shareStorage] excute:@selector(SQLUpdateRecords:recordList:) recordList:recordList];
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)insertRecords:(NSArray *) recordList
@@ -216,9 +217,24 @@ static NSString * kColumnMapKey = @"column1";
 -(void)submit
 {
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    NSDictionary * postdata = [NSDictionary dictionaryWithObjectsAndKeys:[[[_submitList objectAtIndex:0] objectForKey:@"localId"] stringValue],@"localId",[[_submitList objectAtIndex:0] objectForKey:@"sourceSystemName"],@"sourceSystemName",[[_submitList objectAtIndex:0] objectForKey:@"submitAction"],@"action",[[_submitList objectAtIndex:0] objectForKey:@"comment"],@"comments", nil];
-    map.postData = postdata;
-    [map.userInfo setObject:[_submitList objectAtIndex:0] forKey:@"postObject"];
+    NSMutableArray * postlist = [[NSMutableArray alloc]init];
+    for (NSDictionary * submitrecord in _submitList) {
+        NSDictionary * postrecord = [NSDictionary dictionaryWithObjectsAndKeys:[[submitrecord objectForKey:@"localId"] stringValue],@"localId",[submitrecord objectForKey:@"sourceSystemName"],@"sourceSystemName",[submitrecord objectForKey:@"submitAction"],@"action",[submitrecord objectForKey:@"submitActionType"],@"actionType",[submitrecord objectForKey:@"comment"],@"comments", nil];
+        [postlist addObject:postrecord];
+    }
+
+    NSDictionary * postData = nil;
+    if ([NSJSONSerialization isValidJSONObject:postlist])
+    {
+        NSError *error = nil;
+        NSData *jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
+        if (jsonData != nil && error == nil){
+            NSString *jsondata =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            postData = [NSDictionary dictionaryWithObjectsAndKeys:jsondata,@"postData",nil];
+        }
+    }
+    TT_RELEASE_SAFELY(postlist);
+    map.postData = postData;
     map.urlPath = self.submitURL;
     map.cachePolicy = TTURLRequestCachePolicyNoCache;
     [self requestWithMap:map];
@@ -229,25 +245,32 @@ static NSString * kColumnMapKey = @"column1";
 -(void)submitResponse:(HDResponseMap*) resultMap
 {
     TT_RELEASE_SAFELY(_loadingRequest);
-    id submitObject = [resultMap.userInfo objectForKey:@"postObject"];
-    NSUInteger index = [self.resultList indexOfObject:submitObject];
-    [_submitList removeObject:submitObject];
+    NSArray * reslist = [resultMap valueForKeyPath:@"result.list"];
     _flags.isSubmitingData = NO;
-    /////////////////////////////////////////////////////////
-    if (!resultMap.result) {
-        [submitObject setValue:kRecordError forKey:kRecordStatus];
-        [submitObject setValue:resultMap.error.localizedDescription forKey:kRecordServerMessage];
-        [self didUpdateObject:submitObject
-                  atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-        [self updateRecords:@[submitObject]];
-    }else {
-        //debug:删除数据需要包装成数组
-        [self removeRecords:@[submitObject]];
-        [self setIconBadgeNumber];
-        [self didDeleteObject:submitObject
-                  atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-        [_resultList removeObject:submitObject];
+    for(int i = [_submitList count] -1;i>=0;i--){
+        NSDictionary * submitrecord =[_submitList objectAtIndex:i];
+        NSUInteger index = [self.resultList indexOfObject:submitrecord];
+        for (NSDictionary * resrecord in reslist) {
+            if (  [[resrecord objectForKey:@"localId"] integerValue] == [[submitrecord objectForKey:@"localId"] integerValue] &&[[resrecord objectForKey:@"sourceSystemName"] isEqualToString:[submitrecord objectForKey:@"sourceSystemName"]]) {
+                if ([[resrecord objectForKey:@"status"] isEqualToString:@"F"]) {
+                    [submitrecord setValue:kRecordWaiting forKey:kRecordStatus];
+                    [submitrecord setValue:[resrecord objectForKey:@"message"] forKey:kRecordServerMessage];
+                    [self didUpdateObject:submitrecord
+                              atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+                    [self updateRecords:@[submitrecord]];
+
+                }else{
+                    //debug:删除数据需要包装成数组
+                    [self removeRecords:@[submitrecord]];
+                    [self setIconBadgeNumber];
+                    [_resultList removeObject:submitrecord];
+                
+                }
+            }
+        }
+        [_submitList removeObject:[_submitList objectAtIndex:i]];
     }
+    [self load:TTURLRequestCachePolicyDefault more:NO];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

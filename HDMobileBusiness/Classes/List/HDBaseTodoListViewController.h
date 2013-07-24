@@ -19,6 +19,7 @@ static NSString * kEventTodoListSearchViewWillDissappear = @"TodoListSearchViewW
     UIBarButtonItem *  _refuseButtonItem;
     UIBarButtonItem *  _clearButtonItem;
     NSString        *  _submitAction;
+    NSString        *  _submitActionType;
 }
 
 @property(nonatomic,assign) id <HDTodoListService,HDPageTurning> model;

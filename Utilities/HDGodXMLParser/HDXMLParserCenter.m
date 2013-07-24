@@ -67,7 +67,7 @@ static HDXMLParserCenter *instance;
     }else{
         NSLog(@"spring like");
         //类似spring的配置文件格式解析器
-        return [[[HDSpringLikeXMLParser alloc]initWithXmlPath:path]autorelease];
+        return [[[HDXMLParser alloc]initWithXmlPath:path]autorelease];
     }
     
 }
