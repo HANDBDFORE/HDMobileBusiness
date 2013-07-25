@@ -13,6 +13,8 @@
 @interface HDSQLCenter : NSObject
 //查询ToDoList操作
 -(FMResultSet *)SQLQueryToDoList:(FMDatabase *)db;
+//查询ToDoList摘要操作
+-(FMResultSet *)SQLQueryToDoListDigest:(FMDatabase *)db;
 //查询动作(单条)
 -(FMResultSet *)SQLQueryAction:(FMDatabase *)db conditions:(NSDictionary *) conditions;
 //建表

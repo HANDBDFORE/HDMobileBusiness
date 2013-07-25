@@ -11,7 +11,9 @@
 @implementation HDRequestMap
 
 @synthesize urlPath = _urlPath;
+@synthesize contentType = _contentType;
 @synthesize postData = _postData;
+@synthesize httpBody = _httpBody;
 @synthesize delegates = _delegates;
 @synthesize httpMethod = _httpMethod;
 @synthesize multiPartForm = _multiPartForm;
@@ -22,11 +24,13 @@
 -(void)dealloc
 {
     TT_RELEASE_SAFELY(_urlPath);
+    TT_RELEASE_SAFELY(_contentType);
     TT_RELEASE_SAFELY(_postData);
     TT_RELEASE_SAFELY(_delegates);
     TT_RELEASE_SAFELY(_httpMethod);
     TT_RELEASE_SAFELY(_response);
     TT_RELEASE_SAFELY(_userInfo);
+    TT_RELEASE_SAFELY(_httpBody);
     [super dealloc];
 }
 

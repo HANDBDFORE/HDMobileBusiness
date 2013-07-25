@@ -68,9 +68,17 @@
         TTURLRequest * request = [TTURLRequest request];
         request.shouldHandleCookies=YES;
         request.urlPath = [map.urlPath stringByReplacingSpaceHodlerWithDictionary:@{@"base_url" : [HDHTTPRequestCenter baseURLPath]}];
-        for ( NSString * key in map.postData) {
-            [request.parameters setObject:[map.postData valueForKey:key] forKey:key];
-        };
+        if (map.httpBody != nil) {
+            request.httpBody = map.httpBody;
+        }else{
+            for ( NSString * key in map.postData) {
+                [request.parameters setObject:[map.postData valueForKey:key] forKey:key];
+            }
+        }
+        if (map.contentType != nil) {
+            request.contentType = map.contentType;
+        }
+
         request.cachePolicy = map.cachePolicy;
         request.httpMethod = map.httpMethod;
         request.multiPartForm = map.multiPartForm;

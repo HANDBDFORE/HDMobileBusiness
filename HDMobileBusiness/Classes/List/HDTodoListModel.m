@@ -137,6 +137,12 @@ static NSString * kColumnMapKey = @"column1";
     return [[HDCoreStorage shareStorage] query:@selector(SQLQueryToDoList:)
                                     conditions:nil];
 }
+
+-(NSArray *)queryRecordsDigest{
+    return [[HDCoreStorage shareStorage] query:@selector(SQLQueryToDoListDigest:)
+                                    conditions:nil];
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)updateRecords:(NSArray *) recordList
@@ -212,6 +218,7 @@ static NSString * kColumnMapKey = @"column1";
     }
     [self setIconBadgeNumber];
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)submit
@@ -223,18 +230,15 @@ static NSString * kColumnMapKey = @"column1";
         [postlist addObject:postrecord];
     }
 
-    NSDictionary * postData = nil;
+    NSData *jsonData = nil;
     if ([NSJSONSerialization isValidJSONObject:postlist])
     {
         NSError *error = nil;
-        NSData *jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
-        if (jsonData != nil && error == nil){
-            NSString *jsondata =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            postData = [NSDictionary dictionaryWithObjectsAndKeys:jsondata,@"postData",nil];
-        }
+        jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
     }
     TT_RELEASE_SAFELY(postlist);
-    map.postData = postData;
+    map.httpBody = jsonData;
+    map.contentType = @"application/json";
     map.urlPath = self.submitURL;
     map.cachePolicy = TTURLRequestCachePolicyNoCache;
     [self requestWithMap:map];
@@ -276,24 +280,36 @@ static NSString * kColumnMapKey = @"column1";
 
 -(void)loadRemoteRecords
 {
+    NSArray * postlist =[self queryRecordsDigest];
+    NSData *jsonData = nil;
+    if ([NSJSONSerialization isValidJSONObject:postlist])
+    {
+        NSError *error = nil;
+        jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
+    }
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
+    map.httpBody = jsonData;
+    map.contentType = @"application/json";
     map.urlPath =  self.queryURL;
+    map.cachePolicy = TTURLRequestCachePolicyNoCache;
     [self requestWithMap:map];
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)queryResponse:(HDResponseMap*) resultMap
 {
-    [self refreshResultList:[resultMap.result objectForKey:@"list"]];
+    [self refreshResultList:[resultMap result]];
     TT_RELEASE_SAFELY(_loadingRequest);
     [self didFinishLoad];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //对比传入的 result 和当前的 _resultList 生成新的结果列表
--(void) refreshResultList:(NSArray *) responseList
+-(void) refreshResultList:(NSDictionary *) responseList
 {
-    [self refreshDataBaseWithList:responseList];
+    [self insertRecords:[responseList valueForKey:@"new"]];
+    [self removeRecords:[responseList valueForKey:@"delete"]];
     [self loadLocalRecords];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -312,13 +328,6 @@ static NSString * kColumnMapKey = @"column1";
         matchFlg = matchFlg && !![record valueForKey:[line valueForKey:kColumnMapKey]];
     }
     return matchFlg;
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)refreshDataBaseWithList:(NSArray *) remoteRecords
-{
-    [self cleanTable];
-    [self insertRecords:remoteRecords];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

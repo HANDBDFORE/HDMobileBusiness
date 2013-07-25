@@ -11,8 +11,12 @@
 
 @property (nonatomic,copy) NSString * urlPath;
 
+@property (nonatomic,copy) NSString * contentType;
+
 //post data,filter will parser it and convert it into really post data.
 @property (nonatomic,retain) id postData;
+
+@property (nonatomic,retain) id httpBody;
 
 //the delegate list
 @property (nonatomic,readonly) NSMutableArray *delegates;

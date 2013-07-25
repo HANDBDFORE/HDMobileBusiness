@@ -34,6 +34,14 @@
     
     return [db executeQuery:currentSql];
 }
+//查询ToDoList摘要操作
+-(FMResultSet *)SQLQueryToDoListDigest:(FMDatabase *)db{
+    
+    NSString *currentSql = @"SELECT localId, sourceSystemName FROM DataPool WHERE STATUS != 'WAITING'";
+    
+    return [db executeQuery:currentSql];
+}
+
 //查询动作(单条)
 -(FMResultSet *)SQLQueryAction:(FMDatabase *)db conditions:(NSDictionary *) conditions{
     NSString * tableName = @"ACTION";
@@ -146,7 +154,7 @@
     } else if ([action isEqualToString:@"DELETE"]){
         [values appendFormat:@" FROM %@ ",tableName];
     }
-    NSString * sql = [[NSString stringWithFormat:@"%@ %@",values,where] autorelease];
+    NSString * sql = [NSString stringWithFormat:@"%@ %@",values,where];
     [values release];
     [where release];
     return sql;
