@@ -89,10 +89,6 @@
         }
         NSString * token =  [[NSUserDefaults standardUserDefaults]stringForKey:@"Token"];
         token==nil?nil:[request.headers setObject:token forKey:@"token"];
-        NSLog(@"=============request=============");
-        NSLog(@"URL:%@",[request urlPath]);
-        NSLog(@"DATA:%@",[[NSString alloc] initWithData:[request httpBody] encoding:NSUTF8StringEncoding]);
-        NSLog(@"=============-------=============");
         return request;
     }
     return nil;
@@ -108,9 +104,6 @@
     [[[HDDataToJSONConvertor alloc]initWithNextConvertor:
       [[[HDMBSResponseConvertor alloc]init]autorelease]
       ]autorelease];
-    NSLog(@"=============response=============");
-    NSLog(@"DATA:%@",[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding]);
-    NSLog(@"=============-------=============");
     NSDictionary * result = [convertor doConvertor:response.data error:error];
     
     HDResponseMap * responseMap = [HDResponseMap map];

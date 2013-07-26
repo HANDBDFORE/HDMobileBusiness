@@ -216,7 +216,7 @@ static  NSString* configFileName = @"ios-backend-config-mocha";
         self.autologinModel.token = token;
         [self.autologinModel autologin];
     }else{
-    [self showLoginView];
+        [self showLoginView];
     };
 }
 -(void)showLoginView

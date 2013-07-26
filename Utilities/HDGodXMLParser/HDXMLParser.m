@@ -39,11 +39,11 @@
 }
 - (void)dealloc
 {
-    [_patternes release];
-    [propertyRefbeans release];
-    [propertyValues release];
-    [currentArray release];
-    [currentDict release];
+    TT_RELEASE_SAFELY(_patternes);
+    TT_RELEASE_SAFELY(propertyRefbeans);
+    TT_RELEASE_SAFELY(propertyValues);
+    TT_RELEASE_SAFELY(currentArray);
+    TT_RELEASE_SAFELY(currentDict);
     [super dealloc];
 }
 
@@ -142,8 +142,7 @@
 }
 //报告解析的结束
 - (void)parserDidEndDocument:(NSXMLParser *)parser{
-    [parser release];
-    parser=nil;
+    TT_RELEASE_SAFELY(parser);
 }
 //报告不可恢复的解析错误
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError{
