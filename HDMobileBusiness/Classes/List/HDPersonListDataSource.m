@@ -22,9 +22,9 @@
     self = [super init];
     if (self) {
         self.itemDictionary =
-        @{ @"text" : @"text",
-        @"subtitle":@"subtitle",
-        @"userInfo":@"userInfo"};
+        @{ @"ID" : @"text",
+        @"NAME":@"subtitle",
+        @"DESCRIPTION":@"userInfo"};
     }
     return self;
 }

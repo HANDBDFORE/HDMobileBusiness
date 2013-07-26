@@ -9,7 +9,7 @@
 #import "HDDetailToolbarViewController.h"
 #import "HDTableStatusMessageItemCell.h"
 #import "HDActionModel.h"
-static NSString * kActionTypeDeliver = @"DELIVER";
+static NSString * kActionTypeDeliver = @"deliver";
 
 @interface HDDetailToolbarViewController ()
 
@@ -132,8 +132,10 @@ static NSString * kActionTypeDeliver = @"DELIVER";
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark deliver
--(void)deliver
+-(void)deliver:(id)sender
 {
+    //设置当前审批动作
+    self.selectedAction = [sender valueForKey:@"tag"];
     HDViewGuider * guider = [[HDApplicationContext shareContext] objectForIdentifier:@"todoDetailDeliverGuider"];
     [guider perform];
 }
@@ -146,15 +148,15 @@ static NSString * kActionTypeDeliver = @"DELIVER";
         //获取第一个单元格的第一个cell
         if ([field isKindOfClass:[TTMessageRecipientField class]]) {
             for (TTTableTextItem * item in [field recipients]) {
-                [dictionary setValue:item.userInfo forKeyPath:@"1"];
+                [dictionary setValue:item.userInfo forKeyPath:@"deliveree"];
             }
             //获取第二个单元格的内容
         } else if ([field isKindOfClass:[TTMessageTextField class]]) {
-            [dictionary  setValue:[(TTMessageTextField *)field text] forKeyPath:@"2"];
+            [dictionary  setValue:[(TTMessageTextField *)field text] forKeyPath:@"comment"];
         }
     }
-    [dictionary setValue:@"D" forKeyPath:@"3"];
-    
+    [dictionary setValue:kActionTypeDeliver forKeyPath:@"submitActionType"];
+    [dictionary setValue:_selectedAction forKeyPath:@"submitAction"];
     [controller dismissModalViewControllerAnimated:YES];
     [self submitWithDictionary:dictionary];
 }
@@ -236,7 +238,7 @@ static NSString * kActionTypeDeliver = @"DELIVER";
     }
     
     if ([[record valueForKey:@"actionType"] isEqualToString:kActionTypeDeliver]) {
-        actionButton.action = @selector(deliver);
+        actionButton.action = @selector(deliver:);
     }
     
     return actionButton;

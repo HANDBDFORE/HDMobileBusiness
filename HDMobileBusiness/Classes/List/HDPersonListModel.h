@@ -15,5 +15,6 @@
 }
 
 @property(nonatomic,copy) NSString * queryURL;
+@property(nonatomic,retain) id<HDPageTurning>  todoModel;
 
 @end

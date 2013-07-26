@@ -115,6 +115,17 @@ static NSString * kColumnMapKey = @"column1";
     self.cacheKey = nil;
     [self didFinishLoad];
 }
+
+#pragma mark HDListModelSubmit Submit
+-(void)submitDeliverRecords:(NSArray *)records
+{
+    [records setValue:kRecordWaiting forKey:kRecordStatus];
+    //debug:调用了错误的方法,不应该使用 addObject
+    [_submitList addObjectsFromArray:records];
+    [self updateDeliverRecords:records];
+    self.cacheKey = nil;
+    [self didFinishLoad];
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)removeRecord:(id)record
@@ -150,6 +161,10 @@ static NSString * kColumnMapKey = @"column1";
     [[HDCoreStorage shareStorage] excute:@selector(SQLUpdateRecords:recordList:) recordList:recordList];
 }
 
+-(void)updateDeliverRecords:(NSArray *) recordList
+{
+    [[HDCoreStorage shareStorage] excute:@selector(SQLUpdateDeliverRecords:recordList:) recordList:recordList];
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)insertRecords:(NSArray *) recordList
@@ -226,7 +241,13 @@ static NSString * kColumnMapKey = @"column1";
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     NSMutableArray * postlist = [[NSMutableArray alloc]init];
     for (NSDictionary * submitrecord in _submitList) {
-        NSDictionary * postrecord = [NSDictionary dictionaryWithObjectsAndKeys:[[submitrecord objectForKey:@"localId"] stringValue],@"localId",[submitrecord objectForKey:@"sourceSystemName"],@"sourceSystemName",[submitrecord objectForKey:@"submitAction"],@"action",[submitrecord objectForKey:@"submitActionType"],@"actionType",[submitrecord objectForKey:@"comment"],@"comments", nil];
+        NSMutableDictionary * postrecord = [NSMutableDictionary dictionaryWithObjectsAndKeys:[[submitrecord objectForKey:@"localId"] stringValue],@"localId",[submitrecord objectForKey:@"sourceSystemName"],@"sourceSystemName",[submitrecord objectForKey:@"submitAction"],@"action",[submitrecord objectForKey:@"submitActionType"],@"actionType",[submitrecord objectForKey:@"comment"],@"comments", nil];
+        if ([submitrecord objectForKey:@"deliveree"]!=nil) {
+            NSDictionary * otherParams =[NSDictionary dictionaryWithObject:[submitrecord objectForKey:@"deliveree"] forKey:@"deliveree"];
+            [postrecord setObject:otherParams forKey:@"otherParams"];
+        }
+        
+        
         [postlist addObject:postrecord];
     }
 

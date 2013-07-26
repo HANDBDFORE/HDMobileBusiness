@@ -13,7 +13,7 @@
 @implementation HDSQLCenter
 //数据库初始化
 -(BOOL)SQLCreatTable:(FMDatabase *)db{
-    NSArray *sqlAry= [NSArray arrayWithObjects:@"CREATE TABLE IF NOT EXISTS DataPool ( id INTEGER PRIMARY KEY AUTOINCREMENT, localId INTEGER, sourceSystemName TEXT, item1 TEXT, item2 TEXT, item3 TEXT, item4 TEXT,	status TEXT, comment TEXT, submitAction TEXT,submitActionType TEXT,serverMessage TEXT);",@"CREATE TABLE IF NOT EXISTS ACTION ( id INTEGER PRIMARY KEY AUTOINCREMENT,localId TEXT,sourceSystemName TEXT,action TEXT,actionTitle TEXT,actionType TEXT);",nil];
+    NSArray *sqlAry= [NSArray arrayWithObjects:@"CREATE TABLE IF NOT EXISTS DataPool ( id INTEGER PRIMARY KEY AUTOINCREMENT, localId INTEGER, sourceSystemName TEXT, item1 TEXT, item2 TEXT, item3 TEXT, item4 TEXT,	status TEXT, comment TEXT, submitAction TEXT,submitActionType TEXT,serverMessage TEXT,deliveree TEXT);",@"CREATE TABLE IF NOT EXISTS ACTION ( id INTEGER PRIMARY KEY AUTOINCREMENT,localId TEXT,sourceSystemName TEXT,action TEXT,actionTitle TEXT,actionType TEXT);",nil];
     BOOL state = YES;
     state = [self execBatchInTransaction:db sqlArray:sqlAry];
     return state;
@@ -28,7 +28,7 @@
 //查询ToDoList操作
 -(FMResultSet *)SQLQueryToDoList:(FMDatabase *)db{
     NSString * tableName = @"DataPool";
-    NSArray * params = [NSArray arrayWithObjects:@"id",@"localId",@"sourceSystemName",@"item1",@"item2",@"item3",@"item4",@"status",@"comment",@"submitAction",@"submitActionType",nil];
+    NSArray * params = [NSArray arrayWithObjects:@"id",@"localId",@"sourceSystemName",@"item1",@"item2",@"item3",@"item4",@"status",@"comment",@"submitAction",@"submitActionType",@"deliveree",nil];
     
     NSString *currentSql = [self creatCRUDSqlWithTableName:tableName params:params keys:nil action:@"SELECT"];
     
@@ -93,6 +93,19 @@
 
     NSString *currentSql = [self creatCRUDSqlWithTableName:tableName params:params keys:keys action:@"UPDATE"];
        
+    BOOL state = YES;
+    state = [self execLineInTransaction:db params:[params arrayByAddingObjectsFromArray:keys] recordList:recordList currentSql:currentSql];
+    return state;
+}
+//转交更新操作
+-(BOOL)SQLUpdateDeliverRecords:(FMDatabase *)db recordList:(NSArray *) recordList{
+    if (!recordList) return NO;
+    NSString * tableName = @"DataPool";
+    NSArray * params = [NSArray arrayWithObjects:@"status",@"submitAction",@"submitActionType",@"comment",@"deliveree",nil];
+    NSArray * keys = [NSArray arrayWithObjects:@"localId",@"sourceSystemName",nil];
+    
+    NSString *currentSql = [self creatCRUDSqlWithTableName:tableName params:params keys:keys action:@"UPDATE"];
+    
     BOOL state = YES;
     state = [self execLineInTransaction:db params:[params arrayByAddingObjectsFromArray:keys] recordList:recordList currentSql:currentSql];
     return state;

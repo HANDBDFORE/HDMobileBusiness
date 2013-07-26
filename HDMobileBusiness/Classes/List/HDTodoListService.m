@@ -61,7 +61,7 @@
         for (NSString * key in dictionary) {
             [submitRecords setValue:[dictionary valueForKey:key] forKey:key];
         }
-        [self.model submitRecords:submitRecords];
+        [self.model submitDeliverRecords:submitRecords];
     }
 }
 
