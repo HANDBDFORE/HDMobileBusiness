@@ -117,7 +117,9 @@
     return ([localStatus isEqualToString:kRecordNew] ||
             [localStatus isEqualToString:kRecordError]);
 }
-
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
 -(void)openURLForItem:(HDTableStatusMessageItem *)item
 {
     if ([item.state isEqualToString:kRecordNormal] ||

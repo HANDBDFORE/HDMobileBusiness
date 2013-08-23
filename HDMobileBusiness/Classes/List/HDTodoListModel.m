@@ -47,7 +47,6 @@ static NSString * kColumnMapKey = @"column1";
         //这里只设置loadedTime表示超时,modelViewController会调用reload方法,之后可以考虑overwrite viewController的shuldreload方法或者model的isOutdated方法
         self.loadedTime = [NSDate dateWithTimeIntervalSinceNow:0];
         self.cacheKey = nil;
-        //TODO:这里如果使用didFinish，会导致下拉刷新界面出问题，如果直接load会在分组时进入列表出现延迟现象。之后还是用load比较好，重新设计分组的交互。
         [self load:TTURLRequestCachePolicyDefault more:NO];
         return;
     }
@@ -242,7 +241,7 @@ static NSString * kColumnMapKey = @"column1";
     NSMutableArray * postlist = [[NSMutableArray alloc]init];
     for (NSDictionary * submitrecord in _submitList) {
         NSMutableDictionary * postrecord = [NSMutableDictionary dictionaryWithObjectsAndKeys:[[submitrecord objectForKey:@"localId"] stringValue],@"localId",[submitrecord objectForKey:@"sourceSystemName"],@"sourceSystemName",[submitrecord objectForKey:@"submitAction"],@"action",[submitrecord objectForKey:@"submitActionType"],@"actionType",[submitrecord objectForKey:@"comment"],@"comments", nil];
-        if ([submitrecord objectForKey:@"deliveree"]!=nil) {
+        if ([submitrecord objectForKey:@"deliveree"]!=[NSNull null]) {
             NSDictionary * otherParams =[NSDictionary dictionaryWithObject:[submitrecord objectForKey:@"deliveree"] forKey:@"deliveree"];
             [postrecord setObject:otherParams forKey:@"otherParams"];
         }
@@ -270,8 +269,8 @@ static NSString * kColumnMapKey = @"column1";
 -(void)submitResponse:(HDResponseMap*) resultMap
 {
     TT_RELEASE_SAFELY(_loadingRequest);
-    NSArray * reslist = [resultMap valueForKeyPath:@"result.list"];
     _flags.isSubmitingData = NO;
+    NSArray * reslist = [resultMap valueForKeyPath:@"result.list"];
     for(int i = [_submitList count] -1;i>=0;i--){
         NSDictionary * submitrecord =[_submitList objectAtIndex:i];
         NSUInteger index = [self.resultList indexOfObject:submitrecord];
@@ -280,8 +279,8 @@ static NSString * kColumnMapKey = @"column1";
                 if ([[resrecord objectForKey:@"status"] isEqualToString:@"F"]) {
                     [submitrecord setValue:kRecordWaiting forKey:kRecordStatus];
                     [submitrecord setValue:[resrecord objectForKey:@"message"] forKey:kRecordServerMessage];
-                    [self didUpdateObject:submitrecord
-                              atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+//                    [self didUpdateObject:submitrecord
+//                              atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
                     [self updateRecords:@[submitrecord]];
 
                 }else{
@@ -332,23 +331,6 @@ static NSString * kColumnMapKey = @"column1";
     [self insertRecords:[responseList valueForKey:@"new"]];
     [self removeRecords:[responseList valueForKey:@"delete"]];
     [self loadLocalRecords];
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(BOOL)isMatchColumnMapWithDictionary:(NSDictionary *) record
-{
-    NSArray * oldColumnKeyList = [[HDCoreStorage shareStorage]query:@selector(SQLqueryColumnMap:) conditions:nil];
-    
-    if ([record allKeys].count != oldColumnKeyList.count ||
-        oldColumnKeyList.count == 0) {
-        return NO;
-    }
-    
-    BOOL matchFlg = YES;
-    for (NSDictionary * line  in oldColumnKeyList) {
-        matchFlg = matchFlg && !![record valueForKey:[line valueForKey:kColumnMapKey]];
-    }
-    return matchFlg;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -37,7 +37,7 @@
 //查询ToDoList摘要操作
 -(FMResultSet *)SQLQueryToDoListDigest:(FMDatabase *)db{
     
-    NSString *currentSql = @"SELECT localId, sourceSystemName FROM DataPool WHERE STATUS != 'WAITING'";
+    NSString *currentSql = @"SELECT localId, sourceSystemName FROM DataPool";// WHERE STATUS != 'WAITING'
     
     return [db executeQuery:currentSql];
 }

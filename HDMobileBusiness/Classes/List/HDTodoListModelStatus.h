@@ -20,6 +20,6 @@ static NSString * kRecordError = @"ERROR";
 static NSString * kRecordDifferent = @"DIFFERENT";
 
 static NSString * kRecordStatus = @"status";
-static NSString * kRecordServerMessage = @"serverMessage";
+static NSString * kRecordServerMessage = @"message";
 
 #endif
