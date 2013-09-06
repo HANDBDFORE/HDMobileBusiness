@@ -120,6 +120,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section == 0) {
+        return 0;
+    }else{
+        return [self.model.resultList count];
+    }
+}
 -(void)openURLForItem:(HDTableStatusMessageItem *)item
 {
     if ([item.state isEqualToString:kRecordNormal] ||
