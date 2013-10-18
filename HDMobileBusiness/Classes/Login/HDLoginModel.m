@@ -68,9 +68,9 @@
     if (TTIsPad()) {
         return @"iPad";
     }
-    if (HDIsInch4()) {
-        return @"iPhone5";
-    }
+//    if (HDIsInch4()) {
+//        return @"iPhone5";
+//    }
     return @"iPhone";
 }
 

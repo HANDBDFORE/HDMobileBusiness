@@ -67,6 +67,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation HDFunctionListDataSource
 @synthesize itemDictionary = _itemDictionary;
+@synthesize shouldLoadBasicItems = _shouldLoadBasicItems;
 
 - (void)dealloc
 {
@@ -124,7 +125,9 @@
     
     self.items = items;
     self.sections = sections;
-    [self addBasicItems];
+    if (_shouldLoadBasicItems) {
+        [self addBasicItems];
+    }
     [self addLogoutItem];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

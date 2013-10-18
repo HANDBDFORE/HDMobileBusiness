@@ -104,6 +104,7 @@
 		<bean id="functionDataSource" create-url="tt://functionDataSource"
 			mode="share">
 			<property name="model" ref="functionModel" />
+            <property name="shouldLoadBasicItems" value="false"/>
 		</bean>
 		<!--functionModel -->
 		<bean id="functionModel" create-url="tt://functionModel" mode="share">

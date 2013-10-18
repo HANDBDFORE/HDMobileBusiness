@@ -17,7 +17,7 @@ static NSString * kEventTodoListSearchViewWillDissappear = @"TodoListSearchViewW
     @protected
     UIBarButtonItem *  _acceptButtonItem;
     UIBarButtonItem *  _refuseButtonItem;
-    UIBarButtonItem *  _clearButtonItem;
+//    UIBarButtonItem *  _clearButtonItem;
     NSString        *  _submitAction;
     NSString        *  _submitActionType;
 }

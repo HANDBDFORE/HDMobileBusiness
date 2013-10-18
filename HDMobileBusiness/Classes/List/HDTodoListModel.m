@@ -273,7 +273,7 @@
     NSArray * reslist = [resultMap valueForKeyPath:@"result.list"];
     for(int i = [_submitList count] -1;i>=0;i--){
         NSDictionary * submitrecord =[_submitList objectAtIndex:i];
-        NSUInteger index = [self.resultList indexOfObject:submitrecord];
+//        NSUInteger index = [self.resultList indexOfObject:submitrecord];
         for (NSDictionary * resrecord in reslist) {
             if (  [[resrecord objectForKey:@"localId"] integerValue] == [[submitrecord objectForKey:@"localId"] integerValue] &&[[resrecord objectForKey:@"sourceSystemName"] isEqualToString:[submitrecord objectForKey:@"sourceSystemName"]]) {
                 if ([[resrecord objectForKey:@"status"] isEqualToString:@"F"]) {

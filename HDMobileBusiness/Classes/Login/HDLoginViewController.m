@@ -29,14 +29,14 @@
     self.model = loginModel;
     
     //注册模型键值观察
-    [self addObserver:_loginModel forKeyPath:@"username.text" options:NSKeyValueObservingOptionNew context:@"username"];
-    [self addObserver:_loginModel forKeyPath:@"password.text" options:NSKeyValueObservingOptionNew context:@"password"];
+//    [self addObserver:_loginModel forKeyPath:@"username.text" options:NSKeyValueObservingOptionNew context:@"username"];
+//    [self addObserver:_loginModel forKeyPath:@"password.text" options:NSKeyValueObservingOptionNew context:@"password"];
 }
 
 -(void)viewDidUnload
 {
-    [self removeObserver:self.loginModel forKeyPath:@"username.text"];
-    [self removeObserver:self.loginModel forKeyPath:@"password.text"];
+//    [self removeObserver:self.loginModel forKeyPath:@"username.text"];
+//    [self removeObserver:self.loginModel forKeyPath:@"password.text"];
     
     TT_RELEASE_SAFELY(_loginModel);
     
@@ -113,6 +113,8 @@
     }
     
     if ([self.loginBtn tag] == 20) {
+        self.loginModel.username =_username.text;
+        self.loginModel.password =_password.text;
         [self.loginModel login];
         [self.loginBtn setTitle:@"取消" forState:UIControlStateNormal];
         [self.loginBtn setTag:21];

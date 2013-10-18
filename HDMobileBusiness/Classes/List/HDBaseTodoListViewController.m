@@ -29,7 +29,7 @@
 {
     TT_RELEASE_SAFELY(_refuseButtonItem);
     TT_RELEASE_SAFELY(_acceptButtonItem);
-    TT_RELEASE_SAFELY(_clearButtonItem);
+//    TT_RELEASE_SAFELY(_clearButtonItem);
     TT_RELEASE_SAFELY(_detailViewController);
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -56,7 +56,7 @@
     ////////////////////////////////////////////////////////////////////////////////
     /////////////////////
     
-    _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Clear", @"清理") style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
+//    _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Clear", @"清理") style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
     ////////////////////////////////////////////////////////////////////////////////
     /////////////////////
     [self resetToolBarButton];
