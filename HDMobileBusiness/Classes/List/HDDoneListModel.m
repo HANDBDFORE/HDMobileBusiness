@@ -34,7 +34,7 @@
 
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
-    if (more && self.resultList.count >9) {
+    if (more && self.resultList.count >10) {
         _pageNum ++;
     }else {
         _pageNum = 1;
@@ -43,7 +43,7 @@
     //debug:添加对_queryURL的nil校验，否则对nil appendding导致crash R
     if (_queryURL.length) {
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-        map.urlPath = [_queryURL stringByAppendingFormat:@"?pagesize=10&pagenum=%i&_fetchall=false&_autocount=false",_pageNum];
+        map.urlPath = [_queryURL stringByAppendingFormat:@"?pagesize=10&pagenum=%i&_fetchall=false_autocount=false",_pageNum];
         [self requestWithMap:map];
     }
 }
@@ -55,7 +55,7 @@
         [_resultList removeAllObjects];
         _currentIndex = 0;
     }
-    [_resultList addObjectsFromArray:[map.result objectForKey:@"list"]];
+    [_resultList addObjectsFromArray:map.result];
     
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

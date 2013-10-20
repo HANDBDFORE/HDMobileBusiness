@@ -142,17 +142,17 @@
     todoListItem.userInfo = @"functionTodoItemGuider";
     
     /////////////////////////////
-   TTTableImageItem * doneListItem =
-    [TTTableImageItem itemWithText:TTLocalizedString(@"Approved List", @"审批完成")
-                          delegate:self
-                          selector:@selector(openURLForItem:)];
-    doneListItem.imageURL = @"bundle://mail-14.png";
-    doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-    doneListItem.userInfo = @"functionDoneItemGuider";
+//   TTTableImageItem * doneListItem =
+//    [TTTableImageItem itemWithText:TTLocalizedString(@"Approved List", @"审批完成")
+//                          delegate:self
+//                          selector:@selector(openURLForItem:)];
+//    doneListItem.imageURL = @"bundle://mail-14.png";
+//    doneListItem.imageStyle = TTSTYLE(functionListCellImageStyle);
+//    doneListItem.userInfo = @"functionDoneItemGuider";
     
     ///////////////////////////////
     [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:TTLocalizedString(@"Approve", @"审批") footerTitle:nil] atIndex:0];
-    [self.items insertObject:@[todoListItem,doneListItem] atIndex:0];//doneListItem
+    [self.items insertObject:@[todoListItem] atIndex:0];//doneListItem
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

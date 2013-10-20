@@ -9,6 +9,8 @@
 #import "HDTodoListModel.h"
 #import "HDCoreStorage.h"
 
+static NSString * kColumnMapKey = @"column1";
+
 @implementation HDTodoListModel
 
 - (void)dealloc
@@ -254,12 +256,10 @@
         NSError *error = nil;
         jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
     }
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData
-                                                 encoding:NSUTF8StringEncoding];
     TT_RELEASE_SAFELY(postlist);
+    map.httpBody = jsonData;
+    map.contentType = @"application/json";
     map.urlPath = self.submitURL;
-    map.postData = [NSDictionary dictionaryWithObject:jsonString forKey:@"actions"];
-    map.httpMethod = @"post";
     map.cachePolicy = TTURLRequestCachePolicyNoCache;
     [self requestWithMap:map];
 }
@@ -307,16 +307,13 @@
         NSError *error = nil;
         jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
     }
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData
-                                                 encoding:NSUTF8StringEncoding];
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    map.postData = [NSDictionary dictionaryWithObject:jsonString forKey:@"localIds"];
-    map.httpMethod = @"post";
+    map.httpBody = jsonData;
+    map.contentType = @"application/json";
     map.urlPath =  self.queryURL;
     map.cachePolicy = TTURLRequestCachePolicyNoCache;
     [self requestWithMap:map];
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

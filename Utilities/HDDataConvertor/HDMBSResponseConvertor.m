@@ -13,22 +13,20 @@
 -(BOOL)validateData:(id)data
 {
     if ([data isKindOfClass:[NSDictionary class]]) {
+        NSString * responseCode = [data valueForKeyPath:@"head.code"];
+        if ([[responseCode lowercaseString] isEqualToString:@"ok"]) {
             return YES;
+        }
     }
     return  NO;
 }
 
 -(id)convert:(id)data error:(NSError **)error
 {
-    NSString * responseCode = [data valueForKeyPath:@"head.code"];
-    if ([[responseCode lowercaseString] isEqualToString:@"ok"]) {
-        if ([[data valueForKeyPath:@"body"] isKindOfClass:[NSDictionary class]]) {
-            return[NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"body"]];
-        }
+    
+    if ([[data valueForKeyPath:@"body"] isKindOfClass:[NSDictionary class]]) {
+        return[NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"body"]];
     }
-    *error = [NSError errorWithDomain:kHDConvertErrorDomain
-                               code:kHDConvertErrorCode
-                           userInfo:[NSDictionary dictionaryWithObject:[data valueForKeyPath:@"head.message"] forKey:NSLocalizedDescriptionKey]];
     return nil;
 }
 

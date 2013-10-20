@@ -95,6 +95,7 @@
         NSMutableDictionary * recordDictionary = [NSMutableDictionary dictionaryWithDictionary:record];
         [recordDictionary setValue:[HDHTTPRequestCenter baseURLPath] forKey:@"base_url"];
         [recordDictionary setValue:[[NSUserDefaults standardUserDefaults]stringForKey:@"Token"] forKey:@"token"];
+        
         self.currentURL = [self.webPageURLTemplate stringByReplacingSpaceHodlerWithDictionary:recordDictionary];
         [self openURL:[NSURL URLWithString:self.currentURL]];
         [self updateNavigationItems];
