@@ -59,7 +59,7 @@
         _confirmLabel.font = [UIFont systemFontOfSize:14];
         NSString * text = [NSString stringWithFormat:@"<b>%@</b>",_lableText];
         _confirmLabel.text = [TTStyledText textFromXHTML:text lineBreaks:YES URLs:YES];
-        _confirmLabel.textAlignment = NSTextAlignmentCenter;
+        _confirmLabel.textAlignment = UITextAlignmentCenter;
         _confirmLabel.textColor = [UIColor blackColor];
         [_confirmLabel sizeToFit];
         [self addSubview:_confirmLabel];

@@ -39,6 +39,4 @@
 
 -(void)submitRecords:(NSArray *)records;
 
--(void)submitDeliverRecords:(NSArray *)records;
-
 @end
