@@ -26,6 +26,8 @@
 
 @property(nonatomic,retain) id<HDListModelQuery> model;
 
+@property(nonatomic,assign) BOOL shouldLoadBasicItems;
+
 #pragma -override
 @property(nonatomic,retain) NSDictionary * itemDictionary;
 

@@ -20,10 +20,16 @@
 
 -(id)convert:(id)data error:(NSError **)error
 {
+    NSString * auroraResponse = [data valueForKeyPath:@"success"];
+    if (auroraResponse != nil) {
+        return nil;
+    }
     NSString * responseCode = [data valueForKeyPath:@"head.code"];
     if ([[responseCode lowercaseString] isEqualToString:@"ok"]) {
         if ([[data valueForKeyPath:@"body"] isKindOfClass:[NSDictionary class]]) {
-            return[NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"body"]];
+            if([(NSDictionary *)[data valueForKeyPath:@"body"] count] >0){
+                return[NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"body"]];
+            }     
         }
     }
     *error = [NSError errorWithDomain:kHDConvertErrorDomain

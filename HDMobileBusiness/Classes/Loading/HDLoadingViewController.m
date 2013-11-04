@@ -10,7 +10,7 @@
 #import "HDResourceLoader.h"
 #import "HDLoginViewController.h"
 
-static  NSString* configFileName = @"ios-backend-config-mocha";
+static  NSString* configFileName = @"ios-backend-config";
 
 @interface HDLoadingViewController ()
 
@@ -166,8 +166,7 @@ static  NSString* configFileName = @"ios-backend-config-mocha";
 
 
 -(BOOL)hasServerAddress{
-    NSUserDefaults *serverAddress = [NSUserDefaults standardUserDefaults];
-    NSString *address = [serverAddress objectForKey:@"base_url_preference"];
+    NSString *address = [[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"];
     if (address.length==0||[address isEqualToString:@"http://"]) {
         return NO;
     }else {

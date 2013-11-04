@@ -254,8 +254,8 @@
         NSError *error = nil;
         jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
     }
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData
-                                                 encoding:NSUTF8StringEncoding];
+    NSString *jsonString = [[[NSString alloc] initWithData:jsonData
+                                                 encoding:NSUTF8StringEncoding]autorelease];
     TT_RELEASE_SAFELY(postlist);
     map.urlPath = self.submitURL;
     map.postData = [NSDictionary dictionaryWithObject:jsonString forKey:@"actions"];
@@ -273,7 +273,7 @@
     NSArray * reslist = [resultMap valueForKeyPath:@"result.list"];
     for(int i = [_submitList count] -1;i>=0;i--){
         NSDictionary * submitrecord =[_submitList objectAtIndex:i];
-        NSUInteger index = [self.resultList indexOfObject:submitrecord];
+//        NSUInteger index = [self.resultList indexOfObject:submitrecord];
         for (NSDictionary * resrecord in reslist) {
             if (  [[resrecord objectForKey:@"localId"] integerValue] == [[submitrecord objectForKey:@"localId"] integerValue] &&[[resrecord objectForKey:@"sourceSystemName"] isEqualToString:[submitrecord objectForKey:@"sourceSystemName"]]) {
                 if ([[resrecord objectForKey:@"status"] isEqualToString:@"F"]) {
@@ -307,8 +307,8 @@
         NSError *error = nil;
         jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
     }
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData
-                                                 encoding:NSUTF8StringEncoding];
+    NSString *jsonString = [[[NSString alloc] initWithData:jsonData
+                                                 encoding:NSUTF8StringEncoding]autorelease];
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     map.postData = [NSDictionary dictionaryWithObject:jsonString forKey:@"localIds"];
     map.httpMethod = @"post";

@@ -85,6 +85,7 @@
         @"text":@"${text}",
         @"URL" :@"${url}",
         @"imageURL" : @"${image_url}"};
+        self.shouldLoadBasicItems = YES;
     }
     return self;
 }
@@ -124,7 +125,10 @@
     
     self.items = items;
     self.sections = sections;
-    [self addBasicItems];
+    if (_shouldLoadBasicItems) {
+        [self addBasicItems];
+    }
+    
     [self addLogoutItem];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

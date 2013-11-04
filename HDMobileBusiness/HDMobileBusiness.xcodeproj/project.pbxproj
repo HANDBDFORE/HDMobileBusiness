@@ -3476,8 +3476,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3499,7 +3499,7 @@
 					../Frameworks/Three20/Build/Products/three20,
 					"${SDK_DIR}/usr/include/libxml2",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
@@ -3520,8 +3520,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3536,7 +3536,7 @@
 					../Frameworks/Three20/Build/Products/three20,
 					"${SDK_DIR}/usr/include/libxml2",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
@@ -3549,8 +3549,8 @@
 		B36BDABB15C64777003A4A5D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: FAN ZHOU (6NSEA8CJ9U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: FAN ZHOU (6NSEA8CJ9U)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusiness/HDMobileBusiness-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -3560,14 +3560,14 @@
 					"${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "HDMobileBusiness/HDMobileBusiness-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "171E22C7-4011-41A9-9B22-B14C4A216A0A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "171E22C7-4011-41A9-9B22-B14C4A216A0A";
+				PROVISIONING_PROFILE = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3575,8 +3575,8 @@
 		B36BDABC15C64777003A4A5D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: FAN ZHOU (6NSEA8CJ9U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: FAN ZHOU (6NSEA8CJ9U)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusiness/HDMobileBusiness-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -3586,14 +3586,14 @@
 					"${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "HDMobileBusiness/HDMobileBusiness-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "171E22C7-4011-41A9-9B22-B14C4A216A0A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "171E22C7-4011-41A9-9B22-B14C4A216A0A";
+				PROVISIONING_PROFILE = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -66,12 +66,9 @@
 -(NSString *) deviceType
 {
     if (TTIsPad()) {
-        return @"iPad";
+        return @"ipad";
     }
-    if (HDIsInch4()) {
-        return @"iPhone5";
-    }
-    return @"iPhone";
+    return @"iphone";
 }
 
 //binding

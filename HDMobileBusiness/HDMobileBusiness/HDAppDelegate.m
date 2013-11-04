@@ -59,6 +59,8 @@
     
     //save deviceToken to userDefaults
     [[NSUserDefaults standardUserDefaults] setValue:tokenWithoutBlank forKey:@"deviceToken"];
+    [[NSUserDefaults standardUserDefaults] setValue:tokenWithoutBlank forKey:@"device_token"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
