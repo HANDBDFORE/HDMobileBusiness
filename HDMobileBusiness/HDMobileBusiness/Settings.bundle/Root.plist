@@ -22,7 +22,7 @@
 			<key>Key</key>
 			<string>base_url_preference</string>
 			<key>KeyboardType</key>
-			<string>Alphabet</string>
+			<string>URL</string>
 			<key>Title</key>
 			<string>服务地址</string>
 			<key>Type</key>
@@ -43,6 +43,16 @@
 			<string>Alphabet</string>
 			<key>Title</key>
 			<string>默认审批内容</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>device_token</string>
+			<key>DefaultValue</key>
+			<string></string>
+			<key>Title</key>
+			<string>设备标识</string>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 		</dict>

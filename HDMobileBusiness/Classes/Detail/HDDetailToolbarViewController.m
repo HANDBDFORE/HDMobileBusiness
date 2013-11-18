@@ -157,7 +157,7 @@ static NSString * kActionTypeDeliver = @"deliver";
     }
     [dictionary setValue:kActionTypeDeliver forKeyPath:@"submitActionType"];
     [dictionary setValue:_selectedAction forKeyPath:@"submitAction"];
-    [controller dismissViewControllerAnimated:YES completion:^{}];
+    [controller dismissModalViewControllerAnimated:YES];
     [self submitWithDictionary:dictionary];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////

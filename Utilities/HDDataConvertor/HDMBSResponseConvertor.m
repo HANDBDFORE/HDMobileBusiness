@@ -23,9 +23,17 @@
 
 -(id)convert:(id)data error:(NSError **)error
 {
-    
-    if ([[data valueForKeyPath:@"body"] isKindOfClass:[NSDictionary class]]) {
-        return[NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"body"]];
+    NSString * auroraResponse = [data valueForKeyPath:@"success"];
+    if (auroraResponse != nil) {
+        return nil;
+    }
+    NSString * responseCode = [data valueForKeyPath:@"head.code"];
+    if ([[responseCode lowercaseString] isEqualToString:@"ok"]) {
+        if ([[data valueForKeyPath:@"body"] isKindOfClass:[NSDictionary class]]) {
+            if([(NSDictionary *)[data valueForKeyPath:@"body"] count] >0){
+                return[NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"body"]];
+            }     
+        }
     }
     return nil;
 }

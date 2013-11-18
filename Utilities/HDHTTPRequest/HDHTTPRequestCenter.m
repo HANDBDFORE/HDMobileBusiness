@@ -89,9 +89,6 @@
         }
         NSString * token =  [[NSUserDefaults standardUserDefaults]stringForKey:@"Token"];
         token==nil?nil:[request.headers setObject:token forKey:@"token"];
-        
-//        NSLog(@"%@",[[[NSString alloc] initWithData:request.httpBody encoding:NSUTF8StringEncoding]autorelease]);
-        
         return request;
     }
     return nil;

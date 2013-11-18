@@ -25,7 +25,7 @@
 
 @property (nonatomic,assign) BOOL multiPartForm;
 
-@property (nonatomic) NSURLRequestCachePolicy cachePolicy;
+@property (nonatomic) TTURLRequestCachePolicy cachePolicy;
 
 /**
  * An object that handles the response data and may parse and validate it.

@@ -10,7 +10,7 @@
 #import "HDResourceLoader.h"
 #import "HDLoginViewController.h"
 
-static  NSString* configFileName = @"ios-backend-config-mocha";
+static  NSString* configFileName = @"ios-backend-config";
 
 @interface HDLoadingViewController ()
 
@@ -118,7 +118,7 @@ static  NSString* configFileName = @"ios-backend-config-mocha";
                         }else {
                             //最终状态
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                [self dismissViewControllerAnimated:YES completion:^(void){}];
+                                [self dismissModalViewControllerAnimated:NO];
                                 [self autologin];
                             });
                         }
@@ -166,8 +166,7 @@ static  NSString* configFileName = @"ios-backend-config-mocha";
 
 
 -(BOOL)hasServerAddress{
-    NSUserDefaults *serverAddress = [NSUserDefaults standardUserDefaults];
-    NSString *address = [serverAddress objectForKey:@"base_url_preference"];
+    NSString *address = [[NSUserDefaults standardUserDefaults] objectForKey:@"base_url_preference"];
     if (address.length==0||[address isEqualToString:@"http://"]) {
         return NO;
     }else {
@@ -263,7 +262,7 @@ static  NSString* configFileName = @"ios-backend-config-mocha";
     _errorSummury.numberOfLines = 2;
     _errorSummury.backgroundColor = [UIColor clearColor];
     //_errorSummury.backgroundColor = [UIColor  redColor];
-    _errorSummury.textAlignment = NSTextAlignmentCenter;
+    _errorSummury.textAlignment = UITextAlignmentCenter;
     _errorSummury.adjustsFontSizeToFitWidth = NO;
     _errorSummury.font = [UIFont fontWithName:@"Helvetica" size:18];
     _errorSummury.textColor = RGBCOLOR(133, 141, 155);
@@ -275,7 +274,7 @@ static  NSString* configFileName = @"ios-backend-config-mocha";
     _errorDetail.center = CGPointMake(self.view.frame.size.width/2,(self.view.frame.size.height-20)*0.6);
     _errorDetail.numberOfLines = 20;
     _errorDetail.font = [UIFont fontWithName:@"Helvetica" size:14];
-    _errorDetail.textAlignment = NSTextAlignmentCenter;
+    _errorDetail.textAlignment = UITextAlignmentCenter;
     _errorDetail.backgroundColor = [UIColor clearColor];
     //_errorDetail.backgroundColor = [UIColor  redColor];
     _errorDetail.textColor = RGBCOLOR(100,103,108);

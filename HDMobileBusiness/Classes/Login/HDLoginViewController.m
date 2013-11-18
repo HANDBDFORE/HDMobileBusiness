@@ -113,8 +113,8 @@
     }
     
     if ([self.loginBtn tag] == 20) {
-        self.loginModel.username =_username.text;
-        self.loginModel.password =_password.text;
+        self.loginModel.username = _username.text;
+        self.loginModel.password = _password.text;
         [self.loginModel login];
         [self.loginBtn setTitle:@"取消" forState:UIControlStateNormal];
         [self.loginBtn setTag:21];
