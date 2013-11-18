@@ -307,11 +307,6 @@ static NSString * kColumnMapKey = @"column1";
         NSError *error = nil;
         jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
     }
-<<<<<<< HEAD
-=======
-    NSString *jsonString = [[[NSString alloc] initWithData:jsonData
-                                                 encoding:NSUTF8StringEncoding]autorelease];
->>>>>>> newserver
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     map.httpBody = jsonData;
     map.contentType = @"application/json";
