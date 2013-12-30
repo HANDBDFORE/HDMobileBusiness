@@ -5,50 +5,50 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0BB73CEC-3583-46BC-9B12-0E69769CAC9A</string>
+	<string>32750AF3-AAFB-4BEB-94C0-ECD7E0F42F93</string>
 	<key>IDESourceControlProjectName</key>
 	<string>HDMobileBusiness</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3A92E95B-9C02-4DDB-BA86-5AD093625D3A</key>
-		<string>git://github.com/HAND-MAS/three20.git</string>
-		<key>CB0ADE97-D2CB-4D25-8532-4E3DF0BAA285</key>
-		<string>git://github.com/TouchCode/TouchXML.git</string>
-		<key>E6DC5F1B-18F3-44E1-AB42-F4A81E71B861</key>
-		<string>https://github.com/HAND-MAS/HDMobileBusiness.git</string>
-		<key>F39541D8-A0DE-46F2-9AA5-A173051C7B40</key>
-		<string>ssh://github.com/HAND-MAS/PrettyKit.git</string>
-		<key>FB0CB884-1B8F-4BDB-9BFE-DD148C482855</key>
+		<key>7F1F5D9C-760E-43D9-88D6-3305A6093CFA</key>
 		<string>git://github.com/ccgus/fmdb.git</string>
+		<key>A4D93D85-EE72-43CD-ADF7-F25094ECEACE</key>
+		<string>ssh://github.com/HAND-MAS/PrettyKit.git</string>
+		<key>AA484AAA-F006-4B3D-A9C1-89A4F7626646</key>
+		<string>git://github.com/TouchCode/TouchXML.git</string>
+		<key>B190CDA1-D470-49F3-A060-D93323BD28DF</key>
+		<string>git://github.com/HAND-MAS/three20.git</string>
+		<key>C7EA02BA-217F-42C3-9E47-F3576437108C</key>
+		<string>https://github.com/HAND-MAS/HDMobileBusiness.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>HDMobileBusiness.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3A92E95B-9C02-4DDB-BA86-5AD093625D3A</key>
-		<string>../Frameworks/Three20</string>
-		<key>CB0ADE97-D2CB-4D25-8532-4E3DF0BAA285</key>
-		<string>../Frameworks/TouchXML</string>
-		<key>E6DC5F1B-18F3-44E1-AB42-F4A81E71B861</key>
-		<string>..</string>
-		<key>F39541D8-A0DE-46F2-9AA5-A173051C7B40</key>
-		<string>../Frameworks/prettyKit</string>
-		<key>FB0CB884-1B8F-4BDB-9BFE-DD148C482855</key>
+		<key>7F1F5D9C-760E-43D9-88D6-3305A6093CFA</key>
 		<string>../Frameworks/FMDB</string>
+		<key>A4D93D85-EE72-43CD-ADF7-F25094ECEACE</key>
+		<string>../Frameworks/prettyKit</string>
+		<key>AA484AAA-F006-4B3D-A9C1-89A4F7626646</key>
+		<string>../Frameworks/TouchXML</string>
+		<key>B190CDA1-D470-49F3-A060-D93323BD28DF</key>
+		<string>../Frameworks/Three20</string>
+		<key>C7EA02BA-217F-42C3-9E47-F3576437108C</key>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/HAND-MAS/HDMobileBusiness.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E6DC5F1B-18F3-44E1-AB42-F4A81E71B861</string>
+	<string>C7EA02BA-217F-42C3-9E47-F3576437108C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>FB0CB884-1B8F-4BDB-9BFE-DD148C482855</string>
+			<string>7F1F5D9C-760E-43D9-88D6-3305A6093CFA</string>
 			<key>IDESourceControlWCCName</key>
 			<string>FMDB</string>
 		</dict>
@@ -56,7 +56,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E6DC5F1B-18F3-44E1-AB42-F4A81E71B861</string>
+			<string>C7EA02BA-217F-42C3-9E47-F3576437108C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>HDMobileBusiness</string>
 		</dict>
@@ -64,7 +64,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F39541D8-A0DE-46F2-9AA5-A173051C7B40</string>
+			<string>A4D93D85-EE72-43CD-ADF7-F25094ECEACE</string>
 			<key>IDESourceControlWCCName</key>
 			<string>prettyKit</string>
 		</dict>
@@ -72,7 +72,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3A92E95B-9C02-4DDB-BA86-5AD093625D3A</string>
+			<string>B190CDA1-D470-49F3-A060-D93323BD28DF</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Three20</string>
 		</dict>
@@ -80,7 +80,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CB0ADE97-D2CB-4D25-8532-4E3DF0BAA285</string>
+			<string>AA484AAA-F006-4B3D-A9C1-89A4F7626646</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TouchXML</string>
 		</dict>
