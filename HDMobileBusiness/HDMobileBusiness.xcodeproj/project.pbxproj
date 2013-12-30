@@ -3557,7 +3557,7 @@
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../Frameworks/Three20/Build/Products/three20,
-					"${SDK_DIR}/usr/include/libxml2",
+					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "HDMobileBusiness/HDMobileBusiness-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
@@ -3568,7 +3568,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3584,7 +3584,7 @@
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../Frameworks/Three20/Build/Products/three20,
-					"${SDK_DIR}/usr/include/libxml2",
+					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "HDMobileBusiness/HDMobileBusiness-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
@@ -3595,7 +3595,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
