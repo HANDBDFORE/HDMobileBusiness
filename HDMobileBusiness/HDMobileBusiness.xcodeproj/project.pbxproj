@@ -57,7 +57,6 @@
 		B31E2F1D15C6673F00880514 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F1015C6673F00880514 /* CXMLNode_PrivateExtensions.m */; };
 		B31E2F1E15C6673F00880514 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F1115C6673F00880514 /* CXMLNode_XPathExtensions.m */; };
 		B31E2F1F15C6673F00880514 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F1215C6673F00880514 /* CXMLNode.m */; };
-		B31E2F2115C667CC00880514 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B31E2F2015C667CC00880514 /* libxml2.dylib */; };
 		B31E2F2515C6692D00880514 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B31E2F2415C6692D00880514 /* libz.dylib */; };
 		B31E2F2615C66E7600880514 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B31E2F2215C667D200880514 /* libsqlite3.dylib */; };
 		B31E2F3215C66EB400880514 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F2C15C66EB400880514 /* FMDatabase.m */; };
@@ -581,6 +580,7 @@
 		C09F35261794E19D0046F809 /* 1024.PNG in Resources */ = {isa = PBXBuildFile; fileRef = C09F35231794E19D0046F809 /* 1024.PNG */; };
 		C09F352F1794E1F00046F809 /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = C09F352E1794E1F00046F809 /* 57.png */; };
 		C09F35311794E1F90046F809 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = C09F35301794E1F90046F809 /* 114.png */; };
+		C0D2646C18682AA70075E4DB /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B31E2F2015C667CC00880514 /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1288,9 +1288,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0D2646C18682AA70075E4DB /* libxml2.dylib in Frameworks */,
 				B31E2F2615C66E7600880514 /* libsqlite3.dylib in Frameworks */,
 				B31E2F2515C6692D00880514 /* libz.dylib in Frameworks */,
-				B31E2F2115C667CC00880514 /* libxml2.dylib in Frameworks */,
 				3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */,
 				320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */,
 				320A737074758E53BA54BE95 /* libThree20UINavigator.a in Frameworks */,
@@ -2128,6 +2128,7 @@
 				B3D0977D15DBA64300C3495D /* HDResponseMap.m */,
 				B38E687815C6552C00824CB1 /* HDHTTPRequestCenter.h */,
 				B38E687315C654DA00824CB1 /* HDHTTPRequestCenter.m */,
+				C0C8B2E6185ED8AB009C8822 /* New Group */,
 				B38E686C15C654DA00824CB1 /* HDRequestGetMap.h */,
 				B38E686D15C654DA00824CB1 /* HDRequestGetMap.m */,
 				B38E686E15C654DA00824CB1 /* HDRequestMap.h */,
@@ -2429,6 +2430,13 @@
 				B3E60F071659D7D4006C8119 /* page5.jpg */,
 			);
 			path = iphone;
+			sourceTree = "<group>";
+		};
+		C0C8B2E6185ED8AB009C8822 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3504,7 +3512,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 			};
 			name = Debug;
 		};
@@ -3541,7 +3549,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -3549,25 +3557,30 @@
 		B36BDABB15C64777003A4A5D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusiness/HDMobileBusiness-Prefix.pch";
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../Frameworks/Three20/Build/Products/three20,
-					"${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "HDMobileBusiness/HDMobileBusiness-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3575,25 +3588,29 @@
 		B36BDABC15C64777003A4A5D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 豪杰 马 (9AFD2TB536)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusiness/HDMobileBusiness-Prefix.pch";
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					../Frameworks/Three20/Build/Products/three20,
-					"${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "HDMobileBusiness/HDMobileBusiness-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E394F4E-54A0-4AF5-89E3-DAC8587175CC";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

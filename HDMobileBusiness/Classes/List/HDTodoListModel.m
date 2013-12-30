@@ -252,7 +252,7 @@
     if ([NSJSONSerialization isValidJSONObject:postlist])
     {
         NSError *error = nil;
-        jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
+        jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:0 error:&error];
     }
     NSString *jsonString = [[[NSString alloc] initWithData:jsonData
                                                  encoding:NSUTF8StringEncoding]autorelease];

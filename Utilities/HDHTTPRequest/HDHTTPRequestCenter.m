@@ -89,10 +89,10 @@
         }
         NSString * token =  [[NSUserDefaults standardUserDefaults]stringForKey:@"Token"];
         token==nil?nil:[request.headers setObject:token forKey:@"token"];
-//        NSLog(@"=============request=============");
-//        NSLog(@"URL:%@",[request urlPath]);
-//        NSLog(@"DATA:%@",[[NSString alloc] initWithData:[request httpBody] encoding:NSUTF8StringEncoding]);
-//        NSLog(@"=============-------=============");
+        NSLog(@"=============request=============");
+        NSLog(@"URL:%@",[request urlPath]);
+        NSLog(@"DATA:%@",[[NSString alloc] initWithData:[request httpBody] encoding:NSUTF8StringEncoding]);
+        NSLog(@"=============-------=============");
         
         return request;
     }

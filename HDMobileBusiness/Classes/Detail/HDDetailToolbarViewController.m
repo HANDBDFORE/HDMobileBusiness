@@ -67,7 +67,7 @@ static NSString * kActionTypeDeliver = @"deliver";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-    [self.navigationController setToolbarHidden:!self.shouldLoadAction animated:YES];
+    [self.navigationController setToolbarHidden:NO animated:YES];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

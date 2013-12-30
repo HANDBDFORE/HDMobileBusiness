@@ -21,7 +21,7 @@ static NSString * kHDConvertErrorDomain = @"hand.convertor";
 static const NSInteger kHDConvertErrorCode = -101;
 static NSString * kHDConvertErrorDataKey = @"dataConvert";
 
-static NSString * kHDDefaultErrorMessage = @"The data sending can not be validated";
+static NSString * kHDDefaultErrorMessage = @"无法处理响应格式";
 
 @protocol HDDataConvertor;
 

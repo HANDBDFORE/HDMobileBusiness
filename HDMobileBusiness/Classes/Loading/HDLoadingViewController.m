@@ -118,7 +118,7 @@ static  NSString* configFileName = @"ios-backend-config";
                         }else {
                             //最终状态
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                [self dismissModalViewControllerAnimated:NO];
+                                [self dismissViewControllerAnimated:NO completion:^{}];
                                 [self autologin];
                             });
                         }
