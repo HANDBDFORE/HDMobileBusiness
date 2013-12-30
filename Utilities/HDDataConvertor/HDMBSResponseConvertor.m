@@ -13,28 +13,25 @@
 -(BOOL)validateData:(id)data
 {
     if ([data isKindOfClass:[NSDictionary class]]) {
+        NSString * responseCode = [data valueForKeyPath:@"head.code"];
+        if ([[responseCode lowercaseString] isEqualToString:@"ok"]) {
             return YES;
+        }
     }
     return  NO;
 }
 
 -(id)convert:(id)data error:(NSError **)error
 {
-    NSString * auroraResponse = [data valueForKeyPath:@"success"];
-    if (auroraResponse != nil) {
+    if ([[data valueForKeyPath:@"body"] isKindOfClass:[NSDictionary class]]) {
+        if([(NSDictionary *)[data valueForKeyPath:@"body"] count] >0){
+            return[NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"body"]];
+        }
         return nil;
     }
-    NSString * responseCode = [data valueForKeyPath:@"head.code"];
-    if ([[responseCode lowercaseString] isEqualToString:@"ok"]) {
-        if ([[data valueForKeyPath:@"body"] isKindOfClass:[NSDictionary class]]) {
-            if([(NSDictionary *)[data valueForKeyPath:@"body"] count] >0){
-                return[NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"body"]];
-            }     
-        }
-    }
     *error = [NSError errorWithDomain:kHDConvertErrorDomain
-                               code:kHDConvertErrorCode
-                           userInfo:[NSDictionary dictionaryWithObject:[data valueForKeyPath:@"head.message"] forKey:NSLocalizedDescriptionKey]];
+                                 code:kHDConvertErrorCode
+                             userInfo:[NSDictionary dictionaryWithObject:[data valueForKeyPath:@"head.message"] forKey:NSLocalizedDescriptionKey]];
     return nil;
 }
 

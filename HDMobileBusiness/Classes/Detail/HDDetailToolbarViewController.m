@@ -67,7 +67,7 @@ static NSString * kActionTypeDeliver = @"deliver";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-    [self.navigationController setToolbarHidden:!self.shouldLoadAction animated:YES];
+    [self.navigationController setToolbarHidden:NO animated:YES];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -157,7 +157,7 @@ static NSString * kActionTypeDeliver = @"deliver";
     }
     [dictionary setValue:kActionTypeDeliver forKeyPath:@"submitActionType"];
     [dictionary setValue:_selectedAction forKeyPath:@"submitAction"];
-    [controller dismissModalViewControllerAnimated:YES];
+    [controller dismissViewControllerAnimated:YES completion:^{}];
     [self submitWithDictionary:dictionary];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////

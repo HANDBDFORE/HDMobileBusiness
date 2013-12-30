@@ -31,7 +31,8 @@ static  NSString* configFileName = @"ios-backend-config";
         [_retryButton setUserInteractionEnabled:YES];
     }else {
         //开始发请求
-        NSString *fileURL = [self configFileURL];
+        NSString *fileURL = [NSString stringWithFormat:@"%@?t=%i",[self configFileURL],(int)[[NSDate date] timeIntervalSince1970]];
+        NSLog(@"%@",fileURL);
         NSURL *url = [NSURL URLWithString:fileURL];
         NSMutableURLRequest *postRequest = [[[NSMutableURLRequest alloc]initWithURL:url]autorelease];
         [postRequest setHTTPMethod:@"GET"];
@@ -118,7 +119,7 @@ static  NSString* configFileName = @"ios-backend-config";
                         }else {
                             //最终状态
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                [self dismissModalViewControllerAnimated:NO];
+                                [self dismissViewControllerAnimated:NO completion:^{}];
                                 [self autologin];
                             });
                         }
@@ -134,11 +135,7 @@ static  NSString* configFileName = @"ios-backend-config";
 
 -(NSString *)configFileURL
 {
-    if (TTIsPad()) {
-        return [NSString stringWithFormat:@"%@%@-pad.xml",[HDHTTPRequestCenter baseURLPath],configFileName];
-    }else{
         return [NSString stringWithFormat:@"%@%@.xml",[HDHTTPRequestCenter baseURLPath],configFileName];
-    }
 }
 
 -(BOOL)pingStage1{
