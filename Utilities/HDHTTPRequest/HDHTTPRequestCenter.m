@@ -98,8 +98,6 @@
                                    error:(NSError **) error
 {
     TTURLDataResponse * response = request.response;
-    //
-//    NSLog(@"%@",[[[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding]autorelease]);
     // get convertor
     id<HDDataConvertor> convertor =
     [[[HDDataToJSONConvertor alloc]initWithNextConvertor:

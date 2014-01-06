@@ -27,24 +27,24 @@
 }
 -(void)query
 {
-    _actionList = [self queryActions];
-    if ([_actionList count] < 1) {
+//    _actionList = [self queryActions];
+//    if ([_actionList count] < 1) {
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
         map.urlPath = self.queryURL;
         //传回localId及sourceSystemName
         NSDictionary * postdata = [NSDictionary dictionaryWithObjectsAndKeys:[[_record objectForKey:@"localId"] stringValue],@"localId",[_record objectForKey:@"sourceSystemName"],@"sourceSystemName", nil];
         map.postData = postdata;
         [self requestWithMap:map];
-
-    }else{
-        [self didFinishLoad];
-    }
+//
+//    }else{
+//        [self didFinishLoad];
+//    }
 }
 
 #pragma -mark  overwrite HDURLRequestModel  functions
 -(void)requestResultMap:(HDResponseMap *)map{
     NSArray * actions = [map.result objectForKey:@"list"];
-    [self insertActions:actions];
+//    [self insertActions:actions];
     _actionList = actions;
 }
 #pragma -mark DataBase

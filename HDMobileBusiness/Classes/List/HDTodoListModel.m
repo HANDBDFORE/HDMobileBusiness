@@ -254,7 +254,7 @@ static NSString * kColumnMapKey = @"column1";
     if ([NSJSONSerialization isValidJSONObject:postlist])
     {
         NSError *error = nil;
-        jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
+        jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:0 error:&error];
     }
     TT_RELEASE_SAFELY(postlist);
     map.httpBody = jsonData;
