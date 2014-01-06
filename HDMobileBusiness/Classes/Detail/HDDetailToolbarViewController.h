@@ -15,8 +15,6 @@
 
 @property(nonatomic,readonly) UIBarButtonItem * spaceItem;
 
-@property(nonatomic,assign) BOOL shouldLoadAction;
-
 @property(nonatomic,retain) HDActionModel * actionModel;
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated;

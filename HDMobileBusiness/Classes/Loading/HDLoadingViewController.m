@@ -32,7 +32,7 @@ static  NSString* configFileName = @"ios-backend-config";
     }else {
         //开始发请求
         NSString *fileURL = [NSString stringWithFormat:@"%@?t=%i",[self configFileURL],(int)[[NSDate date] timeIntervalSince1970]];
-        NSLog(@"%@",fileURL);
+//        NSLog(@"%@",fileURL);
         NSURL *url = [NSURL URLWithString:fileURL];
         NSMutableURLRequest *postRequest = [[[NSMutableURLRequest alloc]initWithURL:url]autorelease];
         [postRequest setHTTPMethod:@"GET"];
@@ -259,7 +259,7 @@ static  NSString* configFileName = @"ios-backend-config";
     _errorSummury.numberOfLines = 2;
     _errorSummury.backgroundColor = [UIColor clearColor];
     //_errorSummury.backgroundColor = [UIColor  redColor];
-    _errorSummury.textAlignment = UITextAlignmentCenter;
+    _errorSummury.textAlignment = NSTextAlignmentCenter;
     _errorSummury.adjustsFontSizeToFitWidth = NO;
     _errorSummury.font = [UIFont fontWithName:@"Helvetica" size:18];
     _errorSummury.textColor = RGBCOLOR(133, 141, 155);
@@ -271,7 +271,7 @@ static  NSString* configFileName = @"ios-backend-config";
     _errorDetail.center = CGPointMake(self.view.frame.size.width/2,(self.view.frame.size.height-20)*0.6);
     _errorDetail.numberOfLines = 20;
     _errorDetail.font = [UIFont fontWithName:@"Helvetica" size:14];
-    _errorDetail.textAlignment = UITextAlignmentCenter;
+    _errorDetail.textAlignment = NSTextAlignmentCenter;
     _errorDetail.backgroundColor = [UIColor clearColor];
     //_errorDetail.backgroundColor = [UIColor  redColor];
     _errorDetail.textColor = RGBCOLOR(100,103,108);

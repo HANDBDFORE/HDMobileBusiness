@@ -29,6 +29,18 @@ static NSString * kActionTypeDeliver = @"deliver";
 
 @synthesize spaceItem = _spaceItem;
 @synthesize actionModel = _actionModel;
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        self.actionModel = [[HDApplicationContext shareContext]objectForIdentifier:@"actionModel"];
+    }
+    return self;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////
 -(void)setActionModel:(HDActionModel *)actionModel
 {
@@ -67,21 +79,9 @@ static NSString * kActionTypeDeliver = @"deliver";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-    [self.navigationController setToolbarHidden:NO animated:YES];
+    [self.navigationController setToolbarHidden:NO animated:NO];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        _shouldLoadAction = YES;
-        self.actionModel = [[HDApplicationContext shareContext]objectForIdentifier:@"actionModel"];
-//        self.actionModel = [[[HDActionModel alloc]init]retain];
-    }
-    //10.213.212.58
-    return self;
-}
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - iphone
 -(UIBarButtonItem *)spaceItem
