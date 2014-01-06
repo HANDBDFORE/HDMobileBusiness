@@ -49,8 +49,8 @@
     [self initUsers];
 
     id postdata = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                   self.username,@"username",
-                   self.password,@"password",
+                   self.username,@"user_name",
+                   self.password,@"user_password",
                    [self deviceType],@"device_type",
                    [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"push_token",
                    [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"device_Id",
@@ -65,9 +65,6 @@
 
 -(NSString *) deviceType
 {
-    if (TTIsPad()) {
-        return @"ipad";
-    }
     return @"iphone";
 }
 
