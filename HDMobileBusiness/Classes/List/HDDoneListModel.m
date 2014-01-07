@@ -55,7 +55,7 @@
         [_resultList removeAllObjects];
         _currentIndex = 0;
     }
-    [_resultList addObjectsFromArray:map.result];
+    [_resultList addObjectsFromArray:[map.result objectForKey:@"list"]];
     
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

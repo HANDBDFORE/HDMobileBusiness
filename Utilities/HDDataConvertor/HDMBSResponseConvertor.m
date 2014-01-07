@@ -14,7 +14,7 @@
 {
     if ([data isKindOfClass:[NSDictionary class]]) {
         NSString * responseCode = [data valueForKeyPath:@"head.code"];
-        if ([[responseCode lowercaseString] isEqualToString:@"ok"]) {
+        if (responseCode != nil) {
             return YES;
         }
     }
@@ -23,16 +23,20 @@
 
 -(id)convert:(id)data error:(NSError **)error
 {
-    if ([[data valueForKeyPath:@"body"] isKindOfClass:[NSDictionary class]]) {
-        if([(NSDictionary *)[data valueForKeyPath:@"body"] count] >0){
-            return[NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"body"]];
+    NSString * responseCode = [data valueForKeyPath:@"head.code"];
+    if ([[responseCode lowercaseString] isEqualToString:@"ok"]) {
+        if ([[data valueForKeyPath:@"body"] isKindOfClass:[NSDictionary class]]) {
+            if([(NSDictionary *)[data valueForKeyPath:@"body"] count] >0){
+                return[NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"body"]];
+            }
+            return nil;
         }
+    }else{
+        *error = [NSError errorWithDomain:kHDConvertErrorDomain
+                                     code:kHDConvertErrorCode
+                                 userInfo:[NSDictionary dictionaryWithObject:[data valueForKeyPath:@"head.message"] forKey:NSLocalizedDescriptionKey]];
         return nil;
     }
-    *error = [NSError errorWithDomain:kHDConvertErrorDomain
-                                 code:kHDConvertErrorCode
-                             userInfo:[NSDictionary dictionaryWithObject:[data valueForKeyPath:@"head.message"] forKey:NSLocalizedDescriptionKey]];
-    return nil;
 }
 
 @end

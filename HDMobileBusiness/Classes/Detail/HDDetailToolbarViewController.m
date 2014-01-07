@@ -94,7 +94,6 @@ static NSString * kActionTypeDeliver = @"deliver";
 
 -(void)updateToolbarItems
 {
-    if (!TTIsPad()) {
         NSMutableArray * items = [NSMutableArray arrayWithCapacity:5];
         for (id item in self.submitActionItems) {
             [items addObject:item];
@@ -102,7 +101,6 @@ static NSString * kActionTypeDeliver = @"deliver";
         }
         [items removeLastObject];
         self.toolbarItems = items;
-    }
 }
 
 #pragma mark - submit record
@@ -216,7 +214,8 @@ static NSString * kActionTypeDeliver = @"deliver";
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)loadActions:(NSDictionary *) record
-{  
+{
+    self.toolbarItems = nil;
     self.actionModel.record = record;
     [self.actionModel query];
 }

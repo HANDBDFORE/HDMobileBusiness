@@ -32,7 +32,6 @@ static  NSString* configFileName = @"ios-backend-config";
     }else {
         //开始发请求
         NSString *fileURL = [NSString stringWithFormat:@"%@?t=%i",[self configFileURL],(int)[[NSDate date] timeIntervalSince1970]];
-//        NSLog(@"%@",fileURL);
         NSURL *url = [NSURL URLWithString:fileURL];
         NSMutableURLRequest *postRequest = [[[NSMutableURLRequest alloc]initWithURL:url]autorelease];
         [postRequest setHTTPMethod:@"GET"];

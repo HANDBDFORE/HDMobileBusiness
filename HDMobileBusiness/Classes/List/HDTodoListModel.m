@@ -257,8 +257,9 @@ static NSString * kColumnMapKey = @"column1";
         jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:0 error:&error];
     }
     TT_RELEASE_SAFELY(postlist);
-    map.httpBody = jsonData;
-    map.contentType = @"application/json";
+    NSString *json =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]; 
+    map.postData = [NSDictionary dictionaryWithObject:json forKey:@"actions"];
+//    map.contentType = @"application/json";
     map.urlPath = self.submitURL;
     map.cachePolicy = TTURLRequestCachePolicyNoCache;
     [self requestWithMap:map];
@@ -305,11 +306,14 @@ static NSString * kColumnMapKey = @"column1";
     if ([NSJSONSerialization isValidJSONObject:postlist])
     {
         NSError *error = nil;
-        jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:nil error:&error];
+        jsonData  = [NSJSONSerialization dataWithJSONObject:postlist options:0 error:&error];
     }
+    
+    NSString *json =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
-    map.httpBody = jsonData;
-    map.contentType = @"application/json";
+    map.postData = [NSDictionary dictionaryWithObject:json forKey:@"localIds"];
+//    map.contentType = @"application/json";
     map.urlPath =  self.queryURL;
     map.cachePolicy = TTURLRequestCachePolicyNoCache;
     [self requestWithMap:map];
