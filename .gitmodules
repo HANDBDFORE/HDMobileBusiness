@@ -7,6 +7,3 @@
 [submodule "Frameworks/prettyKit"]
         path = Frameworks/prettyKit
         url = git@github.com:HAND-MAS/PrettyKit.git
-[submodule "Frameworks/Three20"]
-	path = Frameworks/Three20
-	url = git://github.com/TouchCode/TouchXML.git
