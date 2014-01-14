@@ -10,7 +10,7 @@
 #import "HDUserInfoView.h"
 #import "HDListModel.h"
 
-@interface HDDetailInfoViewController : HDWebViewController<UISplitViewControllerDelegate>
+@interface HDDetailInfoViewController : HDWebViewController
 {
     UIBarButtonItem * _nextButtonItem;
     UIBarButtonItem * _prevButtonItem;

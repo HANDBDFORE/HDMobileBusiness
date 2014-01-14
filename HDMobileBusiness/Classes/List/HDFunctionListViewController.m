@@ -15,7 +15,6 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.title = @"功能列表";
         self.variableHeightRows = YES;
-        self.clearsSelectionOnViewWillAppear = !TTIsPad();
     }
     return self;
 }
@@ -26,10 +25,20 @@
     [super loadView];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)viewWillAppear:(BOOL)animated
+//-(void)viewDidLoad
+//{
+//    [super viewDidLoad];
+//    [self.navigationController setToolbarHidden:YES animated:NO];
+//}
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    [self.navigationController setToolbarHidden:YES animated:NO];
+//}
+-(void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    NSLog(@"functionlistDidAppear");
+    [super viewDidAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

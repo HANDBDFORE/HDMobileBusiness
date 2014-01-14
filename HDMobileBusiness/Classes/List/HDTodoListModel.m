@@ -259,6 +259,7 @@ static NSString * kColumnMapKey = @"column1";
     TT_RELEASE_SAFELY(postlist);
     NSString *json =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]; 
     map.postData = [NSDictionary dictionaryWithObject:json forKey:@"actions"];
+    [json release];
 //    map.contentType = @"application/json";
     map.urlPath = self.submitURL;
     map.cachePolicy = TTURLRequestCachePolicyNoCache;
@@ -313,6 +314,7 @@ static NSString * kColumnMapKey = @"column1";
     
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     map.postData = [NSDictionary dictionaryWithObject:json forKey:@"localIds"];
+    [json release];
 //    map.contentType = @"application/json";
     map.urlPath =  self.queryURL;
     map.cachePolicy = TTURLRequestCachePolicyNoCache;

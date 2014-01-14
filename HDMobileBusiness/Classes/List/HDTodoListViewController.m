@@ -32,25 +32,32 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //tool bar
-    [self.navigationController setToolbarHidden:NO animated:YES];
     [self setEditingToolbarItemButtons:NO animated:YES];
     
     _searchController.searchBar.tintColor = TTSTYLEVAR(searchBarTintColor);
     self.tableView.tableHeaderView = _searchController.searchBar;
     self.tableView.contentOffset = CGPointMake(0, TTToolbarHeight());
 }
-
--(void)viewWillAppear:(BOOL)animated
+//-(void)viewDidLoad
+//{
+//    [super viewDidLoad];
+//    [self.navigationController setToolbarHidden:NO animated:NO];
+//}
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    if ([_searchController isActive]) {
+//        [self.searchViewController viewWillAppear:animated];
+//    }else{
+//        [super viewWillAppear:animated];
+//        [self.navigationController setToolbarHidden:NO animated:NO];
+//    }
+//}
+-(void)viewDidAppear:(BOOL)animated
 {
-    if ([_searchController isActive]) {
-        [self.searchViewController viewWillAppear:animated];
-    }else{
-        [super viewWillAppear:animated];
-        [self.navigationController.toolbar setTintColor:TTSTYLEVAR(toolbarTintColor)];
-        [self.navigationController setToolbarHidden:NO animated:YES];
-    }
+    NSLog(@"todolistDidAppear");
+    [super viewDidAppear:animated];
+    [self.navigationController setToolbarHidden:NO animated:YES];
 }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark edit status
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated
@@ -66,7 +73,7 @@
 {
     self.searchDisplayController.searchBar.userInteractionEnabled = enableSearchBar;
     [UIView animateWithDuration:animated?0.25:0 animations:^{
-        self.searchDisplayController.searchBar.alpha = enableSearchBar? 1:0.5;  
+        self.searchDisplayController.searchBar.alpha = enableSearchBar? 1:0.5;
     }];
 }
 
@@ -83,7 +90,7 @@
         return [NSArray arrayWithObjects:_acceptButtonItem,self.spaceItem,_refuseButtonItem, nil];
     }else {
         return [NSArray arrayWithObjects:self.spaceItem,self.timeStampItem,self.spaceItem,nil];
-    } 
+    }
 }
 
 @end

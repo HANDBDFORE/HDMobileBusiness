@@ -73,7 +73,7 @@
         _confirmButton = [[TTButton buttonWithStyle:@"confirmCellButton:"
                                               title:_buttonTitle] retain];
         [_confirmButton sizeToFit];
-         [self addSubview:_confirmButton];
+        [self addSubview:_confirmButton];
     }
     return _confirmButton;
 }

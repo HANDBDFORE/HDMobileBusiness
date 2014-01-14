@@ -43,7 +43,7 @@
     }else{
         HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
         map.urlPath = self.queryURL;
-//        [super requestWithMap:map];
+        //        [super requestWithMap:map];
         [self requestWithMap:map];
     }
 }
@@ -80,11 +80,11 @@
     if (self= [super init]) {
         self.itemDictionary =
         @{ @"typeField" : @"${function_type}",
-        @"sectionFlag" : @"SECTION",
-        @"sectionText" : @"${text}",
-        @"text":@"${text}",
-        @"URL" :@"${url}",
-        @"imageURL" : @"${image_url}"};
+           @"sectionFlag" : @"SECTION",
+           @"sectionText" : @"${text}",
+           @"text":@"${text}",
+           @"URL" :@"${url}",
+           @"imageURL" : @"${image_url}"};
         self.shouldLoadBasicItems = YES;
     }
     return self;
@@ -98,13 +98,13 @@
     NSMutableArray* items = [NSMutableArray array];
     NSMutableArray* sections = [NSMutableArray array];
     NSMutableArray* section = nil;
-   
+    
     for (NSDictionary * sectiondata in sectionList) {
         
         NSString * sectionText =  [sectiondata valueForKey:@"title"];
-            [sections addObject:sectionText];
-            section = [NSMutableArray array];
-            [items addObject:section];
+        [sections addObject:sectionText];
+        section = [NSMutableArray array];
+        [items addObject:section];
         NSArray * items = [sectiondata valueForKey:@"items"];
         for (NSDictionary * item in items) {
             NSString * text = [item valueForKey:@"title"];
@@ -120,7 +120,7 @@
             imageItem.userInfo = URL;
             [section addObject:imageItem];
         }
-
+        
     }
     
     self.items = items;
@@ -181,7 +181,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)addLogoutItem
-{    
+{
     TTTableImageItem * logoutItem =
     [TTTableImageItem itemWithText:TTLocalizedString(@"Logout", @"注销")
                           delegate:self
@@ -189,7 +189,7 @@
     
     logoutItem.imageURL = @"bundle://logout256.png";
     logoutItem.imageStyle = TTSTYLE(functionListCellImageStyle);
-
+    
     [self.sections addObject:[TTTableSection sectionWithHeaderTitle:@" " footerTitle:nil]];
     [self.items addObject:@[logoutItem]];
 }

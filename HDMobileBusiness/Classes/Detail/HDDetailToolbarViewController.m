@@ -12,21 +12,20 @@
 static NSString * kActionTypeDeliver = @"deliver";
 
 @interface HDDetailToolbarViewController ()
-
+{
+    @private
+    NSString * _selectedAction;
+    NSArray * _submitActionItems;
+}
 @property(nonatomic,retain) NSString * selectedAction;
 
 @property(nonatomic,retain) NSArray * submitActionItems;
-
-@property(nonatomic,retain) UIView * editBackgroundView;
-
-@property(nonatomic,retain) UIView * editRecordsView;
-
-@property(nonatomic,assign) NSInteger factor;
-
 @end
 
 @implementation HDDetailToolbarViewController
 
+@synthesize selectedAction = _selectedAction;
+@synthesize submitActionItems = _submitActionItems;
 @synthesize spaceItem = _spaceItem;
 @synthesize actionModel = _actionModel;
 
@@ -49,37 +48,38 @@ static NSString * kActionTypeDeliver = @"deliver";
 }
 #pragma mark - life cycle
 #pragma mark -
-
-- (void)viewDidUnload
-{
-    [[TTNavigator navigator].URLMap removeURL:@"jscall://post/(postWithTag:)"];
-    [[TTNavigator navigator].URLMap removeURL:@"jscall://deliver"];
-    TT_RELEASE_SAFELY(_selectedAction)
-    TT_RELEASE_SAFELY(_submitActionItems);
-    TT_RELEASE_SAFELY(_editBackgroundView);
-    TT_RELEASE_SAFELY(_editRecordsView);
-    TT_RELEASE_SAFELY(_spaceItem);
-    [super viewDidUnload];
-}
-
 -(void)loadView
 {
     [super loadView];
-    _editBackgroundView = [[UIControl alloc]initWithFrame:self.view.frame];
-    _editBackgroundView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    _editBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    
     TTURLMap *map = [TTNavigator navigator].URLMap;
     [map from:@"jscall://post/(postWithTag:)" toObject:self selector:@selector(postWithTag:)];
     [map from:@"jscall://deliver" toObject:self selector:@selector(deliver)];
     
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)viewWillAppear:(BOOL)animated
+//-(void)viewDidLoad
+//{
+//    [super viewDidLoad];
+//    [self.navigationController setToolbarHidden:NO animated:NO];
+//}
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    [self.navigationController setToolbarHidden:NO animated:NO];
+//}
+-(void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear: animated];
+    NSLog(@"detaillistDidAppear");
+    [super viewDidAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:NO];
+}
+- (void)viewDidUnload
+{
+    [[TTNavigator navigator].URLMap removeURL:@"jscall://post/(postWithTag:)"];
+    [[TTNavigator navigator].URLMap removeURL:@"jscall://deliver"];
+    TT_RELEASE_SAFELY(_spaceItem);
+    TT_RELEASE_SAFELY(_selectedAction)
+    TT_RELEASE_SAFELY(_submitActionItems);
+    [super viewDidUnload];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,7 +112,7 @@ static NSString * kActionTypeDeliver = @"deliver";
 -(void)toolbarButtonPressed: (id)sender
 {
     //设置当前审批动作
-    self.selectedAction = [sender valueForKey:@"tag"];
+    self.selectedAction = [[sender valueForKey:@"tag"] stringValue];
     //准备默认审批内容
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     
@@ -125,7 +125,7 @@ static NSString * kActionTypeDeliver = @"deliver";
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    [self submitWithDictionary:@{@"comment":text,@"submitAction":_selectedAction}];
+    [self submitWithDictionary:@{@"comment":text,@"submitAction":self.selectedAction}];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -154,7 +154,7 @@ static NSString * kActionTypeDeliver = @"deliver";
         }
     }
     [dictionary setValue:kActionTypeDeliver forKeyPath:@"submitActionType"];
-    [dictionary setValue:_selectedAction forKeyPath:@"submitAction"];
+    [dictionary setValue:self.selectedAction forKeyPath:@"submitAction"];
     [controller dismissViewControllerAnimated:YES completion:^{}];
     [self submitWithDictionary:dictionary];
 }
@@ -201,9 +201,7 @@ static NSString * kActionTypeDeliver = @"deliver";
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)loadRecord:(NSDictionary *) record{
-    if (self.editing) {
-        return;
-    }else if (nil == self.pageTurningService) {
+    if (nil == self.pageTurningService) {
         [self updateNavigationItems];
         [self openURL:[NSURL URLWithString:self.webPageURLTemplate]];
     }else{
@@ -241,146 +239,4 @@ static NSString * kActionTypeDeliver = @"deliver";
     }
     
     return actionButton;
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)setEditing:(BOOL)editing animated:(BOOL)animated
-{
-    [super setEditing:editing animated:animated];
-    [self resetEditView];
-    if (editing) {
-        [self updateNavigationItems];
-        [self.view addSubview:self.editBackgroundView];
-    }else{
-        [self.editBackgroundView removeFromSuperview];   
-    }
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)updateNavigationItems
-{
-    [super updateNavigationItems];
-    if (!self.isEditing) {
-        return;
-    }
-    if (_popoverItem) {
-        self.title = @"                       请选择需要审批的记录";
-    }else{
-        self.title = @"请选择需要审批的记录";
-    }
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(NSArray *)createLeftNavigationItems
-{
-    if(self.isEditing && _popoverItem){
-        return @[_popoverItem];
-    }else{
-        return [super createLeftNavigationItems];
-    }
-    return nil;
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(NSArray *)createRightNavigationItems
-{
-    if (self.isEditing) {
-        return nil;
-    }
-    if(self.submitActionItems&&TTIsPad()){
-        NSMutableArray * items = [super createRightNavigationItems];
-        [items addObjectsFromArray:self.submitActionItems];
-        return items;
-    }
-    return [super createRightNavigationItems];
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)resetEditViewAnimated:(BOOL) animated;
-{
-    if (animated) {
-        [UIView animateWithDuration:1.0 animations:^{
-            _editRecordsView.alpha = 0;
-        } completion:^(BOOL finished) {
-            [self resetEditView];
-        }];
-    }else{
-        [self resetEditView];
-    } 
-}
-
--(void)resetEditView{
-    if (self.editRecordsView) {
-        [self.editRecordsView removeFromSuperview];
-        self.editRecordsView = nil;
-    }
-    _editRecordsView = [[UIView alloc]initWithFrame:self.view.frame];
-    _editRecordsView.backgroundColor = [UIColor clearColor];
-    [_editBackgroundView addSubview:_editRecordsView];
-}
-
-#pragma mark mark for pad
--(void)selectedObject:(id)object atIndex:(NSInteger)objectIndex;
-{
-    HDTableStatusMessageItemCell * recordView = [self recordView];
-    recordView.tag = objectIndex+100;
-    [recordView setObject:object];
-    [recordView.layer addAnimation:[self selectAnimation] forKey:@"selectAnimation"];
-    [_editRecordsView addSubview:recordView];
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
--(void)deselectedObject:(id)object atIndex:(NSInteger)objectIndex
-{
-    UIView * recordView = [self.editBackgroundView viewWithTag:(objectIndex+100)];
-    [UIView animateWithDuration:0.6
-                     animations:^{
-                         recordView.layer.position = CGPointMake(800, 0);
-                         recordView.alpha = 0.0;
-                     } completion:^(BOOL finished) {
-                         [recordView removeFromSuperview];
-                     }];
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(CAAnimation *)selectAnimation
-{
-    CATransition * animation = [[[CATransition alloc]init]autorelease];
-    animation.duration = 0.3;
-    animation.type = kCATransitionMoveIn;
-    animation.subtype = kCATransitionFromLeft;
-    return animation;
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(id)recordView
-{
-    _factor = (_factor+1)%3;
-    NSInteger tag = _factor + 100;
-    CGFloat angle = (_factor -1) *0.05;
-    UIView * recordView = [self createRecordView];
-
-    if (_popoverItem) {
-        recordView.frame = CGRectMake(320, 150, 420, 220);
-    }else{
-        recordView.frame = CGRectMake(220, 150, 420, 220);
-    }
-    
-    recordView.backgroundColor = [UIColor whiteColor];
-    recordView.tag = tag;
-    recordView.layer.affineTransform = CGAffineTransformMakeRotation(angle);
-    recordView.layer.shadowOffset = CGSizeMake(5, -3);
-    recordView.layer.shadowOpacity = 0.3;
-    recordView.layer.cornerRadius = 8.0;
-    recordView.layer.borderWidth = 0.3;
-    return recordView;
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(UIView *)createRecordView{
-    return [[[HDTableStatusMessageItemCell alloc]init]autorelease];
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-@end
+}@end
