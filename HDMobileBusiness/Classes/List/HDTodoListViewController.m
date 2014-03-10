@@ -54,7 +54,7 @@
 //}
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"todolistDidAppear");
+//    NSLog(@"todolistDidAppear");
     [super viewDidAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:YES];
 }

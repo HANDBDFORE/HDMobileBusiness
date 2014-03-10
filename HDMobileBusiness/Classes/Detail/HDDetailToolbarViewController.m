@@ -68,7 +68,7 @@ static NSString * kActionTypeDeliver = @"deliver";
 //}
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"detaillistDidAppear");
+//    NSLog(@"detaillistDidAppear");
     [super viewDidAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:NO];
 }

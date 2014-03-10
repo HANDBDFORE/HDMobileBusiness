@@ -37,7 +37,7 @@
 //}
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"functionlistDidAppear");
+//    NSLog(@"functionlistDidAppear");
     [super viewDidAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
