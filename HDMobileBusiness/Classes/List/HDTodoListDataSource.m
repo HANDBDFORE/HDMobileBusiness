@@ -45,11 +45,7 @@
     NSString * caption =[[_itemDictionary valueForKey:@"caption"] stringByReplacingSpaceHodlerWithDictionary:object];
 
     NSString * text = [[_itemDictionary valueForKey:@"text"] stringByReplacingSpaceHodlerWithDictionary:object];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"]; 
-    NSDate * timestamp = [dateFormatter dateFromString:[[_itemDictionary valueForKey:@"timestamp"] stringByReplacingSpaceHodlerWithDictionary:object]];
-    TT_RELEASE_SAFELY(dateFormatter);
+    NSString * timestamp = [[_itemDictionary valueForKey:@"timestamp"] stringByReplacingSpaceHodlerWithDictionary:object];
     
     NSString * warning = [[_itemDictionary valueForKey:@"isLate"] stringByReplacingSpaceHodlerWithDictionary:object];
     
@@ -116,9 +112,6 @@
     
     return ([localStatus isEqualToString:kRecordNew] ||
             [localStatus isEqualToString:kRecordError]);
-}
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
 }
 -(void)openURLForItem:(HDTableStatusMessageItem *)item
 {

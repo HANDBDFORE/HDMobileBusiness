@@ -28,8 +28,10 @@
 -(instancetype)initWithNavigationBarClassName:(NSString *)navigationBarClassName
                              toolbarClassName:(NSString *)toolbarClassName
 {
-    self = [self initWithNavigationBarClass:NSClassFromString(navigationBarClassName)
-                               toolbarClass:NSClassFromString(toolbarClassName)];
+    //    self = [self initWithNavigationBarClass:NSClassFromString(navigationBarClassName)
+    //                               toolbarClass:NSClassFromString(toolbarClassName)];
+    self = [self initWithNavigationBarClass:NSClassFromString(@"UINavigationBar")
+                               toolbarClass:NSClassFromString(@"UIToolbar")];
     if (self) {
         
     }

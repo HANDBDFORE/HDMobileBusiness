@@ -26,7 +26,7 @@
 + (id)itemWithTitle:(NSString*)title
             caption:(NSString*)caption
                text:(NSString*)text
-          timestamp:(NSDate*)timestamp
+          timestamp:(NSString*)timestamp
            selector:(SEL) selector
            delegate:(id)delegate
             message:(NSString *)message
@@ -37,7 +37,7 @@
 + (id)itemWithTitle:(NSString*)title
             caption:(NSString*)caption
                text:(NSString*)text
-          timestamp:(NSDate*)timestamp
+          timestamp:(NSString*)timestamp
             message:(NSString *)message
               state:(NSString *)state
             warning:(NSString *)warning;

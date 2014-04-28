@@ -11,6 +11,7 @@
 //styleSheet
 #import "HDDefaultStyleSheet.h"
 
+#import "HDLoadingViewController.h"
 @implementation HDAppDelegate
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application
@@ -25,12 +26,13 @@
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]autorelease];
     
-    if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {
-        [self showLoadingView];
-    }else {
-        [[NSUserDefaults standardUserDefaults]setValue:kVersion forKey:@"appVersion"];
-        [self showHelpView];
-    }
+    self.window.rootViewController = [[[HDLoadingViewController alloc]initWithNibName:nil bundle:nil]autorelease];
+    //    if ([[[NSUserDefaults standardUserDefaults]stringForKey:@"appVersion"] isEqualToString:kVersion]) {
+    //    [self showLoadingView];
+    //    }else {
+    //        [[NSUserDefaults standardUserDefaults]setValue:kVersion forKey:@"appVersion"];
+    //        [self showHelpView];
+    //    }
     
     [self.window makeKeyAndVisible];
 }
@@ -44,7 +46,7 @@
 -(void)showLoadingView
 {
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"rootGuider"];
-    [guider perform];    
+    [guider perform];
 }
 
 //获取token成功,格式化token,放入用户设置中

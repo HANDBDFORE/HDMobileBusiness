@@ -39,16 +39,8 @@
         NSString * title = [[_itemDictionary valueForKey: @"title"] stringByReplacingSpaceHodlerWithDictionary:record];
         NSString * caption = [[_itemDictionary valueForKey:@"caption"] stringByReplacingSpaceHodlerWithDictionary:record];
         NSString * text = [[_itemDictionary valueForKey:@"text"] stringByReplacingSpaceHodlerWithDictionary:record];
-        
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-        NSDate * timestamp = [dateFormatter dateFromString:[[_itemDictionary valueForKey:@"timestamp"] stringByReplacingSpaceHodlerWithDictionary:record]];
-
-        TT_RELEASE_SAFELY(dateFormatter);
-        if (!timestamp) {
-            timestamp = [NSDate dateWithToday];
-        }
-        
+    
+        NSString * timestamp = [[_itemDictionary valueForKey:@"timestamp"] stringByReplacingSpaceHodlerWithDictionary:record];
         TTTableMessageItem * item =
         [TTTableMessageItem itemWithText:text
                                 delegate:self

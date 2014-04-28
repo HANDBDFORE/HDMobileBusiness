@@ -69,9 +69,6 @@
     UISwipeGestureRecognizer *removeRecordRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwiped:)]autorelease];
     removeRecordRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.tableView addGestureRecognizer:removeRecordRecognizer];
-    if (TTIsPad()) {
-        [self selectedTableCellForCurrentRecord];
-    }
 }
 
 #pragma  -mark toolbar Buttons

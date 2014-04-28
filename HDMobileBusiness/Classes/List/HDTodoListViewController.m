@@ -25,6 +25,9 @@
 -(void)loadView
 {
     [super loadView];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     //tab图标
     self.tabBarItem.image = [UIImage imageNamed:@"mailclosed.png"];
     
@@ -36,7 +39,7 @@
     
     _searchController.searchBar.tintColor = TTSTYLEVAR(searchBarTintColor);
     self.tableView.tableHeaderView = _searchController.searchBar;
-    self.tableView.contentOffset = CGPointMake(0, TTToolbarHeight());
+//    self.tableView.contentOffset = CGPointMake(0, TTToolbarHeight());
 }
 //-(void)viewDidLoad
 //{
@@ -57,6 +60,7 @@
 //    NSLog(@"todolistDidAppear");
     [super viewDidAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:YES];
+    
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark edit status

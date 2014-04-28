@@ -624,7 +624,6 @@
 		B3893CDD164A321C004E326A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		B3893CE4164A37FE004E326A /* loadingAlert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loadingAlert@2x.png"; sourceTree = "<group>"; };
 		B3893CE7164A3810004E326A /* loadingAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingAlert.png; sourceTree = "<group>"; };
-		B3893CEB164A404E004E326A /* HDPadLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDPadLoginViewController.xib; sourceTree = "<group>"; };
 		B38DC70E15C68C3800FD0C58 /* HDDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailInfoViewController.h; sourceTree = "<group>"; };
 		B38DC70F15C68C3800FD0C58 /* HDDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDDetailInfoViewController.m; sourceTree = "<group>"; };
 		B38DC71415C68C3800FD0C58 /* HDDetailToolbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDDetailToolbarViewController.h; sourceTree = "<group>"; };
@@ -1200,7 +1199,6 @@
 				B34660B815C678DD00EFDF24 /* HDLoginViewController.h */,
 				B34660B915C678DD00EFDF24 /* HDLoginViewController.m */,
 				B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */,
-				B3893CEB164A404E004E326A /* HDPadLoginViewController.xib */,
 				B36F7A711631440A0090646E /* HDTextFieldDelegate.h */,
 				B36F7A721631440B0090646E /* HDTextFieldDelegate.m */,
 			);
