@@ -19,6 +19,11 @@
 		63EF84AE174F0AE500D882F2 /* HDXMLParserCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF84AD174F0AE500D882F2 /* HDXMLParserCenter.m */; };
 		63EF84B1174F377800D882F2 /* HDOriginalXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF84B0174F377800D882F2 /* HDOriginalXMLParser.m */; };
 		63EF84B4174F393800D882F2 /* HDSpringLikeXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF84B3174F393800D882F2 /* HDSpringLikeXMLParser.m */; };
+		96A18101190F625D00911AB9 /* loginform.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A180FF190F625D00911AB9 /* loginform.png */; };
+		96A18102190F625D00911AB9 /* loginform@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A18100190F625D00911AB9 /* loginform@2x.png */; };
+		96A1810B190F720A00911AB9 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A1810A190F720A00911AB9 /* 120.png */; };
+		96BACEBD190F547F0005F7C2 /* login568.png in Resources */ = {isa = PBXBuildFile; fileRef = 96BACEBB190F547F0005F7C2 /* login568.png */; };
+		96BACEBE190F547F0005F7C2 /* login568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96BACEBC190F547F0005F7C2 /* login568@2x.png */; };
 		B2307431166739AB00DFF2E0 /* backend-config-juice.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-juice.xml */; };
 		B303763E1600303E00238923 /* HDMessageSingleRecipientField.m in Sources */ = {isa = PBXBuildFile; fileRef = B303763D1600303E00238923 /* HDMessageSingleRecipientField.m */; };
 		B3037641160049D400238923 /* HDSinglePickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037640160049D400238923 /* HDSinglePickerTextField.m */; };
@@ -472,6 +477,11 @@
 		63EF84B0174F377800D882F2 /* HDOriginalXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDOriginalXMLParser.m; sourceTree = "<group>"; };
 		63EF84B2174F393800D882F2 /* HDSpringLikeXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDSpringLikeXMLParser.h; sourceTree = "<group>"; };
 		63EF84B3174F393800D882F2 /* HDSpringLikeXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDSpringLikeXMLParser.m; sourceTree = "<group>"; };
+		96A180FF190F625D00911AB9 /* loginform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginform.png; sourceTree = "<group>"; };
+		96A18100190F625D00911AB9 /* loginform@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginform@2x.png"; sourceTree = "<group>"; };
+		96A1810A190F720A00911AB9 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
+		96BACEBB190F547F0005F7C2 /* login568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login568.png; sourceTree = "<group>"; };
+		96BACEBC190F547F0005F7C2 /* login568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login568@2x.png"; sourceTree = "<group>"; };
 		B2307430166739AB00DFF2E0 /* backend-config-juice.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-juice.xml"; sourceTree = "<group>"; };
 		B303763C1600303E00238923 /* HDMessageSingleRecipientField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDMessageSingleRecipientField.h; path = Classes/Compose/HDMessageSingleRecipientField.h; sourceTree = "<group>"; };
 		B303763D1600303E00238923 /* HDMessageSingleRecipientField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDMessageSingleRecipientField.m; path = Classes/Compose/HDMessageSingleRecipientField.m; sourceTree = "<group>"; };
@@ -1482,6 +1492,10 @@
 		B38E66EB15C64E6700824CB1 /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				96A180FF190F625D00911AB9 /* loginform.png */,
+				96A18100190F625D00911AB9 /* loginform@2x.png */,
+				96BACEBB190F547F0005F7C2 /* login568.png */,
+				96BACEBC190F547F0005F7C2 /* login568@2x.png */,
 				B36646471675C81E00A13F76 /* login_pad@2x.png */,
 				B366463D1675BB0300A13F76 /* login_pad.png */,
 				B3893CE7164A3810004E326A /* loadingAlert.png */,
@@ -1524,6 +1538,7 @@
 			isa = PBXGroup;
 			children = (
 				C09F35301794E1F90046F809 /* 114.png */,
+				96A1810A190F720A00911AB9 /* 120.png */,
 				C09F352E1794E1F00046F809 /* 57.png */,
 				C09F35231794E19D0046F809 /* 1024.PNG */,
 				B3FE7ACE166D89CF00CA0B0C /* padIcon.png */,
@@ -2318,6 +2333,7 @@
 				B38E67A715C64E6700824CB1 /* camera@2x.png in Resources */,
 				B38E67A815C64E6700824CB1 /* clapboard.png in Resources */,
 				B38E67A915C64E6700824CB1 /* clapboard@2x.png in Resources */,
+				96BACEBD190F547F0005F7C2 /* login568.png in Resources */,
 				B38E67AA15C64E6700824CB1 /* clock.png in Resources */,
 				B38E67AB15C64E6700824CB1 /* clock@2x.png in Resources */,
 				B38E67AC15C64E6700824CB1 /* connections.png in Resources */,
@@ -2372,6 +2388,7 @@
 				B38E67DD15C64E6700824CB1 /* monitor@2x.png in Resources */,
 				B38E67DE15C64E6700824CB1 /* move.png in Resources */,
 				B38E67DF15C64E6700824CB1 /* move@2x.png in Resources */,
+				96A1810B190F720A00911AB9 /* 120.png in Resources */,
 				B38E67E015C64E6700824CB1 /* newspaper.png in Resources */,
 				B38E67E115C64E6700824CB1 /* newspaper@2x.png in Resources */,
 				B38E67E215C64E6700824CB1 /* padlock.png in Resources */,
@@ -2391,6 +2408,7 @@
 				B38E67F015C64E6700824CB1 /* play.png in Resources */,
 				B38E67F115C64E6700824CB1 /* play@2x.png in Resources */,
 				B38E67F215C64E6700824CB1 /* plus.png in Resources */,
+				96A18101190F625D00911AB9 /* loginform.png in Resources */,
 				B38E67F315C64E6700824CB1 /* plus@2x.png in Resources */,
 				B38E67F415C64E6700824CB1 /* preferences.png in Resources */,
 				B38E67F515C64E6700824CB1 /* preferences@2x.png in Resources */,
@@ -2428,10 +2446,12 @@
 				B38E681515C64E6700824CB1 /* world@2x.png in Resources */,
 				B31E2F3D15C6732100880514 /* Settings.bundle in Resources */,
 				B34660BE15C678DD00EFDF24 /* HDLoginViewController.xib in Resources */,
+				96BACEBE190F547F0005F7C2 /* login568@2x.png in Resources */,
 				B3893CE5164A37FE004E326A /* loadingAlert@2x.png in Resources */,
 				B3893CE8164A3810004E326A /* loadingAlert.png in Resources */,
 				B3E60F081659D7D4006C8119 /* finish.png in Resources */,
 				B3E60F091659D7D4006C8119 /* finish@2x.png in Resources */,
+				96A18102190F625D00911AB9 /* loginform@2x.png in Resources */,
 				B3E60F0A1659D7D4006C8119 /* page1.jpg in Resources */,
 				B3E60F0B1659D7D4006C8119 /* page2.jpg in Resources */,
 				B3E60F0C1659D7D4006C8119 /* page3.jpg in Resources */,
