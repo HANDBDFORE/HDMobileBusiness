@@ -103,6 +103,7 @@
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request
  navigationType:(UIWebViewNavigationType)navigationType {
     
+    
     if ([[TTNavigator navigator].URLMap isAppURL:request.URL]) {
         [_loadingURL release];
         _loadingURL = [[NSURL URLWithString:@"about:blank"] retain];

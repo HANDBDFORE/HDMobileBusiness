@@ -81,6 +81,8 @@ static NSString * kActionTypeDeliver = @"deliver";
 {
     [[TTNavigator navigator].URLMap removeURL:@"jscall://post/(postWithTag:)"];
     [[TTNavigator navigator].URLMap removeURL:@"jscall://deliver"];
+    [[TTNavigator navigator].URLMap removeURL:@"jscall://returnback"]; 
+
     TT_RELEASE_SAFELY(_spaceItem);
     TT_RELEASE_SAFELY(_selectedAction)
     TT_RELEASE_SAFELY(_submitActionItems);
@@ -116,17 +118,22 @@ static NSString * kActionTypeDeliver = @"deliver";
 
 -(void)toolbarButtonPressed: (id)sender
 {
-    [self.navigationController pushViewController:[[HDDeleverCommentViewController	 alloc] init] animated:NO];
+//    [self.navigationController pushViewController:[[HDDeleverCommentViewController	 alloc] init] animated:NO];
     
-//    //设置当前审批动作
-//    self.selectedAction = [[sender valueForKey:@"tag"] stringValue];
-//    //准备默认审批内容
-//    NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
-//    
-//    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"todoDetailPostGuider"];
-//    
-//    guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")};
-//    [guider perform];
+
+    
+    //设置当前审批动作
+    self.selectedAction = [[sender valueForKey:@"tag"] stringValue];
+    NSLog(@"%@",self.selectedAction);
+    
+    
+    //准备默认审批内容
+    NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
+    
+    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"todoDetailPostGuider"];
+    
+    guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")};
+    [guider perform];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
