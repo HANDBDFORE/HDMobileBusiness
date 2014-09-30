@@ -45,6 +45,8 @@
 
 -(void)login
 {
+    
+    
     //如果是不同用户登陆的,清空数据库
     [self initUsers];
 

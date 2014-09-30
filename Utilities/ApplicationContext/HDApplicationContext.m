@@ -9,7 +9,15 @@
 #import "HDApplicationContext.h"
 #import "HDClassLoader.h"
 
-@implementation HDApplicationContext
+@implementation HDApplicationContext{
+    //读取的时间
+    int execTime ;
+    //计时器
+    NSTimer * timer;
+    //根据是否配置了计时，判断是否打开
+
+    
+}
 
 - (void)dealloc
 {
@@ -42,6 +50,8 @@
         //加载对象创建路径
         [self loadFactoryMap];
         [self loadLocalPattern];
+        //给时间一个初时值
+        execTime = 0;
     }
     return self;
 }
@@ -60,10 +70,52 @@
 //    return  hasParsedSuccess;
 //}
 
+-(void)refreshTimer
+{
+    //每次刷新的时候，停止之间的计时器
+    
+    
+    //没有配置超时时间或则配置为0 则不开启计时器
+    if(execTime == 0){
+        
+        return;
+    }
+    
+    if(timer !=nil){
+        
+        [timer invalidate];
+        
+    }
+        timer = [NSTimer scheduledTimerWithTimeInterval:execTime * 60 target:self selector:@selector(loginExec) userInfo:nil repeats:NO];
+    
+}
+
+//返回loading模块
+-(void)loginExec
+{
+    [timer invalidate];
+    timer =nil;
+    NSLog(@"exec time");
+    HDViewGuider * guider = [self objectForIdentifier:@"rootGuider"];
+    
+    [guider perform];
+    
+}
+
+
 //Emerson's parsing edition
 -(BOOL)configWithXmlPath:(NSString *) xmlPath{
     NSDictionary *patternes= [HDXMLParserCenter getParsedPattensWithXMLPath:xmlPath];
     for (NSString*key in patternes) {
+        //添加服务器配置超时时间
+        if([key isEqualToString:@"execTime"]){
+          HDObjectPattern * execPattern =   [patternes objectForKey:key];
+            NSString * time =  execPattern.url;
+            execTime = [time intValue];
+
+            
+        }
+        
         [self setPattern:[patternes objectForKey:key] forIdentifier:key];
     }
     return  true;

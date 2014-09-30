@@ -223,13 +223,20 @@ static  NSString* configFileName = @"ios-backend-config";
 }
 -(void)showNavView
 {
+    //登录成功跳转前 刷新timer开始计时
+    [[HDApplicationContext shareContext] refreshTimer];
+    
+    
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"loginGuider"] ;
     [guider perform];
 }
 //模型delegate方法
 - (void)modelDidFinishLoad:(HDAutologinModel *)model
 {
-        [self showNavView];
+    
+
+    
+    [self showNavView];
 }
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error

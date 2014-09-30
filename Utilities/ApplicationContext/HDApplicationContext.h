@@ -43,4 +43,7 @@
 - (UIViewController*)loadFromNib:(NSString*)className;
 
 
+//超时计时器
+-(void)refreshTimer;
+
 @end

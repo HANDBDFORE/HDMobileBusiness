@@ -26,6 +26,8 @@
 
 -(void)requestDidFinishLoad:(TTURLRequest *)request
 {
+
+    
     NSError * error = nil;
     HDResponseMap * responseMap =
     [[HDHTTPRequestCenter shareHTTPRequestCenter] responseMapWithRequest:request
@@ -39,6 +41,10 @@
     }
     
     if (!error && 0 <  [[responseMap.result allKeys]count]) {
+        //只有成功返回才重置时间
+        //每次网络请求 刷新timer开始计时
+        [[HDApplicationContext shareContext] refreshTimer];
+        
         [self requestResultMap:responseMap];
         [super requestDidFinishLoad:request];
     }

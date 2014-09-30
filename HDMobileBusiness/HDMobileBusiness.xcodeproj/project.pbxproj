@@ -25,6 +25,11 @@
 		96BACEBD190F547F0005F7C2 /* login568.png in Resources */ = {isa = PBXBuildFile; fileRef = 96BACEBB190F547F0005F7C2 /* login568.png */; };
 		96BACEBE190F547F0005F7C2 /* login568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96BACEBC190F547F0005F7C2 /* login568@2x.png */; };
 		B2307431166739AB00DFF2E0 /* backend-config-juice.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-juice.xml */; };
+		B2A015CA19D9102F000F046E /* HDDeleverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A015C919D9102F000F046E /* HDDeleverViewController.m */; };
+		B2A015DA19D92C96000F046E /* HDDeleverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A015D919D92C96000F046E /* HDDeleverModel.m */; };
+		B2A015DC19D93BD5000F046E /* HDDeleverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2A015DB19D93BD5000F046E /* HDDeleverCell.xib */; };
+		B2A015DF19D93DF4000F046E /* HDDeleverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A015DE19D93DF4000F046E /* HDDeleverCell.m */; };
+		B2A015E219D9629F000F046E /* HDDeleverCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A015E119D9629F000F046E /* HDDeleverCommentViewController.m */; };
 		B303763E1600303E00238923 /* HDMessageSingleRecipientField.m in Sources */ = {isa = PBXBuildFile; fileRef = B303763D1600303E00238923 /* HDMessageSingleRecipientField.m */; };
 		B3037641160049D400238923 /* HDSinglePickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B3037640160049D400238923 /* HDSinglePickerTextField.m */; };
 		B303768C1600883D00238923 /* HDBaseTodoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B30376841600883300238923 /* HDBaseTodoListViewController.m */; };
@@ -46,19 +51,6 @@
 		B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED015C65DC900880514 /* HDUserGuideViewController.m */; };
 		B31E2EDF15C65FD400880514 /* HDLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2ED815C65FD400880514 /* HDLoadingViewController.m */; };
 		B31E2EE115C65FD400880514 /* HDResourceMap.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2EDC15C65FD400880514 /* HDResourceMap.m */; };
-		B31E2F1315C6673F00880514 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0315C6673F00880514 /* CXMLDocument_CreationExtensions.m */; };
-		B31E2F1415C6673F00880514 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0515C6673F00880514 /* CXMLNode_CreationExtensions.m */; };
-		B31E2F1515C6673F00880514 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0815C6673F00880514 /* CTidy.m */; };
-		B31E2F1615C6673F00880514 /* CXHTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0915C6673F00880514 /* CXHTMLDocument.m */; };
-		B31E2F1715C6673F00880514 /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0A15C6673F00880514 /* CXMLDocument_PrivateExtensions.m */; };
-		B31E2F1815C6673F00880514 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0B15C6673F00880514 /* CXMLDocument.m */; };
-		B31E2F1915C6673F00880514 /* CXMLElement_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0C15C6673F00880514 /* CXMLElement_CreationExtensions.m */; };
-		B31E2F1A15C6673F00880514 /* CXMLElement_ElementTreeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0D15C6673F00880514 /* CXMLElement_ElementTreeExtensions.m */; };
-		B31E2F1B15C6673F00880514 /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0E15C6673F00880514 /* CXMLElement.m */; };
-		B31E2F1C15C6673F00880514 /* CXMLNamespaceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F0F15C6673F00880514 /* CXMLNamespaceNode.m */; };
-		B31E2F1D15C6673F00880514 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F1015C6673F00880514 /* CXMLNode_PrivateExtensions.m */; };
-		B31E2F1E15C6673F00880514 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F1115C6673F00880514 /* CXMLNode_XPathExtensions.m */; };
-		B31E2F1F15C6673F00880514 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F1215C6673F00880514 /* CXMLNode.m */; };
 		B31E2F2515C6692D00880514 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B31E2F2415C6692D00880514 /* libz.dylib */; };
 		B31E2F2615C66E7600880514 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B31E2F2215C667D200880514 /* libsqlite3.dylib */; };
 		B31E2F3215C66EB400880514 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B31E2F2C15C66EB400880514 /* FMDatabase.m */; };
@@ -480,6 +472,15 @@
 		96BACEBB190F547F0005F7C2 /* login568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login568.png; sourceTree = "<group>"; };
 		96BACEBC190F547F0005F7C2 /* login568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login568@2x.png"; sourceTree = "<group>"; };
 		B2307430166739AB00DFF2E0 /* backend-config-juice.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-juice.xml"; sourceTree = "<group>"; };
+		B2A015C819D9102F000F046E /* HDDeleverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeleverViewController.h; path = Classes/Detail/HDDeleverViewController.h; sourceTree = "<group>"; };
+		B2A015C919D9102F000F046E /* HDDeleverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDDeleverViewController.m; path = Classes/Detail/HDDeleverViewController.m; sourceTree = "<group>"; };
+		B2A015D819D92C96000F046E /* HDDeleverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeleverModel.h; path = Classes/Delever/HDDeleverModel.h; sourceTree = "<group>"; };
+		B2A015D919D92C96000F046E /* HDDeleverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDDeleverModel.m; path = Classes/Delever/HDDeleverModel.m; sourceTree = "<group>"; };
+		B2A015DB19D93BD5000F046E /* HDDeleverCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HDDeleverCell.xib; path = Classes/Delever/HDDeleverCell.xib; sourceTree = "<group>"; };
+		B2A015DD19D93DF4000F046E /* HDDeleverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeleverCell.h; path = Classes/Delever/HDDeleverCell.h; sourceTree = "<group>"; };
+		B2A015DE19D93DF4000F046E /* HDDeleverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDDeleverCell.m; path = Classes/Delever/HDDeleverCell.m; sourceTree = "<group>"; };
+		B2A015E019D9629F000F046E /* HDDeleverCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeleverCommentViewController.h; path = Classes/Delever/HDDeleverCommentViewController.h; sourceTree = "<group>"; };
+		B2A015E119D9629F000F046E /* HDDeleverCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDDeleverCommentViewController.m; path = Classes/Delever/HDDeleverCommentViewController.m; sourceTree = "<group>"; };
 		B303763C1600303E00238923 /* HDMessageSingleRecipientField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDMessageSingleRecipientField.h; path = Classes/Compose/HDMessageSingleRecipientField.h; sourceTree = "<group>"; };
 		B303763D1600303E00238923 /* HDMessageSingleRecipientField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDMessageSingleRecipientField.m; path = Classes/Compose/HDMessageSingleRecipientField.m; sourceTree = "<group>"; };
 		B303763F160049D300238923 /* HDSinglePickerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSinglePickerTextField.h; path = Classes/Compose/HDSinglePickerTextField.h; sourceTree = "<group>"; };
@@ -525,33 +526,6 @@
 		B31E2EDB15C65FD400880514 /* HDResourceMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDResourceMap.h; sourceTree = "<group>"; };
 		B31E2EDC15C65FD400880514 /* HDResourceMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDResourceMap.m; sourceTree = "<group>"; };
 		B31E2EE215C660B600880514 /* HDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDUtilities.h; sourceTree = "<group>"; };
-		B31E2EF615C6673F00880514 /* CXHTMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXHTMLDocument.h; path = ../Frameworks/TouchXML/Source/CXHTMLDocument.h; sourceTree = "<group>"; };
-		B31E2EF715C6673F00880514 /* CXMLDocument_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLDocument_PrivateExtensions.h; path = ../Frameworks/TouchXML/Source/CXMLDocument_PrivateExtensions.h; sourceTree = "<group>"; };
-		B31E2EF815C6673F00880514 /* CXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLDocument.h; path = ../Frameworks/TouchXML/Source/CXMLDocument.h; sourceTree = "<group>"; };
-		B31E2EF915C6673F00880514 /* CXMLElement_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLElement_CreationExtensions.h; path = ../Frameworks/TouchXML/Source/CXMLElement_CreationExtensions.h; sourceTree = "<group>"; };
-		B31E2EFA15C6673F00880514 /* CXMLElement_ElementTreeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLElement_ElementTreeExtensions.h; path = ../Frameworks/TouchXML/Source/CXMLElement_ElementTreeExtensions.h; sourceTree = "<group>"; };
-		B31E2EFB15C6673F00880514 /* CXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLElement.h; path = ../Frameworks/TouchXML/Source/CXMLElement.h; sourceTree = "<group>"; };
-		B31E2EFC15C6673F00880514 /* CXMLNamespaceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLNamespaceNode.h; path = ../Frameworks/TouchXML/Source/CXMLNamespaceNode.h; sourceTree = "<group>"; };
-		B31E2EFD15C6673F00880514 /* CXMLNode_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLNode_PrivateExtensions.h; path = ../Frameworks/TouchXML/Source/CXMLNode_PrivateExtensions.h; sourceTree = "<group>"; };
-		B31E2EFE15C6673F00880514 /* CXMLNode_XPathExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLNode_XPathExtensions.h; path = ../Frameworks/TouchXML/Source/CXMLNode_XPathExtensions.h; sourceTree = "<group>"; };
-		B31E2EFF15C6673F00880514 /* CXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLNode.h; path = ../Frameworks/TouchXML/Source/CXMLNode.h; sourceTree = "<group>"; };
-		B31E2F0015C6673F00880514 /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchXML.h; path = ../Frameworks/TouchXML/Source/TouchXML.h; sourceTree = "<group>"; };
-		B31E2F0215C6673F00880514 /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
-		B31E2F0315C6673F00880514 /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
-		B31E2F0415C6673F00880514 /* CXMLNode_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_CreationExtensions.h; sourceTree = "<group>"; };
-		B31E2F0515C6673F00880514 /* CXMLNode_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_CreationExtensions.m; sourceTree = "<group>"; };
-		B31E2F0715C6673F00880514 /* CTidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTidy.h; sourceTree = "<group>"; };
-		B31E2F0815C6673F00880514 /* CTidy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTidy.m; sourceTree = "<group>"; };
-		B31E2F0915C6673F00880514 /* CXHTMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXHTMLDocument.m; path = ../Frameworks/TouchXML/Source/CXHTMLDocument.m; sourceTree = "<group>"; };
-		B31E2F0A15C6673F00880514 /* CXMLDocument_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLDocument_PrivateExtensions.m; path = ../Frameworks/TouchXML/Source/CXMLDocument_PrivateExtensions.m; sourceTree = "<group>"; };
-		B31E2F0B15C6673F00880514 /* CXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLDocument.m; path = ../Frameworks/TouchXML/Source/CXMLDocument.m; sourceTree = "<group>"; };
-		B31E2F0C15C6673F00880514 /* CXMLElement_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLElement_CreationExtensions.m; path = ../Frameworks/TouchXML/Source/CXMLElement_CreationExtensions.m; sourceTree = "<group>"; };
-		B31E2F0D15C6673F00880514 /* CXMLElement_ElementTreeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLElement_ElementTreeExtensions.m; path = ../Frameworks/TouchXML/Source/CXMLElement_ElementTreeExtensions.m; sourceTree = "<group>"; };
-		B31E2F0E15C6673F00880514 /* CXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLElement.m; path = ../Frameworks/TouchXML/Source/CXMLElement.m; sourceTree = "<group>"; };
-		B31E2F0F15C6673F00880514 /* CXMLNamespaceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLNamespaceNode.m; path = ../Frameworks/TouchXML/Source/CXMLNamespaceNode.m; sourceTree = "<group>"; };
-		B31E2F1015C6673F00880514 /* CXMLNode_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLNode_PrivateExtensions.m; path = ../Frameworks/TouchXML/Source/CXMLNode_PrivateExtensions.m; sourceTree = "<group>"; };
-		B31E2F1115C6673F00880514 /* CXMLNode_XPathExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLNode_XPathExtensions.m; path = ../Frameworks/TouchXML/Source/CXMLNode_XPathExtensions.m; sourceTree = "<group>"; };
-		B31E2F1215C6673F00880514 /* CXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLNode.m; path = ../Frameworks/TouchXML/Source/CXMLNode.m; sourceTree = "<group>"; };
 		B31E2F2015C667CC00880514 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		B31E2F2215C667D200880514 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B31E2F2415C6692D00880514 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1025,6 +999,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B2A015D719D92C51000F046E /* Delever */ = {
+			isa = PBXGroup;
+			children = (
+				B2A015C819D9102F000F046E /* HDDeleverViewController.h */,
+				B2A015C919D9102F000F046E /* HDDeleverViewController.m */,
+				B2A015D819D92C96000F046E /* HDDeleverModel.h */,
+				B2A015D919D92C96000F046E /* HDDeleverModel.m */,
+				B2A015DB19D93BD5000F046E /* HDDeleverCell.xib */,
+				B2A015DD19D93DF4000F046E /* HDDeleverCell.h */,
+				B2A015DE19D93DF4000F046E /* HDDeleverCell.m */,
+				B2A015E019D9629F000F046E /* HDDeleverCommentViewController.h */,
+				B2A015E119D9629F000F046E /* HDDeleverCommentViewController.m */,
+			);
+			name = Delever;
+			sourceTree = "<group>";
+		};
 		B30637281680159800797963 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1104,58 +1094,6 @@
 				B31E2F3115C66EB400880514 /* FMResultSet.m */,
 			);
 			name = FMDB;
-			sourceTree = "<group>";
-		};
-		B31E2EF515C6662000880514 /* TouchXML */ = {
-			isa = PBXGroup;
-			children = (
-				B31E2EF615C6673F00880514 /* CXHTMLDocument.h */,
-				B31E2EF715C6673F00880514 /* CXMLDocument_PrivateExtensions.h */,
-				B31E2EF815C6673F00880514 /* CXMLDocument.h */,
-				B31E2EF915C6673F00880514 /* CXMLElement_CreationExtensions.h */,
-				B31E2EFA15C6673F00880514 /* CXMLElement_ElementTreeExtensions.h */,
-				B31E2EFB15C6673F00880514 /* CXMLElement.h */,
-				B31E2EFC15C6673F00880514 /* CXMLNamespaceNode.h */,
-				B31E2EFD15C6673F00880514 /* CXMLNode_PrivateExtensions.h */,
-				B31E2EFE15C6673F00880514 /* CXMLNode_XPathExtensions.h */,
-				B31E2EFF15C6673F00880514 /* CXMLNode.h */,
-				B31E2F0015C6673F00880514 /* TouchXML.h */,
-				B31E2F0115C6673F00880514 /* Creation */,
-				B31E2F0615C6673F00880514 /* Tidy */,
-				B31E2F0915C6673F00880514 /* CXHTMLDocument.m */,
-				B31E2F0A15C6673F00880514 /* CXMLDocument_PrivateExtensions.m */,
-				B31E2F0B15C6673F00880514 /* CXMLDocument.m */,
-				B31E2F0C15C6673F00880514 /* CXMLElement_CreationExtensions.m */,
-				B31E2F0D15C6673F00880514 /* CXMLElement_ElementTreeExtensions.m */,
-				B31E2F0E15C6673F00880514 /* CXMLElement.m */,
-				B31E2F0F15C6673F00880514 /* CXMLNamespaceNode.m */,
-				B31E2F1015C6673F00880514 /* CXMLNode_PrivateExtensions.m */,
-				B31E2F1115C6673F00880514 /* CXMLNode_XPathExtensions.m */,
-				B31E2F1215C6673F00880514 /* CXMLNode.m */,
-			);
-			name = TouchXML;
-			sourceTree = "<group>";
-		};
-		B31E2F0115C6673F00880514 /* Creation */ = {
-			isa = PBXGroup;
-			children = (
-				B31E2F0215C6673F00880514 /* CXMLDocument_CreationExtensions.h */,
-				B31E2F0315C6673F00880514 /* CXMLDocument_CreationExtensions.m */,
-				B31E2F0415C6673F00880514 /* CXMLNode_CreationExtensions.h */,
-				B31E2F0515C6673F00880514 /* CXMLNode_CreationExtensions.m */,
-			);
-			name = Creation;
-			path = ../Frameworks/TouchXML/Source/Creation;
-			sourceTree = "<group>";
-		};
-		B31E2F0615C6673F00880514 /* Tidy */ = {
-			isa = PBXGroup;
-			children = (
-				B31E2F0715C6673F00880514 /* CTidy.h */,
-				B31E2F0815C6673F00880514 /* CTidy.m */,
-			);
-			name = Tidy;
-			path = ../Frameworks/TouchXML/Source/Tidy;
 			sourceTree = "<group>";
 		};
 		B31E2F3815C6714800880514 /* Styles */ = {
@@ -1297,7 +1235,6 @@
 		B36BDB0715C64C49003A4A5D /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				B31E2EF515C6662000880514 /* TouchXML */,
 				B31E2EE315C6660800880514 /* FMDB */,
 				B36BDB0815C64C51003A4A5D /* Three20 */,
 			);
@@ -1696,6 +1633,7 @@
 		B38E686915C654C700824CB1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B2A015D719D92C51000F046E /* Delever */,
 				B336DEF3165E250500057B95 /* Navigatior */,
 				B3893CEA164A3FDE004E326A /* Split */,
 				B307FDE215FF134700EA5133 /* Compose */,
@@ -2275,6 +2213,7 @@
 				B38E67A715C64E6700824CB1 /* camera@2x.png in Resources */,
 				B38E67A815C64E6700824CB1 /* clapboard.png in Resources */,
 				B38E67A915C64E6700824CB1 /* clapboard@2x.png in Resources */,
+				B2A015DC19D93BD5000F046E /* HDDeleverCell.xib in Resources */,
 				96BACEBD190F547F0005F7C2 /* login568.png in Resources */,
 				B38E67AA15C64E6700824CB1 /* clock.png in Resources */,
 				B38E67AB15C64E6700824CB1 /* clock@2x.png in Resources */,
@@ -2481,19 +2420,6 @@
 				B31E2ED115C65DC900880514 /* HDUserGuideViewController.m in Sources */,
 				B31E2EDF15C65FD400880514 /* HDLoadingViewController.m in Sources */,
 				B31E2EE115C65FD400880514 /* HDResourceMap.m in Sources */,
-				B31E2F1315C6673F00880514 /* CXMLDocument_CreationExtensions.m in Sources */,
-				B31E2F1415C6673F00880514 /* CXMLNode_CreationExtensions.m in Sources */,
-				B31E2F1515C6673F00880514 /* CTidy.m in Sources */,
-				B31E2F1615C6673F00880514 /* CXHTMLDocument.m in Sources */,
-				B31E2F1715C6673F00880514 /* CXMLDocument_PrivateExtensions.m in Sources */,
-				B31E2F1815C6673F00880514 /* CXMLDocument.m in Sources */,
-				B31E2F1915C6673F00880514 /* CXMLElement_CreationExtensions.m in Sources */,
-				B31E2F1A15C6673F00880514 /* CXMLElement_ElementTreeExtensions.m in Sources */,
-				B31E2F1B15C6673F00880514 /* CXMLElement.m in Sources */,
-				B31E2F1C15C6673F00880514 /* CXMLNamespaceNode.m in Sources */,
-				B31E2F1D15C6673F00880514 /* CXMLNode_PrivateExtensions.m in Sources */,
-				B31E2F1E15C6673F00880514 /* CXMLNode_XPathExtensions.m in Sources */,
-				B31E2F1F15C6673F00880514 /* CXMLNode.m in Sources */,
 				B31E2F3215C66EB400880514 /* FMDatabase.m in Sources */,
 				B31E2F3315C66EB400880514 /* FMDatabaseAdditions.m in Sources */,
 				B31E2F3415C66EB400880514 /* FMDatabasePool.m in Sources */,
@@ -2501,8 +2427,11 @@
 				B31E2F3715C66EB400880514 /* FMResultSet.m in Sources */,
 				B31E2F3B15C6714800880514 /* HDDefaultStyleSheet.m in Sources */,
 				B34660BC15C678DD00EFDF24 /* HDLoginModel.m in Sources */,
+				B2A015E219D9629F000F046E /* HDDeleverCommentViewController.m in Sources */,
+				B2A015CA19D9102F000F046E /* HDDeleverViewController.m in Sources */,
 				B34660BD15C678DD00EFDF24 /* HDLoginViewController.m in Sources */,
 				B38DC71A15C68C3800FD0C58 /* HDDetailInfoViewController.m in Sources */,
+				B2A015DF19D93DF4000F046E /* HDDeleverCell.m in Sources */,
 				B38DC71D15C68C3800FD0C58 /* HDDetailToolbarViewController.m in Sources */,
 				B38DC71E15C68C3800FD0C58 /* HDUserInfoView.m in Sources */,
 				B356A26B15D0A5C900E88192 /* HDCoreStorage.m in Sources */,
@@ -2541,6 +2470,7 @@
 				B3B67ED2165CC666003B7D11 /* HDShowInViewGuider.m in Sources */,
 				B336DEF6165E252100057B95 /* HDNavigationController.m in Sources */,
 				B3D5B847165F1BD00073C9D5 /* HDClassLoader.m in Sources */,
+				B2A015DA19D92C96000F046E /* HDDeleverModel.m in Sources */,
 				B3D5B84A165F33940073C9D5 /* HDImageLoader.m in Sources */,
 				B3D5B84D165F43000073C9D5 /* HDResourceLoader.m in Sources */,
 				B3D5B851165F4DC40073C9D5 /* HDApplicationContext.m in Sources */,

@@ -135,6 +135,10 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)webViewDidFinishLoad:(UIWebView*)webView {
+    //在页面加载完毕后刷新时间
+
+    [[HDApplicationContext shareContext] refreshTimer];
+    
     [self showLoading:NO];
 //    self.navigationItem.titleView = nil;    
     TT_RELEASE_SAFELY(_loadingURL);

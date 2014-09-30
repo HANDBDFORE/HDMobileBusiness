@@ -8,7 +8,10 @@
 
 #import "HDLoginViewController.h"
 
-@implementation HDLoginViewController
+@implementation HDLoginViewController {
+    
+
+}
 
 @synthesize username = _username;
 @synthesize password = _password;
@@ -127,11 +130,20 @@
 
 //模型delegate方法
 - (void)modelDidFinishLoad:(HDLoginModel *)model
+
 {
+    //登录成功跳转前 刷新timer开始计时
+    [[HDApplicationContext shareContext] refreshTimer];
+    
+    
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"loginGuider"];
     [guider perform];
 
 }
+
+
+
+
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error
 {

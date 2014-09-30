@@ -9,6 +9,9 @@
 #import "HDDetailToolbarViewController.h"
 #import "HDTableStatusMessageItemCell.h"
 #import "HDActionModel.h"
+#import "HDDeleverViewController.h"
+#import "HDDeleverCommentViewController.h"
+
 static NSString * kActionTypeDeliver = @"deliver";
 
 @interface HDDetailToolbarViewController ()
@@ -52,6 +55,8 @@ static NSString * kActionTypeDeliver = @"deliver";
 {
     [super loadView];
     TTURLMap *map = [TTNavigator navigator].URLMap;
+    [map from:@"jscall://returnback" toObject:self selector:@selector(returnback)];
+
     [map from:@"jscall://post/(postWithTag:)" toObject:self selector:@selector(postWithTag:)];
     [map from:@"jscall://deliver" toObject:self selector:@selector(deliver)];
     
@@ -111,15 +116,17 @@ static NSString * kActionTypeDeliver = @"deliver";
 
 -(void)toolbarButtonPressed: (id)sender
 {
-    //设置当前审批动作
-    self.selectedAction = [[sender valueForKey:@"tag"] stringValue];
-    //准备默认审批内容
-    NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
+    [self.navigationController pushViewController:[[HDDeleverCommentViewController	 alloc] init] animated:NO];
     
-    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"todoDetailPostGuider"];
-    
-    guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")};
-    [guider perform];
+//    //设置当前审批动作
+//    self.selectedAction = [[sender valueForKey:@"tag"] stringValue];
+//    //准备默认审批内容
+//    NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
+//    
+//    HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"todoDetailPostGuider"];
+//    
+//    guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")};
+//    [guider perform];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -128,6 +135,14 @@ static NSString * kActionTypeDeliver = @"deliver";
     [self submitWithDictionary:@{@"comment":text,@"submitAction":self.selectedAction}];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma -mark return back
+-(void)returnback
+{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 #pragma -mark deliver
 -(void)deliver:(id)sender
