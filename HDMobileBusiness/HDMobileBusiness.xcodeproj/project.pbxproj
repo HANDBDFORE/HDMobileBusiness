@@ -24,6 +24,8 @@
 		96A1810B190F720A00911AB9 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A1810A190F720A00911AB9 /* 120.png */; };
 		96BACEBD190F547F0005F7C2 /* login568.png in Resources */ = {isa = PBXBuildFile; fileRef = 96BACEBB190F547F0005F7C2 /* login568.png */; };
 		96BACEBE190F547F0005F7C2 /* login568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96BACEBC190F547F0005F7C2 /* login568@2x.png */; };
+		B214D23D19DE4E0D006D6545 /* HDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B214D23C19DE4E0C006D6545 /* HDLoginViewController.xib */; };
+		B214D26C19DE51F0006D6545 /* HDLoginViewController-568.xib in Resources */ = {isa = PBXBuildFile; fileRef = B214D26B19DE51F0006D6545 /* HDLoginViewController-568.xib */; };
 		B2307431166739AB00DFF2E0 /* backend-config-juice.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-juice.xml */; };
 		B2A015CA19D9102F000F046E /* HDDeleverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A015C919D9102F000F046E /* HDDeleverViewController.m */; };
 		B2A015DA19D92C96000F046E /* HDDeleverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A015D919D92C96000F046E /* HDDeleverModel.m */; };
@@ -67,7 +69,6 @@
 		B33A23BA15D9033A0066383C /* HDDataToStringConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = B33A23B915D903390066383C /* HDDataToStringConvertor.m */; };
 		B34660BC15C678DD00EFDF24 /* HDLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B715C678DD00EFDF24 /* HDLoginModel.m */; };
 		B34660BD15C678DD00EFDF24 /* HDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34660B915C678DD00EFDF24 /* HDLoginViewController.m */; };
-		B34660BE15C678DD00EFDF24 /* HDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */; };
 		B356A26B15D0A5C900E88192 /* HDCoreStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B356A26A15D0A5C900E88192 /* HDCoreStorage.m */; };
 		B357075C16D2095E0063E4CA /* HDUser.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C39B17169D6829004B8087 /* HDUser.png */; };
 		B357076416D214800063E4CA /* HDApprove.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C39B11169D5CBC004B8087 /* HDApprove.png */; };
@@ -265,7 +266,6 @@
 		B3D71B8416030344004E1BFD /* HDPersonListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8216030343004E1BFD /* HDPersonListDataSource.m */; };
 		B3D71B8516030344004E1BFD /* HDPersonListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D71B8316030344004E1BFD /* HDPersonListModel.m */; };
 		B3D9EFE71608594D00454A5E /* HDDeliverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D9EFE61608594D00454A5E /* HDDeliverViewController.m */; };
-		B3E0AA1B16D3B365008DC982 /* HDLoginViewController-568.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E0AA1A16D3B365008DC982 /* HDLoginViewController-568.xib */; };
 		B3E60EEF1659D768006C8119 /* HDObjectPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E60EEC1659D768006C8119 /* HDObjectPattern.m */; };
 		B3E60F081659D7D4006C8119 /* finish.png in Resources */ = {isa = PBXBuildFile; fileRef = B3E60F011659D7D4006C8119 /* finish.png */; };
 		B3E60F091659D7D4006C8119 /* finish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3E60F021659D7D4006C8119 /* finish@2x.png */; };
@@ -471,6 +471,8 @@
 		96A1810A190F720A00911AB9 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		96BACEBB190F547F0005F7C2 /* login568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login568.png; sourceTree = "<group>"; };
 		96BACEBC190F547F0005F7C2 /* login568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login568@2x.png"; sourceTree = "<group>"; };
+		B214D23C19DE4E0C006D6545 /* HDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDLoginViewController.xib; sourceTree = "<group>"; };
+		B214D26B19DE51F0006D6545 /* HDLoginViewController-568.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HDLoginViewController-568.xib"; sourceTree = "<group>"; };
 		B2307430166739AB00DFF2E0 /* backend-config-juice.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-juice.xml"; sourceTree = "<group>"; };
 		B2A015C819D9102F000F046E /* HDDeleverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeleverViewController.h; path = Classes/Detail/HDDeleverViewController.h; sourceTree = "<group>"; };
 		B2A015C919D9102F000F046E /* HDDeleverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDDeleverViewController.m; path = Classes/Detail/HDDeleverViewController.m; sourceTree = "<group>"; };
@@ -559,7 +561,6 @@
 		B34660B715C678DD00EFDF24 /* HDLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoginModel.m; sourceTree = "<group>"; };
 		B34660B815C678DD00EFDF24 /* HDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLoginViewController.h; sourceTree = "<group>"; };
 		B34660B915C678DD00EFDF24 /* HDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLoginViewController.m; sourceTree = "<group>"; };
-		B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDLoginViewController.xib; sourceTree = "<group>"; };
 		B34C0B5E168AD55F00EAD1CF /* versions.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = versions.rtf; path = Documents/WorkPlan/versions.rtf; sourceTree = SOURCE_ROOT; };
 		B355AF5C1689849A0076D9A6 /* ApplicationContext.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = ApplicationContext.rtfd; sourceTree = "<group>"; };
 		B355AF5D16898CB40076D9A6 /* VIewGuider.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = VIewGuider.rtfd; sourceTree = "<group>"; };
@@ -829,7 +830,6 @@
 		B3E06E2B15D4F388002A54BE /* TodoListUI.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = TodoListUI.rtfd; path = Requirement/TodoList/TodoListUI.rtfd; sourceTree = "<group>"; };
 		B3E06E2C15D4FFC8002A54BE /* TodoListModel.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = TodoListModel.rtf; path = Requirement/TodoList/TodoListModel.rtf; sourceTree = "<group>"; };
 		B3E06E3015D509F1002A54BE /* ErrorMessage.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ErrorMessage.rtf; sourceTree = "<group>"; };
-		B3E0AA1A16D3B365008DC982 /* HDLoginViewController-568.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HDLoginViewController-568.xib"; sourceTree = "<group>"; };
 		B3E12323165486B400C685CB /* HDSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDSplitViewController.h; path = Classes/StackScroll/HDSplitViewController.h; sourceTree = "<group>"; };
 		B3E12325165486B400C685CB /* UIViewWithShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewWithShadow.h; path = Classes/StackScroll/UIViewWithShadow.h; sourceTree = "<group>"; };
 		B3E12326165486B400C685CB /* HDSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDSplitViewController.m; path = Classes/StackScroll/HDSplitViewController.m; sourceTree = "<group>"; };
@@ -1119,12 +1119,12 @@
 		B34660B315C678DD00EFDF24 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B214D26B19DE51F0006D6545 /* HDLoginViewController-568.xib */,
+				B214D23C19DE4E0C006D6545 /* HDLoginViewController.xib */,
 				B34660B615C678DD00EFDF24 /* HDLoginModel.h */,
 				B34660B715C678DD00EFDF24 /* HDLoginModel.m */,
-				B3E0AA1A16D3B365008DC982 /* HDLoginViewController-568.xib */,
 				B34660B815C678DD00EFDF24 /* HDLoginViewController.h */,
 				B34660B915C678DD00EFDF24 /* HDLoginViewController.m */,
-				B34660BA15C678DD00EFDF24 /* HDLoginViewController.xib */,
 				B36F7A711631440A0090646E /* HDTextFieldDelegate.h */,
 				B36F7A721631440B0090646E /* HDTextFieldDelegate.m */,
 			);
@@ -2175,6 +2175,7 @@
 				B357076516D215340063E4CA /* HDDeliver.png in Resources */,
 				B357076616D215340063E4CA /* HDReject.png in Resources */,
 				B357076416D214800063E4CA /* HDApprove.png in Resources */,
+				B214D23D19DE4E0D006D6545 /* HDLoginViewController.xib in Resources */,
 				B357075C16D2095E0063E4CA /* HDUser.png in Resources */,
 				B3C0B69016CF52AB00C37A51 /* mail-5.png in Resources */,
 				B3C0B69116CF52AB00C37A51 /* mail-14.png in Resources */,
@@ -2326,7 +2327,6 @@
 				B38E681415C64E6700824CB1 /* world.png in Resources */,
 				B38E681515C64E6700824CB1 /* world@2x.png in Resources */,
 				B31E2F3D15C6732100880514 /* Settings.bundle in Resources */,
-				B34660BE15C678DD00EFDF24 /* HDLoginViewController.xib in Resources */,
 				96BACEBE190F547F0005F7C2 /* login568@2x.png in Resources */,
 				B3893CE5164A37FE004E326A /* loadingAlert@2x.png in Resources */,
 				B3893CE8164A3810004E326A /* loadingAlert.png in Resources */,
@@ -2348,9 +2348,9 @@
 				B32B2E6516D371A200B6B3A9 /* Default-568h@2x.png in Resources */,
 				B32B2E9716D3744600B6B3A9 /* Default.png in Resources */,
 				B32B2E9816D3744600B6B3A9 /* Default@2x.png in Resources */,
-				B3E0AA1B16D3B365008DC982 /* HDLoginViewController-568.xib in Resources */,
 				C09F35261794E19D0046F809 /* 1024.PNG in Resources */,
 				C09F352F1794E1F00046F809 /* 57.png in Resources */,
+				B214D26C19DE51F0006D6545 /* HDLoginViewController-568.xib in Resources */,
 				C09F35311794E1F90046F809 /* 114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

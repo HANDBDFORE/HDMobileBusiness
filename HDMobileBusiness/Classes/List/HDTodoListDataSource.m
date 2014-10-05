@@ -132,11 +132,11 @@
 }
 
 - (NSString*)titleForLoading:(BOOL)reloading {
-    return @"查找...";
+    return  @"Searching...";
 }
 
 - (NSString*)titleForNoData {
-    return @"没有找到记录";
+    return @"No data found";
 }
 
 @end

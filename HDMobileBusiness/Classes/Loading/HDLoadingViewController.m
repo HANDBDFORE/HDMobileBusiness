@@ -25,8 +25,8 @@ static  NSString* configFileName = @"ios-backend-config";
     //首先检查是否配置地址
     BOOL hasAddress = [self hasServerAddress];
     if (!hasAddress) {
-        _errorSummury.text = @"服务器地址未配置";
-        _errorDetail.text = @"您还没有设置服务器地址。请回到主屏幕，打开“设置”，进入“移动商务”，在服务器地址一栏输入您公司所用的服务器地址";
+        _errorSummury.text = @"Server address not found in configuration";
+        _errorDetail.text = @"You've not set the server address,back to the main screen and step into the 'Hand Mobile Bussiness' in 'Settings'，then enter the server address of your company.";
         _retryButton.hidden = NO;
         [_retryButton setUserInteractionEnabled:YES];
     }else {
@@ -55,8 +55,8 @@ static  NSString* configFileName = @"ios-backend-config";
                     if (ping1Success) {
                         //百度ping通
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            _errorSummury.text = @"网络异常";
-                            _errorDetail.text = @"您的手机当前可以上网，但无法连接到设定的服务器。请检查服务器地址是否正确。如果之前使用正常，有可能是服务器处于停机状态。如果您公司启用了VPN等安全接入方式，请检查是否已经成功连接VPN。";
+                            _errorSummury.text = @"Unexpected network";
+                            _errorDetail.text = @"Your cell phone can current access while the server is not reachable.Please check the server address is entered correctly.There may be a server in shutdown status if you have ever used before.In addition,checking the VPN if your company uses it.";
                             _retryButton.hidden = NO;
                             _alertView.hidden = NO;
                             _retryButton.userInteractionEnabled = YES;
@@ -64,8 +64,8 @@ static  NSString* configFileName = @"ios-backend-config";
                     }else {
                         //百度ping不通
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            _errorSummury.text = @"没有可用的网络连接";
-                            _errorDetail.text = @"请检查您的设备是否有可用的网络连接。";
+                            _errorSummury.text =  @"None available network connection";
+                            _errorDetail.text = @"Please check your network connection.";
                             _retryButton.hidden = NO;
                             _alertView.hidden = NO;
                             _retryButton.userInteractionEnabled = YES;
@@ -75,8 +75,8 @@ static  NSString* configFileName = @"ios-backend-config";
                 }else if (errorCode == -1004) {
                     //没有网
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        _errorSummury.text = @"没有可用的网络连接";
-                        _errorDetail.text = @"请检查您的设备是否有可用的网络连接。";
+                        _errorSummury.text = @"None available network connection";
+                        _errorDetail.text = @"Please check your network connection.";
                         _retryButton.hidden = NO;
                         _alertView.hidden = NO;
                         _retryButton.userInteractionEnabled = YES;
@@ -84,8 +84,8 @@ static  NSString* configFileName = @"ios-backend-config";
                 }else {
                     //未知错误，抛出原始错误信息
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        _errorSummury.text = @"网络连接失败";
-                        _errorDetail.text =[NSString  stringWithFormat:@"未知的错误原因\n错误描述：\n%@",[error description]] ;
+                        _errorSummury.text = @"Network connection failure";
+                        _errorDetail.text =[NSString  stringWithFormat:@"Unknow error cause\n error description：\n%@",[error description]] ;
                         _retryButton.hidden = NO;
                         _alertView.hidden = NO;
                         _retryButton.userInteractionEnabled = YES;
@@ -96,8 +96,8 @@ static  NSString* configFileName = @"ios-backend-config";
                 NSInteger responseCode = [httpResponse statusCode];
                 if (responseCode!=200) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        _errorSummury.text = @"服务器状态异常";
-                        _errorDetail.text =[NSString  stringWithFormat:@"请联系技术支持。\n服务器返回状态：%i",responseCode] ;
+                        _errorSummury.text =@"Abnormal state of server";
+                        _errorDetail.text =[NSString  stringWithFormat:@"Please contact the technical support.\n the server returns status code：%i",responseCode] ;
                         _retryButton.hidden = NO;
                         _alertView.hidden = NO;
                         _retryButton.userInteractionEnabled = YES;
@@ -109,8 +109,8 @@ static  NSString* configFileName = @"ios-backend-config";
                         //在这里解析
                         if (![HDApplicationContext configApplicationContextForXmlPath:@"ios-backend-config.xml"]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                _errorSummury.text = @"服务器返回文件异常";
-                                _errorDetail.text = @"服务器返回文件未能被成功解析，请联系技术支持。";
+                                _errorSummury.text = @"Abnormal file from server";
+                                _errorDetail.text = @"Files returned from server are unsuccessfully parsed，please contact the technical support.";
                                 _retryButton.hidden = NO;
                                 _alertView.hidden = NO;
                                 _retryButton.userInteractionEnabled = YES;
@@ -271,7 +271,7 @@ static  NSString* configFileName = @"ios-backend-config";
     _errorSummury.adjustsFontSizeToFitWidth = NO;
     _errorSummury.font = [UIFont fontWithName:@"Helvetica" size:18];
     _errorSummury.textColor = RGBCOLOR(133, 141, 155);
-    _errorSummury.text = @"正在加载配置文件，请稍候";
+    _errorSummury.text =@"Loading the configuration file, please wait";
     [self.view addSubview:_errorSummury];
     
     _errorDetail = [[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*0.8, 200)]autorelease];

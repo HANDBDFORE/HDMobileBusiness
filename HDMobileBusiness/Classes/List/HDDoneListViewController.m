@@ -14,7 +14,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"审批完成";
+        self.title = @"Done List";
         self.variableHeightRows = YES;
         self.clearsSelectionOnViewWillAppear = !TTIsPad();
     }

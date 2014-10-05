@@ -132,7 +132,7 @@ static NSString * kActionTypeDeliver = @"deliver";
     
     HDViewGuider * guider = [[HDApplicationContext shareContext]objectForIdentifier:@"todoDetailPostGuider"];
     
-    guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")};
+    guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"Comments")};
     [guider perform];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////

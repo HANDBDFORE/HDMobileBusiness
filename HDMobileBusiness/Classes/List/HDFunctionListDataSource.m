@@ -58,7 +58,7 @@
 
 -(void)request:(TTURLRequest *)request didFailLoadWithError:(NSError *)error
 {
-    TTAlert(@"更多功能加载失败");
+    TTAlert(@"More function load failure");
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -135,7 +135,7 @@
 
 -(void)addBasicItems{
     TTTableImageItem * todoListItem =
-    [TTTableImageItem itemWithText:TTLocalizedString(@"Todo List", @"待办事项")
+    [TTTableImageItem itemWithText:TTLocalizedString(@"Todo List", @"Todo List")
                           delegate:self
                           selector:@selector(openURLForItem:)];
     todoListItem.imageURL = @"bundle://mail-5.png";
@@ -144,7 +144,7 @@
     
     /////////////////////////////
     TTTableImageItem * doneListItem =
-    [TTTableImageItem itemWithText:TTLocalizedString(@"Approved List", @"审批完成")
+    [TTTableImageItem itemWithText:TTLocalizedString(@"Approved List", @"Approved List")
                           delegate:self
                           selector:@selector(openURLForItem:)];
     doneListItem.imageURL = @"bundle://mail-14.png";
@@ -152,7 +152,7 @@
     doneListItem.userInfo = @"functionDoneItemGuider";
     
     ///////////////////////////////
-    [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:TTLocalizedString(@"Approve", @"审批") footerTitle:nil] atIndex:0];
+    [self.sections insertObject:[TTTableSection sectionWithHeaderTitle:TTLocalizedString(@"Approve", @"Approve") footerTitle:nil] atIndex:0];
     [self.items insertObject:@[todoListItem,doneListItem] atIndex:0];//doneListItem
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -183,7 +183,7 @@
 -(void)addLogoutItem
 {
     TTTableImageItem * logoutItem =
-    [TTTableImageItem itemWithText:TTLocalizedString(@"Logout", @"注销")
+    [TTTableImageItem itemWithText:TTLocalizedString(@"Logout", @"Logout")
                           delegate:self
                           selector:@selector(logout)];
     
@@ -198,11 +198,11 @@
 -(void) logout
 {
     UIAlertView* cancelAlertView =
-    [[[UIAlertView alloc] initWithTitle:TTLocalizedString(@"Logout", @"注销")
-                                message:TTLocalizedString(@"Are you sure you want to logout?", @"注销")
+    [[[UIAlertView alloc] initWithTitle:TTLocalizedString(@"Logout", @"Logout")
+                                message:TTLocalizedString(@"Are you sure you want to logout?", @"Logout")
                                delegate:self
-                      cancelButtonTitle:TTLocalizedString(@"Yes", @"是")
-                      otherButtonTitles:TTLocalizedString(@"No", @"否"), nil] autorelease];
+                      cancelButtonTitle:TTLocalizedString(@"Yes", @"Yes")
+                      otherButtonTitles:TTLocalizedString(@"No", @"No"), nil] autorelease];
     [cancelAlertView show];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

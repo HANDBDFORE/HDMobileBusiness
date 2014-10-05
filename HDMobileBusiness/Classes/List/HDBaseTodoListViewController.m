@@ -38,25 +38,25 @@
 -(void)loadView
 {
     [super loadView];
-    self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
+    self.editButtonItem.title = TTLocalizedString(@"Batch", @"Batch");
     self.editButtonItem.width = 60;
     //////////////////////
     
-    _acceptButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Accept", @"同意") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
+    _acceptButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Accept", @"Accept") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
     _acceptButtonItem.width = 110;
     _acceptButtonItem.tintColor = RGBCOLOR(0, 153, 0);
     _acceptButtonItem.tag = 1;
     ////////////////////////////////////////////////////////////////////////////////
     /////////////////////
     
-    _refuseButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Refuse", @"拒绝") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
+    _refuseButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Refuse", @"Refuse") style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarButtonPressed:)];
     _refuseButtonItem.width = 110;
     _refuseButtonItem.tintColor = RGBCOLOR(153, 0, 0);
     _refuseButtonItem.tag = 0;
     ////////////////////////////////////////////////////////////////////////////////
     /////////////////////
     
-    _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Clear", @"清理") style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
+    _clearButtonItem = [[UIBarButtonItem alloc]initWithTitle:TTLocalizedString(@"Clear", @"Clear") style:UIBarButtonItemStyleBordered target:self.model action:@selector(clear)];
     ////////////////////////////////////////////////////////////////////////////////
     /////////////////////
     [self resetToolBarButton];
@@ -74,10 +74,10 @@
 #pragma  -mark toolbar Buttons
 -(void)resetToolBarButton
 {
-    _acceptButtonItem.title = TTLocalizedString(@"Accept", @"同意");
+    _acceptButtonItem.title = TTLocalizedString(@"Accept", @"Accept");
     _acceptButtonItem.enabled = NO;
     
-    _refuseButtonItem.title = TTLocalizedString(@"Refuse", @"拒绝");
+    _refuseButtonItem.title = TTLocalizedString(@"Refuse",@"Refuse");
     _refuseButtonItem.enabled = NO;
 }
 
@@ -85,9 +85,9 @@
 {
     NSNumber * count =  [NSNumber numberWithInt:self.tableView.indexPathsForSelectedRows.count];
     if (count.intValue >0) {
-        _acceptButtonItem.title = [NSString stringWithFormat:@"%@(%@)",TTLocalizedString(@"Accept", @"同意"),count];
+        _acceptButtonItem.title = [NSString stringWithFormat:@"%@(%@)",TTLocalizedString(@"Accept", @"Accept"),count];
         _acceptButtonItem.enabled = YES;
-        _refuseButtonItem.title = [NSString stringWithFormat:@"%@(%@)",TTLocalizedString(@"Refuse", @"拒绝"),count];
+        _refuseButtonItem.title = [NSString stringWithFormat:@"%@(%@)",TTLocalizedString(@"Refuse", @"Refuse"),count];
         _refuseButtonItem.enabled = YES;
     }
     else {
@@ -101,12 +101,12 @@
     [self.detailViewController setEditing:editing animated:animated];
     [self resetToolBarButton];
     if(editing){
-        self.editButtonItem.title = TTLocalizedString(@"Cancel", @"取消");
+        self.editButtonItem.title = TTLocalizedString(@"Cancel", @"Cancel");
     }else {
         if (TTIsPad()) {
             [self selectedTableCellForCurrentRecord];
         }
-        self.editButtonItem.title = TTLocalizedString(@"Batch", @"批量");
+        self.editButtonItem.title = TTLocalizedString(@"Batch", @"Batch");
     }
 }
 
@@ -146,7 +146,7 @@
     
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     
-    guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")};
+    guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"Comments")};
     
     [guider setSourceController:self];
     [guider perform];

@@ -111,7 +111,7 @@
      [_password resignFirstResponder];
     
     if (!(_username.text.length && _password.text.length)) {
-        TTAlertNoTitle(@"用户名和密码不能为空");
+        TTAlertNoTitle(@"Username and password is empty!");
         return;
     }
     
@@ -119,11 +119,11 @@
         self.loginModel.username = _username.text;
         self.loginModel.password = _password.text;
         [self.loginModel login];
-        [self.loginBtn setTitle:@"取消" forState:UIControlStateNormal];
+        [self.loginBtn setTitle:@"Cancel" forState:UIControlStateNormal];
         [self.loginBtn setTag:21];
     }else{
         [self.loginModel cancel];
-        [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+        [self.loginBtn setTitle:@"Login" forState:UIControlStateNormal];
         [self.loginBtn setTag:20];
     }
 }
@@ -147,7 +147,7 @@
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error
 {
-    [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [self.loginBtn setTitle:@"Login" forState:UIControlStateNormal];
     [self.loginBtn setTag:20];
     NSString * errorDescription = nil;
     if (!errorDescription) {

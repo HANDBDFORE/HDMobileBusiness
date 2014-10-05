@@ -113,7 +113,7 @@
     [self updateNavigationItems];
     self.currentURL = nil;
     if (show) {
-        self.title = @"没有记录";
+        self.title = @"No Record";
         UIImage* image = TTIMAGE(@"bundle://Three20.bundle/images/empty.png");
         if (image) {
             TTErrorView* emptyView = [[[TTErrorView alloc] initWithTitle:self.title

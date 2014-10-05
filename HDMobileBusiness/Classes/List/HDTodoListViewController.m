@@ -15,7 +15,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"待办事项";
+        self.title = @"Todo List";
     }
     return self;
 }
@@ -31,8 +31,8 @@
     //tab图标
     self.tabBarItem.image = [UIImage imageNamed:@"mailclosed.png"];
     
-    //初始化导航条右侧按钮
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//    //初始化导航条右侧按钮
+//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //tool bar
     [self setEditingToolbarItemButtons:NO animated:YES];
