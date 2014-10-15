@@ -1,0 +1,22 @@
+dependencies: \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20UI/Sources/TTLauncherView.m \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20UI/Headers/TTLauncherView.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20UI/Headers/TTLauncherPersistenceMode.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20UI/Headers/TTLauncherButton.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20UI/Headers/TTButton.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyleDelegate.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20UI/Headers/TTLauncherItem.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20UI/Headers/TTLauncherViewDelegate.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20UI/Headers/TTPageControl.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20UI/Headers/UIViewAdditions.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20UI/private/TTLauncherScrollView.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20UI/private/TTLauncherHighlightView.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20UICommon/TTGlobalUICommon.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTGlobalStyle.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLRequest.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLRequestCachePolicy.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTCorePreprocessorMacros.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTUserInfo.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTDebug.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTDebugFlags.h \
+  /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTGlobalCoreRects.h
