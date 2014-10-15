@@ -118,14 +118,16 @@ static NSString * kActionTypeDeliver = @"deliver";
 
 -(void)toolbarButtonPressed: (id)sender
 {
-//    [self.navigationController pushViewController:[[HDDeleverCommentViewController	 alloc] init] animated:NO];
+    
+
+
     
 
     
     //设置当前审批动作
     self.selectedAction = [[sender valueForKey:@"tag"] stringValue];
-    NSLog(@"%@",self.selectedAction);
-    
+   NSLog(@"%@",self.selectedAction);
+   
     
     //准备默认审批内容
     NSString *defaultComments = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
@@ -135,12 +137,49 @@ static NSString * kActionTypeDeliver = @"deliver";
     guider.destinationQuery = @{@"text":defaultComments, @"delegate":self, @"title":TTLocalizedString(@"Comments", @"意见")};
     [guider perform];
 }
+
+-(void)deliver:(id)sender
+{
+     //设置当前审批动作
+       self.selectedAction = [[sender valueForKey:@"tag"] stringValue];
+    
+    UIStoryboard *StoryBoard = [UIStoryboard storyboardWithName:@"DeleverStoryboard" bundle:nil];
+    HDDeleverCommentViewController * dataSetting = [StoryBoard instantiateViewControllerWithIdentifier:@"HDDeleverCommentViewController"];
+
+    dataSetting.delegate = self;
+    
+
+    [self  presentModalViewController:[[UINavigationController alloc] initWithRootViewController:dataSetting]  animated:YES];
+    
+    
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
     [self submitWithDictionary:@{@"comment":text,@"submitAction":self.selectedAction}];
+
+    
+    
 }
+
+//转交调用程序
+-(void)postDeliverController:(NSString *)comment
+                 delivereeid:(NSString *)delivereeid
+{
+
+  
+
+
+    
+    [self submitWithDictionary:@{@"comment" : comment,@"submitAction":self.selectedAction
+                                 ,@"deliveree" :delivereeid
+                                 }];
+
+    
+    
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma -mark return back
@@ -151,14 +190,7 @@ static NSString * kActionTypeDeliver = @"deliver";
 }
 
 
-#pragma -mark deliver
--(void)deliver:(id)sender
-{
-    //设置当前审批动作
-    self.selectedAction = [sender valueForKey:@"tag"];
-    HDViewGuider * guider = [[HDApplicationContext shareContext] objectForIdentifier:@"todoDetailDeliverGuider"];
-    [guider perform];
-}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)composeController:(TTMessageController*)controller didSendFields:(NSArray*)fields {
@@ -191,6 +223,10 @@ static NSString * kActionTypeDeliver = @"deliver";
 //    if ([self.pageTurningService next]) {
 //        [self loadCurrentRecord];
 //    }else{
+    
+
+
+    
     [self.navigationController performSelector:@selector(popViewControllerAnimated:)
                                     withObject:@"YES"
                                     afterDelay:0.5];
@@ -256,6 +292,8 @@ static NSString * kActionTypeDeliver = @"deliver";
         actionButton.style = UIBarButtonItemStylePlain;
     }
     
+    
+    //对于actiontype为转交的进行单独处理 modify jtt 2014-10-09
     if ([[record valueForKey:@"actionType"] isEqualToString:kActionTypeDeliver]) {
         actionButton.action = @selector(deliver:);
     }

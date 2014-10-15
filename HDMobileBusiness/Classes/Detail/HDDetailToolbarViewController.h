@@ -15,4 +15,8 @@
 
 @property(nonatomic,retain) HDActionModel * actionModel;
 
+
+
+-(void)postDeliverController:(NSString *)comment
+                 delivereeid:(NSString *)delivereeid;
 @end

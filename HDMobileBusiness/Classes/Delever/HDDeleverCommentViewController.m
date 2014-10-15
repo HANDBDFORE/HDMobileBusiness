@@ -24,17 +24,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.navigationItem.leftBarButtonItem =
-        [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemCancel
-                                                       target: self
-                                                       action: @selector(cancel)] autorelease];
-        self.navigationItem.rightBarButtonItem =
-        [[[UIBarButtonItem alloc] initWithTitle: TTLocalizedString(@"Done", @"")
-                                          style: UIBarButtonItemStyleDone
-                                         target: self
-                                         action: @selector(post)] autorelease];
-        
-        self.title = @"转交意见";
+
     }
     return self;
 }
@@ -43,33 +33,154 @@
 {
     [super viewDidLoad];
     
+    [self initViews];
+    
     if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
     
-    _textview = [[UITextView alloc] initWithFrame:CGRectMake(10, 50, self.view.bounds.size.width-20, self.view.bounds.size.height/2-40) ];
-    
-                 [_textview setBackgroundColor:[UIColor whiteColor]];
-    
-    [self.view addSubview:_textview];
-    
-    _view = [[UIView alloc] initWithFrame:CGRectMake(10, 0, self.view.bounds.size.width-20, 40)];
-    [_view setBackgroundColor:[UIColor whiteColor]];
-    [self.view addSubview:_view];
-    
-    UILabel * _lable = [[UILabel alloc] initWithFrame:CGRectMake(0, _view.bounds.origin.y/3, _view.bounds.size.width, _view.bounds.size.height)];
-    _lable.text = @"请选择转交人";
-    [_view addSubview:_lable];
-    
-    
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(buttonpress)];
-    
-    [_view addGestureRecognizer:singleTap];
     
     [_textview becomeFirstResponder];
     
-    // Do any additional setup after loading the view.
+
 }
+
+
+/////////////////private
+
+-(void)initViews
+{
+    
+    self.navigationItem.leftBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle: TTLocalizedString(@"Cancel", @"")
+                                      style: UIBarButtonItemStyleDone
+                                     target: self
+                                     action: @selector(Cancel)] autorelease];
+    
+    self.navigationItem.rightBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle: TTLocalizedString(@"Done", @"")
+                                      style: UIBarButtonItemStyleDone
+                                     target: self
+                                     action: @selector(Done)] autorelease];
+
+    
+    
+
+    
+    self.title = @"转交意见";
+    
+    
+    self.commentTv.delegate = self;
+    self.commentTv.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
+    
+    
+    if(self.commentTv.text.length !=0){
+        [self.viewholderLbl setHidden:true];
+        
+    }
+    
+    //初始化默认审批意见
+    
+    
+//    self.commentTv.layer.borderWidth = 1.0f;
+//    self.commentTv.layer.borderColor = [UIColor blackColor].CGColor;
+    
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseDeliver)];
+    
+    [self.coverView addGestureRecognizer:tap];
+    
+    
+    [self.navigationController setToolbarHidden:YES];
+    
+    
+    
+}
+
+//选择返回时候，调用的函数
+-(void)deliver:(NSString *)deliverid
+       name:(NSString *)delivername
+{
+    
+    self.deliverId =deliverid;
+    self.delivereeLbl.text = delivername;
+    
+}
+
+
+////////////////////textview delegate
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if([text isEqualToString:@"\n"]){
+        
+        [textView resignFirstResponder];
+        return NO;
+        
+    }
+    
+    return  YES;
+    
+    
+    
+    
+}
+
+-(void)textViewDidChange:(UITextView *)textView
+{
+    if(textView.text.length == 0)
+    {
+        [self.viewholderLbl setHidden:NO];
+        
+    }else{
+        [self.viewholderLbl setHidden:YES];
+        
+    }
+    
+    
+}
+
+
+
+///////////////////click listener
+
+-(void)Done
+{
+    if(self.deliverId == nil){
+        
+        TTAlert(@"请选择转交人");
+        return;
+    }
+    
+    
+    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate postDeliverController:self.commentTv.text delivereeid:self.deliverId];
+
+
+    
+}
+
+
+-(void)Cancel
+{
+    
+   [self dismissModalViewControllerAnimated:YES];
+    
+}
+
+////跳转选择审批人
+-(void)chooseDeliver
+{
+    UIStoryboard *StoryBoard = [UIStoryboard storyboardWithName:@"DeleverStoryboard" bundle:nil];
+    HDDeleverViewController * deleverView = [StoryBoard instantiateViewControllerWithIdentifier:@"HDDeleverViewController"];
+    
+    deleverView.superView = self;
+    
+    [self.navigationController pushViewController:deleverView animated:true];
+    
+}
+
+
+/////////////////system auto create////////////
 
 - (void)didReceiveMemoryWarning
 {
@@ -77,20 +188,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)buttonpress
-{
-    HDDeleverViewController * plPicker =    [[HDDeleverViewController alloc] init];
-    [self.navigationController pushViewController:plPicker animated:YES];
-    
-}
-
-
--(void)cancel
-{
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    
-}
 
 /*
 #pragma mark - Navigation
@@ -103,4 +200,11 @@
 }
 */
 
+- (void)dealloc {
+    [_coverView release];
+    [_delivereeLbl release];
+    [_commentTv release];
+    [_viewholderLbl release];
+    [super dealloc];
+}
 @end

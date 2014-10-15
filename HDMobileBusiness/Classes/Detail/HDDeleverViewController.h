@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HDDeleverCommentViewController.h"
 
-@interface HDDeleverViewController : TTModelViewController<UITableViewDataSource,UITableViewDelegate>
+@interface HDDeleverViewController : TTModelViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
 
+@property (retain, nonatomic) IBOutlet UITextField *keywordTf;
+
+@property (retain, nonatomic) IBOutlet UIButton *queryBtn;
+
+@property (retain, nonatomic) IBOutlet UILabel *hintLbl;
+
+@property (retain, nonatomic) IBOutlet UITableView *delivereeTableView;
+
+
+@property (retain,nonatomic) HDDeleverCommentViewController * superView;
 @end

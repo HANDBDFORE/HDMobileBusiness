@@ -9,161 +9,187 @@
 #import "HDDeleverViewController.h"
 #import "HDDeleverModel.h"
 #import "HDDeleverCell.h"
+#import "HDDeleverCommentViewController.h"
 
 @interface HDDeleverViewController (){
     UITextView * _textview;
+    
     UIButton  * _btn;
-    
-    
     UILabel * _label;
     
     HDDeleverModel *  _model;
     
-    
     UITableView * _tableview;
+    
+    UIActivityIndicatorView *    indicator;
 }
 
 @end
 
 @implementation HDDeleverViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-//        self.navigationItem.leftBarButtonItem =
-//        [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemCancel
-//                                                       target: self
-//                                                       action: @selector(cancel)] autorelease];
-//        self.navigationItem.rightBarButtonItem =
-//        [[[UIBarButtonItem alloc] initWithTitle: TTLocalizedString(@"Done", @"")
-//                                          style: UIBarButtonItemStyleDone
-//                                         target: self
-//                                         action: @selector(post)] autorelease];
-        
-        
-        _model = [[HDDeleverModel alloc] init];
-        self.model = _model;
-        self.title = @"审批意见";
-
-    
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    
+    [self initViews];
+    
+    _model = [[HDDeleverModel alloc] init];
+    
+    [self setModel:_model];
+}
+
+/////////////////private//////////////
+-(void)initViews
+{
     
     if ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0) {
         self.edgesForExtendedLayout=UIRectEdgeNone;
     }
-    [self.view setBackgroundColor:[UIColor grayColor]];
-    
-    _textview = [[UITextView alloc] initWithFrame:CGRectMake(5, 0, self.view.bounds.size.width * 2/3, 50)];
-    _btn  = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width * 2/3 + 7,0 , self.view.bounds.size.width /3 -7, 50)];
-    [_btn setTitle:@"查询" forState:UIControlStateNormal];
 
-    [_btn addTarget:self action:@selector(btnpress:) forControlEvents:UIControlEventTouchDown];
-    
-    [self.view addSubview:_textview];
-    [self.view addSubview:_btn];
-    [self.navigationController setToolbarHidden:YES animated:YES];
-    
-    _label = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, self.view.bounds.size.width, 50)];
-    
-    _label.textColor = [UIColor redColor];
-    _label.text = @"提示： 请输入工号，姓名，等进行查询";
-    
-    [self.view addSubview:_label];
-    
-    
 
+        indicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2, 30, 30)];
     
-    // Do any additional setup after loading the view.
+    
+    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [self.view addSubview:indicator];
+    
+    [self.queryBtn addTarget:self action:@selector(query) forControlEvents:UIControlEventTouchDown];
+    
+    [self.navigationController setToolbarHidden:YES];
+    
 }
 
--(void)btnpress:(id)sender
+-(void)resumeView
+{
+    [indicator stopAnimating];
+    self.view.userInteractionEnabled = YES;
+    
+}
+
+////////////////btn click listener////////////
+-(void)query
 {
     
-    if(!_textview.text.length ){
-        TTAlertNoTitle(@"查询条件不能为空");
+    [self.keywordTf resignFirstResponder];
+    
+    //对输入内容进行
+    if(_keywordTf.text.length == 0 ){
+        
+        TTAlertNoTitle(@"请输入关键字进行查询");
         return;
     }
-
     
     
-    [_label setHidden:true];
     
-    [_model loadRecord:_textview.text];
     
+    [_model loadRecord:_keywordTf.text];
     
 }
 
-- (void)didReceiveMemoryWarning
+
+
+
+/////////////tableviewdelegate//////////////////////////
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return 80;
 }
 
-
--(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error{
-    
-    TTAlertNoTitle(@"请求数据失败");
-}
-
--(void)modelDidFinishLoad:(id<TTModel>)model{
-    
-    NSLog(@"%d conut is ",_model.list.count);
-    
-    if( _model.list == nil || _model.list.count == 0){
-        _label.textColor = [UIColor whiteColor];
-        _label.text = @"未找到任何数据";
-        _label.hidden = NO;
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(_model.list != nil){
+        
+        return   _model.list.count;
+        
     }else{
-        _tableview= [[UITableView alloc] initWithFrame:CGRectMake(0, 50, self.view.bounds.size.width, self.view.bounds.size.height-50)];
-        _tableview.dataSource = self;
-        _tableview.delegate = self;
-        _tableview.tableFooterView = [[UIView alloc] init];
-        [self.view addSubview:_tableview];
         
-        
-        
+        return 0;
     }
-    
-}
-
-#pragma  tableviewdatesource
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    return 1;
-}
-
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    
-    
-    NSInteger  num =   _model.list.count;
-    NSLog(@"%d",num);
-    
-    return num;
     
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  HDDeleverCell * cell=  [[HDDeleverCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HDDeleverCell"];
-    return  cell;
+    HDDeleverCell * cell = [[HDDeleverCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HDDeleverCell"];
+    
+    NSDictionary * data =  [_model.list objectAtIndex:indexPath.row];
+
+
+    [cell setCell:data];
+    
+    
+    
+    return cell;
+    
+    
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   HDDeleverCell * cell =  (HDDeleverCell *)[tableView cellForRowAtIndexPath:indexPath];
+ 
+    self.superView.deliverId =  cell.delivereeid;
+    self.superView.delivereeLbl.text = cell.userNameLbl.text;
+    
+   [self.navigationController popViewControllerAnimated:YES];
     
 }
 
 
-#pragma tableviewdelegate
+///////////////////modelvie delegate
+-(void)modelDidStartLoad:(id<TTModel>)model
+{
+    
+    
+    self.view.userInteractionEnabled = NO;
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    [indicator startAnimating];
+    
+    
+    
+    
 }
 
+-(void)modelDidFinishLoad:(id<TTModel>)model
+{
+    //隐藏提示
+    [self.hintLbl setHidden:true];
+    
+    
+    [self resumeView];
+
+    if(_model.list.count == 0)
+    {
+        
+        
+    }else{
+        self.delivereeTableView.tableFooterView = [[UIView alloc]init];
+        self.delivereeTableView.tableHeaderView = [[UIView alloc]init];
+        
+        self.delivereeTableView.delegate = self;
+        self.delivereeTableView.dataSource = self;
+        [self.delivereeTableView reloadData];
+    }
+    
+}
+
+-(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
+{
+
+    [self resumeView];
+    
+    
+}
+
+/////////////////system autocreate////////////////////////////////
+
+- (void)dealloc {
+    [_keywordTf release];
+    [_queryBtn release];
+    [_hintLbl release];
+    [_delivereeTableView release];
+    [super dealloc];
+}
 @end

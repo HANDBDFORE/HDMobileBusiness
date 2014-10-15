@@ -47,6 +47,12 @@
 {
     self = [super init];
     if (self) {
+        
+        NSArray* dirs = NSSearchPathForDirectoriesInDomains(
+                                                            NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *  documentsPath = [dirs objectAtIndex:0];
+        NSLog(@"%@",documentsPath);
+        
         //加载对象创建路径
         [self loadFactoryMap];
         [self loadLocalPattern];
@@ -81,12 +87,15 @@
         return;
     }
     
+    //关闭上次计时器
     if(timer !=nil){
         
         [timer invalidate];
         
     }
-        timer = [NSTimer scheduledTimerWithTimeInterval:execTime * 60 target:self selector:@selector(loginExec) userInfo:nil repeats:NO];
+    
+    //重新初始化计时器
+    timer = [NSTimer scheduledTimerWithTimeInterval:execTime * 60 target:self selector:@selector(loginExec) userInfo:nil repeats:NO];
     
 }
 

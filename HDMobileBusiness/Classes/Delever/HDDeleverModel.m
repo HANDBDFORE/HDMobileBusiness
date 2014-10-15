@@ -33,7 +33,7 @@
     
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     map.urlPath = self.queryUrl;
-   map.postData = @{@"mobile_employee_code": data};
+    map.postData = @{@"mobile_employee_keyword": data};
     [self requestWithMap:map];
     
 }
