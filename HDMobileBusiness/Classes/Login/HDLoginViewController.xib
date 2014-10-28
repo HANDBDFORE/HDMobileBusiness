@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" image="login.png" id="26">
+                <imageView userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" image="login_amec.png" id="26">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
@@ -77,9 +77,9 @@
         </view>
     </objects>
     <resources>
-        <image name="login.png" width="320" height="480"/>
         <image name="loginButton.png" width="449" height="64"/>
         <image name="loginButtonActive.png" width="449" height="64"/>
+        <image name="login_amec.png" width="640" height="960"/>
         <image name="loginform.png" width="279" height="151"/>
     </resources>
 </document>

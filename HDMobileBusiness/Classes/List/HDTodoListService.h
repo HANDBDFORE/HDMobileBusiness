@@ -36,6 +36,9 @@
 
 @property(nonatomic,readonly) NSIndexPath * currentIndexPath;
 
+
+
+-(void)reflesh1;
 //清除无效的数据,未使用
 //-(void)clear;
 

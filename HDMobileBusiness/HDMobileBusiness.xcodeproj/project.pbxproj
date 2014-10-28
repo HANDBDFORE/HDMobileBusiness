@@ -27,6 +27,7 @@
 		B214D23D19DE4E0D006D6545 /* HDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B214D23C19DE4E0C006D6545 /* HDLoginViewController.xib */; };
 		B214D26C19DE51F0006D6545 /* HDLoginViewController-568.xib in Resources */ = {isa = PBXBuildFile; fileRef = B214D26B19DE51F0006D6545 /* HDLoginViewController-568.xib */; };
 		B2307431166739AB00DFF2E0 /* backend-config-juice.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-juice.xml */; };
+		B28E7FF119FE04500087A7F5 /* login_amec.png in Resources */ = {isa = PBXBuildFile; fileRef = B28E7FF019FE04500087A7F5 /* login_amec.png */; };
 		B2A015CA19D9102F000F046E /* HDDeleverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A015C919D9102F000F046E /* HDDeleverViewController.m */; };
 		B2A015DA19D92C96000F046E /* HDDeleverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A015D919D92C96000F046E /* HDDeleverModel.m */; };
 		B2A015DC19D93BD5000F046E /* HDDeleverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2A015DB19D93BD5000F046E /* HDDeleverCell.xib */; };
@@ -474,6 +475,7 @@
 		B214D23C19DE4E0C006D6545 /* HDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HDLoginViewController.xib; sourceTree = "<group>"; };
 		B214D26B19DE51F0006D6545 /* HDLoginViewController-568.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HDLoginViewController-568.xib"; sourceTree = "<group>"; };
 		B2307430166739AB00DFF2E0 /* backend-config-juice.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-juice.xml"; sourceTree = "<group>"; };
+		B28E7FF019FE04500087A7F5 /* login_amec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_amec.png; sourceTree = SOURCE_ROOT; };
 		B2A015C819D9102F000F046E /* HDDeleverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeleverViewController.h; path = Classes/Detail/HDDeleverViewController.h; sourceTree = "<group>"; };
 		B2A015C919D9102F000F046E /* HDDeleverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDDeleverViewController.m; path = Classes/Detail/HDDeleverViewController.m; sourceTree = "<group>"; };
 		B2A015D819D92C96000F046E /* HDDeleverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeleverModel.h; path = Classes/Delever/HDDeleverModel.h; sourceTree = "<group>"; };
@@ -1406,6 +1408,7 @@
 		B38E66EB15C64E6700824CB1 /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				B28E7FF019FE04500087A7F5 /* login_amec.png */,
 				96A180FF190F625D00911AB9 /* loginform.png */,
 				96A18100190F625D00911AB9 /* loginform@2x.png */,
 				96BACEBB190F547F0005F7C2 /* login568.png */,
@@ -2284,6 +2287,7 @@
 				B38E67EA15C64E6700824CB1 /* pencilstraight.png in Resources */,
 				B38E67EB15C64E6700824CB1 /* pencilstraight@2x.png in Resources */,
 				B38E67EC15C64E6700824CB1 /* photos.png in Resources */,
+				B28E7FF119FE04500087A7F5 /* login_amec.png in Resources */,
 				B38E67ED15C64E6700824CB1 /* photos@2x.png in Resources */,
 				B38E67EE15C64E6700824CB1 /* piggy.png in Resources */,
 				B38E67EF15C64E6700824CB1 /* piggy@2x.png in Resources */,

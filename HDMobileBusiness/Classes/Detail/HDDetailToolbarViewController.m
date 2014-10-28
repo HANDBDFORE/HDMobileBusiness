@@ -146,8 +146,8 @@ static NSString * kActionTypeDeliver = @"deliver";
 #pragma -mark return back
 -(void)returnback
 {
-    
     [self.navigationController popViewControllerAnimated:YES];
+   [self.pageTurningService reflesh1];
 }
 
 

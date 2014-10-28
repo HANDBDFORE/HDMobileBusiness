@@ -65,6 +65,15 @@
     }
 }
 
+#pragma 2014-10-19 JS 返回刷新调用
+
+-(void)reflesh1
+{
+    [self.model load:nil more:nil];
+    
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -(void)removeRecordAtIndex:(NSUInteger) index
 {
