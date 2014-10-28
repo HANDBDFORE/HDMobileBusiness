@@ -50,7 +50,7 @@
         item.timestamp = timestamp;
         [self.items addObject:item];
     }
-    [self.items addObject:[TTTableMoreButton itemWithText:@"更多..."]];
+    [self.items addObject:[TTTableMoreButton itemWithText:TTLocalizedString(@"more...", @"")]];
 }
 
 -(void)openURLForItem:(TTTableItem *)item
@@ -63,11 +63,11 @@
 }
 
 - (NSString*)titleForLoading:(BOOL)reloading {
-    return @"查找...";
+    return TTLocalizedString(@"search...", @"");
 }
 
 - (NSString*)titleForNoData {
-    return @"没有找到记录";
+    return TTLocalizedString(@"record is not found!", @"");
 }
 
 @end

@@ -59,6 +59,15 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //国家化
+    [self.loginBtn setTitle:TTLocalizedString(@"Login", @"") forState:UIControlStateNormal];
+    [self.passwordLbl setText:TTLocalizedString(@"Password", @"")];
+    [self.loginLbl setText:TTLocalizedString(@"UserName", @"")];
+    
+    [_username setPlaceholder:TTLocalizedString(@"Please enter the username", @"")];
+    [_password setPlaceholder:TTLocalizedString(@"Please enter the password", @"")];
+    
     _username.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     _password.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"password"];
     
@@ -111,7 +120,7 @@
      [_password resignFirstResponder];
     
     if (!(_username.text.length && _password.text.length)) {
-        TTAlertNoTitle(@"用户名和密码不能为空");
+        TTAlertNoTitle(TTLocalizedString(@"Your user name and password cannot be empty!", @""));
         return;
     }
     
@@ -119,11 +128,11 @@
         self.loginModel.username = _username.text;
         self.loginModel.password = _password.text;
         [self.loginModel login];
-        [self.loginBtn setTitle:@"取消" forState:UIControlStateNormal];
+        [self.loginBtn setTitle:TTLocalizedString(@"Cancel", @"") forState:UIControlStateNormal];
         [self.loginBtn setTag:21];
     }else{
         [self.loginModel cancel];
-        [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+        [self.loginBtn setTitle:TTLocalizedString(@"Login", @"") forState:UIControlStateNormal];
         [self.loginBtn setTag:20];
     }
 }
@@ -147,7 +156,7 @@
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error
 {
-    [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [self.loginBtn setTitle:TTLocalizedString(@"Login", @"") forState:UIControlStateNormal];
     [self.loginBtn setTag:20];
     NSString * errorDescription = nil;
     if (!errorDescription) {
@@ -191,4 +200,9 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
+- (void)dealloc {
+    [_loginLbl release];
+    [_passwordLbl release];
+    [super dealloc];
+}
 @end

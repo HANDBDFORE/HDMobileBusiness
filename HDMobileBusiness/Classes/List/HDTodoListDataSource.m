@@ -132,11 +132,11 @@
 }
 
 - (NSString*)titleForLoading:(BOOL)reloading {
-    return @"查找...";
+    return @"search...";
 }
 
 - (NSString*)titleForNoData {
-    return @"没有找到记录";
+    return @"record is not found!";
 }
 
 @end

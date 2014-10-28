@@ -15,7 +15,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"待办事项";
+        self.title = TTLocalizedString(@"Todo List", @"");
     }
     return self;
 }

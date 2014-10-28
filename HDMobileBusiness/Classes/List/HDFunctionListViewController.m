@@ -13,7 +13,7 @@
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        self.title = @"功能列表";
+        self.title = TTLocalizedString(@"Function List", @"");
         self.variableHeightRows = YES;
     }
     return self;

@@ -58,7 +58,7 @@
 
 -(void)request:(TTURLRequest *)request didFailLoadWithError:(NSError *)error
 {
-    TTAlert(@"更多功能加载失败");
+    TTAlert(TTLocalizedString(@"More function loading failure", @""));
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

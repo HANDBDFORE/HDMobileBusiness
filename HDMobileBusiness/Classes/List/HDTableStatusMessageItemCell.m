@@ -200,7 +200,7 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
 -(TTActivityLabel *) activityLabel{
     if (!_activityLabel) {
         _activityLabel = [[TTActivityLabel alloc]initWithStyle:TTActivityLabelStyleWhiteBox];
-        _activityLabel.text =@"提交中...";
+        _activityLabel.text =TTLocalizedString(@"Submitting...", @"");
         _activityLabel.hidden =YES;
         [_activityLabel sizeToFit];
         _activityLabel.frame = CGRectMake(0,0, self.width, self.height);

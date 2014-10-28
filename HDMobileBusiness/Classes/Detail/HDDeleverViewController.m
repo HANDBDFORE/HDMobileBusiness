@@ -76,7 +76,7 @@
     //对输入内容进行
     if(_keywordTf.text.length == 0 ){
         
-        TTAlertNoTitle(@"请输入关键字进行查询");
+        TTAlertNoTitle(TTLocalizedString(@"Enter Conditions For Search", @""));
         return;
     }
     

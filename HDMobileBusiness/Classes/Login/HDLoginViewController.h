@@ -23,6 +23,10 @@
 @property (nonatomic,retain) IBOutlet UITextField * password;
 @property (nonatomic,retain) IBOutlet UIButton * loginBtn;
 
+@property (retain, nonatomic) IBOutlet UILabel *loginLbl;
+
+@property (retain, nonatomic) IBOutlet UILabel *passwordLbl;
+
 //配置项
 @property (nonatomic,retain) id<HDImageLoader>  backgroundImageLoader;
 @property (nonatomic,retain) id<HDImageLoader>  loginButtonNormalImageLoader;
