@@ -1,404 +1,0 @@
-TThree20
-v6
-r1
-cCheck dependencies
-cCpHeader Headers/Three20.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20.h
-cCpHeader Headers/Three20+Additions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20+Additions.h
-cPhaseScriptExecution Protect\ Copied\ Headers /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh
-cProcessPCH /var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Three20_Prefix-gcbcquwypbkpuleimnrvtxhlsmva/Three20_Prefix.pch.pch Headers/Three20_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Source/Three20.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cLibtool /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a normal i386
-cPhaseScriptExecution Lint /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk
-c0000000053119F8A0000000000000198
-t1393663882
-s408
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/SDKSettings.plist
-c000000005358D46B00000000000003B4
-t1398330475
-s948
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/CoreServices/SystemVersion.plist
-c000000005358D473000000000000019E
-t1398330483
-s414
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20+Additions.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.LinkFileList
-c0000000053A2D95900000000000000A0
-t1403181401
-s160
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o
-t1403181402
-s1712
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh
-c0000000053A2D9590000000000000027
-t1403181401
-s39
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh
-c0000000053A2D9590000000000000026
-t1403181401
-s38
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Headers/Three20+Additions.h
-c00000000539FD7C8000000000000044B
-t1402984392
-s1099
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Headers/Three20.h
-c00000000539FD7C80000000000000388
-t1402984392
-s904
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Headers/Three20_Prefix.pch
-c00000000539FD7C800000000000000B4
-t1402984392
-s180
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Source/Three20.m
-c00000000539FD7C80000000000000282
-t1402984392
-s642
-
-N/var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Three20_Prefix-gcbcquwypbkpuleimnrvtxhlsmva/Three20_Prefix.pch.pch
-t1403181402
-s5363992
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Source/Three20.m
-r0
-
-CCheck dependencies
-r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies45f49bd91053b941^cb2c9ed91053b941^---0#1#1#--18"Check dependencies36"D66B56A6-C495-46BA-8F1C-B954AE748937-
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Source/Three20.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s424874202.263116
-e424874202.340812
-r1
-xCompileC
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Source/Three20.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Source/Three20.m
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Headers/Three20.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/Three20Core.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTCorePreprocessorMacros.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/Three20.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/Three20Version.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTGlobalCore.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTGlobalCoreLocale.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTGlobalCorePaths.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTGlobalCoreRects.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTAvailability.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTDebug.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTExtensionInfo.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTExtensionAuthor.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTExtensionLoader.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTEntityTables.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Core/TTMarkupStripper.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/Three20Network.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTGlobalNetwork.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTURLRequestCachePolicy.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTErrorCodes.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTModel.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTModelDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTURLRequestModel.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTURLRequestDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTURLRequest.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTURLResponse.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTURLDataResponse.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTURLImageResponse.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTUserInfo.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTURLRequestQueue.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Network/TTURLCache.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/Three20Style.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTGlobalStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTPosition.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTDefaultStyleSheet.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyleSheet.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTDefaultStyleSheet+DragRefreshHeader.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTLayout.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTFlowLayout.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTGridLayout.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTShape.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTRectangleShape.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTRoundedRectangleShape.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTRoundedRightArrowShape.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTRoundedLeftArrowShape.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTSpeechBubbleShape.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyleDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyleContext.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTContentStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTPartStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTShapeStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTInsetStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTBoxStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTTextStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTImageStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTMaskStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTBlendStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTSolidFillStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTLinearGradientFillStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTReflectiveFillStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTShadowStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTInnerShadowStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTSolidBorderStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTHighlightBorderStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTFourBorderStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTBevelBorderStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTLinearGradientBorderStyle.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledText.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledTextDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledNode.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledTextNode.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledElement.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledBlock.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledInline.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledInlineBlock.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledBoldNode.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledItalicNode.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledLinkNode.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledButtonNode.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledImageNode.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledLineBreakNode.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledFrame.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledBoxFrame.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledInlineFrame.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledTextFrame.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledImageFrame.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20Style/TTStyledTextParser.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UICommon/Three20UICommon.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UICommon/TTGlobalUICommon.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UICommon/TTBaseViewController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/Three20UINavigator.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTGlobalNavigatorMetrics.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTURLObject.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTNavigatorViewController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTBaseNavigationController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTNavigatorPersistenceMode.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTBaseNavigator.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTNavigatorDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTNavigatorRootContainer.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTURLAction.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTURLMap.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTNavigationMode.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTURLPattern.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTURLGeneratorPattern.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UINavigator/TTURLNavigatorPattern.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/Three20UI.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTNavigator.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTViewController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTSplitViewController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTNavigationController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTExtensionsController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableViewController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTModelViewController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTWebController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTMessageController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTextEditorDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTMessageControllerDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTMessageField.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTMessageRecipientField.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTMessageTextField.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTMessageSubjectField.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTAlertViewController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTPopupViewController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTAlertViewControllerDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTActionSheetController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTActionSheetControllerDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTPostController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTPostControllerDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTextBarController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTextBarDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTImageView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTImageViewDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTYouTubeView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTScrollView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTScrollViewDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTScrollViewDataSource.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTLauncherView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTLauncherPersistenceMode.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTLauncherViewDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTLauncherItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTLabel.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTStyledTextLabel.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTActivityLabel.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTSearchlightLabel.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTButton.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTLink.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTabBar.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTabDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTabStrip.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTabGrid.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTab.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTabItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTButtonBar.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTPageControl.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTextEditor.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTSearchTextField.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTSearchTextFieldDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTPickerTextField.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTPickerTextFieldDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTSearchBar.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTSearchDisplayController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableViewDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableViewVarHeightDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableViewGroupedVarHeightDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableViewPlainDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableViewPlainVarHeightDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableViewDragRefreshDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableViewNetworkEnabledDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTListDataSource.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableViewDataSource.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTSectionedDataSource.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableHeaderView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableSection.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableFooterInfiniteScrollView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableHeaderDragRefreshView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableViewCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableLinkedItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableTextItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableCaptionItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableRightCaptionItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableSubtextItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableSubtitleItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableMessageItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableLongTextItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableGrayTextItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableSummaryItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableLink.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableButton.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableMoreButton.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableImageItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableRightImageItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableActivityItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableStyledTextItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableControlItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableViewItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableSettingsItem.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableLinkedItemCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableTextItemCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableCaptionItemCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableSubtextItemCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableRightCaptionItemCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableSubtitleItemCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableMessageItemCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableMoreButtonCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableImageItemCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTStyledTextTableItemCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTStyledTextTableCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableActivityItemCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableControlCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableFlushViewCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTTableSettingsItemCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTErrorView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTPhotoVersion.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTPhotoSource.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTPhoto.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTPhotoViewController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTThumbsViewControllerDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTPhotoView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTThumbsViewController.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTThumbsTableViewCellDelegate.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTThumbsDataSource.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTThumbsTableViewCell.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTThumbView.h
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20UI/TTRecursiveProgress.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection110"Compile /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Source/Three20.m253"CompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o Source/Three20.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler7ea943da1053b941^d93f57da1053b941^---0#0#1#-19%DVTDocumentLocation2@109"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Source/Three20.m0000000000000000^4309"CompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o Source/Three20.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=4.0 -iquote /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-generated-files.hmap -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-own-target-headers.hmap -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-all-target-headers.hmap -iquote /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-project-headers.hmap -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20 -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../../three20 -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources/i386 -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources -F/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/Developer/Library/Frameworks -include /var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Three20_Prefix-gcbcquwypbkpuleimnrvtxhlsmva/Three20_Prefix.pch -MMD -MT dependencies -MF /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.d --serialize-diagnostics /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.dia -c /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Source/Three20.m -o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o36"B1E07DDA-1758-498D-9261-5583190E75DA-
-bC255FB6A-F0B0-4B7F-8BA6-56816F8D006C
-
-CCpHeader Headers/Three20+Additions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20+Additions.h
-s424874201.618760
-e424874201.620608
-r1
-xCpHeader
-xHeaders/Three20+Additions.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20+Additions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection129"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20+Additions.h161"CpHeader Headers/Three20+Additions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20+Additions.he6779ed91053b941^5feb9ed91053b941^---0#0#1#-19%DVTDocumentLocation2@131"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20+Additions.h00348cc4ddffdf42^781"CpHeader Headers/Three20+Additions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20+Additions.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Headers/Three20+Additions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three2036"2EE20EC0-C5D4-4CA8-B9D6-A613194535CF-
-bC255FB6A-F0B0-4B7F-8BA6-56816F8D006C
-
-CCpHeader Headers/Three20.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20.h
-s424874201.617584
-e424874201.620971
-r1
-xCpHeader
-xHeaders/Three20.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection119"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20.h141"CpHeader Headers/Three20.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20.heb389ed91053b941^9f399fd91053b941^---0#0#1#-19%DVTDocumentLocation2@121"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20.h00348cc4ddffdf42^751"CpHeader Headers/Three20.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three20/Three20.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Headers/Three20.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/Three2036"F8974697-9D6B-44F5-B404-03903035B6CC-
-bC255FB6A-F0B0-4B7F-8BA6-56816F8D006C
-
-CLibtool /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a normal i386
-s424874202.342183
-e424874202.350695
-r1
-xLibtool
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a
-xnormal
-xi386
-o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
-o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o has no symbols
-owarning: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: warning for library: /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a the table of contents is empty (no object file members in the library define global symbols)
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection143"Libtool /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a normal i386143"Libtool /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a normal i386deae57da1053b941^1b8459da1053b941^-779"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o has no symbolswarning: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: warning for library: /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a the table of contents is empty (no object file members in the library define global symbols)1(21%IDEActivityLogMessage2@333"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: warning for library: /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a the table of contents is empty (no object file members in the library define global symbols)-424874202#436#343#-1#-23%DVTTextDocumentLocation3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#30"Apple Mach-O Librarian Warning--0#0#1#--1278"Libtool /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a normal i386    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20    export IPHONEOS_DEPLOYMENT_TARGET=4.0    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -L/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib -filelist /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.LinkFileList -ObjC -o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a36"7AAB834D-69E7-4A83-86C0-54B0028F42F7-
-bC255FB6A-F0B0-4B7F-8BA6-56816F8D006C
-
-CPhaseScriptExecution Lint /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh
-s424874202.352211
-e424874202.472850
-r1
-xPhaseScriptExecution
-xLint
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection30"Run custom shell script 'Lint'190"PhaseScriptExecution Lint /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh0fb45ada1053b941^1b1079da1053b941^---0#0#1#--464"PhaseScriptExecution Lint /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20    /bin/sh -c /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh36"C3427C3D-F0AE-465D-8338-EDA79BA929C2-
-bC255FB6A-F0B0-4B7F-8BA6-56816F8D006C
-
-CPhaseScriptExecution Protect\ Copied\ Headers /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh
-s424874201.622416
-e424874201.652834
-r1
-xPhaseScriptExecution
-xProtect Copied Headers
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection48"Run custom shell script 'Protect Copied Headers'210"PhaseScriptExecution Protect\ Copied\ Headers /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh1b4ba0d91053b941^0c21a7d91053b941^---0#0#1#--23962"PhaseScriptExecution Protect\ Copied\ Headers /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20    export ACTION=build    export ADDRESSBOOKUI_FX="-framework AddressBookUI"    export ADDRESSBOOK_FX="-framework AddressBook"    export AD_HOC_CODE_SIGNING_ALLOWED=NO    export ALTERNATE_GROUP=staff    export ALTERNATE_MODE=u+w,go-w,a+rX    export ALTERNATE_OWNER=hand    export ALWAYS_SEARCH_USER_PATHS=NO    export ALWAYS_USE_SEPARATE_HEADERMAPS=YES    export APPLE_INTERNAL_DEVELOPER_DIR=/AppleInternal/Developer    export APPLE_INTERNAL_DIR=/AppleInternal    export APPLE_INTERNAL_DOCUMENTATION_DIR=/AppleInternal/Documentation    export APPLE_INTERNAL_LIBRARY_DIR=/AppleInternal/Library    export APPLE_INTERNAL_TOOLS=/AppleInternal/Developer/Tools    export APPLY_RULES_IN_COPY_FILES=NO    export ARCHS=i386    export ARCHS_STANDARD="i386 x86_64"    export ARCHS_STANDARD_32_64_BIT="i386 x86_64"    export ARCHS_STANDARD_32_BIT=i386    export ARCHS_STANDARD_64_BIT=x86_64    export ARCHS_STANDARD_INCLUDING_64_BIT="i386 x86_64"    export AVAILABLE_PLATFORMS="iphonesimulator macosx iphoneos"    export AVFOUNDATION_FX="-framework AVFoundation"    export BASE_PRODUCT_NAME=Three20    export BUILD_COMPONENTS="headers build"    export BUILD_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products    export BUILD_LIBRARY_VERSION=1.0    export BUILD_ROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products    export BUILD_STYLE=    export BUILD_VARIANTS=normal    export BUILT_PRODUCTS_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator    export CACHE_ROOT=/var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode    export CCHROOT=/var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode    export CFNETWORK_FX="-framework CFNetwork"    export CHMOD=/bin/chmod    export CHOWN=/usr/sbin/chown    export CLASS_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/JavaClasses    export CLEAN_PRECOMPS=YES    export CLONE_HEADERS=NO    export CODESIGNING_FOLDER_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/libThree20.a    export CODE_SIGNING_ALLOWED=NO    export CODE_SIGN_CONTEXT_CLASS=XCiPhoneSimulatorCodeSignContext    export COLOR_DIAGNOSTICS=NO    export COMBINE_HIDPI_IMAGES=NO    export COMMAND_MODE=legacy    export COMPOSITE_SDK_DIRS=/var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/CompositeSDKs    export COMPRESS_PNG_FILES=YES    export CONFIGURATION=Debug    export CONFIGURATION_BUILD_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator    export CONFIGURATION_TEMP_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator    export COPYING_PRESERVES_HFS_DATA=NO    export COPY_PHASE_STRIP=NO    export COPY_RESOURCES_FROM_STATIC_FRAMEWORKS=YES    export COREDATA_FX="-framework CoreData"    export COREFOUNDATION_FX="-framework CoreFoundation"    export COREGRAPHICS_FX="-framework CoreGraphics"    export CORELOCATION_FX="-framework CoreLocation"    export CP=/bin/cp    export CREATE_INFOPLIST_SECTION_IN_BINARY=NO    export CURRENT_ARCH=i386    export CURRENT_VARIANT=normal    export DEAD_CODE_STRIPPING=NO    export DEBUGGING_SYMBOLS=YES    export DEBUG_INFORMATION_FORMAT=dwarf-with-dsym    export DEFAULT_COMPILER=com.apple.compilers.llvm.clang.1_0    export DEFAULT_KEXT_INSTALL_PATH=/System/Library/Extensions    export DEPLOYMENT_LOCATION=NO    export DEPLOYMENT_POSTPROCESSING=NO    export DERIVED_FILES_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    export DERIVED_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    export DERIVED_SOURCES_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    export DEVELOPER_APPLICATIONS_DIR=/Applications/Xcode.app/Contents/Developer/Applications    export DEVELOPER_BIN_DIR=/Applications/Xcode.app/Contents/Developer/usr/bin    export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer    export DEVELOPER_FRAMEWORKS_DIR=/Applications/Xcode.app/Contents/Developer/Library/Frameworks    export DEVELOPER_FRAMEWORKS_DIR_QUOTED=/Applications/Xcode.app/Contents/Developer/Library/Frameworks    export DEVELOPER_LIBRARY_DIR=/Applications/Xcode.app/Contents/Developer/Library    export DEVELOPER_SDK_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs    export DEVELOPER_TOOLS_DIR=/Applications/Xcode.app/Contents/Developer/Tools    export DEVELOPER_USR_DIR=/Applications/Xcode.app/Contents/Developer/usr    export DEVELOPMENT_LANGUAGE=English    export DO_HEADER_SCANNING_IN_JAM=NO    export DSTROOT=/tmp/Three20.dst    export DT_TOOLCHAIN_DIR=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain    export DWARF_DSYM_FILE_NAME=libThree20.a.dSYM    export DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT=NO    export DWARF_DSYM_FOLDER_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator    export EFFECTIVE_PLATFORM_NAME=-iphonesimulator    export ENABLE_HEADER_DEPENDENCIES=YES    export EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS=".DS_Store .svn .git .hg CVS"    export EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES="*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"    export EXECUTABLE_EXTENSION=a    export EXECUTABLE_NAME=libThree20.a    export EXECUTABLE_PATH=libThree20.a    export EXECUTABLE_PREFIX=lib    export EXECUTABLE_SUFFIX=.a    export FILE_LIST=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects/LinkFileList    export FIXED_FILES_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/FixedFiles    export FOUNDATION_FX="-framework Foundation"    export FRAMEWORK_FLAG_PREFIX=-framework    export FRAMEWORK_SEARCH_PATHS="/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator \"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/Developer/Library/Frameworks\""    export FRAMEWORK_VERSION=A    export FULL_PRODUCT_NAME=libThree20.a    export GAMEKIT_FX="-framework GameKit"    export GCC3_VERSION=3.3    export GCC_C_LANGUAGE_STANDARD=c99    export GCC_DYNAMIC_NO_PIC=NO    export GCC_ENABLE_SYMBOL_SEPARATION=NO    export GCC_OBJC_LEGACY_DISPATCH=YES    export GCC_OPTIMIZATION_LEVEL=0    export GCC_PFE_FILE_C_DIALECTS="c objective-c c++ objective-c++"    export GCC_PRECOMPILE_PREFIX_HEADER=YES    export GCC_PREFIX_HEADER=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Headers/Three20_Prefix.pch    export GCC_PREPROCESSOR_DEFINITIONS=DEBUG    export GCC_TREAT_WARNINGS_AS_ERRORS=NO    export GCC_VERSION=com.apple.compilers.llvm.clang.1_0    export GCC_VERSION_IDENTIFIER=com_apple_compilers_llvm_clang_1_0    export GCC_WARN_ABOUT_MISSING_NEWLINE=YES    export GCC_WARN_ABOUT_RETURN_TYPE=YES    export GCC_WARN_CHECK_SWITCH_STATEMENTS=NO    export GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS=YES    export GCC_WARN_SHADOW=YES    export GCC_WARN_UNUSED_FUNCTION=YES    export GCC_WARN_UNUSED_LABEL=YES    export GCC_WARN_UNUSED_VARIABLE=YES    export GENERATE_MASTER_OBJECT_FILE=NO    export GENERATE_PKGINFO_FILE=NO    export GENERATE_PROFILING_CODE=NO    export GID=20    export GROUP=staff    export HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT=YES    export HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES=YES    export HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS=YES    export HEADERMAP_INCLUDES_PROJECT_HEADERS=YES    export HEADERS_FOLDER_PATH=/../three20/    export HEADER_SEARCH_PATHS="/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/include /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20 /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../../three20"    export ICONV=/usr/bin/iconv    export INFOPLIST_EXPAND_BUILD_SETTINGS=YES    export INFOPLIST_OUTPUT_FORMAT=binary    export INFOPLIST_PREPROCESS=NO    export INSTALL_DIR=/tmp/Three20.dst/usr/local/lib    export INSTALL_GROUP=staff    export INSTALL_MODE_FLAG=u+w,go-w,a+rX    export INSTALL_OWNER=hand    export INSTALL_PATH=/usr/local/lib    export INSTALL_ROOT=/tmp/Three20.dst    export IPHONEOS_DEPLOYMENT_TARGET=4.0    export JAVAC_DEFAULT_FLAGS="-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    export JAVA_APP_STUB=/System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    export JAVA_ARCHIVE_CLASSES=YES    export JAVA_ARCHIVE_TYPE=JAR    export JAVA_COMPILER=/usr/bin/javac    export JAVA_FRAMEWORK_RESOURCES_DIRS=Resources    export JAVA_JAR_FLAGS=cv    export JAVA_SOURCE_SUBDIR=.    export JAVA_USE_DEPENDENCIES=YES    export JAVA_ZIP_FLAGS=-urg    export JIKES_DEFAULT_FLAGS="+E +OLDCSO"    export KEEP_PRIVATE_EXTERNS=NO    export LD_DEPENDENCY_INFO_FILE=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20_dependency_info.dat    export LD_GENERATE_MAP_FILE=NO    export LD_MAP_FILE_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-LinkMap-normal-i386.txt    export LD_NO_PIE=NO    export LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER=YES    export LEGACY_DEVELOPER_DIR=/Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    export LEX=lex    export LIBRARY_FLAG_NOSPACE=YES    export LIBRARY_FLAG_PREFIX=-l    export LIBRARY_KEXT_INSTALL_PATH=/Library/Extensions    export LIBRARY_SEARCH_PATHS="/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib"    export LINKER_DISPLAYS_MANGLED_NAMES=NO    export LINK_FILE_LIST_normal_i386=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.LinkFileList    export LINK_WITH_STANDARD_LIBRARIES=YES    export LOCAL_ADMIN_APPS_DIR=/Applications/Utilities    export LOCAL_APPS_DIR=/Applications    export LOCAL_DEVELOPER_DIR=/Library/Developer    export LOCAL_LIBRARY_DIR=/Library    export MACH_O_TYPE=staticlib    export MACOSX_DEPLOYMENT_TARGET=10.6    export MAC_OS_X_PRODUCT_BUILD_VERSION=13D65    export MAC_OS_X_VERSION_ACTUAL=1093    export MAC_OS_X_VERSION_MAJOR=1090    export MAC_OS_X_VERSION_MINOR=0903    export MAPKIT_FX="-framework MapKit"    export MEDIAPLAYER_FX="-framework MediaPlayer"    export MESSAGEUI_FX="-framework MessageUI"    export MOBILECORESERVICES_FX="-framework MobileCoreServices"    export MODULE_CACHE_DIR=/Users/hand/Library/Developer/Xcode/DerivedData/ModuleCache    export NATIVE_ARCH=i386    export NATIVE_ARCH_32_BIT=i386    export NATIVE_ARCH_64_BIT=x86_64    export NATIVE_ARCH_ACTUAL=x86_64    export NO_COMMON=YES    export OBJC_ABI_VERSION=2    export OBJC_LIB=-lobjc    export OBJC_LIBRARY=-ObjC    export OBJECT_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects    export OBJECT_FILE_DIR_normal=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal    export OBJROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build    export ONLY_ACTIVE_ARCH=NO    export OPENGLES_FX="-framework OpenGLES"    export OPTIMIZATION_LEVEL=0    export OS=MACOS    export OSAC=/usr/bin/osacompile    export OTHER_LDFLAGS=-ObjC    export PACKAGE_TYPE=com.apple.package-type.static-library    export PASCAL_STRINGS=YES    export PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Tools:/usr/bin:/bin:/usr/sbin:/sbin"    export PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES="/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"    export PFE_FILE_C_DIALECTS=objective-c    export PKGINFO_FILE_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/PkgInfo    export PLATFORM_DEVELOPER_APPLICATIONS_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    export PLATFORM_DEVELOPER_BIN_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    export PLATFORM_DEVELOPER_LIBRARY_DIR=/Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    export PLATFORM_DEVELOPER_SDK_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    export PLATFORM_DEVELOPER_TOOLS_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    export PLATFORM_DEVELOPER_USR_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr    export PLATFORM_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform    export PLATFORM_NAME=iphonesimulator    export PLATFORM_PREFERRED_ARCH=i386    export PLATFORM_PRODUCT_BUILD_VERSION=11D167    export PLATFORM_VERSION_AVAILABILITY_H_FORMAT=70100    export PLIST_FILE_OUTPUT_FORMAT=binary    export PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR=YES    export PRECOMP_DESTINATION_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/PrefixHeaders    export PRESERVE_DEAD_CODE_INITS_AND_TERMS=NO    export PRIVATE_HEADERS_FOLDER_PATH=/../three20/Three20/private    export PRODUCT_NAME=Three20    export PRODUCT_SETTINGS_PATH=    export PRODUCT_TYPE=com.apple.product-type.library.static    export PROFILING_CODE=NO    export PROJECT=Three20    export PROJECT_DERIVED_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/DerivedSources    export PROJECT_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20    export PROJECT_FILE_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Three20.xcodeproj    export PROJECT_NAME=Three20    export PROJECT_TEMP_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build    export PROJECT_TEMP_ROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build    export PUBLIC_HEADERS_FOLDER_PATH=/../three20/Three20    export QUARTZCORE_FX="-framework QuartzCore"    export RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS=YES    export REMOVE_CVS_FROM_RESOURCES=YES    export REMOVE_GIT_FROM_RESOURCES=YES    export REMOVE_HG_FROM_RESOURCES=YES    export REMOVE_SVN_FROM_RESOURCES=YES    export REPO_ROOT_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/../..    export REZ_COLLECTOR_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/ResourceManagerResources    export REZ_EXECUTABLE=YES    export REZ_OBJECTS_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/ResourceManagerResources/Objects    export REZ_SEARCH_PATHS="/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator "    export ROOT_SOURCE_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/../../src    export RUN_CLANG_STATIC_ANALYZER=NO    export SCAN_ALL_SOURCE_FILES_FOR_INCLUDES=NO    export SCRIPT_INPUT_FILE_COUNT=0    export SCRIPT_OUTPUT_FILE_COUNT=0    export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk    export SDK_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk    export SDK_NAME=iphonesimulator7.1    export SDK_PRODUCT_BUILD_VERSION=11D167    export SECURITY_FX="-framework Security"    export SED=/usr/bin/sed    export SENTESTINGKIT_FX="-framework SenTestingKit"    export SEPARATE_STRIP=YES    export SEPARATE_SYMBOL_EDIT=NO    export SET_DIR_MODE_OWNER_GROUP=YES    export SET_FILE_MODE_OWNER_GROUP=NO    export SHALLOW_BUNDLE=NO    export SHARED_DERIVED_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/DerivedSources    export SHARED_PRECOMPS_DIR=/var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders    export SKIP_INSTALL=YES    export SOURCE_ROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20    export SRCROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20    export STDLIB_HEADERS=/usr/include    export STDLIB_LIBRARY=/usr/lib    export STOREKIT_FX="-framework StoreKit"    export STRINGS_FILE_OUTPUT_ENCODING=binary    export STRIP_INSTALLED_PRODUCT=YES    export STRIP_STYLE=debugging    export SUPPORTED_DEVICE_FAMILIES="1 2"    export SUPPORTED_PLATFORMS="iphonesimulator iphoneos"    export SYMROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products    export SYSTEMCONFIGURATION_FX="-framework SystemConfiguration"    export SYSTEM_ADMIN_APPS_DIR=/Applications/Utilities    export SYSTEM_APPS_DIR=/Applications    export SYSTEM_CORE_SERVICES_DIR=/System/Library/CoreServices    export SYSTEM_DEMOS_DIR=/Applications/Extras    export SYSTEM_DEVELOPER_APPS_DIR=/Applications/Xcode.app/Contents/Developer/Applications    export SYSTEM_DEVELOPER_BIN_DIR=/Applications/Xcode.app/Contents/Developer/usr/bin    export SYSTEM_DEVELOPER_DEMOS_DIR="/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"    export SYSTEM_DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer    export SYSTEM_DEVELOPER_DOC_DIR="/Applications/Xcode.app/Contents/Developer/ADC Reference Library"    export SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR="/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"    export SYSTEM_DEVELOPER_JAVA_TOOLS_DIR="/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"    export SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR="/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"    export SYSTEM_DEVELOPER_RELEASENOTES_DIR="/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"    export SYSTEM_DEVELOPER_TOOLS=/Applications/Xcode.app/Contents/Developer/Tools    export SYSTEM_DEVELOPER_TOOLS_DOC_DIR="/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"    export SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR="/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"    export SYSTEM_DEVELOPER_USR_DIR=/Applications/Xcode.app/Contents/Developer/usr    export SYSTEM_DEVELOPER_UTILITIES_DIR=/Applications/Xcode.app/Contents/Developer/Applications/Utilities    export SYSTEM_DOCUMENTATION_DIR=/Library/Documentation    export SYSTEM_KEXT_INSTALL_PATH=/System/Library/Extensions    export SYSTEM_LIBRARY_DIR=/System/Library    export TARGETED_DEVICE_FAMILY=1    export TARGETNAME=Three20    export TARGET_BUILD_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator    export TARGET_NAME=Three20    export TARGET_TEMP_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build    export TEMP_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build    export TEMP_FILES_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build    export TEMP_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build    export TEMP_ROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build    export TOOLCHAINS=com.apple.dt.toolchain.XcodeDefault    export UID=502    export UIKIT_FX="-framework UIKit"    export UNSTRIPPED_PRODUCT=NO    export USER=hand    export USER_APPS_DIR=/Users/hand/Applications    export USER_LIBRARY_DIR=/Users/hand/Library    export USE_DYNAMIC_NO_PIC=YES    export USE_HEADERMAP=YES    export USE_HEADER_SYMLINKS=NO    export VALIDATE_PRODUCT=NO    export VALID_ARCHS=i386    export VERBOSE_PBXCP=NO    export VERSION_INFO_BUILDER=hand    export VERSION_INFO_FILE=Three20_vers.c    export VERSION_INFO_STRING="\"@(#)PROGRAM:Three20  PROJECT:Three20-\""    export XCODE_APP_SUPPORT_DIR=/Applications/Xcode.app/Contents/Developer/Library/Xcode    export XCODE_PRODUCT_BUILD_VERSION=5B1008    export XCODE_VERSION_ACTUAL=0511    export XCODE_VERSION_MAJOR=0500    export XCODE_VERSION_MINOR=0510    export XPCSERVICES_FOLDER_PATH=/XPCServices    export YACC=yacc    export arch=i386    export variant=normal    /bin/sh -c /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh36"0D9BDE02-3089-437B-8CA5-0B5178BBC3EC-
-bC255FB6A-F0B0-4B7F-8BA6-56816F8D006C
-
-CProcessPCH /Users/hand/Library/Developer/Xcode/DerivedData/TTCatalog-cgbocvccsfxrczgyglumdsgvtuhc/Index/PrecompiledHeaders/Three20_Prefix-chdgviftxvvlfleoymyrulmjcebl_ast/Three20_Prefix.pch.pch Headers/Three20_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
-r0
-
-CProcessPCH /var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Three20_Prefix-gcbcquwypbkpuleimnrvtxhlsmva/Three20_Prefix.pch.pch Headers/Three20_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s424874201.654551
-e424874202.261246
-r1
-xProcessPCH
-x/var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Three20_Prefix-gcbcquwypbkpuleimnrvtxhlsmva/Three20_Prefix.pch.pch
-xHeaders/Three20_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Headers/Three20_Prefix.pch
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Precompile Headers/Three20_Prefix.pch290"ProcessPCH /var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Three20_Prefix-gcbcquwypbkpuleimnrvtxhlsmva/Three20_Prefix.pch.pch Headers/Three20_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler07b1a7d91053b941^9ce142da1053b941^---0#0#1#-19%DVTDocumentLocation2@119"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Headers/Three20_Prefix.pch0000000000000000^4244"ProcessPCH /var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Three20_Prefix-gcbcquwypbkpuleimnrvtxhlsmva/Three20_Prefix.pch.pch Headers/Three20_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=4.0 -iquote /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-generated-files.hmap -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-own-target-headers.hmap -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-all-target-headers.hmap -iquote /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-project-headers.hmap -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/include -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../three20 -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator/../../three20 -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources/i386 -I/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources -F/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/Developer/Library/Frameworks --serialize-diagnostics /var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Three20_Prefix-gcbcquwypbkpuleimnrvtxhlsmva/Three20_Prefix.pch.dia -MMD -MT dependencies -MF /var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Three20_Prefix-gcbcquwypbkpuleimnrvtxhlsmva/Three20_Prefix.pch.d -c /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/Three20/Headers/Three20_Prefix.pch -o /var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Three20_Prefix-gcbcquwypbkpuleimnrvtxhlsmva/Three20_Prefix.pch.pch36"A4BB1034-7765-4296-AC54-6243750079B4-
-bC255FB6A-F0B0-4B7F-8BA6-56816F8D006C
-

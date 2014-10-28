@@ -1,541 +1,0 @@
-TextThree20CSSStyle
-v6
-r1
-cCheck dependencies
-cCpHeader Headers/UILabel+CSSAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabel+CSSAdditions.h
-cCpHeader Headers/TTCSSGlobalStyle.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSGlobalStyle.h
-cCpHeader Headers/UIView+CSSAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UIView+CSSAdditions.h
-cCpHeader Headers/TTCSSApplyProtocol.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSApplyProtocol.h
-cCpHeader Headers/TTCSSFunctions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSFunctions.h
-cCpHeader Headers/TTDataConverter.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataConverter.h
-cCpHeader Headers/TTDataPopulatorDelegate.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulatorDelegate.h
-cCpHeader Headers/TTDataPopulator.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulator.h
-cCpHeader Headers/TTCSSTextShadowModel.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSTextShadowModel.h
-cCpHeader Headers/TTCSSRuleSet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSRuleSet.h
-cCpHeader Headers/TTCSSStyleSheet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSStyleSheet.h
-cCpHeader Headers/extThree20CSSStyle.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle.h
-cCpHeader Headers/TTCSSParser.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSParser.h
-cCpHeader Headers/CssTokens.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/private/CssTokens.h
-cCpHeader Headers/TTExtensionLoader.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTExtensionLoader.h
-cCpHeader Headers/TTDefaultCSSStyleSheet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDefaultCSSStyleSheet.h
-cCpHeader Headers/UILabelAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabelAdditions.h
-cCpHeader Headers/TTShadowStyleAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTShadowStyleAdditions.h
-cCpHeader Headers/TTTextStyleAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTTextStyleAdditions.h
-cCpHeader Headers/extThree20CSSStyle+Additions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle+Additions.h
-cPhaseScriptExecution Protect\ Copied\ Headers /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-6E3C34AD118807DC0079637E.sh
-cPhaseScriptExecution Lint /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-668E667E131AE00F00ACE4AB.sh
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSApplyProtocol.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSFunctions.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSGlobalStyle.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSParser.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSRuleSet.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSStyleSheet.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSTextShadowModel.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataConverter.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulator.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulatorDelegate.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDefaultCSSStyleSheet.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTExtensionLoader.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTShadowStyleAdditions.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTTextStyleAdditions.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabel+CSSAdditions.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabelAdditions.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UIView+CSSAdditions.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle+Additions.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/private/CssTokens.h
-t2
-s0
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-668E667E131AE00F00ACE4AB.sh
-c0000000053A2D9B70000000000000027
-t1403181495
-s39
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-6E3C34AD118807DC0079637E.sh
-c0000000053A2D9B70000000000000026
-t1403181495
-s38
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/CssTokens.h
-c00000000539FD7C800000000000001FC
-t1402984392
-s508
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSApplyProtocol.h
-c00000000539FD7C800000000000004BB
-t1402984392
-s1211
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSFunctions.h
-c00000000539FD7C80000000000000382
-t1402984392
-s898
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSGlobalStyle.h
-c00000000539FD7C80000000000000AB4
-t1402984392
-s2740
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSParser.h
-c00000000539FD7C800000000000005DA
-t1402984392
-s1498
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSRuleSet.h
-c00000000539FD7C80000000000002063
-t1402984392
-s8291
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSStyleSheet.h
-c00000000539FD7C80000000000000ED8
-t1402984392
-s3800
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSTextShadowModel.h
-c00000000539FD7C80000000000000730
-t1402984392
-s1840
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTDataConverter.h
-c00000000539FD7C80000000000000658
-t1402984392
-s1624
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTDataPopulator.h
-c00000000539FD7C80000000000000A86
-t1402984392
-s2694
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTDataPopulatorDelegate.h
-c00000000539FD7C800000000000004D3
-t1402984392
-s1235
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTDefaultCSSStyleSheet.h
-c00000000539FD7C80000000000000892
-t1402984392
-s2194
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTExtensionLoader.h
-c00000000539FD7C800000000000002B8
-t1402984392
-s696
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTShadowStyleAdditions.h
-c00000000539FD7C800000000000003CE
-t1402984392
-s974
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTTextStyleAdditions.h
-c00000000539FD7C8000000000000092B
-t1402984392
-s2347
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/UILabel+CSSAdditions.h
-c00000000539FD7C800000000000002C8
-t1402984392
-s712
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/UILabelAdditions.h
-c00000000539FD7C800000000000002C5
-t1402984392
-s709
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/UIView+CSSAdditions.h
-c00000000539FD7C800000000000003BC
-t1402984392
-s956
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/extThree20CSSStyle+Additions.h
-c00000000539FD7C80000000000000372
-t1402984392
-s882
-
-N/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/extThree20CSSStyle.h
-c00000000539FD7C8000000000000044D
-t1402984392
-s1101
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/CssTokenizer.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/CssTokens.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSFunctions.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSParser.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSRuleSet.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSStyleSheet.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSTextShadowModel.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTDefaultCSSStyleSheet.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTExtensionLoader.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTShadowStyleAdditions.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTTextStyleAdditions.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/UILabel+CSSAdditions.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/UIView+CSSAdditions.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/ThirdPart/TTDataConverter.m
-r0
-
-CBuild AST from /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/ThirdPart/TTDataPopulator.m
-r0
-
-CCheck dependencies
-r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies840dbb371153b941^ec31e5371153b941^-3127"warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSRuleSet.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSParser.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/CssTokenizer.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/CssTokens.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSStyleSheet.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTDefaultCSSStyleSheet.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTExtensionLoader.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSTextShadowModel.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/ThirdPart/TTDataConverter.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/ThirdPart/TTDataPopulator.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSFunctions.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/UIView+CSSAdditions.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/UILabel+CSSAdditions.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTShadowStyleAdditions.m' of type sourcecode.c.objc for architecture armv6warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTTextStyleAdditions.m' of type sourcecode.c.objc for architecture armv615(21%IDEActivityLogMessage2@203"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSRuleSet.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@202"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSParser.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@203"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/CssTokenizer.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@200"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/CssTokens.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@206"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSStyleSheet.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@213"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTDefaultCSSStyleSheet.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@208"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTExtensionLoader.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@211"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSTextShadowModel.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@208"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/ThirdPart/TTDataConverter.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@208"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/ThirdPart/TTDataPopulator.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@205"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSFunctions.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@210"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/UIView+CSSAdditions.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@211"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/UILabel+CSSAdditions.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@213"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTShadowStyleAdditions.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--2@211"Warning: no rule to process file '/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTTextStyleAdditions.m' of type sourcecode.c.objc for architecture armv6-424874295#18446744073709551615#0#-1#27"com.apple.dt.IDE.LogMessage-27"Dependency Analysis Warning--0#1#1#--18"Check dependencies36"117EFADE-A455-4245-A4A7-78270A054F5A-
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/CssTokenizer.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/CssTokenizer.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/CssTokens.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/CssTokens.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/TTCSSFunctions.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSFunctions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/TTCSSParser.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSParser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/TTCSSRuleSet.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSRuleSet.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/TTCSSStyleSheet.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSStyleSheet.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/TTCSSTextShadowModel.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTCSSTextShadowModel.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/TTDataConverter.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/ThirdPart/TTDataConverter.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/TTDataPopulator.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/ThirdPart/TTDataPopulator.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/TTDefaultCSSStyleSheet.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTDefaultCSSStyleSheet.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/TTExtensionLoader.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTExtensionLoader.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/TTShadowStyleAdditions.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTShadowStyleAdditions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/TTTextStyleAdditions.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/TTTextStyleAdditions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/UILabel+CSSAdditions.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/UILabel+CSSAdditions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCompileC /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/UIView+CSSAdditions.o /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Sources/UIView+CSSAdditions.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
-CCpHeader Headers/CssTokens.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/private/CssTokens.h
-s424874295.913223
-e424874295.915545
-r1
-xCpHeader
-xHeaders/CssTokens.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/private/CssTokens.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection140"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/private/CssTokens.h164"CpHeader Headers/CssTokens.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/private/CssTokens.ha1d9e9371153b941^4eeced371153b941^---0#0#1#-19%DVTDocumentLocation2@142"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/private/CssTokens.h00348cc4ddffdf42^810"CpHeader Headers/CssTokens.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/private/CssTokens.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/CssTokens.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/private36"40C6D2EF-D088-4117-8C1E-FC27E82F2F03-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTCSSApplyProtocol.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSApplyProtocol.h
-s424874295.900975
-e424874295.903549
-r1
-xCpHeader
-xHeaders/TTCSSApplyProtocol.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSApplyProtocol.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection141"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSApplyProtocol.h174"CpHeader Headers/TTCSSApplyProtocol.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSApplyProtocol.ha6b8e6371153b941^145de7371153b941^---0#0#1#-19%DVTDocumentLocation2@143"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSApplyProtocol.h00348cc4ddffdf42^821"CpHeader Headers/TTCSSApplyProtocol.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSApplyProtocol.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSApplyProtocol.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"BF192889-5B9E-4F1E-9C21-F3F736C4412E-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTCSSFunctions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSFunctions.h
-s424874295.904389
-e424874295.905876
-r1
-xCpHeader
-xHeaders/TTCSSFunctions.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSFunctions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection137"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSFunctions.h166"CpHeader Headers/TTCSSFunctions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSFunctions.hd7a0e7371153b941^edf4e7371153b941^---0#0#1#-19%DVTDocumentLocation2@139"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSFunctions.h00348cc4ddffdf42^809"CpHeader Headers/TTCSSFunctions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSFunctions.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSFunctions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"B5A8724C-3DAC-44AA-910E-3D5587F42035-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTCSSGlobalStyle.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSGlobalStyle.h
-s424874295.896993
-e424874295.899724
-r1
-xCpHeader
-xHeaders/TTCSSGlobalStyle.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSGlobalStyle.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection139"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSGlobalStyle.h170"CpHeader Headers/TTCSSGlobalStyle.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSGlobalStyle.h5abbe5371153b941^e36ce6371153b941^---0#0#1#-19%DVTDocumentLocation2@141"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSGlobalStyle.h00348cc4ddffdf42^815"CpHeader Headers/TTCSSGlobalStyle.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSGlobalStyle.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSGlobalStyle.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"AB5171C3-12C4-4D60-B13A-B747CA7FE7A8-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTCSSParser.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSParser.h
-s424874295.912443
-e424874295.915334
-r1
-xCpHeader
-xHeaders/TTCSSParser.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSParser.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection134"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSParser.h160"CpHeader Headers/TTCSSParser.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSParser.h61a6e9371153b941^f662ec371153b941^---0#0#1#-19%DVTDocumentLocation2@136"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSParser.h00348cc4ddffdf42^800"CpHeader Headers/TTCSSParser.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSParser.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSParser.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"657F32FE-37E3-41AD-AB5A-D40FF37040B5-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTCSSRuleSet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSRuleSet.h
-s424874295.908439
-e424874295.909630
-r1
-xCpHeader
-xHeaders/TTCSSRuleSet.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSRuleSet.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection135"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSRuleSet.h162"CpHeader Headers/TTCSSRuleSet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSRuleSet.h029ee8371153b941^54e0e8371153b941^---0#0#1#-19%DVTDocumentLocation2@137"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSRuleSet.h00348cc4ddffdf42^803"CpHeader Headers/TTCSSRuleSet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSRuleSet.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSRuleSet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"DC677435-20E5-4DC0-81FA-63ECE690BDED-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTCSSStyleSheet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSStyleSheet.h
-s424874295.909542
-e424874295.911671
-r1
-xCpHeader
-xHeaders/TTCSSStyleSheet.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSStyleSheet.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection138"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSStyleSheet.h168"CpHeader Headers/TTCSSStyleSheet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSStyleSheet.h05fae8371153b941^419ae9371153b941^---0#0#1#-19%DVTDocumentLocation2@140"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSStyleSheet.h00348cc4ddffdf42^812"CpHeader Headers/TTCSSStyleSheet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSStyleSheet.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSStyleSheet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"7F73FB14-7B92-4116-B582-B2696168D31A-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTCSSTextShadowModel.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSTextShadowModel.h
-s424874295.908026
-e424874295.909191
-r1
-xCpHeader
-xHeaders/TTCSSTextShadowModel.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSTextShadowModel.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection143"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSTextShadowModel.h178"CpHeader Headers/TTCSSTextShadowModel.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSTextShadowModel.h5986e8371153b941^14d0e8371153b941^---0#0#1#-19%DVTDocumentLocation2@145"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSTextShadowModel.h00348cc4ddffdf42^827"CpHeader Headers/TTCSSTextShadowModel.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTCSSTextShadowModel.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTCSSTextShadowModel.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"5E5232B5-DB30-41C0-B21A-AA1BBD104201-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTDataConverter.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataConverter.h
-s424874295.904968
-e424874295.906136
-r1
-xCpHeader
-xHeaders/TTDataConverter.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataConverter.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection138"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataConverter.h168"CpHeader Headers/TTDataConverter.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataConverter.hc3bce7371153b941^1efde7371153b941^---0#0#1#-19%DVTDocumentLocation2@140"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataConverter.h00348cc4ddffdf42^812"CpHeader Headers/TTDataConverter.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataConverter.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTDataConverter.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"920B900A-3BD5-4213-A3D5-7BB089D9A8B7-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTDataPopulator.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulator.h
-s424874295.906770
-e424874295.907763
-r1
-xCpHeader
-xHeaders/TTDataPopulator.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulator.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection138"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulator.h168"CpHeader Headers/TTDataPopulator.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulator.h4d30e8371153b941^9469e8371153b941^---0#0#1#-19%DVTDocumentLocation2@140"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulator.h00348cc4ddffdf42^812"CpHeader Headers/TTDataPopulator.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulator.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTDataPopulator.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"3DAEE5D3-7B67-49F3-9598-0EA289A70E2E-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTDataPopulatorDelegate.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulatorDelegate.h
-s424874295.906437
-e424874295.907501
-r1
-xCpHeader
-xHeaders/TTDataPopulatorDelegate.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulatorDelegate.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection146"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulatorDelegate.h184"CpHeader Headers/TTDataPopulatorDelegate.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulatorDelegate.ha41ce8371153b941^b761e8371153b941^---0#0#1#-19%DVTDocumentLocation2@148"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulatorDelegate.h00348cc4ddffdf42^836"CpHeader Headers/TTDataPopulatorDelegate.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDataPopulatorDelegate.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTDataPopulatorDelegate.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"B6AAC5B5-DA5D-481B-89C2-57D4059B7F00-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTDefaultCSSStyleSheet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDefaultCSSStyleSheet.h
-s424874295.916704
-e424874295.918650
-r1
-xCpHeader
-xHeaders/TTDefaultCSSStyleSheet.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDefaultCSSStyleSheet.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection145"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDefaultCSSStyleSheet.h182"CpHeader Headers/TTDefaultCSSStyleSheet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDefaultCSSStyleSheet.hcbbbea371153b941^76feed371153b941^---0#0#1#-19%DVTDocumentLocation2@147"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDefaultCSSStyleSheet.h00348cc4ddffdf42^833"CpHeader Headers/TTDefaultCSSStyleSheet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTDefaultCSSStyleSheet.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTDefaultCSSStyleSheet.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"BC392B55-B19D-4C4B-8680-AD9EECF253DC-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTExtensionLoader.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTExtensionLoader.h
-s424874295.916230
-e424874295.918497
-r1
-xCpHeader
-xHeaders/TTExtensionLoader.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTExtensionLoader.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection140"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTExtensionLoader.h172"CpHeader Headers/TTExtensionLoader.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTExtensionLoader.he4a2ea371153b941^90f8ed371153b941^---0#0#1#-19%DVTDocumentLocation2@142"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTExtensionLoader.h00348cc4ddffdf42^818"CpHeader Headers/TTExtensionLoader.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTExtensionLoader.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTExtensionLoader.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"CB6B139D-6CCD-4FB1-8876-8B959B9C85DE-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTShadowStyleAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTShadowStyleAdditions.h
-s424874295.919701
-e424874295.921573
-r1
-xCpHeader
-xHeaders/TTShadowStyleAdditions.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTShadowStyleAdditions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection145"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTShadowStyleAdditions.h182"CpHeader Headers/TTShadowStyleAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTShadowStyleAdditions.h2480eb371153b941^dc0dee371153b941^---0#0#1#-19%DVTDocumentLocation2@147"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTShadowStyleAdditions.h00348cc4ddffdf42^833"CpHeader Headers/TTShadowStyleAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTShadowStyleAdditions.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTShadowStyleAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"DD64155D-56E4-4640-826E-4E181155D9E5-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/TTTextStyleAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTTextStyleAdditions.h
-s424874295.922224
-e424874295.924593
-r1
-xCpHeader
-xHeaders/TTTextStyleAdditions.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTTextStyleAdditions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection143"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTTextStyleAdditions.h178"CpHeader Headers/TTTextStyleAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTTextStyleAdditions.h3d2cec371153b941^c217ee371153b941^---0#0#1#-19%DVTDocumentLocation2@145"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTTextStyleAdditions.h00348cc4ddffdf42^827"CpHeader Headers/TTTextStyleAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/TTTextStyleAdditions.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/TTTextStyleAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"0A4C6394-7FF2-45B0-9D69-78C8C1F91DE0-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/UILabel+CSSAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabel+CSSAdditions.h
-s424874295.895167
-e424874295.897597
-r1
-xCpHeader
-xHeaders/UILabel+CSSAdditions.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabel+CSSAdditions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection143"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabel+CSSAdditions.h178"CpHeader Headers/UILabel+CSSAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabel+CSSAdditions.h3540e5371153b941^5820e6371153b941^---0#0#1#-19%DVTDocumentLocation2@145"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabel+CSSAdditions.h00348cc4ddffdf42^827"CpHeader Headers/UILabel+CSSAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabel+CSSAdditions.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/UILabel+CSSAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"1DF94090-173E-4E1B-8463-76530E2DF54B-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/UILabelAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabelAdditions.h
-s424874295.919246
-e424874295.921358
-r1
-xCpHeader
-xHeaders/UILabelAdditions.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabelAdditions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection139"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabelAdditions.h170"CpHeader Headers/UILabelAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabelAdditions.hd367eb371153b941^8107ee371153b941^---0#0#1#-19%DVTDocumentLocation2@141"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabelAdditions.h00348cc4ddffdf42^815"CpHeader Headers/UILabelAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UILabelAdditions.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/UILabelAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"671E2A40-E366-4F28-AB45-F1CA66431B10-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/UIView+CSSAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UIView+CSSAdditions.h
-s424874295.899558
-e424874295.904181
-r1
-xCpHeader
-xHeaders/UIView+CSSAdditions.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UIView+CSSAdditions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection142"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UIView+CSSAdditions.h176"CpHeader Headers/UIView+CSSAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UIView+CSSAdditions.h59a7e6371153b941^889fe7371153b941^---0#0#1#-19%DVTDocumentLocation2@144"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UIView+CSSAdditions.h00348cc4ddffdf42^824"CpHeader Headers/UIView+CSSAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/UIView+CSSAdditions.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/UIView+CSSAdditions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"5741A314-3B42-4CFF-8A9E-6503620A91FA-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/extThree20CSSStyle+Additions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle+Additions.h
-s424874295.922709
-e424874295.924808
-r1
-xCpHeader
-xHeaders/extThree20CSSStyle+Additions.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle+Additions.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection151"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle+Additions.h194"CpHeader Headers/extThree20CSSStyle+Additions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle+Additions.h8446ec371153b941^8a1cee371153b941^---0#0#1#-19%DVTDocumentLocation2@153"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle+Additions.h00348cc4ddffdf42^851"CpHeader Headers/extThree20CSSStyle+Additions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle+Additions.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/extThree20CSSStyle+Additions.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"8E5E7227-A718-4516-B5BE-CE345E2E53E6-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CCpHeader Headers/extThree20CSSStyle.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle.h
-s424874295.910126
-e424874295.911875
-r1
-xCpHeader
-xHeaders/extThree20CSSStyle.h
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection141"Copy /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle.h174"CpHeader Headers/extThree20CSSStyle.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle.h6b0de9371153b941^51dbea371153b941^---0#0#1#-19%DVTDocumentLocation2@143"file:///Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle.h00348cc4ddffdf42^821"CpHeader Headers/extThree20CSSStyle.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle/extThree20CSSStyle.h    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/extThree20CSSStyle.h /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/three20/extThree20CSSStyle36"1A7294B5-86D3-444F-AC02-B4AFAFD98D6D-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CLibtool /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/libextThree20CSSStyle.a normal armv7
-r0
-
-CPhaseScriptExecution Lint /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-668E667E131AE00F00ACE4AB.sh
-s424874295.992110
-e424874296.433042
-r1
-xPhaseScriptExecution
-xLint
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-668E667E131AE00F00ACE4AB.sh
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection30"Run custom shell script 'Lint'205"PhaseScriptExecution Lint /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-668E667E131AE00F00ACE4AB.sh7f83fe371153b941^cff86e381153b941^---0#0#1#--505"PhaseScriptExecution Lint /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-668E667E131AE00F00ACE4AB.sh    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    /bin/sh -c /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-668E667E131AE00F00ACE4AB.sh36"FAC49718-DD5D-4EAF-99AC-704777204D10-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CPhaseScriptExecution Protect\ Copied\ Headers /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-6E3C34AD118807DC0079637E.sh
-s424874295.926396
-e424874295.990583
-r1
-xPhaseScriptExecution
-xProtect Copied Headers
-x/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-6E3C34AD118807DC0079637E.sh
-o../scripts/Protect.command: line 28: cd: /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos/../three20/extThree20CSSStyle: No such file or directory
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection48"Run custom shell script 'Protect Copied Headers'225"PhaseScriptExecution Protect\ Copied\ Headers /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-6E3C34AD118807DC0079637E.shdf8cee371153b941^3d9bfd371153b941^-292"../scripts/Protect.command: line 28: cd: /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos/../three20/extThree20CSSStyle: No such file or directoryCommand /bin/sh emitted errors but did not return a nonzero exit code to indicate failure2(21%IDEActivityLogMessage2@201"../scripts/Protect.command: line 28: cd: /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos/../three20/extThree20CSSStyle: No such file or directory-424874295#0#202#-2#--29"Shell Script Invocation Error--2@89"Command /bin/sh emitted errors but did not return a nonzero exit code to indicate failure-424874295#18446744073709551615#0#-2#--29"Shell Script Invocation Error--0#0#1#--24780"PhaseScriptExecution Protect\ Copied\ Headers /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-6E3C34AD118807DC0079637E.sh    cd /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export ACTION=build    export ADDRESSBOOKUI_FX="-framework AddressBookUI"    export ADDRESSBOOK_FX="-framework AddressBook"    export AD_HOC_CODE_SIGNING_ALLOWED=NO    export ALTERNATE_GROUP=staff    export ALTERNATE_MODE=u+w,go-w,a+rX    export ALTERNATE_OWNER=hand    export ALWAYS_SEARCH_USER_PATHS=NO    export ALWAYS_USE_SEPARATE_HEADERMAPS=YES    export APPLE_INTERNAL_DEVELOPER_DIR=/AppleInternal/Developer    export APPLE_INTERNAL_DIR=/AppleInternal    export APPLE_INTERNAL_DOCUMENTATION_DIR=/AppleInternal/Documentation    export APPLE_INTERNAL_LIBRARY_DIR=/AppleInternal/Library    export APPLE_INTERNAL_TOOLS=/AppleInternal/Developer/Tools    export APPLY_RULES_IN_COPY_FILES=NO    export ARCHS="armv6 armv7"    export ARCHS_STANDARD="armv7 armv7s arm64"    export ARCHS_STANDARD_32_64_BIT="armv7 armv7s arm64"    export ARCHS_STANDARD_32_BIT="armv7 armv7s"    export ARCHS_STANDARD_64_BIT=arm64    export ARCHS_STANDARD_INCLUDING_64_BIT="armv7 armv7s arm64"    export ARCHS_UNIVERSAL_IPHONE_OS="armv7 armv7s arm64"    export AVAILABLE_PLATFORMS="iphonesimulator macosx iphoneos"    export AVFOUNDATION_FX="-framework AVFoundation"    export BASE_PRODUCT_NAME=extThree20CSSStyle    export BUILD_COMPONENTS="headers build"    export BUILD_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products    export BUILD_LIBRARY_VERSION=1.0    export BUILD_ROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products    export BUILD_STYLE=    export BUILD_VARIANTS=normal    export BUILT_PRODUCTS_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos    export CACHE_ROOT=/var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode    export CCHROOT=/var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode    export CFNETWORK_FX="-framework CFNetwork"    export CHMOD=/bin/chmod    export CHOWN=/usr/sbin/chown    export CLASS_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/JavaClasses    export CLEAN_PRECOMPS=YES    export CLONE_HEADERS=NO    export CODESIGNING_FOLDER_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos/libextThree20CSSStyle.a    export CODE_SIGNING_ALLOWED=NO    export CODE_SIGNING_REQUIRED=YES    export CODE_SIGN_CONTEXT_CLASS=XCiPhoneOSCodeSignContext    export COLOR_DIAGNOSTICS=NO    export COMBINE_HIDPI_IMAGES=NO    export COMMAND_MODE=legacy    export COMPOSITE_SDK_DIRS=/var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/CompositeSDKs    export COMPRESS_PNG_FILES=YES    export CONFIGURATION=Debug    export CONFIGURATION_BUILD_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos    export CONFIGURATION_TEMP_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos    export COPYING_PRESERVES_HFS_DATA=NO    export COPY_PHASE_STRIP=NO    export COPY_RESOURCES_FROM_STATIC_FRAMEWORKS=YES    export COREDATA_FX="-framework CoreData"    export COREFOUNDATION_FX="-framework CoreFoundation"    export COREGRAPHICS_FX="-framework CoreGraphics"    export CORELOCATION_FX="-framework CoreLocation"    export CP=/bin/cp    export CREATE_INFOPLIST_SECTION_IN_BINARY=NO    export CURRENT_ARCH=armv7    export CURRENT_VARIANT=normal    export DEAD_CODE_STRIPPING=YES    export DEBUGGING_SYMBOLS=YES    export DEBUG_INFORMATION_FORMAT=dwarf-with-dsym    export DEFAULT_COMPILER=com.apple.compilers.llvm.clang.1_0    export DEFAULT_KEXT_INSTALL_PATH=/System/Library/Extensions    export DEPLOYMENT_LOCATION=NO    export DEPLOYMENT_POSTPROCESSING=NO    export DERIVED_FILES_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/DerivedSources    export DERIVED_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/DerivedSources    export DERIVED_SOURCES_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/DerivedSources    export DEVELOPER_APPLICATIONS_DIR=/Applications/Xcode.app/Contents/Developer/Applications    export DEVELOPER_BIN_DIR=/Applications/Xcode.app/Contents/Developer/usr/bin    export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer    export DEVELOPER_FRAMEWORKS_DIR=/Applications/Xcode.app/Contents/Developer/Library/Frameworks    export DEVELOPER_FRAMEWORKS_DIR_QUOTED=/Applications/Xcode.app/Contents/Developer/Library/Frameworks    export DEVELOPER_LIBRARY_DIR=/Applications/Xcode.app/Contents/Developer/Library    export DEVELOPER_SDK_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs    export DEVELOPER_TOOLS_DIR=/Applications/Xcode.app/Contents/Developer/Tools    export DEVELOPER_USR_DIR=/Applications/Xcode.app/Contents/Developer/usr    export DEVELOPMENT_LANGUAGE=English    export DO_HEADER_SCANNING_IN_JAM=NO    export DSTROOT=/tmp/extThree20CSSStyle.dst    export DT_TOOLCHAIN_DIR=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain    export DWARF_DSYM_FILE_NAME=libextThree20CSSStyle.a.dSYM    export DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT=NO    export DWARF_DSYM_FOLDER_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos    export EFFECTIVE_PLATFORM_NAME=-iphoneos    export EMBEDDED_PROFILE_NAME=embedded.mobileprovision    export ENABLE_HEADER_DEPENDENCIES=YES    export ENTITLEMENTS_REQUIRED=YES    export EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS=".DS_Store .svn .git .hg CVS"    export EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES="*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"    export EXECUTABLE_EXTENSION=a    export EXECUTABLE_NAME=libextThree20CSSStyle.a    export EXECUTABLE_PATH=libextThree20CSSStyle.a    export EXECUTABLE_PREFIX=lib    export EXECUTABLE_SUFFIX=.a    export FILE_LIST=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects/LinkFileList    export FIXED_FILES_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/FixedFiles    export FOUNDATION_FX="-framework Foundation"    export FRAMEWORK_FLAG_PREFIX=-framework    export FRAMEWORK_SEARCH_PATHS="/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos \"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/Developer/Library/Frameworks\""    export FRAMEWORK_VERSION=A    export FULL_PRODUCT_NAME=libextThree20CSSStyle.a    export GAMEKIT_FX="-framework GameKit"    export GCC3_VERSION=3.3    export GCC_C_LANGUAGE_STANDARD=c99    export GCC_DYNAMIC_NO_PIC=NO    export GCC_ENABLE_SYMBOL_SEPARATION=NO    export GCC_OPTIMIZATION_LEVEL=0    export GCC_PFE_FILE_C_DIALECTS="c objective-c c++ objective-c++"    export GCC_PRECOMPILE_PREFIX_HEADER=YES    export GCC_PREFIX_HEADER=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/Headers/extThree20CSSStyle_Prefix.pch    export GCC_PREPROCESSOR_DEFINITIONS="EXTJSON_SBJSON DEBUG"    export GCC_THUMB_SUPPORT=YES    export GCC_TREAT_WARNINGS_AS_ERRORS=NO    export GCC_VERSION=com.apple.compilers.llvm.clang.1_0    export GCC_VERSION_IDENTIFIER=com_apple_compilers_llvm_clang_1_0    export GCC_WARN_ABOUT_MISSING_NEWLINE=YES    export GCC_WARN_ABOUT_RETURN_TYPE=YES    export GCC_WARN_CHECK_SWITCH_STATEMENTS=NO    export GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS=YES    export GCC_WARN_SHADOW=YES    export GCC_WARN_UNUSED_FUNCTION=YES    export GCC_WARN_UNUSED_LABEL=YES    export GCC_WARN_UNUSED_VARIABLE=YES    export GENERATE_MASTER_OBJECT_FILE=NO    export GENERATE_PKGINFO_FILE=NO    export GENERATE_PROFILING_CODE=NO    export GID=20    export GROUP=staff    export HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT=YES    export HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES=YES    export HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS=YES    export HEADERMAP_INCLUDES_PROJECT_HEADERS=YES    export HEADERS_FOLDER_PATH=/../three20/    export HEADER_SEARCH_PATHS="/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos/include /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/include /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos/../three20 /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos/../../three20"    export ICONV=/usr/bin/iconv    export INFOPLIST_EXPAND_BUILD_SETTINGS=YES    export INFOPLIST_OUTPUT_FORMAT=binary    export INFOPLIST_PREPROCESS=NO    export INSTALL_DIR=/tmp/extThree20CSSStyle.dst/usr/local/lib    export INSTALL_GROUP=staff    export INSTALL_MODE_FLAG=u+w,go-w,a+rX    export INSTALL_OWNER=hand    export INSTALL_PATH=/usr/local/lib    export INSTALL_ROOT=/tmp/extThree20CSSStyle.dst    export IPHONEOS_DEPLOYMENT_TARGET=4.0    export JAVAC_DEFAULT_FLAGS="-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    export JAVA_APP_STUB=/System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    export JAVA_ARCHIVE_CLASSES=YES    export JAVA_ARCHIVE_TYPE=JAR    export JAVA_COMPILER=/usr/bin/javac    export JAVA_FRAMEWORK_RESOURCES_DIRS=Resources    export JAVA_JAR_FLAGS=cv    export JAVA_SOURCE_SUBDIR=.    export JAVA_USE_DEPENDENCIES=YES    export JAVA_ZIP_FLAGS=-urg    export JIKES_DEFAULT_FLAGS="+E +OLDCSO"    export KEEP_PRIVATE_EXTERNS=NO    export LD_DEPENDENCY_INFO_FILE=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/extThree20CSSStyle_dependency_info.dat    export LD_GENERATE_MAP_FILE=NO    export LD_MAP_FILE_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/extThree20CSSStyle-LinkMap-normal-armv7.txt    export LD_NO_PIE=NO    export LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER=YES    export LEGACY_DEVELOPER_DIR=/Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    export LEX=lex    export LIBRARY_FLAG_NOSPACE=YES    export LIBRARY_FLAG_PREFIX=-l    export LIBRARY_KEXT_INSTALL_PATH=/Library/Extensions    export LIBRARY_SEARCH_PATHS="/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib"    export LINKER_DISPLAYS_MANGLED_NAMES=NO    export LINK_FILE_LIST_normal_armv6=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv6/extThree20CSSStyle.LinkFileList    export LINK_FILE_LIST_normal_armv7=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal/armv7/extThree20CSSStyle.LinkFileList    export LINK_WITH_STANDARD_LIBRARIES=YES    export LOCAL_ADMIN_APPS_DIR=/Applications/Utilities    export LOCAL_APPS_DIR=/Applications    export LOCAL_DEVELOPER_DIR=/Library/Developer    export LOCAL_LIBRARY_DIR=/Library    export MACH_O_TYPE=staticlib    export MAC_OS_X_PRODUCT_BUILD_VERSION=13D65    export MAC_OS_X_VERSION_ACTUAL=1093    export MAC_OS_X_VERSION_MAJOR=1090    export MAC_OS_X_VERSION_MINOR=0903    export MAPKIT_FX="-framework MapKit"    export MEDIAPLAYER_FX="-framework MediaPlayer"    export MESSAGEUI_FX="-framework MessageUI"    export MOBILECORESERVICES_FX="-framework MobileCoreServices"    export MODULE_CACHE_DIR=/Users/hand/Library/Developer/Xcode/DerivedData/ModuleCache    export NATIVE_ARCH=armv7    export NATIVE_ARCH_32_BIT=i386    export NATIVE_ARCH_64_BIT=x86_64    export NATIVE_ARCH_ACTUAL=x86_64    export NO_COMMON=YES    export OBJC_LIB=-lobjc    export OBJC_LIBRARY=-ObjC    export OBJECT_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects    export OBJECT_FILE_DIR_normal=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Objects-normal    export OBJROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build    export ONLY_ACTIVE_ARCH=NO    export OPENGLES_FX="-framework OpenGLES"    export OPTIMIZATION_LEVEL=0    export OS=MACOS    export OSAC=/usr/bin/osacompile    export OTHER_LDFLAGS=-ObjC    export PACKAGE_TYPE=com.apple.package-type.static-library    export PASCAL_STRINGS=YES    export PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Tools:/usr/bin:/bin:/usr/sbin:/sbin"    export PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES="/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"    export PFE_FILE_C_DIALECTS=objective-c    export PKGINFO_FILE_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/PkgInfo    export PLATFORM_DEVELOPER_APPLICATIONS_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Applications    export PLATFORM_DEVELOPER_BIN_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin    export PLATFORM_DEVELOPER_LIBRARY_DIR=/Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    export PLATFORM_DEVELOPER_SDK_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs    export PLATFORM_DEVELOPER_TOOLS_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Tools    export PLATFORM_DEVELOPER_USR_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr    export PLATFORM_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform    export PLATFORM_NAME=iphoneos    export PLATFORM_PREFERRED_ARCH=arm64    export PLATFORM_PRODUCT_BUILD_VERSION=11D167    export PLIST_FILE_OUTPUT_FORMAT=binary    export PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR=YES    export PRECOMP_DESTINATION_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/PrefixHeaders    export PRESERVE_DEAD_CODE_INITS_AND_TERMS=NO    export PRIVATE_HEADERS_FOLDER_PATH=/../three20/extThree20CSSStyle/private    export PRODUCT_NAME=extThree20CSSStyle    export PRODUCT_SETTINGS_PATH=    export PRODUCT_TYPE=com.apple.product-type.library.static    export PROFILING_CODE=NO    export PROJECT=extThree20CSSStyle    export PROJECT_DERIVED_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/DerivedSources    export PROJECT_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export PROJECT_FILE_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/extThree20CSSStyle.xcodeproj    export PROJECT_NAME=extThree20CSSStyle    export PROJECT_TEMP_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build    export PROJECT_TEMP_ROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build    export PUBLIC_HEADERS_FOLDER_PATH=/../three20/extThree20CSSStyle    export QUARTZCORE_FX="-framework QuartzCore"    export RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS=YES    export REMOVE_CVS_FROM_RESOURCES=YES    export REMOVE_GIT_FROM_RESOURCES=YES    export REMOVE_HG_FROM_RESOURCES=YES    export REMOVE_SVN_FROM_RESOURCES=YES    export REPO_ROOT_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/../..    export REZ_COLLECTOR_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/ResourceManagerResources    export REZ_EXECUTABLE=YES    export REZ_OBJECTS_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/ResourceManagerResources/Objects    export REZ_SEARCH_PATHS="/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos "    export ROOT_SOURCE_PATH=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle/../../src    export RUN_CLANG_STATIC_ANALYZER=NO    export SCAN_ALL_SOURCE_FILES_FOR_INCLUDES=NO    export SCRIPT_INPUT_FILE_COUNT=0    export SCRIPT_OUTPUT_FILE_COUNT=0    export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk    export SDK_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk    export SDK_NAME=iphoneos7.1    export SDK_PRODUCT_BUILD_VERSION=11D167    export SECURITY_FX="-framework Security"    export SED=/usr/bin/sed    export SENTESTINGKIT_FX="-framework SenTestingKit"    export SEPARATE_STRIP=YES    export SEPARATE_SYMBOL_EDIT=NO    export SET_DIR_MODE_OWNER_GROUP=YES    export SET_FILE_MODE_OWNER_GROUP=NO    export SHALLOW_BUNDLE=NO    export SHARED_DERIVED_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos/DerivedSources    export SHARED_PRECOMPS_DIR=/var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders    export SKIP_INSTALL=YES    export SOURCE_ROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export SRCROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/src/extThree20CSSStyle    export STDLIB_HEADERS=/usr/include    export STDLIB_LIBRARY=/usr/lib    export STOREKIT_FX="-framework StoreKit"    export STRINGS_FILE_OUTPUT_ENCODING=binary    export STRIP_INSTALLED_PRODUCT=YES    export STRIP_STYLE=debugging    export SUPPORTED_DEVICE_FAMILIES=1,2    export SUPPORTED_PLATFORMS="iphonesimulator iphoneos"    export SYMROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products    export SYSTEMCONFIGURATION_FX="-framework SystemConfiguration"    export SYSTEM_ADMIN_APPS_DIR=/Applications/Utilities    export SYSTEM_APPS_DIR=/Applications    export SYSTEM_CORE_SERVICES_DIR=/System/Library/CoreServices    export SYSTEM_DEMOS_DIR=/Applications/Extras    export SYSTEM_DEVELOPER_APPS_DIR=/Applications/Xcode.app/Contents/Developer/Applications    export SYSTEM_DEVELOPER_BIN_DIR=/Applications/Xcode.app/Contents/Developer/usr/bin    export SYSTEM_DEVELOPER_DEMOS_DIR="/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"    export SYSTEM_DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer    export SYSTEM_DEVELOPER_DOC_DIR="/Applications/Xcode.app/Contents/Developer/ADC Reference Library"    export SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR="/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"    export SYSTEM_DEVELOPER_JAVA_TOOLS_DIR="/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"    export SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR="/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"    export SYSTEM_DEVELOPER_RELEASENOTES_DIR="/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"    export SYSTEM_DEVELOPER_TOOLS=/Applications/Xcode.app/Contents/Developer/Tools    export SYSTEM_DEVELOPER_TOOLS_DOC_DIR="/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"    export SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR="/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"    export SYSTEM_DEVELOPER_USR_DIR=/Applications/Xcode.app/Contents/Developer/usr    export SYSTEM_DEVELOPER_UTILITIES_DIR=/Applications/Xcode.app/Contents/Developer/Applications/Utilities    export SYSTEM_DOCUMENTATION_DIR=/Library/Documentation    export SYSTEM_KEXT_INSTALL_PATH=/System/Library/Extensions    export SYSTEM_LIBRARY_DIR=/System/Library    export TARGETED_DEVICE_FAMILY=1    export TARGETNAME=extThree20CSSStyle    export TARGET_BUILD_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/Products/Debug-iphoneos    export TARGET_NAME=extThree20CSSStyle    export TARGET_TEMP_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build    export TEMP_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build    export TEMP_FILES_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build    export TEMP_FILE_DIR=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build    export TEMP_ROOT=/Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build    export TOOLCHAINS=com.apple.dt.toolchain.XcodeDefault    export UID=502    export UIKIT_FX="-framework UIKit"    export UNSTRIPPED_PRODUCT=NO    export USER=hand    export USER_APPS_DIR=/Users/hand/Applications    export USER_LIBRARY_DIR=/Users/hand/Library    export USE_DYNAMIC_NO_PIC=YES    export USE_HEADERMAP=YES    export USE_HEADER_SYMLINKS=NO    export VALIDATE_PRODUCT=NO    export VALID_ARCHS="i386 armv6 armv7 armv7s"    export VERBOSE_PBXCP=NO    export VERSION_INFO_BUILDER=hand    export VERSION_INFO_FILE=extThree20CSSStyle_vers.c    export VERSION_INFO_STRING="\"@(#)PROGRAM:extThree20CSSStyle  PROJECT:extThree20CSSStyle-\""    export XCODE_APP_SUPPORT_DIR=/Applications/Xcode.app/Contents/Developer/Library/Xcode    export XCODE_PRODUCT_BUILD_VERSION=5B1008    export XCODE_VERSION_ACTUAL=0511    export XCODE_VERSION_MAJOR=0500    export XCODE_VERSION_MINOR=0510    export XPCSERVICES_FOLDER_PATH=/XPCServices    export YACC=yacc    export arch=armv7    export variant=normal    /bin/sh -c /Users/hand/Documents/xcodeworkspaces/HDMobileBusiness/Frameworks/Three20/Build/extThree20CSSStyle.build/Debug-iphoneos/extThree20CSSStyle.build/Script-6E3C34AD118807DC0079637E.sh36"73C774DC-70B1-4D23-857C-5DCDD298B5FD-
-b6310EE3C-CED7-42FB-8BE1-403D2A7F2D57
-
-CProcessPCH /Users/hand/Library/Developer/Xcode/DerivedData/TTFacebook-cqfkrjvhhgbkcnaqbgzxnzfodlaa/Index/PrecompiledHeaders/extThree20CSSStyle_Prefix-grvcrefwmbghhvhibzxpgjubqtvn_ast/extThree20CSSStyle_Prefix.pch.pch Headers/extThree20CSSStyle_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
-r0
-
-CProcessPCH /var/folders/hw/0b2nff2x3ns1t6ld8gb50w_40000gp/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/extThree20CSSStyle_Prefix-dtomicfbmaihmgbjhivjcgqxsrwf/extThree20CSSStyle_Prefix.pch.pch Headers/extThree20CSSStyle_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-r0
-
