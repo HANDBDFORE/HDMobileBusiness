@@ -25,8 +25,8 @@ static  NSString* configFileName = @"ios-backend-config";
     //首先检查是否配置地址
     BOOL hasAddress = [self hasServerAddress];
     if (!hasAddress) {
-        _errorSummury.text = @"服务器地址未配置";
-        _errorDetail.text = @"您还没有设置服务器地址。请回到主屏幕，打开“设置”，进入“移动商务”，在服务器地址一栏输入您公司所用的服务器地址";
+        _errorSummury.text = TTLocalizedString(@"The server address configuration is not ready.", @"");
+        _errorDetail.text = TTLocalizedString(@"Please check whether your device has available network connection.", @"");
         _retryButton.hidden = NO;
         [_retryButton setUserInteractionEnabled:YES];
     }else {
