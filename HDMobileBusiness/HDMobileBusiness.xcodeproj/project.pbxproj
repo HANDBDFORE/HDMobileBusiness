@@ -24,9 +24,14 @@
 		96A1810B190F720A00911AB9 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A1810A190F720A00911AB9 /* 120.png */; };
 		96BACEBD190F547F0005F7C2 /* login568.png in Resources */ = {isa = PBXBuildFile; fileRef = 96BACEBB190F547F0005F7C2 /* login568.png */; };
 		96BACEBE190F547F0005F7C2 /* login568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96BACEBC190F547F0005F7C2 /* login568@2x.png */; };
-		B20DD6A019FFB95900CF257D /* HDLoginViewController-568.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20DD69F19FFB95900CF257D /* HDLoginViewController-568.xib */; };
+		B2181C6E1A0082E900AB1870 /* HDLoginViewController-568.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2181C6D1A0082E900AB1870 /* HDLoginViewController-568.xib */; };
 		B221375819E109D800AEC34D /* DeleverStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B221375719E109D700AEC34D /* DeleverStoryboard.storyboard */; };
+		B222387E1A3EB9A100ACAAD1 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = B222387C1A3EB9A100ACAAD1 /* background.png */; };
+		B222387F1A3EB9A100ACAAD1 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B222387D1A3EB9A100ACAAD1 /* background@2x.png */; };
 		B2307431166739AB00DFF2E0 /* backend-config-juice.xml in Resources */ = {isa = PBXBuildFile; fileRef = B2307430166739AB00DFF2E0 /* backend-config-juice.xml */; };
+		B23A4AC81A3ECCE40051455F /* approved.png in Resources */ = {isa = PBXBuildFile; fileRef = B23A4AC61A3ECCE40051455F /* approved.png */; };
+		B23A4AC91A3ECCE40051455F /* todo.png in Resources */ = {isa = PBXBuildFile; fileRef = B23A4AC71A3ECCE40051455F /* todo.png */; };
+		B23A4AD21A3ED1BA0051455F /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = B23A4AD11A3ED1BA0051455F /* return.png */; };
 		B2A015CA19D9102F000F046E /* HDDeleverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A015C919D9102F000F046E /* HDDeleverViewController.m */; };
 		B2A015DA19D92C96000F046E /* HDDeleverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A015D919D92C96000F046E /* HDDeleverModel.m */; };
 		B2A015DC19D93BD5000F046E /* HDDeleverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2A015DB19D93BD5000F046E /* HDDeleverCell.xib */; };
@@ -472,9 +477,18 @@
 		96A1810A190F720A00911AB9 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		96BACEBB190F547F0005F7C2 /* login568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login568.png; sourceTree = "<group>"; };
 		96BACEBC190F547F0005F7C2 /* login568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login568@2x.png"; sourceTree = "<group>"; };
-		B20DD69F19FFB95900CF257D /* HDLoginViewController-568.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HDLoginViewController-568.xib"; sourceTree = "<group>"; };
+		B2181C6D1A0082E900AB1870 /* HDLoginViewController-568.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HDLoginViewController-568.xib"; sourceTree = "<group>"; };
 		B221375719E109D700AEC34D /* DeleverStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DeleverStoryboard.storyboard; sourceTree = "<group>"; };
+		B222387C1A3EB9A100ACAAD1 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		B222387D1A3EB9A100ACAAD1 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		B2307430166739AB00DFF2E0 /* backend-config-juice.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "backend-config-juice.xml"; sourceTree = "<group>"; };
+		B23A4AC61A3ECCE40051455F /* approved.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = approved.png; path = ../approved.png; sourceTree = "<group>"; };
+		B23A4AC71A3ECCE40051455F /* todo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = todo.png; path = ../todo.png; sourceTree = "<group>"; };
+		B23A4AD11A3ED1BA0051455F /* return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = return.png; path = ../return.png; sourceTree = "<group>"; };
+		B25F79E71A39794D0025AC9E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		B25F79E81A39794D0025AC9E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		B25F79E91A39794D0025AC9E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		B25F79EA1A39794D0025AC9E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B2A015C819D9102F000F046E /* HDDeleverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeleverViewController.h; path = Classes/Detail/HDDeleverViewController.h; sourceTree = "<group>"; };
 		B2A015C919D9102F000F046E /* HDDeleverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDDeleverViewController.m; path = Classes/Detail/HDDeleverViewController.m; sourceTree = "<group>"; };
 		B2A015D819D92C96000F046E /* HDDeleverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDDeleverModel.h; path = Classes/Delever/HDDeleverModel.h; sourceTree = "<group>"; };
@@ -1122,7 +1136,7 @@
 		B34660B315C678DD00EFDF24 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B20DD69F19FFB95900CF257D /* HDLoginViewController-568.xib */,
+				B2181C6D1A0082E900AB1870 /* HDLoginViewController-568.xib */,
 				B34660B615C678DD00EFDF24 /* HDLoginModel.h */,
 				B34660B715C678DD00EFDF24 /* HDLoginModel.m */,
 				B34660B815C678DD00EFDF24 /* HDLoginViewController.h */,
@@ -1409,6 +1423,11 @@
 		B38E66EB15C64E6700824CB1 /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				B23A4AD11A3ED1BA0051455F /* return.png */,
+				B23A4AC61A3ECCE40051455F /* approved.png */,
+				B23A4AC71A3ECCE40051455F /* todo.png */,
+				B222387C1A3EB9A100ACAAD1 /* background.png */,
+				B222387D1A3EB9A100ACAAD1 /* background@2x.png */,
 				96A180FF190F625D00911AB9 /* loginform.png */,
 				96A18100190F625D00911AB9 /* loginform@2x.png */,
 				96BACEBB190F547F0005F7C2 /* login568.png */,
@@ -2220,17 +2239,19 @@
 				B2A015DC19D93BD5000F046E /* HDDeleverCell.xib in Resources */,
 				96BACEBD190F547F0005F7C2 /* login568.png in Resources */,
 				B38E67AA15C64E6700824CB1 /* clock.png in Resources */,
+				B2181C6E1A0082E900AB1870 /* HDLoginViewController-568.xib in Resources */,
 				B38E67AB15C64E6700824CB1 /* clock@2x.png in Resources */,
 				B38E67AC15C64E6700824CB1 /* connections.png in Resources */,
-				B20DD6A019FFB95900CF257D /* HDLoginViewController-568.xib in Resources */,
 				B38E67AD15C64E6700824CB1 /* connections@2x.png in Resources */,
 				B38E67AE15C64E6700824CB1 /* credit_card.png in Resources */,
 				B38E67AF15C64E6700824CB1 /* credit_card@2x.png in Resources */,
 				B38E67B015C64E6700824CB1 /* database.png in Resources */,
 				B38E67B115C64E6700824CB1 /* database@2x.png in Resources */,
+				B222387F1A3EB9A100ACAAD1 /* background@2x.png in Resources */,
 				B38E67B215C64E6700824CB1 /* delete.png in Resources */,
 				B38E67B315C64E6700824CB1 /* delete@2x.png in Resources */,
 				B38E67B415C64E6700824CB1 /* delivery.png in Resources */,
+				B23A4AC81A3ECCE40051455F /* approved.png in Resources */,
 				B38E67B515C64E6700824CB1 /* delivery@2x.png in Resources */,
 				B38E67B615C64E6700824CB1 /* disk.png in Resources */,
 				B38E67B715C64E6700824CB1 /* disk@2x.png in Resources */,
@@ -2299,6 +2320,7 @@
 				B38E67F415C64E6700824CB1 /* preferences.png in Resources */,
 				B38E67F515C64E6700824CB1 /* preferences@2x.png in Resources */,
 				B38E67F615C64E6700824CB1 /* record.png in Resources */,
+				B23A4AD21A3ED1BA0051455F /* return.png in Resources */,
 				B38E67F715C64E6700824CB1 /* record@2x.png in Resources */,
 				B38E67F815C64E6700824CB1 /* refresh.png in Resources */,
 				B38E67F915C64E6700824CB1 /* refresh@2x.png in Resources */,
@@ -2311,6 +2333,7 @@
 				B38E680015C64E6700824CB1 /* rss.png in Resources */,
 				B38E680115C64E6700824CB1 /* rss@2x.png in Resources */,
 				B38E680215C64E6700824CB1 /* safe.png in Resources */,
+				B222387E1A3EB9A100ACAAD1 /* background.png in Resources */,
 				B38E680315C64E6700824CB1 /* safe@2x.png in Resources */,
 				B38E680415C64E6700824CB1 /* scales.png in Resources */,
 				B38E680515C64E6700824CB1 /* scales@2x.png in Resources */,
@@ -2324,6 +2347,7 @@
 				B38E680D15C64E6700824CB1 /* speechmedia@2x.png in Resources */,
 				B38E680E15C64E6700824CB1 /* star.png in Resources */,
 				B38E680F15C64E6700824CB1 /* star@2x.png in Resources */,
+				B23A4AC91A3ECCE40051455F /* todo.png in Resources */,
 				B38E681015C64E6700824CB1 /* trash.png in Resources */,
 				B38E681115C64E6700824CB1 /* trash@2x.png in Resources */,
 				B38E681215C64E6700824CB1 /* trend.png in Resources */,
@@ -2549,6 +2573,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B36BDA9B15C64777003A4A5D /* en */,
+				B25F79E71A39794D0025AC9E /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2557,6 +2582,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B36BDAB315C64777003A4A5D /* en */,
+				B25F79E81A39794D0025AC9E /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2565,6 +2591,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B398B6FA1649F6DC0017FCD6 /* en */,
+				B25F79E91A39794D0025AC9E /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2573,6 +2600,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B398B7171649F6DD0017FCD6 /* en */,
+				B25F79EA1A39794D0025AC9E /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

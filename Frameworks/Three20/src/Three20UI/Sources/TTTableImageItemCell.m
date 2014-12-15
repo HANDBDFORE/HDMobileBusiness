@@ -180,10 +180,10 @@ static const CGFloat kDefaultImageSize = 50.0f;
         _imageView2.clipsToBounds = YES;
         _imageView2.backgroundColor = [UIColor clearColor];
         if (style.size.width) {
-          iconWidth = style.size.width;
+          iconWidth = 30.0f;
         }
         if (style.size.height) {
-          iconHeight = style.size.height;
+          iconHeight = 30.0f;
         }
       }
 

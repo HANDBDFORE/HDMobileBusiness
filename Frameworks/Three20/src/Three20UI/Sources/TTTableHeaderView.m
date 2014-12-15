@@ -37,8 +37,8 @@
 - (id)initWithTitle:(NSString*)title {
 	self = [super init];
   if (self) {
-    self.backgroundColor = [UIColor clearColor];
-    self.style = TTSTYLE(tableHeader);
+    self.backgroundColor = [UIColor colorWithRed: (4*16+4)/255.0f green:(11*16+5)/255.0f blue:(13 *16+15)/255.0f alpha:1.0f ];
+//    self.style = TTSTYLE(tableHeader);
 
     _label = [[UILabel alloc] init];
     _label.text = title;

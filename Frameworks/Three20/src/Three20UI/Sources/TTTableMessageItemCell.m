@@ -214,12 +214,18 @@ static const CGFloat    kDefaultMessageImageHeight  = 34.0f;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UILabel*)titleLabel {
   if (!_titleLabel) {
-    _titleLabel = [[UILabel alloc] init];
-    _titleLabel.textColor = [UIColor blackColor];
-    _titleLabel.highlightedTextColor = [UIColor whiteColor];
-    _titleLabel.font = TTSTYLEVAR(tableFont);
-    _titleLabel.contentMode = UIViewContentModeLeft;
-    [self.contentView addSubview:_titleLabel];
+      _titleLabel = [[UILabel alloc] init];
+      _titleLabel.font = [UIFont boldSystemFontOfSize:16];
+      _titleLabel.textColor = [UIColor blackColor];
+      _titleLabel.highlightedTextColor = [UIColor whiteColor];
+      _titleLabel.contentMode = UIViewContentModeLeft;
+      [self.contentView addSubview:_titleLabel];
+//    _titleLabel = [[UILabel alloc] init];
+//    _titleLabel.textColor = [UIColor blackColor];
+//    _titleLabel.highlightedTextColor = [UIColor whiteColor];
+//    _titleLabel.font = TTSTYLEVAR(tableFont);
+//    _titleLabel.contentMode = UIViewContentModeLeft;
+//    [self.contentView addSubview:_titleLabel];
   }
   return _titleLabel;
 }

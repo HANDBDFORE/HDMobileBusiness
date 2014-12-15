@@ -22,7 +22,7 @@
 const CGFloat   kTableCellSmallMargin = 6.0f;
 const CGFloat   kTableCellSpacing     = 8.0f;
 const CGFloat   kTableCellMargin      = 10.0f;
-const CGFloat   kTableCellHPadding    = 10.0f;
+const CGFloat   kTableCellHPadding    = 20.0f;
 const CGFloat   kTableCellVPadding    = 10.0f;
 
 const NSInteger kTableMessageTextLineCount = 2;

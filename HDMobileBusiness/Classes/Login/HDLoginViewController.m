@@ -62,11 +62,19 @@
     
     //国家化
     [self.loginBtn setTitle:TTLocalizedString(@"Login", @"") forState:UIControlStateNormal];
-    [self.passwordLbl setText:TTLocalizedString(@"Password", @"")];
-    [self.loginLbl setText:TTLocalizedString(@"UserName", @"")];
+//    [self.passwordLbl setText:TTLocalizedString(@"Password", @"")];
+//    [self.loginLbl setText:TTLocalizedString(@"UserName", @"")];
+    
+    _username.layer.cornerRadius = 1.0f;
+    _password.layer.cornerRadius = 1.0f;
+    
+    [_username setHeight:40.0f];
+    [_password setHeight:40.0f];
     
     [_username setPlaceholder:TTLocalizedString(@"Please enter the username", @"")];
     [_password setPlaceholder:TTLocalizedString(@"Please enter the password", @"")];
+    
+
     
     _username.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     _password.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"password"];
@@ -118,6 +126,11 @@
 -(IBAction)loginBtnPressed:(id)sender{
      [_username resignFirstResponder];
      [_password resignFirstResponder];
+    
+    
+
+    
+    
     
     if (!(_username.text.length && _password.text.length)) {
         TTAlertNoTitle(TTLocalizedString(@"Your user name and password cannot be empty!", @""));

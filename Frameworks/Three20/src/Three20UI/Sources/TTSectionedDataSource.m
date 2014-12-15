@@ -1,4 +1,4 @@
-//
+ //
 // Copyright 2009-2011 Facebook
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -138,8 +138,9 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-  if (_sections.count) {
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (_sections.count) {
     if ([[_sections objectAtIndex:section] isKindOfClass:[TTTableSection class]]) {
       TTTableSection* sectionInfo = [_sections objectAtIndex:section];
       return sectionInfo.headerTitle;

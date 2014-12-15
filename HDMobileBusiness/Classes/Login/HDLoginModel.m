@@ -46,6 +46,9 @@
 -(void)login
 {
     
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+    
     
     //如果是不同用户登陆的,清空数据库
     [self initUsers];
@@ -54,6 +57,7 @@
                    self.username,@"user_name",
                    self.password,@"user_password",
                    [self deviceType],@"device_type",
+                     currentLanguage ,@"language",
                    [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"push_token",
                    [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"device_Id",
                    nil];
