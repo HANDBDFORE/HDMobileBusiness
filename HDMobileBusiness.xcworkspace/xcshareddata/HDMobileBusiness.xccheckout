@@ -12,14 +12,14 @@
 	<dict>
 		<key>7F1F5D9C-760E-43D9-88D6-3305A6093CFA</key>
 		<string>git://github.com/ccgus/fmdb.git</string>
+		<key>A3ABCCF61F0F5ECC94D778FDF5BE728BC9D523F2</key>
+		<string>https://github.com/HAND-MAS/HDMobileBusiness.git</string>
 		<key>A4D93D85-EE72-43CD-ADF7-F25094ECEACE</key>
 		<string>ssh://github.com/HAND-MAS/PrettyKit.git</string>
 		<key>AA484AAA-F006-4B3D-A9C1-89A4F7626646</key>
 		<string>git://github.com/TouchCode/TouchXML.git</string>
 		<key>B190CDA1-D470-49F3-A060-D93323BD28DF</key>
 		<string>git://github.com/HAND-MAS/three20.git</string>
-		<key>C7EA02BA-217F-42C3-9E47-F3576437108C</key>
-		<string>https://github.com/HAND-MAS/HDMobileBusiness.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>HDMobileBusiness.xcworkspace</string>
@@ -27,21 +27,21 @@
 	<dict>
 		<key>7F1F5D9C-760E-43D9-88D6-3305A6093CFA</key>
 		<string>../Frameworks/FMDB</string>
+		<key>A3ABCCF61F0F5ECC94D778FDF5BE728BC9D523F2</key>
+		<string>..</string>
 		<key>A4D93D85-EE72-43CD-ADF7-F25094ECEACE</key>
 		<string>../Frameworks/prettyKit</string>
 		<key>AA484AAA-F006-4B3D-A9C1-89A4F7626646</key>
 		<string>../Frameworks/TouchXML</string>
 		<key>B190CDA1-D470-49F3-A060-D93323BD28DF</key>
 		<string>../Frameworks/Three20</string>
-		<key>C7EA02BA-217F-42C3-9E47-F3576437108C</key>
-		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/HAND-MAS/HDMobileBusiness.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C7EA02BA-217F-42C3-9E47-F3576437108C</string>
+	<string>A3ABCCF61F0F5ECC94D778FDF5BE728BC9D523F2</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -56,7 +56,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C7EA02BA-217F-42C3-9E47-F3576437108C</string>
+			<string>A3ABCCF61F0F5ECC94D778FDF5BE728BC9D523F2</string>
 			<key>IDESourceControlWCCName</key>
 			<string>HDMobileBusiness</string>
 		</dict>
