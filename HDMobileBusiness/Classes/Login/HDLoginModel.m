@@ -8,23 +8,28 @@
 
 #import "HDLoginModel.h"
 
+
 @implementation HDLoginModel
 
 @synthesize submitURL = _submitURL;
 @synthesize username = _username;
 @synthesize password = _password;
+@synthesize map = _map;
 
 -(void)dealloc
 {
     TT_RELEASE_SAFELY(_submitURL);
     TT_RELEASE_SAFELY(_username);
     TT_RELEASE_SAFELY(_password);
+    
+    
     [super dealloc];
 }
 
 -(id)init
 {
     if (self = [super init]) {
+
         self.username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     }
     return self;
@@ -45,29 +50,75 @@
 
 -(void)login
 {
+    [self loginWithSingatureBase64:nil];
+
+}
+
+-(void)loginWithSingatureBase64:(NSString *)SingatureBase64
+{
+    id postdata;
     
     NSArray *languages = [NSLocale preferredLanguages];
     NSString *currentLanguage = [languages objectAtIndex:0];
     
+    self.tag = @"login";
     
     //如果是不同用户登陆的,清空数据库
     [self initUsers];
-
-    id postdata = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                   self.username,@"user_name",
-                   self.password,@"user_password",
-                   [self deviceType],@"device_type",
-                     currentLanguage ,@"language",
-                   [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"push_token",
-                   [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"device_Id",
-                   nil];
-
+    
+    if(SingatureBase64 == nil){
+        
+        postdata   = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                      self.username,@"user_name",
+                      self.password,@"user_password",
+                      [self deviceType],@"device_type",
+                      currentLanguage ,@"language",
+                      [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"push_token",
+                      [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"device_Id",
+                      nil];
+        
+        
+    }else {
+        
+        postdata   = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                      self.username,@"user_name",
+                      self.password,@"user_password",
+                      [self deviceType],@"device_type",
+                      currentLanguage ,@"language",
+                      @"1",@"ca_verification_necessity",
+                      SingatureBase64,@"Signature",
+                      [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"push_token",
+                      [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"device_Id",
+                      nil];
+        
+        
+    }
+    
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     map.urlPath = self.submitURL;
     map.postData = postdata;
     
-    [self requestWithMap:map]; 
+    [self requestWithMap:map];
+    
+    
 }
+
+
+-(void)checkWithUserName:(NSString *)username
+{
+    
+    
+    HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
+    self.tag =  @"checkWithUserName";
+
+    
+    map.urlPath = @"${base_url}modules/mobile/client/commons/login/check_number.svc";
+    map.postData = @{ @"username" : username};
+    
+    [self requestWithMap:map];
+}
+
+
 
 -(NSString *) deviceType
 {
@@ -82,8 +133,50 @@
     }
 }
 -(void)requestResultMap:(HDResponseMap *)map{
-    NSString * SID = [[map result] objectForKey:@"token"];
-    [[NSUserDefaults standardUserDefaults]setValue:SID forKey:@"Token"];
-    [[NSUserDefaults standardUserDefaults]synchronize];
+    
+    _map = map;
+    
+    
+    if([self.tag isEqualToString:@"checkWithUserName"]){
+
+        
+        
+        
+            NSString * pRes = [[map result] valueForKey:@"p_res"];
+        
+        
+            if([pRes isEqualToString: @"1"]){
+                
+                
+                
+
+                
+            /////////用户不存在
+        }else if ([pRes isEqualToString:@"-1"]){
+
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"用户错误"                                                                      forKey:NSLocalizedDescriptionKey];
+            
+            NSError * error = [[NSError alloc] initWithDomain:@"" code:-1 userInfo:userInfo];
+            
+            
+            
+            [self didFailLoadWithError:error];
+            
+        }else if([pRes isEqualToString:@"0"]){
+            
+            [self login];
+            
+        }
+        
+        
+        
+    }else if([self.tag isEqualToString:@"login"]) {
+
+        
+        NSString * SID = [[map result] objectForKey:@"token"];
+        [[NSUserDefaults standardUserDefaults]setValue:SID forKey:@"Token"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        
+    }
 }
 @end
