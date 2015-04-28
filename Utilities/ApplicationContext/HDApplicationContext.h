@@ -46,4 +46,9 @@
 //超时计时器
 -(void)refreshTimer;
 
+
+
+
+@property(nonatomic,retain)NSString * cacheKey;
+
 @end

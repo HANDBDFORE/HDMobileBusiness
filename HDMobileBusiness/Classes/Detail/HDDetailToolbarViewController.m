@@ -11,6 +11,7 @@
 #import "HDActionModel.h"
 #import "HDDeleverViewController.h"
 #import "HDDeleverCommentViewController.h"
+#import "SignViewUlan.h"
 
 static NSString * kActionTypeDeliver = @"deliver";
 
@@ -19,10 +20,17 @@ static NSString * kActionTypeDeliver = @"deliver";
     @private
     NSString * _selectedAction;
     NSArray * _submitActionItems;
+    
+    
 }
 @property(nonatomic,retain) NSString * selectedAction;
 
 @property(nonatomic,retain) NSArray * submitActionItems;
+
+@property (nonatomic,copy)NSString * currentComment;
+
+@property (nonatomic,retain) SignViewUlan       * key;
+
 @end
 
 @implementation HDDetailToolbarViewController
@@ -54,6 +62,20 @@ static NSString * kActionTypeDeliver = @"deliver";
 -(void)loadView
 {
     [super loadView];
+    
+    
+    if (self.key == nil) {
+        NSString *nibName = nil;
+        if (UIUserInterfaceIdiomPad == [[UIDevice currentDevice] userInterfaceIdiom]) {
+            nibName = @"SignViewUlan_iPad";
+        } else {
+            nibName = @"SignViewUlan";
+        }
+        self.key = [[SignViewUlan alloc]initWithNibName:nibName bundle:nil];
+        
+    }
+    
+    
     TTURLMap *map = [TTNavigator navigator].URLMap;
     [map from:@"jscall://returnback" toObject:self selector:@selector(returnback)];
 
@@ -86,6 +108,8 @@ static NSString * kActionTypeDeliver = @"deliver";
     TT_RELEASE_SAFELY(_spaceItem);
     TT_RELEASE_SAFELY(_selectedAction)
     TT_RELEASE_SAFELY(_submitActionItems);
+    TT_RELEASE_SAFELY(_key);
+    
     [super viewDidUnload];
 }
 
@@ -153,13 +177,146 @@ static NSString * kActionTypeDeliver = @"deliver";
     
     
 }
+///////////
+-(void) afterDone:(ULANKeyError*)err type:(int)type result:(NSObject *)result;
+{
+    
+    if (type == kFetchCertSuccess) {
+        
+        
+        
+        
+    } else if (type == kSignSucess) {
+        NSString * singatureBase64 = (NSString *)result;
+        
+        
+        NSLog(@"singatureBase64 IS %@",singatureBase64);
+        
+        [self doPostController:singatureBase64];
+        
+        
+    } else if (type == kCancel) {
+        
+    } else if (type == kDisconnected) {
+        NSString *errorMessage = [NSString stringWithFormat:@"BLE已断开连接:%@", [err toString]];
+        NSLog(@"%@",errorMessage);
+        
+        
+        
+    } else {//kFailure
+        NSString *resultString = [NSString stringWithFormat:@"Error:%@, result:%@", [err toString], result];
+        
+        NSLog(@"%@",resultString);
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+-(void)doPostController:(NSString * )signtCode
+{
+    
+    [self submitWithDictionary:@{@"comment":self.currentComment,@"submitAction":self.selectedAction,@"signature" : signtCode,@"ca_verification_necessity" : @"1" , @"p_record_id" : _actionModel.record_id,@"submitActionType" :[self getActionTypeWithId:self.selectedAction]}];
+
+}
+
+-(NSString * )getActionTypeWithId:(NSString *)actionId
+{
+    NSArray * array = self.actionModel.actionList;
+    
+    for(NSDictionary * record in array){
+        
+        NSNumber * actionid = [record valueForKey:@"action"];
+        NSString * actionIdStr = [NSString stringWithFormat:@"%@",actionid];
+        
+        if([actionIdStr isEqualToString:actionId]){
+            
+            
+            return [record valueForKey:@"actionType"];
+            
+        }
+        
+    }
+    
+    
+    return @"";
+    
+    
+}
+
+-(NSString * )getActionTitleWithId:(NSString * )actionId
+{
+
+    NSArray * array = self.actionModel.actionList;
+    
+    for(NSDictionary * record in array){
+        
+        NSNumber * actionid = [record valueForKey:@"action"];
+        NSString * actionIdStr = [NSString stringWithFormat:@"%@",actionid];
+        
+        if([actionIdStr isEqualToString:actionId]){
+            
+            
+            return [record valueForKey:@"actionTitle"];
+            
+        }
+        
+    }
+    
+    
+    return @"";
+}
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
-    [self submitWithDictionary:@{@"comment":text,@"submitAction":self.selectedAction}];
-
+    if(self.ca_verification_necessity){
     
+            self.currentComment = text;
+       
+
+        
+        
+        NSString * signatureActionTitle =[_actionModel.signature stringByAppendingString:[self getActionTitleWithId:self.selectedAction]];
+        
+        NSString * key_id  =             [[NSUserDefaults standardUserDefaults]valueForKey:@"keyId"];
+
+        
+            [self.key sign:[signatureActionTitle dataUsingEncoding:NSUTF8StringEncoding]
+                parentView:self.view
+      parentViewController:self
+                 delegator:self
+                  signType:@"PKCS7_ATTACHED"
+                  certType:nil
+                      hash:@"SM3"
+                     keyID:key_id
+               useCachePin:YES
+                    ];
+        
+        
+//        self.navigationController.toolbar.userInteractionEnabled = NO;
+        
+//        
+//        for( UIBarButtonItem * item  in self.toolbarItems){
+//            item.enabled = NO;
+//            
+//            
+//        }
+        
+    
+    }else {
+        
+            [self submitWithDictionary:@{@"comment":self.currentComment,@"submitAction":self.selectedAction,@"ca_verification_necessity" : @"0",@"submitActionType" :[self getActionTypeWithId:self.selectedAction]}];
+        
+    }
     
 }
 
@@ -168,7 +325,7 @@ static NSString * kActionTypeDeliver = @"deliver";
                  delivereeid:(NSString *)delivereeid
 {
 
-  
+    
 
 
     
@@ -223,7 +380,7 @@ static NSString * kActionTypeDeliver = @"deliver";
 //    if ([self.pageTurningService next]) {
 //        [self loadCurrentRecord];
 //    }else{
-    
+
 
 
     
@@ -273,6 +430,8 @@ static NSString * kActionTypeDeliver = @"deliver";
 {
     self.toolbarItems = nil;
     self.actionModel.record = record;
+    
+    self.actionModel.ca_verification_necessity = self.ca_verification_necessity;
     [self.actionModel query];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////

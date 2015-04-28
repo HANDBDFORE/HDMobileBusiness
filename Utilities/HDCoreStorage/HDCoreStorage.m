@@ -25,6 +25,7 @@
     self = [super init];
     if (self) {
         //使用tt函数直接获取document路径
+        
         DatabasePool = [[FMDatabasePool alloc] initWithPath:TTPathForDocumentsResource(@"HDMobileBusiness.db")];
         DatabasePool.maximumNumberOfDatabasesToCreate = 3;
         sqlCenter = [[HDSQLCenter alloc]init];

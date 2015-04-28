@@ -10,6 +10,9 @@
 #import "HDTodoListDelegate.h"
 #import "HDTodoListModelStatus.h"
 #import "HDTableStatusMessageItem.h"
+#import "HDTodoListDataSource.h"
+#import "HDTodoListModel.h"
+#import "HDDetailToolbarViewController.h"
 
 @implementation HDBaseTodoListViewController
 
@@ -182,6 +185,29 @@
 }
 
 #pragma -mark private
+////判断是否需要蓝牙key
+-(BOOL)isNeedUlanKey:(NSUInteger )row
+{
+    
+  HDTodoListModel * toDoModel =   (HDTodoListModel *)self.model ;
+  NSDictionary * record  =  [toDoModel.resultList objectAtIndex:row];
+    
+    NSString *VERIFICATION_ID = [record valueForKey:@"serverMessage"];
+    
+    if([VERIFICATION_ID isEqualToString:@"0"]){
+        
+        return NO;
+        
+    }else {
+        
+        
+        return  YES;
+    }
+    
+    
+    
+}
+
 -(void)didSwiped:(UISwipeGestureRecognizer *)recognizer{
     CGPoint swipeLocation = [recognizer locationInView:self.tableView];
     NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
@@ -194,8 +220,17 @@
 {
     HDTableStatusMessageItem * item = object;
     if (self.editing) {
-        [self setToolbarButtonWithCount];
-        [self.detailViewController selectedObject:object atIndex:indexPath.row];
+        
+        if([self isNeedUlanKey:indexPath.row]){
+            
+            
+            [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+            TTAlert(@"该单据需要蓝牙签名无法批量审批");
+            
+        }else{
+            [self setToolbarButtonWithCount];
+            [self.detailViewController selectedObject:object atIndex:indexPath.row];
+        }
     }else{
         if ([item.state isEqualToString:kRecordNew] || [item.state isEqualToString:kRecordError]) {
             self.model.currentIndex = indexPath.row;
@@ -211,10 +246,10 @@
         [self.detailViewController deselectedObject:object atIndex:indexPath.row];
     }
 }
-
--(void)selectedTableCellForCurrentRecord
+///////////////modify by jiangtiteng 15-4-22
+-(void)goToDetail
 {
-    [super selectedTableCellForCurrentRecord];
+    
     HDViewGuider * guider =  [[HDApplicationContext shareContext] objectForIdentifier:@"todolistTableGuider"];
     //TODO:Pad版本考虑直接向目标视图控制器设置model而不是通过guider间接设置
     if ([guider respondsToSelector:@selector(setPageTurningService:)]) {
@@ -223,6 +258,22 @@
     if ([guider.destinationController respondsToSelector:@selector(setPageTurningService:)]) {
         [guider.destinationController performSelector:@selector(setPageTurningService:) withObject:self.model];
     }
+    
+   HDDetailToolbarViewController *  tmp=  (HDDetailToolbarViewController *)guider.destinationController;
+    
+    tmp.ca_verification_necessity = [self isNeedUlanKey:self.model.currentIndex] ;
+    
+    
+    
+    
     [guider perform];
+}
+
+
+-(void)selectedTableCellForCurrentRecord
+{
+    [super selectedTableCellForCurrentRecord];
+    
+    [self goToDetail];
 }
 @end

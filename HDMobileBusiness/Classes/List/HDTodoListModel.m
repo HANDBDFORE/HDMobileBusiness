@@ -240,7 +240,10 @@ static NSString * kColumnMapKey = @"column1";
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     NSMutableArray * postlist = [[NSMutableArray alloc]init];
     for (NSDictionary * submitrecord in _submitList) {
-        NSMutableDictionary * postrecord = [NSMutableDictionary dictionaryWithObjectsAndKeys:[[submitrecord objectForKey:@"localId"] stringValue],@"localId",[submitrecord objectForKey:@"sourceSystemName"],@"sourceSystemName",[submitrecord objectForKey:@"submitAction"],@"action",[submitrecord objectForKey:@"submitActionType"],@"actionType",[submitrecord objectForKey:@"comment"],@"comments", nil];
+        NSMutableDictionary * postrecord = [NSMutableDictionary dictionaryWithObjectsAndKeys:[[submitrecord objectForKey:@"localId"] stringValue],@"localId",[submitrecord objectForKey:@"sourceSystemName"],@"sourceSystemName",[submitrecord objectForKey:@"submitAction"],@"action",[submitrecord objectForKey:@"submitActionType"],@"actionType",[submitrecord objectForKey:@"comment"],@"comments",[submitrecord valueForKey:@"ca_verification_necessity"],@"ca_verification_necessity",
+                                        [submitrecord valueForKey:@"p_record_id"],@"p_record_id",[submitrecord valueForKey:@"signature"],@"signature",
+                                            
+                                            nil];
         if ([submitrecord objectForKey:@"deliveree"]!=[NSNull null]) {
             NSDictionary * otherParams =[NSDictionary dictionaryWithObject:[submitrecord objectForKey:@"deliveree"] forKey:@"deliveree"];
             [postrecord setObject:otherParams forKey:@"otherParams"];

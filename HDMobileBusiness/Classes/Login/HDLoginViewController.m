@@ -72,6 +72,7 @@
         }
         self.key = [[SignViewUlan alloc]initWithNibName:nibName bundle:nil];
 
+        self.key.fromLogin = YES;
     }
     
     
@@ -205,15 +206,38 @@
        NSString * keyId = [[model.map result] valueForKey:@"key_id"];
         
         
+        
+        
+//
+//        [_loginModel login];
+        
         if([pRes isEqualToString:@"1"]){
+            
+            //储存keyid;
+            [[NSUserDefaults standardUserDefaults]setValue:keyId forKey:@"keyId"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
         
         [self.key sign:[@"abc" dataUsingEncoding:NSUTF8StringEncoding]
             parentView:self.view
+  parentViewController:nil
              delegator:self
               signType:@"PKCS7_ATTACHED"
               certType:nil
                   hash:@"SM3"
-                 keyID:keyId];
+                 keyID:keyId
+           useCachePin:NO
+                ];
+        }else if([pRes isEqual:@"0"]){
+            
+            [self.loginModel login];
+
+            
+            
+        }else if([pRes isEqualToString:@"-1"]){
+            [self.loginBtn setTitle:TTLocalizedString(@"Login", @"") forState:UIControlStateNormal];
+            [self.loginBtn setTag:20];
+            TTAlertNoTitle(@"用户不存在");
+
         }
     }
     
@@ -286,6 +310,8 @@
         
         NSLog(@"singatureBase64 IS %@",singatureBase64);
         
+        
+        
         HDLoginModel * mode =(HDLoginModel *)self.loginModel;
         
         [mode loginWithSingatureBase64:singatureBase64 ];
@@ -301,14 +327,14 @@
 
         
     } else if (type == kDisconnected) {
-            NSString *errorMessage = [NSString stringWithFormat:@"BLE已断开连接:%@", [err toString]];
+        NSString *errorMessage = [NSString stringWithFormat:@"BLE已断开连接:%@", [err toString]];
         NSLog(@"%@",errorMessage);
         
         [self.loginBtn setTitle:TTLocalizedString(@"Login", @"") forState:UIControlStateNormal];
         [self.loginBtn setTag:20];
         
         
-    } else {//kFailure
+    }else {//kFailure
         NSString *resultString = [NSString stringWithFormat:@"Error:%@, result:%@", [err toString], result];
 
         NSLog(@"%@",resultString);

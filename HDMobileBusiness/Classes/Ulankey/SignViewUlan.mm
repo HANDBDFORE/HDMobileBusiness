@@ -25,12 +25,18 @@
 @property (strong, nonatomic) NSString  *singatureBase64;
 @property (strong, nonatomic) NSString  *signType;
 @property (strong, nonatomic) NSString  *hashAlgorithm;
-@property (strong, nonatomic) UIView    *parentView;
+@property (assign, nonatomic) UIView    *parentView;
+@property (assign,nonatomic) UIViewController * myParentViewController;
+
 
 @property (assign, nonatomic) BOOL isPad;
 
 @property (assign, nonatomic) BOOL isAutoTest;
 @property (strong, nonatomic) NSString *pinCode;
+
+@property (assign,nonatomic) BOOL useCachePin;
+
+
 
 -(IBAction)onPinCommit:(id)sender;
 -(IBAction)onCancel:(id)sender;
@@ -39,23 +45,39 @@
 
 @implementation SignViewUlan
 
+-(void)dealloc{
+    TT_RELEASE_SAFELY(_alertPinField);
+    TT_RELEASE_SAFELY(_commitBt);
+    TT_RELEASE_SAFELY(_cancelBt);
+    TT_RELEASE_SAFELY(_pinHint);
+    TT_RELEASE_SAFELY(_midView);
+    
+    
+    [super dealloc];
+}
+
 - (void)sign:(NSData *)dataToSign
   parentView:(UIView *)parent
+parentViewController:(UIViewController *)parentViewController
    delegator:(id<SignViewUlanDelegate>)delegator
     signType:(NSString *)signType
     certType:(NSString *)certType
         hash:(NSString *)hash
        keyID:(NSString *)keyID
+ useCachePin:(BOOL)cachepin
 {
     self.keyID = keyID;
     self.dataToSigan = dataToSign;
     self.signDelegator = delegator;
     self.parentView = parent;
+    self.myParentViewController = parentViewController;
     self.signType = signType;
     self.certType = certType;
     self.hashAlgorithm = hash;
     self.pinCode = nil;
     self.isAutoTest = NO;
+    
+    self.useCachePin = cachepin;
     
 	[UIView beginAnimations:nil context:UIGraphicsGetCurrentContext()];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -134,9 +156,35 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [self initLayout];
+    
+    
     [super viewWillAppear:animated];
+
+    
+    if(self.myParentViewController !=nil){
+        
+        self.myParentViewController.navigationController.toolbar.userInteractionEnabled = NO;
+        
+        self.myParentViewController.navigationController.navigationBar.userInteractionEnabled = NO;
+    }
 }
 
+
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    
+    [super viewWillDisappear:animated];
+    
+    if(self.myParentViewController !=nil){
+        
+        self.myParentViewController.navigationController.toolbar.userInteractionEnabled = YES;
+        
+        self.myParentViewController.navigationController.navigationBar.userInteractionEnabled = YES;
+    }
+    
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -176,12 +224,13 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if (self.isPad == NO) {
-//        NSTimeInterval animationDuration = 0.30f;
-//        [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-//        [UIView setAnimationDuration:animationDuration];
-//        self.midView.frame = CGRectMake(self.midView.frame.origin.x, self.midView.frame.origin.y - 70, self.midView.frame.size.width, self.midView.frame.size.height);
-//        [UIView commitAnimations];
+    //登陆接口不进行动画
+    if (self.isPad == NO && !self.fromLogin) {
+        NSTimeInterval animationDuration = 0.30f;
+        [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+        [UIView setAnimationDuration:animationDuration];
+        self.midView.frame = CGRectMake(self.midView.frame.origin.x, self.midView.frame.origin.y - 70, self.midView.frame.size.width, self.midView.frame.size.height);
+        [UIView commitAnimations];
     }
 }
 
@@ -195,11 +244,14 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if (!self.isPad) {
+        
+        
         NSTimeInterval animationDuration = 0.30f;
         [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
         [UIView setAnimationDuration:animationDuration];
         self.midView.center=self.view.center;
         [UIView commitAnimations];
+            
     }
 }
 
@@ -255,7 +307,20 @@
         [self setLable:2 isHighLight:YES text:nil];
         [self.activeIndicator setHidden:NO];
         [self.activeIndicator startAnimating];
-    } else {
+    }else if(self.useCachePin  && [HDApplicationContext shareContext].cacheKey != nil){
+        [self removePin];
+
+        [self.ulanKey signData:self.dataToSigan
+                           pin:[HDApplicationContext shareContext].cacheKey
+                      signType:self.signType
+                 hashAlgorithm:self.hashAlgorithm
+                      certType:self.certType];
+        
+        [self setLable:2 isHighLight:YES text:nil];
+        [self.activeIndicator setHidden:NO];
+        [self.activeIndicator startAnimating];
+    
+    }else {
         [self.alertPinField becomeFirstResponder];
     }
 }
@@ -283,8 +348,8 @@
 //    self.pinHint.text = @"已断开连接!";
     self.pinHint.hidden = NO;
     [self.activeIndicator stopAnimating];
-    [self removeSelfView:1.0];
-//    [self.signDelegator afterDone:err type:kDisconnected result:@"BLE 断开连接"];
+    [self removeSelfView:0.1];
+    [self.signDelegator afterDone:err type:kDisconnected result:@"BLE 断开连接"];
 }
 
 
@@ -348,6 +413,12 @@
     [self.activeIndicator setHidden:NO];
     [self.activeIndicator startAnimating];
     [self removePin];
+    
+    /////cache key
+    
+    [HDApplicationContext shareContext].cacheKey = self.alertPinField.text;
+    
+    
 }
 
 - (IBAction)onCancel:(id)sender

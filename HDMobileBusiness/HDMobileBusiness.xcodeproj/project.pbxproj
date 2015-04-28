@@ -16,9 +16,6 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
-		3BA5F3441AE5236000E5231C /* SignViewUlan.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5F3411AE5236000E5231C /* SignViewUlan.mm */; };
-		3BA5F3451AE5236000E5231C /* SignViewUlan.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA5F3421AE5236000E5231C /* SignViewUlan.xib */; };
-		3BA5F3461AE5236000E5231C /* SignViewUlan_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA5F3431AE5236000E5231C /* SignViewUlan_iPad.xib */; };
 		3BA5F36D1AE52A1200E5231C /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA5F34F1AE52A1200E5231C /* 37x-Checkmark.png */; };
 		3BA5F36E1AE52A1200E5231C /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA5F3501AE52A1200E5231C /* 37x-Checkmark@2x.png */; };
 		3BA5F36F1AE52A1200E5231C /* alert_bg_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA5F3511AE52A1200E5231C /* alert_bg_03@2x.png */; };
@@ -49,6 +46,9 @@
 		3BA5F3881AE52A1200E5231C /* pin_bg_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA5F36A1AE52A1200E5231C /* pin_bg_03@2x.png */; };
 		3BA5F3891AE52A1200E5231C /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA5F36B1AE52A1200E5231C /* refresh.png */; };
 		3BA5F38A1AE52A1200E5231C /* refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA5F36C1AE52A1200E5231C /* refresh@2x.png */; };
+		3BD5D4281AE8893D008BF17D /* SignViewUlan.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BD5D4221AE8893D008BF17D /* SignViewUlan.xib */; };
+		3BD5D4291AE8893D008BF17D /* SignViewUlan.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BD5D4251AE8893D008BF17D /* SignViewUlan.mm */; };
+		3BD5D42A1AE8893D008BF17D /* SignViewUlan_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BD5D4261AE8893D008BF17D /* SignViewUlan_iPad.xib */; };
 		3BDFF7DD1AE4F861002496C8 /* HDMathCheckModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDFF7DC1AE4F861002496C8 /* HDMathCheckModel.m */; };
 		3BDFF7ED1AE50C3C002496C8 /* libULANKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF7EC1AE50C3C002496C8 /* libULANKit.a */; };
 		3BDFF7EF1AE50DA5002496C8 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF7EE1AE50DA5002496C8 /* CoreBluetooth.framework */; };
@@ -502,10 +502,6 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../Frameworks/Three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../Frameworks/Three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../Frameworks/Three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
-		3BA5F3401AE5236000E5231C /* SignViewUlan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignViewUlan.h; sourceTree = "<group>"; };
-		3BA5F3411AE5236000E5231C /* SignViewUlan.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SignViewUlan.mm; sourceTree = "<group>"; };
-		3BA5F3421AE5236000E5231C /* SignViewUlan.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignViewUlan.xib; sourceTree = "<group>"; };
-		3BA5F3431AE5236000E5231C /* SignViewUlan_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignViewUlan_iPad.xib; sourceTree = "<group>"; };
 		3BA5F34F1AE52A1200E5231C /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		3BA5F3501AE52A1200E5231C /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		3BA5F3511AE52A1200E5231C /* alert_bg_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_bg_03@2x.png"; sourceTree = "<group>"; };
@@ -536,6 +532,11 @@
 		3BA5F36A1AE52A1200E5231C /* pin_bg_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin_bg_03@2x.png"; sourceTree = "<group>"; };
 		3BA5F36B1AE52A1200E5231C /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		3BA5F36C1AE52A1200E5231C /* refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh@2x.png"; sourceTree = "<group>"; };
+		3BD5D4231AE8893D008BF17D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SignViewUlan.xib; sourceTree = "<group>"; };
+		3BD5D4241AE8893D008BF17D /* SignViewUlan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignViewUlan.h; sourceTree = "<group>"; };
+		3BD5D4251AE8893D008BF17D /* SignViewUlan.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SignViewUlan.mm; sourceTree = "<group>"; };
+		3BD5D4261AE8893D008BF17D /* SignViewUlan_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignViewUlan_iPad.xib; sourceTree = "<group>"; };
+		3BD5D4271AE8893D008BF17D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/SignViewUlan.xib"; sourceTree = "<group>"; };
 		3BDFF7DB1AE4F861002496C8 /* HDMathCheckModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDMathCheckModel.h; sourceTree = "<group>"; };
 		3BDFF7DC1AE4F861002496C8 /* HDMathCheckModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDMathCheckModel.m; sourceTree = "<group>"; };
 		3BDFF7E91AE50C3C002496C8 /* ULANKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULANKey.h; sourceTree = "<group>"; };
@@ -1096,18 +1097,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3BA5F33F1AE5236000E5231C /* Ulankey */ = {
-			isa = PBXGroup;
-			children = (
-				3BA5F3401AE5236000E5231C /* SignViewUlan.h */,
-				3BA5F3411AE5236000E5231C /* SignViewUlan.mm */,
-				3BA5F3421AE5236000E5231C /* SignViewUlan.xib */,
-				3BA5F3431AE5236000E5231C /* SignViewUlan_iPad.xib */,
-			);
-			name = Ulankey;
-			path = Classes/Ulankey;
-			sourceTree = "<group>";
-		};
 		3BA5F34E1AE52A1200E5231C /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -1144,6 +1133,18 @@
 			);
 			name = Images;
 			path = Classes/Images;
+			sourceTree = "<group>";
+		};
+		3BD5D4211AE8893D008BF17D /* Ulankey */ = {
+			isa = PBXGroup;
+			children = (
+				3BD5D4221AE8893D008BF17D /* SignViewUlan.xib */,
+				3BD5D4241AE8893D008BF17D /* SignViewUlan.h */,
+				3BD5D4251AE8893D008BF17D /* SignViewUlan.mm */,
+				3BD5D4261AE8893D008BF17D /* SignViewUlan_iPad.xib */,
+			);
+			name = Ulankey;
+			path = Classes/Ulankey;
 			sourceTree = "<group>";
 		};
 		3BDFF7E71AE50C3C002496C8 /* UlanKit */ = {
@@ -1818,8 +1819,8 @@
 		B38E686915C654C700824CB1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3BD5D4211AE8893D008BF17D /* Ulankey */,
 				3BA5F34E1AE52A1200E5231C /* Images */,
-				3BA5F33F1AE5236000E5231C /* Ulankey */,
 				B2A015D719D92C51000F046E /* Delever */,
 				B336DEF3165E250500057B95 /* Navigatior */,
 				B3893CEA164A3FDE004E326A /* Split */,
@@ -2385,7 +2386,6 @@
 				B38E679715C64E6700824CB1 /* alarm@2x.png in Resources */,
 				B38E679815C64E6700824CB1 /* arrowdown.png in Resources */,
 				B38E679915C64E6700824CB1 /* arrowdown@2x.png in Resources */,
-				3BA5F3451AE5236000E5231C /* SignViewUlan.xib in Resources */,
 				B38E679A15C64E6700824CB1 /* arrowleft.png in Resources */,
 				B38E679B15C64E6700824CB1 /* arrowleft@2x.png in Resources */,
 				B38E679C15C64E6700824CB1 /* arrowright.png in Resources */,
@@ -2404,6 +2404,7 @@
 				B38E67A515C64E6700824CB1 /* calculator@2x.png in Resources */,
 				3BA5F3751AE52A1200E5231C /* btn_09.png in Resources */,
 				B38E67A615C64E6700824CB1 /* camera.png in Resources */,
+				3BD5D42A1AE8893D008BF17D /* SignViewUlan_iPad.xib in Resources */,
 				3BA5F3741AE52A1200E5231C /* bg_ipad.png in Resources */,
 				B38E67A715C64E6700824CB1 /* camera@2x.png in Resources */,
 				B38E67A815C64E6700824CB1 /* clapboard.png in Resources */,
@@ -2538,7 +2539,6 @@
 				B38E680C15C64E6700824CB1 /* speechmedia.png in Resources */,
 				B38E680D15C64E6700824CB1 /* speechmedia@2x.png in Resources */,
 				3BA5F3821AE52A1200E5231C /* image47.png in Resources */,
-				3BA5F3461AE5236000E5231C /* SignViewUlan_iPad.xib in Resources */,
 				B38E680E15C64E6700824CB1 /* star.png in Resources */,
 				B38E680F15C64E6700824CB1 /* star@2x.png in Resources */,
 				B23A4AC91A3ECCE40051455F /* todo.png in Resources */,
@@ -2546,6 +2546,7 @@
 				B38E681115C64E6700824CB1 /* trash@2x.png in Resources */,
 				B38E681215C64E6700824CB1 /* trend.png in Resources */,
 				B221375819E109D800AEC34D /* DeleverStoryboard.storyboard in Resources */,
+				3BD5D4281AE8893D008BF17D /* SignViewUlan.xib in Resources */,
 				B38E681315C64E6700824CB1 /* trend@2x.png in Resources */,
 				B38E681415C64E6700824CB1 /* world.png in Resources */,
 				B38E681515C64E6700824CB1 /* world@2x.png in Resources */,
@@ -2700,7 +2701,7 @@
 				B2A015DA19D92C96000F046E /* HDDeleverModel.m in Sources */,
 				B3D5B84A165F33940073C9D5 /* HDImageLoader.m in Sources */,
 				B3D5B84D165F43000073C9D5 /* HDResourceLoader.m in Sources */,
-				3BA5F3441AE5236000E5231C /* SignViewUlan.mm in Sources */,
+				3BD5D4291AE8893D008BF17D /* SignViewUlan.mm in Sources */,
 				B3D5B851165F4DC40073C9D5 /* HDApplicationContext.m in Sources */,
 				B3CB5D971676F0B90062E71B /* HDListViewController.m in Sources */,
 				B3CB0A4F1679980200BBE7CC /* HDTodoListModel.m in Sources */,
@@ -2768,6 +2769,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3BD5D4221AE8893D008BF17D /* SignViewUlan.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BD5D4231AE8893D008BF17D /* en */,
+				3BD5D4271AE8893D008BF17D /* zh-Hans */,
+			);
+			name = SignViewUlan.xib;
+			sourceTree = "<group>";
+		};
 		B36BDA9A15C64777003A4A5D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2911,6 +2921,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = /Users/titengjiang/Documents/Project/Ios/project/temp/HDMobileBusiness/Frameworks/UlanKit/Lib;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",

@@ -42,13 +42,20 @@ enum {
 @property (strong, nonatomic) NSString * keyID;
 @property (strong, nonatomic) NSString * connectKeyID;
 
--(void)sign:(NSData *)dataToSign
- parentView:(UIView *)parent
-  delegator:(id<SignViewUlanDelegate>)delegator
-   signType:(NSString *)signType
-   certType:(NSString *)certType
-       hash:(NSString *)hash
-      keyID:(NSString *)keyID;
+
+//////////add by jtt 标记位判断是是否来自登陆，如果是登陆，这个不需要进行键盘上堆
+@property (nonatomic) BOOL  fromLogin;
+
+
+- (void)sign:(NSData *)dataToSign
+  parentView:(UIView *)parent
+parentViewController:(UIViewController *)parentViewController
+   delegator:(id<SignViewUlanDelegate>)delegator
+    signType:(NSString *)signType
+    certType:(NSString *)certType
+        hash:(NSString *)hash
+       keyID:(NSString *)keyID
+ useCachePin:(BOOL)cachepin;
 
 -(void)AutoSign:(NSData *)dataToSign
      parentView:(UIView *)parent

@@ -16,7 +16,15 @@
 //要查询的单据
 @property(nonatomic,copy) NSDictionary * record;
 //获取结果列表
-@property(nonatomic,readonly) NSArray * actionList;
+@property(nonatomic,retain) NSArray * actionList;
+
+
+@property(nonatomic,copy)NSString * record_id;
+
+@property(nonatomic,retain)NSString * signature;
+
+
+@property (nonatomic) BOOL ca_verification_necessity;
 
 -(void)query;
 @end

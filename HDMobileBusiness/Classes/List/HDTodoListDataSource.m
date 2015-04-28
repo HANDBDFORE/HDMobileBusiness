@@ -12,6 +12,9 @@
 
 @implementation HDTodoListDataSource
 
+
+
+
 -(void)dealloc
 {
     TT_RELEASE_SAFELY(_itemDictionary);
@@ -40,6 +43,8 @@
  */
 -(TTTableItem *) createItemWithObject:(NSDictionary *) object
 {
+    
+    
     NSString * title = [[_itemDictionary valueForKey:@"title"] stringByReplacingSpaceHodlerWithDictionary:object];
 
     NSString * caption =[[_itemDictionary valueForKey:@"caption"] stringByReplacingSpaceHodlerWithDictionary:object];
@@ -49,10 +54,19 @@
     
     NSString * warning = [[_itemDictionary valueForKey:@"isLate"] stringByReplacingSpaceHodlerWithDictionary:object];
     
+    
+    
+    
+    
     NSString * stautMessage = nil;
     if (![[object valueForKey:kRecordStatus] isEqualToString:kRecordNormal] &&![[object valueForKey:kRecordStatus] isEqualToString:kRecordWaiting]) {
         stautMessage = [object valueForKey:kRecordServerMessage];
     }
+    
+ 
+    
+    
+    
         
     HDTableStatusMessageItem * item =
     [HDTableStatusMessageItem itemWithTitle:title

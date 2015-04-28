@@ -73,6 +73,8 @@
                       self.password,@"user_password",
                       [self deviceType],@"device_type",
                       currentLanguage ,@"language",
+                      @"0",@"ca_verification_necessity",
+                      @"0",@"Signature",
                       [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"push_token",
                       [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"],@"device_Id",
                       nil];
@@ -141,32 +143,7 @@
 
         
         
-        
-            NSString * pRes = [[map result] valueForKey:@"p_res"];
-        
-        
-            if([pRes isEqualToString: @"1"]){
-                
-                
-                
-
-                
-            /////////用户不存在
-        }else if ([pRes isEqualToString:@"-1"]){
-
-            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"用户错误"                                                                      forKey:NSLocalizedDescriptionKey];
-            
-            NSError * error = [[NSError alloc] initWithDomain:@"" code:-1 userInfo:userInfo];
-            
-            
-            
-            [self didFailLoadWithError:error];
-            
-        }else if([pRes isEqualToString:@"0"]){
-            
-            [self login];
-            
-        }
+    
         
         
         

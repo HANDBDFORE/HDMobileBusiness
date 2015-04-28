@@ -9,12 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "HDDetailInfoViewController.h"
 #import "HDActionModel.h"
-@interface HDDetailToolbarViewController : HDDetailInfoViewController <TTMessageControllerDelegate,TTPostControllerDelegate>
+#import "SignViewUlan.h"
+@interface HDDetailToolbarViewController : HDDetailInfoViewController <TTMessageControllerDelegate,TTPostControllerDelegate,SignViewUlanDelegate>
 
 @property(nonatomic,readonly) UIBarButtonItem * spaceItem;
 
 @property(nonatomic,retain) HDActionModel * actionModel;
 
+
+
+@property(nonatomic)BOOL ca_verification_necessity;
 
 
 -(void)postDeliverController:(NSString *)comment
