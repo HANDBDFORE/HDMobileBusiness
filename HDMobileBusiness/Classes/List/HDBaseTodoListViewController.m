@@ -225,7 +225,7 @@
             
             
             [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-            TTAlert(@"该单据需要蓝牙签名无法批量审批");
+            TTAlert(TTLocalizedString(@"This document needs digital signature which cannot be approved in batch!",@"This document needs digital signature which cannot be approved in batch!"));
             
         }else{
             [self setToolbarButtonWithCount];

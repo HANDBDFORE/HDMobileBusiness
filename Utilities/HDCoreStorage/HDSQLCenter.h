@@ -19,6 +19,9 @@
 -(FMResultSet *)SQLQueryAction:(FMDatabase *)db conditions:(NSDictionary *) conditions;
 //建表
 -(BOOL)SQLCreatTable:(FMDatabase *)db;
+
+//销毁表
+-(BOOL)SQLDrop:(FMDatabase *)db;
 //切换用户清理表数据
 -(BOOL)SQLCleanTable:(FMDatabase *)db;
 //提交成功,删除本地记录

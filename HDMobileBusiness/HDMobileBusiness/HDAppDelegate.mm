@@ -33,6 +33,19 @@
         ;
     }
     
+    NSString * Version2 = [[NSUserDefaults standardUserDefaults] valueForKey:@"Version2"];
+
+    
+     ////版本2的第一次进入
+    if(Version2 == nil){
+        //初次更新完后,删除之前的表
+        
+        [[HDCoreStorage shareStorage] excute:@selector(SQLDrop:) recordList:nil];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"Version2"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    }
     
     
     

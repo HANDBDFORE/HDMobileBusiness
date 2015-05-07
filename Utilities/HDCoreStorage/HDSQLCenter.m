@@ -18,6 +18,16 @@
     state = [self execBatchInTransaction:db sqlArray:sqlAry];
     return state;
 }
+
+-(BOOL)SQLDrop:(FMDatabase *)db{
+    
+    BOOL state;
+    
+    state = [self execBatchInTransaction:db sqlArray:@[@"DROP TABLE DataPool;"]];
+    
+    return state;
+}
+
 //清除数据库
 -(BOOL)SQLCleanTable:(FMDatabase *)db{
     NSArray *sqlAry= [NSArray arrayWithObjects:[self creatCRUDSqlWithTableName:@"DataPool" params:nil keys:nil action:@"DELETE"],[self creatCRUDSqlWithTableName:@"ACTION" params:nil keys:nil action:@"DELETE"],nil];

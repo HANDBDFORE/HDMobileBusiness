@@ -278,9 +278,11 @@ static NSString * kActionTypeDeliver = @"deliver";
 
 -(void)postController:(TTPostController *)postController didPostText:(NSString *)text withResult:(id)result
 {
+   
+    self.currentComment = text;
+
     if(self.ca_verification_necessity){
     
-            self.currentComment = text;
        
 
         
@@ -296,7 +298,7 @@ static NSString * kActionTypeDeliver = @"deliver";
                  delegator:self
                   signType:@"PKCS7_ATTACHED"
                   certType:nil
-                      hash:@"SM3"
+                      hash:@"SHA1"
                      keyID:key_id
                useCachePin:YES
                     ];

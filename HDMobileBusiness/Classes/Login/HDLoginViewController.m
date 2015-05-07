@@ -223,7 +223,7 @@
              delegator:self
               signType:@"PKCS7_ATTACHED"
               certType:nil
-                  hash:@"SM3"
+                  hash:@"SHA1"
                  keyID:keyId
            useCachePin:NO
                 ];
@@ -236,7 +236,7 @@
         }else if([pRes isEqualToString:@"-1"]){
             [self.loginBtn setTitle:TTLocalizedString(@"Login", @"") forState:UIControlStateNormal];
             [self.loginBtn setTag:20];
-            TTAlertNoTitle(@"用户不存在");
+            TTAlertNoTitle(TTLocalizedString(@"Invalid User Account",@"Invalid User Account"));
 
         }
     }

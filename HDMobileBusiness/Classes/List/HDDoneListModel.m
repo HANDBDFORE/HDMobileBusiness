@@ -34,7 +34,7 @@
 
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
-    if (more && self.resultList.count >10) {
+    if (more && self.resultList.count >= 10) {
         _pageNum ++;
     }else {
         _pageNum = 1;
