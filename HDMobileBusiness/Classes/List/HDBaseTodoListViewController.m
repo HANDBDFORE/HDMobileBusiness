@@ -185,6 +185,27 @@
 }
 
 #pragma -mark private
+
+-(BOOL)cannotApprove:(NSUInteger)row
+{
+    HDTodoListModel * toDoModel =   (HDTodoListModel *)self.model ;
+    NSDictionary * record  =  [toDoModel.resultList objectAtIndex:row];
+    
+    NSString *VERIFICATION_ID = [record valueForKey:@"serverMessage"];
+    
+    if([VERIFICATION_ID isEqualToString:@"-1"]){
+        
+        return YES;
+        
+    }else {
+        
+        
+        return  NO;
+    }
+    
+}
+
+
 ////判断是否需要蓝牙key
 -(BOOL)isNeedUlanKey:(NSUInteger )row
 {
@@ -263,6 +284,7 @@
     
     tmp.ca_verification_necessity = [self isNeedUlanKey:self.model.currentIndex] ;
     
+    tmp.cannot_approve = [self cannotApprove:self.model.currentIndex];
     
     
     

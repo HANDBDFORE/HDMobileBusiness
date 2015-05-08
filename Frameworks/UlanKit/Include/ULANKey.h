@@ -24,8 +24,6 @@
 
 @interface ULANKeyError : NSObject
 
-
-
 //if errorType is CFIST_ERROR_INVALID_PIN,the key will be locked after try another pinCanRetries times;
 @property (nonatomic, assign) int pinCanRetries;
 //if  errorType is CFIST_ERROR_KEY_UNEXPECTED_RETURN,underlyErrorData is underly errorcode

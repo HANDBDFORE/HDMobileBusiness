@@ -21,6 +21,10 @@
 @property(nonatomic)BOOL ca_verification_necessity;
 
 
+//因为某些原因无法审批
+@property(nonatomic)BOOL cannot_approve;
+
+
 -(void)postDeliverController:(NSString *)comment
                  delivereeid:(NSString *)delivereeid;
 @end

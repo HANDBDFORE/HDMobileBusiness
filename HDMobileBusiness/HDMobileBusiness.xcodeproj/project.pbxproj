@@ -502,6 +502,7 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../Frameworks/Three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../Frameworks/Three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../Frameworks/Three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		3B7817131AFC8C8F00C7ABAF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SignViewUlan.xib; sourceTree = "<group>"; };
 		3BA5F34F1AE52A1200E5231C /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		3BA5F3501AE52A1200E5231C /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		3BA5F3511AE52A1200E5231C /* alert_bg_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_bg_03@2x.png"; sourceTree = "<group>"; };
@@ -532,7 +533,6 @@
 		3BA5F36A1AE52A1200E5231C /* pin_bg_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin_bg_03@2x.png"; sourceTree = "<group>"; };
 		3BA5F36B1AE52A1200E5231C /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		3BA5F36C1AE52A1200E5231C /* refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh@2x.png"; sourceTree = "<group>"; };
-		3BD5D4231AE8893D008BF17D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SignViewUlan.xib; sourceTree = "<group>"; };
 		3BD5D4241AE8893D008BF17D /* SignViewUlan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignViewUlan.h; sourceTree = "<group>"; };
 		3BD5D4251AE8893D008BF17D /* SignViewUlan.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SignViewUlan.mm; sourceTree = "<group>"; };
 		3BD5D4261AE8893D008BF17D /* SignViewUlan_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignViewUlan_iPad.xib; sourceTree = "<group>"; };
@@ -2772,8 +2772,8 @@
 		3BD5D4221AE8893D008BF17D /* SignViewUlan.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3BD5D4231AE8893D008BF17D /* en */,
 				3BD5D4271AE8893D008BF17D /* zh-Hans */,
+				3B7817131AFC8C8F00C7ABAF /* en */,
 			);
 			name = SignViewUlan.xib;
 			sourceTree = "<group>";

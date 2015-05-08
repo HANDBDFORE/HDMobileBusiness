@@ -45,6 +45,17 @@
 
 @implementation SignViewUlan
 
+NSString* TTLocalizedString(NSString* key, NSString* comment) {
+    static NSBundle* bundle = nil;
+    if (nil == bundle) {
+        NSString* path = [[[NSBundle mainBundle] resourcePath]
+                          stringByAppendingPathComponent:@"Three20.bundle"];
+        bundle = [[NSBundle bundleWithPath:path] retain];
+    }
+    
+    return [bundle localizedStringForKey:key value:key table:nil];
+}
+
 -(void)dealloc{
     TT_RELEASE_SAFELY(_alertPinField);
     TT_RELEASE_SAFELY(_commitBt);
@@ -204,6 +215,9 @@ parentViewController:(UIViewController *)parentViewController
     }
     
     CGRect cancelBtFrame = cancelBtFrame_Single_iPhone;
+    
+    
+    
     if (self.isPad) {
         cancelBtFrame=cancelBtFrame_Single_iPad;
     }
@@ -364,7 +378,7 @@ parentViewController:(UIViewController *)parentViewController
 - (void)didSigned:(ULANKeyError*)err result:(NSString *)signature
 {
     if (err == nil) {
-        [self setLable:3 isHighLight:YES text:@"数字签名成功..." ];
+        [self setLable:3 isHighLight:YES text:TTLocalizedString(@"Digital signature failure", @"Digital signature failure") ];
         self.singatureBase64 = signature;
 //        NSString* result= [NSString stringWithFormat:@"签名结果：%@",self.singatureBase64];
 //        [self setLable:4 isHighLight:NO text:result ];
@@ -373,21 +387,21 @@ parentViewController:(UIViewController *)parentViewController
     } else {
         if (err.errorCode == CFIST_ERROR_INVALID_PIN) {
             [self didConnected:nil keyID:self.connectKeyID];
-            [self setLable:4 isHighLight:YES text:[NSString stringWithFormat:@"PIN码错误！\n剩余可重试：%i",err.pinCanRetries]];
+            [self setLable:4 isHighLight:YES text:[NSString stringWithFormat:TTLocalizedString(@"PIN code error! \n Residual can retry:%i", @"PIN code error! \n Residual can retry:%i"),err.pinCanRetries]];
         } else if (err.errorCode == CFIST_ERROR_PIN_LOCKED) {
-            [self setLable:4 isHighLight:YES text:[NSString stringWithFormat:@"PIN码已锁死:%@", [err toString]]];
+            [self setLable:4 isHighLight:YES text:[NSString stringWithFormat:TTLocalizedString(@"PINCode has been locked:%@", @"PINCode has been locked:%@"), [err toString]]];
             [self.ulanKey disConnect];
             [self.signDelegator afterDone:err type:kFailure result:signature];
             [self.activeIndicator stopAnimating];
             [self removeSelfView:1.0];
         } else if (err.errorCode == CFIST_ERROR_USER_CANCEL) {
-            [self setLable:4 isHighLight:YES text:[NSString stringWithFormat:@"用户已取消交易%@", [err toString]]];
+//            [self setLable:4 isHighLight:YES text:[NSString stringWithFormat:@"用户已取消交易%@", [err toString]]];
             [self.ulanKey disConnect];
             [self.signDelegator afterDone:err type:kFailure result:signature];
             [self.activeIndicator stopAnimating];
             [self removeSelfView:1.0];
         } else {
-            [self setLable:4 isHighLight:YES text:[NSString stringWithFormat:@"数字签名失败:%@", [err toString]]];
+            [self setLable:4 isHighLight:YES text:[NSString stringWithFormat:TTLocalizedString(@"Digital signature failure:%@", @"Digital signature failure:%@"), [err toString]]];
             [self.ulanKey disConnect];
             [self.signDelegator afterDone:err type:kFailure result:signature];
             [self.activeIndicator stopAnimating];

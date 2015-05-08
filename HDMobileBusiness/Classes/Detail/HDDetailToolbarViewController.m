@@ -97,7 +97,21 @@ static NSString * kActionTypeDeliver = @"deliver";
 {
 //    NSLog(@"detaillistDidAppear");
     [super viewDidAppear:animated];
-    [self.navigationController setToolbarHidden:NO animated:NO];
+    
+    if(self.cannot_approve){
+        
+//        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC);
+//        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//        });
+        
+
+
+        TTAlert(TTLocalizedString(@"Please confirm the digital certificate.", @"Please confirm the digital certificate."));
+        
+    }else{
+    
+        [self.navigationController setToolbarHidden:NO animated:NO];
+    }
 }
 - (void)viewDidUnload
 {
@@ -285,9 +299,9 @@ static NSString * kActionTypeDeliver = @"deliver";
     
        
 
+        NSString * appendString =  [NSString stringWithFormat:@"{%@}",[self getActionTitleWithId:self.selectedAction]];
         
-        
-        NSString * signatureActionTitle =[_actionModel.signature stringByAppendingString:[self getActionTitleWithId:self.selectedAction]];
+        NSString * signatureActionTitle =[_actionModel.signature stringByAppendingString:appendString];
         
         NSString * key_id  =             [[NSUserDefaults standardUserDefaults]valueForKey:@"keyId"];
 

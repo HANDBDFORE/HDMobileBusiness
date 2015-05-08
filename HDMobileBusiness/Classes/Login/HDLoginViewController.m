@@ -229,6 +229,8 @@
                 ];
         }else if([pRes isEqual:@"0"]){
             
+
+            
             [self.loginModel login];
 
             
@@ -310,6 +312,9 @@
         
         NSLog(@"singatureBase64 IS %@",singatureBase64);
         
+//        [self.loginBtn setTitle:TTLocalizedString(@"Cancel", @"") forState:UIControlStateNormal];
+//        [self.loginBtn setTag:21];
+        
         
         
         HDLoginModel * mode =(HDLoginModel *)self.loginModel;
@@ -330,8 +335,8 @@
         NSString *errorMessage = [NSString stringWithFormat:@"BLE已断开连接:%@", [err toString]];
         NSLog(@"%@",errorMessage);
         
-        [self.loginBtn setTitle:TTLocalizedString(@"Login", @"") forState:UIControlStateNormal];
-        [self.loginBtn setTag:20];
+//        [self.loginBtn setTitle:TTLocalizedString(@"Login", @"") forState:UIControlStateNormal];
+//        [self.loginBtn setTag:20];
         
         
     }else {//kFailure

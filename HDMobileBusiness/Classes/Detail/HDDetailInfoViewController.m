@@ -105,7 +105,7 @@
 -(void)showError:(BOOL)show
 {
     [self updateNavigationItems];
-    [_webView loadHTMLString:@"<h1>Error</h1>" baseURL:nil];
+    //[_webView loadHTMLString:@"<h1>Error</h1>" baseURL:nil];
 }
 
 -(void)showEmpty:(BOOL)show
