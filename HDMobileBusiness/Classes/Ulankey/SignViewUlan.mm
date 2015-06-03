@@ -378,7 +378,7 @@ parentViewController:(UIViewController *)parentViewController
 - (void)didSigned:(ULANKeyError*)err result:(NSString *)signature
 {
     if (err == nil) {
-        [self setLable:3 isHighLight:YES text:TTLocalizedString(@"Digital signature failure", @"Digital signature failure") ];
+//        [self setLable:3 isHighLight:YES text:TTLocalizedString(@"Digital signature failure", @"Digital signature failure") ];
         self.singatureBase64 = signature;
 //        NSString* result= [NSString stringWithFormat:@"签名结果：%@",self.singatureBase64];
 //        [self setLable:4 isHighLight:NO text:result ];
