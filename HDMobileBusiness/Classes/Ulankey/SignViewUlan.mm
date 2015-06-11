@@ -57,6 +57,11 @@ NSString* TTLocalizedString(NSString* key, NSString* comment) {
 }
 
 -(void)dealloc{
+    
+    
+    self.parentView = nil;
+    TT_RELEASE_SAFELY(_signDelegator);
+    
     TT_RELEASE_SAFELY(_alertPinField);
     TT_RELEASE_SAFELY(_commitBt);
     TT_RELEASE_SAFELY(_cancelBt);
@@ -64,7 +69,9 @@ NSString* TTLocalizedString(NSString* key, NSString* comment) {
     TT_RELEASE_SAFELY(_midView);
     
     
-    [super dealloc];
+    //不能delloc因为  autorelease的问题
+    
+    //[super dealloc];
 }
 
 - (void)sign:(NSData *)dataToSign
@@ -384,6 +391,8 @@ parentViewController:(UIViewController *)parentViewController
 //        [self setLable:4 isHighLight:NO text:result ];
 //        [self.ulanKey disConnect];
         [self.signDelegator afterDone:err type:kSignSucess result:signature];
+        [self removeSelfView:1.0];
+
     } else {
         if (err.errorCode == CFIST_ERROR_INVALID_PIN) {
             [self didConnected:nil keyID:self.connectKeyID];

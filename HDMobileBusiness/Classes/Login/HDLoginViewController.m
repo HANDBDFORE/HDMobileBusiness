@@ -42,6 +42,9 @@
 {
     //    [self removeObserver:self.loginModel forKeyPath:@"username.text"];
     //    [self removeObserver:self.loginModel forKeyPath:@"password.text"];
+
+
+    TT_RELEASE_SAFELY(_key);
     
     TT_RELEASE_SAFELY(_loginModel);
     
@@ -55,6 +58,9 @@
     
     TT_RELEASE_SAFELY(_usernameDelegate);
     TT_RELEASE_SAFELY(_passwordDelegate);
+    
+    
+    
     [super viewDidUnload];
 }
 
@@ -361,6 +367,8 @@
 
 
 - (void)dealloc {
+
+    
     [_loginLbl release];
     [_passwordLbl release];
     [super dealloc];

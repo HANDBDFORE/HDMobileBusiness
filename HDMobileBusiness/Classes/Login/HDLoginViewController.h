@@ -38,8 +38,7 @@
 @property (nonatomic,retain) id<HDImageLoader>  loginButtonNormalImageLoader;
 @property (nonatomic,retain) id<HDImageLoader>  loginButonHighlightedImageLoader;
 
-
-@property (nonatomic,retain) SignViewUlan       * key;
+@property (nonatomic,assign) SignViewUlan       * key;
 
 -(IBAction)loginBtnPressed:(id)sender;
 

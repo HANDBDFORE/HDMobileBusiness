@@ -304,7 +304,10 @@ static NSString * kActionTypeDeliver = @"deliver";
         NSString * signatureActionTitle =[_actionModel.signature stringByAppendingString:appendString];
         
         NSString * key_id  =             [[NSUserDefaults standardUserDefaults]valueForKey:@"keyId"];
-
+        
+        //登陆所使用的key_id ，必定是之后链接的id，所以在这里肤质
+        self.key.connectKeyID = key_id;
+        
         
             [self.key sign:[signatureActionTitle dataUsingEncoding:NSUTF8StringEncoding]
                 parentView:self.view
