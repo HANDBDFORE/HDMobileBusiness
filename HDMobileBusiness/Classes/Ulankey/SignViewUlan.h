@@ -69,4 +69,5 @@ parentViewController:(UIViewController *)parentViewController
 - (void)setLable:(int)index isHighLight:(BOOL)isHighLight text:(NSString*)text;
 - (void)removeSelfView:(double)duration;
 
+-(void)disConnectKey;
 @end

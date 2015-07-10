@@ -257,6 +257,8 @@
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error
 {
+    [self.key disConnectKey];
+    
     [self.loginBtn setTitle:TTLocalizedString(@"Login", @"") forState:UIControlStateNormal];
     [self.loginBtn setTag:20];
     NSString * errorDescription = nil;
@@ -272,8 +274,12 @@
 #pragma animations for keyborad
 -(void)keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds
 {
+    
     [UIView beginAnimations:@"keyboardAnimation" context:NULL];
+    
     for (UIView * subView in [self.view subviews]) {
+
+        
         CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(0, -140);
         [subView.layer setAffineTransform:moveTransform];
     }
@@ -284,6 +290,7 @@
 {
     [UIView beginAnimations:@"keyboardAnimation" context:NULL];
     for (UIView * subView in [self.view subviews]) {
+        
         CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(0, 0);
         [subView.layer setAffineTransform:moveTransform];
     }

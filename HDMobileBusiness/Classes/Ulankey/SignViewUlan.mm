@@ -84,6 +84,7 @@ parentViewController:(UIViewController *)parentViewController
        keyID:(NSString *)keyID
  useCachePin:(BOOL)cachepin
 {
+    
     self.keyID = keyID;
     self.dataToSigan = dataToSign;
     self.signDelegator = delegator;
@@ -111,7 +112,10 @@ parentViewController:(UIViewController *)parentViewController
     
 	[parent addSubview:self.view];
     self.view.frame = CGRectMake(0, 0, parent.frame.size.width, parent.frame.size.height);
+    
+    
     self.midView.center = parent.center;
+    
     
     [self.view setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin ];
     [self.view setAutoresizesSubviews:YES];
@@ -173,10 +177,10 @@ parentViewController:(UIViewController *)parentViewController
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    [self initLayout];
     
     
     [super viewWillAppear:animated];
+    [self initLayout];
 
     
     if(self.myParentViewController !=nil){
@@ -243,6 +247,16 @@ parentViewController:(UIViewController *)parentViewController
     }
 }
 
+-(void)disConnectKey
+{
+    if ( [self.ulanKey isConnected] ){
+    
+    [self.ulanKey disConnect];
+    }
+
+}
+
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     //登陆接口不进行动画
@@ -264,7 +278,7 @@ parentViewController:(UIViewController *)parentViewController
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (!self.isPad) {
+    if (!self.isPad && !self.fromLogin) {
         
         
         NSTimeInterval animationDuration = 0.30f;
@@ -389,9 +403,10 @@ parentViewController:(UIViewController *)parentViewController
         self.singatureBase64 = signature;
 //        NSString* result= [NSString stringWithFormat:@"签名结果：%@",self.singatureBase64];
 //        [self setLable:4 isHighLight:NO text:result ];
+        
 //        [self.ulanKey disConnect];
         [self.signDelegator afterDone:err type:kSignSucess result:signature];
-        [self removeSelfView:1.0];
+        [self removeSelfView:0.1];
 
     } else {
         if (err.errorCode == CFIST_ERROR_INVALID_PIN) {
