@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FAD25441BB4E91D00598CA1 /* libULANKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF7EC1AE50C3C002496C8 /* libULANKit.a */; };
 		3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201088596B4756681693704 /* libThree20UICommon.a */; };
 		320A2827FEC940B25BC42C65 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A2827FEC940B25BC42C64 /* libThree20Core.a */; };
 		320A5A189C235877202780D5 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A5A189C235877202780D4 /* libThree20Network.a */; };
@@ -50,7 +51,6 @@
 		3BD5D4291AE8893D008BF17D /* SignViewUlan.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BD5D4251AE8893D008BF17D /* SignViewUlan.mm */; };
 		3BD5D42A1AE8893D008BF17D /* SignViewUlan_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BD5D4261AE8893D008BF17D /* SignViewUlan_iPad.xib */; };
 		3BDFF7DD1AE4F861002496C8 /* HDMathCheckModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDFF7DC1AE4F861002496C8 /* HDMathCheckModel.m */; };
-		3BDFF7ED1AE50C3C002496C8 /* libULANKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF7EC1AE50C3C002496C8 /* libULANKit.a */; };
 		3BDFF7EF1AE50DA5002496C8 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF7EE1AE50DA5002496C8 /* CoreBluetooth.framework */; };
 		3BDFF7F11AE50DBD002496C8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF7F01AE50DBD002496C8 /* CoreText.framework */; };
 		63EF84AE174F0AE500D882F2 /* HDXMLParserCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF84AD174F0AE500D882F2 /* HDXMLParserCenter.m */; };
@@ -1001,9 +1001,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FAD25441BB4E91D00598CA1 /* libULANKit.a in Frameworks */,
 				3BDFF7F11AE50DBD002496C8 /* CoreText.framework in Frameworks */,
 				3BDFF7EF1AE50DA5002496C8 /* CoreBluetooth.framework in Frameworks */,
-				3BDFF7ED1AE50C3C002496C8 /* libULANKit.a in Frameworks */,
 				C0D2646C18682AA70075E4DB /* libxml2.dylib in Frameworks */,
 				B31E2F2615C66E7600880514 /* libsqlite3.dylib in Frameworks */,
 				B31E2F2515C6692D00880514 /* libz.dylib in Frameworks */,
@@ -2198,11 +2198,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HD;
+				LastTestingUpgradeCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = hand;
 				TargetAttributes = {
 					B36BDA8C15C64777003A4A5D = {
-						DevelopmentTeam = G2VKDBKL49;
+						DevelopmentTeam = YHAQCRVNZW;
 					};
 				};
 			};
@@ -2829,9 +2830,10 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2853,6 +2855,7 @@
 					"${SDK_DIR}/usr/include/libxml2",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
@@ -2873,9 +2876,10 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2890,6 +2894,7 @@
 					"${SDK_DIR}/usr/include/libxml2",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "";
@@ -2906,6 +2911,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusiness/HDMobileBusiness-Prefix.pch";
@@ -2919,7 +2925,7 @@
 				);
 				INFOPLIST_FILE = "HDMobileBusiness/HDMobileBusiness-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = /Users/titengjiang/Documents/Project/Ios/project/temp/HDMobileBusiness/Frameworks/UlanKit/Lib;
+				LIBRARY_SEARCH_PATHS = "/Users/wuxiaocheng/Documents/mobile/IOS_HAND/Bestseller/HDMobileBusiness(1)/HDMobileBusiness/Frameworks/UlanKit/lib";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
@@ -2942,6 +2948,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusiness/HDMobileBusiness-Prefix.pch";
@@ -2955,7 +2962,7 @@
 				);
 				INFOPLIST_FILE = "HDMobileBusiness/HDMobileBusiness-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = /Users/titengjiang/Documents/Project/Ios/project/temp/HDMobileBusiness/Frameworks/UlanKit/Lib;
+				LIBRARY_SEARCH_PATHS = "/Users/wuxiaocheng/Documents/mobile/IOS_HAND/Bestseller/HDMobileBusiness(1)/HDMobileBusiness/Frameworks/UlanKit/lib";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
