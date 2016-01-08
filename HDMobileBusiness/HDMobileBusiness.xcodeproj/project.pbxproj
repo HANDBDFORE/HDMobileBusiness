@@ -2004,7 +2004,7 @@
 			name = HDMobileBusinessTests;
 			productName = HDMobileBusinessTests;
 			productReference = B36BDAA815C64777003A4A5D /* HDMobileBusinessTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -2017,7 +2017,7 @@
 				ORGANIZATIONNAME = hand;
 				TargetAttributes = {
 					B36BDA8C15C64777003A4A5D = {
-						DevelopmentTeam = 63M9FZGR9Q;
+						DevelopmentTeam = XMRA9CS64A;
 					};
 				};
 			};
@@ -2686,6 +2686,7 @@
 					"-ObjC",
 					"-lxml2",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mas.mobilebusiness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -2719,6 +2720,7 @@
 					"-ObjC",
 					"-lxml2",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mas.mobilebusiness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

@@ -1,0 +1,51 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A3ABCCF61F0F5ECC94D778FDF5BE728BC9D523F2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A3ABCCF61F0F5ECC94D778FDF5BE728BC9D523F2" : 0,
+    "7F1F5D9C-760E-43D9-88D6-3305A6093CFA" : 0,
+    "B190CDA1-D470-49F3-A060-D93323BD28DF" : 0,
+    "AA484AAA-F006-4B3D-A9C1-89A4F7626646" : 0,
+    "A4D93D85-EE72-43CD-ADF7-F25094ECEACE" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "32750AF3-AAFB-4BEB-94C0-ECD7E0F42F93",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A3ABCCF61F0F5ECC94D778FDF5BE728BC9D523F2" : "HDMobileBusiness",
+    "7F1F5D9C-760E-43D9-88D6-3305A6093CFA" : "HDMobileBusiness\/Frameworks\/FMDB",
+    "B190CDA1-D470-49F3-A060-D93323BD28DF" : "HDMobileBusiness\/Frameworks\/Three20",
+    "AA484AAA-F006-4B3D-A9C1-89A4F7626646" : "HDMobileBusiness\/Frameworks\/TouchXML",
+    "A4D93D85-EE72-43CD-ADF7-F25094ECEACE" : "HDMobileBusiness\/Frameworks\/prettyKit"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "HDMobileBusiness",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "HDMobileBusiness.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git:\/\/github.com\/ccgus\/fmdb.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7F1F5D9C-760E-43D9-88D6-3305A6093CFA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/HAND-MAS\/HDMobileBusiness.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A3ABCCF61F0F5ECC94D778FDF5BE728BC9D523F2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/HAND-MAS\/PrettyKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A4D93D85-EE72-43CD-ADF7-F25094ECEACE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git:\/\/github.com\/TouchCode\/TouchXML.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AA484AAA-F006-4B3D-A9C1-89A4F7626646"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git:\/\/github.com\/HAND-MAS\/three20.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B190CDA1-D470-49F3-A060-D93323BD28DF"
+    }
+  ]
+}
