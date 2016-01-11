@@ -38,6 +38,13 @@
 
 -(void)removeRecord:(id)record;
 
+// 保存当前记录
+-(void)currentSubmitRecordsSave:(id)records;
+
+// 读取当前记录
+-(id)currentSubmitRecordsRead;
+
+
 @optional
 
 -(BOOL)isSubmiting;
@@ -77,6 +84,7 @@
 @optional
 
 -(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary;
+-(void)saveSubmitCurrentRecords;
 
 @end
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

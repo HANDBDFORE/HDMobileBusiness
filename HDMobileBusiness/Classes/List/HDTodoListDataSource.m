@@ -61,6 +61,10 @@
     NSString * stautMessage = nil;
     if (![[object valueForKey:kRecordStatus] isEqualToString:kRecordNormal] &&![[object valueForKey:kRecordStatus] isEqualToString:kRecordWaiting]) {
         stautMessage = [object valueForKey:kRecordServerMessage];
+        
+        if (stautMessage == nil  && [[object valueForKey:kRecordStatus] isEqualToString:kRecordError]) {
+            stautMessage = @"提交请求失败";
+        }
     }
     
  

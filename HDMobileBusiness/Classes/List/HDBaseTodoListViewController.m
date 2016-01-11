@@ -72,6 +72,7 @@
     UISwipeGestureRecognizer *removeRecordRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwiped:)]autorelease];
     removeRecordRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.tableView addGestureRecognizer:removeRecordRecognizer];
+
 }
 
 #pragma  -mark toolbar Buttons
@@ -255,6 +256,7 @@
     }else{
         if ([item.state isEqualToString:kRecordNew] || [item.state isEqualToString:kRecordError]) {
             self.model.currentIndex = indexPath.row;
+            [self.model saveSubmitCurrentRecords];
             [self selectedTableCellForCurrentRecord];
         }
     }

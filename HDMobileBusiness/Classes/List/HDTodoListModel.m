@@ -20,6 +20,8 @@ static NSString * kColumnMapKey = @"column1";
     TT_RELEASE_SAFELY(_queryURL);
     TT_RELEASE_SAFELY(_submitURL);
     TT_RELEASE_SAFELY(_submitList);
+    TT_RELEASE_SAFELY(_currentSubmitRecords);
+
     [super dealloc];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,6 +32,8 @@ static NSString * kColumnMapKey = @"column1";
     if (self) {
         _submitList = [[NSMutableArray alloc] init];
         _resultList = [[NSMutableArray alloc] init];
+        _currentSubmitRecords = [[NSMutableArray alloc] init];
+
         _flags.shouldLoadingLocalData = YES;
     }
     return self;
@@ -58,6 +62,7 @@ static NSString * kColumnMapKey = @"column1";
         _flags.isQueryingData = YES;
         [self loadRemoteRecords];
     }
+
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -124,6 +129,20 @@ static NSString * kColumnMapKey = @"column1";
     [self updateDeliverRecords:records];
     self.cacheKey = nil;
     [self didFinishLoad];
+}
+
+
+-(void)currentSubmitRecordsSave:(id)records
+{
+    [_currentSubmitRecords removeAllObjects];
+
+    [_currentSubmitRecords addObjectsFromArray:records];
+
+}
+
+-(id)currentSubmitRecordsRead
+{
+    return _currentSubmitRecords;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -279,25 +298,35 @@ static NSString * kColumnMapKey = @"column1";
     for(int i = [_submitList count] -1;i>=0;i--){
         NSDictionary * submitrecord =[_submitList objectAtIndex:i];
 //        NSUInteger index = [self.resultList indexOfObject:submitrecord];
+        
         for (NSDictionary * resrecord in reslist) {
             if (  [[resrecord objectForKey:@"localId"] integerValue] == [[submitrecord objectForKey:@"localId"] integerValue] &&[[resrecord objectForKey:@"sourceSystemName"] isEqualToString:[submitrecord objectForKey:@"sourceSystemName"]]) {
+                
+                //NSLog(@"localId %@  status %@", [resrecord objectForKey:@"localId"], [resrecord objectForKey:@"status"] );
                 if ([[resrecord objectForKey:@"status"] isEqualToString:@"F"]) {
-                    [submitrecord setValue:kRecordWaiting forKey:kRecordStatus];
+                    //[submitrecord setValue:kRecordWaiting forKey:kRecordStatus];
+                    [submitrecord setValue:kRecordError forKey:kRecordStatus];
+
                     [submitrecord setValue:[resrecord objectForKey:@"message"] forKey:kRecordServerMessage];
 //                    [self didUpdateObject:submitrecord
 //                              atIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
                     [self updateRecords:@[submitrecord]];
 
                 }else{
+                    
                     //debug:删除数据需要包装成数组
                     [self removeRecords:@[submitrecord]];
                     [self setIconBadgeNumber];
                     [_resultList removeObject:submitrecord];
+                    //_flags.shouldLoadingLocalData = YES;
+                    
+                    
                 
                 }
             }
         }
         [_submitList removeObject:[_submitList objectAtIndex:i]];
+       
     }
     [self load:TTURLRequestCachePolicyDefault more:NO];
 }

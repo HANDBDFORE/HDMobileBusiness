@@ -54,10 +54,18 @@
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+/*******
+    提交记录
+ *******/
+
 -(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary
 {
     if (self.currentIndex < self.resultList.count) {
-        NSArray * submitRecords = @[[self.resultList objectAtIndex:self.currentIndex]];
+        //NSArray * submitRecords = @[[self.resultList objectAtIndex:self.currentIndex]];
+        NSArray * submitRecords = [self.model currentSubmitRecordsRead];
+        
         for (NSString * key in dictionary) {
             [submitRecords setValue:[dictionary valueForKey:key] forKey:key];
         }
@@ -65,6 +73,13 @@
     }
 }
 
+/***
+    保存下档前记录明细
+ ***/
+-(void)saveSubmitCurrentRecords
+{
+    [self.model currentSubmitRecordsSave:@[[self.resultList objectAtIndex:self.currentIndex]]];
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -(void)removeRecordAtIndex:(NSUInteger) index
 {

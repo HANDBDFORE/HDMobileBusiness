@@ -31,6 +31,8 @@
 
 -(void)submitCurrentRecordWithDictionary:(NSDictionary *)dictionary;
 
+- (void)saveSubmitCurrentRecords;
+
 
 @property(nonatomic,assign) NSUInteger currentIndex;
 

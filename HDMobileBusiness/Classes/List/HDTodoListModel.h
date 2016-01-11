@@ -21,6 +21,8 @@
     
     NSMutableArray * _resultList;
     NSMutableArray * _submitList;
+    NSMutableArray * _currentSubmitRecords;
+
 }
 
 //主键字段
