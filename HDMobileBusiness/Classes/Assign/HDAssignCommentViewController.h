@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HDDetailToolbarViewController.h"
 
-@interface HDDeleverCommentViewController : UIViewController <UITextViewDelegate>
+@interface HDAssignCommentViewController : UIViewController <UITextViewDelegate>
 
 @property (retain, nonatomic) IBOutlet UIView *coverView;
 @property (retain, nonatomic) IBOutlet UILabel *delivereeLbl;
@@ -21,7 +21,6 @@
 @property (retain,nonatomic)HDDetailToolbarViewController * delegate;
 
 @property(retain,nonatomic) NSString * deliverId;
-
 @property(retain,nonatomic) NSString * localId;
 
 

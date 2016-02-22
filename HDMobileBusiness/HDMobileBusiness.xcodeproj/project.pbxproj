@@ -16,6 +16,12 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		3B907EA81C5F6635002E8E3B /* AssignStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B907EA71C5F6635002E8E3B /* AssignStoryboard.storyboard */; };
+		3B907EAB1C5F677C002E8E3B /* HDAssignCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B907EAA1C5F677C002E8E3B /* HDAssignCommentViewController.m */; };
+		3B907EAE1C5F6805002E8E3B /* HDAssignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B907EAD1C5F6805002E8E3B /* HDAssignViewController.m */; };
+		3B907EB41C5F692D002E8E3B /* HDAssignCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B907EB01C5F692D002E8E3B /* HDAssignCell.m */; };
+		3B907EB51C5F692D002E8E3B /* HDAssignCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B907EB11C5F692D002E8E3B /* HDAssignCell.xib */; };
+		3B907EB61C5F692D002E8E3B /* HDAssignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B907EB31C5F692D002E8E3B /* HDAssignModel.m */; };
 		63EF84AE174F0AE500D882F2 /* HDXMLParserCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF84AD174F0AE500D882F2 /* HDXMLParserCenter.m */; };
 		63EF84B1174F377800D882F2 /* HDOriginalXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF84B0174F377800D882F2 /* HDOriginalXMLParser.m */; };
 		63EF84B4174F393800D882F2 /* HDSpringLikeXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF84B3174F393800D882F2 /* HDSpringLikeXMLParser.m */; };
@@ -460,6 +466,16 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../Frameworks/Three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../Frameworks/Three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../Frameworks/Three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		3B907EA71C5F6635002E8E3B /* AssignStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AssignStoryboard.storyboard; path = Classes/Assign/AssignStoryboard.storyboard; sourceTree = "<group>"; };
+		3B907EA91C5F677B002E8E3B /* HDAssignCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDAssignCommentViewController.h; path = Classes/Assign/HDAssignCommentViewController.h; sourceTree = "<group>"; };
+		3B907EAA1C5F677C002E8E3B /* HDAssignCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDAssignCommentViewController.m; path = Classes/Assign/HDAssignCommentViewController.m; sourceTree = "<group>"; };
+		3B907EAC1C5F6805002E8E3B /* HDAssignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDAssignViewController.h; path = Classes/Assign/HDAssignViewController.h; sourceTree = "<group>"; };
+		3B907EAD1C5F6805002E8E3B /* HDAssignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDAssignViewController.m; path = Classes/Assign/HDAssignViewController.m; sourceTree = "<group>"; };
+		3B907EAF1C5F692D002E8E3B /* HDAssignCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDAssignCell.h; path = Classes/Assign/HDAssignCell.h; sourceTree = "<group>"; };
+		3B907EB01C5F692D002E8E3B /* HDAssignCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDAssignCell.m; path = Classes/Assign/HDAssignCell.m; sourceTree = "<group>"; };
+		3B907EB11C5F692D002E8E3B /* HDAssignCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HDAssignCell.xib; path = Classes/Assign/HDAssignCell.xib; sourceTree = "<group>"; };
+		3B907EB21C5F692D002E8E3B /* HDAssignModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDAssignModel.h; path = Classes/Assign/HDAssignModel.h; sourceTree = "<group>"; };
+		3B907EB31C5F692D002E8E3B /* HDAssignModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDAssignModel.m; path = Classes/Assign/HDAssignModel.m; sourceTree = "<group>"; };
 		6353CFF0174E109B007866DE /* HDParserProtocal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDParserProtocal.h; sourceTree = "<group>"; };
 		63EF84AC174F0AE500D882F2 /* HDXMLParserCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDXMLParserCenter.h; sourceTree = "<group>"; };
 		63EF84AD174F0AE500D882F2 /* HDXMLParserCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDXMLParserCenter.m; sourceTree = "<group>"; };
@@ -999,6 +1015,23 @@
 				B36BDAFF15C64BC7003A4A5D /* UIUnitTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		3B907EA61C5F65AA002E8E3B /* Assign */ = {
+			isa = PBXGroup;
+			children = (
+				3B907EAF1C5F692D002E8E3B /* HDAssignCell.h */,
+				3B907EB01C5F692D002E8E3B /* HDAssignCell.m */,
+				3B907EB11C5F692D002E8E3B /* HDAssignCell.xib */,
+				3B907EB21C5F692D002E8E3B /* HDAssignModel.h */,
+				3B907EB31C5F692D002E8E3B /* HDAssignModel.m */,
+				3B907EAC1C5F6805002E8E3B /* HDAssignViewController.h */,
+				3B907EAD1C5F6805002E8E3B /* HDAssignViewController.m */,
+				3B907EA91C5F677B002E8E3B /* HDAssignCommentViewController.h */,
+				3B907EAA1C5F677C002E8E3B /* HDAssignCommentViewController.m */,
+				3B907EA71C5F6635002E8E3B /* AssignStoryboard.storyboard */,
+			);
+			name = Assign;
 			sourceTree = "<group>";
 		};
 		B2A015D719D92C51000F046E /* Delever */ = {
@@ -1636,6 +1669,7 @@
 		B38E686915C654C700824CB1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3B907EA61C5F65AA002E8E3B /* Assign */,
 				B2A015D719D92C51000F046E /* Delever */,
 				B336DEF3165E250500057B95 /* Navigatior */,
 				B3893CEA164A3FDE004E326A /* Split */,
@@ -2013,6 +2047,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HD;
+				LastTestingUpgradeCheck = 0720;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = hand;
 				TargetAttributes = {
@@ -2178,6 +2213,7 @@
 			files = (
 				B357076516D215340063E4CA /* HDDeliver.png in Resources */,
 				B357076616D215340063E4CA /* HDReject.png in Resources */,
+				3B907EB51C5F692D002E8E3B /* HDAssignCell.xib in Resources */,
 				B357076416D214800063E4CA /* HDApprove.png in Resources */,
 				B357075C16D2095E0063E4CA /* HDUser.png in Resources */,
 				B3C0B69016CF52AB00C37A51 /* mail-5.png in Resources */,
@@ -2344,6 +2380,7 @@
 				B3E60F0C1659D7D4006C8119 /* page3.jpg in Resources */,
 				B3E60F0D1659D7D4006C8119 /* page4.jpg in Resources */,
 				B3E60F0E1659D7D4006C8119 /* page5.jpg in Resources */,
+				3B907EA81C5F6635002E8E3B /* AssignStoryboard.storyboard in Resources */,
 				B2307431166739AB00DFF2E0 /* backend-config-juice.xml in Resources */,
 				B357076D16D223130063E4CA /* HDApprove@2x.png in Resources */,
 				B357076F16D223130063E4CA /* HDDeliver@2x.png in Resources */,
@@ -2411,10 +2448,12 @@
 				B3CB5D941676D18F0062E71B /* HDTimeStampLabel.m in Sources */,
 				B36BDA9E15C64777003A4A5D /* main.m in Sources */,
 				B36BDAA215C64777003A4A5D /* HDAppDelegate.m in Sources */,
+				3B907EB61C5F692D002E8E3B /* HDAssignModel.m in Sources */,
 				B38E687415C654DA00824CB1 /* HDRequestGetMap.m in Sources */,
 				B38E687515C654DA00824CB1 /* HDRequestMap.m in Sources */,
 				B38E687615C654DA00824CB1 /* HDURLRequestModel.m in Sources */,
 				B38E687715C654DA00824CB1 /* HDHTTPRequestCenter.m in Sources */,
+				3B907EAB1C5F677C002E8E3B /* HDAssignCommentViewController.m in Sources */,
 				B38E688915C655C600824CB1 /* HDAuroraRequestConvertor.m in Sources */,
 				B38E688A15C655C600824CB1 /* HDAuroraResponseConvertor.m in Sources */,
 				B38E688B15C655C600824CB1 /* HDBaseConvertor.m in Sources */,
@@ -2447,6 +2486,7 @@
 				B30BF63E15EC95A200DB83E9 /* HDSingletonObject.m in Sources */,
 				B303763E1600303E00238923 /* HDMessageSingleRecipientField.m in Sources */,
 				B3037641160049D400238923 /* HDSinglePickerTextField.m in Sources */,
+				3B907EAE1C5F6805002E8E3B /* HDAssignViewController.m in Sources */,
 				B303768C1600883D00238923 /* HDBaseTodoListViewController.m in Sources */,
 				B303768D1600883D00238923 /* HDTableStatusMessageItem.m in Sources */,
 				B303768E1600883D00238923 /* HDTableStatusMessageItemCell.m in Sources */,
@@ -2476,6 +2516,7 @@
 				B336DEF6165E252100057B95 /* HDNavigationController.m in Sources */,
 				B3D5B847165F1BD00073C9D5 /* HDClassLoader.m in Sources */,
 				B2A015DA19D92C96000F046E /* HDDeleverModel.m in Sources */,
+				3B907EB41C5F692D002E8E3B /* HDAssignCell.m in Sources */,
 				B3D5B84A165F33940073C9D5 /* HDImageLoader.m in Sources */,
 				B3D5B84D165F43000073C9D5 /* HDResourceLoader.m in Sources */,
 				B3D5B851165F4DC40073C9D5 /* HDApplicationContext.m in Sources */,
@@ -2665,8 +2706,8 @@
 		B36BDABB15C64777003A4A5D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HAND Enterprise Solutions Company Ltd.";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusiness/HDMobileBusiness-Prefix.pch";
@@ -2699,8 +2740,8 @@
 		B36BDABC15C64777003A4A5D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HAND Enterprise Solutions Company Ltd.";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HDMobileBusiness/HDMobileBusiness-Prefix.pch";

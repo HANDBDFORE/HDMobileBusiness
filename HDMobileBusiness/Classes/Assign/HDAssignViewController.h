@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HDDeleverCommentViewController.h"
 
-@interface HDDeleverViewController : TTModelViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
+@interface HDAssignViewController : TTModelViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
 
 @property (retain, nonatomic) IBOutlet UITextField *keywordTf;
 
@@ -19,9 +19,9 @@
 
 @property (retain, nonatomic) IBOutlet UITableView *delivereeTableView;
 
+
 @property (retain,nonatomic) HDDeleverCommentViewController * superView;
 
 @property(retain,nonatomic) NSString * localId;
-
 
 @end

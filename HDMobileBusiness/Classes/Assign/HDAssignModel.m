@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 hand. All rights reserved.
 //
 
-#import "HDDeleverModel.h"
+#import "HDAssignModel.h"
 
-@interface HDDeleverModel ()
+@interface HDAssignModel ()
 
 @end
 
-@implementation HDDeleverModel
+@implementation HDAssignModel
 
 @synthesize list  = _list;
 
@@ -35,7 +35,7 @@
     HDRequestMap * map = [HDRequestMap mapWithDelegate:self];
     map.urlPath = self.queryUrl;
     map.postData = @{@"mobile_employee_keyword": data,
-                     @"localId" : localId
+                     @"localId":localId
                      };
     [self requestWithMap:map];
     

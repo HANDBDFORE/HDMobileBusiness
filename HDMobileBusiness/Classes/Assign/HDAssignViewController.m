@@ -1,23 +1,23 @@
 //
-//  HDDeleverViewController.m
+//  HDAssignViewController.m
 //  HDMobileBusiness
 //
 //  Created by jiangtiteng on 14-9-29.
 //  Copyright (c) 2014年 hand. All rights reserved.
 //
 
-#import "HDDeleverViewController.h"
-#import "HDDeleverModel.h"
-#import "HDDeleverCell.h"
-#import "HDDeleverCommentViewController.h"
+#import "HDAssignViewController.h"
+#import "HDAssignModel.h"
+#import "HDAssignCell.h"
+#import "HDAssignCommentViewController.h"
 
-@interface HDDeleverViewController (){
+@interface HDAssignViewController (){
     UITextView * _textview;
     
     UIButton  * _btn;
     UILabel * _label;
     
-    HDDeleverModel *  _model;
+    HDAssignModel *  _model;
     
     UITableView * _tableview;
     
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation HDDeleverViewController
+@implementation HDAssignViewController
 
 
 - (void)viewDidLoad
@@ -34,9 +34,12 @@
     
     [self initViews];
     
-    _model = [[HDDeleverModel alloc] init];
+    _model = [[HDAssignModel alloc] init];
     
     [self setModel:_model];
+    [_model loadRecord:_keywordTf.text
+            localId:_localId];
+
 }
 
 /////////////////private//////////////
@@ -71,21 +74,20 @@
 -(void)query
 {
     
+    NSString * text = _keywordTf.text;
     [self.keywordTf resignFirstResponder];
     
     //对输入内容进行
     if(_keywordTf.text.length == 0 ){
-        
-        TTAlertNoTitle(TTLocalizedString(@"Enter Conditions For Search", @""));
-        return;
+        text = @"";
+//        TTAlertNoTitle(TTLocalizedString(@"Enter Conditions For Search", @""));
+//        return;
     }
     
     
     
     
-    [_model loadRecord:_keywordTf.text
-            localId:_localId
-     ];
+    [_model loadRecord:text localId:_localId];
     
 }
 
@@ -113,7 +115,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HDDeleverCell * cell = [[HDDeleverCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HDDeleverCell"];
+    HDAssignCell * cell = [[HDAssignCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HDAssignCell"];
     
     NSDictionary * data =  [_model.list objectAtIndex:indexPath.row];
 
@@ -130,7 +132,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   HDDeleverCell * cell =  (HDDeleverCell *)[tableView cellForRowAtIndexPath:indexPath];
+   HDAssignCell * cell =  (HDAssignCell *)[tableView cellForRowAtIndexPath:indexPath];
  
     self.superView.deliverId =  cell.delivereeid;
     self.superView.delivereeLbl.text = cell.userNameLbl.text;

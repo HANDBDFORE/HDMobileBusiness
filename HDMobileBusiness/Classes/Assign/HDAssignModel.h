@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HDDeleverModel :  HDURLRequestModel <TTModel>
+@interface HDAssignModel :  HDURLRequestModel <TTModel>
 
 
 @property (nonatomic,strong) NSString * queryUrl;
 @property (nonatomic,strong) NSArray * list;
-
 
 -(void)loadRecord:(NSString *)data
           localId:(NSString *)localId;

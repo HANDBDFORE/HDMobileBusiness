@@ -11,8 +11,10 @@
 #import "HDActionModel.h"
 #import "HDDeleverViewController.h"
 #import "HDDeleverCommentViewController.h"
+#import "HDAssignCommentViewController.h"
 
 static NSString * kActionTypeDeliver = @"deliver";
+static NSString * kActionTypeAssign = @"assign";
 
 @interface HDDetailToolbarViewController ()
 {
@@ -147,10 +149,26 @@ static NSString * kActionTypeDeliver = @"deliver";
     HDDeleverCommentViewController * dataSetting = [StoryBoard instantiateViewControllerWithIdentifier:@"HDDeleverCommentViewController"];
 
     dataSetting.delegate = self;
+    dataSetting.localId = [NSString stringWithFormat:@"%@",[self.params valueForKey:@"localId"]];
     
-
+    
     [self  presentModalViewController:[[UINavigationController alloc] initWithRootViewController:dataSetting]  animated:YES];
+}
+
+-(void)assign:(id)sender
+{
+    //设置当前审批动作
+    self.selectedAction = [[sender valueForKey:@"tag"] stringValue];
     
+    UIStoryboard *StoryBoard = [UIStoryboard storyboardWithName:@"AssignStoryboard" bundle:nil];
+    HDAssignCommentViewController * dataSetting = [StoryBoard instantiateViewControllerWithIdentifier:@"HDAssignCommentViewController"];
+    NSLog(@"%@,",self.params);
+    dataSetting.localId = [NSString stringWithFormat:@"%@",[self.params valueForKey:@"localId"]];
+    
+    dataSetting.delegate = self;
+    
+    
+    [self  presentModalViewController:[[UINavigationController alloc] initWithRootViewController:dataSetting]  animated:YES];
     
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -296,7 +314,12 @@ static NSString * kActionTypeDeliver = @"deliver";
     //对于actiontype为转交的进行单独处理 modify jtt 2014-10-09
     if ([[record valueForKey:@"actionType"] isEqualToString:kActionTypeDeliver]) {
         actionButton.action = @selector(deliver:);
+    }else if([[record valueForKey:@"actionType"] isEqualToString:kActionTypeAssign]){
+        actionButton.action = @selector(assign:);
+
     }
+    
+    
     
     return actionButton;
 }@end

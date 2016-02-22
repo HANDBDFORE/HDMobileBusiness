@@ -28,6 +28,8 @@
 
 @property (nonatomic, retain) UIView* emptyView;
 
+//当前页面服务器获得的参数
+@property(nonatomic,retain)NSDictionary * params;
 //调用viewWillAppear，nextRecord，prevRecord时会调用该方法刷新页面
 -(void)loadRecord:(NSDictionary *)record;
 

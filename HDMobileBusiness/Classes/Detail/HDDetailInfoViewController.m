@@ -24,7 +24,7 @@
 
 //model
 @synthesize currentURL = _currentURL;
-
+@synthesize params  = _params;
 #pragma mark - life cycle
 #pragma mark -
 -(void)viewDidUnload{
@@ -37,6 +37,8 @@
     TT_RELEASE_SAFELY(_prevButtonItem);
     
     TT_RELEASE_SAFELY(_emptyView);
+    TT_RELEASE_SAFELY(_params);
+
     [super viewDidUnload];
 }
 
@@ -93,6 +95,7 @@
         self.title = nil;
         
         NSMutableDictionary * recordDictionary = [NSMutableDictionary dictionaryWithDictionary:record];
+        self.params = recordDictionary;
         [recordDictionary setValue:[HDHTTPRequestCenter baseURLPath] forKey:@"base_url"];
         [recordDictionary setValue:[[NSUserDefaults standardUserDefaults]stringForKey:@"Token"] forKey:@"token"];
         
