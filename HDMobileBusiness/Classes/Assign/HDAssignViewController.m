@@ -166,7 +166,8 @@
 
     if(_model.list.count == 0)
     {
-        
+        [self.delivereeTableView reloadData];
+
         
     }else{
         self.delivereeTableView.tableFooterView = [[UIView alloc]init];
